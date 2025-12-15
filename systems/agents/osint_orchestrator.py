@@ -809,11 +809,15 @@ async def main():
     return bi_export
 
 if __name__ == "__main__":
+    import os
+
     # Run the orchestrator
     result = asyncio.run(main())
-    
-    # Save to file
-    with open('/mnt/user-data/outputs/osint_bi_export.json', 'w') as f:
+
+    # Save to file (use data directory relative to script)
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    output_path = os.path.join(script_dir, "..", "data", "osint_bi_export.json")
+    with open(output_path, 'w') as f:
         json.dump(result, f, indent=2)
-    
-    print("\n✓ Saved to: /mnt/user-data/outputs/osint_bi_export.json")
+
+    print(f"\n✓ Saved to: {output_path}")
