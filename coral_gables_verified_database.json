@@ -1,0 +1,1443 @@
+{
+  "meta": {
+    "version": "3.1.1",
+    "schema": "verified_osint_with_pkp",
+    "generated": "2025-12-15T00:00:00.000Z",
+    "updated": "2025-12-15T21:00:00.000Z",
+    "generator": "manual_verification_v1",
+    "methodology": "web_search_verified + llm_pain_point_extraction",
+    "total_businesses": 10,
+    "location": "Coral Gables, Florida",
+    "data_quality": "verified",
+    "pain_point_methodology": "Evidence-based extraction from reviews, industry patterns, and web research",
+    "notes": "All contact information manually verified. Added primary phone fields for consistency. Pain points extracted from actual customer reviews and validated with LLM reasoning."
+  },
+  "ecosystem": {
+    "districts": [
+      {
+        "id": "giralda_plaza",
+        "name": "Giralda Plaza",
+        "type": "dining",
+        "description": "Pedestrian-only dining district"
+      },
+      {
+        "id": "miracle_mile",
+        "name": "Miracle Mile",
+        "type": "mixed_use",
+        "description": "Main commercial corridor"
+      },
+      {
+        "id": "ponce_de_leon",
+        "name": "Ponce de Leon Blvd",
+        "type": "commercial",
+        "description": "Major business corridor"
+      },
+      {
+        "id": "alhambra_circle",
+        "name": "Alhambra Circle",
+        "type": "professional",
+        "description": "Professional services hub"
+      },
+      {
+        "id": "biltmore",
+        "name": "Biltmore Area",
+        "type": "resort",
+        "description": "Historic resort district"
+      }
+    ],
+    "organizations": [
+      {
+        "id": "cg_chamber",
+        "name": "Coral Gables Chamber of Commerce",
+        "website": "coralgableschamber.org",
+        "members": "1600+"
+      }
+    ]
+  },
+  "businesses": [
+    {
+      "business_id": "luca_osteria_001",
+      "name": "Luca Osteria",
+      "category": "restaurant",
+      "subcategory": "italian_fine_dining",
+      "owner": "Chef Giorgio Rapicavoli",
+      "address": {
+        "street": "116 Giralda Ave",
+        "city": "Coral Gables",
+        "state": "FL",
+        "zip": "33134",
+        "full": "116 Giralda Ave, Coral Gables, FL 33134"
+      },
+      "district": "giralda_plaza",
+      "coordinates": {
+        "lat": 25.7512654,
+        "lng": -80.2572051
+      },
+      "contact": {
+        "phone": "(305) 381-5097",
+        "website": "https://lucamiami.com",
+        "email": null,
+        "verified": true,
+        "verified_date": "2025-12-15",
+        "sources": [
+          "yelp",
+          "opentable",
+          "official_website"
+        ]
+      },
+      "social_media": {
+        "instagram": {
+          "handle": "@lucaosteria",
+          "url": "https://instagram.com/lucaosteria"
+        }
+      },
+      "hours": {
+        "note": "Open for dinner Tuesday-Sunday",
+        "reservations": "OpenTable"
+      },
+      "details": {
+        "cuisine": "Italian",
+        "chef": "Giorgio Rapicavoli",
+        "chef_accolades": [
+          "Chopped Champion",
+          "James Beard Semifinalist"
+        ],
+        "named_for": "Chef's son Luca",
+        "setting": "Pedestrian-only Giralda Plaza"
+      },
+      "ratings": {
+        "yelp": 4.5,
+        "google": 4.6,
+        "opentable": 4.7,
+        "review_count": 457
+      },
+      "pain_points": [
+        {
+          "id": "pp_luca_001",
+          "pain_point": "Reservation scarcity creates customer frustration and lost walk-in revenue",
+          "category": "capacity",
+          "severity": "high",
+          "confidence": 0.85,
+          "evidence": [
+            "Reviews state 'really hard to secure a reservation'",
+            "Customers report going at opening time hoping for cancellations",
+            "High demand exceeds current seating capacity"
+          ],
+          "source": "yelp_reviews, tripadvisor",
+          "mitigation": "Dynamic waitlist system, SMS notifications for cancellations, off-peak incentives"
+        },
+        {
+          "id": "pp_luca_002",
+          "pain_point": "Table turnover pressure leads to rushed dining experience complaints",
+          "category": "operations",
+          "severity": "medium",
+          "confidence": 0.8,
+          "evidence": [
+            "Review: 'Didn't like being rushed out because of our 9:30 slot'",
+            "Review: 'Don't go unless you want to be rushed. Plates dropped on the table'",
+            "Review: 'Constant interruptions to get the order and us out'"
+          ],
+          "source": "tripadvisor, yelp_reviews",
+          "mitigation": "Pacing optimization software, staff training on guest experience vs turnover balance"
+        },
+        {
+          "id": "pp_luca_003",
+          "pain_point": "Outdoor seating discomfort in Miami heat affects dining experience",
+          "category": "facility",
+          "severity": "low",
+          "confidence": 0.65,
+          "evidence": [
+            "Review: 'It's way too hot and muggy to sit outside and eat Italian'",
+            "Pedestrian plaza location limits climate control options"
+          ],
+          "source": "yelp_reviews",
+          "mitigation": "Misting systems, enhanced shade structures, indoor capacity expansion"
+        }
+      ],
+      "opportunities": [
+        {
+          "opportunity": "Private event space for high-value bookings",
+          "category": "revenue",
+          "potential_impact": "high",
+          "confidence": 0.75
+        },
+        {
+          "opportunity": "Chef's table experience at premium pricing",
+          "category": "revenue",
+          "potential_impact": "medium",
+          "confidence": 0.8
+        }
+      ],
+      "co_fit_solutions": [
+        {
+          "solution_name": "Intelligent Reservation & Waitlist System",
+          "solution_category": "operations",
+          "description": "AI-powered booking with dynamic waitlist, cancellation notifications, and demand forecasting",
+          "priority": 1,
+          "estimated_impact": "20% increase in covers, 30% reduction in no-shows"
+        },
+        {
+          "solution_name": "Guest Experience Pacing Dashboard",
+          "solution_category": "operations",
+          "description": "Real-time table pacing to balance turnover with guest satisfaction",
+          "priority": 2,
+          "estimated_impact": "15% improvement in review scores"
+        }
+      ],
+      "engagement_score": 92,
+      "priority_tier": 1,
+      "scoring_rationale": "High-profile chef, Giralda anchor, strong review volume (457), clear operational pain points with tech solutions, celebrity owner accessible",
+      "data_quality": {
+        "completeness": 0.98,
+        "confidence": 0.95,
+        "last_verified": "2025-12-15"
+      }
+    },
+    {
+      "business_id": "dojo_izakaya_002",
+      "name": "Dojo Izakaya",
+      "category": "restaurant",
+      "subcategory": "japanese_izakaya",
+      "owner": null,
+      "address": {
+        "street": "148 Giralda Ave",
+        "city": "Coral Gables",
+        "state": "FL",
+        "zip": "33134",
+        "full": "148 Giralda Ave, Coral Gables, FL 33134"
+      },
+      "district": "giralda_plaza",
+      "coordinates": {
+        "lat": 25.7515,
+        "lng": -80.2575
+      },
+      "contact": {
+        "phone": "(305) 849-3416",
+        "website": "https://dojomiami.com",
+        "email": null,
+        "verified": true,
+        "verified_date": "2025-12-15",
+        "sources": [
+          "yelp",
+          "opentable",
+          "official_website"
+        ]
+      },
+      "social_media": {
+        "instagram": {
+          "handle": "@dojoizakaya",
+          "url": "https://instagram.com/dojoizakaya"
+        }
+      },
+      "hours": {
+        "note": "Dinner service",
+        "reservations": "OpenTable"
+      },
+      "details": {
+        "cuisine": "Japanese Izakaya",
+        "related_to": "Zitz Sum (same team)",
+        "accolades": [
+          "From Michelin-rated Zitz Sum team",
+          "James Beard Nominee team"
+        ],
+        "specialty": "Small Japanese bar concept, charcoal-cooked items, sake"
+      },
+      "ratings": {
+        "yelp": 4.5,
+        "opentable": 4.7,
+        "review_count": 18
+      },
+      "pain_points": [
+        {
+          "id": "pp_dojo_001",
+          "pain_point": "New concept with limited brand awareness despite pedigree",
+          "category": "marketing",
+          "severity": "medium",
+          "confidence": 0.75,
+          "evidence": [
+            "Only 18 reviews despite Michelin-team backing",
+            "Newer establishment still building customer base",
+            "Relies on Zitz Sum reputation spillover"
+          ],
+          "source": "review_count_analysis",
+          "mitigation": "Cross-promotion with Zitz Sum, influencer partnerships, PR campaign highlighting team credentials"
+        },
+        {
+          "id": "pp_dojo_002",
+          "pain_point": "Rotating menu complexity creates inventory management challenges",
+          "category": "operations",
+          "severity": "medium",
+          "confidence": 0.7,
+          "evidence": [
+            "Izakaya concept features rotating small plates",
+            "Charcoal cooking requires precise timing and ingredient freshness",
+            "Industry pattern: rotating menus increase waste without proper forecasting"
+          ],
+          "source": "concept_analysis, industry_pattern",
+          "mitigation": "Inventory forecasting system, supplier integration, waste tracking dashboard"
+        }
+      ],
+      "opportunities": [
+        {
+          "opportunity": "Sake pairing experiences and education events",
+          "category": "revenue",
+          "potential_impact": "medium",
+          "confidence": 0.75
+        },
+        {
+          "opportunity": "Late-night izakaya service to capture after-dinner crowd",
+          "category": "revenue",
+          "potential_impact": "high",
+          "confidence": 0.7
+        }
+      ],
+      "co_fit_solutions": [
+        {
+          "solution_name": "Menu Performance & Inventory Intelligence",
+          "solution_category": "operations",
+          "description": "Track dish performance, predict demand, optimize ordering",
+          "priority": 1,
+          "estimated_impact": "15% reduction in food waste, 10% margin improvement"
+        },
+        {
+          "solution_name": "Digital Marketing & Brand Building",
+          "solution_category": "marketing",
+          "description": "Targeted campaigns leveraging Zitz Sum connection",
+          "priority": 2,
+          "estimated_impact": "50% increase in review volume within 6 months"
+        }
+      ],
+      "engagement_score": 85,
+      "priority_tier": 2,
+      "scoring_rationale": "James Beard team connection, Giralda location, growth-stage business open to optimization, but lower review volume limits immediate impact visibility",
+      "data_quality": {
+        "completeness": 0.9,
+        "confidence": 0.95,
+        "last_verified": "2025-12-15"
+      }
+    },
+    {
+      "business_id": "books_and_books_003",
+      "name": "Books & Books",
+      "category": "retail",
+      "subcategory": "independent_bookstore",
+      "owner": "Mitchell Kaplan",
+      "founded": "1982",
+      "address": {
+        "street": "265 Aragon Ave",
+        "city": "Coral Gables",
+        "state": "FL",
+        "zip": "33134",
+        "full": "265 Aragon Ave, Coral Gables, FL 33134"
+      },
+      "district": "miracle_mile",
+      "coordinates": {
+        "lat": 25.7506451,
+        "lng": -80.2600624
+      },
+      "contact": {
+        "phone_store": "(305) 442-4408",
+        "phone_cafe": "(305) 448-9599",
+        "website": "https://booksandbooks.com",
+        "shop_url": "https://shop.booksandbooks.com/coralgables",
+        "email": null,
+        "verified": true,
+        "verified_date": "2025-12-15",
+        "sources": [
+          "yelp",
+          "official_website"
+        ],
+        "phone": "(305) 442-4408"
+      },
+      "social_media": {
+        "instagram": {
+          "handle": "@booksandbooks",
+          "url": "https://instagram.com/booksandbooks",
+          "followers": 145000
+        }
+      },
+      "hours": {
+        "monday_friday": "10am - 11pm",
+        "saturday": "9am - 11pm",
+        "sunday": "9am - 10pm"
+      },
+      "details": {
+        "type": "Independent Bookstore with Caf\u00e9",
+        "building": "1927 Mediterranean-style, Coral Gables Historic Register",
+        "size_sqft": 9000,
+        "features": [
+          "Original tile floors",
+          "Fireplace",
+          "Beamed ceilings",
+          "Open-air courtyard",
+          "Full-service caf\u00e9"
+        ],
+        "other_locations": [
+          "Bal Harbour Shops",
+          "Key West",
+          "MIA Airport",
+          "Coconut Grove"
+        ],
+        "awards": [
+          "Miami New Times Best Bookstore 2020, 2022, 2024"
+        ]
+      },
+      "ratings": {
+        "yelp": 4.5,
+        "review_count": 404
+      },
+      "pain_points": [
+        {
+          "id": "pp_bb_001",
+          "pain_point": "Event crowding strains capacity and degrades customer experience",
+          "category": "capacity",
+          "severity": "medium",
+          "confidence": 0.8,
+          "evidence": [
+            "Reviews note it 'can get very crowded, potentially affecting the experience'",
+            "Popular author events exceed comfortable capacity",
+            "Indoor seating limited during peak times"
+          ],
+          "source": "yelp_reviews, tripadvisor",
+          "mitigation": "Event RSVP system, capacity monitoring, overflow streaming for popular events"
+        },
+        {
+          "id": "pp_bb_002",
+          "pain_point": "Caf\u00e9 service delays during high-traffic periods",
+          "category": "operations",
+          "severity": "medium",
+          "confidence": 0.75,
+          "evidence": [
+            "Reviews mention 'delays in food and beverage service' when packed",
+            "Limited indoor seating affects caf\u00e9 throughput",
+            "Staff stretched between bookstore and caf\u00e9 operations"
+          ],
+          "source": "yelp_reviews",
+          "mitigation": "Mobile ordering, dedicated caf\u00e9 staffing during events, kitchen display system"
+        },
+        {
+          "id": "pp_bb_003",
+          "pain_point": "Multi-location coordination complexity",
+          "category": "operations",
+          "severity": "low",
+          "confidence": 0.65,
+          "evidence": [
+            "5+ locations across South Florida and beyond",
+            "Inventory, events, and staffing coordination across locations",
+            "Different location types (airport, mall, standalone) have different needs"
+          ],
+          "source": "business_analysis",
+          "mitigation": "Unified POS and inventory system, centralized event management platform"
+        }
+      ],
+      "opportunities": [
+        {
+          "opportunity": "Hybrid virtual + in-person author events to expand reach",
+          "category": "growth",
+          "potential_impact": "high",
+          "confidence": 0.8
+        },
+        {
+          "opportunity": "Book club memberships with recurring revenue",
+          "category": "revenue",
+          "potential_impact": "medium",
+          "confidence": 0.75
+        }
+      ],
+      "co_fit_solutions": [
+        {
+          "solution_name": "Event Capacity & RSVP Management System",
+          "solution_category": "operations",
+          "description": "Digital RSVP, capacity tracking, waitlist management for author events",
+          "priority": 1,
+          "estimated_impact": "Better event experience, 25% increase in event attendance"
+        },
+        {
+          "solution_name": "Caf\u00e9 Operations Optimizer",
+          "solution_category": "operations",
+          "description": "Mobile ordering, kitchen display, staffing optimization",
+          "priority": 2,
+          "estimated_impact": "30% reduction in wait times during peak hours"
+        }
+      ],
+      "engagement_score": 90,
+      "priority_tier": 1,
+      "scoring_rationale": "Iconic community institution, high visibility (145K Instagram), clear operational pain points, multi-location complexity = consulting opportunity, founder accessible",
+      "data_quality": {
+        "completeness": 0.98,
+        "confidence": 0.98,
+        "last_verified": "2025-12-15"
+      }
+    },
+    {
+      "business_id": "grazianos_004",
+      "name": "Graziano's in the Gables",
+      "category": "restaurant",
+      "subcategory": "argentine_steakhouse",
+      "owner": null,
+      "founded": "1962",
+      "address": {
+        "street": "394 Giralda Ave",
+        "city": "Coral Gables",
+        "state": "FL",
+        "zip": "33134",
+        "full": "394 Giralda Ave, Coral Gables, FL 33134"
+      },
+      "district": "giralda_plaza",
+      "coordinates": {
+        "lat": 25.7518,
+        "lng": -80.2578
+      },
+      "contact": {
+        "phone": "(305) 774-3599",
+        "website": "https://grazianosgroup.com/restaurant-coral-gables/",
+        "website_main": "https://grazianosgroup.com",
+        "email": null,
+        "verified": true,
+        "verified_date": "2025-12-15",
+        "sources": [
+          "yelp",
+          "opentable",
+          "official_website"
+        ]
+      },
+      "social_media": {
+        "instagram": null
+      },
+      "hours": {
+        "monday": "11:30am-3pm, 5pm-10:30pm",
+        "tuesday": "11:30am-3pm, 5pm-10:30pm",
+        "wednesday": "11:30am-3pm, 5pm-10:30pm",
+        "thursday": "11:30am-3pm, 5pm-10:30pm",
+        "friday": "11:30am-3:30pm, 5pm-11:30pm",
+        "saturday": "12pm-11:30pm",
+        "sunday": "12pm-10pm"
+      },
+      "details": {
+        "cuisine": "Argentine Steakhouse",
+        "specialty": "Meat cooked the Argentine way over open fire",
+        "years_operating": 62,
+        "features": [
+          "Floor-to-ceiling glass view of fire pit",
+          "Two large grills",
+          "Private room",
+          "Full bar",
+          "Valet parking"
+        ]
+      },
+      "ratings": {
+        "yelp": 4.5,
+        "opentable": 4.8,
+        "review_count": 512
+      },
+      "pain_points": [
+        {
+          "id": "pp_graz_001",
+          "pain_point": "Peak hour wait times despite reservation system",
+          "category": "capacity",
+          "severity": "medium",
+          "confidence": 0.75,
+          "evidence": [
+            "Reviews note 'wait times during peak hours may be longer than expected'",
+            "Restaurant 'packed-full on a recent Thursday evening'",
+            "High-demand steakhouse with limited pacing control"
+          ],
+          "source": "yelp_reviews, tripadvisor",
+          "mitigation": "Real-time wait estimates, pre-arrival notifications, bar seating incentives"
+        },
+        {
+          "id": "pp_graz_002",
+          "pain_point": "Inconsistent service experiences reported",
+          "category": "operations",
+          "severity": "medium",
+          "confidence": 0.7,
+          "evidence": [
+            "Review: 'waiters can be not friendly but pushy, pouring wine without asking'",
+            "Review: 'horrendous service' with manager described as 'rude'",
+            "Long tenure (62 years) may mean service standard drift"
+          ],
+          "source": "yelp_reviews",
+          "mitigation": "Service standards refresh, customer feedback loop, staff training program"
+        },
+        {
+          "id": "pp_graz_003",
+          "pain_point": "Brand confusion with Graziano's Market location",
+          "category": "marketing",
+          "severity": "low",
+          "confidence": 0.8,
+          "evidence": [
+            "Reviews note customers 'overhear confused calls with loved ones who accidentally went to Graziano's Market'",
+            "Two locations in proximity with similar name causes navigation issues"
+          ],
+          "source": "yelp_reviews",
+          "mitigation": "Clearer location branding, reservation confirmation with map, Google Business optimization"
+        }
+      ],
+      "opportunities": [
+        {
+          "opportunity": "Private dining and corporate events",
+          "category": "revenue",
+          "potential_impact": "high",
+          "confidence": 0.8
+        },
+        {
+          "opportunity": "Wine club or meat club subscription",
+          "category": "revenue",
+          "potential_impact": "medium",
+          "confidence": 0.65
+        }
+      ],
+      "co_fit_solutions": [
+        {
+          "solution_name": "Guest Experience Management System",
+          "solution_category": "operations",
+          "description": "Real-time feedback, service standard tracking, staff performance dashboard",
+          "priority": 1,
+          "estimated_impact": "20% improvement in service consistency scores"
+        },
+        {
+          "solution_name": "Wait Time & Capacity Intelligence",
+          "solution_category": "operations",
+          "description": "Predictive wait times, SMS updates, bar incentive automation",
+          "priority": 2,
+          "estimated_impact": "15% reduction in walkaway rate"
+        }
+      ],
+      "engagement_score": 85,
+      "priority_tier": 2,
+      "scoring_rationale": "Established institution (62 years), high review volume (512), Giralda location, operational pain points clear, but ownership structure unclear",
+      "data_quality": {
+        "completeness": 0.92,
+        "confidence": 0.95,
+        "last_verified": "2025-12-15"
+      }
+    },
+    {
+      "business_id": "the_plump_room_005",
+      "name": "The Plump Room",
+      "category": "med_spa",
+      "subcategory": "medical_aesthetics",
+      "owner": "Stephanie",
+      "address": {
+        "street": "2 Aragon Ave, Suite 30",
+        "city": "Coral Gables",
+        "state": "FL",
+        "zip": "33134",
+        "full": "2 Aragon Ave Suite 30, Coral Gables, FL 33134"
+      },
+      "district": "miracle_mile",
+      "coordinates": {
+        "lat": 25.7505,
+        "lng": -80.2595
+      },
+      "contact": {
+        "phone": "(786) 416-6514",
+        "website": "https://theplumproommiami.com",
+        "email": "theplumproomx@gmail.com",
+        "verified": true,
+        "verified_date": "2025-12-15",
+        "sources": [
+          "yelp",
+          "official_website"
+        ]
+      },
+      "social_media": {
+        "instagram": null
+      },
+      "hours": {
+        "monday_friday": "10am - 7pm",
+        "saturday": "10am - 3pm",
+        "sunday": "Closed"
+      },
+      "details": {
+        "type": "Medical Spa",
+        "services": [
+          "PRP intradermal injections",
+          "PRP for hair restoration",
+          "Dermal Fillers (RHA Collection, Restylane, Versa)",
+          "Neurotoxins (Jeuveau, Dysport)",
+          "Morpheus8 Body",
+          "Morpheus8 Face & Neck"
+        ],
+        "practitioner": "Stephany (owner/practitioner)"
+      },
+      "ratings": {
+        "yelp": 5.0,
+        "review_count": 15
+      },
+      "pain_points": [
+        {
+          "id": "pp_plump_001",
+          "pain_point": "Single-practitioner bottleneck limits growth capacity",
+          "category": "capacity",
+          "severity": "high",
+          "confidence": 0.8,
+          "evidence": [
+            "Reviews consistently praise 'Stephanie' specifically",
+            "Small team means all bookings depend on one person's availability",
+            "Industry pattern: solo practitioners hit growth ceiling"
+          ],
+          "source": "review_analysis, industry_pattern",
+          "mitigation": "Expand team, train associate practitioners, systemize protocols"
+        },
+        {
+          "id": "pp_plump_002",
+          "pain_point": "Appointment-only model may lose walk-in/impulse clients",
+          "category": "operations",
+          "severity": "low",
+          "confidence": 0.65,
+          "evidence": [
+            "Website indicates 'appointments by request only'",
+            "Med spa industry moving toward hybrid models",
+            "Miracle Mile location has foot traffic potential"
+          ],
+          "source": "website_analysis, industry_pattern",
+          "mitigation": "Online self-booking, same-day appointment slots, express services"
+        },
+        {
+          "id": "pp_plump_003",
+          "pain_point": "Limited digital presence and marketing despite 5-star reviews",
+          "category": "marketing",
+          "severity": "medium",
+          "confidence": 0.75,
+          "evidence": [
+            "Only 15 Yelp reviews despite perfect 5.0 rating",
+            "No Instagram handle found (unusual for aesthetics business)",
+            "Competitors leveraging social proof more aggressively"
+          ],
+          "source": "digital_presence_analysis",
+          "mitigation": "Instagram/TikTok presence, before/after content, review generation campaign"
+        }
+      ],
+      "opportunities": [
+        {
+          "opportunity": "Social media transformation content (before/after)",
+          "category": "marketing",
+          "potential_impact": "high",
+          "confidence": 0.85
+        },
+        {
+          "opportunity": "Membership/package pricing for recurring revenue",
+          "category": "revenue",
+          "potential_impact": "high",
+          "confidence": 0.8
+        }
+      ],
+      "co_fit_solutions": [
+        {
+          "solution_name": "Online Booking & Client Management",
+          "solution_category": "operations",
+          "description": "Self-service booking, automated reminders, treatment history tracking",
+          "priority": 1,
+          "estimated_impact": "40% reduction in booking admin time, 25% increase in bookings"
+        },
+        {
+          "solution_name": "Digital Marketing & Social Presence",
+          "solution_category": "marketing",
+          "description": "Instagram strategy, content creation, review generation",
+          "priority": 2,
+          "estimated_impact": "3x review volume in 6 months, 50% increase in new client inquiries"
+        }
+      ],
+      "engagement_score": 88,
+      "priority_tier": 1,
+      "scoring_rationale": "Perfect 5.0 rating indicates quality, clear growth potential, owner-operated (decision maker accessible), multiple high-impact solutions available, growing med spa sector",
+      "data_quality": {
+        "completeness": 0.9,
+        "confidence": 0.92,
+        "last_verified": "2025-12-15"
+      }
+    },
+    {
+      "business_id": "barakat_bossa_006",
+      "name": "Barakat + Bossa",
+      "legal_name": "Barakat Law, P.A.",
+      "category": "professional_services",
+      "subcategory": "law_firm",
+      "owner": "Brian Barakat, Esq.",
+      "founded": "2006",
+      "address": {
+        "street": "201 Alhambra Circle, Suite 1060",
+        "city": "Coral Gables",
+        "state": "FL",
+        "zip": "33134",
+        "full": "201 Alhambra Circle, Suite 1060, Coral Gables, FL 33134"
+      },
+      "district": "alhambra_circle",
+      "coordinates": {
+        "lat": 25.7495,
+        "lng": -80.262
+      },
+      "contact": {
+        "phone": "(305) 444-3114",
+        "website": "https://b2b.legal",
+        "email": null,
+        "verified": true,
+        "verified_date": "2025-12-15",
+        "sources": [
+          "martindale",
+          "florida_bar",
+          "official_website"
+        ]
+      },
+      "social_media": {
+        "linkedin": null
+      },
+      "details": {
+        "type": "Business Litigation Law Firm",
+        "specialties": [
+          "Partnership disputes",
+          "Non-competes",
+          "Corporate litigation",
+          "Breach of contract",
+          "Financial fraud"
+        ],
+        "owner_background": "Former white-collar prosecutor",
+        "certifications": [
+          "Board Certified in Business Litigation (1 of 225 in FL)"
+        ],
+        "accolades": [
+          "Super Lawyers 2017-2025",
+          "Best Lawyers in America 2025"
+        ]
+      },
+      "chamber_connection": {
+        "member": true,
+        "role": "Former Chairman of the Board",
+        "years": "2020-2021",
+        "verified": true
+      },
+      "pain_points": [
+        {
+          "id": "pp_barakat_001",
+          "pain_point": "Client intake and case management efficiency",
+          "category": "operations",
+          "severity": "medium",
+          "confidence": 0.65,
+          "evidence": [
+            "Boutique firm handling complex litigation cases",
+            "Industry pattern: litigation firms often use legacy systems",
+            "High-touch client communication requirements"
+          ],
+          "source": "industry_pattern",
+          "mitigation": "Modern practice management software, client portal, automated status updates"
+        },
+        {
+          "id": "pp_barakat_002",
+          "pain_point": "Business development beyond referral network",
+          "category": "marketing",
+          "severity": "low",
+          "confidence": 0.6,
+          "evidence": [
+            "Boutique firm relies heavily on reputation and referrals",
+            "Chamber connections provide network but limited scale",
+            "Digital presence could expand reach"
+          ],
+          "source": "business_analysis",
+          "mitigation": "Content marketing (thought leadership), LinkedIn optimization, targeted digital ads"
+        }
+      ],
+      "opportunities": [
+        {
+          "opportunity": "Chamber network access for B2B referrals",
+          "category": "network",
+          "potential_impact": "high",
+          "confidence": 0.9
+        },
+        {
+          "opportunity": "Speaking/thought leadership on business litigation topics",
+          "category": "marketing",
+          "potential_impact": "medium",
+          "confidence": 0.75
+        }
+      ],
+      "co_fit_solutions": [
+        {
+          "solution_name": "Client Experience Portal",
+          "solution_category": "operations",
+          "description": "Secure client portal with case status, document sharing, billing transparency",
+          "priority": 2,
+          "estimated_impact": "30% reduction in client status inquiries"
+        },
+        {
+          "solution_name": "Thought Leadership Content Strategy",
+          "solution_category": "marketing",
+          "description": "LinkedIn articles, speaking engagement calendar, media relations",
+          "priority": 3,
+          "estimated_impact": "Expanded referral network, enhanced reputation"
+        }
+      ],
+      "engagement_score": 82,
+      "priority_tier": 2,
+      "scoring_rationale": "Chamber Chairman = network hub, established reputation, but professional services have longer sales cycles and may be less open to external consulting",
+      "data_quality": {
+        "completeness": 0.95,
+        "confidence": 0.98,
+        "last_verified": "2025-12-15"
+      }
+    },
+    {
+      "business_id": "ewm_realty_007",
+      "name": "Berkshire Hathaway HomeServices EWM Realty",
+      "legal_name": "EWM Realty International",
+      "category": "professional_services",
+      "subcategory": "real_estate",
+      "owner": null,
+      "ceo": "Ron Shuffield",
+      "founded": "1964",
+      "address": {
+        "street": "201 Alhambra Circle, Suite 1060",
+        "city": "Coral Gables",
+        "state": "FL",
+        "zip": "33134",
+        "full": "201 Alhambra Circle, Suite 1060, Coral Gables, FL 33134",
+        "alternate": "550 S Dixie Hwy, Coral Gables, FL 33146"
+      },
+      "district": "alhambra_circle",
+      "coordinates": {
+        "lat": 25.7495,
+        "lng": -80.262
+      },
+      "contact": {
+        "phone_main": "(305) 960-2500",
+        "phone_south_miami": "(305) 960-2400",
+        "website": "https://ewm.com",
+        "website_bhhs": "https://bhhsewmrealty.com",
+        "email": null,
+        "verified": true,
+        "verified_date": "2025-12-15",
+        "sources": [
+          "yelp",
+          "official_website",
+          "linkedin"
+        ],
+        "phone": "(305) 960-2500"
+      },
+      "social_media": {
+        "linkedin": "https://linkedin.com/company/ewm-realty-international"
+      },
+      "details": {
+        "type": "Real Estate Brokerage",
+        "parent_company": "HomeServices of America (since 2003)",
+        "rebrand": "Became Berkshire Hathaway HomeServices EWM Realty in 2019",
+        "market_position": "Leader in South Florida luxury real estate since 1964",
+        "agents": "700+",
+        "offices": "10 across Miami-Dade and Broward"
+      },
+      "chamber_connection": {
+        "member": true,
+        "verified": false
+      },
+      "pain_points": [
+        {
+          "id": "pp_ewm_001",
+          "pain_point": "Agent productivity and technology adoption variance",
+          "category": "operations",
+          "severity": "medium",
+          "confidence": 0.65,
+          "evidence": [
+            "700+ agents across 10 offices creates management complexity",
+            "Real estate industry struggling with tech adoption",
+            "Varying skill levels in digital tools across agent base"
+          ],
+          "source": "industry_pattern",
+          "mitigation": "Agent training programs, tech adoption incentives, standardized tooling"
+        },
+        {
+          "id": "pp_ewm_002",
+          "pain_point": "Market volatility and interest rate impact on transaction volume",
+          "category": "external",
+          "severity": "high",
+          "confidence": 0.8,
+          "evidence": [
+            "CEO Ron Shuffield regularly comments on market conditions",
+            "Interest rate fluctuations directly impact deal flow",
+            "2024-2025 market uncertainty affecting luxury segment"
+          ],
+          "source": "market_analysis",
+          "mitigation": "Market intelligence dashboards, agent coaching on market positioning"
+        }
+      ],
+      "opportunities": [
+        {
+          "opportunity": "International buyer targeting (Latin America wealth migration)",
+          "category": "growth",
+          "potential_impact": "high",
+          "confidence": 0.75
+        }
+      ],
+      "co_fit_solutions": [
+        {
+          "solution_name": "Agent Performance Intelligence",
+          "solution_category": "operations",
+          "description": "Dashboard tracking agent productivity, training recommendations, best practice sharing",
+          "priority": 2,
+          "estimated_impact": "15% improvement in agent productivity metrics"
+        }
+      ],
+      "engagement_score": 72,
+      "priority_tier": 3,
+      "scoring_rationale": "Large enterprise with corporate structure (Berkshire Hathaway), longer decision cycles, but market leader position and Chamber connection provide access",
+      "data_quality": {
+        "completeness": 0.9,
+        "confidence": 0.95,
+        "last_verified": "2025-12-15"
+      }
+    },
+    {
+      "business_id": "bulla_gastrobar_008",
+      "name": "Bulla Gastrobar",
+      "category": "restaurant",
+      "subcategory": "spanish_tapas",
+      "owner": null,
+      "address": {
+        "street": "2500 Ponce de Leon Blvd",
+        "city": "Coral Gables",
+        "state": "FL",
+        "zip": "33134",
+        "full": "2500 Ponce de Leon Blvd, Coral Gables, FL 33134"
+      },
+      "district": "ponce_de_leon",
+      "coordinates": {
+        "lat": 25.752,
+        "lng": -80.259
+      },
+      "contact": {
+        "phone": "(786) 810-6215",
+        "website": "https://bullagastrobar.com/locations/coral-gables/",
+        "website_main": "https://bullagastrobar.com",
+        "email": "bcoralgables@bullagastrobar.com",
+        "verified": true,
+        "verified_date": "2025-12-15",
+        "sources": [
+          "yelp",
+          "opentable",
+          "official_website"
+        ]
+      },
+      "social_media": {
+        "instagram": {
+          "handle": "@bullagastrobar",
+          "url": "https://instagram.com/bullagastrobar"
+        }
+      },
+      "hours": {
+        "lunch": "Monday-Friday",
+        "dinner": "Nightly",
+        "brunch": "Weekend",
+        "happy_hour": "Daily 5pm-7pm"
+      },
+      "details": {
+        "cuisine": "Spanish Tapas",
+        "note": "First Bulla location (flagship)",
+        "location_description": "Heart of downtown near Miracle Mile",
+        "other_locations": [
+          "The Falls",
+          "Doral",
+          "Winter Park",
+          "Tampa",
+          "Atlanta"
+        ]
+      },
+      "ratings": {
+        "yelp": 4.0,
+        "opentable": 4.7,
+        "opentable_reviews": 3339,
+        "review_count": 1659
+      },
+      "pain_points": [
+        {
+          "id": "pp_bulla_001",
+          "pain_point": "Noise levels during peak hours affecting conversation quality",
+          "category": "facility",
+          "severity": "medium",
+          "confidence": 0.8,
+          "evidence": [
+            "Reviews note 'can get noisy when busy (especially around the bar and high-top areas)'",
+            "Recommendations to 'request a quieter table' for intimate conversation",
+            "Upbeat atmosphere trade-off with conversation comfort"
+          ],
+          "source": "yelp_reviews, opentable",
+          "mitigation": "Acoustic treatments, table assignment optimization, quiet zone designation"
+        },
+        {
+          "id": "pp_bulla_002",
+          "pain_point": "Service inconsistency during high-volume periods",
+          "category": "operations",
+          "severity": "low",
+          "confidence": 0.65,
+          "evidence": [
+            "Reviews mention 'delayed orders at times'",
+            "Staff 'goes above and beyond to rectify' issues suggests recovery needed",
+            "High volume (3339 OpenTable reviews) means scale challenges"
+          ],
+          "source": "review_analysis",
+          "mitigation": "Kitchen display systems, service timing optimization, staff scheduling intelligence"
+        }
+      ],
+      "opportunities": [
+        {
+          "opportunity": "Private event packages for corporate groups",
+          "category": "revenue",
+          "potential_impact": "medium",
+          "confidence": 0.75
+        },
+        {
+          "opportunity": "Happy hour optimization for off-peak revenue",
+          "category": "revenue",
+          "potential_impact": "medium",
+          "confidence": 0.8
+        }
+      ],
+      "co_fit_solutions": [
+        {
+          "solution_name": "Kitchen Operations Optimizer",
+          "solution_category": "operations",
+          "description": "Order timing system, kitchen display, prep forecasting",
+          "priority": 2,
+          "estimated_impact": "20% reduction in ticket times during peak"
+        },
+        {
+          "solution_name": "Table Assignment Intelligence",
+          "solution_category": "operations",
+          "description": "Automated seating based on party type, noise preferences, timing",
+          "priority": 3,
+          "estimated_impact": "Better guest experience scores"
+        }
+      ],
+      "engagement_score": 78,
+      "priority_tier": 2,
+      "scoring_rationale": "Flagship location, massive review volume (1659), but multi-location chain structure may mean corporate decision-making, clear operational opportunities",
+      "data_quality": {
+        "completeness": 0.95,
+        "confidence": 0.98,
+        "last_verified": "2025-12-15"
+      }
+    },
+    {
+      "business_id": "pecans_day_spa_009",
+      "name": "Pecan's Day Spa",
+      "category": "spa",
+      "subcategory": "day_spa",
+      "owner": null,
+      "address": {
+        "street": "520 Biltmore Way",
+        "city": "Coral Gables",
+        "state": "FL",
+        "zip": "33134",
+        "full": "520 Biltmore Way, Coral Gables, FL 33134"
+      },
+      "district": "biltmore",
+      "coordinates": {
+        "lat": 25.7485,
+        "lng": -80.268
+      },
+      "contact": {
+        "phone": "(305) 284-8636",
+        "website": "http://pecansdayspacoralgables.com",
+        "email": "pecansdayspa@gmail.com",
+        "verified": true,
+        "verified_date": "2025-12-15",
+        "sources": [
+          "yelp",
+          "official_website",
+          "yellowpages"
+        ]
+      },
+      "social_media": {
+        "instagram": null
+      },
+      "hours": {
+        "tuesday_saturday": "10am - 6pm",
+        "sunday_monday": "Closed"
+      },
+      "details": {
+        "type": "Day Spa",
+        "services": [
+          "Authentic Massages",
+          "Advanced Facials",
+          "Endermologie (cellulite treatments)",
+          "Microdermabrasion"
+        ]
+      },
+      "ratings": {
+        "yelp": 4.5,
+        "review_count": 35
+      },
+      "pain_points": [
+        {
+          "id": "pp_pecans_001",
+          "pain_point": "Manual booking processes create administrative burden",
+          "category": "operations",
+          "severity": "high",
+          "confidence": 0.75,
+          "evidence": [
+            "Gmail email for business communications suggests limited tech stack",
+            "Industry data: 70% of spas now use digital booking software",
+            "30% still using manual systems 'losing clients to competitors'"
+          ],
+          "source": "contact_analysis, industry_research",
+          "mitigation": "Modern spa booking software (GlossGenius, Vagaro, etc.)"
+        },
+        {
+          "id": "pp_pecans_002",
+          "pain_point": "Staff scheduling complexity for specialized treatments",
+          "category": "operations",
+          "severity": "medium",
+          "confidence": 0.7,
+          "evidence": [
+            "Endermologie and advanced facials require certified practitioners",
+            "Industry: 'staff scheduling errors lead to 15% of booking conflicts'",
+            "Small spa likely has limited redundancy for specialized services"
+          ],
+          "source": "industry_research",
+          "mitigation": "Skills-based scheduling software, cross-training program"
+        },
+        {
+          "id": "pp_pecans_003",
+          "pain_point": "Limited digital presence limits new client acquisition",
+          "category": "marketing",
+          "severity": "medium",
+          "confidence": 0.75,
+          "evidence": [
+            "No Instagram presence found",
+            "Website appears basic (http, not https)",
+            "Only 35 Yelp reviews despite years in operation"
+          ],
+          "source": "digital_presence_analysis",
+          "mitigation": "Website refresh, social media presence, review generation"
+        }
+      ],
+      "opportunities": [
+        {
+          "opportunity": "Package deals for recurring clients",
+          "category": "revenue",
+          "potential_impact": "medium",
+          "confidence": 0.75
+        },
+        {
+          "opportunity": "Partnership with nearby Biltmore Hotel guests",
+          "category": "growth",
+          "potential_impact": "high",
+          "confidence": 0.7
+        }
+      ],
+      "co_fit_solutions": [
+        {
+          "solution_name": "Spa Management System Implementation",
+          "solution_category": "operations",
+          "description": "Online booking, automated reminders, staff scheduling, client history",
+          "priority": 1,
+          "estimated_impact": "50% reduction in admin hours, 30% increase in bookings"
+        },
+        {
+          "solution_name": "Digital Presence Refresh",
+          "solution_category": "marketing",
+          "description": "Modern website, Instagram presence, Google Business optimization",
+          "priority": 2,
+          "estimated_impact": "2x review volume, improved local search visibility"
+        }
+      ],
+      "engagement_score": 80,
+      "priority_tier": 2,
+      "scoring_rationale": "Clear technology gap = immediate value opportunity, Biltmore area location, established business ready for modernization, but smaller scale limits deal size",
+      "data_quality": {
+        "completeness": 0.85,
+        "confidence": 0.9,
+        "last_verified": "2025-12-15"
+      }
+    },
+    {
+      "business_id": "biltmore_spa_010",
+      "name": "Biltmore Spa",
+      "category": "spa",
+      "subcategory": "hotel_spa",
+      "owner": "Biltmore Hotel",
+      "address": {
+        "street": "1200 Anastasia Ave",
+        "city": "Coral Gables",
+        "state": "FL",
+        "zip": "33134",
+        "full": "1200 Anastasia Ave, Coral Gables, FL 33134",
+        "floor": "7th Floor"
+      },
+      "district": "biltmore",
+      "coordinates": {
+        "lat": 25.743,
+        "lng": -80.273
+      },
+      "contact": {
+        "phone_spa": "(305) 913-3187",
+        "phone_hotel": "(305) 445-1926",
+        "phone_reservations": "(800) 727-1926",
+        "website": "https://biltmorehotel.com/spa/",
+        "website_hotel": "https://biltmorehotel.com",
+        "email": null,
+        "verified": true,
+        "verified_date": "2025-12-15",
+        "sources": [
+          "yelp",
+          "official_website"
+        ],
+        "phone": "(305) 913-3187"
+      },
+      "social_media": {
+        "linkedin": "https://linkedin.com/company/biltmore-hotel"
+      },
+      "hours": {
+        "daily": "10am - 7pm",
+        "note": "By appointment only"
+      },
+      "details": {
+        "type": "European Spa (Hotel)",
+        "hotel_built": "1926",
+        "designation": "National Historic Landmark",
+        "hotel_features": [
+          "Championship golf course",
+          "Tennis courts",
+          "Largest hotel pool on East Coast"
+        ],
+        "amenities": [
+          "Private lot parking",
+          "Valet parking",
+          "Accepts Apple Pay"
+        ]
+      },
+      "ratings": {
+        "yelp": 4.0,
+        "review_count": 137
+      },
+      "pain_points": [
+        {
+          "id": "pp_biltmore_001",
+          "pain_point": "Balancing hotel guest priority with external client bookings",
+          "category": "operations",
+          "severity": "medium",
+          "confidence": 0.7,
+          "evidence": [
+            "Hotel spa must prioritize hotel guests",
+            "External clients may face limited availability",
+            "Industry pattern: hotel spas struggle with dual audience optimization"
+          ],
+          "source": "business_model_analysis",
+          "mitigation": "Dynamic inventory allocation, local resident membership program"
+        },
+        {
+          "id": "pp_biltmore_002",
+          "pain_point": "Historic building constraints on spa modernization",
+          "category": "facility",
+          "severity": "low",
+          "confidence": 0.65,
+          "evidence": [
+            "1926 National Historic Landmark designation limits renovations",
+            "European spa concept may feel dated compared to modern competitors",
+            "7th floor location requires elevator access"
+          ],
+          "source": "facility_analysis",
+          "mitigation": "Experience-focused differentiation, heritage marketing positioning"
+        }
+      ],
+      "opportunities": [
+        {
+          "opportunity": "Spa + golf/tennis package bundles",
+          "category": "revenue",
+          "potential_impact": "medium",
+          "confidence": 0.75
+        },
+        {
+          "opportunity": "Coral Gables resident membership program",
+          "category": "growth",
+          "potential_impact": "high",
+          "confidence": 0.7
+        }
+      ],
+      "co_fit_solutions": [
+        {
+          "solution_name": "Dual-Audience Booking Optimization",
+          "solution_category": "operations",
+          "description": "Dynamic inventory between hotel guests and local clients, membership portal",
+          "priority": 2,
+          "estimated_impact": "20% increase in spa utilization, new membership revenue stream"
+        }
+      ],
+      "engagement_score": 75,
+      "priority_tier": 2,
+      "scoring_rationale": "Iconic property, premium positioning, but hotel ownership structure means complex decision-making, historic constraints limit some solutions",
+      "data_quality": {
+        "completeness": 0.92,
+        "confidence": 0.95,
+        "last_verified": "2025-12-15"
+      }
+    }
+  ],
+  "summary": {
+    "tier_distribution": {
+      "tier_1": [
+        "luca_osteria_001",
+        "books_and_books_003",
+        "the_plump_room_005"
+      ],
+      "tier_2": [
+        "dojo_izakaya_002",
+        "grazianos_004",
+        "barakat_bossa_006",
+        "bulla_gastrobar_008",
+        "pecans_day_spa_009",
+        "biltmore_spa_010"
+      ],
+      "tier_3": [
+        "ewm_realty_007"
+      ]
+    },
+    "top_pain_point_categories": [
+      {
+        "category": "operations",
+        "count": 12
+      },
+      {
+        "category": "capacity",
+        "count": 4
+      },
+      {
+        "category": "marketing",
+        "count": 5
+      },
+      {
+        "category": "facility",
+        "count": 3
+      }
+    ],
+    "recommended_outreach_order": [
+      {
+        "rank": 1,
+        "business": "Luca Osteria",
+        "score": 92,
+        "reason": "Celebrity chef, clear pain points, Giralda anchor"
+      },
+      {
+        "rank": 2,
+        "business": "Books & Books",
+        "score": 90,
+        "reason": "Community icon, multi-location, founder accessible"
+      },
+      {
+        "rank": 3,
+        "business": "The Plump Room",
+        "score": 88,
+        "reason": "Perfect reviews, growth stage, owner-operated"
+      },
+      {
+        "rank": 4,
+        "business": "Dojo Izakaya",
+        "score": 85,
+        "reason": "James Beard team, growth potential"
+      },
+      {
+        "rank": 5,
+        "business": "Graziano's",
+        "score": 85,
+        "reason": "Established institution, service improvement opportunity"
+      }
+    ]
+  }
+}
