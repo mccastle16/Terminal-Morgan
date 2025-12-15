@@ -1,0 +1,232 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "domain": "coral_gables_business",
+    "created": "2025-11-25T19:36:52.064269",
+    "author": "co_underscore",
+    "confidence": 0.64,
+    "time_horizon": "12m"
+  },
+  "node": {
+    "id": "CG_BOOKS_AND_BOOKS",
+    "name": "Books & Books",
+    "type": "retail",
+    "layer": "local_business",
+    "thesis": "Books & Books operates in retail sector. Independent bookstore with cafe, hosts author events and community gatherings",
+    "location": "265 Aragon Ave, Coral Gables, FL 33134"
+  },
+  "context": {
+    "market": {
+      "city": "Coral Gables",
+      "county": "Miami-Dade",
+      "state": "FL",
+      "segment": "retail",
+      "competitive_density": "unknown"
+    },
+    "customer_profile": "Coral Gables residents, UM students, book lovers, tourists",
+    "observations": [
+      "Heavy foot traffic on weekends",
+      "Popular for working/studying with coffee",
+      "Strong Instagram presence",
+      "Hosts frequent author events",
+      "Limited parking nearby"
+    ]
+  },
+  "pain_points": [
+    {
+      "point": "Weekend capacity management and staff scheduling",
+      "severity": "medium",
+      "evidence": "observational",
+      "confidence": 0.75,
+      "reasoning": "Heavy weekend foot traffic suggests potential for understaffing or overcrowding issues. Independent bookstores often struggle with variable demand.",
+      "supporting_observations": [
+        "Heavy foot traffic on weekends"
+      ],
+      "mitigation_ideas": [
+        "Implement appointment/reservation system for study spaces",
+        "Dynamic staff scheduling based on historical foot traffic",
+        "Pre-weekend marketing to spread traffic throughout the week"
+      ]
+    },
+    {
+      "point": "Parking friction reducing conversion and repeat visits",
+      "severity": "medium",
+      "evidence": "observational",
+      "confidence": 0.7,
+      "reasoning": "Limited parking is explicitly observed. In Coral Gables, parking is critical for retail. This likely causes lost sales and customer frustration.",
+      "supporting_observations": [
+        "Limited parking nearby"
+      ],
+      "mitigation_ideas": [
+        "Partner with nearby parking garages for validation",
+        "Promote alternative transportation (bike racks, Coral Gables Trolley)",
+        "Highlight delivery/online ordering to reduce need for in-person visits"
+      ]
+    },
+    {
+      "point": "Monetization of 'third space' usage",
+      "severity": "low",
+      "evidence": "inferred",
+      "confidence": 0.65,
+      "reasoning": "Popular for working/studying suggests people stay long but may not purchase. Balancing community space with revenue is a known indie bookstore challenge.",
+      "supporting_observations": [
+        "Popular for working/studying with coffee"
+      ],
+      "mitigation_ideas": [
+        "Minimum purchase for seating during peak hours",
+        "Time limits on tables during busy periods",
+        "Membership model for regular workspace users",
+        "Higher-margin cafe items and upselling"
+      ]
+    },
+    {
+      "point": "Event ROI and audience monetization",
+      "severity": "low",
+      "evidence": "inferred",
+      "confidence": 0.6,
+      "reasoning": "Frequent author events require time/resources. Need to ensure these drive book sales, not just foot traffic. Events could be loss leaders or profit centers.",
+      "supporting_observations": [
+        "Hosts frequent author events"
+      ],
+      "mitigation_ideas": [
+        "Track event attendee purchase rates",
+        "Pre-sales and bundles for event tickets + books",
+        "Email capture at events for future marketing",
+        "Partner with sponsors to offset event costs"
+      ]
+    },
+    {
+      "point": "Instagram engagement not translating to sales",
+      "severity": "low",
+      "evidence": "inferred",
+      "confidence": 0.5,
+      "reasoning": "Strong Instagram presence is good for brand, but unclear if it drives revenue. Many retail businesses have this disconnect.",
+      "supporting_observations": [
+        "Strong Instagram presence"
+      ],
+      "mitigation_ideas": [
+        "Add 'link in bio' with shoppable catalog",
+        "Instagram Stories with purchase links",
+        "Track promo codes specific to Instagram",
+        "User-generated content campaigns"
+      ]
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "gap": "Financial performance",
+      "impact": "high",
+      "obtainable": false,
+      "note": "Private company - no public financials"
+    },
+    {
+      "gap": "Customer satisfaction scores",
+      "impact": "high",
+      "obtainable": true,
+      "method": "Review mining (Google, Yelp) + sentiment analysis"
+    },
+    {
+      "gap": "Competitive positioning",
+      "impact": "medium",
+      "obtainable": true,
+      "method": "Comparative analysis of similar CG businesses"
+    },
+    {
+      "gap": "Owner/operator priorities",
+      "impact": "high",
+      "obtainable": true,
+      "method": "Direct conversation or interview"
+    },
+    {
+      "gap": "Technology stack and digital maturity",
+      "impact": "medium",
+      "obtainable": true,
+      "method": "Website audit, tool detection, social presence analysis"
+    }
+  ],
+  "signals": {
+    "observable": [
+      "google_rating",
+      "review_count",
+      "review_velocity_30d",
+      "website_exists",
+      "social_media_presence",
+      "hours_of_operation",
+      "parking_availability"
+    ],
+    "obtainable": [
+      "estimated_foot_traffic",
+      "competitive_density_radius_1mi",
+      "avg_check_size_estimate",
+      "years_in_business"
+    ],
+    "formulas": {
+      "health_score": "0.4*google_rating + 0.3*review_velocity + 0.3*digital_presence",
+      "digital_maturity": "website_quality_score + social_engagement_score",
+      "competitive_pressure": "competitors_within_1mi / market_size_factor"
+    }
+  },
+  "risks": [
+    {
+      "risk": "Generic pain points may not reflect actual problems",
+      "likelihood": "high",
+      "impact": "high",
+      "mitigation": "Requires direct business owner interview or deeper data collection"
+    },
+    {
+      "risk": "Coral Gables market dynamics misunderstood",
+      "likelihood": "medium",
+      "impact": "medium",
+      "mitigation": "Need local market research and competitive analysis"
+    },
+    {
+      "risk": "Observation bias from limited data sources",
+      "likelihood": "high",
+      "impact": "medium",
+      "mitigation": "Triangulate with multiple data sources + LLM validation"
+    }
+  ],
+  "actions": [
+    {
+      "action": "Validate pain points with another LLM",
+      "priority": "critical",
+      "effort": "low",
+      "method": "Feed PKP to Claude/GPT for validation and refinement"
+    },
+    {
+      "action": "Scrape and analyze online reviews",
+      "priority": "high",
+      "effort": "medium",
+      "method": "Google/Yelp API + sentiment analysis"
+    },
+    {
+      "action": "Conduct competitive analysis",
+      "priority": "medium",
+      "effort": "medium",
+      "method": "Map similar businesses in CG + compare signals"
+    },
+    {
+      "action": "Reach out for direct interview",
+      "priority": "high",
+      "effort": "high",
+      "method": "Email/call business owner with value proposition"
+    }
+  ],
+  "sources": [
+    "Direct observation",
+    "Public records",
+    "Website analysis",
+    "Local knowledge"
+  ],
+  "runtime": {
+    "last_run": null,
+    "stage": "initial_assessment",
+    "validation_needed": true
+  },
+  "validation": {
+    "validated_at": "timestamp",
+    "validator": "llm_assisted",
+    "confidence_increase": "Confidence increased from 0.38 average to 0.64 average - a 68% improvement. We moved from generic retail assumptions to specific, observation-backed hypotheses.",
+    "notes": "The refined pain points are much more specific and actionable. However, all are still hypotheses that need validation through: (1) business owner interview, (2) review sentiment analysis, (3) competitive benchmarking. The parking issue has highest confidence because it's directly observed. Event ROI and Instagram conversion are lower confidence because they're inferred from presence, not performance data."
+  }
+}

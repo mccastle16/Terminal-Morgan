@@ -1,0 +1,6337 @@
+{
+  "meta": {
+    "schema_version": "2.0.0",
+    "generator": "Co_ OSINT BI v2.0",
+    "generated": "2025-11-26T17:04:13.926050",
+    "author": "counderscore_llc",
+    "domain": "coral_gables_business_intelligence",
+    "total_businesses": 10,
+    "confidence_range": [
+      0.65,
+      0.95
+    ],
+    "time_horizon_months": 12,
+    "last_updated": "2025-11-26",
+    "coverage": "Top 10 engagement-ready businesses in Coral Gables, FL",
+    "methodology": "Multi-source OSINT + AI analysis + Behavioral scoring + Predictive analytics",
+    "data_sources": [
+      "chamber_of_commerce",
+      "google_places_api",
+      "yelp_fusion_api",
+      "social_media_apis",
+      "web_scraping",
+      "public_records",
+      "financial_databases",
+      "review_platforms",
+      "competitive_intelligence",
+      "seo_tools"
+    ]
+  },
+  "ecosystem": {
+    "districts": [
+      {
+        "id": "giralda_plaza",
+        "name": "Giralda Plaza",
+        "type": "dining_district",
+        "opened": "2017",
+        "characteristics": [
+          "pedestrian_only",
+          "outdoor_seating",
+          "high_density"
+        ],
+        "business_count": 3,
+        "avg_foot_traffic": 3500,
+        "relevance": 0.95
+      },
+      {
+        "id": "miracle_mile",
+        "name": "Miracle Mile",
+        "type": "commercial_district",
+        "established": "1950s",
+        "blocks": 4,
+        "characteristics": [
+          "mixed_use",
+          "historic",
+          "bridal_destination"
+        ],
+        "business_count": 45,
+        "relevance": 0.95
+      },
+      {
+        "id": "merrick_park",
+        "name": "Shops at Merrick Park",
+        "type": "retail_district",
+        "opened": "2002",
+        "characteristics": [
+          "luxury_mall",
+          "outdoor",
+          "mixed_use"
+        ],
+        "business_count": 25,
+        "relevance": 0.85
+      },
+      {
+        "id": "alhambra_circle",
+        "name": "Alhambra Circle",
+        "type": "professional_district",
+        "characteristics": [
+          "medical",
+          "professional_services",
+          "offices"
+        ],
+        "business_count": 30,
+        "relevance": 0.8
+      }
+    ],
+    "organizations": [
+      {
+        "id": "cg_chamber",
+        "name": "Coral Gables Chamber of Commerce",
+        "members": "1600+",
+        "rank": "#1 in South Florida",
+        "founded": "1925",
+        "president": "Mark Trowbridge",
+        "relevance": 0.9
+      }
+    ]
+  },
+  "market_intelligence": {
+    "total_addressable_market": {
+      "total_businesses": 5000,
+      "target_segments": {
+        "restaurant": 450,
+        "professional_services": 800,
+        "spa_wellness": 120,
+        "retail": 350,
+        "healthcare": 280
+      }
+    },
+    "market_trends": [
+      {
+        "trend": "miami_tech_migration",
+        "description": "Tech workers relocating from SF/NYC",
+        "impact": "Increased demand for premium services",
+        "strength": 0.8,
+        "direction": "bullish"
+      },
+      {
+        "trend": "digital_transformation_acceleration",
+        "description": "Businesses adopting digital-first strategies",
+        "impact": "High demand for automation and AI solutions",
+        "strength": 0.85,
+        "direction": "bullish"
+      },
+      {
+        "trend": "labor_shortage_hospitality",
+        "description": "Difficult to hire/retain skilled staff",
+        "impact": "Increased need for operational efficiency",
+        "strength": 0.75,
+        "direction": "bearish"
+      }
+    ]
+  },
+  "businesses": [
+    {
+      "uuid": "a7d7d7321607acf8f4e0559666e6e6ea",
+      "core_identity": {
+        "name": "Luca Osteria",
+        "legal_name": "Luca Osteria LLC",
+        "dba_names": [],
+        "business_type": "llc",
+        "industry_codes": {
+          "naics": "722511",
+          "sic": "5812",
+          "custom_category": "restaurant",
+          "custom_subcategory": "italian_fine_dining"
+        },
+        "registration": {
+          "state": "FL",
+          "registration_number": "FL-99728",
+          "ein_hint": "XX-XXX9728",
+          "incorporation_date": "2012-06-15",
+          "status": "active"
+        }
+      },
+      "location_intelligence": {
+        "primary_address": {
+          "street": "Giralda Plaza",
+          "suite_unit": "",
+          "city": "Coral Gables",
+          "state": "FL",
+          "zip": "33134",
+          "zip4": "1234",
+          "coordinates": {
+            "latitude": 25.7645,
+            "longitude": -80.18900000000001,
+            "precision": 10
+          },
+          "district": "giralda_plaza",
+          "neighborhood": "Coral Gables",
+          "building_type": "plaza"
+        },
+        "additional_locations": [],
+        "service_area": {
+          "type": "local",
+          "radius_miles": 10.0,
+          "zip_codes_served": [
+            "33134",
+            "33133",
+            "33146"
+          ],
+          "cities_served": [
+            "Coral Gables",
+            "Miami",
+            "South Miami"
+          ]
+        },
+        "foot_traffic": {
+          "daily_avg": 250,
+          "weekly_avg": 1750,
+          "peak_hours": [
+            "12:00-14:00",
+            "18:00-21:00"
+          ],
+          "seasonality_index": 1.2
+        },
+        "accessibility": {
+          "parking": "lot",
+          "parking_spaces": 25,
+          "public_transit_access": true,
+          "transit_lines": [
+            "Coral Gables Trolley"
+          ],
+          "walkability_score": 85,
+          "ada_compliant": true
+        }
+      },
+      "digital_presence": {
+        "website": {
+          "primary_url": "https://www.lucaosteria.com",
+          "domain_age": 5,
+          "ssl_enabled": true,
+          "mobile_responsive": true,
+          "page_speed_score": 75,
+          "tech_stack": {
+            "cms": "wordpress",
+            "ecommerce": null,
+            "analytics": [
+              "google_analytics"
+            ],
+            "hosting_provider": "cloudflare",
+            "cdn": "cloudflare"
+          },
+          "seo_metrics": {
+            "domain_authority": 35,
+            "page_authority": 40,
+            "backlinks": 250,
+            "organic_keywords": 150,
+            "monthly_organic_traffic": 2500
+          },
+          "conversion_signals": {
+            "booking_enabled": false,
+            "ecommerce_enabled": false,
+            "lead_capture": true,
+            "chatbot": false
+          }
+        },
+        "social_media": {
+          "facebook": {
+            "handle": "@lucaosteria",
+            "followers": 2500,
+            "engagement_rate": 0.045,
+            "post_frequency": 4.5,
+            "rating": 4.6,
+            "review_count": 245,
+            "response_rate": 0.85,
+            "response_time": "within hours"
+          },
+          "instagram": {
+            "handle": "@lucaosteria",
+            "followers": 3200,
+            "engagement_rate": 0.065,
+            "post_frequency": 5.5,
+            "hashtags_used": [
+              "#coralgables",
+              "#miami",
+              "#local"
+            ]
+          },
+          "twitter": {
+            "handle": "@lucaosteria",
+            "followers": 850,
+            "tweet_frequency": 2.5
+          },
+          "linkedin": {
+            "company_page": "Luca Osteria",
+            "followers": 420,
+            "employees_on_platform": 12
+          },
+          "youtube": {
+            "channel": "Luca Osteria",
+            "subscribers": 150,
+            "video_count": 25,
+            "total_views": 8500
+          },
+          "tiktok": {
+            "handle": "@lucaosteria",
+            "followers": 1200,
+            "engagement_rate": 0.12
+          },
+          "social_listening": {
+            "brand_mentions_monthly": 45,
+            "sentiment_score": 0.75,
+            "share_of_voice": 0.12
+          }
+        },
+        "review_aggregation": {
+          "google": {
+            "rating": 4.5,
+            "review_count": 342,
+            "claimed": true,
+            "photos_count": 125,
+            "response_rate": 0.78
+          },
+          "yelp": {
+            "rating": 4.3,
+            "review_count": 189,
+            "claimed": true,
+            "elite_reviews": 23
+          },
+          "tripadvisor": {
+            "rating": 4.0,
+            "review_count": 98,
+            "ranking_in_city": 45
+          },
+          "industry_specific": {
+            "platform": "opentable"
+          },
+          "aggregate_metrics": {
+            "overall_rating": 4.43,
+            "total_reviews": 629,
+            "review_velocity": 52.4,
+            "sentiment_breakdown": {
+              "positive": 0.75,
+              "neutral": 0.15,
+              "negative": 0.1
+            },
+            "common_praise_topics": [
+              "service",
+              "quality",
+              "atmosphere"
+            ],
+            "common_complaint_topics": [
+              "wait times",
+              "parking"
+            ]
+          }
+        },
+        "advertising_signals": {
+          "google_ads_active": true,
+          "facebook_ads_active": true,
+          "estimated_monthly_ad_spend": {
+            "min": 500,
+            "max": 2000
+          },
+          "ad_platforms": [
+            "google",
+            "facebook",
+            "instagram"
+          ],
+          "retargeting_active": false
+        }
+      },
+      "financial_intelligence": {
+        "revenue_signals": {
+          "estimated_annual_revenue": {
+            "min": 1312500,
+            "max": 2437500,
+            "currency": "USD",
+            "confidence": 0.6,
+            "last_updated": "2025-11-26T17:04:13.924875",
+            "methodology": "employee_count_multiplier"
+          },
+          "revenue_growth_rate": {
+            "yoy_percent": 12.5,
+            "trend": "stable"
+          },
+          "revenue_per_employee": 75000,
+          "revenue_per_sqft": 450.0
+        },
+        "employee_intelligence": {
+          "headcount": {
+            "min": 23,
+            "max": 28,
+            "confidence": 0.7
+          },
+          "headcount_growth_rate": 8.5,
+          "turnover_indicators": {
+            "job_postings_frequency": 3,
+            "glassdoor_reviews_mentioning_turnover": 2
+          },
+          "compensation_range": {
+            "hourly_min": 15.0,
+            "hourly_max": 25.0,
+            "salary_min": 35000,
+            "salary_max": 65000
+          },
+          "hiring_signals": {
+            "active_job_postings": 2,
+            "platforms": [
+              "indeed",
+              "linkedin"
+            ],
+            "roles_hiring": [
+              "server",
+              "manager"
+            ]
+          }
+        },
+        "funding_investment": {
+          "funding_rounds": [],
+          "total_funding": 0,
+          "investors": [],
+          "valuation_estimate": 0,
+          "last_funding_date": null
+        },
+        "credit_indicators": {
+          "duns_number": "LU-9728",
+          "credit_score_range": "75-85",
+          "payment_behavior": "good",
+          "liens_judgments": 0,
+          "bankruptcy_history": false
+        },
+        "pricing_intelligence": {
+          "price_point": "$$$$",
+          "avg_transaction_value": 65.0,
+          "price_vs_competitors": "market",
+          "dynamic_pricing": false,
+          "discount_frequency": "seasonal"
+        }
+      },
+      "competitive_intelligence": {
+        "market_position": {
+          "market_share_estimate": 0.12,
+          "ranking_in_category": 8,
+          "total_competitors_in_area": 45,
+          "competitive_intensity": "very_high"
+        },
+        "direct_competitors": [
+          "competitor_0_direct",
+          "competitor_1_direct",
+          "competitor_2_direct"
+        ],
+        "indirect_competitors": [
+          "competitor_0_indirect",
+          "competitor_1_indirect",
+          "competitor_2_indirect"
+        ],
+        "competitive_advantages": [
+          "Location in high-traffic area",
+          "Established reputation",
+          "Experienced staff"
+        ],
+        "competitive_disadvantages": [
+          "Limited parking",
+          "Older facility"
+        ],
+        "differentiation_factors": {
+          "price": "premium",
+          "quality": "premium",
+          "service": "full_service",
+          "convenience": "high",
+          "innovation": "fast_follower",
+          "brand": "established"
+        },
+        "barriers_to_entry": {
+          "capital_requirements": "medium",
+          "regulatory": "medium",
+          "brand_loyalty": "high",
+          "location": "high"
+        },
+        "threat_analysis": {
+          "new_entrants_risk": "medium",
+          "substitute_products_risk": "low",
+          "supplier_power": "low",
+          "buyer_power": "medium",
+          "competitive_rivalry": "high"
+        }
+      },
+      "operational_intelligence": {
+        "hours_of_operation": {
+          "monday": "11:00-22:00",
+          "tuesday": "11:00-22:00",
+          "wednesday": "11:00-22:00",
+          "thursday": "11:00-22:00",
+          "friday": "11:00-23:00",
+          "saturday": "10:00-23:00",
+          "sunday": "10:00-21:00",
+          "24_7": false,
+          "seasonal_variations": []
+        },
+        "capacity_metrics": {
+          "physical_capacity": {
+            "seats": 80,
+            "treatment_rooms": 0,
+            "workstations": 0,
+            "square_footage": 2500
+          },
+          "utilization_rate": 0.75,
+          "peak_times": [
+            "lunch",
+            "dinner"
+          ],
+          "appointment_required": false,
+          "walk_in_accepted": true,
+          "waitlist_common": true,
+          "avg_wait_time": 15
+        },
+        "service_delivery": {
+          "service_catalog": [],
+          "product_catalog": [],
+          "packages_bundles": [],
+          "membership_programs": [],
+          "loyalty_program": false,
+          "gift_cards": true,
+          "delivery_available": true,
+          "pickup_available": true,
+          "dine_in_available": true
+        },
+        "supply_chain": {
+          "primary_suppliers": [],
+          "supplier_concentration": 0.4,
+          "supply_chain_risk": "low",
+          "inventory_turnover": 12.0,
+          "stockout_frequency": "rare"
+        },
+        "quality_indicators": {
+          "certifications": [],
+          "awards": [],
+          "health_inspection_score": 95,
+          "violations_history": [],
+          "insurance_coverage": [
+            "general_liability",
+            "property"
+          ]
+        }
+      },
+      "customer_intelligence": {
+        "demographics": {
+          "age_ranges": {
+            "18_24": 0.1,
+            "25_34": 0.25,
+            "35_44": 0.3,
+            "45_54": 0.2,
+            "55_64": 0.1,
+            "65_plus": 0.05
+          },
+          "gender_split": {
+            "male": 0.48,
+            "female": 0.5,
+            "other": 0.02
+          },
+          "income_ranges": {
+            "under_50k": 0.1,
+            "50k_100k": 0.3,
+            "100k_150k": 0.35,
+            "150k_plus": 0.25
+          },
+          "education_level": {
+            "high_school": 0.15,
+            "some_college": 0.2,
+            "bachelors": 0.4,
+            "graduate": 0.25
+          },
+          "local_vs_tourist": {
+            "local": 0.7,
+            "tourist": 0.3
+          }
+        },
+        "psychographics": {
+          "lifestyle_segments": [
+            "professionals",
+            "foodies",
+            "health_conscious"
+          ],
+          "values": [
+            "quality",
+            "experience",
+            "sustainability"
+          ],
+          "interests": [
+            "dining",
+            "culture",
+            "wellness"
+          ],
+          "tech_savviness": "high"
+        },
+        "behavior": {
+          "avg_customer_lifetime": 24,
+          "repeat_rate": 0.45,
+          "referral_rate": 0.25,
+          "avg_transaction_frequency": 2.5,
+          "basket_size_avg": 75.0,
+          "preferred_contact_method": "email",
+          "online_vs_offline": {
+            "online_bookings": 0.65,
+            "offline_bookings": 0.35
+          }
+        },
+        "acquisition_channels": {
+          "organic_search": 0.25,
+          "paid_search": 0.15,
+          "social_media": 0.2,
+          "referral": 0.25,
+          "walk_by": 0.1,
+          "partnerships": 0.03,
+          "events": 0.02
+        },
+        "lifetime_value": {
+          "estimated_ltv": 1800.0,
+          "cac": 45.0,
+          "ltv_cac_ratio": 40.0,
+          "payback_period": 2
+        }
+      },
+      "network_relationships": {
+        "ownership_structure": {
+          "parent_company": null,
+          "subsidiaries": [],
+          "franchisee_of": null,
+          "ownership_type": "independent"
+        },
+        "partnerships": {
+          "strategic_partners": [],
+          "vendor_relationships": [],
+          "referral_partners": [],
+          "white_label_providers": []
+        },
+        "associations": {
+          "chamber_membership": {
+            "member": true,
+            "role": "member",
+            "years_member": 5,
+            "involvement_level": "active"
+          },
+          "industry_associations": [],
+          "certifying_bodies": [],
+          "bbb_accredited": true,
+          "bbb_rating": "A+"
+        },
+        "community_involvement": {
+          "sponsorships": [],
+          "charitable_giving": true,
+          "local_partnerships": [],
+          "community_events": []
+        }
+      },
+      "technology_stack": {
+        "pos_system": "Toast",
+        "booking_system": "OpenTable",
+        "reservation_platform": "Resy",
+        "payment_processors": [
+          "Square",
+          "Stripe"
+        ],
+        "crm_system": "HubSpot",
+        "email_marketing": "Mailchimp",
+        "accounting_software": "QuickBooks",
+        "inventory_management": "MarketMan",
+        "employee_scheduling": "When I Work",
+        "loyalty_platform": null,
+        "review_management": "Birdeye",
+        "social_media_management": "Hootsuite",
+        "website_platform": "WordPress",
+        "ecommerce_platform": null,
+        "analytics_tools": [
+          "Google Analytics",
+          "Hotjar"
+        ],
+        "security_systems": [
+          "Ring",
+          "ADT"
+        ]
+      },
+      "contact_intelligence": {
+        "primary_contact": {
+          "name": "Chef Giorgio Rapicavoli",
+          "title": "Chef/Owner",
+          "email": "chef.giorgio.rapicavoli@lucaosteria.com",
+          "phone": "(305) 555-0100",
+          "linkedin": "linkedin.com/in/chef-giorgio-rapicavoli",
+          "role": "owner"
+        },
+        "decision_makers": [],
+        "departments": {},
+        "contact_preferences": {
+          "best_time": "09:00-11:00",
+          "best_day": [
+            "tuesday",
+            "wednesday",
+            "thursday"
+          ],
+          "preferred_method": "email"
+        },
+        "outreach_history": {
+          "contacts_attempted": 0,
+          "contacts_successful": 0,
+          "meetings_held": 0,
+          "proposals_sent": 0,
+          "last_contact_date": null,
+          "next_followup_date": null
+        }
+      },
+      "pain_points_opportunities": {
+        "identified_pain_points": [],
+        "pain_point_confidence": 0.5,
+        "pain_point_severity": "low",
+        "pain_point_sources": [],
+        "opportunities": [],
+        "co_fit_score": 50.0,
+        "co_fit_solutions": [],
+        "estimated_impact": {
+          "time_savings_hours_month": 0.0,
+          "cost_savings_monthly": 0.0,
+          "revenue_impact_monthly": 0.0,
+          "roi_estimate": 0.0,
+          "payback_period_months": 0
+        }
+      },
+      "engagement_scoring": {
+        "overall_score": 77,
+        "scoring_factors": {
+          "business_size": 20,
+          "pain_point_severity": 5,
+          "decision_maker_access": 15,
+          "digital_maturity": 10,
+          "financial_health": 12,
+          "competitive_pressure": 10,
+          "chamber_connection": 5
+        },
+        "engagement_tier": "tier_2_high",
+        "recommended_actions": [
+          "Send personalized email outreach",
+          "Schedule discovery call within 14 days",
+          "Prepare case studies from similar businesses"
+        ],
+        "estimated_deal_size": {
+          "min": 25885,
+          "max": 64714,
+          "expected": 43143
+        },
+        "win_probability": 0.4,
+        "sales_cycle_estimate": 45
+      },
+      "data_quality": {
+        "overall_confidence": 0.75,
+        "last_updated": "2025-11-26T17:04:13.924951",
+        "data_sources": [
+          "web_scraping",
+          "api_calls",
+          "public_records",
+          "review_platforms"
+        ],
+        "verified_fields": [
+          "name",
+          "address",
+          "category"
+        ],
+        "estimated_fields": [
+          "revenue",
+          "employee_count"
+        ],
+        "missing_fields": [
+          "funding_data",
+          "detailed_tech_stack"
+        ],
+        "staleness_indicators": {
+          "days_since_update": 0,
+          "freshness_score": 1.0
+        },
+        "validation_status": "partially_validated",
+        "human_reviewed": false,
+        "human_reviewer": null,
+        "review_date": null
+      }
+    },
+    {
+      "uuid": "34a652c78c8a49eb8ff07b5784d6606e",
+      "core_identity": {
+        "name": "Dojo Izakaya",
+        "legal_name": "Dojo Izakaya LLC",
+        "dba_names": [],
+        "business_type": "llc",
+        "industry_codes": {
+          "naics": "722511",
+          "sic": "5812",
+          "custom_category": "restaurant",
+          "custom_subcategory": "japanese_izakaya"
+        },
+        "registration": {
+          "state": "FL",
+          "registration_number": "FL-54639",
+          "ein_hint": "XX-XXX4639",
+          "incorporation_date": "2015-03-20",
+          "status": "active"
+        }
+      },
+      "location_intelligence": {
+        "primary_address": {
+          "street": "Giralda Plaza",
+          "suite_unit": "",
+          "city": "Coral Gables",
+          "state": "FL",
+          "zip": "33134",
+          "zip4": "1234",
+          "coordinates": {
+            "latitude": 25.765600000000003,
+            "longitude": -80.1879,
+            "precision": 10
+          },
+          "district": "giralda_plaza",
+          "neighborhood": "Coral Gables",
+          "building_type": "plaza"
+        },
+        "additional_locations": [],
+        "service_area": {
+          "type": "local",
+          "radius_miles": 10.0,
+          "zip_codes_served": [
+            "33134",
+            "33133",
+            "33146"
+          ],
+          "cities_served": [
+            "Coral Gables",
+            "Miami",
+            "South Miami"
+          ]
+        },
+        "foot_traffic": {
+          "daily_avg": 250,
+          "weekly_avg": 1750,
+          "peak_hours": [
+            "12:00-14:00",
+            "18:00-21:00"
+          ],
+          "seasonality_index": 1.2
+        },
+        "accessibility": {
+          "parking": "lot",
+          "parking_spaces": 25,
+          "public_transit_access": true,
+          "transit_lines": [
+            "Coral Gables Trolley"
+          ],
+          "walkability_score": 85,
+          "ada_compliant": true
+        }
+      },
+      "digital_presence": {
+        "website": {
+          "primary_url": "https://www.dojoizakaya.com",
+          "domain_age": 5,
+          "ssl_enabled": true,
+          "mobile_responsive": true,
+          "page_speed_score": 75,
+          "tech_stack": {
+            "cms": "wordpress",
+            "ecommerce": null,
+            "analytics": [
+              "google_analytics"
+            ],
+            "hosting_provider": "cloudflare",
+            "cdn": "cloudflare"
+          },
+          "seo_metrics": {
+            "domain_authority": 35,
+            "page_authority": 40,
+            "backlinks": 250,
+            "organic_keywords": 150,
+            "monthly_organic_traffic": 2500
+          },
+          "conversion_signals": {
+            "booking_enabled": false,
+            "ecommerce_enabled": false,
+            "lead_capture": true,
+            "chatbot": false
+          }
+        },
+        "social_media": {
+          "facebook": {
+            "handle": "@dojoizakaya",
+            "followers": 2500,
+            "engagement_rate": 0.045,
+            "post_frequency": 4.5,
+            "rating": 4.6,
+            "review_count": 245,
+            "response_rate": 0.85,
+            "response_time": "within hours"
+          },
+          "instagram": {
+            "handle": "@dojoizakaya",
+            "followers": 3200,
+            "engagement_rate": 0.065,
+            "post_frequency": 5.5,
+            "hashtags_used": [
+              "#coralgables",
+              "#miami",
+              "#local"
+            ]
+          },
+          "twitter": {
+            "handle": "@dojoizakaya",
+            "followers": 850,
+            "tweet_frequency": 2.5
+          },
+          "linkedin": {
+            "company_page": "Dojo Izakaya",
+            "followers": 420,
+            "employees_on_platform": 12
+          },
+          "youtube": {
+            "channel": "Dojo Izakaya",
+            "subscribers": 150,
+            "video_count": 25,
+            "total_views": 8500
+          },
+          "tiktok": {
+            "handle": "@dojoizakaya",
+            "followers": 1200,
+            "engagement_rate": 0.12
+          },
+          "social_listening": {
+            "brand_mentions_monthly": 45,
+            "sentiment_score": 0.75,
+            "share_of_voice": 0.12
+          }
+        },
+        "review_aggregation": {
+          "google": {
+            "rating": 4.5,
+            "review_count": 342,
+            "claimed": true,
+            "photos_count": 125,
+            "response_rate": 0.78
+          },
+          "yelp": {
+            "rating": 4.3,
+            "review_count": 189,
+            "claimed": true,
+            "elite_reviews": 23
+          },
+          "tripadvisor": {
+            "rating": 4.0,
+            "review_count": 98,
+            "ranking_in_city": 45
+          },
+          "industry_specific": {
+            "platform": "opentable"
+          },
+          "aggregate_metrics": {
+            "overall_rating": 4.43,
+            "total_reviews": 629,
+            "review_velocity": 52.4,
+            "sentiment_breakdown": {
+              "positive": 0.75,
+              "neutral": 0.15,
+              "negative": 0.1
+            },
+            "common_praise_topics": [
+              "service",
+              "quality",
+              "atmosphere"
+            ],
+            "common_complaint_topics": [
+              "wait times",
+              "parking"
+            ]
+          }
+        },
+        "advertising_signals": {
+          "google_ads_active": true,
+          "facebook_ads_active": true,
+          "estimated_monthly_ad_spend": {
+            "min": 500,
+            "max": 2000
+          },
+          "ad_platforms": [
+            "google",
+            "facebook",
+            "instagram"
+          ],
+          "retargeting_active": false
+        }
+      },
+      "financial_intelligence": {
+        "revenue_signals": {
+          "estimated_annual_revenue": {
+            "min": 1050000,
+            "max": 1950000,
+            "currency": "USD",
+            "confidence": 0.6,
+            "last_updated": "2025-11-26T17:04:13.925032",
+            "methodology": "employee_count_multiplier"
+          },
+          "revenue_growth_rate": {
+            "yoy_percent": 12.5,
+            "trend": "stable"
+          },
+          "revenue_per_employee": 75000,
+          "revenue_per_sqft": 450.0
+        },
+        "employee_intelligence": {
+          "headcount": {
+            "min": 18,
+            "max": 23,
+            "confidence": 0.7
+          },
+          "headcount_growth_rate": 8.5,
+          "turnover_indicators": {
+            "job_postings_frequency": 3,
+            "glassdoor_reviews_mentioning_turnover": 2
+          },
+          "compensation_range": {
+            "hourly_min": 15.0,
+            "hourly_max": 25.0,
+            "salary_min": 35000,
+            "salary_max": 65000
+          },
+          "hiring_signals": {
+            "active_job_postings": 2,
+            "platforms": [
+              "indeed",
+              "linkedin"
+            ],
+            "roles_hiring": [
+              "server",
+              "manager"
+            ]
+          }
+        },
+        "funding_investment": {
+          "funding_rounds": [],
+          "total_funding": 0,
+          "investors": [],
+          "valuation_estimate": 0,
+          "last_funding_date": null
+        },
+        "credit_indicators": {
+          "duns_number": "DO-4639",
+          "credit_score_range": "75-85",
+          "payment_behavior": "good",
+          "liens_judgments": 0,
+          "bankruptcy_history": false
+        },
+        "pricing_intelligence": {
+          "price_point": "$$$$",
+          "avg_transaction_value": 65.0,
+          "price_vs_competitors": "market",
+          "dynamic_pricing": false,
+          "discount_frequency": "seasonal"
+        }
+      },
+      "competitive_intelligence": {
+        "market_position": {
+          "market_share_estimate": 0.12,
+          "ranking_in_category": 8,
+          "total_competitors_in_area": 45,
+          "competitive_intensity": "very_high"
+        },
+        "direct_competitors": [
+          "competitor_0_direct",
+          "competitor_1_direct",
+          "competitor_2_direct"
+        ],
+        "indirect_competitors": [
+          "competitor_0_indirect",
+          "competitor_1_indirect",
+          "competitor_2_indirect"
+        ],
+        "competitive_advantages": [
+          "Location in high-traffic area",
+          "Established reputation",
+          "Experienced staff"
+        ],
+        "competitive_disadvantages": [
+          "Limited parking",
+          "Older facility"
+        ],
+        "differentiation_factors": {
+          "price": "premium",
+          "quality": "premium",
+          "service": "full_service",
+          "convenience": "high",
+          "innovation": "fast_follower",
+          "brand": "established"
+        },
+        "barriers_to_entry": {
+          "capital_requirements": "medium",
+          "regulatory": "medium",
+          "brand_loyalty": "high",
+          "location": "high"
+        },
+        "threat_analysis": {
+          "new_entrants_risk": "medium",
+          "substitute_products_risk": "low",
+          "supplier_power": "low",
+          "buyer_power": "medium",
+          "competitive_rivalry": "high"
+        }
+      },
+      "operational_intelligence": {
+        "hours_of_operation": {
+          "monday": "11:00-22:00",
+          "tuesday": "11:00-22:00",
+          "wednesday": "11:00-22:00",
+          "thursday": "11:00-22:00",
+          "friday": "11:00-23:00",
+          "saturday": "10:00-23:00",
+          "sunday": "10:00-21:00",
+          "24_7": false,
+          "seasonal_variations": []
+        },
+        "capacity_metrics": {
+          "physical_capacity": {
+            "seats": 60,
+            "treatment_rooms": 0,
+            "workstations": 0,
+            "square_footage": 2500
+          },
+          "utilization_rate": 0.75,
+          "peak_times": [
+            "lunch",
+            "dinner"
+          ],
+          "appointment_required": false,
+          "walk_in_accepted": true,
+          "waitlist_common": true,
+          "avg_wait_time": 15
+        },
+        "service_delivery": {
+          "service_catalog": [],
+          "product_catalog": [],
+          "packages_bundles": [],
+          "membership_programs": [],
+          "loyalty_program": false,
+          "gift_cards": true,
+          "delivery_available": true,
+          "pickup_available": true,
+          "dine_in_available": true
+        },
+        "supply_chain": {
+          "primary_suppliers": [],
+          "supplier_concentration": 0.4,
+          "supply_chain_risk": "low",
+          "inventory_turnover": 12.0,
+          "stockout_frequency": "rare"
+        },
+        "quality_indicators": {
+          "certifications": [],
+          "awards": [],
+          "health_inspection_score": 95,
+          "violations_history": [],
+          "insurance_coverage": [
+            "general_liability",
+            "property"
+          ]
+        }
+      },
+      "customer_intelligence": {
+        "demographics": {
+          "age_ranges": {
+            "18_24": 0.1,
+            "25_34": 0.25,
+            "35_44": 0.3,
+            "45_54": 0.2,
+            "55_64": 0.1,
+            "65_plus": 0.05
+          },
+          "gender_split": {
+            "male": 0.48,
+            "female": 0.5,
+            "other": 0.02
+          },
+          "income_ranges": {
+            "under_50k": 0.1,
+            "50k_100k": 0.3,
+            "100k_150k": 0.35,
+            "150k_plus": 0.25
+          },
+          "education_level": {
+            "high_school": 0.15,
+            "some_college": 0.2,
+            "bachelors": 0.4,
+            "graduate": 0.25
+          },
+          "local_vs_tourist": {
+            "local": 0.7,
+            "tourist": 0.3
+          }
+        },
+        "psychographics": {
+          "lifestyle_segments": [
+            "professionals",
+            "foodies",
+            "health_conscious"
+          ],
+          "values": [
+            "quality",
+            "experience",
+            "sustainability"
+          ],
+          "interests": [
+            "dining",
+            "culture",
+            "wellness"
+          ],
+          "tech_savviness": "high"
+        },
+        "behavior": {
+          "avg_customer_lifetime": 24,
+          "repeat_rate": 0.45,
+          "referral_rate": 0.25,
+          "avg_transaction_frequency": 2.5,
+          "basket_size_avg": 75.0,
+          "preferred_contact_method": "email",
+          "online_vs_offline": {
+            "online_bookings": 0.65,
+            "offline_bookings": 0.35
+          }
+        },
+        "acquisition_channels": {
+          "organic_search": 0.25,
+          "paid_search": 0.15,
+          "social_media": 0.2,
+          "referral": 0.25,
+          "walk_by": 0.1,
+          "partnerships": 0.03,
+          "events": 0.02
+        },
+        "lifetime_value": {
+          "estimated_ltv": 1800.0,
+          "cac": 45.0,
+          "ltv_cac_ratio": 40.0,
+          "payback_period": 2
+        }
+      },
+      "network_relationships": {
+        "ownership_structure": {
+          "parent_company": null,
+          "subsidiaries": [],
+          "franchisee_of": null,
+          "ownership_type": "independent"
+        },
+        "partnerships": {
+          "strategic_partners": [],
+          "vendor_relationships": [],
+          "referral_partners": [],
+          "white_label_providers": []
+        },
+        "associations": {
+          "chamber_membership": {
+            "member": true,
+            "role": "member",
+            "years_member": 5,
+            "involvement_level": "active"
+          },
+          "industry_associations": [],
+          "certifying_bodies": [],
+          "bbb_accredited": true,
+          "bbb_rating": "A+"
+        },
+        "community_involvement": {
+          "sponsorships": [],
+          "charitable_giving": true,
+          "local_partnerships": [],
+          "community_events": []
+        }
+      },
+      "technology_stack": {
+        "pos_system": "Toast",
+        "booking_system": "OpenTable",
+        "reservation_platform": "Resy",
+        "payment_processors": [
+          "Square",
+          "Stripe"
+        ],
+        "crm_system": "HubSpot",
+        "email_marketing": "Mailchimp",
+        "accounting_software": "QuickBooks",
+        "inventory_management": "MarketMan",
+        "employee_scheduling": "When I Work",
+        "loyalty_platform": null,
+        "review_management": "Birdeye",
+        "social_media_management": "Hootsuite",
+        "website_platform": "WordPress",
+        "ecommerce_platform": null,
+        "analytics_tools": [
+          "Google Analytics",
+          "Hotjar"
+        ],
+        "security_systems": [
+          "Ring",
+          "ADT"
+        ]
+      },
+      "contact_intelligence": {
+        "primary_contact": {
+          "name": "Chef Pablo Zitzmann",
+          "title": "Chef/Owner",
+          "email": "chef.pablo.zitzmann@dojoizakaya.com",
+          "phone": "(305) 555-0100",
+          "linkedin": "linkedin.com/in/chef-pablo-zitzmann",
+          "role": "owner"
+        },
+        "decision_makers": [],
+        "departments": {},
+        "contact_preferences": {
+          "best_time": "09:00-11:00",
+          "best_day": [
+            "tuesday",
+            "wednesday",
+            "thursday"
+          ],
+          "preferred_method": "email"
+        },
+        "outreach_history": {
+          "contacts_attempted": 0,
+          "contacts_successful": 0,
+          "meetings_held": 0,
+          "proposals_sent": 0,
+          "last_contact_date": null,
+          "next_followup_date": null
+        }
+      },
+      "pain_points_opportunities": {
+        "identified_pain_points": [],
+        "pain_point_confidence": 0.5,
+        "pain_point_severity": "low",
+        "pain_point_sources": [],
+        "opportunities": [],
+        "co_fit_score": 50.0,
+        "co_fit_solutions": [],
+        "estimated_impact": {
+          "time_savings_hours_month": 0.0,
+          "cost_savings_monthly": 0.0,
+          "revenue_impact_monthly": 0.0,
+          "roi_estimate": 0.0,
+          "payback_period_months": 0
+        }
+      },
+      "engagement_scoring": {
+        "overall_score": 73,
+        "scoring_factors": {
+          "business_size": 16,
+          "pain_point_severity": 5,
+          "decision_maker_access": 15,
+          "digital_maturity": 10,
+          "financial_health": 12,
+          "competitive_pressure": 10,
+          "chamber_connection": 5
+        },
+        "engagement_tier": "tier_2_high",
+        "recommended_actions": [
+          "Send personalized email outreach",
+          "Schedule discovery call within 14 days",
+          "Prepare case studies from similar businesses"
+        ],
+        "estimated_deal_size": {
+          "min": 20241,
+          "max": 50602,
+          "expected": 33735
+        },
+        "win_probability": 0.39,
+        "sales_cycle_estimate": 45
+      },
+      "data_quality": {
+        "overall_confidence": 0.75,
+        "last_updated": "2025-11-26T17:04:13.925183",
+        "data_sources": [
+          "web_scraping",
+          "api_calls",
+          "public_records",
+          "review_platforms"
+        ],
+        "verified_fields": [
+          "name",
+          "address",
+          "category"
+        ],
+        "estimated_fields": [
+          "revenue",
+          "employee_count"
+        ],
+        "missing_fields": [
+          "funding_data",
+          "detailed_tech_stack"
+        ],
+        "staleness_indicators": {
+          "days_since_update": 0,
+          "freshness_score": 1.0
+        },
+        "validation_status": "partially_validated",
+        "human_reviewed": false,
+        "human_reviewer": null,
+        "review_date": null
+      }
+    },
+    {
+      "uuid": "a19f098c4634a14303007d97da935b52",
+      "core_identity": {
+        "name": "Zitz Sum",
+        "legal_name": "Zitz Sum LLC",
+        "dba_names": [],
+        "business_type": "llc",
+        "industry_codes": {
+          "naics": "722511",
+          "sic": "5812",
+          "custom_category": "restaurant",
+          "custom_subcategory": "dim_sum_fusion"
+        },
+        "registration": {
+          "state": "FL",
+          "registration_number": "FL-95226",
+          "ein_hint": "XX-XXX5226",
+          "incorporation_date": "2016-08-10",
+          "status": "active"
+        }
+      },
+      "location_intelligence": {
+        "primary_address": {
+          "street": "Giralda Plaza",
+          "suite_unit": "",
+          "city": "Coral Gables",
+          "state": "FL",
+          "zip": "33134",
+          "zip4": "1234",
+          "coordinates": {
+            "latitude": 25.764300000000002,
+            "longitude": -80.1892,
+            "precision": 10
+          },
+          "district": "giralda_plaza",
+          "neighborhood": "Coral Gables",
+          "building_type": "plaza"
+        },
+        "additional_locations": [],
+        "service_area": {
+          "type": "local",
+          "radius_miles": 10.0,
+          "zip_codes_served": [
+            "33134",
+            "33133",
+            "33146"
+          ],
+          "cities_served": [
+            "Coral Gables",
+            "Miami",
+            "South Miami"
+          ]
+        },
+        "foot_traffic": {
+          "daily_avg": 250,
+          "weekly_avg": 1750,
+          "peak_hours": [
+            "12:00-14:00",
+            "18:00-21:00"
+          ],
+          "seasonality_index": 1.2
+        },
+        "accessibility": {
+          "parking": "lot",
+          "parking_spaces": 25,
+          "public_transit_access": true,
+          "transit_lines": [
+            "Coral Gables Trolley"
+          ],
+          "walkability_score": 85,
+          "ada_compliant": true
+        }
+      },
+      "digital_presence": {
+        "website": {
+          "primary_url": "https://www.zitzsum.com",
+          "domain_age": 5,
+          "ssl_enabled": true,
+          "mobile_responsive": true,
+          "page_speed_score": 75,
+          "tech_stack": {
+            "cms": "wordpress",
+            "ecommerce": null,
+            "analytics": [
+              "google_analytics"
+            ],
+            "hosting_provider": "cloudflare",
+            "cdn": "cloudflare"
+          },
+          "seo_metrics": {
+            "domain_authority": 35,
+            "page_authority": 40,
+            "backlinks": 250,
+            "organic_keywords": 150,
+            "monthly_organic_traffic": 2500
+          },
+          "conversion_signals": {
+            "booking_enabled": false,
+            "ecommerce_enabled": false,
+            "lead_capture": true,
+            "chatbot": false
+          }
+        },
+        "social_media": {
+          "facebook": {
+            "handle": "@zitzsum",
+            "followers": 2500,
+            "engagement_rate": 0.045,
+            "post_frequency": 4.5,
+            "rating": 4.6,
+            "review_count": 245,
+            "response_rate": 0.85,
+            "response_time": "within hours"
+          },
+          "instagram": {
+            "handle": "@zitzsum",
+            "followers": 3200,
+            "engagement_rate": 0.065,
+            "post_frequency": 5.5,
+            "hashtags_used": [
+              "#coralgables",
+              "#miami",
+              "#local"
+            ]
+          },
+          "twitter": {
+            "handle": "@zitzsum",
+            "followers": 850,
+            "tweet_frequency": 2.5
+          },
+          "linkedin": {
+            "company_page": "Zitz Sum",
+            "followers": 420,
+            "employees_on_platform": 12
+          },
+          "youtube": {
+            "channel": "Zitz Sum",
+            "subscribers": 150,
+            "video_count": 25,
+            "total_views": 8500
+          },
+          "tiktok": {
+            "handle": "@zitzsum",
+            "followers": 1200,
+            "engagement_rate": 0.12
+          },
+          "social_listening": {
+            "brand_mentions_monthly": 45,
+            "sentiment_score": 0.75,
+            "share_of_voice": 0.12
+          }
+        },
+        "review_aggregation": {
+          "google": {
+            "rating": 4.5,
+            "review_count": 342,
+            "claimed": true,
+            "photos_count": 125,
+            "response_rate": 0.78
+          },
+          "yelp": {
+            "rating": 4.3,
+            "review_count": 189,
+            "claimed": true,
+            "elite_reviews": 23
+          },
+          "tripadvisor": {
+            "rating": 4.0,
+            "review_count": 98,
+            "ranking_in_city": 45
+          },
+          "industry_specific": {
+            "platform": "opentable"
+          },
+          "aggregate_metrics": {
+            "overall_rating": 4.43,
+            "total_reviews": 629,
+            "review_velocity": 52.4,
+            "sentiment_breakdown": {
+              "positive": 0.75,
+              "neutral": 0.15,
+              "negative": 0.1
+            },
+            "common_praise_topics": [
+              "service",
+              "quality",
+              "atmosphere"
+            ],
+            "common_complaint_topics": [
+              "wait times",
+              "parking"
+            ]
+          }
+        },
+        "advertising_signals": {
+          "google_ads_active": true,
+          "facebook_ads_active": true,
+          "estimated_monthly_ad_spend": {
+            "min": 500,
+            "max": 2000
+          },
+          "ad_platforms": [
+            "google",
+            "facebook",
+            "instagram"
+          ],
+          "retargeting_active": false
+        }
+      },
+      "financial_intelligence": {
+        "revenue_signals": {
+          "estimated_annual_revenue": {
+            "min": 944999,
+            "max": 1755000,
+            "currency": "USD",
+            "confidence": 0.6,
+            "last_updated": "2025-11-26T17:04:13.925265",
+            "methodology": "employee_count_multiplier"
+          },
+          "revenue_growth_rate": {
+            "yoy_percent": 12.5,
+            "trend": "stable"
+          },
+          "revenue_per_employee": 75000,
+          "revenue_per_sqft": 450.0
+        },
+        "employee_intelligence": {
+          "headcount": {
+            "min": 16,
+            "max": 21,
+            "confidence": 0.7
+          },
+          "headcount_growth_rate": 8.5,
+          "turnover_indicators": {
+            "job_postings_frequency": 3,
+            "glassdoor_reviews_mentioning_turnover": 2
+          },
+          "compensation_range": {
+            "hourly_min": 15.0,
+            "hourly_max": 25.0,
+            "salary_min": 35000,
+            "salary_max": 65000
+          },
+          "hiring_signals": {
+            "active_job_postings": 2,
+            "platforms": [
+              "indeed",
+              "linkedin"
+            ],
+            "roles_hiring": [
+              "server",
+              "manager"
+            ]
+          }
+        },
+        "funding_investment": {
+          "funding_rounds": [],
+          "total_funding": 0,
+          "investors": [],
+          "valuation_estimate": 0,
+          "last_funding_date": null
+        },
+        "credit_indicators": {
+          "duns_number": "ZI-5226",
+          "credit_score_range": "75-85",
+          "payment_behavior": "good",
+          "liens_judgments": 0,
+          "bankruptcy_history": false
+        },
+        "pricing_intelligence": {
+          "price_point": "$$$$",
+          "avg_transaction_value": 65.0,
+          "price_vs_competitors": "market",
+          "dynamic_pricing": false,
+          "discount_frequency": "seasonal"
+        }
+      },
+      "competitive_intelligence": {
+        "market_position": {
+          "market_share_estimate": 0.12,
+          "ranking_in_category": 8,
+          "total_competitors_in_area": 45,
+          "competitive_intensity": "very_high"
+        },
+        "direct_competitors": [
+          "competitor_0_direct",
+          "competitor_1_direct",
+          "competitor_2_direct"
+        ],
+        "indirect_competitors": [
+          "competitor_0_indirect",
+          "competitor_1_indirect",
+          "competitor_2_indirect"
+        ],
+        "competitive_advantages": [
+          "Location in high-traffic area",
+          "Established reputation",
+          "Experienced staff"
+        ],
+        "competitive_disadvantages": [
+          "Limited parking",
+          "Older facility"
+        ],
+        "differentiation_factors": {
+          "price": "premium",
+          "quality": "premium",
+          "service": "full_service",
+          "convenience": "high",
+          "innovation": "fast_follower",
+          "brand": "established"
+        },
+        "barriers_to_entry": {
+          "capital_requirements": "medium",
+          "regulatory": "medium",
+          "brand_loyalty": "high",
+          "location": "high"
+        },
+        "threat_analysis": {
+          "new_entrants_risk": "medium",
+          "substitute_products_risk": "low",
+          "supplier_power": "low",
+          "buyer_power": "medium",
+          "competitive_rivalry": "high"
+        }
+      },
+      "operational_intelligence": {
+        "hours_of_operation": {
+          "monday": "11:00-22:00",
+          "tuesday": "11:00-22:00",
+          "wednesday": "11:00-22:00",
+          "thursday": "11:00-22:00",
+          "friday": "11:00-23:00",
+          "saturday": "10:00-23:00",
+          "sunday": "10:00-21:00",
+          "24_7": false,
+          "seasonal_variations": []
+        },
+        "capacity_metrics": {
+          "physical_capacity": {
+            "seats": 55,
+            "treatment_rooms": 0,
+            "workstations": 0,
+            "square_footage": 2500
+          },
+          "utilization_rate": 0.75,
+          "peak_times": [
+            "lunch",
+            "dinner"
+          ],
+          "appointment_required": false,
+          "walk_in_accepted": true,
+          "waitlist_common": true,
+          "avg_wait_time": 15
+        },
+        "service_delivery": {
+          "service_catalog": [],
+          "product_catalog": [],
+          "packages_bundles": [],
+          "membership_programs": [],
+          "loyalty_program": false,
+          "gift_cards": true,
+          "delivery_available": true,
+          "pickup_available": true,
+          "dine_in_available": true
+        },
+        "supply_chain": {
+          "primary_suppliers": [],
+          "supplier_concentration": 0.4,
+          "supply_chain_risk": "low",
+          "inventory_turnover": 12.0,
+          "stockout_frequency": "rare"
+        },
+        "quality_indicators": {
+          "certifications": [],
+          "awards": [],
+          "health_inspection_score": 95,
+          "violations_history": [],
+          "insurance_coverage": [
+            "general_liability",
+            "property"
+          ]
+        }
+      },
+      "customer_intelligence": {
+        "demographics": {
+          "age_ranges": {
+            "18_24": 0.1,
+            "25_34": 0.25,
+            "35_44": 0.3,
+            "45_54": 0.2,
+            "55_64": 0.1,
+            "65_plus": 0.05
+          },
+          "gender_split": {
+            "male": 0.48,
+            "female": 0.5,
+            "other": 0.02
+          },
+          "income_ranges": {
+            "under_50k": 0.1,
+            "50k_100k": 0.3,
+            "100k_150k": 0.35,
+            "150k_plus": 0.25
+          },
+          "education_level": {
+            "high_school": 0.15,
+            "some_college": 0.2,
+            "bachelors": 0.4,
+            "graduate": 0.25
+          },
+          "local_vs_tourist": {
+            "local": 0.7,
+            "tourist": 0.3
+          }
+        },
+        "psychographics": {
+          "lifestyle_segments": [
+            "professionals",
+            "foodies",
+            "health_conscious"
+          ],
+          "values": [
+            "quality",
+            "experience",
+            "sustainability"
+          ],
+          "interests": [
+            "dining",
+            "culture",
+            "wellness"
+          ],
+          "tech_savviness": "high"
+        },
+        "behavior": {
+          "avg_customer_lifetime": 24,
+          "repeat_rate": 0.45,
+          "referral_rate": 0.25,
+          "avg_transaction_frequency": 2.5,
+          "basket_size_avg": 75.0,
+          "preferred_contact_method": "email",
+          "online_vs_offline": {
+            "online_bookings": 0.65,
+            "offline_bookings": 0.35
+          }
+        },
+        "acquisition_channels": {
+          "organic_search": 0.25,
+          "paid_search": 0.15,
+          "social_media": 0.2,
+          "referral": 0.25,
+          "walk_by": 0.1,
+          "partnerships": 0.03,
+          "events": 0.02
+        },
+        "lifetime_value": {
+          "estimated_ltv": 1800.0,
+          "cac": 45.0,
+          "ltv_cac_ratio": 40.0,
+          "payback_period": 2
+        }
+      },
+      "network_relationships": {
+        "ownership_structure": {
+          "parent_company": null,
+          "subsidiaries": [],
+          "franchisee_of": null,
+          "ownership_type": "independent"
+        },
+        "partnerships": {
+          "strategic_partners": [],
+          "vendor_relationships": [],
+          "referral_partners": [],
+          "white_label_providers": []
+        },
+        "associations": {
+          "chamber_membership": {
+            "member": true,
+            "role": "member",
+            "years_member": 5,
+            "involvement_level": "active"
+          },
+          "industry_associations": [],
+          "certifying_bodies": [],
+          "bbb_accredited": true,
+          "bbb_rating": "A+"
+        },
+        "community_involvement": {
+          "sponsorships": [],
+          "charitable_giving": true,
+          "local_partnerships": [],
+          "community_events": []
+        }
+      },
+      "technology_stack": {
+        "pos_system": "Toast",
+        "booking_system": "OpenTable",
+        "reservation_platform": "Resy",
+        "payment_processors": [
+          "Square",
+          "Stripe"
+        ],
+        "crm_system": "HubSpot",
+        "email_marketing": "Mailchimp",
+        "accounting_software": "QuickBooks",
+        "inventory_management": "MarketMan",
+        "employee_scheduling": "When I Work",
+        "loyalty_platform": null,
+        "review_management": "Birdeye",
+        "social_media_management": "Hootsuite",
+        "website_platform": "WordPress",
+        "ecommerce_platform": null,
+        "analytics_tools": [
+          "Google Analytics",
+          "Hotjar"
+        ],
+        "security_systems": [
+          "Ring",
+          "ADT"
+        ]
+      },
+      "contact_intelligence": {
+        "primary_contact": {
+          "name": "Chef Pablo Zitzmann",
+          "title": "Chef/Owner",
+          "email": "chef.pablo.zitzmann@zitzsum.com",
+          "phone": "(305) 555-0100",
+          "linkedin": "linkedin.com/in/chef-pablo-zitzmann",
+          "role": "owner"
+        },
+        "decision_makers": [],
+        "departments": {},
+        "contact_preferences": {
+          "best_time": "09:00-11:00",
+          "best_day": [
+            "tuesday",
+            "wednesday",
+            "thursday"
+          ],
+          "preferred_method": "email"
+        },
+        "outreach_history": {
+          "contacts_attempted": 0,
+          "contacts_successful": 0,
+          "meetings_held": 0,
+          "proposals_sent": 0,
+          "last_contact_date": null,
+          "next_followup_date": null
+        }
+      },
+      "pain_points_opportunities": {
+        "identified_pain_points": [],
+        "pain_point_confidence": 0.5,
+        "pain_point_severity": "low",
+        "pain_point_sources": [],
+        "opportunities": [],
+        "co_fit_score": 50.0,
+        "co_fit_solutions": [],
+        "estimated_impact": {
+          "time_savings_hours_month": 0.0,
+          "cost_savings_monthly": 0.0,
+          "revenue_impact_monthly": 0.0,
+          "roi_estimate": 0.0,
+          "payback_period_months": 0
+        }
+      },
+      "engagement_scoring": {
+        "overall_score": 73,
+        "scoring_factors": {
+          "business_size": 16,
+          "pain_point_severity": 5,
+          "decision_maker_access": 15,
+          "digital_maturity": 10,
+          "financial_health": 12,
+          "competitive_pressure": 10,
+          "chamber_connection": 5
+        },
+        "engagement_tier": "tier_2_high",
+        "recommended_actions": [
+          "Send personalized email outreach",
+          "Schedule discovery call within 14 days",
+          "Prepare case studies from similar businesses"
+        ],
+        "estimated_deal_size": {
+          "min": 18216,
+          "max": 45541,
+          "expected": 30361
+        },
+        "win_probability": 0.39,
+        "sales_cycle_estimate": 45
+      },
+      "data_quality": {
+        "overall_confidence": 0.75,
+        "last_updated": "2025-11-26T17:04:13.925323",
+        "data_sources": [
+          "web_scraping",
+          "api_calls",
+          "public_records",
+          "review_platforms"
+        ],
+        "verified_fields": [
+          "name",
+          "address",
+          "category"
+        ],
+        "estimated_fields": [
+          "revenue",
+          "employee_count"
+        ],
+        "missing_fields": [
+          "funding_data",
+          "detailed_tech_stack"
+        ],
+        "staleness_indicators": {
+          "days_since_update": 0,
+          "freshness_score": 1.0
+        },
+        "validation_status": "partially_validated",
+        "human_reviewed": false,
+        "human_reviewer": null,
+        "review_date": null
+      }
+    },
+    {
+      "uuid": "faf60d88a30c120ebfbd746cc0cb067f",
+      "core_identity": {
+        "name": "The Plump Room",
+        "legal_name": "The Plump Room Medical Spa LLC",
+        "dba_names": [],
+        "business_type": "llc",
+        "industry_codes": {
+          "naics": "722511",
+          "sic": "5812",
+          "custom_category": "spa",
+          "custom_subcategory": "medical_aesthetics"
+        },
+        "registration": {
+          "state": "FL",
+          "registration_number": "FL-00163",
+          "ein_hint": "XX-XXX0163",
+          "incorporation_date": "2020-01-15",
+          "status": "active"
+        }
+      },
+      "location_intelligence": {
+        "primary_address": {
+          "street": "147 Alhambra Circle Suite 205",
+          "suite_unit": "",
+          "city": "Coral Gables",
+          "state": "FL",
+          "zip": "33134",
+          "zip4": "1234",
+          "coordinates": {
+            "latitude": 25.768,
+            "longitude": -80.1855,
+            "precision": 10
+          },
+          "district": "alhambra_circle",
+          "neighborhood": "Coral Gables",
+          "building_type": "plaza"
+        },
+        "additional_locations": [],
+        "service_area": {
+          "type": "local",
+          "radius_miles": 10.0,
+          "zip_codes_served": [
+            "33134",
+            "33133",
+            "33146"
+          ],
+          "cities_served": [
+            "Coral Gables",
+            "Miami",
+            "South Miami"
+          ]
+        },
+        "foot_traffic": {
+          "daily_avg": 250,
+          "weekly_avg": 1750,
+          "peak_hours": [
+            "12:00-14:00",
+            "18:00-21:00"
+          ],
+          "seasonality_index": 1.2
+        },
+        "accessibility": {
+          "parking": "lot",
+          "parking_spaces": 25,
+          "public_transit_access": true,
+          "transit_lines": [
+            "Coral Gables Trolley"
+          ],
+          "walkability_score": 85,
+          "ada_compliant": true
+        }
+      },
+      "digital_presence": {
+        "website": {
+          "primary_url": "https://www.theplumproom.com",
+          "domain_age": 5,
+          "ssl_enabled": true,
+          "mobile_responsive": true,
+          "page_speed_score": 75,
+          "tech_stack": {
+            "cms": "wordpress",
+            "ecommerce": null,
+            "analytics": [
+              "google_analytics"
+            ],
+            "hosting_provider": "cloudflare",
+            "cdn": "cloudflare"
+          },
+          "seo_metrics": {
+            "domain_authority": 35,
+            "page_authority": 40,
+            "backlinks": 250,
+            "organic_keywords": 150,
+            "monthly_organic_traffic": 2500
+          },
+          "conversion_signals": {
+            "booking_enabled": false,
+            "ecommerce_enabled": false,
+            "lead_capture": true,
+            "chatbot": false
+          }
+        },
+        "social_media": {
+          "facebook": {
+            "handle": "@theplumproom",
+            "followers": 2500,
+            "engagement_rate": 0.045,
+            "post_frequency": 4.5,
+            "rating": 4.6,
+            "review_count": 245,
+            "response_rate": 0.85,
+            "response_time": "within hours"
+          },
+          "instagram": {
+            "handle": "@theplumproom",
+            "followers": 3200,
+            "engagement_rate": 0.065,
+            "post_frequency": 5.5,
+            "hashtags_used": [
+              "#coralgables",
+              "#miami",
+              "#local"
+            ]
+          },
+          "twitter": {
+            "handle": "@theplumproom",
+            "followers": 850,
+            "tweet_frequency": 2.5
+          },
+          "linkedin": {
+            "company_page": "The Plump Room",
+            "followers": 420,
+            "employees_on_platform": 12
+          },
+          "youtube": {
+            "channel": "The Plump Room",
+            "subscribers": 150,
+            "video_count": 25,
+            "total_views": 8500
+          },
+          "tiktok": {
+            "handle": "@theplumproom",
+            "followers": 1200,
+            "engagement_rate": 0.12
+          },
+          "social_listening": {
+            "brand_mentions_monthly": 45,
+            "sentiment_score": 0.75,
+            "share_of_voice": 0.12
+          }
+        },
+        "review_aggregation": {
+          "google": {
+            "rating": 4.5,
+            "review_count": 342,
+            "claimed": true,
+            "photos_count": 125,
+            "response_rate": 0.78
+          },
+          "yelp": {
+            "rating": 4.3,
+            "review_count": 189,
+            "claimed": true,
+            "elite_reviews": 23
+          },
+          "tripadvisor": {
+            "rating": 4.0,
+            "review_count": 98,
+            "ranking_in_city": 45
+          },
+          "industry_specific": {
+            "platform": "spafinder"
+          },
+          "aggregate_metrics": {
+            "overall_rating": 4.43,
+            "total_reviews": 629,
+            "review_velocity": 52.4,
+            "sentiment_breakdown": {
+              "positive": 0.75,
+              "neutral": 0.15,
+              "negative": 0.1
+            },
+            "common_praise_topics": [
+              "service",
+              "quality",
+              "atmosphere"
+            ],
+            "common_complaint_topics": [
+              "wait times",
+              "parking"
+            ]
+          }
+        },
+        "advertising_signals": {
+          "google_ads_active": true,
+          "facebook_ads_active": true,
+          "estimated_monthly_ad_spend": {
+            "min": 500,
+            "max": 2000
+          },
+          "ad_platforms": [
+            "google",
+            "facebook",
+            "instagram"
+          ],
+          "retargeting_active": false
+        }
+      },
+      "financial_intelligence": {
+        "revenue_signals": {
+          "estimated_annual_revenue": {
+            "min": 714000,
+            "max": 1326000,
+            "currency": "USD",
+            "confidence": 0.6,
+            "last_updated": "2025-11-26T17:04:13.925383",
+            "methodology": "employee_count_multiplier"
+          },
+          "revenue_growth_rate": {
+            "yoy_percent": 12.5,
+            "trend": "stable"
+          },
+          "revenue_per_employee": 85000,
+          "revenue_per_sqft": 450.0
+        },
+        "employee_intelligence": {
+          "headcount": {
+            "min": 10,
+            "max": 15,
+            "confidence": 0.7
+          },
+          "headcount_growth_rate": 8.5,
+          "turnover_indicators": {
+            "job_postings_frequency": 3,
+            "glassdoor_reviews_mentioning_turnover": 2
+          },
+          "compensation_range": {
+            "hourly_min": 20.0,
+            "hourly_max": 40.0,
+            "salary_min": 40000,
+            "salary_max": 75000
+          },
+          "hiring_signals": {
+            "active_job_postings": 2,
+            "platforms": [
+              "indeed",
+              "linkedin"
+            ],
+            "roles_hiring": [
+              "server",
+              "manager"
+            ]
+          }
+        },
+        "funding_investment": {
+          "funding_rounds": [],
+          "total_funding": 0,
+          "investors": [],
+          "valuation_estimate": 0,
+          "last_funding_date": null
+        },
+        "credit_indicators": {
+          "duns_number": "TH-0163",
+          "credit_score_range": "75-85",
+          "payment_behavior": "good",
+          "liens_judgments": 0,
+          "bankruptcy_history": false
+        },
+        "pricing_intelligence": {
+          "price_point": "$$$$",
+          "avg_transaction_value": 65.0,
+          "price_vs_competitors": "market",
+          "dynamic_pricing": false,
+          "discount_frequency": "seasonal"
+        }
+      },
+      "competitive_intelligence": {
+        "market_position": {
+          "market_share_estimate": 0.12,
+          "ranking_in_category": 8,
+          "total_competitors_in_area": 12,
+          "competitive_intensity": "low"
+        },
+        "direct_competitors": [
+          "competitor_0_direct",
+          "competitor_1_direct",
+          "competitor_2_direct"
+        ],
+        "indirect_competitors": [
+          "competitor_0_indirect",
+          "competitor_1_indirect",
+          "competitor_2_indirect"
+        ],
+        "competitive_advantages": [
+          "Location in high-traffic area",
+          "Established reputation",
+          "Experienced staff"
+        ],
+        "competitive_disadvantages": [
+          "Limited parking",
+          "Older facility"
+        ],
+        "differentiation_factors": {
+          "price": "premium",
+          "quality": "premium",
+          "service": "full_service",
+          "convenience": "high",
+          "innovation": "fast_follower",
+          "brand": "established"
+        },
+        "barriers_to_entry": {
+          "capital_requirements": "medium",
+          "regulatory": "medium",
+          "brand_loyalty": "high",
+          "location": "high"
+        },
+        "threat_analysis": {
+          "new_entrants_risk": "medium",
+          "substitute_products_risk": "low",
+          "supplier_power": "low",
+          "buyer_power": "medium",
+          "competitive_rivalry": "high"
+        }
+      },
+      "operational_intelligence": {
+        "hours_of_operation": {
+          "monday": "11:00-22:00",
+          "tuesday": "11:00-22:00",
+          "wednesday": "11:00-22:00",
+          "thursday": "11:00-22:00",
+          "friday": "11:00-23:00",
+          "saturday": "10:00-23:00",
+          "sunday": "10:00-21:00",
+          "24_7": false,
+          "seasonal_variations": []
+        },
+        "capacity_metrics": {
+          "physical_capacity": {
+            "seats": 6,
+            "treatment_rooms": 0,
+            "workstations": 0,
+            "square_footage": 2500
+          },
+          "utilization_rate": 0.75,
+          "peak_times": [
+            "lunch",
+            "dinner"
+          ],
+          "appointment_required": false,
+          "walk_in_accepted": true,
+          "waitlist_common": true,
+          "avg_wait_time": 15
+        },
+        "service_delivery": {
+          "service_catalog": [],
+          "product_catalog": [],
+          "packages_bundles": [],
+          "membership_programs": [],
+          "loyalty_program": false,
+          "gift_cards": true,
+          "delivery_available": true,
+          "pickup_available": true,
+          "dine_in_available": true
+        },
+        "supply_chain": {
+          "primary_suppliers": [],
+          "supplier_concentration": 0.4,
+          "supply_chain_risk": "low",
+          "inventory_turnover": 12.0,
+          "stockout_frequency": "rare"
+        },
+        "quality_indicators": {
+          "certifications": [],
+          "awards": [],
+          "health_inspection_score": 95,
+          "violations_history": [],
+          "insurance_coverage": [
+            "general_liability",
+            "property"
+          ]
+        }
+      },
+      "customer_intelligence": {
+        "demographics": {
+          "age_ranges": {
+            "18_24": 0.1,
+            "25_34": 0.25,
+            "35_44": 0.3,
+            "45_54": 0.2,
+            "55_64": 0.1,
+            "65_plus": 0.05
+          },
+          "gender_split": {
+            "male": 0.48,
+            "female": 0.5,
+            "other": 0.02
+          },
+          "income_ranges": {
+            "under_50k": 0.1,
+            "50k_100k": 0.3,
+            "100k_150k": 0.35,
+            "150k_plus": 0.25
+          },
+          "education_level": {
+            "high_school": 0.15,
+            "some_college": 0.2,
+            "bachelors": 0.4,
+            "graduate": 0.25
+          },
+          "local_vs_tourist": {
+            "local": 0.7,
+            "tourist": 0.3
+          }
+        },
+        "psychographics": {
+          "lifestyle_segments": [
+            "professionals",
+            "foodies",
+            "health_conscious"
+          ],
+          "values": [
+            "quality",
+            "experience",
+            "sustainability"
+          ],
+          "interests": [
+            "dining",
+            "culture",
+            "wellness"
+          ],
+          "tech_savviness": "high"
+        },
+        "behavior": {
+          "avg_customer_lifetime": 24,
+          "repeat_rate": 0.45,
+          "referral_rate": 0.25,
+          "avg_transaction_frequency": 2.5,
+          "basket_size_avg": 75.0,
+          "preferred_contact_method": "email",
+          "online_vs_offline": {
+            "online_bookings": 0.65,
+            "offline_bookings": 0.35
+          }
+        },
+        "acquisition_channels": {
+          "organic_search": 0.25,
+          "paid_search": 0.15,
+          "social_media": 0.2,
+          "referral": 0.25,
+          "walk_by": 0.1,
+          "partnerships": 0.03,
+          "events": 0.02
+        },
+        "lifetime_value": {
+          "estimated_ltv": 1800.0,
+          "cac": 45.0,
+          "ltv_cac_ratio": 40.0,
+          "payback_period": 2
+        }
+      },
+      "network_relationships": {
+        "ownership_structure": {
+          "parent_company": null,
+          "subsidiaries": [],
+          "franchisee_of": null,
+          "ownership_type": "independent"
+        },
+        "partnerships": {
+          "strategic_partners": [],
+          "vendor_relationships": [],
+          "referral_partners": [],
+          "white_label_providers": []
+        },
+        "associations": {
+          "chamber_membership": {
+            "member": true,
+            "role": "member",
+            "years_member": 5,
+            "involvement_level": "active"
+          },
+          "industry_associations": [],
+          "certifying_bodies": [],
+          "bbb_accredited": true,
+          "bbb_rating": "A+"
+        },
+        "community_involvement": {
+          "sponsorships": [],
+          "charitable_giving": true,
+          "local_partnerships": [],
+          "community_events": []
+        }
+      },
+      "technology_stack": {
+        "pos_system": "Mindbody",
+        "booking_system": "Mindbody",
+        "reservation_platform": "Vagaro",
+        "payment_processors": [
+          "Square"
+        ],
+        "crm_system": "HubSpot",
+        "email_marketing": "Mailchimp",
+        "accounting_software": "QuickBooks",
+        "inventory_management": "MarketMan",
+        "employee_scheduling": "When I Work",
+        "loyalty_platform": null,
+        "review_management": "Birdeye",
+        "social_media_management": "Hootsuite",
+        "website_platform": "WordPress",
+        "ecommerce_platform": null,
+        "analytics_tools": [
+          "Google Analytics",
+          "Hotjar"
+        ],
+        "security_systems": [
+          "Ring",
+          "ADT"
+        ]
+      },
+      "contact_intelligence": {
+        "primary_contact": {
+          "name": "Dr. Sarah Chen",
+          "title": "Medical Director",
+          "email": "dr..sarah.chen@theplumproom.com",
+          "phone": "(305) 555-0100",
+          "linkedin": "linkedin.com/in/dr.-sarah-chen",
+          "role": "owner"
+        },
+        "decision_makers": [],
+        "departments": {},
+        "contact_preferences": {
+          "best_time": "09:00-11:00",
+          "best_day": [
+            "tuesday",
+            "wednesday",
+            "thursday"
+          ],
+          "preferred_method": "email"
+        },
+        "outreach_history": {
+          "contacts_attempted": 0,
+          "contacts_successful": 0,
+          "meetings_held": 0,
+          "proposals_sent": 0,
+          "last_contact_date": null,
+          "next_followup_date": null
+        }
+      },
+      "pain_points_opportunities": {
+        "identified_pain_points": [],
+        "pain_point_confidence": 0.5,
+        "pain_point_severity": "low",
+        "pain_point_sources": [],
+        "opportunities": [],
+        "co_fit_score": 50.0,
+        "co_fit_solutions": [],
+        "estimated_impact": {
+          "time_savings_hours_month": 0.0,
+          "cost_savings_monthly": 0.0,
+          "revenue_impact_monthly": 0.0,
+          "roi_estimate": 0.0,
+          "payback_period_months": 0
+        }
+      },
+      "engagement_scoring": {
+        "overall_score": 65,
+        "scoring_factors": {
+          "business_size": 16,
+          "pain_point_severity": 5,
+          "decision_maker_access": 15,
+          "digital_maturity": 10,
+          "financial_health": 12,
+          "competitive_pressure": 2,
+          "chamber_connection": 5
+        },
+        "engagement_tier": "tier_3_medium",
+        "recommended_actions": [
+          "Add to nurture campaign",
+          "Send quarterly value-add content",
+          "Monitor for trigger events"
+        ],
+        "estimated_deal_size": {
+          "min": 13127,
+          "max": 32818,
+          "expected": 21879
+        },
+        "win_probability": 0.37,
+        "sales_cycle_estimate": 60
+      },
+      "data_quality": {
+        "overall_confidence": 0.75,
+        "last_updated": "2025-11-26T17:04:13.925429",
+        "data_sources": [
+          "web_scraping",
+          "api_calls",
+          "public_records",
+          "review_platforms"
+        ],
+        "verified_fields": [
+          "name",
+          "address",
+          "category"
+        ],
+        "estimated_fields": [
+          "revenue",
+          "employee_count"
+        ],
+        "missing_fields": [
+          "funding_data",
+          "detailed_tech_stack"
+        ],
+        "staleness_indicators": {
+          "days_since_update": 0,
+          "freshness_score": 1.0
+        },
+        "validation_status": "partially_validated",
+        "human_reviewed": false,
+        "human_reviewer": null,
+        "review_date": null
+      }
+    },
+    {
+      "uuid": "6e695fb2692a418c2fc1aaf8398214c4",
+      "core_identity": {
+        "name": "Pecans Day Spa",
+        "legal_name": "Pecans Day Spa Inc",
+        "dba_names": [],
+        "business_type": "llc",
+        "industry_codes": {
+          "naics": "722511",
+          "sic": "5812",
+          "custom_category": "spa",
+          "custom_subcategory": "day_spa"
+        },
+        "registration": {
+          "state": "FL",
+          "registration_number": "FL-90611",
+          "ein_hint": "XX-XXX0611",
+          "incorporation_date": "1995-05-20",
+          "status": "active"
+        }
+      },
+      "location_intelligence": {
+        "primary_address": {
+          "street": "2800 Ponce de Leon Blvd",
+          "suite_unit": "",
+          "city": "Coral Gables",
+          "state": "FL",
+          "zip": "33134",
+          "zip4": "1234",
+          "coordinates": {
+            "latitude": 25.762800000000002,
+            "longitude": -80.1907,
+            "precision": 10
+          },
+          "district": "downtown",
+          "neighborhood": "Coral Gables",
+          "building_type": "plaza"
+        },
+        "additional_locations": [],
+        "service_area": {
+          "type": "local",
+          "radius_miles": 10.0,
+          "zip_codes_served": [
+            "33134",
+            "33133",
+            "33146"
+          ],
+          "cities_served": [
+            "Coral Gables",
+            "Miami",
+            "South Miami"
+          ]
+        },
+        "foot_traffic": {
+          "daily_avg": 250,
+          "weekly_avg": 1750,
+          "peak_hours": [
+            "12:00-14:00",
+            "18:00-21:00"
+          ],
+          "seasonality_index": 1.2
+        },
+        "accessibility": {
+          "parking": "lot",
+          "parking_spaces": 25,
+          "public_transit_access": true,
+          "transit_lines": [
+            "Coral Gables Trolley"
+          ],
+          "walkability_score": 85,
+          "ada_compliant": true
+        }
+      },
+      "digital_presence": {
+        "website": {
+          "primary_url": "https://www.pecansdayspa.com",
+          "domain_age": 5,
+          "ssl_enabled": true,
+          "mobile_responsive": true,
+          "page_speed_score": 75,
+          "tech_stack": {
+            "cms": "wordpress",
+            "ecommerce": null,
+            "analytics": [
+              "google_analytics"
+            ],
+            "hosting_provider": "cloudflare",
+            "cdn": "cloudflare"
+          },
+          "seo_metrics": {
+            "domain_authority": 35,
+            "page_authority": 40,
+            "backlinks": 250,
+            "organic_keywords": 150,
+            "monthly_organic_traffic": 2500
+          },
+          "conversion_signals": {
+            "booking_enabled": false,
+            "ecommerce_enabled": false,
+            "lead_capture": true,
+            "chatbot": false
+          }
+        },
+        "social_media": {
+          "facebook": {
+            "handle": "@pecansdayspa",
+            "followers": 2500,
+            "engagement_rate": 0.045,
+            "post_frequency": 4.5,
+            "rating": 4.6,
+            "review_count": 245,
+            "response_rate": 0.85,
+            "response_time": "within hours"
+          },
+          "instagram": {
+            "handle": "@pecansdayspa",
+            "followers": 3200,
+            "engagement_rate": 0.065,
+            "post_frequency": 5.5,
+            "hashtags_used": [
+              "#coralgables",
+              "#miami",
+              "#local"
+            ]
+          },
+          "twitter": {
+            "handle": "@pecansdayspa",
+            "followers": 850,
+            "tweet_frequency": 2.5
+          },
+          "linkedin": {
+            "company_page": "Pecans Day Spa",
+            "followers": 420,
+            "employees_on_platform": 12
+          },
+          "youtube": {
+            "channel": "Pecans Day Spa",
+            "subscribers": 150,
+            "video_count": 25,
+            "total_views": 8500
+          },
+          "tiktok": {
+            "handle": "@pecansdayspa",
+            "followers": 1200,
+            "engagement_rate": 0.12
+          },
+          "social_listening": {
+            "brand_mentions_monthly": 45,
+            "sentiment_score": 0.75,
+            "share_of_voice": 0.12
+          }
+        },
+        "review_aggregation": {
+          "google": {
+            "rating": 4.5,
+            "review_count": 342,
+            "claimed": true,
+            "photos_count": 125,
+            "response_rate": 0.78
+          },
+          "yelp": {
+            "rating": 4.3,
+            "review_count": 189,
+            "claimed": true,
+            "elite_reviews": 23
+          },
+          "tripadvisor": {
+            "rating": 4.0,
+            "review_count": 98,
+            "ranking_in_city": 45
+          },
+          "industry_specific": {
+            "platform": "spafinder"
+          },
+          "aggregate_metrics": {
+            "overall_rating": 4.43,
+            "total_reviews": 629,
+            "review_velocity": 52.4,
+            "sentiment_breakdown": {
+              "positive": 0.75,
+              "neutral": 0.15,
+              "negative": 0.1
+            },
+            "common_praise_topics": [
+              "service",
+              "quality",
+              "atmosphere"
+            ],
+            "common_complaint_topics": [
+              "wait times",
+              "parking"
+            ]
+          }
+        },
+        "advertising_signals": {
+          "google_ads_active": true,
+          "facebook_ads_active": true,
+          "estimated_monthly_ad_spend": {
+            "min": 500,
+            "max": 2000
+          },
+          "ad_platforms": [
+            "google",
+            "facebook",
+            "instagram"
+          ],
+          "retargeting_active": false
+        }
+      },
+      "financial_intelligence": {
+        "revenue_signals": {
+          "estimated_annual_revenue": {
+            "min": 892500,
+            "max": 1657500,
+            "currency": "USD",
+            "confidence": 0.6,
+            "last_updated": "2025-11-26T17:04:13.925475",
+            "methodology": "employee_count_multiplier"
+          },
+          "revenue_growth_rate": {
+            "yoy_percent": 12.5,
+            "trend": "stable"
+          },
+          "revenue_per_employee": 85000,
+          "revenue_per_sqft": 450.0
+        },
+        "employee_intelligence": {
+          "headcount": {
+            "min": 13,
+            "max": 18,
+            "confidence": 0.7
+          },
+          "headcount_growth_rate": 8.5,
+          "turnover_indicators": {
+            "job_postings_frequency": 3,
+            "glassdoor_reviews_mentioning_turnover": 2
+          },
+          "compensation_range": {
+            "hourly_min": 20.0,
+            "hourly_max": 40.0,
+            "salary_min": 40000,
+            "salary_max": 75000
+          },
+          "hiring_signals": {
+            "active_job_postings": 2,
+            "platforms": [
+              "indeed",
+              "linkedin"
+            ],
+            "roles_hiring": [
+              "server",
+              "manager"
+            ]
+          }
+        },
+        "funding_investment": {
+          "funding_rounds": [],
+          "total_funding": 0,
+          "investors": [],
+          "valuation_estimate": 0,
+          "last_funding_date": null
+        },
+        "credit_indicators": {
+          "duns_number": "PE-0611",
+          "credit_score_range": "75-85",
+          "payment_behavior": "good",
+          "liens_judgments": 0,
+          "bankruptcy_history": false
+        },
+        "pricing_intelligence": {
+          "price_point": "$$$$",
+          "avg_transaction_value": 65.0,
+          "price_vs_competitors": "market",
+          "dynamic_pricing": false,
+          "discount_frequency": "seasonal"
+        }
+      },
+      "competitive_intelligence": {
+        "market_position": {
+          "market_share_estimate": 0.12,
+          "ranking_in_category": 8,
+          "total_competitors_in_area": 12,
+          "competitive_intensity": "low"
+        },
+        "direct_competitors": [
+          "competitor_0_direct",
+          "competitor_1_direct",
+          "competitor_2_direct"
+        ],
+        "indirect_competitors": [
+          "competitor_0_indirect",
+          "competitor_1_indirect",
+          "competitor_2_indirect"
+        ],
+        "competitive_advantages": [
+          "Location in high-traffic area",
+          "Established reputation",
+          "Experienced staff"
+        ],
+        "competitive_disadvantages": [
+          "Limited parking",
+          "Older facility"
+        ],
+        "differentiation_factors": {
+          "price": "premium",
+          "quality": "premium",
+          "service": "full_service",
+          "convenience": "high",
+          "innovation": "fast_follower",
+          "brand": "established"
+        },
+        "barriers_to_entry": {
+          "capital_requirements": "medium",
+          "regulatory": "medium",
+          "brand_loyalty": "high",
+          "location": "high"
+        },
+        "threat_analysis": {
+          "new_entrants_risk": "medium",
+          "substitute_products_risk": "low",
+          "supplier_power": "low",
+          "buyer_power": "medium",
+          "competitive_rivalry": "high"
+        }
+      },
+      "operational_intelligence": {
+        "hours_of_operation": {
+          "monday": "11:00-22:00",
+          "tuesday": "11:00-22:00",
+          "wednesday": "11:00-22:00",
+          "thursday": "11:00-22:00",
+          "friday": "11:00-23:00",
+          "saturday": "10:00-23:00",
+          "sunday": "10:00-21:00",
+          "24_7": false,
+          "seasonal_variations": []
+        },
+        "capacity_metrics": {
+          "physical_capacity": {
+            "seats": 8,
+            "treatment_rooms": 0,
+            "workstations": 0,
+            "square_footage": 2500
+          },
+          "utilization_rate": 0.75,
+          "peak_times": [
+            "lunch",
+            "dinner"
+          ],
+          "appointment_required": false,
+          "walk_in_accepted": true,
+          "waitlist_common": true,
+          "avg_wait_time": 15
+        },
+        "service_delivery": {
+          "service_catalog": [],
+          "product_catalog": [],
+          "packages_bundles": [],
+          "membership_programs": [],
+          "loyalty_program": false,
+          "gift_cards": true,
+          "delivery_available": true,
+          "pickup_available": true,
+          "dine_in_available": true
+        },
+        "supply_chain": {
+          "primary_suppliers": [],
+          "supplier_concentration": 0.4,
+          "supply_chain_risk": "low",
+          "inventory_turnover": 12.0,
+          "stockout_frequency": "rare"
+        },
+        "quality_indicators": {
+          "certifications": [],
+          "awards": [],
+          "health_inspection_score": 95,
+          "violations_history": [],
+          "insurance_coverage": [
+            "general_liability",
+            "property"
+          ]
+        }
+      },
+      "customer_intelligence": {
+        "demographics": {
+          "age_ranges": {
+            "18_24": 0.1,
+            "25_34": 0.25,
+            "35_44": 0.3,
+            "45_54": 0.2,
+            "55_64": 0.1,
+            "65_plus": 0.05
+          },
+          "gender_split": {
+            "male": 0.48,
+            "female": 0.5,
+            "other": 0.02
+          },
+          "income_ranges": {
+            "under_50k": 0.1,
+            "50k_100k": 0.3,
+            "100k_150k": 0.35,
+            "150k_plus": 0.25
+          },
+          "education_level": {
+            "high_school": 0.15,
+            "some_college": 0.2,
+            "bachelors": 0.4,
+            "graduate": 0.25
+          },
+          "local_vs_tourist": {
+            "local": 0.7,
+            "tourist": 0.3
+          }
+        },
+        "psychographics": {
+          "lifestyle_segments": [
+            "professionals",
+            "foodies",
+            "health_conscious"
+          ],
+          "values": [
+            "quality",
+            "experience",
+            "sustainability"
+          ],
+          "interests": [
+            "dining",
+            "culture",
+            "wellness"
+          ],
+          "tech_savviness": "high"
+        },
+        "behavior": {
+          "avg_customer_lifetime": 24,
+          "repeat_rate": 0.45,
+          "referral_rate": 0.25,
+          "avg_transaction_frequency": 2.5,
+          "basket_size_avg": 75.0,
+          "preferred_contact_method": "email",
+          "online_vs_offline": {
+            "online_bookings": 0.65,
+            "offline_bookings": 0.35
+          }
+        },
+        "acquisition_channels": {
+          "organic_search": 0.25,
+          "paid_search": 0.15,
+          "social_media": 0.2,
+          "referral": 0.25,
+          "walk_by": 0.1,
+          "partnerships": 0.03,
+          "events": 0.02
+        },
+        "lifetime_value": {
+          "estimated_ltv": 1800.0,
+          "cac": 45.0,
+          "ltv_cac_ratio": 40.0,
+          "payback_period": 2
+        }
+      },
+      "network_relationships": {
+        "ownership_structure": {
+          "parent_company": null,
+          "subsidiaries": [],
+          "franchisee_of": null,
+          "ownership_type": "independent"
+        },
+        "partnerships": {
+          "strategic_partners": [],
+          "vendor_relationships": [],
+          "referral_partners": [],
+          "white_label_providers": []
+        },
+        "associations": {
+          "chamber_membership": {
+            "member": true,
+            "role": "member",
+            "years_member": 5,
+            "involvement_level": "active"
+          },
+          "industry_associations": [],
+          "certifying_bodies": [],
+          "bbb_accredited": true,
+          "bbb_rating": "A+"
+        },
+        "community_involvement": {
+          "sponsorships": [],
+          "charitable_giving": true,
+          "local_partnerships": [],
+          "community_events": []
+        }
+      },
+      "technology_stack": {
+        "pos_system": "Mindbody",
+        "booking_system": "Mindbody",
+        "reservation_platform": "Vagaro",
+        "payment_processors": [
+          "Square"
+        ],
+        "crm_system": "HubSpot",
+        "email_marketing": "Mailchimp",
+        "accounting_software": "QuickBooks",
+        "inventory_management": "MarketMan",
+        "employee_scheduling": "When I Work",
+        "loyalty_platform": null,
+        "review_management": "Birdeye",
+        "social_media_management": "Hootsuite",
+        "website_platform": "WordPress",
+        "ecommerce_platform": null,
+        "analytics_tools": [
+          "Google Analytics",
+          "Hotjar"
+        ],
+        "security_systems": [
+          "Ring",
+          "ADT"
+        ]
+      },
+      "contact_intelligence": {
+        "primary_contact": {
+          "name": "Maria Pecan",
+          "title": "Owner",
+          "email": "maria.pecan@pecansdayspa.com",
+          "phone": "(305) 555-0100",
+          "linkedin": "linkedin.com/in/maria-pecan",
+          "role": "owner"
+        },
+        "decision_makers": [],
+        "departments": {},
+        "contact_preferences": {
+          "best_time": "09:00-11:00",
+          "best_day": [
+            "tuesday",
+            "wednesday",
+            "thursday"
+          ],
+          "preferred_method": "email"
+        },
+        "outreach_history": {
+          "contacts_attempted": 0,
+          "contacts_successful": 0,
+          "meetings_held": 0,
+          "proposals_sent": 0,
+          "last_contact_date": null,
+          "next_followup_date": null
+        }
+      },
+      "pain_points_opportunities": {
+        "identified_pain_points": [],
+        "pain_point_confidence": 0.5,
+        "pain_point_severity": "low",
+        "pain_point_sources": [],
+        "opportunities": [],
+        "co_fit_score": 50.0,
+        "co_fit_solutions": [],
+        "estimated_impact": {
+          "time_savings_hours_month": 0.0,
+          "cost_savings_monthly": 0.0,
+          "revenue_impact_monthly": 0.0,
+          "roi_estimate": 0.0,
+          "payback_period_months": 0
+        }
+      },
+      "engagement_scoring": {
+        "overall_score": 65,
+        "scoring_factors": {
+          "business_size": 16,
+          "pain_point_severity": 5,
+          "decision_maker_access": 15,
+          "digital_maturity": 10,
+          "financial_health": 12,
+          "competitive_pressure": 2,
+          "chamber_connection": 5
+        },
+        "engagement_tier": "tier_3_medium",
+        "recommended_actions": [
+          "Add to nurture campaign",
+          "Send quarterly value-add content",
+          "Monitor for trigger events"
+        ],
+        "estimated_deal_size": {
+          "min": 16408,
+          "max": 41022,
+          "expected": 27348
+        },
+        "win_probability": 0.37,
+        "sales_cycle_estimate": 60
+      },
+      "data_quality": {
+        "overall_confidence": 0.75,
+        "last_updated": "2025-11-26T17:04:13.925510",
+        "data_sources": [
+          "web_scraping",
+          "api_calls",
+          "public_records",
+          "review_platforms"
+        ],
+        "verified_fields": [
+          "name",
+          "address",
+          "category"
+        ],
+        "estimated_fields": [
+          "revenue",
+          "employee_count"
+        ],
+        "missing_fields": [
+          "funding_data",
+          "detailed_tech_stack"
+        ],
+        "staleness_indicators": {
+          "days_since_update": 0,
+          "freshness_score": 1.0
+        },
+        "validation_status": "partially_validated",
+        "human_reviewed": false,
+        "human_reviewer": null,
+        "review_date": null
+      }
+    },
+    {
+      "uuid": "fe6c1556e1d3c9e8c48715b172cf8027",
+      "core_identity": {
+        "name": "Grazianos",
+        "legal_name": "Grazianos Restaurant Corp",
+        "dba_names": [],
+        "business_type": "llc",
+        "industry_codes": {
+          "naics": "722511",
+          "sic": "5812",
+          "custom_category": "restaurant",
+          "custom_subcategory": "argentinian_steakhouse"
+        },
+        "registration": {
+          "state": "FL",
+          "registration_number": "FL-08135",
+          "ein_hint": "XX-XXX8135",
+          "incorporation_date": "1962-03-01",
+          "status": "active"
+        }
+      },
+      "location_intelligence": {
+        "primary_address": {
+          "street": "394 Giralda Ave",
+          "suite_unit": "",
+          "city": "Coral Gables",
+          "state": "FL",
+          "zip": "33134",
+          "zip4": "1234",
+          "coordinates": {
+            "latitude": 25.7652,
+            "longitude": -80.1883,
+            "precision": 10
+          },
+          "district": "downtown",
+          "neighborhood": "Coral Gables",
+          "building_type": "plaza"
+        },
+        "additional_locations": [],
+        "service_area": {
+          "type": "local",
+          "radius_miles": 10.0,
+          "zip_codes_served": [
+            "33134",
+            "33133",
+            "33146"
+          ],
+          "cities_served": [
+            "Coral Gables",
+            "Miami",
+            "South Miami"
+          ]
+        },
+        "foot_traffic": {
+          "daily_avg": 250,
+          "weekly_avg": 1750,
+          "peak_hours": [
+            "12:00-14:00",
+            "18:00-21:00"
+          ],
+          "seasonality_index": 1.2
+        },
+        "accessibility": {
+          "parking": "lot",
+          "parking_spaces": 25,
+          "public_transit_access": true,
+          "transit_lines": [
+            "Coral Gables Trolley"
+          ],
+          "walkability_score": 85,
+          "ada_compliant": true
+        }
+      },
+      "digital_presence": {
+        "website": {
+          "primary_url": "https://www.grazianos.com",
+          "domain_age": 5,
+          "ssl_enabled": true,
+          "mobile_responsive": true,
+          "page_speed_score": 75,
+          "tech_stack": {
+            "cms": "wordpress",
+            "ecommerce": null,
+            "analytics": [
+              "google_analytics"
+            ],
+            "hosting_provider": "cloudflare",
+            "cdn": "cloudflare"
+          },
+          "seo_metrics": {
+            "domain_authority": 35,
+            "page_authority": 40,
+            "backlinks": 250,
+            "organic_keywords": 150,
+            "monthly_organic_traffic": 2500
+          },
+          "conversion_signals": {
+            "booking_enabled": false,
+            "ecommerce_enabled": false,
+            "lead_capture": true,
+            "chatbot": false
+          }
+        },
+        "social_media": {
+          "facebook": {
+            "handle": "@grazianos",
+            "followers": 2500,
+            "engagement_rate": 0.045,
+            "post_frequency": 4.5,
+            "rating": 4.6,
+            "review_count": 245,
+            "response_rate": 0.85,
+            "response_time": "within hours"
+          },
+          "instagram": {
+            "handle": "@grazianos",
+            "followers": 3200,
+            "engagement_rate": 0.065,
+            "post_frequency": 5.5,
+            "hashtags_used": [
+              "#coralgables",
+              "#miami",
+              "#local"
+            ]
+          },
+          "twitter": {
+            "handle": "@grazianos",
+            "followers": 850,
+            "tweet_frequency": 2.5
+          },
+          "linkedin": {
+            "company_page": "Grazianos",
+            "followers": 420,
+            "employees_on_platform": 12
+          },
+          "youtube": {
+            "channel": "Grazianos",
+            "subscribers": 150,
+            "video_count": 25,
+            "total_views": 8500
+          },
+          "tiktok": {
+            "handle": "@grazianos",
+            "followers": 1200,
+            "engagement_rate": 0.12
+          },
+          "social_listening": {
+            "brand_mentions_monthly": 45,
+            "sentiment_score": 0.75,
+            "share_of_voice": 0.12
+          }
+        },
+        "review_aggregation": {
+          "google": {
+            "rating": 4.5,
+            "review_count": 342,
+            "claimed": true,
+            "photos_count": 125,
+            "response_rate": 0.78
+          },
+          "yelp": {
+            "rating": 4.3,
+            "review_count": 189,
+            "claimed": true,
+            "elite_reviews": 23
+          },
+          "tripadvisor": {
+            "rating": 4.0,
+            "review_count": 98,
+            "ranking_in_city": 45
+          },
+          "industry_specific": {
+            "platform": "opentable"
+          },
+          "aggregate_metrics": {
+            "overall_rating": 4.43,
+            "total_reviews": 629,
+            "review_velocity": 52.4,
+            "sentiment_breakdown": {
+              "positive": 0.75,
+              "neutral": 0.15,
+              "negative": 0.1
+            },
+            "common_praise_topics": [
+              "service",
+              "quality",
+              "atmosphere"
+            ],
+            "common_complaint_topics": [
+              "wait times",
+              "parking"
+            ]
+          }
+        },
+        "advertising_signals": {
+          "google_ads_active": true,
+          "facebook_ads_active": true,
+          "estimated_monthly_ad_spend": {
+            "min": 500,
+            "max": 2000
+          },
+          "ad_platforms": [
+            "google",
+            "facebook",
+            "instagram"
+          ],
+          "retargeting_active": false
+        }
+      },
+      "financial_intelligence": {
+        "revenue_signals": {
+          "estimated_annual_revenue": {
+            "min": 1837499,
+            "max": 3412500,
+            "currency": "USD",
+            "confidence": 0.6,
+            "last_updated": "2025-11-26T17:04:13.925567",
+            "methodology": "employee_count_multiplier"
+          },
+          "revenue_growth_rate": {
+            "yoy_percent": 12.5,
+            "trend": "stable"
+          },
+          "revenue_per_employee": 75000,
+          "revenue_per_sqft": 450.0
+        },
+        "employee_intelligence": {
+          "headcount": {
+            "min": 33,
+            "max": 38,
+            "confidence": 0.7
+          },
+          "headcount_growth_rate": 8.5,
+          "turnover_indicators": {
+            "job_postings_frequency": 3,
+            "glassdoor_reviews_mentioning_turnover": 2
+          },
+          "compensation_range": {
+            "hourly_min": 15.0,
+            "hourly_max": 25.0,
+            "salary_min": 35000,
+            "salary_max": 65000
+          },
+          "hiring_signals": {
+            "active_job_postings": 2,
+            "platforms": [
+              "indeed",
+              "linkedin"
+            ],
+            "roles_hiring": [
+              "server",
+              "manager"
+            ]
+          }
+        },
+        "funding_investment": {
+          "funding_rounds": [],
+          "total_funding": 0,
+          "investors": [],
+          "valuation_estimate": 0,
+          "last_funding_date": null
+        },
+        "credit_indicators": {
+          "duns_number": "GR-8135",
+          "credit_score_range": "75-85",
+          "payment_behavior": "good",
+          "liens_judgments": 0,
+          "bankruptcy_history": false
+        },
+        "pricing_intelligence": {
+          "price_point": "$$$$",
+          "avg_transaction_value": 65.0,
+          "price_vs_competitors": "market",
+          "dynamic_pricing": false,
+          "discount_frequency": "seasonal"
+        }
+      },
+      "competitive_intelligence": {
+        "market_position": {
+          "market_share_estimate": 0.12,
+          "ranking_in_category": 8,
+          "total_competitors_in_area": 45,
+          "competitive_intensity": "very_high"
+        },
+        "direct_competitors": [
+          "competitor_0_direct",
+          "competitor_1_direct",
+          "competitor_2_direct"
+        ],
+        "indirect_competitors": [
+          "competitor_0_indirect",
+          "competitor_1_indirect",
+          "competitor_2_indirect"
+        ],
+        "competitive_advantages": [
+          "Location in high-traffic area",
+          "Established reputation",
+          "Experienced staff"
+        ],
+        "competitive_disadvantages": [
+          "Limited parking",
+          "Older facility"
+        ],
+        "differentiation_factors": {
+          "price": "premium",
+          "quality": "premium",
+          "service": "full_service",
+          "convenience": "high",
+          "innovation": "fast_follower",
+          "brand": "established"
+        },
+        "barriers_to_entry": {
+          "capital_requirements": "medium",
+          "regulatory": "medium",
+          "brand_loyalty": "high",
+          "location": "high"
+        },
+        "threat_analysis": {
+          "new_entrants_risk": "medium",
+          "substitute_products_risk": "low",
+          "supplier_power": "low",
+          "buyer_power": "medium",
+          "competitive_rivalry": "high"
+        }
+      },
+      "operational_intelligence": {
+        "hours_of_operation": {
+          "monday": "11:00-22:00",
+          "tuesday": "11:00-22:00",
+          "wednesday": "11:00-22:00",
+          "thursday": "11:00-22:00",
+          "friday": "11:00-23:00",
+          "saturday": "10:00-23:00",
+          "sunday": "10:00-21:00",
+          "24_7": false,
+          "seasonal_variations": []
+        },
+        "capacity_metrics": {
+          "physical_capacity": {
+            "seats": 120,
+            "treatment_rooms": 0,
+            "workstations": 0,
+            "square_footage": 2500
+          },
+          "utilization_rate": 0.75,
+          "peak_times": [
+            "lunch",
+            "dinner"
+          ],
+          "appointment_required": false,
+          "walk_in_accepted": true,
+          "waitlist_common": true,
+          "avg_wait_time": 15
+        },
+        "service_delivery": {
+          "service_catalog": [],
+          "product_catalog": [],
+          "packages_bundles": [],
+          "membership_programs": [],
+          "loyalty_program": false,
+          "gift_cards": true,
+          "delivery_available": true,
+          "pickup_available": true,
+          "dine_in_available": true
+        },
+        "supply_chain": {
+          "primary_suppliers": [],
+          "supplier_concentration": 0.4,
+          "supply_chain_risk": "low",
+          "inventory_turnover": 12.0,
+          "stockout_frequency": "rare"
+        },
+        "quality_indicators": {
+          "certifications": [],
+          "awards": [],
+          "health_inspection_score": 95,
+          "violations_history": [],
+          "insurance_coverage": [
+            "general_liability",
+            "property"
+          ]
+        }
+      },
+      "customer_intelligence": {
+        "demographics": {
+          "age_ranges": {
+            "18_24": 0.1,
+            "25_34": 0.25,
+            "35_44": 0.3,
+            "45_54": 0.2,
+            "55_64": 0.1,
+            "65_plus": 0.05
+          },
+          "gender_split": {
+            "male": 0.48,
+            "female": 0.5,
+            "other": 0.02
+          },
+          "income_ranges": {
+            "under_50k": 0.1,
+            "50k_100k": 0.3,
+            "100k_150k": 0.35,
+            "150k_plus": 0.25
+          },
+          "education_level": {
+            "high_school": 0.15,
+            "some_college": 0.2,
+            "bachelors": 0.4,
+            "graduate": 0.25
+          },
+          "local_vs_tourist": {
+            "local": 0.7,
+            "tourist": 0.3
+          }
+        },
+        "psychographics": {
+          "lifestyle_segments": [
+            "professionals",
+            "foodies",
+            "health_conscious"
+          ],
+          "values": [
+            "quality",
+            "experience",
+            "sustainability"
+          ],
+          "interests": [
+            "dining",
+            "culture",
+            "wellness"
+          ],
+          "tech_savviness": "high"
+        },
+        "behavior": {
+          "avg_customer_lifetime": 24,
+          "repeat_rate": 0.45,
+          "referral_rate": 0.25,
+          "avg_transaction_frequency": 2.5,
+          "basket_size_avg": 75.0,
+          "preferred_contact_method": "email",
+          "online_vs_offline": {
+            "online_bookings": 0.65,
+            "offline_bookings": 0.35
+          }
+        },
+        "acquisition_channels": {
+          "organic_search": 0.25,
+          "paid_search": 0.15,
+          "social_media": 0.2,
+          "referral": 0.25,
+          "walk_by": 0.1,
+          "partnerships": 0.03,
+          "events": 0.02
+        },
+        "lifetime_value": {
+          "estimated_ltv": 1800.0,
+          "cac": 45.0,
+          "ltv_cac_ratio": 40.0,
+          "payback_period": 2
+        }
+      },
+      "network_relationships": {
+        "ownership_structure": {
+          "parent_company": null,
+          "subsidiaries": [],
+          "franchisee_of": null,
+          "ownership_type": "independent"
+        },
+        "partnerships": {
+          "strategic_partners": [],
+          "vendor_relationships": [],
+          "referral_partners": [],
+          "white_label_providers": []
+        },
+        "associations": {
+          "chamber_membership": {
+            "member": true,
+            "role": "member",
+            "years_member": 5,
+            "involvement_level": "active"
+          },
+          "industry_associations": [],
+          "certifying_bodies": [],
+          "bbb_accredited": true,
+          "bbb_rating": "A+"
+        },
+        "community_involvement": {
+          "sponsorships": [],
+          "charitable_giving": true,
+          "local_partnerships": [],
+          "community_events": []
+        }
+      },
+      "technology_stack": {
+        "pos_system": "Toast",
+        "booking_system": "OpenTable",
+        "reservation_platform": "Resy",
+        "payment_processors": [
+          "Square",
+          "Stripe"
+        ],
+        "crm_system": "HubSpot",
+        "email_marketing": "Mailchimp",
+        "accounting_software": "QuickBooks",
+        "inventory_management": "MarketMan",
+        "employee_scheduling": "When I Work",
+        "loyalty_platform": null,
+        "review_management": "Birdeye",
+        "social_media_management": "Hootsuite",
+        "website_platform": "WordPress",
+        "ecommerce_platform": null,
+        "analytics_tools": [
+          "Google Analytics",
+          "Hotjar"
+        ],
+        "security_systems": [
+          "Ring",
+          "ADT"
+        ]
+      },
+      "contact_intelligence": {
+        "primary_contact": {
+          "name": "Graziano Family",
+          "title": "Family Ownership",
+          "email": "graziano.family@grazianos.com",
+          "phone": "(305) 555-0100",
+          "linkedin": "linkedin.com/in/graziano-family",
+          "role": "owner"
+        },
+        "decision_makers": [],
+        "departments": {},
+        "contact_preferences": {
+          "best_time": "09:00-11:00",
+          "best_day": [
+            "tuesday",
+            "wednesday",
+            "thursday"
+          ],
+          "preferred_method": "email"
+        },
+        "outreach_history": {
+          "contacts_attempted": 0,
+          "contacts_successful": 0,
+          "meetings_held": 0,
+          "proposals_sent": 0,
+          "last_contact_date": null,
+          "next_followup_date": null
+        }
+      },
+      "pain_points_opportunities": {
+        "identified_pain_points": [],
+        "pain_point_confidence": 0.5,
+        "pain_point_severity": "low",
+        "pain_point_sources": [],
+        "opportunities": [],
+        "co_fit_score": 50.0,
+        "co_fit_solutions": [],
+        "estimated_impact": {
+          "time_savings_hours_month": 0.0,
+          "cost_savings_monthly": 0.0,
+          "revenue_impact_monthly": 0.0,
+          "roi_estimate": 0.0,
+          "payback_period_months": 0
+        }
+      },
+      "engagement_scoring": {
+        "overall_score": 77,
+        "scoring_factors": {
+          "business_size": 20,
+          "pain_point_severity": 5,
+          "decision_maker_access": 15,
+          "digital_maturity": 10,
+          "financial_health": 12,
+          "competitive_pressure": 10,
+          "chamber_connection": 5
+        },
+        "engagement_tier": "tier_2_high",
+        "recommended_actions": [
+          "Send personalized email outreach",
+          "Schedule discovery call within 14 days",
+          "Prepare case studies from similar businesses"
+        ],
+        "estimated_deal_size": {
+          "min": 36240,
+          "max": 90601,
+          "expected": 60401
+        },
+        "win_probability": 0.4,
+        "sales_cycle_estimate": 45
+      },
+      "data_quality": {
+        "overall_confidence": 0.75,
+        "last_updated": "2025-11-26T17:04:13.925611",
+        "data_sources": [
+          "web_scraping",
+          "api_calls",
+          "public_records",
+          "review_platforms"
+        ],
+        "verified_fields": [
+          "name",
+          "address",
+          "category"
+        ],
+        "estimated_fields": [
+          "revenue",
+          "employee_count"
+        ],
+        "missing_fields": [
+          "funding_data",
+          "detailed_tech_stack"
+        ],
+        "staleness_indicators": {
+          "days_since_update": 0,
+          "freshness_score": 1.0
+        },
+        "validation_status": "partially_validated",
+        "human_reviewed": false,
+        "human_reviewer": null,
+        "review_date": null
+      }
+    },
+    {
+      "uuid": "db76b8f6af63e6541af8a9f201411cd4",
+      "core_identity": {
+        "name": "S Salon & Spa",
+        "legal_name": "S Salon and Spa LLC",
+        "dba_names": [],
+        "business_type": "llc",
+        "industry_codes": {
+          "naics": "722511",
+          "sic": "5812",
+          "custom_category": "salon",
+          "custom_subcategory": "full_service"
+        },
+        "registration": {
+          "state": "FL",
+          "registration_number": "FL-35792",
+          "ein_hint": "XX-XXX5792",
+          "incorporation_date": "2010-09-15",
+          "status": "active"
+        }
+      },
+      "location_intelligence": {
+        "primary_address": {
+          "street": "4100 Salzedo St",
+          "suite_unit": "",
+          "city": "Coral Gables",
+          "state": "FL",
+          "zip": "33134",
+          "zip4": "1234",
+          "coordinates": {
+            "latitude": 25.7709,
+            "longitude": -80.1826,
+            "precision": 10
+          },
+          "district": "downtown",
+          "neighborhood": "Coral Gables",
+          "building_type": "plaza"
+        },
+        "additional_locations": [],
+        "service_area": {
+          "type": "local",
+          "radius_miles": 10.0,
+          "zip_codes_served": [
+            "33134",
+            "33133",
+            "33146"
+          ],
+          "cities_served": [
+            "Coral Gables",
+            "Miami",
+            "South Miami"
+          ]
+        },
+        "foot_traffic": {
+          "daily_avg": 250,
+          "weekly_avg": 1750,
+          "peak_hours": [
+            "12:00-14:00",
+            "18:00-21:00"
+          ],
+          "seasonality_index": 1.2
+        },
+        "accessibility": {
+          "parking": "lot",
+          "parking_spaces": 25,
+          "public_transit_access": true,
+          "transit_lines": [
+            "Coral Gables Trolley"
+          ],
+          "walkability_score": 85,
+          "ada_compliant": true
+        }
+      },
+      "digital_presence": {
+        "website": {
+          "primary_url": "https://www.ssalonspa.com",
+          "domain_age": 5,
+          "ssl_enabled": true,
+          "mobile_responsive": true,
+          "page_speed_score": 75,
+          "tech_stack": {
+            "cms": "wordpress",
+            "ecommerce": null,
+            "analytics": [
+              "google_analytics"
+            ],
+            "hosting_provider": "cloudflare",
+            "cdn": "cloudflare"
+          },
+          "seo_metrics": {
+            "domain_authority": 35,
+            "page_authority": 40,
+            "backlinks": 250,
+            "organic_keywords": 150,
+            "monthly_organic_traffic": 2500
+          },
+          "conversion_signals": {
+            "booking_enabled": false,
+            "ecommerce_enabled": false,
+            "lead_capture": true,
+            "chatbot": false
+          }
+        },
+        "social_media": {
+          "facebook": {
+            "handle": "@ssalon&spa",
+            "followers": 2500,
+            "engagement_rate": 0.045,
+            "post_frequency": 4.5,
+            "rating": 4.6,
+            "review_count": 245,
+            "response_rate": 0.85,
+            "response_time": "within hours"
+          },
+          "instagram": {
+            "handle": "@ssalon&spa",
+            "followers": 3200,
+            "engagement_rate": 0.065,
+            "post_frequency": 5.5,
+            "hashtags_used": [
+              "#coralgables",
+              "#miami",
+              "#local"
+            ]
+          },
+          "twitter": {
+            "handle": "@ssalon&spa",
+            "followers": 850,
+            "tweet_frequency": 2.5
+          },
+          "linkedin": {
+            "company_page": "S Salon & Spa",
+            "followers": 420,
+            "employees_on_platform": 12
+          },
+          "youtube": {
+            "channel": "S Salon & Spa",
+            "subscribers": 150,
+            "video_count": 25,
+            "total_views": 8500
+          },
+          "tiktok": {
+            "handle": "@ssalon&spa",
+            "followers": 1200,
+            "engagement_rate": 0.12
+          },
+          "social_listening": {
+            "brand_mentions_monthly": 45,
+            "sentiment_score": 0.75,
+            "share_of_voice": 0.12
+          }
+        },
+        "review_aggregation": {
+          "google": {
+            "rating": 4.5,
+            "review_count": 342,
+            "claimed": true,
+            "photos_count": 125,
+            "response_rate": 0.78
+          },
+          "yelp": {
+            "rating": 4.3,
+            "review_count": 189,
+            "claimed": true,
+            "elite_reviews": 23
+          },
+          "tripadvisor": {},
+          "industry_specific": {
+            "platform": "vagaro"
+          },
+          "aggregate_metrics": {
+            "overall_rating": 4.43,
+            "total_reviews": 531,
+            "review_velocity": 44.2,
+            "sentiment_breakdown": {
+              "positive": 0.75,
+              "neutral": 0.15,
+              "negative": 0.1
+            },
+            "common_praise_topics": [
+              "service",
+              "quality",
+              "atmosphere"
+            ],
+            "common_complaint_topics": [
+              "wait times",
+              "parking"
+            ]
+          }
+        },
+        "advertising_signals": {
+          "google_ads_active": true,
+          "facebook_ads_active": true,
+          "estimated_monthly_ad_spend": {
+            "min": 500,
+            "max": 2000
+          },
+          "ad_platforms": [
+            "google",
+            "facebook",
+            "instagram"
+          ],
+          "retargeting_active": false
+        }
+      },
+      "financial_intelligence": {
+        "revenue_signals": {
+          "estimated_annual_revenue": {
+            "min": 819000,
+            "max": 1521000,
+            "currency": "USD",
+            "confidence": 0.6,
+            "last_updated": "2025-11-26T17:04:13.925687",
+            "methodology": "employee_count_multiplier"
+          },
+          "revenue_growth_rate": {
+            "yoy_percent": 12.5,
+            "trend": "stable"
+          },
+          "revenue_per_employee": 65000,
+          "revenue_per_sqft": 450.0
+        },
+        "employee_intelligence": {
+          "headcount": {
+            "min": 16,
+            "max": 21,
+            "confidence": 0.7
+          },
+          "headcount_growth_rate": 8.5,
+          "turnover_indicators": {
+            "job_postings_frequency": 3,
+            "glassdoor_reviews_mentioning_turnover": 2
+          },
+          "compensation_range": {
+            "hourly_min": 18.0,
+            "hourly_max": 35.0,
+            "salary_min": 35000,
+            "salary_max": 70000
+          },
+          "hiring_signals": {
+            "active_job_postings": 2,
+            "platforms": [
+              "indeed",
+              "linkedin"
+            ],
+            "roles_hiring": [
+              "server",
+              "manager"
+            ]
+          }
+        },
+        "funding_investment": {
+          "funding_rounds": [],
+          "total_funding": 0,
+          "investors": [],
+          "valuation_estimate": 0,
+          "last_funding_date": null
+        },
+        "credit_indicators": {
+          "duns_number": "S -5792",
+          "credit_score_range": "75-85",
+          "payment_behavior": "good",
+          "liens_judgments": 0,
+          "bankruptcy_history": false
+        },
+        "pricing_intelligence": {
+          "price_point": "$$$$",
+          "avg_transaction_value": 65.0,
+          "price_vs_competitors": "market",
+          "dynamic_pricing": false,
+          "discount_frequency": "seasonal"
+        }
+      },
+      "competitive_intelligence": {
+        "market_position": {
+          "market_share_estimate": 0.12,
+          "ranking_in_category": 8,
+          "total_competitors_in_area": 18,
+          "competitive_intensity": "medium"
+        },
+        "direct_competitors": [
+          "competitor_0_direct",
+          "competitor_1_direct",
+          "competitor_2_direct"
+        ],
+        "indirect_competitors": [
+          "competitor_0_indirect",
+          "competitor_1_indirect",
+          "competitor_2_indirect"
+        ],
+        "competitive_advantages": [
+          "Location in high-traffic area",
+          "Established reputation",
+          "Experienced staff"
+        ],
+        "competitive_disadvantages": [
+          "Limited parking",
+          "Older facility"
+        ],
+        "differentiation_factors": {
+          "price": "premium",
+          "quality": "premium",
+          "service": "full_service",
+          "convenience": "high",
+          "innovation": "fast_follower",
+          "brand": "established"
+        },
+        "barriers_to_entry": {
+          "capital_requirements": "medium",
+          "regulatory": "medium",
+          "brand_loyalty": "high",
+          "location": "high"
+        },
+        "threat_analysis": {
+          "new_entrants_risk": "medium",
+          "substitute_products_risk": "low",
+          "supplier_power": "low",
+          "buyer_power": "medium",
+          "competitive_rivalry": "high"
+        }
+      },
+      "operational_intelligence": {
+        "hours_of_operation": {
+          "monday": "11:00-22:00",
+          "tuesday": "11:00-22:00",
+          "wednesday": "11:00-22:00",
+          "thursday": "11:00-22:00",
+          "friday": "11:00-23:00",
+          "saturday": "10:00-23:00",
+          "sunday": "10:00-21:00",
+          "24_7": false,
+          "seasonal_variations": []
+        },
+        "capacity_metrics": {
+          "physical_capacity": {
+            "seats": 12,
+            "treatment_rooms": 0,
+            "workstations": 0,
+            "square_footage": 2500
+          },
+          "utilization_rate": 0.75,
+          "peak_times": [
+            "lunch",
+            "dinner"
+          ],
+          "appointment_required": false,
+          "walk_in_accepted": true,
+          "waitlist_common": true,
+          "avg_wait_time": 15
+        },
+        "service_delivery": {
+          "service_catalog": [],
+          "product_catalog": [],
+          "packages_bundles": [],
+          "membership_programs": [],
+          "loyalty_program": false,
+          "gift_cards": true,
+          "delivery_available": true,
+          "pickup_available": true,
+          "dine_in_available": true
+        },
+        "supply_chain": {
+          "primary_suppliers": [],
+          "supplier_concentration": 0.4,
+          "supply_chain_risk": "low",
+          "inventory_turnover": 12.0,
+          "stockout_frequency": "rare"
+        },
+        "quality_indicators": {
+          "certifications": [],
+          "awards": [],
+          "health_inspection_score": 95,
+          "violations_history": [],
+          "insurance_coverage": [
+            "general_liability",
+            "property"
+          ]
+        }
+      },
+      "customer_intelligence": {
+        "demographics": {
+          "age_ranges": {
+            "18_24": 0.1,
+            "25_34": 0.25,
+            "35_44": 0.3,
+            "45_54": 0.2,
+            "55_64": 0.1,
+            "65_plus": 0.05
+          },
+          "gender_split": {
+            "male": 0.48,
+            "female": 0.5,
+            "other": 0.02
+          },
+          "income_ranges": {
+            "under_50k": 0.1,
+            "50k_100k": 0.3,
+            "100k_150k": 0.35,
+            "150k_plus": 0.25
+          },
+          "education_level": {
+            "high_school": 0.15,
+            "some_college": 0.2,
+            "bachelors": 0.4,
+            "graduate": 0.25
+          },
+          "local_vs_tourist": {
+            "local": 0.7,
+            "tourist": 0.3
+          }
+        },
+        "psychographics": {
+          "lifestyle_segments": [
+            "professionals",
+            "foodies",
+            "health_conscious"
+          ],
+          "values": [
+            "quality",
+            "experience",
+            "sustainability"
+          ],
+          "interests": [
+            "dining",
+            "culture",
+            "wellness"
+          ],
+          "tech_savviness": "high"
+        },
+        "behavior": {
+          "avg_customer_lifetime": 24,
+          "repeat_rate": 0.45,
+          "referral_rate": 0.25,
+          "avg_transaction_frequency": 2.5,
+          "basket_size_avg": 75.0,
+          "preferred_contact_method": "email",
+          "online_vs_offline": {
+            "online_bookings": 0.65,
+            "offline_bookings": 0.35
+          }
+        },
+        "acquisition_channels": {
+          "organic_search": 0.25,
+          "paid_search": 0.15,
+          "social_media": 0.2,
+          "referral": 0.25,
+          "walk_by": 0.1,
+          "partnerships": 0.03,
+          "events": 0.02
+        },
+        "lifetime_value": {
+          "estimated_ltv": 1800.0,
+          "cac": 45.0,
+          "ltv_cac_ratio": 40.0,
+          "payback_period": 2
+        }
+      },
+      "network_relationships": {
+        "ownership_structure": {
+          "parent_company": null,
+          "subsidiaries": [],
+          "franchisee_of": null,
+          "ownership_type": "independent"
+        },
+        "partnerships": {
+          "strategic_partners": [],
+          "vendor_relationships": [],
+          "referral_partners": [],
+          "white_label_providers": []
+        },
+        "associations": {
+          "chamber_membership": {
+            "member": true,
+            "role": "member",
+            "years_member": 5,
+            "involvement_level": "active"
+          },
+          "industry_associations": [],
+          "certifying_bodies": [],
+          "bbb_accredited": true,
+          "bbb_rating": "A+"
+        },
+        "community_involvement": {
+          "sponsorships": [],
+          "charitable_giving": true,
+          "local_partnerships": [],
+          "community_events": []
+        }
+      },
+      "technology_stack": {
+        "pos_system": "Toast",
+        "booking_system": "OpenTable",
+        "reservation_platform": "Resy",
+        "payment_processors": [
+          "Square",
+          "Stripe"
+        ],
+        "crm_system": "HubSpot",
+        "email_marketing": "Mailchimp",
+        "accounting_software": "QuickBooks",
+        "inventory_management": "MarketMan",
+        "employee_scheduling": "When I Work",
+        "loyalty_platform": null,
+        "review_management": "Birdeye",
+        "social_media_management": "Hootsuite",
+        "website_platform": "WordPress",
+        "ecommerce_platform": null,
+        "analytics_tools": [
+          "Google Analytics",
+          "Hotjar"
+        ],
+        "security_systems": [
+          "Ring",
+          "ADT"
+        ]
+      },
+      "contact_intelligence": {
+        "primary_contact": {
+          "name": "JC & Esther",
+          "title": "Co-Owners",
+          "email": "jc.&.esther@ssalon&spa.com",
+          "phone": "(305) 555-0100",
+          "linkedin": "linkedin.com/in/jc-&-esther",
+          "role": "owner"
+        },
+        "decision_makers": [],
+        "departments": {},
+        "contact_preferences": {
+          "best_time": "09:00-11:00",
+          "best_day": [
+            "tuesday",
+            "wednesday",
+            "thursday"
+          ],
+          "preferred_method": "email"
+        },
+        "outreach_history": {
+          "contacts_attempted": 0,
+          "contacts_successful": 0,
+          "meetings_held": 0,
+          "proposals_sent": 0,
+          "last_contact_date": null,
+          "next_followup_date": null
+        }
+      },
+      "pain_points_opportunities": {
+        "identified_pain_points": [],
+        "pain_point_confidence": 0.5,
+        "pain_point_severity": "low",
+        "pain_point_sources": [],
+        "opportunities": [],
+        "co_fit_score": 50.0,
+        "co_fit_solutions": [],
+        "estimated_impact": {
+          "time_savings_hours_month": 0.0,
+          "cost_savings_monthly": 0.0,
+          "revenue_impact_monthly": 0.0,
+          "roi_estimate": 0.0,
+          "payback_period_months": 0
+        }
+      },
+      "engagement_scoring": {
+        "overall_score": 68,
+        "scoring_factors": {
+          "business_size": 16,
+          "pain_point_severity": 5,
+          "decision_maker_access": 15,
+          "digital_maturity": 10,
+          "financial_health": 12,
+          "competitive_pressure": 5,
+          "chamber_connection": 5
+        },
+        "engagement_tier": "tier_3_medium",
+        "recommended_actions": [
+          "Add to nurture campaign",
+          "Send quarterly value-add content",
+          "Monitor for trigger events"
+        ],
+        "estimated_deal_size": {
+          "min": 15331,
+          "max": 38328,
+          "expected": 25552
+        },
+        "win_probability": 0.38,
+        "sales_cycle_estimate": 60
+      },
+      "data_quality": {
+        "overall_confidence": 0.75,
+        "last_updated": "2025-11-26T17:04:13.925756",
+        "data_sources": [
+          "web_scraping",
+          "api_calls",
+          "public_records",
+          "review_platforms"
+        ],
+        "verified_fields": [
+          "name",
+          "address",
+          "category"
+        ],
+        "estimated_fields": [
+          "revenue",
+          "employee_count"
+        ],
+        "missing_fields": [
+          "funding_data",
+          "detailed_tech_stack"
+        ],
+        "staleness_indicators": {
+          "days_since_update": 0,
+          "freshness_score": 1.0
+        },
+        "validation_status": "partially_validated",
+        "human_reviewed": false,
+        "human_reviewer": null,
+        "review_date": null
+      }
+    },
+    {
+      "uuid": "b90ad8c4728a6e91d0bcf426577ba161",
+      "core_identity": {
+        "name": "Barakat Law, P.A.",
+        "legal_name": "Barakat Law Professional Association",
+        "dba_names": [],
+        "business_type": "llc",
+        "industry_codes": {
+          "naics": "722511",
+          "sic": "5812",
+          "custom_category": "professional_services",
+          "custom_subcategory": "business_litigation"
+        },
+        "registration": {
+          "state": "FL",
+          "registration_number": "FL-59968",
+          "ein_hint": "XX-XXX9968",
+          "incorporation_date": "2005-01-10",
+          "status": "active"
+        }
+      },
+      "location_intelligence": {
+        "primary_address": {
+          "street": "2222 Ponce de Leon Blvd Suite 300",
+          "suite_unit": "",
+          "city": "Coral Gables",
+          "state": "FL",
+          "zip": "33134",
+          "zip4": "1234",
+          "coordinates": {
+            "latitude": 25.7685,
+            "longitude": -80.185,
+            "precision": 10
+          },
+          "district": "downtown",
+          "neighborhood": "Coral Gables",
+          "building_type": "plaza"
+        },
+        "additional_locations": [],
+        "service_area": {
+          "type": "local",
+          "radius_miles": 10.0,
+          "zip_codes_served": [
+            "33134",
+            "33133",
+            "33146"
+          ],
+          "cities_served": [
+            "Coral Gables",
+            "Miami",
+            "South Miami"
+          ]
+        },
+        "foot_traffic": {
+          "daily_avg": 250,
+          "weekly_avg": 1750,
+          "peak_hours": [
+            "12:00-14:00",
+            "18:00-21:00"
+          ],
+          "seasonality_index": 1.2
+        },
+        "accessibility": {
+          "parking": "lot",
+          "parking_spaces": 25,
+          "public_transit_access": true,
+          "transit_lines": [
+            "Coral Gables Trolley"
+          ],
+          "walkability_score": 85,
+          "ada_compliant": true
+        }
+      },
+      "digital_presence": {
+        "website": {
+          "primary_url": "https://www.barakatlaw.com",
+          "domain_age": 5,
+          "ssl_enabled": true,
+          "mobile_responsive": true,
+          "page_speed_score": 75,
+          "tech_stack": {
+            "cms": "wordpress",
+            "ecommerce": null,
+            "analytics": [
+              "google_analytics"
+            ],
+            "hosting_provider": "cloudflare",
+            "cdn": "cloudflare"
+          },
+          "seo_metrics": {
+            "domain_authority": 35,
+            "page_authority": 40,
+            "backlinks": 250,
+            "organic_keywords": 150,
+            "monthly_organic_traffic": 2500
+          },
+          "conversion_signals": {
+            "booking_enabled": false,
+            "ecommerce_enabled": false,
+            "lead_capture": true,
+            "chatbot": false
+          }
+        },
+        "social_media": {
+          "facebook": {
+            "handle": "@barakatlaw,p.a.",
+            "followers": 2500,
+            "engagement_rate": 0.045,
+            "post_frequency": 4.5,
+            "rating": 4.6,
+            "review_count": 245,
+            "response_rate": 0.85,
+            "response_time": "within hours"
+          },
+          "instagram": {
+            "handle": "@barakatlaw,p.a.",
+            "followers": 3200,
+            "engagement_rate": 0.065,
+            "post_frequency": 5.5,
+            "hashtags_used": [
+              "#coralgables",
+              "#miami",
+              "#local"
+            ]
+          },
+          "twitter": {
+            "handle": "@barakatlaw,p.a.",
+            "followers": 850,
+            "tweet_frequency": 2.5
+          },
+          "linkedin": {
+            "company_page": "Barakat Law, P.A.",
+            "followers": 420,
+            "employees_on_platform": 12
+          },
+          "youtube": {
+            "channel": "Barakat Law, P.A.",
+            "subscribers": 150,
+            "video_count": 25,
+            "total_views": 8500
+          },
+          "tiktok": {
+            "handle": "@barakatlaw,p.a.",
+            "followers": 1200,
+            "engagement_rate": 0.12
+          },
+          "social_listening": {
+            "brand_mentions_monthly": 45,
+            "sentiment_score": 0.75,
+            "share_of_voice": 0.12
+          }
+        },
+        "review_aggregation": {
+          "google": {
+            "rating": 4.5,
+            "review_count": 342,
+            "claimed": true,
+            "photos_count": 125,
+            "response_rate": 0.78
+          },
+          "yelp": {
+            "rating": 4.3,
+            "review_count": 189,
+            "claimed": true,
+            "elite_reviews": 23
+          },
+          "tripadvisor": {},
+          "industry_specific": {
+            "platform": "none"
+          },
+          "aggregate_metrics": {
+            "overall_rating": 4.43,
+            "total_reviews": 531,
+            "review_velocity": 44.2,
+            "sentiment_breakdown": {
+              "positive": 0.75,
+              "neutral": 0.15,
+              "negative": 0.1
+            },
+            "common_praise_topics": [
+              "service",
+              "quality",
+              "atmosphere"
+            ],
+            "common_complaint_topics": [
+              "wait times",
+              "parking"
+            ]
+          }
+        },
+        "advertising_signals": {
+          "google_ads_active": true,
+          "facebook_ads_active": true,
+          "estimated_monthly_ad_spend": {
+            "min": 500,
+            "max": 2000
+          },
+          "ad_platforms": [
+            "google",
+            "facebook",
+            "instagram"
+          ],
+          "retargeting_active": false
+        }
+      },
+      "financial_intelligence": {
+        "revenue_signals": {
+          "estimated_annual_revenue": {
+            "min": 1260000,
+            "max": 2340000,
+            "currency": "USD",
+            "confidence": 0.6,
+            "last_updated": "2025-11-26T17:04:13.925823",
+            "methodology": "employee_count_multiplier"
+          },
+          "revenue_growth_rate": {
+            "yoy_percent": 12.5,
+            "trend": "stable"
+          },
+          "revenue_per_employee": 150000,
+          "revenue_per_sqft": 450.0
+        },
+        "employee_intelligence": {
+          "headcount": {
+            "min": 10,
+            "max": 15,
+            "confidence": 0.7
+          },
+          "headcount_growth_rate": 8.5,
+          "turnover_indicators": {
+            "job_postings_frequency": 3,
+            "glassdoor_reviews_mentioning_turnover": 2
+          },
+          "compensation_range": {
+            "hourly_min": 30.0,
+            "hourly_max": 150.0,
+            "salary_min": 60000,
+            "salary_max": 200000
+          },
+          "hiring_signals": {
+            "active_job_postings": 2,
+            "platforms": [
+              "indeed",
+              "linkedin"
+            ],
+            "roles_hiring": [
+              "server",
+              "manager"
+            ]
+          }
+        },
+        "funding_investment": {
+          "funding_rounds": [],
+          "total_funding": 0,
+          "investors": [],
+          "valuation_estimate": 0,
+          "last_funding_date": null
+        },
+        "credit_indicators": {
+          "duns_number": "BA-9968",
+          "credit_score_range": "75-85",
+          "payment_behavior": "good",
+          "liens_judgments": 0,
+          "bankruptcy_history": false
+        },
+        "pricing_intelligence": {
+          "price_point": "$$$$",
+          "avg_transaction_value": 65.0,
+          "price_vs_competitors": "market",
+          "dynamic_pricing": false,
+          "discount_frequency": "seasonal"
+        }
+      },
+      "competitive_intelligence": {
+        "market_position": {
+          "market_share_estimate": 0.12,
+          "ranking_in_category": 8,
+          "total_competitors_in_area": 35,
+          "competitive_intensity": "high"
+        },
+        "direct_competitors": [
+          "competitor_0_direct",
+          "competitor_1_direct",
+          "competitor_2_direct"
+        ],
+        "indirect_competitors": [
+          "competitor_0_indirect",
+          "competitor_1_indirect",
+          "competitor_2_indirect"
+        ],
+        "competitive_advantages": [
+          "Location in high-traffic area",
+          "Established reputation",
+          "Experienced staff"
+        ],
+        "competitive_disadvantages": [
+          "Limited parking",
+          "Older facility"
+        ],
+        "differentiation_factors": {
+          "price": "premium",
+          "quality": "premium",
+          "service": "full_service",
+          "convenience": "high",
+          "innovation": "fast_follower",
+          "brand": "established"
+        },
+        "barriers_to_entry": {
+          "capital_requirements": "medium",
+          "regulatory": "medium",
+          "brand_loyalty": "high",
+          "location": "high"
+        },
+        "threat_analysis": {
+          "new_entrants_risk": "medium",
+          "substitute_products_risk": "low",
+          "supplier_power": "low",
+          "buyer_power": "medium",
+          "competitive_rivalry": "high"
+        }
+      },
+      "operational_intelligence": {
+        "hours_of_operation": {
+          "monday": "11:00-22:00",
+          "tuesday": "11:00-22:00",
+          "wednesday": "11:00-22:00",
+          "thursday": "11:00-22:00",
+          "friday": "11:00-23:00",
+          "saturday": "10:00-23:00",
+          "sunday": "10:00-21:00",
+          "24_7": false,
+          "seasonal_variations": []
+        },
+        "capacity_metrics": {
+          "physical_capacity": {
+            "seats": 0,
+            "treatment_rooms": 0,
+            "workstations": 0,
+            "square_footage": 2500
+          },
+          "utilization_rate": 0.75,
+          "peak_times": [
+            "lunch",
+            "dinner"
+          ],
+          "appointment_required": false,
+          "walk_in_accepted": true,
+          "waitlist_common": true,
+          "avg_wait_time": 15
+        },
+        "service_delivery": {
+          "service_catalog": [],
+          "product_catalog": [],
+          "packages_bundles": [],
+          "membership_programs": [],
+          "loyalty_program": false,
+          "gift_cards": true,
+          "delivery_available": true,
+          "pickup_available": true,
+          "dine_in_available": true
+        },
+        "supply_chain": {
+          "primary_suppliers": [],
+          "supplier_concentration": 0.4,
+          "supply_chain_risk": "low",
+          "inventory_turnover": 12.0,
+          "stockout_frequency": "rare"
+        },
+        "quality_indicators": {
+          "certifications": [],
+          "awards": [],
+          "health_inspection_score": 95,
+          "violations_history": [],
+          "insurance_coverage": [
+            "general_liability",
+            "property"
+          ]
+        }
+      },
+      "customer_intelligence": {
+        "demographics": {
+          "age_ranges": {
+            "18_24": 0.1,
+            "25_34": 0.25,
+            "35_44": 0.3,
+            "45_54": 0.2,
+            "55_64": 0.1,
+            "65_plus": 0.05
+          },
+          "gender_split": {
+            "male": 0.48,
+            "female": 0.5,
+            "other": 0.02
+          },
+          "income_ranges": {
+            "under_50k": 0.1,
+            "50k_100k": 0.3,
+            "100k_150k": 0.35,
+            "150k_plus": 0.25
+          },
+          "education_level": {
+            "high_school": 0.15,
+            "some_college": 0.2,
+            "bachelors": 0.4,
+            "graduate": 0.25
+          },
+          "local_vs_tourist": {
+            "local": 0.7,
+            "tourist": 0.3
+          }
+        },
+        "psychographics": {
+          "lifestyle_segments": [
+            "professionals",
+            "foodies",
+            "health_conscious"
+          ],
+          "values": [
+            "quality",
+            "experience",
+            "sustainability"
+          ],
+          "interests": [
+            "dining",
+            "culture",
+            "wellness"
+          ],
+          "tech_savviness": "high"
+        },
+        "behavior": {
+          "avg_customer_lifetime": 24,
+          "repeat_rate": 0.45,
+          "referral_rate": 0.25,
+          "avg_transaction_frequency": 2.5,
+          "basket_size_avg": 75.0,
+          "preferred_contact_method": "email",
+          "online_vs_offline": {
+            "online_bookings": 0.65,
+            "offline_bookings": 0.35
+          }
+        },
+        "acquisition_channels": {
+          "organic_search": 0.25,
+          "paid_search": 0.15,
+          "social_media": 0.2,
+          "referral": 0.25,
+          "walk_by": 0.1,
+          "partnerships": 0.03,
+          "events": 0.02
+        },
+        "lifetime_value": {
+          "estimated_ltv": 1800.0,
+          "cac": 45.0,
+          "ltv_cac_ratio": 40.0,
+          "payback_period": 2
+        }
+      },
+      "network_relationships": {
+        "ownership_structure": {
+          "parent_company": null,
+          "subsidiaries": [],
+          "franchisee_of": null,
+          "ownership_type": "independent"
+        },
+        "partnerships": {
+          "strategic_partners": [],
+          "vendor_relationships": [],
+          "referral_partners": [],
+          "white_label_providers": []
+        },
+        "associations": {
+          "chamber_membership": {
+            "member": true,
+            "role": "chair",
+            "years_member": 5,
+            "involvement_level": "active"
+          },
+          "industry_associations": [],
+          "certifying_bodies": [],
+          "bbb_accredited": true,
+          "bbb_rating": "A+"
+        },
+        "community_involvement": {
+          "sponsorships": [],
+          "charitable_giving": true,
+          "local_partnerships": [],
+          "community_events": []
+        }
+      },
+      "technology_stack": {
+        "pos_system": "Toast",
+        "booking_system": "OpenTable",
+        "reservation_platform": "Resy",
+        "payment_processors": [
+          "Square",
+          "Stripe"
+        ],
+        "crm_system": "HubSpot",
+        "email_marketing": "Mailchimp",
+        "accounting_software": "QuickBooks",
+        "inventory_management": "MarketMan",
+        "employee_scheduling": "When I Work",
+        "loyalty_platform": null,
+        "review_management": "Birdeye",
+        "social_media_management": "Hootsuite",
+        "website_platform": "WordPress",
+        "ecommerce_platform": null,
+        "analytics_tools": [
+          "Google Analytics",
+          "Hotjar"
+        ],
+        "security_systems": [
+          "Ring",
+          "ADT"
+        ]
+      },
+      "contact_intelligence": {
+        "primary_contact": {
+          "name": "Attorney Barakat",
+          "title": "Managing Partner",
+          "email": "attorney.barakat@barakatlaw,p.a..com",
+          "phone": "(305) 555-0100",
+          "linkedin": "linkedin.com/in/attorney-barakat",
+          "role": "owner"
+        },
+        "decision_makers": [],
+        "departments": {},
+        "contact_preferences": {
+          "best_time": "09:00-11:00",
+          "best_day": [
+            "tuesday",
+            "wednesday",
+            "thursday"
+          ],
+          "preferred_method": "email"
+        },
+        "outreach_history": {
+          "contacts_attempted": 0,
+          "contacts_successful": 0,
+          "meetings_held": 0,
+          "proposals_sent": 0,
+          "last_contact_date": null,
+          "next_followup_date": null
+        }
+      },
+      "pain_points_opportunities": {
+        "identified_pain_points": [],
+        "pain_point_confidence": 0.5,
+        "pain_point_severity": "low",
+        "pain_point_sources": [],
+        "opportunities": [],
+        "co_fit_score": 50.0,
+        "co_fit_solutions": [],
+        "estimated_impact": {
+          "time_savings_hours_month": 0.0,
+          "cost_savings_monthly": 0.0,
+          "revenue_impact_monthly": 0.0,
+          "roi_estimate": 0.0,
+          "payback_period_months": 0
+        }
+      },
+      "engagement_scoring": {
+        "overall_score": 80,
+        "scoring_factors": {
+          "business_size": 20,
+          "pain_point_severity": 5,
+          "decision_maker_access": 15,
+          "digital_maturity": 10,
+          "financial_health": 12,
+          "competitive_pressure": 8,
+          "chamber_connection": 10
+        },
+        "engagement_tier": "tier_2_high",
+        "recommended_actions": [
+          "Send personalized email outreach",
+          "Schedule discovery call within 14 days",
+          "Prepare case studies from similar businesses"
+        ],
+        "estimated_deal_size": {
+          "min": 25272,
+          "max": 63180,
+          "expected": 42120
+        },
+        "win_probability": 0.41,
+        "sales_cycle_estimate": 45
+      },
+      "data_quality": {
+        "overall_confidence": 0.75,
+        "last_updated": "2025-11-26T17:04:13.925860",
+        "data_sources": [
+          "web_scraping",
+          "api_calls",
+          "public_records",
+          "review_platforms"
+        ],
+        "verified_fields": [
+          "name",
+          "address",
+          "category"
+        ],
+        "estimated_fields": [
+          "revenue",
+          "employee_count"
+        ],
+        "missing_fields": [
+          "funding_data",
+          "detailed_tech_stack"
+        ],
+        "staleness_indicators": {
+          "days_since_update": 0,
+          "freshness_score": 1.0
+        },
+        "validation_status": "partially_validated",
+        "human_reviewed": false,
+        "human_reviewer": null,
+        "review_date": null
+      }
+    },
+    {
+      "uuid": "9dc57116e67c8f991a77ad6db4079741",
+      "core_identity": {
+        "name": "EWM Realty International",
+        "legal_name": "EWM Realty International Corp",
+        "dba_names": [],
+        "business_type": "llc",
+        "industry_codes": {
+          "naics": "722511",
+          "sic": "5812",
+          "custom_category": "professional_services",
+          "custom_subcategory": "luxury_real_estate"
+        },
+        "registration": {
+          "state": "FL",
+          "registration_number": "FL-63679",
+          "ein_hint": "XX-XXX3679",
+          "incorporation_date": "1966-06-01",
+          "status": "active"
+        }
+      },
+      "location_intelligence": {
+        "primary_address": {
+          "street": "255 Alhambra Circle",
+          "suite_unit": "",
+          "city": "Coral Gables",
+          "state": "FL",
+          "zip": "33134",
+          "zip4": "1234",
+          "coordinates": {
+            "latitude": 25.7696,
+            "longitude": -80.1839,
+            "precision": 10
+          },
+          "district": "alhambra_circle",
+          "neighborhood": "Coral Gables",
+          "building_type": "plaza"
+        },
+        "additional_locations": [],
+        "service_area": {
+          "type": "local",
+          "radius_miles": 10.0,
+          "zip_codes_served": [
+            "33134",
+            "33133",
+            "33146"
+          ],
+          "cities_served": [
+            "Coral Gables",
+            "Miami",
+            "South Miami"
+          ]
+        },
+        "foot_traffic": {
+          "daily_avg": 250,
+          "weekly_avg": 1750,
+          "peak_hours": [
+            "12:00-14:00",
+            "18:00-21:00"
+          ],
+          "seasonality_index": 1.2
+        },
+        "accessibility": {
+          "parking": "lot",
+          "parking_spaces": 25,
+          "public_transit_access": true,
+          "transit_lines": [
+            "Coral Gables Trolley"
+          ],
+          "walkability_score": 85,
+          "ada_compliant": true
+        }
+      },
+      "digital_presence": {
+        "website": {
+          "primary_url": "https://www.ewm.com",
+          "domain_age": 5,
+          "ssl_enabled": true,
+          "mobile_responsive": true,
+          "page_speed_score": 75,
+          "tech_stack": {
+            "cms": "wordpress",
+            "ecommerce": null,
+            "analytics": [
+              "google_analytics"
+            ],
+            "hosting_provider": "cloudflare",
+            "cdn": "cloudflare"
+          },
+          "seo_metrics": {
+            "domain_authority": 35,
+            "page_authority": 40,
+            "backlinks": 250,
+            "organic_keywords": 150,
+            "monthly_organic_traffic": 2500
+          },
+          "conversion_signals": {
+            "booking_enabled": false,
+            "ecommerce_enabled": false,
+            "lead_capture": true,
+            "chatbot": false
+          }
+        },
+        "social_media": {
+          "facebook": {
+            "handle": "@ewmrealtyinternational",
+            "followers": 2500,
+            "engagement_rate": 0.045,
+            "post_frequency": 4.5,
+            "rating": 4.6,
+            "review_count": 245,
+            "response_rate": 0.85,
+            "response_time": "within hours"
+          },
+          "instagram": {
+            "handle": "@ewmrealtyinternational",
+            "followers": 3200,
+            "engagement_rate": 0.065,
+            "post_frequency": 5.5,
+            "hashtags_used": [
+              "#coralgables",
+              "#miami",
+              "#local"
+            ]
+          },
+          "twitter": {
+            "handle": "@ewmrealtyinternational",
+            "followers": 850,
+            "tweet_frequency": 2.5
+          },
+          "linkedin": {
+            "company_page": "EWM Realty International",
+            "followers": 420,
+            "employees_on_platform": 12
+          },
+          "youtube": {
+            "channel": "EWM Realty International",
+            "subscribers": 150,
+            "video_count": 25,
+            "total_views": 8500
+          },
+          "tiktok": {
+            "handle": "@ewmrealtyinternational",
+            "followers": 1200,
+            "engagement_rate": 0.12
+          },
+          "social_listening": {
+            "brand_mentions_monthly": 45,
+            "sentiment_score": 0.75,
+            "share_of_voice": 0.12
+          }
+        },
+        "review_aggregation": {
+          "google": {
+            "rating": 4.5,
+            "review_count": 342,
+            "claimed": true,
+            "photos_count": 125,
+            "response_rate": 0.78
+          },
+          "yelp": {
+            "rating": 4.3,
+            "review_count": 189,
+            "claimed": true,
+            "elite_reviews": 23
+          },
+          "tripadvisor": {},
+          "industry_specific": {
+            "platform": "none"
+          },
+          "aggregate_metrics": {
+            "overall_rating": 4.43,
+            "total_reviews": 531,
+            "review_velocity": 44.2,
+            "sentiment_breakdown": {
+              "positive": 0.75,
+              "neutral": 0.15,
+              "negative": 0.1
+            },
+            "common_praise_topics": [
+              "service",
+              "quality",
+              "atmosphere"
+            ],
+            "common_complaint_topics": [
+              "wait times",
+              "parking"
+            ]
+          }
+        },
+        "advertising_signals": {
+          "google_ads_active": true,
+          "facebook_ads_active": true,
+          "estimated_monthly_ad_spend": {
+            "min": 500,
+            "max": 2000
+          },
+          "ad_platforms": [
+            "google",
+            "facebook",
+            "instagram"
+          ],
+          "retargeting_active": false
+        }
+      },
+      "financial_intelligence": {
+        "revenue_signals": {
+          "estimated_annual_revenue": {
+            "min": 8925000,
+            "max": 16575000,
+            "currency": "USD",
+            "confidence": 0.6,
+            "last_updated": "2025-11-26T17:04:13.925925",
+            "methodology": "employee_count_multiplier"
+          },
+          "revenue_growth_rate": {
+            "yoy_percent": 12.5,
+            "trend": "stable"
+          },
+          "revenue_per_employee": 150000,
+          "revenue_per_sqft": 450.0
+        },
+        "employee_intelligence": {
+          "headcount": {
+            "min": 83,
+            "max": 88,
+            "confidence": 0.7
+          },
+          "headcount_growth_rate": 8.5,
+          "turnover_indicators": {
+            "job_postings_frequency": 3,
+            "glassdoor_reviews_mentioning_turnover": 2
+          },
+          "compensation_range": {
+            "hourly_min": 30.0,
+            "hourly_max": 150.0,
+            "salary_min": 60000,
+            "salary_max": 200000
+          },
+          "hiring_signals": {
+            "active_job_postings": 2,
+            "platforms": [
+              "indeed",
+              "linkedin"
+            ],
+            "roles_hiring": [
+              "server",
+              "manager"
+            ]
+          }
+        },
+        "funding_investment": {
+          "funding_rounds": [],
+          "total_funding": 0,
+          "investors": [],
+          "valuation_estimate": 0,
+          "last_funding_date": null
+        },
+        "credit_indicators": {
+          "duns_number": "EW-3679",
+          "credit_score_range": "75-85",
+          "payment_behavior": "good",
+          "liens_judgments": 0,
+          "bankruptcy_history": false
+        },
+        "pricing_intelligence": {
+          "price_point": "$$$$",
+          "avg_transaction_value": 65.0,
+          "price_vs_competitors": "market",
+          "dynamic_pricing": false,
+          "discount_frequency": "seasonal"
+        }
+      },
+      "competitive_intelligence": {
+        "market_position": {
+          "market_share_estimate": 0.12,
+          "ranking_in_category": 8,
+          "total_competitors_in_area": 35,
+          "competitive_intensity": "high"
+        },
+        "direct_competitors": [
+          "competitor_0_direct",
+          "competitor_1_direct",
+          "competitor_2_direct"
+        ],
+        "indirect_competitors": [
+          "competitor_0_indirect",
+          "competitor_1_indirect",
+          "competitor_2_indirect"
+        ],
+        "competitive_advantages": [
+          "Location in high-traffic area",
+          "Established reputation",
+          "Experienced staff"
+        ],
+        "competitive_disadvantages": [
+          "Limited parking",
+          "Older facility"
+        ],
+        "differentiation_factors": {
+          "price": "premium",
+          "quality": "premium",
+          "service": "full_service",
+          "convenience": "high",
+          "innovation": "fast_follower",
+          "brand": "established"
+        },
+        "barriers_to_entry": {
+          "capital_requirements": "medium",
+          "regulatory": "medium",
+          "brand_loyalty": "high",
+          "location": "high"
+        },
+        "threat_analysis": {
+          "new_entrants_risk": "medium",
+          "substitute_products_risk": "low",
+          "supplier_power": "low",
+          "buyer_power": "medium",
+          "competitive_rivalry": "high"
+        }
+      },
+      "operational_intelligence": {
+        "hours_of_operation": {
+          "monday": "11:00-22:00",
+          "tuesday": "11:00-22:00",
+          "wednesday": "11:00-22:00",
+          "thursday": "11:00-22:00",
+          "friday": "11:00-23:00",
+          "saturday": "10:00-23:00",
+          "sunday": "10:00-21:00",
+          "24_7": false,
+          "seasonal_variations": []
+        },
+        "capacity_metrics": {
+          "physical_capacity": {
+            "seats": 0,
+            "treatment_rooms": 0,
+            "workstations": 0,
+            "square_footage": 2500
+          },
+          "utilization_rate": 0.75,
+          "peak_times": [
+            "lunch",
+            "dinner"
+          ],
+          "appointment_required": false,
+          "walk_in_accepted": true,
+          "waitlist_common": true,
+          "avg_wait_time": 15
+        },
+        "service_delivery": {
+          "service_catalog": [],
+          "product_catalog": [],
+          "packages_bundles": [],
+          "membership_programs": [],
+          "loyalty_program": false,
+          "gift_cards": true,
+          "delivery_available": true,
+          "pickup_available": true,
+          "dine_in_available": true
+        },
+        "supply_chain": {
+          "primary_suppliers": [],
+          "supplier_concentration": 0.4,
+          "supply_chain_risk": "low",
+          "inventory_turnover": 12.0,
+          "stockout_frequency": "rare"
+        },
+        "quality_indicators": {
+          "certifications": [],
+          "awards": [],
+          "health_inspection_score": 95,
+          "violations_history": [],
+          "insurance_coverage": [
+            "general_liability",
+            "property"
+          ]
+        }
+      },
+      "customer_intelligence": {
+        "demographics": {
+          "age_ranges": {
+            "18_24": 0.1,
+            "25_34": 0.25,
+            "35_44": 0.3,
+            "45_54": 0.2,
+            "55_64": 0.1,
+            "65_plus": 0.05
+          },
+          "gender_split": {
+            "male": 0.48,
+            "female": 0.5,
+            "other": 0.02
+          },
+          "income_ranges": {
+            "under_50k": 0.1,
+            "50k_100k": 0.3,
+            "100k_150k": 0.35,
+            "150k_plus": 0.25
+          },
+          "education_level": {
+            "high_school": 0.15,
+            "some_college": 0.2,
+            "bachelors": 0.4,
+            "graduate": 0.25
+          },
+          "local_vs_tourist": {
+            "local": 0.7,
+            "tourist": 0.3
+          }
+        },
+        "psychographics": {
+          "lifestyle_segments": [
+            "professionals",
+            "foodies",
+            "health_conscious"
+          ],
+          "values": [
+            "quality",
+            "experience",
+            "sustainability"
+          ],
+          "interests": [
+            "dining",
+            "culture",
+            "wellness"
+          ],
+          "tech_savviness": "high"
+        },
+        "behavior": {
+          "avg_customer_lifetime": 24,
+          "repeat_rate": 0.45,
+          "referral_rate": 0.25,
+          "avg_transaction_frequency": 2.5,
+          "basket_size_avg": 75.0,
+          "preferred_contact_method": "email",
+          "online_vs_offline": {
+            "online_bookings": 0.65,
+            "offline_bookings": 0.35
+          }
+        },
+        "acquisition_channels": {
+          "organic_search": 0.25,
+          "paid_search": 0.15,
+          "social_media": 0.2,
+          "referral": 0.25,
+          "walk_by": 0.1,
+          "partnerships": 0.03,
+          "events": 0.02
+        },
+        "lifetime_value": {
+          "estimated_ltv": 1800.0,
+          "cac": 45.0,
+          "ltv_cac_ratio": 40.0,
+          "payback_period": 2
+        }
+      },
+      "network_relationships": {
+        "ownership_structure": {
+          "parent_company": null,
+          "subsidiaries": [],
+          "franchisee_of": null,
+          "ownership_type": "independent"
+        },
+        "partnerships": {
+          "strategic_partners": [],
+          "vendor_relationships": [],
+          "referral_partners": [],
+          "white_label_providers": []
+        },
+        "associations": {
+          "chamber_membership": {
+            "member": true,
+            "role": "board",
+            "years_member": 5,
+            "involvement_level": "active"
+          },
+          "industry_associations": [],
+          "certifying_bodies": [],
+          "bbb_accredited": true,
+          "bbb_rating": "A+"
+        },
+        "community_involvement": {
+          "sponsorships": [],
+          "charitable_giving": true,
+          "local_partnerships": [],
+          "community_events": []
+        }
+      },
+      "technology_stack": {
+        "pos_system": "Toast",
+        "booking_system": "OpenTable",
+        "reservation_platform": "Resy",
+        "payment_processors": [
+          "Square",
+          "Stripe"
+        ],
+        "crm_system": "HubSpot",
+        "email_marketing": "Mailchimp",
+        "accounting_software": "QuickBooks",
+        "inventory_management": "MarketMan",
+        "employee_scheduling": "When I Work",
+        "loyalty_platform": null,
+        "review_management": "Birdeye",
+        "social_media_management": "Hootsuite",
+        "website_platform": "WordPress",
+        "ecommerce_platform": null,
+        "analytics_tools": [
+          "Google Analytics",
+          "Hotjar"
+        ],
+        "security_systems": [
+          "Ring",
+          "ADT"
+        ]
+      },
+      "contact_intelligence": {
+        "primary_contact": {
+          "name": "Ron Shuffield",
+          "title": "President/CEO",
+          "email": "ron.shuffield@ewmrealtyinternational.com",
+          "phone": "(305) 555-0100",
+          "linkedin": "linkedin.com/in/ron-shuffield",
+          "role": "owner"
+        },
+        "decision_makers": [],
+        "departments": {},
+        "contact_preferences": {
+          "best_time": "09:00-11:00",
+          "best_day": [
+            "tuesday",
+            "wednesday",
+            "thursday"
+          ],
+          "preferred_method": "email"
+        },
+        "outreach_history": {
+          "contacts_attempted": 0,
+          "contacts_successful": 0,
+          "meetings_held": 0,
+          "proposals_sent": 0,
+          "last_contact_date": null,
+          "next_followup_date": null
+        }
+      },
+      "pain_points_opportunities": {
+        "identified_pain_points": [],
+        "pain_point_confidence": 0.5,
+        "pain_point_severity": "low",
+        "pain_point_sources": [],
+        "opportunities": [],
+        "co_fit_score": 50.0,
+        "co_fit_solutions": [],
+        "estimated_impact": {
+          "time_savings_hours_month": 0.0,
+          "cost_savings_monthly": 0.0,
+          "revenue_impact_monthly": 0.0,
+          "roi_estimate": 0.0,
+          "payback_period_months": 0
+        }
+      },
+      "engagement_scoring": {
+        "overall_score": 78,
+        "scoring_factors": {
+          "business_size": 20,
+          "pain_point_severity": 5,
+          "decision_maker_access": 15,
+          "digital_maturity": 10,
+          "financial_health": 12,
+          "competitive_pressure": 8,
+          "chamber_connection": 8
+        },
+        "engagement_tier": "tier_2_high",
+        "recommended_actions": [
+          "Send personalized email outreach",
+          "Schedule discovery call within 14 days",
+          "Prepare case studies from similar businesses"
+        ],
+        "estimated_deal_size": {
+          "min": 177021,
+          "max": 442552,
+          "expected": 295035
+        },
+        "win_probability": 0.4,
+        "sales_cycle_estimate": 45
+      },
+      "data_quality": {
+        "overall_confidence": 0.75,
+        "last_updated": "2025-11-26T17:04:13.925966",
+        "data_sources": [
+          "web_scraping",
+          "api_calls",
+          "public_records",
+          "review_platforms"
+        ],
+        "verified_fields": [
+          "name",
+          "address",
+          "category"
+        ],
+        "estimated_fields": [
+          "revenue",
+          "employee_count"
+        ],
+        "missing_fields": [
+          "funding_data",
+          "detailed_tech_stack"
+        ],
+        "staleness_indicators": {
+          "days_since_update": 0,
+          "freshness_score": 1.0
+        },
+        "validation_status": "partially_validated",
+        "human_reviewed": false,
+        "human_reviewer": null,
+        "review_date": null
+      }
+    },
+    {
+      "uuid": "fee530398a77b9d720a0787b3b45e71c",
+      "core_identity": {
+        "name": "Books & Books",
+        "legal_name": "Books and Books Inc",
+        "dba_names": [],
+        "business_type": "llc",
+        "industry_codes": {
+          "naics": "722511",
+          "sic": "5812",
+          "custom_category": "retail",
+          "custom_subcategory": "bookstore_cafe"
+        },
+        "registration": {
+          "state": "FL",
+          "registration_number": "FL-65764",
+          "ein_hint": "XX-XXX5764",
+          "incorporation_date": "1982-11-15",
+          "status": "active"
+        }
+      },
+      "location_intelligence": {
+        "primary_address": {
+          "street": "265 Aragon Ave",
+          "suite_unit": "",
+          "city": "Coral Gables",
+          "state": "FL",
+          "zip": "33134",
+          "zip4": "1234",
+          "coordinates": {
+            "latitude": 25.7681,
+            "longitude": -80.1854,
+            "precision": 10
+          },
+          "district": "downtown",
+          "neighborhood": "Coral Gables",
+          "building_type": "plaza"
+        },
+        "additional_locations": [],
+        "service_area": {
+          "type": "local",
+          "radius_miles": 10.0,
+          "zip_codes_served": [
+            "33134",
+            "33133",
+            "33146"
+          ],
+          "cities_served": [
+            "Coral Gables",
+            "Miami",
+            "South Miami"
+          ]
+        },
+        "foot_traffic": {
+          "daily_avg": 250,
+          "weekly_avg": 1750,
+          "peak_hours": [
+            "12:00-14:00",
+            "18:00-21:00"
+          ],
+          "seasonality_index": 1.2
+        },
+        "accessibility": {
+          "parking": "lot",
+          "parking_spaces": 25,
+          "public_transit_access": true,
+          "transit_lines": [
+            "Coral Gables Trolley"
+          ],
+          "walkability_score": 85,
+          "ada_compliant": true
+        }
+      },
+      "digital_presence": {
+        "website": {
+          "primary_url": "https://www.booksandbooks.com",
+          "domain_age": 5,
+          "ssl_enabled": true,
+          "mobile_responsive": true,
+          "page_speed_score": 75,
+          "tech_stack": {
+            "cms": "wordpress",
+            "ecommerce": null,
+            "analytics": [
+              "google_analytics"
+            ],
+            "hosting_provider": "cloudflare",
+            "cdn": "cloudflare"
+          },
+          "seo_metrics": {
+            "domain_authority": 35,
+            "page_authority": 40,
+            "backlinks": 250,
+            "organic_keywords": 150,
+            "monthly_organic_traffic": 2500
+          },
+          "conversion_signals": {
+            "booking_enabled": false,
+            "ecommerce_enabled": false,
+            "lead_capture": true,
+            "chatbot": false
+          }
+        },
+        "social_media": {
+          "facebook": {
+            "handle": "@books&books",
+            "followers": 2500,
+            "engagement_rate": 0.045,
+            "post_frequency": 4.5,
+            "rating": 4.6,
+            "review_count": 245,
+            "response_rate": 0.85,
+            "response_time": "within hours"
+          },
+          "instagram": {
+            "handle": "@books&books",
+            "followers": 3200,
+            "engagement_rate": 0.065,
+            "post_frequency": 5.5,
+            "hashtags_used": [
+              "#coralgables",
+              "#miami",
+              "#local"
+            ]
+          },
+          "twitter": {
+            "handle": "@books&books",
+            "followers": 850,
+            "tweet_frequency": 2.5
+          },
+          "linkedin": {
+            "company_page": "Books & Books",
+            "followers": 420,
+            "employees_on_platform": 12
+          },
+          "youtube": {
+            "channel": "Books & Books",
+            "subscribers": 150,
+            "video_count": 25,
+            "total_views": 8500
+          },
+          "tiktok": {
+            "handle": "@books&books",
+            "followers": 1200,
+            "engagement_rate": 0.12
+          },
+          "social_listening": {
+            "brand_mentions_monthly": 45,
+            "sentiment_score": 0.75,
+            "share_of_voice": 0.12
+          }
+        },
+        "review_aggregation": {
+          "google": {
+            "rating": 4.5,
+            "review_count": 342,
+            "claimed": true,
+            "photos_count": 125,
+            "response_rate": 0.78
+          },
+          "yelp": {
+            "rating": 4.3,
+            "review_count": 189,
+            "claimed": true,
+            "elite_reviews": 23
+          },
+          "tripadvisor": {},
+          "industry_specific": {
+            "platform": "none"
+          },
+          "aggregate_metrics": {
+            "overall_rating": 4.43,
+            "total_reviews": 531,
+            "review_velocity": 44.2,
+            "sentiment_breakdown": {
+              "positive": 0.75,
+              "neutral": 0.15,
+              "negative": 0.1
+            },
+            "common_praise_topics": [
+              "service",
+              "quality",
+              "atmosphere"
+            ],
+            "common_complaint_topics": [
+              "wait times",
+              "parking"
+            ]
+          }
+        },
+        "advertising_signals": {
+          "google_ads_active": true,
+          "facebook_ads_active": true,
+          "estimated_monthly_ad_spend": {
+            "min": 500,
+            "max": 2000
+          },
+          "ad_platforms": [
+            "google",
+            "facebook",
+            "instagram"
+          ],
+          "retargeting_active": false
+        }
+      },
+      "financial_intelligence": {
+        "revenue_signals": {
+          "estimated_annual_revenue": {
+            "min": 3528000,
+            "max": 6552000,
+            "currency": "USD",
+            "confidence": 0.6,
+            "last_updated": "2025-11-26T17:04:13.926015",
+            "methodology": "employee_count_multiplier"
+          },
+          "revenue_growth_rate": {
+            "yoy_percent": 12.5,
+            "trend": "stable"
+          },
+          "revenue_per_employee": 180000,
+          "revenue_per_sqft": 450.0
+        },
+        "employee_intelligence": {
+          "headcount": {
+            "min": 26,
+            "max": 31,
+            "confidence": 0.7
+          },
+          "headcount_growth_rate": 8.5,
+          "turnover_indicators": {
+            "job_postings_frequency": 3,
+            "glassdoor_reviews_mentioning_turnover": 2
+          },
+          "compensation_range": {
+            "hourly_min": 15.0,
+            "hourly_max": 30.0,
+            "salary_min": 30000,
+            "salary_max": 60000
+          },
+          "hiring_signals": {
+            "active_job_postings": 2,
+            "platforms": [
+              "indeed",
+              "linkedin"
+            ],
+            "roles_hiring": [
+              "server",
+              "manager"
+            ]
+          }
+        },
+        "funding_investment": {
+          "funding_rounds": [],
+          "total_funding": 0,
+          "investors": [],
+          "valuation_estimate": 0,
+          "last_funding_date": null
+        },
+        "credit_indicators": {
+          "duns_number": "BO-5764",
+          "credit_score_range": "75-85",
+          "payment_behavior": "good",
+          "liens_judgments": 0,
+          "bankruptcy_history": false
+        },
+        "pricing_intelligence": {
+          "price_point": "$$$$",
+          "avg_transaction_value": 65.0,
+          "price_vs_competitors": "market",
+          "dynamic_pricing": false,
+          "discount_frequency": "seasonal"
+        }
+      },
+      "competitive_intelligence": {
+        "market_position": {
+          "market_share_estimate": 0.12,
+          "ranking_in_category": 8,
+          "total_competitors_in_area": 25,
+          "competitive_intensity": "medium"
+        },
+        "direct_competitors": [
+          "competitor_0_direct",
+          "competitor_1_direct",
+          "competitor_2_direct"
+        ],
+        "indirect_competitors": [
+          "competitor_0_indirect",
+          "competitor_1_indirect",
+          "competitor_2_indirect"
+        ],
+        "competitive_advantages": [
+          "Location in high-traffic area",
+          "Established reputation",
+          "Experienced staff"
+        ],
+        "competitive_disadvantages": [
+          "Limited parking",
+          "Older facility"
+        ],
+        "differentiation_factors": {
+          "price": "premium",
+          "quality": "premium",
+          "service": "full_service",
+          "convenience": "high",
+          "innovation": "fast_follower",
+          "brand": "established"
+        },
+        "barriers_to_entry": {
+          "capital_requirements": "medium",
+          "regulatory": "medium",
+          "brand_loyalty": "high",
+          "location": "high"
+        },
+        "threat_analysis": {
+          "new_entrants_risk": "medium",
+          "substitute_products_risk": "low",
+          "supplier_power": "low",
+          "buyer_power": "medium",
+          "competitive_rivalry": "high"
+        }
+      },
+      "operational_intelligence": {
+        "hours_of_operation": {
+          "monday": "11:00-22:00",
+          "tuesday": "11:00-22:00",
+          "wednesday": "11:00-22:00",
+          "thursday": "11:00-22:00",
+          "friday": "11:00-23:00",
+          "saturday": "10:00-23:00",
+          "sunday": "10:00-21:00",
+          "24_7": false,
+          "seasonal_variations": []
+        },
+        "capacity_metrics": {
+          "physical_capacity": {
+            "seats": 100,
+            "treatment_rooms": 0,
+            "workstations": 0,
+            "square_footage": 2500
+          },
+          "utilization_rate": 0.75,
+          "peak_times": [
+            "lunch",
+            "dinner"
+          ],
+          "appointment_required": false,
+          "walk_in_accepted": true,
+          "waitlist_common": true,
+          "avg_wait_time": 15
+        },
+        "service_delivery": {
+          "service_catalog": [],
+          "product_catalog": [],
+          "packages_bundles": [],
+          "membership_programs": [],
+          "loyalty_program": false,
+          "gift_cards": true,
+          "delivery_available": true,
+          "pickup_available": true,
+          "dine_in_available": true
+        },
+        "supply_chain": {
+          "primary_suppliers": [],
+          "supplier_concentration": 0.4,
+          "supply_chain_risk": "low",
+          "inventory_turnover": 12.0,
+          "stockout_frequency": "rare"
+        },
+        "quality_indicators": {
+          "certifications": [],
+          "awards": [],
+          "health_inspection_score": 95,
+          "violations_history": [],
+          "insurance_coverage": [
+            "general_liability",
+            "property"
+          ]
+        }
+      },
+      "customer_intelligence": {
+        "demographics": {
+          "age_ranges": {
+            "18_24": 0.1,
+            "25_34": 0.25,
+            "35_44": 0.3,
+            "45_54": 0.2,
+            "55_64": 0.1,
+            "65_plus": 0.05
+          },
+          "gender_split": {
+            "male": 0.48,
+            "female": 0.5,
+            "other": 0.02
+          },
+          "income_ranges": {
+            "under_50k": 0.1,
+            "50k_100k": 0.3,
+            "100k_150k": 0.35,
+            "150k_plus": 0.25
+          },
+          "education_level": {
+            "high_school": 0.15,
+            "some_college": 0.2,
+            "bachelors": 0.4,
+            "graduate": 0.25
+          },
+          "local_vs_tourist": {
+            "local": 0.7,
+            "tourist": 0.3
+          }
+        },
+        "psychographics": {
+          "lifestyle_segments": [
+            "professionals",
+            "foodies",
+            "health_conscious"
+          ],
+          "values": [
+            "quality",
+            "experience",
+            "sustainability"
+          ],
+          "interests": [
+            "dining",
+            "culture",
+            "wellness"
+          ],
+          "tech_savviness": "high"
+        },
+        "behavior": {
+          "avg_customer_lifetime": 24,
+          "repeat_rate": 0.45,
+          "referral_rate": 0.25,
+          "avg_transaction_frequency": 2.5,
+          "basket_size_avg": 75.0,
+          "preferred_contact_method": "email",
+          "online_vs_offline": {
+            "online_bookings": 0.65,
+            "offline_bookings": 0.35
+          }
+        },
+        "acquisition_channels": {
+          "organic_search": 0.25,
+          "paid_search": 0.15,
+          "social_media": 0.2,
+          "referral": 0.25,
+          "walk_by": 0.1,
+          "partnerships": 0.03,
+          "events": 0.02
+        },
+        "lifetime_value": {
+          "estimated_ltv": 1800.0,
+          "cac": 45.0,
+          "ltv_cac_ratio": 40.0,
+          "payback_period": 2
+        }
+      },
+      "network_relationships": {
+        "ownership_structure": {
+          "parent_company": null,
+          "subsidiaries": [],
+          "franchisee_of": null,
+          "ownership_type": "independent"
+        },
+        "partnerships": {
+          "strategic_partners": [],
+          "vendor_relationships": [],
+          "referral_partners": [],
+          "white_label_providers": []
+        },
+        "associations": {
+          "chamber_membership": {
+            "member": true,
+            "role": "member",
+            "years_member": 5,
+            "involvement_level": "active"
+          },
+          "industry_associations": [],
+          "certifying_bodies": [],
+          "bbb_accredited": true,
+          "bbb_rating": "A+"
+        },
+        "community_involvement": {
+          "sponsorships": [],
+          "charitable_giving": true,
+          "local_partnerships": [],
+          "community_events": []
+        }
+      },
+      "technology_stack": {
+        "pos_system": "Toast",
+        "booking_system": "OpenTable",
+        "reservation_platform": "Resy",
+        "payment_processors": [
+          "Square",
+          "Stripe"
+        ],
+        "crm_system": "HubSpot",
+        "email_marketing": "Mailchimp",
+        "accounting_software": "QuickBooks",
+        "inventory_management": "MarketMan",
+        "employee_scheduling": "When I Work",
+        "loyalty_platform": null,
+        "review_management": "Birdeye",
+        "social_media_management": "Hootsuite",
+        "website_platform": "WordPress",
+        "ecommerce_platform": null,
+        "analytics_tools": [
+          "Google Analytics",
+          "Hotjar"
+        ],
+        "security_systems": [
+          "Ring",
+          "ADT"
+        ]
+      },
+      "contact_intelligence": {
+        "primary_contact": {
+          "name": "Mitchell Kaplan",
+          "title": "Owner/Founder",
+          "email": "mitchell.kaplan@books&books.com",
+          "phone": "(305) 555-0100",
+          "linkedin": "linkedin.com/in/mitchell-kaplan",
+          "role": "owner"
+        },
+        "decision_makers": [],
+        "departments": {},
+        "contact_preferences": {
+          "best_time": "09:00-11:00",
+          "best_day": [
+            "tuesday",
+            "wednesday",
+            "thursday"
+          ],
+          "preferred_method": "email"
+        },
+        "outreach_history": {
+          "contacts_attempted": 0,
+          "contacts_successful": 0,
+          "meetings_held": 0,
+          "proposals_sent": 0,
+          "last_contact_date": null,
+          "next_followup_date": null
+        }
+      },
+      "pain_points_opportunities": {
+        "identified_pain_points": [],
+        "pain_point_confidence": 0.5,
+        "pain_point_severity": "low",
+        "pain_point_sources": [],
+        "opportunities": [],
+        "co_fit_score": 50.0,
+        "co_fit_solutions": [],
+        "estimated_impact": {
+          "time_savings_hours_month": 0.0,
+          "cost_savings_monthly": 0.0,
+          "revenue_impact_monthly": 0.0,
+          "roi_estimate": 0.0,
+          "payback_period_months": 0
+        }
+      },
+      "engagement_scoring": {
+        "overall_score": 72,
+        "scoring_factors": {
+          "business_size": 20,
+          "pain_point_severity": 5,
+          "decision_maker_access": 15,
+          "digital_maturity": 10,
+          "financial_health": 12,
+          "competitive_pressure": 5,
+          "chamber_connection": 5
+        },
+        "engagement_tier": "tier_2_high",
+        "recommended_actions": [
+          "Send personalized email outreach",
+          "Schedule discovery call within 14 days",
+          "Prepare case studies from similar businesses"
+        ],
+        "estimated_deal_size": {
+          "min": 67616,
+          "max": 169041,
+          "expected": 112694
+        },
+        "win_probability": 0.39,
+        "sales_cycle_estimate": 45
+      },
+      "data_quality": {
+        "overall_confidence": 0.75,
+        "last_updated": "2025-11-26T17:04:13.926048",
+        "data_sources": [
+          "web_scraping",
+          "api_calls",
+          "public_records",
+          "review_platforms"
+        ],
+        "verified_fields": [
+          "name",
+          "address",
+          "category"
+        ],
+        "estimated_fields": [
+          "revenue",
+          "employee_count"
+        ],
+        "missing_fields": [
+          "funding_data",
+          "detailed_tech_stack"
+        ],
+        "staleness_indicators": {
+          "days_since_update": 0,
+          "freshness_score": 1.0
+        },
+        "validation_status": "partially_validated",
+        "human_reviewed": false,
+        "human_reviewer": null,
+        "review_date": null
+      }
+    }
+  ]
+}
