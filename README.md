@@ -210,5 +210,5 @@ Districts: Giralda Plaza, Miracle Mile, Merrick Park, Alhambra Circle
 
 ---
 
-**Client**: Counderscore, LLC
+**Owner**: Counderscore, LLC
 **Location**: Coral Gables, FL
