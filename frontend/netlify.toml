@@ -4,7 +4,7 @@
 
 [[redirects]]
   from = "/api/*"
-  to = ":VITE_API_URL/api/:splat"
+  to = "https://terminal-production-27a0.up.railway.app/api/:splat"
   status = 200
   force = true
 
