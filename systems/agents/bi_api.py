@@ -1,6 +1,9 @@
 """
 Business Intelligence API & Analytics Layer
 FastAPI application for serving business intelligence data
+
+Supports both PostgreSQL (production) and JSON (fallback) data sources.
+Set DATABASE_URL environment variable to use PostgreSQL.
 """
 
 import os
@@ -13,78 +16,29 @@ from datetime import datetime
 from enum import Enum
 from collections import Counter
 
+# Import repository layer for data access
+from db_repository import get_repository, BusinessRepository
+
 # ============================================================================
-# DATA LOADER
+# DATA LAYER - Uses Repository Pattern
 # ============================================================================
 
-def load_database():
-    """Load business data from JSON file"""
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+# Initialize repository (auto-detects PostgreSQL vs JSON)
+repository = get_repository()
 
-    # Primary locations to check (local data/ first for Railway deployment)
-    data_locations = [
-        os.path.join(script_dir, "data", "coral_gables_bi_database_v2.json"),
-        os.path.join(script_dir, "..", "data", "coral_gables_bi_database_v2.json"),
-    ]
+# Legacy compatibility - these functions provide backwards compatibility
+def get_businesses_list() -> List[Dict[str, Any]]:
+    """Get list of all businesses"""
+    return repository.get_all_businesses()
 
-    # Fallback locations
-    fallback_locations = [
-        os.path.join(script_dir, "data", "coral_gables_top_100_businesses_pkp.json"),
-        os.path.join(script_dir, "..", "data", "coral_gables_top_100_businesses_pkp.json"),
-    ]
+def get_businesses_dict() -> Dict[str, Dict[str, Any]]:
+    """Get businesses as dict keyed by business_id"""
+    businesses = repository.get_all_businesses()
+    return {
+        b.get('business_id', b.get('name', '')): b
+        for b in businesses
+    }
 
-    # Try primary locations first
-    for data_path in data_locations:
-        try:
-            with open(data_path, 'r') as f:
-                print(f"Loaded database from: {data_path}")
-                return json.load(f)
-        except FileNotFoundError:
-            continue
-
-    # Try fallback locations
-    for fallback_path in fallback_locations:
-        try:
-            with open(fallback_path, 'r') as f:
-                print(f"Loaded fallback database from: {fallback_path}")
-                return json.load(f)
-        except FileNotFoundError:
-            continue
-
-    # If all locations fail, raise an error with helpful message
-    raise FileNotFoundError(
-        f"Could not find database files. Searched: {data_locations + fallback_locations}"
-    )
-
-# Data storage with refresh capability
-class DataStore:
-    """Singleton data store with refresh capability"""
-    def __init__(self):
-        self.database = {}
-        self.businesses = {}
-        self.businesses_list = []
-        self.last_refresh = None
-        self.refresh()
-
-    def refresh(self):
-        """Reload data from source"""
-        self.database = load_database()
-        self.businesses = {
-            b.get('business_id', b.get('name', '')): b
-            for b in self.database.get('businesses', [])
-        }
-        self.businesses_list = self.database.get('businesses', [])
-        self.last_refresh = datetime.now().isoformat()
-        print(f"Data refreshed at {self.last_refresh}: {len(self.businesses_list)} businesses loaded")
-        return len(self.businesses_list)
-
-# Initialize data store
-data_store = DataStore()
-
-# Legacy compatibility - these reference the data store
-DATABASE = data_store.database
-BUSINESSES = data_store.businesses
-BUSINESSES_LIST = data_store.businesses_list
 
 # ============================================================================
 # PYDANTIC MODELS (API CONTRACTS)
@@ -204,7 +158,7 @@ async def list_businesses(
     offset: int = Query(0, ge=0)
 ):
     """List businesses with filtering and pagination"""
-    results = BUSINESSES_LIST.copy()
+    results = get_businesses_list().copy()
 
     # Apply filters
     if category:
@@ -236,18 +190,8 @@ async def list_businesses(
 @app.get("/api/v2/businesses/{business_id}")
 async def get_business(business_id: str):
     """Get detailed information for a single business"""
-    # Try exact match first
-    business = BUSINESSES.get(business_id)
-
-    # Try name match
-    if not business:
-        for b in BUSINESSES_LIST:
-            if b.get('name', '').lower() == business_id.lower():
-                business = b
-                break
-            if b.get('business_id', '') == business_id:
-                business = b
-                break
+    # Use repository to find business
+    business = repository.get_business_by_id(business_id)
 
     if not business:
         raise HTTPException(status_code=404, detail="Business not found")
@@ -287,7 +231,7 @@ async def search_businesses(
     q_lower = q.lower()
     results = []
 
-    for b in BUSINESSES_LIST:
+    for b in get_businesses_list():
         # Search in name
         if q_lower in b.get('name', '').lower():
             results.append(b)
@@ -326,7 +270,7 @@ async def search_pain_points(
     q_lower = q.lower()
     results = []
 
-    for b in BUSINESSES_LIST:
+    for b in get_businesses_list():
         if category and b.get('category', '').lower() != category.lower():
             continue
 
@@ -353,7 +297,7 @@ async def search_pain_points(
 @app.get("/api/v2/analytics/market", response_model=MarketAnalytics)
 async def get_market_analytics():
     """Get overall market analytics"""
-    businesses = BUSINESSES_LIST
+    businesses = get_businesses_list()
 
     # Count by category
     by_category = Counter(b.get('category', 'unknown') for b in businesses)
@@ -383,7 +327,7 @@ async def get_market_analytics():
 @app.get("/api/v2/analytics/categories/{category}", response_model=CategoryInsights)
 async def get_category_insights(category: str):
     """Get detailed insights for a specific category"""
-    businesses = [b for b in BUSINESSES_LIST if b.get('category', '').lower() == category.lower()]
+    businesses = [b for b in get_businesses_list() if b.get('category', '').lower() == category.lower()]
 
     if not businesses:
         raise HTTPException(status_code=404, detail="Category not found")
@@ -426,7 +370,7 @@ async def get_geographic_analysis():
     """Get geographic distribution and clustering analysis"""
     districts = {}
 
-    for b in BUSINESSES_LIST:
+    for b in get_businesses_list():
         district = b.get('district', 'unknown')
         if district not in districts:
             districts[district] = {
@@ -464,7 +408,7 @@ async def get_prioritized_opportunities(
     """Get prioritized opportunities across all businesses"""
     results = []
 
-    for b in BUSINESSES_LIST:
+    for b in get_businesses_list():
         b_tier = b.get('priority_tier', get_tier_from_score(b.get('engagement_score', 0)))
         if tier and b_tier != tier:
             continue
@@ -493,7 +437,7 @@ async def get_engagement_recommendations(
     """Get AI-recommended businesses to engage with next"""
     # Simple heuristic: high engagement score + high pain point count
     scored = []
-    for b in BUSINESSES_LIST:
+    for b in get_businesses_list():
         score = b.get('engagement_score', 0)
         pain_count = len(b.get('pain_points', []))
         solution_count = len(b.get('co_fit_solutions', []))
@@ -529,7 +473,7 @@ async def get_engagement_pipeline():
         "customer": []
     }
 
-    for b in BUSINESSES_LIST:
+    for b in get_businesses_list():
         stage = b.get('lifecycle_stage', 'prospecting').lower()
         if stage in pipeline:
             pipeline[stage].append(business_to_summary(b))
@@ -547,8 +491,9 @@ async def get_engagement_pipeline():
 @app.get("/api/v2/data-quality/overview")
 async def get_data_quality_overview():
     """Get overall data quality metrics"""
-    completeness = [b.get('data_completeness', 0) for b in BUSINESSES_LIST]
-    confidence = [b.get('confidence_score', 0) for b in BUSINESSES_LIST]
+    businesses = get_businesses_list()
+    completeness = [b.get('data_completeness', 0) for b in businesses]
+    confidence = [b.get('confidence_score', 0) for b in businesses]
 
     complete_threshold = 0.7
     complete_count = sum(1 for c in completeness if c >= complete_threshold)
@@ -557,13 +502,13 @@ async def get_data_quality_overview():
         "overall_completeness": sum(completeness) / len(completeness) if completeness else 0,
         "overall_confidence": sum(confidence) / len(confidence) if confidence else 0,
         "businesses_complete": complete_count,
-        "businesses_incomplete": len(BUSINESSES_LIST) - complete_count,
-        "total_businesses": len(BUSINESSES_LIST),
+        "businesses_incomplete": len(businesses) - complete_count,
+        "total_businesses": len(businesses),
         "sources_active": len(set(
-            src for b in BUSINESSES_LIST
+            src for b in businesses
             for src in b.get('data_sources', [])
         )),
-        "last_refresh": DATABASE.get('meta', {}).get('last_updated')
+        "last_refresh": repository.last_refresh
     }
 
 # ============================================================================
@@ -576,7 +521,7 @@ async def export_json(
     tier: Optional[int] = Query(None, ge=1, le=4)
 ):
     """Export business data to JSON"""
-    results = BUSINESSES_LIST.copy()
+    results = get_businesses_list().copy()
 
     if category:
         results = [b for b in results if b.get('category', '').lower() == category.lower()]
@@ -601,21 +546,24 @@ async def health_check():
         "status": "healthy",
         "version": "2.0.0",
         "timestamp": datetime.now().isoformat(),
-        "businesses_loaded": len(BUSINESSES_LIST)
+        "businesses_loaded": len(get_businesses_list()),
+        "data_source": repository.get_data_source()
     }
 
 @app.get("/api/v2/admin/stats")
 async def get_system_stats():
     """Get system statistics"""
+    stats = repository.get_stats()
+    businesses = get_businesses_list()
     return {
-        "total_businesses": len(data_store.businesses_list),
-        "total_pain_points": sum(len(b.get('pain_points', [])) for b in data_store.businesses_list),
-        "total_opportunities": sum(len(b.get('opportunities', [])) for b in data_store.businesses_list),
-        "total_solutions": sum(len(b.get('co_fit_solutions', [])) for b in data_store.businesses_list),
-        "categories": list(set(b.get('category', 'unknown') for b in data_store.businesses_list)),
+        "total_businesses": stats["total_businesses"],
+        "total_pain_points": stats["total_pain_points"],
+        "total_opportunities": stats["total_opportunities"],
+        "total_solutions": stats["total_solutions"],
+        "categories": list(set(b.get('category', 'unknown') for b in businesses)),
         "api_version": "2.0.0",
-        "data_source": "coral_gables_bi_database_v2.json",
-        "last_refresh": data_store.last_refresh
+        "data_source": stats["data_source"],
+        "last_refresh": stats["last_refresh"]
     }
 
 @app.post("/api/v2/admin/refresh")
@@ -623,7 +571,7 @@ async def refresh_data(
     api_key: str = Query(..., description="Admin API key for authentication")
 ):
     """
-    Refresh data from source (JSON file or database).
+    Refresh data from source (PostgreSQL or JSON file).
     Requires admin API key for security.
 
     This endpoint reloads all business data without requiring a server restart.
@@ -636,19 +584,14 @@ async def refresh_data(
         raise HTTPException(status_code=401, detail="Invalid API key")
 
     try:
-        count = data_store.refresh()
-
-        # Update legacy references
-        global DATABASE, BUSINESSES, BUSINESSES_LIST
-        DATABASE = data_store.database
-        BUSINESSES = data_store.businesses
-        BUSINESSES_LIST = data_store.businesses_list
+        count = repository.refresh()
 
         return {
             "status": "success",
             "message": f"Data refreshed successfully",
             "businesses_loaded": count,
-            "refreshed_at": data_store.last_refresh
+            "data_source": repository.get_data_source(),
+            "refreshed_at": repository.last_refresh
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Refresh failed: {str(e)}")
@@ -657,9 +600,9 @@ async def refresh_data(
 async def get_refresh_status():
     """Get the current data refresh status"""
     return {
-        "last_refresh": data_store.last_refresh,
-        "businesses_loaded": len(data_store.businesses_list),
-        "data_source": "JSON" if not os.getenv("DATABASE_URL") else "PostgreSQL"
+        "last_refresh": repository.last_refresh,
+        "businesses_loaded": len(get_businesses_list()),
+        "data_source": repository.get_data_source()
     }
 
 # ============================================================================
