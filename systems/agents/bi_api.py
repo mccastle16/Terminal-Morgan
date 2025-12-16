@@ -56,10 +56,35 @@ def load_database():
         f"Could not find database files. Searched: {data_locations + fallback_locations}"
     )
 
-# Load data on module import
-DATABASE = load_database()
-BUSINESSES = {b.get('business_id', b.get('name', '')): b for b in DATABASE.get('businesses', [])}
-BUSINESSES_LIST = DATABASE.get('businesses', [])
+# Data storage with refresh capability
+class DataStore:
+    """Singleton data store with refresh capability"""
+    def __init__(self):
+        self.database = {}
+        self.businesses = {}
+        self.businesses_list = []
+        self.last_refresh = None
+        self.refresh()
+
+    def refresh(self):
+        """Reload data from source"""
+        self.database = load_database()
+        self.businesses = {
+            b.get('business_id', b.get('name', '')): b
+            for b in self.database.get('businesses', [])
+        }
+        self.businesses_list = self.database.get('businesses', [])
+        self.last_refresh = datetime.now().isoformat()
+        print(f"Data refreshed at {self.last_refresh}: {len(self.businesses_list)} businesses loaded")
+        return len(self.businesses_list)
+
+# Initialize data store
+data_store = DataStore()
+
+# Legacy compatibility - these reference the data store
+DATABASE = data_store.database
+BUSINESSES = data_store.businesses
+BUSINESSES_LIST = data_store.businesses_list
 
 # ============================================================================
 # PYDANTIC MODELS (API CONTRACTS)
@@ -583,13 +608,58 @@ async def health_check():
 async def get_system_stats():
     """Get system statistics"""
     return {
-        "total_businesses": len(BUSINESSES_LIST),
-        "total_pain_points": sum(len(b.get('pain_points', [])) for b in BUSINESSES_LIST),
-        "total_opportunities": sum(len(b.get('opportunities', [])) for b in BUSINESSES_LIST),
-        "total_solutions": sum(len(b.get('co_fit_solutions', [])) for b in BUSINESSES_LIST),
-        "categories": list(set(b.get('category', 'unknown') for b in BUSINESSES_LIST)),
+        "total_businesses": len(data_store.businesses_list),
+        "total_pain_points": sum(len(b.get('pain_points', [])) for b in data_store.businesses_list),
+        "total_opportunities": sum(len(b.get('opportunities', [])) for b in data_store.businesses_list),
+        "total_solutions": sum(len(b.get('co_fit_solutions', [])) for b in data_store.businesses_list),
+        "categories": list(set(b.get('category', 'unknown') for b in data_store.businesses_list)),
         "api_version": "2.0.0",
-        "data_source": "coral_gables_bi_database_v2.json"
+        "data_source": "coral_gables_bi_database_v2.json",
+        "last_refresh": data_store.last_refresh
+    }
+
+@app.post("/api/v2/admin/refresh")
+async def refresh_data(
+    api_key: str = Query(..., description="Admin API key for authentication")
+):
+    """
+    Refresh data from source (JSON file or database).
+    Requires admin API key for security.
+
+    This endpoint reloads all business data without requiring a server restart.
+    Use this after running OSINT collectors to see updated data.
+    """
+    # Simple API key check (set ADMIN_API_KEY in environment)
+    expected_key = os.getenv("ADMIN_API_KEY", "co_refresh_2024")
+
+    if api_key != expected_key:
+        raise HTTPException(status_code=401, detail="Invalid API key")
+
+    try:
+        count = data_store.refresh()
+
+        # Update legacy references
+        global DATABASE, BUSINESSES, BUSINESSES_LIST
+        DATABASE = data_store.database
+        BUSINESSES = data_store.businesses
+        BUSINESSES_LIST = data_store.businesses_list
+
+        return {
+            "status": "success",
+            "message": f"Data refreshed successfully",
+            "businesses_loaded": count,
+            "refreshed_at": data_store.last_refresh
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Refresh failed: {str(e)}")
+
+@app.get("/api/v2/admin/refresh-status")
+async def get_refresh_status():
+    """Get the current data refresh status"""
+    return {
+        "last_refresh": data_store.last_refresh,
+        "businesses_loaded": len(data_store.businesses_list),
+        "data_source": "JSON" if not os.getenv("DATABASE_URL") else "PostgreSQL"
     }
 
 # ============================================================================
