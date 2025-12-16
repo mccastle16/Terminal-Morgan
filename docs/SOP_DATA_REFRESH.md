@@ -6,6 +6,15 @@ This document describes the Standard Operating Procedures for refreshing busines
 
 ---
 
+## Production Services (Railway)
+
+| Service | URL | Purpose |
+|---------|-----|---------|
+| **Terminal** | `terminal-production-27a0.up.railway.app` | Main API (24/7) |
+| **Terminal Cron Service** | `terminal-cron-service-production.up.railway.app` | Weekly refresh (Sunday 6 AM UTC) |
+
+---
+
 ## Architecture
 
 ```
@@ -13,22 +22,22 @@ This document describes the Standard Operating Procedures for refreshing busines
 │                    DATA REFRESH PIPELINE                         │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐      │
-│  │   Weekly     │───>│   OSINT      │───>│  Validation  │      │
-│  │   Cron Job   │    │  Collectors  │    │   Pipeline   │      │
-│  │  (Sunday 6AM)│    │  (8 agents)  │    │              │      │
-│  └──────────────┘    └──────────────┘    └──────────────┘      │
+│  ┌──────────────────┐    ┌──────────────┐    ┌──────────────┐  │
+│  │ Terminal Cron    │───>│   OSINT      │───>│  Validation  │  │
+│  │ Service          │    │  Collectors  │    │   Pipeline   │  │
+│  │ (Sunday 6AM UTC) │    │  (8 agents)  │    │              │  │
+│  └──────────────────┘    └──────────────┘    └──────────────┘  │
 │                                                  │               │
 │                                                  ▼               │
 │  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐      │
-│  │   FastAPI    │<───│    JSON      │<───│   Updated    │      │
-│  │     API      │    │   Database   │    │    Data      │      │
+│  │   Terminal   │<───│    JSON      │<───│   Updated    │      │
+│  │   (Main API) │    │   Database   │    │    Data      │      │
 │  │              │    │              │    │              │      │
 │  └──────────────┘    └──────────────┘    └──────────────┘      │
 │         │                                                        │
 │         ▼                                                        │
 │  ┌──────────────┐                                               │
-│  │   Frontend   │                                               │
+│  │   Frontend   │  (co-terminal.netlify.app)                    │
 │  │  Dashboard   │                                               │
 │  └──────────────┘                                               │
 └─────────────────────────────────────────────────────────────────┘
@@ -38,30 +47,40 @@ This document describes the Standard Operating Procedures for refreshing busines
 
 ## Refresh Methods
 
-### Method 1: Automated Weekly Refresh (Recommended)
+### Method 1: Automated Weekly Refresh (Running in Production)
 
 **Schedule:** Every Sunday at 6:00 AM UTC
+**Service:** Terminal Cron Service
+**Status:** ✅ Active
 
-**Setup in Railway:**
-1. Go to Railway Dashboard → Your Project
-2. Click "Settings" → "Cron"
-3. Add new cron job:
-   - **Schedule:** `0 6 * * 0`
-   - **Command:** `python weekly_refresh.py --businesses 100`
-
-**What happens:**
-1. OSINT collectors gather data from Google Maps, Yelp, etc.
-2. Data is validated and confidence scores boosted
-3. JSON database file is updated
-4. API reloads data automatically
+**What happens automatically:**
+1. Railway triggers `python weekly_refresh.py`
+2. OSINT collectors gather data from Google Maps, Yelp, etc.
+3. Data is validated and confidence scores boosted
+4. JSON database file is updated
+5. Main API refresh endpoint is called
 
 ---
 
-### Method 2: Manual Refresh via API
+### Method 2: Manual Refresh via Railway Dashboard (Trigger Now)
+
+**Use when:** Data is stale and you can't wait for Sunday
+
+**Steps:**
+1. Go to [Railway Dashboard](https://railway.app) → Your Project
+2. Click on **Terminal Cron Service**
+3. Go to **Deployments** tab
+4. Click **"Redeploy"** or look for **"Trigger"** button
+5. This runs `weekly_refresh.py` immediately
+
+---
+
+### Method 3: Manual Refresh via API (Fastest - Reload Only)
+
+**Use when:** JSON data was already updated, just need API to reload it
 
 **Endpoint:** `POST /api/v2/admin/refresh`
 
-**Usage:**
 ```bash
 curl -X POST "https://terminal-production-27a0.up.railway.app/api/v2/admin/refresh?api_key=YOUR_ADMIN_KEY"
 ```
@@ -76,11 +95,16 @@ curl -X POST "https://terminal-production-27a0.up.railway.app/api/v2/admin/refre
 }
 ```
 
-**Use Case:** After manually updating JSON data files
+**Check status:**
+```bash
+curl "https://terminal-production-27a0.up.railway.app/api/v2/admin/refresh-status"
+```
 
 ---
 
-### Method 3: Manual Local Refresh
+### Method 4: Manual Local Refresh (Full Pipeline - Development)
+
+**Use when:** Testing locally or debugging the refresh pipeline
 
 **Prerequisites:**
 - API keys configured in `.env`
@@ -91,21 +115,24 @@ curl -X POST "https://terminal-production-27a0.up.railway.app/api/v2/admin/refre
 # 1. Navigate to agents directory
 cd systems/agents
 
-# 2. Run OSINT collection
+# 2. Run the weekly refresh script
+python weekly_refresh.py --businesses 100
+
+# OR run individual steps:
+
+# 2a. Run OSINT collection only
 python osint_production_collector.py
 
-# 3. Run validation
+# 2b. Run validation only
 python validate_all_data.py
 
-# 4. Copy validated data to production location
+# 3. Copy validated data to production location
 cp ../data/coral_gables_bi_database_validated.json data/coral_gables_bi_database_v2.json
 
-# 5. Commit and push
+# 4. Commit and push (triggers Railway auto-deploy)
 git add data/coral_gables_bi_database_v2.json
 git commit -m "Weekly data refresh $(date +%Y-%m-%d)"
 git push
-
-# Railway will auto-deploy with new data
 ```
 
 ---
