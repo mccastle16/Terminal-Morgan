@@ -8,20 +8,117 @@ AI-powered business intelligence system for local businesses in Coral Gables, FL
 
 ## Quick Start
 
+### 1. Install Dependencies
+
 ```bash
-# Generate PKP for a business
+pip install -r requirements.txt
+```
+
+### 2. Configure Environment
+
+```bash
+cp .env.example .env
+# Edit .env and add your API keys:
+# - GOOGLE_PLACES_API_KEY (required for live data)
+# - ANTHROPIC_API_KEY (required for LLM validation)
+```
+
+### 3. Start the API Server
+
+```bash
 cd systems/agents
-python coral_gables_pkp_generator.py
-
-# Validate with LLM reasoning
-python pkp_validator.py
-
-# Generate Top 100 database
-python generate_top_100_pkp.py
-
-# Start the API server
-pip install fastapi uvicorn pydantic
 uvicorn bi_api:app --reload
+```
+
+### 4. Start the Web Dashboard
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open http://localhost:3000 for the dashboard, http://localhost:8000/docs for API docs.
+
+### 5. (Optional) Start PostgreSQL
+
+```bash
+docker compose up -d
+python systems/agents/migrate_json_to_db.py
+```
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     Web Dashboard (React)                        │
+│                    localhost:3000                                │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    FastAPI REST API                              │
+│                    localhost:8000                                │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+              ┌───────────────┼───────────────┐
+              ▼               ▼               ▼
+       ┌──────────┐    ┌──────────┐    ┌──────────┐
+       │  JSON    │    │PostgreSQL│    │  OSINT   │
+       │  Data    │    │ Database │    │ Agents   │
+       └──────────┘    └──────────┘    └──────────┘
+```
+
+## Project Structure
+
+```
+Terminal/
+├── README.md
+├── requirements.txt
+├── docker-compose.yml          # PostgreSQL + pgAdmin
+├── .env.example                # Environment template
+├── frontend/                   # React Dashboard
+│   ├── package.json
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Businesses.jsx
+│   │   │   ├── BusinessDetail.jsx
+│   │   │   └── Analytics.jsx
+│   │   └── components/
+│   │       └── Layout.jsx
+│   └── vite.config.js
+├── systems/
+│   ├── agents/
+│   │   ├── bi_api.py                       # FastAPI REST API
+│   │   ├── config.py                       # Configuration management
+│   │   ├── database.py                     # SQLAlchemy models
+│   │   ├── repository.py                   # Data access layer
+│   │   ├── google_places_collector.py      # Google Places API
+│   │   ├── yelp_collector.py               # Yelp Fusion API
+│   │   ├── consensus_validator.py          # Stage 3 multi-agent
+│   │   ├── osint_orchestrator.py           # 8-agent OSINT system
+│   │   ├── coral_gables_pkp_generator.py   # Stage 1
+│   │   ├── pkp_validator.py                # Stage 2
+│   │   └── migrate_json_to_db.py           # JSON → PostgreSQL
+│   └── data/
+│       ├── coral_gables_bi_database_v2.json
+│       └── database_schema.sql
+```
+
+## 4-Stage PKP Pipeline
+
+| Stage | Process | Confidence | Status |
+|-------|---------|------------|--------|
+| 1 | Generic templates | 0.3-0.5 | ✅ Implemented |
+| 2 | LLM validation | 0.6-0.8 | ✅ Implemented |
+| 3 | Multi-agent consensus | 0.8-0.9 | ✅ Implemented |
+| 4 | Human validation | 0.9-1.0 | Planned |
+
+### Example: Confidence Progression
+
+```
+Stage 1: 0.35 → Stage 2: 0.75 → Stage 3: 0.88
 ```
 
 ## API Endpoints
@@ -31,65 +128,31 @@ Base URL: `http://localhost:8000`
 | Endpoint | Description |
 |----------|-------------|
 | `GET /health` | Health check |
-| `GET /api/v2/businesses` | List all businesses (with filters) |
+| `GET /api/v2/businesses` | List businesses (with filters) |
 | `GET /api/v2/businesses/{id}` | Get business details |
+| `GET /api/v2/businesses/{id}/intelligence` | Full intelligence report |
 | `GET /api/v2/search/businesses?q=` | Search businesses |
+| `GET /api/v2/search/pain-points?q=` | Search pain points |
 | `GET /api/v2/analytics/market` | Market analytics |
+| `GET /api/v2/analytics/categories/{cat}` | Category insights |
+| `GET /api/v2/analytics/geographic` | Geographic analysis |
 | `GET /api/v2/engagement/recommendations` | Top engagement targets |
+| `GET /api/v2/engagement/pipeline` | Sales pipeline view |
 
-Full docs at: `http://localhost:8000/docs`
+## Live Data Collection
 
-## Project Structure
+The platform can collect live data from:
 
-```
-Terminal/
-├── README.md
-├── systems/
-│   ├── agents/
-│   │   ├── coral_gables_pkp_generator.py   # Stage 1: Initial PKP generation
-│   │   ├── pkp_validator.py                # Stage 2: LLM validation
-│   │   ├── generate_top_100_pkp.py         # Batch PKP generator
-│   │   ├── bi_api.py                       # FastAPI REST API
-│   │   ├── osint_orchestrator.py           # Multi-agent OSINT coordinator
-│   │   └── osint_production_collector.py   # Production data collector
-│   └── data/
-│       ├── coral_gables_bi_database_v2.json      # Main BI database (88 businesses)
-│       ├── coral_gables_top_100_businesses_pkp.json
-│       ├── books_and_books_pkp_refined.json      # Example refined PKP
-│       └── database_schema.sql                   # PostgreSQL schema
-```
+- **Google Places API** ✅ - Business details, reviews, ratings
+- **Yelp Fusion API** ✅ - Reviews, categories, transactions
+- **TripAdvisor** (planned)
+- **Social Media** (planned)
 
-## How It Works
+Configure API keys in `.env`:
 
-### 4-Stage PKP Pipeline
-
-| Stage | Process | Confidence | Status |
-|-------|---------|------------|--------|
-| 1 | Generic templates | 0.3-0.5 | Implemented |
-| 2 | LLM validation | 0.6-0.8 | Implemented |
-| 3 | Multi-agent consensus | 0.8-0.9 | Future |
-| 4 | Human validation | 0.9-1.0 | Future |
-
-### Example: Before vs After
-
-**Before (Stage 1)**
-```json
-{
-  "point": "Foot traffic predictability",
-  "confidence": 0.3,
-  "evidence": "Generic retail assumption"
-}
-```
-
-**After (Stage 2)**
-```json
-{
-  "point": "Weekend capacity management and staff scheduling",
-  "confidence": 0.75,
-  "evidence": "Heavy foot traffic on weekends",
-  "reasoning": "Independent bookstores struggle with variable weekend demand",
-  "mitigation": ["Dynamic staff scheduling", "Reservation system for study spaces"]
-}
+```bash
+GOOGLE_PLACES_API_KEY=your_key_here
+YELP_API_KEY=your_key_here
 ```
 
 ## Data Summary
@@ -100,15 +163,20 @@ Pain points: 268
 Opportunities: 267
 Solutions: 264
 Categories: restaurant, spa, retail, salon, professional_services, fitness, healthcare
+Districts: Giralda Plaza, Miracle Mile, Merrick Park, Alhambra Circle
 ```
 
 ## Tech Stack
 
 - **Python 3.11+** - Core language
 - **FastAPI** - REST API
+- **React + Vite** - Web dashboard
+- **Tailwind CSS** - Styling
+- **Recharts** - Data visualization
 - **Claude Sonnet 4** - LLM validation
-- **PostgreSQL + pgvector** - Production database (schema ready)
-- **AsyncIO** - Async data collection
+- **PostgreSQL** - Production database
+- **SQLAlchemy** - ORM
+- **Docker** - Container orchestration
 
 ## Business Model
 
@@ -119,13 +187,6 @@ Categories: restaurant, spa, retail, salon, professional_services, fitness, heal
 | Enterprise | 0.8-0.9 (multi-agent) | $2,500-5,000 |
 
 **Success metric**: If 7/10 business owners validate PKPs as accurate → product viable.
-
-## Next Steps
-
-1. Validate with 10 real Coral Gables businesses
-2. Implement Stage 3 (multi-agent consensus)
-3. Connect API to PostgreSQL
-4. Build web frontend
 
 ---
 

@@ -169,7 +169,7 @@ class BusinessProfile:
 
 class WebScraperAgent:
     """Scrapes public web data from multiple sources"""
-    
+
     def __init__(self):
         self.sources = [
             DataSource.GOOGLE_PLACES,
@@ -177,16 +177,32 @@ class WebScraperAgent:
             DataSource.TRIPADVISOR,
             DataSource.OPENTABLE
         ]
-    
+        self._google_collector = None
+        self._yelp_collector = None
+
+    def _get_google_collector(self):
+        """Lazy-load Google Places collector"""
+        if self._google_collector is None:
+            try:
+                from google_places_collector import GooglePlacesCollector
+                self._google_collector = GooglePlacesCollector()
+            except (ImportError, ValueError) as e:
+                print(f"Warning: Google Places collector not available: {e}")
+        return self._google_collector
+
+    def _get_yelp_collector(self):
+        """Lazy-load Yelp collector"""
+        if self._yelp_collector is None:
+            try:
+                from yelp_collector import YelpCollector
+                self._yelp_collector = YelpCollector()
+            except (ImportError, ValueError) as e:
+                print(f"Warning: Yelp collector not available: {e}")
+        return self._yelp_collector
+
     async def collect(self, business_name: str, location: str) -> Dict[str, Any]:
         """
-        Collect data from web sources
-        
-        In production, this would use:
-        - Google Places API
-        - Yelp Fusion API
-        - Web scraping (Playwright/Selenium)
-        - Rate limiting and caching
+        Collect data from web sources using live APIs where available
         """
         collected_data = {
             "google_places": await self._scrape_google_places(business_name, location),
@@ -194,12 +210,21 @@ class WebScraperAgent:
             "tripadvisor": await self._scrape_tripadvisor(business_name, location),
             "opentable": await self._scrape_opentable(business_name, location)
         }
-        
+
         return collected_data
-    
+
     async def _scrape_google_places(self, business_name: str, location: str) -> Dict[str, Any]:
-        """Google Places API wrapper"""
-        # TODO: Implement Google Places API call
+        """Google Places API - LIVE IMPLEMENTATION"""
+        collector = self._get_google_collector()
+        if collector:
+            try:
+                result = await collector.search_business(business_name, location)
+                if result:
+                    return result
+            except Exception as e:
+                print(f"Google Places API error: {e}")
+
+        # Fallback to stub
         return {
             "name": business_name,
             "rating": None,
@@ -208,30 +233,39 @@ class WebScraperAgent:
             "hours": None,
             "photos": [],
             "popular_times": None,
-            "confidence": ConfidenceLevel.MEDIUM.value
+            "confidence": ConfidenceLevel.LOW.value,
+            "source": "stub"
         }
-    
+
     async def _scrape_yelp(self, business_name: str, location: str) -> Dict[str, Any]:
         """Yelp Fusion API wrapper"""
-        # TODO: Implement Yelp API call
+        collector = self._get_yelp_collector()
+        if collector:
+            try:
+                result = await collector.search_business(business_name, location)
+                if result:
+                    return result
+            except Exception as e:
+                print(f"Yelp API error: {e}")
+
+        # Fallback to stub
         return {
             "rating": None,
             "review_count": None,
             "price": None,
             "categories": [],
             "transactions": [],
-            "confidence": ConfidenceLevel.MEDIUM.value
+            "confidence": ConfidenceLevel.LOW.value,
+            "source": "stub"
         }
-    
+
     async def _scrape_tripadvisor(self, business_name: str, location: str) -> Dict[str, Any]:
-        """TripAdvisor scraper"""
-        # TODO: Implement scraping
-        return {"confidence": ConfidenceLevel.LOW.value}
-    
+        """TripAdvisor scraper - Future implementation"""
+        return {"confidence": ConfidenceLevel.LOW.value, "source": "stub"}
+
     async def _scrape_opentable(self, business_name: str, location: str) -> Dict[str, Any]:
-        """OpenTable scraper for restaurants"""
-        # TODO: Implement scraping
-        return {"confidence": ConfidenceLevel.LOW.value}
+        """OpenTable scraper for restaurants - Future implementation"""
+        return {"confidence": ConfidenceLevel.LOW.value, "source": "stub"}
 
 # ============================================================================
 # AGENT 2: PUBLIC RECORDS
