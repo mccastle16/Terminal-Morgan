@@ -3,13 +3,38 @@ Business Intelligence API & Analytics Layer
 FastAPI application for serving business intelligence data
 """
 
-from fastapi import FastAPI, Query, HTTPException, Depends
+import os
+import json
+from fastapi import FastAPI, Query, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional, Dict, Any
-from pydantic import BaseModel, Field
-from datetime import datetime, date
+from pydantic import BaseModel
+from datetime import datetime
 from enum import Enum
-import json
+from collections import Counter
+
+# ============================================================================
+# DATA LOADER
+# ============================================================================
+
+def load_database():
+    """Load business data from JSON file"""
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    data_path = os.path.join(script_dir, "..", "data", "coral_gables_bi_database_v2.json")
+
+    try:
+        with open(data_path, 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        # Fallback to top 100 PKP
+        fallback_path = os.path.join(script_dir, "..", "data", "coral_gables_top_100_businesses_pkp.json")
+        with open(fallback_path, 'r') as f:
+            return json.load(f)
+
+# Load data on module import
+DATABASE = load_database()
+BUSINESSES = {b.get('business_id', b.get('name', '')): b for b in DATABASE.get('businesses', [])}
+BUSINESSES_LIST = DATABASE.get('businesses', [])
 
 # ============================================================================
 # PYDANTIC MODELS (API CONTRACTS)
@@ -31,95 +56,19 @@ class LifecycleStage(str, Enum):
     CUSTOMER = "customer"
     CHURNED = "churned"
 
-class PainPoint(BaseModel):
-    id: int
-    pain_point: str
-    category: str
-    severity: str
-    confidence: float
-    evidence: List[str]
-    identified_date: date
-
-class Opportunity(BaseModel):
-    id: int
-    opportunity: str
-    category: str
-    potential_impact: str
-    estimated_value: Optional[float]
-    confidence: float
-
-class CoFitSolution(BaseModel):
-    id: int
-    solution_name: str
-    solution_category: str
-    description: str
-    priority: int
-    implementation_complexity: str
-    estimated_cost_range: Optional[str]
-
 class BusinessSummary(BaseModel):
     business_id: str
     name: str
-    category: Optional[str]
-    subcategory: Optional[str]
-    city: Optional[str]
-    district: Optional[str]
-    engagement_score: Optional[float]
-    priority_tier: Optional[int]
-    data_completeness: float
-    confidence_score: float
-    pain_point_count: int
-    opportunity_count: int
-    solution_count: int
-
-class BusinessDetail(BaseModel):
-    business_id: str
-    name: str
-    legal_name: Optional[str]
-    category: Optional[str]
-    subcategory: Optional[str]
-    
-    # Location
-    address: Optional[Dict[str, Any]]
-    district: Optional[str]
-    
-    # Contact
-    phone: Optional[List[Dict[str, str]]]
-    email: Optional[List[Dict[str, str]]]
-    website: Optional[str]
-    social_media: Optional[Dict[str, str]]
-    
-    # People
-    owner: Optional[Dict[str, Any]]
-    key_people: Optional[List[Dict[str, Any]]]
-    
-    # Operations
-    founded: Optional[date]
-    years_in_business: Optional[int]
-    hours: Optional[Dict[str, Any]]
-    services: Optional[List[str]]
-    specialties: Optional[List[str]]
-    
-    # Intelligence
-    estimated_revenue: Optional[Dict[str, Any]]
-    employee_count: Optional[Dict[str, Any]]
-    sentiment_analysis: Optional[Dict[str, float]]
-    
-    # Engagement
-    pain_points: List[PainPoint]
-    opportunities: List[Opportunity]
-    co_fit_solutions: List[CoFitSolution]
-    engagement_score: Optional[float]
-    priority_tier: Optional[int]
-    
-    # Chamber & Network
-    chamber_membership: Optional[Dict[str, Any]]
-    board_positions: Optional[List[str]]
-    
-    # Metadata
-    data_completeness: float
-    confidence_score: float
-    last_updated: datetime
+    category: Optional[str] = None
+    subcategory: Optional[str] = None
+    district: Optional[str] = None
+    engagement_score: Optional[float] = None
+    priority_tier: Optional[int] = None
+    data_completeness: Optional[float] = None
+    confidence_score: Optional[float] = None
+    pain_point_count: int = 0
+    opportunity_count: int = 0
+    solution_count: int = 0
 
 class MarketAnalytics(BaseModel):
     total_businesses: int
@@ -151,11 +100,43 @@ app = FastAPI(
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure appropriately for production
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ============================================================================
+# HELPER FUNCTIONS
+# ============================================================================
+
+def get_tier_from_score(score: float) -> int:
+    """Convert engagement score to tier"""
+    if score >= 90:
+        return 1
+    elif score >= 80:
+        return 2
+    elif score >= 70:
+        return 3
+    else:
+        return 4
+
+def business_to_summary(b: Dict) -> Dict:
+    """Convert business dict to summary format"""
+    return {
+        "business_id": b.get('business_id', b.get('name', '')),
+        "name": b.get('name', ''),
+        "category": b.get('category'),
+        "subcategory": b.get('subcategory'),
+        "district": b.get('district'),
+        "engagement_score": b.get('engagement_score'),
+        "priority_tier": b.get('priority_tier', get_tier_from_score(b.get('engagement_score', 0))),
+        "data_completeness": b.get('data_completeness', 0),
+        "confidence_score": b.get('confidence_score', 0),
+        "pain_point_count": len(b.get('pain_points', [])),
+        "opportunity_count": len(b.get('opportunities', [])),
+        "solution_count": len(b.get('co_fit_solutions', []))
+    }
 
 # ============================================================================
 # BUSINESS ENDPOINTS
@@ -165,52 +146,83 @@ app.add_middleware(
 async def list_businesses(
     category: Optional[str] = None,
     district: Optional[str] = None,
-    tier: Optional[PriorityTier] = None,
+    tier: Optional[int] = Query(None, ge=1, le=4),
     min_score: Optional[float] = Query(None, ge=0, le=100),
     max_score: Optional[float] = Query(None, ge=0, le=100),
-    lifecycle_stage: Optional[LifecycleStage] = None,
+    lifecycle_stage: Optional[str] = None,
     limit: int = Query(100, ge=1, le=1000),
     offset: int = Query(0, ge=0)
 ):
-    """
-    List businesses with filtering and pagination
-    
-    Filters:
-    - category: Filter by business category
-    - district: Filter by Coral Gables district
-    - tier: Filter by priority tier (1-4)
-    - min_score/max_score: Filter by engagement score range
-    - lifecycle_stage: Filter by sales lifecycle stage
-    """
-    # TODO: Implement database query
-    return []
+    """List businesses with filtering and pagination"""
+    results = BUSINESSES_LIST.copy()
 
-@app.get("/api/v2/businesses/{business_id}", response_model=BusinessDetail)
+    # Apply filters
+    if category:
+        results = [b for b in results if b.get('category', '').lower() == category.lower()]
+
+    if district:
+        results = [b for b in results if b.get('district', '').lower() == district.lower()]
+
+    if tier:
+        results = [b for b in results if b.get('priority_tier', get_tier_from_score(b.get('engagement_score', 0))) == tier]
+
+    if min_score is not None:
+        results = [b for b in results if b.get('engagement_score', 0) >= min_score]
+
+    if max_score is not None:
+        results = [b for b in results if b.get('engagement_score', 0) <= max_score]
+
+    if lifecycle_stage:
+        results = [b for b in results if b.get('lifecycle_stage', '').lower() == lifecycle_stage.lower()]
+
+    # Sort by engagement score descending
+    results.sort(key=lambda x: x.get('engagement_score', 0), reverse=True)
+
+    # Apply pagination
+    results = results[offset:offset + limit]
+
+    return [business_to_summary(b) for b in results]
+
+@app.get("/api/v2/businesses/{business_id}")
 async def get_business(business_id: str):
-    """
-    Get detailed information for a single business
-    """
-    # TODO: Implement database query
-    raise HTTPException(status_code=404, detail="Business not found")
+    """Get detailed information for a single business"""
+    # Try exact match first
+    business = BUSINESSES.get(business_id)
+
+    # Try name match
+    if not business:
+        for b in BUSINESSES_LIST:
+            if b.get('name', '').lower() == business_id.lower():
+                business = b
+                break
+            if b.get('business_id', '') == business_id:
+                business = b
+                break
+
+    if not business:
+        raise HTTPException(status_code=404, detail="Business not found")
+
+    return business
 
 @app.get("/api/v2/businesses/{business_id}/intelligence")
 async def get_business_intelligence(business_id: str):
-    """
-    Get comprehensive intelligence report for a business
-    """
-    # TODO: Call database function get_business_intelligence_report()
-    return {}
+    """Get comprehensive intelligence report for a business"""
+    business = await get_business(business_id)
 
-@app.patch("/api/v2/businesses/{business_id}/lifecycle")
-async def update_lifecycle_stage(
-    business_id: str,
-    stage: LifecycleStage
-):
-    """
-    Update the lifecycle stage of a business
-    """
-    # TODO: Implement update
-    return {"business_id": business_id, "lifecycle_stage": stage}
+    return {
+        "business_id": business.get('business_id', business.get('name')),
+        "name": business.get('name'),
+        "engagement_score": business.get('engagement_score'),
+        "priority_tier": business.get('priority_tier'),
+        "pain_points": business.get('pain_points', []),
+        "opportunities": business.get('opportunities', []),
+        "co_fit_solutions": business.get('co_fit_solutions', []),
+        "technology_gaps": business.get('technology_gaps', []),
+        "sentiment": business.get('sentiment', {}),
+        "ratings": business.get('ratings', {}),
+        "estimated_revenue": business.get('estimated_revenue'),
+        "estimated_employees": business.get('estimated_employees')
+    }
 
 # ============================================================================
 # SEARCH ENDPOINTS
@@ -221,11 +233,38 @@ async def search_businesses(
     q: str = Query(..., min_length=2),
     limit: int = Query(20, ge=1, le=100)
 ):
-    """
-    Full-text search across business names, categories, specialties
-    """
-    # TODO: Implement full-text search
-    return []
+    """Full-text search across business names, categories, specialties"""
+    q_lower = q.lower()
+    results = []
+
+    for b in BUSINESSES_LIST:
+        # Search in name
+        if q_lower in b.get('name', '').lower():
+            results.append(b)
+            continue
+        # Search in category
+        if q_lower in b.get('category', '').lower():
+            results.append(b)
+            continue
+        # Search in subcategory
+        if q_lower in b.get('subcategory', '').lower():
+            results.append(b)
+            continue
+        # Search in specialties
+        specialties = b.get('specialties', [])
+        if any(q_lower in s.lower() for s in specialties if isinstance(s, str)):
+            results.append(b)
+            continue
+        # Search in services
+        services = b.get('services', [])
+        if any(q_lower in s.lower() for s in services if isinstance(s, str)):
+            results.append(b)
+            continue
+
+    # Sort by engagement score
+    results.sort(key=lambda x: x.get('engagement_score', 0), reverse=True)
+
+    return [business_to_summary(b) for b in results[:limit]]
 
 @app.get("/api/v2/search/pain-points")
 async def search_pain_points(
@@ -233,11 +272,29 @@ async def search_pain_points(
     category: Optional[str] = None,
     severity: Optional[str] = None
 ):
-    """
-    Search pain points across all businesses
-    """
-    # TODO: Implement pain point search
-    return []
+    """Search pain points across all businesses"""
+    q_lower = q.lower()
+    results = []
+
+    for b in BUSINESSES_LIST:
+        if category and b.get('category', '').lower() != category.lower():
+            continue
+
+        for pp in b.get('pain_points', []):
+            pp_text = pp.get('pain_point', pp.get('point', ''))
+            if q_lower in pp_text.lower():
+                if severity and pp.get('severity', '').lower() != severity.lower():
+                    continue
+                results.append({
+                    "business_id": b.get('business_id', b.get('name')),
+                    "business_name": b.get('name'),
+                    "pain_point": pp_text,
+                    "category": pp.get('category', pp.get('pain_category', '')),
+                    "severity": pp.get('severity', 'unknown'),
+                    "confidence": pp.get('confidence', 0)
+                })
+
+    return results
 
 # ============================================================================
 # ANALYTICS ENDPOINTS
@@ -245,50 +302,105 @@ async def search_pain_points(
 
 @app.get("/api/v2/analytics/market", response_model=MarketAnalytics)
 async def get_market_analytics():
-    """
-    Get overall market analytics
-    """
-    # TODO: Aggregate from database
+    """Get overall market analytics"""
+    businesses = BUSINESSES_LIST
+
+    # Count by category
+    by_category = Counter(b.get('category', 'unknown') for b in businesses)
+
+    # Count by tier
+    by_tier = Counter(
+        str(b.get('priority_tier', get_tier_from_score(b.get('engagement_score', 0))))
+        for b in businesses
+    )
+
+    # Count by district
+    by_district = Counter(b.get('district', 'unknown') for b in businesses if b.get('district'))
+
+    # Calculate averages
+    scores = [b.get('engagement_score', 0) for b in businesses if b.get('engagement_score')]
+    completeness = [b.get('data_completeness', 0) for b in businesses if b.get('data_completeness')]
+
     return MarketAnalytics(
-        total_businesses=100,
-        by_category={},
-        by_tier={},
-        by_district={},
-        avg_engagement_score=73.0,
-        avg_data_completeness=0.65
+        total_businesses=len(businesses),
+        by_category=dict(by_category),
+        by_tier=dict(by_tier),
+        by_district=dict(by_district),
+        avg_engagement_score=sum(scores) / len(scores) if scores else 0,
+        avg_data_completeness=sum(completeness) / len(completeness) if completeness else 0
     )
 
 @app.get("/api/v2/analytics/categories/{category}", response_model=CategoryInsights)
 async def get_category_insights(category: str):
-    """
-    Get detailed insights for a specific category
-    """
-    # TODO: Aggregate category-specific data
-    raise HTTPException(status_code=404, detail="Category not found")
+    """Get detailed insights for a specific category"""
+    businesses = [b for b in BUSINESSES_LIST if b.get('category', '').lower() == category.lower()]
 
-@app.get("/api/v2/analytics/trends")
-async def get_market_trends(
-    time_period: str = Query("30d", pattern="^(7d|30d|90d|1y)$")
-):
-    """
-    Get market trends over time
-    """
-    # TODO: Time-series analysis
-    return {
-        "period": time_period,
-        "trends": []
-    }
+    if not businesses:
+        raise HTTPException(status_code=404, detail="Category not found")
+
+    # Tier distribution
+    tier_dist = Counter(
+        str(b.get('priority_tier', get_tier_from_score(b.get('engagement_score', 0))))
+        for b in businesses
+    )
+
+    # Aggregate pain points
+    all_pain_points = []
+    for b in businesses:
+        for pp in b.get('pain_points', []):
+            all_pain_points.append(pp.get('pain_point', pp.get('point', '')))
+    top_pain_points = [{"pain_point": pp, "count": c} for pp, c in Counter(all_pain_points).most_common(5)]
+
+    # Aggregate opportunities
+    all_opportunities = []
+    for b in businesses:
+        for opp in b.get('opportunities', []):
+            all_opportunities.append(opp.get('opportunity', ''))
+    top_opportunities = [{"opportunity": o, "count": c} for o, c in Counter(all_opportunities).most_common(5)]
+
+    scores = [b.get('engagement_score', 0) for b in businesses if b.get('engagement_score')]
+    completeness = [b.get('data_completeness', 0) for b in businesses if b.get('data_completeness')]
+
+    return CategoryInsights(
+        category=category,
+        business_count=len(businesses),
+        avg_engagement_score=sum(scores) / len(scores) if scores else 0,
+        avg_data_completeness=sum(completeness) / len(completeness) if completeness else 0,
+        tier_distribution=dict(tier_dist),
+        top_pain_points=top_pain_points,
+        top_opportunities=top_opportunities
+    )
 
 @app.get("/api/v2/analytics/geographic")
 async def get_geographic_analysis():
-    """
-    Get geographic distribution and clustering analysis
-    """
-    # TODO: Geographic analysis by district
-    return {
-        "districts": [],
-        "heatmap_data": []
-    }
+    """Get geographic distribution and clustering analysis"""
+    districts = {}
+
+    for b in BUSINESSES_LIST:
+        district = b.get('district', 'unknown')
+        if district not in districts:
+            districts[district] = {
+                "district": district,
+                "business_count": 0,
+                "categories": [],
+                "avg_engagement_score": 0,
+                "scores": []
+            }
+        districts[district]["business_count"] += 1
+        districts[district]["categories"].append(b.get('category', 'unknown'))
+        if b.get('engagement_score'):
+            districts[district]["scores"].append(b.get('engagement_score'))
+
+    # Calculate averages and category breakdown
+    result = []
+    for d in districts.values():
+        d["avg_engagement_score"] = sum(d["scores"]) / len(d["scores"]) if d["scores"] else 0
+        d["category_breakdown"] = dict(Counter(d["categories"]))
+        del d["scores"]
+        del d["categories"]
+        result.append(d)
+
+    return {"districts": result}
 
 # ============================================================================
 # OPPORTUNITY ENDPOINTS
@@ -296,40 +408,68 @@ async def get_geographic_analysis():
 
 @app.get("/api/v2/opportunities/prioritized")
 async def get_prioritized_opportunities(
-    tier: Optional[PriorityTier] = None,
-    min_impact: Optional[str] = None,
+    tier: Optional[int] = Query(None, ge=1, le=4),
     limit: int = Query(50, ge=1, le=200)
 ):
-    """
-    Get prioritized opportunities across all businesses
-    """
-    # TODO: Query and rank opportunities
-    return []
+    """Get prioritized opportunities across all businesses"""
+    results = []
 
-@app.get("/api/v2/opportunities/matrix")
-async def get_opportunity_matrix():
-    """
-    Get opportunity prioritization matrix (impact vs. effort)
-    """
-    # TODO: Create 2x2 matrix of opportunities
-    return {
-        "high_impact_low_effort": [],
-        "high_impact_high_effort": [],
-        "low_impact_low_effort": [],
-        "low_impact_high_effort": []
-    }
+    for b in BUSINESSES_LIST:
+        b_tier = b.get('priority_tier', get_tier_from_score(b.get('engagement_score', 0)))
+        if tier and b_tier != tier:
+            continue
 
-# ============================================================================
-# ENGAGEMENT ENDPOINTS
-# ============================================================================
+        for opp in b.get('opportunities', []):
+            results.append({
+                "business_id": b.get('business_id', b.get('name')),
+                "business_name": b.get('name'),
+                "business_tier": b_tier,
+                "engagement_score": b.get('engagement_score', 0),
+                "opportunity": opp.get('opportunity', ''),
+                "category": opp.get('category', opp.get('opportunity_category', '')),
+                "impact": opp.get('potential_impact', opp.get('impact', '')),
+                "confidence": opp.get('confidence', 0)
+            })
+
+    # Sort by business engagement score
+    results.sort(key=lambda x: x.get('engagement_score', 0), reverse=True)
+
+    return results[:limit]
+
+@app.get("/api/v2/engagement/recommendations")
+async def get_engagement_recommendations(
+    limit: int = Query(10, ge=1, le=50)
+):
+    """Get AI-recommended businesses to engage with next"""
+    # Simple heuristic: high engagement score + high pain point count
+    scored = []
+    for b in BUSINESSES_LIST:
+        score = b.get('engagement_score', 0)
+        pain_count = len(b.get('pain_points', []))
+        solution_count = len(b.get('co_fit_solutions', []))
+
+        # Recommendation score: engagement + pain points + solutions
+        rec_score = score + (pain_count * 2) + (solution_count * 3)
+
+        scored.append({
+            "business_id": b.get('business_id', b.get('name')),
+            "name": b.get('name'),
+            "category": b.get('category'),
+            "engagement_score": score,
+            "priority_tier": b.get('priority_tier', get_tier_from_score(score)),
+            "pain_point_count": pain_count,
+            "solution_count": solution_count,
+            "recommendation_score": rec_score,
+            "reason": f"High engagement ({score}) with {pain_count} pain points and {solution_count} solutions"
+        })
+
+    scored.sort(key=lambda x: x['recommendation_score'], reverse=True)
+    return scored[:limit]
 
 @app.get("/api/v2/engagement/pipeline")
 async def get_engagement_pipeline():
-    """
-    Get sales/engagement pipeline view
-    """
-    # TODO: Group businesses by lifecycle stage
-    return {
+    """Get sales/engagement pipeline view"""
+    pipeline = {
         "prospecting": [],
         "contacted": [],
         "engaged": [],
@@ -339,15 +479,16 @@ async def get_engagement_pipeline():
         "customer": []
     }
 
-@app.get("/api/v2/engagement/recommendations")
-async def get_engagement_recommendations(
-    limit: int = Query(10, ge=1, le=50)
-):
-    """
-    Get AI-recommended businesses to engage with next
-    """
-    # TODO: Use ML model or heuristics to recommend next engagements
-    return []
+    for b in BUSINESSES_LIST:
+        stage = b.get('lifecycle_stage', 'prospecting').lower()
+        if stage in pipeline:
+            pipeline[stage].append(business_to_summary(b))
+
+    # Add counts
+    return {
+        stage: {"count": len(businesses), "businesses": businesses}
+        for stage, businesses in pipeline.items()
+    }
 
 # ============================================================================
 # DATA QUALITY ENDPOINTS
@@ -355,73 +496,49 @@ async def get_engagement_recommendations(
 
 @app.get("/api/v2/data-quality/overview")
 async def get_data_quality_overview():
-    """
-    Get overall data quality metrics
-    """
-    # TODO: Aggregate data quality metrics
-    return {
-        "overall_completeness": 0.0,
-        "overall_confidence": 0.0,
-        "businesses_complete": 0,
-        "businesses_incomplete": 0,
-        "sources_active": 0,
-        "last_refresh": None
-    }
+    """Get overall data quality metrics"""
+    completeness = [b.get('data_completeness', 0) for b in BUSINESSES_LIST]
+    confidence = [b.get('confidence_score', 0) for b in BUSINESSES_LIST]
 
-@app.get("/api/v2/data-quality/conflicts")
-async def get_data_conflicts(
-    resolved: Optional[bool] = None
-):
-    """
-    Get data conflicts requiring resolution
-    """
-    # TODO: Query data_conflicts table
-    return []
+    complete_threshold = 0.7
+    complete_count = sum(1 for c in completeness if c >= complete_threshold)
+
+    return {
+        "overall_completeness": sum(completeness) / len(completeness) if completeness else 0,
+        "overall_confidence": sum(confidence) / len(confidence) if confidence else 0,
+        "businesses_complete": complete_count,
+        "businesses_incomplete": len(BUSINESSES_LIST) - complete_count,
+        "total_businesses": len(BUSINESSES_LIST),
+        "sources_active": len(set(
+            src for b in BUSINESSES_LIST
+            for src in b.get('data_sources', [])
+        )),
+        "last_refresh": DATABASE.get('meta', {}).get('last_updated')
+    }
 
 # ============================================================================
 # EXPORT ENDPOINTS
 # ============================================================================
 
-@app.get("/api/v2/export/csv")
-async def export_csv(
-    category: Optional[str] = None,
-    tier: Optional[PriorityTier] = None
-):
-    """
-    Export business data to CSV
-    """
-    # TODO: Generate CSV export
-    return {"download_url": ""}
-
 @app.get("/api/v2/export/json")
 async def export_json(
-    business_ids: Optional[List[str]] = Query(None)
+    category: Optional[str] = None,
+    tier: Optional[int] = Query(None, ge=1, le=4)
 ):
-    """
-    Export business data to JSON
-    """
-    # TODO: Generate JSON export
-    return {}
+    """Export business data to JSON"""
+    results = BUSINESSES_LIST.copy()
 
-# ============================================================================
-# WEBHOOK & INTEGRATIONS
-# ============================================================================
+    if category:
+        results = [b for b in results if b.get('category', '').lower() == category.lower()]
 
-@app.post("/api/v2/webhooks/osint-update")
-async def osint_update_webhook(data: Dict[str, Any]):
-    """
-    Receive OSINT updates from collection agents
-    """
-    # TODO: Process incoming OSINT data
-    return {"status": "received"}
+    if tier:
+        results = [b for b in results if b.get('priority_tier', get_tier_from_score(b.get('engagement_score', 0))) == tier]
 
-@app.post("/api/v2/integrations/crm/sync")
-async def sync_to_crm(crm_type: str, business_ids: List[str]):
-    """
-    Sync businesses to CRM (Salesforce, HubSpot, etc.)
-    """
-    # TODO: Implement CRM integration
-    return {"synced": len(business_ids)}
+    return {
+        "exported_at": datetime.now().isoformat(),
+        "count": len(results),
+        "businesses": results
+    }
 
 # ============================================================================
 # HEALTH & ADMIN
@@ -433,18 +550,21 @@ async def health_check():
     return {
         "status": "healthy",
         "version": "2.0.0",
-        "timestamp": datetime.now().isoformat()
+        "timestamp": datetime.now().isoformat(),
+        "businesses_loaded": len(BUSINESSES_LIST)
     }
 
 @app.get("/api/v2/admin/stats")
 async def get_system_stats():
     """Get system statistics"""
     return {
-        "total_businesses": 0,
-        "total_data_points": 0,
-        "active_sources": 0,
-        "last_collection_run": None,
-        "api_version": "2.0.0"
+        "total_businesses": len(BUSINESSES_LIST),
+        "total_pain_points": sum(len(b.get('pain_points', [])) for b in BUSINESSES_LIST),
+        "total_opportunities": sum(len(b.get('opportunities', [])) for b in BUSINESSES_LIST),
+        "total_solutions": sum(len(b.get('co_fit_solutions', [])) for b in BUSINESSES_LIST),
+        "categories": list(set(b.get('category', 'unknown') for b in BUSINESSES_LIST)),
+        "api_version": "2.0.0",
+        "data_source": "coral_gables_bi_database_v2.json"
     }
 
 # ============================================================================
