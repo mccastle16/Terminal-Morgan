@@ -20,16 +20,41 @@ from collections import Counter
 def load_database():
     """Load business data from JSON file"""
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    data_path = os.path.join(script_dir, "..", "data", "coral_gables_bi_database_v2.json")
 
-    try:
-        with open(data_path, 'r') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        # Fallback to top 100 PKP
-        fallback_path = os.path.join(script_dir, "..", "data", "coral_gables_top_100_businesses_pkp.json")
-        with open(fallback_path, 'r') as f:
-            return json.load(f)
+    # Primary locations to check (local data/ first for Railway deployment)
+    data_locations = [
+        os.path.join(script_dir, "data", "coral_gables_bi_database_v2.json"),
+        os.path.join(script_dir, "..", "data", "coral_gables_bi_database_v2.json"),
+    ]
+
+    # Fallback locations
+    fallback_locations = [
+        os.path.join(script_dir, "data", "coral_gables_top_100_businesses_pkp.json"),
+        os.path.join(script_dir, "..", "data", "coral_gables_top_100_businesses_pkp.json"),
+    ]
+
+    # Try primary locations first
+    for data_path in data_locations:
+        try:
+            with open(data_path, 'r') as f:
+                print(f"Loaded database from: {data_path}")
+                return json.load(f)
+        except FileNotFoundError:
+            continue
+
+    # Try fallback locations
+    for fallback_path in fallback_locations:
+        try:
+            with open(fallback_path, 'r') as f:
+                print(f"Loaded fallback database from: {fallback_path}")
+                return json.load(f)
+        except FileNotFoundError:
+            continue
+
+    # If all locations fail, raise an error with helpful message
+    raise FileNotFoundError(
+        f"Could not find database files. Searched: {data_locations + fallback_locations}"
+    )
 
 # Load data on module import
 DATABASE = load_database()
