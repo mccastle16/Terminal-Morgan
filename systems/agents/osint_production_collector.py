@@ -145,23 +145,27 @@ def calculate_sentiment(reviews: List[str]) -> Dict[str, float]:
     """Simple sentiment analysis"""
     positive_words = {'great', 'excellent', 'amazing', 'wonderful', 'fantastic', 'love', 'best', 'awesome', 'perfect'}
     negative_words = {'bad', 'terrible', 'awful', 'horrible', 'worst', 'hate', 'poor', 'disappointing'}
-    
+
     positive_count = 0
     negative_count = 0
-    
+
     for review in reviews:
         review_lower = review.lower()
         positive_count += sum(1 for word in positive_words if word in review_lower)
         negative_count += sum(1 for word in negative_words if word in review_lower)
-    
+
     total = positive_count + negative_count
     if total == 0:
         return {"positive": 0.5, "neutral": 0.5, "negative": 0.0}
-    
+
+    positive_ratio = positive_count / total
+    negative_ratio = negative_count / total
+    neutral_ratio = max(0.0, 1 - positive_ratio - negative_ratio)
+
     return {
-        "positive": positive_count / total,
-        "negative": negative_count / total,
-        "neutral": 1 - (positive_count + negative_count) / total
+        "positive": positive_ratio,
+        "negative": negative_ratio,
+        "neutral": neutral_ratio
     }
 
 # ============================================================================
@@ -1056,8 +1060,12 @@ async def main():
     print(f"📊 EXPORTING DATA")
     print(f"{'='*60}")
     
-    DataExporter.to_json(profiles, '/mnt/user-data/outputs/osint_collected_data.json')
-    DataExporter.to_postgres_compatible(profiles, '/mnt/user-data/outputs/osint_postgres_ready.json')
+    import os
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(script_dir, "..", "data")
+
+    DataExporter.to_json(profiles, os.path.join(data_dir, 'osint_collected_data.json'))
+    DataExporter.to_postgres_compatible(profiles, os.path.join(data_dir, 'osint_postgres_ready.json'))
     
     # Generate summary report
     print(f"\n{'='*60}")

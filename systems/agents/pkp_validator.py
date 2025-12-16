@@ -150,9 +150,11 @@ Provide your refined pain point analysis."""
         refined_pkp["pain_points"] = llm_response["refined_pain_points"]
         
         # Update confidence score
-        avg_confidence = sum(
-            pp["confidence"] for pp in llm_response["refined_pain_points"]
-        ) / len(llm_response["refined_pain_points"])
+        refined_pain_points = llm_response["refined_pain_points"]
+        avg_confidence = (
+            sum(pp["confidence"] for pp in refined_pain_points) / len(refined_pain_points)
+            if refined_pain_points else 0.0
+        )
         
         refined_pkp["meta"]["confidence"] = round(avg_confidence, 2)
         
@@ -241,11 +243,13 @@ if __name__ == "__main__":
     import subprocess
     import json
     
+    import os
+    script_dir = os.path.dirname(os.path.abspath(__file__))
     result = subprocess.run(
         ["python", "coral_gables_pkp_generator.py"],
         capture_output=True,
         text=True,
-        cwd="/home/claude"
+        cwd=script_dir
     )
     
     # Parse the JSON output (everything before the analysis section)
@@ -382,7 +386,8 @@ if __name__ == "__main__":
     print(report)
     
     # Save refined PKP
-    with open("/home/claude/books_and_books_pkp_refined.json", "w") as f:
+    output_path = os.path.join(script_dir, "..", "data", "books_and_books_pkp_refined.json")
+    with open(output_path, "w") as f:
         json.dump(refined_pkp, f, indent=2)
-    
-    print("\n\n✅ Refined PKP saved to: /home/claude/books_and_books_pkp_refined.json")
+
+    print(f"\n\n✅ Refined PKP saved to: {output_path}")

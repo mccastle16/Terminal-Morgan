@@ -268,7 +268,7 @@ async def get_category_insights(category: str):
 
 @app.get("/api/v2/analytics/trends")
 async def get_market_trends(
-    time_period: str = Query("30d", regex="^(7d|30d|90d|1y)$")
+    time_period: str = Query("30d", pattern="^(7d|30d|90d|1y)$")
 ):
     """
     Get market trends over time

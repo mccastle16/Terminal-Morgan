@@ -1193,12 +1193,15 @@ def generate_coral_gables_top_100():
 
 # Generate and save
 if __name__ == "__main__":
+    import os
+
     print("Generating Coral Gables Top 100 Business PKP Database...")
-    
+
     database = generate_coral_gables_top_100()
-    
-    # Save to JSON
-    output_path = "/mnt/user-data/outputs/coral_gables_top_100_businesses_pkp.json"
+
+    # Save to JSON (use data directory relative to script)
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    output_path = os.path.join(script_dir, "..", "data", "coral_gables_top_100_businesses_pkp.json")
     with open(output_path, 'w') as f:
         json.dump(database, f, indent=2)
     
