@@ -8,3 +8,4 @@ dist/
 .vite/
 venv/
 .venv/
+systems/data/coral_gables_bi_database_validated.json
