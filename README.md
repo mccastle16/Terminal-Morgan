@@ -1,6 +1,6 @@
 # Coral Gables Business Intelligence Platform
 
-AI-powered business intelligence system for local businesses in Coral Gables, FL. Generates consulting-grade PKPs (Precise Knowledge Protocols) using multi-stage LLM validation.
+AI-powered business intelligence system for local businesses in Coral Gables, FL. Generates consulting-grade PKPs (Portable Knowledge Protocols) using multi-stage LLM validation.
 
 ## Key Finding
 
