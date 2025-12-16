@@ -71,12 +71,26 @@ def migrate_business(session, business_data: Dict[str, Any]) -> Business:
         session.add(category)
 
     # Add location
+    address_data = business_data.get('address')
+    # Handle nested address dict or string
+    if isinstance(address_data, dict):
+        address_line1 = address_data.get('street', '')
+        city = address_data.get('city', 'Coral Gables')
+        state = address_data.get('state', 'FL')
+        zip_code = address_data.get('zip', address_data.get('zip_code', ''))
+    else:
+        address_line1 = address_data if isinstance(address_data, str) else None
+        city = 'Coral Gables'
+        state = 'FL'
+        zip_code = None
+
     location = BusinessLocation(
         business_id=business_id,
         location_type='headquarters',
-        address_line1=business_data.get('address'),
-        city='Coral Gables',
-        state='FL',
+        address_line1=address_line1,
+        city=city,
+        state=state,
+        zip_code=zip_code,
         country='US',
         latitude=business_data.get('latitude'),
         longitude=business_data.get('longitude'),
