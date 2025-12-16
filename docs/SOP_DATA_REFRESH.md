@@ -12,6 +12,23 @@ This document describes the Standard Operating Procedures for refreshing busines
 |---------|-----|---------|
 | **Terminal** | `terminal-production-27a0.up.railway.app` | Main API (24/7) |
 | **Terminal Cron Service** | `terminal-cron-service-production.up.railway.app` | Weekly refresh (Sunday 6 AM UTC) |
+| **PostgreSQL** | Railway-managed | Persistent data storage |
+
+---
+
+## Data Storage
+
+The platform supports two data storage modes:
+
+### PostgreSQL (Recommended for Production)
+- **Persistent storage** - data survives container restarts
+- **Set `DATABASE_URL`** in Railway environment variables
+- **Auto-detected** - API automatically uses PostgreSQL when available
+
+### JSON File (Fallback)
+- Used when `DATABASE_URL` is not set
+- Data is bundled with deployment
+- Ephemeral - lost on container restart unless committed to git
 
 ---
 
@@ -30,9 +47,9 @@ This document describes the Standard Operating Procedures for refreshing busines
 │                                                  │               │
 │                                                  ▼               │
 │  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐      │
-│  │   Terminal   │<───│    JSON      │<───│   Updated    │      │
+│  │   Terminal   │<───│  PostgreSQL  │<───│   Updated    │      │
 │  │   (Main API) │    │   Database   │    │    Data      │      │
-│  │              │    │              │    │              │      │
+│  │              │    │   (Railway)  │    │              │      │
 │  └──────────────┘    └──────────────┘    └──────────────┘      │
 │         │                                                        │
 │         ▼                                                        │
@@ -143,11 +160,50 @@ Set these in Railway Dashboard → Variables:
 
 | Variable | Required | Description |
 |----------|----------|-------------|
+| `DATABASE_URL` | **Yes** | PostgreSQL connection string (Railway provides this) |
 | `GOOGLE_PLACES_API_KEY` | Yes | Google Places API key |
 | `YELP_API_KEY` | Optional | Yelp Fusion API key |
 | `ANTHROPIC_API_KEY` | Recommended | For LLM validation |
 | `ADMIN_API_KEY` | Yes | Secret key for admin endpoints |
 | `API_URL` | Optional | Production API URL |
+
+---
+
+## PostgreSQL Setup (One-Time)
+
+### Step 1: Add PostgreSQL to Railway
+
+1. Go to [Railway Dashboard](https://railway.app) → Your Project
+2. Click **"+ New"** → **"Database"** → **"Add PostgreSQL"**
+3. Railway automatically creates the `DATABASE_URL` variable
+
+### Step 2: Run Initial Migration
+
+Migrate existing JSON data to PostgreSQL:
+
+```bash
+# From the systems/agents directory
+python migrate_json_to_db.py
+
+# Verify migration
+python migrate_json_to_db.py verify
+```
+
+### Step 3: Verify API is Using PostgreSQL
+
+```bash
+curl "https://terminal-production-27a0.up.railway.app/health"
+```
+
+**Response should show:**
+```json
+{
+  "status": "healthy",
+  "version": "2.0.0",
+  "businesses_loaded": 88,
+  "data_source": "PostgreSQL"
+}
+```
 
 ---
 
