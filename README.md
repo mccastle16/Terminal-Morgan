@@ -18,9 +18,20 @@ pip install -r requirements.txt
 
 ```bash
 cp .env.example .env
-# Edit .env and add your API keys:
-# - GOOGLE_PLACES_API_KEY (required for live data)
-# - ANTHROPIC_API_KEY (required for LLM validation)
+```
+
+Edit `.env` and add your API keys:
+
+| API | Required | Get it from |
+|-----|----------|-------------|
+| `GOOGLE_PLACES_API_KEY` | Yes | [Google Cloud Console](https://console.cloud.google.com/apis/credentials) |
+| `ANTHROPIC_API_KEY` | Yes | [Anthropic Console](https://console.anthropic.com/) |
+| `YELP_API_KEY` | No | [Yelp Developers](https://www.yelp.com/developers/v3/manage_app) |
+
+Verify your configuration:
+```bash
+cd systems/agents
+python -c "from config import settings; settings.print_status()"
 ```
 
 ### 3. Start the API Server
@@ -40,11 +51,20 @@ npm run dev
 
 Open http://localhost:3000 for the dashboard, http://localhost:8000/docs for API docs.
 
-### 5. (Optional) Start PostgreSQL
+### 5. Configure Database
 
+**Option A: Local (Docker)**
 ```bash
 docker compose up -d
 python systems/agents/migrate_json_to_db.py
+```
+
+**Option B: Cloud (Neon - recommended for production)**
+1. Sign up at [neon.tech](https://neon.tech) (free tier available)
+2. Create a new project and database
+3. Copy the connection string and update `.env`:
+```bash
+DATABASE_URL=postgresql://user:pass@ep-xxxxx.us-east-1.aws.neon.tech/neondb?sslmode=require
 ```
 
 ## Architecture
