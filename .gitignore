@@ -1,1 +1,10 @@
 __pycache__/
+*.pyc
+.env
+.env.local
+*.log
+node_modules/
+dist/
+.vite/
+venv/
+.venv/
