@@ -2,7 +2,7 @@
   "meta": {
     "schema_version": "1.0.0",
     "generator": "Co_ OSINT v2.0",
-    "generated": "2025-11-25T19:54:40.228532",
+    "generated": "2025-12-16T00:12:35.300432",
     "author": "counderscore_llc",
     "domain": "coral_gables_business_intelligence",
     "total_businesses": 100,
@@ -2612,107 +2612,6 @@
       "signals": {
         "yelp_rating": 4.0,
         "established": true
-      }
-    },
-    {
-      "name": "First Citizens Bank",
-      "category": "financial_services",
-      "subcategory": "business_banking",
-      "address": "Coral Gables, FL",
-      "owner": "First Citizens (Chamber Board)",
-      "founded": "Various",
-      "thesis": "Business banking with Chamber board membership",
-      "pain_points": [
-        "Small business onboarding complexity",
-        "Cross-selling opportunities",
-        "Digital banking adoption"
-      ],
-      "co_fit": [
-        "Onboarding automation",
-        "Relationship intelligence",
-        "Digital adoption tracking"
-      ],
-      "engagement_score": 85,
-      "signals": {
-        "chamber_role": "Board Member",
-        "focus": "business_banking"
-      }
-    },
-    {
-      "name": "Florida Blue",
-      "category": "financial_services",
-      "subcategory": "health_insurance",
-      "address": "Coral Gables, FL",
-      "owner": "Florida Blue (Chamber Past Chair)",
-      "founded": "Various",
-      "thesis": "Health insurance with strong Chamber connections",
-      "pain_points": [
-        "Small business plan complexity",
-        "Enrollment coordination",
-        "Claims support efficiency"
-      ],
-      "co_fit": [
-        "Plan recommendation engine",
-        "Enrollment automation",
-        "Claims tracking dashboard"
-      ],
-      "engagement_score": 85,
-      "signals": {
-        "chamber_role": "Past Chair",
-        "market": "small_business_focus"
-      }
-    },
-    {
-      "name": "S Salon & Spa",
-      "category": "salon",
-      "subcategory": "full_service",
-      "address": "4100 Salzedo St, Coral Gables, FL",
-      "owner": "JC & Esther",
-      "founded": "Various",
-      "thesis": "Full-service salon specializing in hair treatments and extensions",
-      "pain_points": [
-        "Multi-service booking complexity",
-        "Product inventory tracking",
-        "Client history management across services"
-      ],
-      "co_fit": [
-        "Unified booking system",
-        "Product usage tracking per service",
-        "Client preference memory system"
-      ],
-      "engagement_score": 90,
-      "signals": {
-        "yelp_rating": 4.5,
-        "price_range": "$$$",
-        "specialties": [
-          "hair_treatments",
-          "extensions"
-        ]
-      }
-    },
-    {
-      "name": "Avant Garde Salon and Spa",
-      "category": "salon",
-      "subcategory": "high_end_beauty",
-      "address": "Coral Gables, FL",
-      "owner": "Independent",
-      "founded": "Various",
-      "thesis": "High-end beauty salon with full service menu",
-      "pain_points": [
-        "Luxury client expectations",
-        "Stylist scheduling complexity",
-        "Product line management"
-      ],
-      "co_fit": [
-        "VIP client management",
-        "Intelligent stylist matching",
-        "Inventory optimization"
-      ],
-      "engagement_score": 85,
-      "signals": {
-        "yelp_rating": 4.6,
-        "price_range": "$$$$",
-        "market": "luxury"
       }
     }
   ]
