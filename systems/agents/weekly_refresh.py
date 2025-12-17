@@ -59,13 +59,38 @@ async def run_osint_collection(business_limit: int = 100):
     log(f"Starting OSINT collection for up to {business_limit} businesses...")
 
     try:
-        from osint_production_collector import OSINTProductionCollector, CONFIG
+        from osint_production_collector import OSINTOrchestrator, CONFIG
 
-        # Update config with limit
-        CONFIG["business_limit"] = business_limit
+        # Load existing businesses to get names and categories
+        business_list = []
+        db_file = os.path.join(os.path.dirname(__file__), "data", "coral_gables_bi_database_v2.json")
+        alt_db_file = os.path.join(os.path.dirname(__file__), "..", "data", "coral_gables_bi_database_v2.json")
 
-        collector = OSINTProductionCollector()
-        profiles = await collector.collect_all()
+        for filepath in [db_file, alt_db_file]:
+            if os.path.exists(filepath):
+                with open(filepath, 'r') as f:
+                    data = json.load(f)
+                    for biz in data.get("businesses", [])[:business_limit]:
+                        business_list.append({
+                            "name": biz.get("name"),
+                            "category": biz.get("category", "unknown")
+                        })
+                log(f"Loaded {len(business_list)} businesses from {filepath}")
+                break
+
+        if not business_list:
+            log("No existing business data found, using default list", "WARN")
+            business_list = [
+                {"name": "Luca Osteria", "category": "restaurant"},
+                {"name": "Books & Books", "category": "retail"},
+                {"name": "Graziano's Restaurant", "category": "restaurant"},
+                {"name": "Bulla Gastrobar", "category": "restaurant"},
+                {"name": "The Plump Room", "category": "spa"},
+            ][:business_limit]
+
+        # Use async context manager and collect data
+        async with OSINTOrchestrator() as orchestrator:
+            profiles = await orchestrator.collect_market_intelligence(business_list)
 
         log(f"OSINT collection complete: {len(profiles)} businesses collected")
         return profiles
