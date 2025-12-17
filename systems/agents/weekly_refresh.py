@@ -386,11 +386,16 @@ async def main():
     report = generate_refresh_report(stats)
     print(report)
 
-    # Save report to file
-    report_file = f"../data/refresh_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
-    with open(report_file, "w") as f:
-        f.write(report)
-    log(f"Report saved to: {report_file}")
+    # Save report to file (use local data directory, create if needed)
+    try:
+        report_dir = Path("data")
+        report_dir.mkdir(exist_ok=True)
+        report_file = report_dir / f"refresh_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+        with open(report_file, "w") as f:
+            f.write(report)
+        log(f"Report saved to: {report_file}")
+    except Exception as e:
+        log(f"Could not save report file: {e}", "WARNING")
 
     log("=" * 60)
     log("WEEKLY DATA REFRESH COMPLETE")
