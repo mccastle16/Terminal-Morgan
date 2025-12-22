@@ -188,10 +188,17 @@ def save_to_postgres(profiles):
                         session.add(category)
 
                     # Add location
+                    # Extract address string from dict (profile.address may be {"full": "..."} or {})
+                    address_data = getattr(profile, 'address', None)
+                    if isinstance(address_data, dict):
+                        address_line1 = address_data.get('full') or address_data.get('street') or None
+                    else:
+                        address_line1 = address_data if isinstance(address_data, str) else None
+
                     location = BusinessLocation(
                         business_id=business_id,
                         location_type='headquarters',
-                        address_line1=getattr(profile, 'address', None),
+                        address_line1=address_line1,
                         city='Coral Gables',
                         state='FL',
                         country='US',
