@@ -835,8 +835,9 @@ class OSINTOrchestrator:
         if google_data.get("website"):
             profile.website = google_data["website"]
         
-        profile.reviews["google_count"] = google_data.get("review_count", 0)
-        profile.reviews["yelp_count"] = yelp_data.get("review_count", 0)
+        # Use 'or 0' to handle both missing keys AND explicit None values
+        profile.reviews["google_count"] = google_data.get("review_count") or 0
+        profile.reviews["yelp_count"] = yelp_data.get("review_count") or 0
         profile.reviews["yelp_reviews"] = yelp_data.get("reviews", [])
         
         # Stage 2: Website analysis
