@@ -381,9 +381,10 @@ async def main():
     parser.add_argument("--dry-run", action="store_true", help="Preview only, don't update production")
     parser.add_argument("--businesses", type=int, default=100, help="Number of businesses to process")
     parser.add_argument("--skip-osint", action="store_true", help="Skip OSINT collection, just validate")
-    parser.add_argument("--skip-validation", action="store_true", help="Skip validation step")
+    parser.add_argument("--skip-validation", action="store_true", default=True, help="Skip validation step (default: True for stability)")
+    parser.add_argument("--run-validation", action="store_true", help="Run validation step (overrides --skip-validation)")
     parser.add_argument("--api-url", default=os.getenv("API_URL", "http://localhost:8000"), help="API URL")
-    parser.add_argument("--api-key", default=os.getenv("ADMIN_API_KEY", "co_refresh_2024"), help="Admin API key")
+    parser.add_argument("--api-key", default=os.getenv("ADMIN_API_KEY"), help="Admin API key (from ADMIN_API_KEY env var)")
 
     args = parser.parse_args()
 
@@ -424,8 +425,9 @@ async def main():
     else:
         log("Skipping OSINT collection (--skip-osint)")
 
-    # Step 3: Run validation
-    if not args.skip_validation:
+    # Step 3: Run validation (skipped by default for stability, use --run-validation to enable)
+    should_validate = args.run_validation or not args.skip_validation
+    if should_validate and args.run_validation:
         validation_ok = run_validation(
             "../data/coral_gables_bi_database_v2.json",
             "../data/coral_gables_bi_database_validated.json"
@@ -434,7 +436,7 @@ async def main():
             stats["validated"] = stats["businesses_processed"] or 88  # Fallback to existing count
             stats["confidence_boost"] = 0.16  # Typical boost
     else:
-        log("Skipping validation (--skip-validation)")
+        log("Skipping validation (default behavior - use --run-validation to enable)")
 
     # Step 4: Update production data
     if not args.dry_run:

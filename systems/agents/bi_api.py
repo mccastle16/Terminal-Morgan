@@ -101,10 +101,11 @@ app = FastAPI(
     version="2.0.0"
 )
 
-# CORS middleware
+# CORS middleware - configure allowed origins from environment
+ALLOWED_ORIGINS = os.getenv("CORS_ORIGINS", "").split(",") if os.getenv("CORS_ORIGINS") else ["*"]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -577,8 +578,11 @@ async def refresh_data(
     This endpoint reloads all business data without requiring a server restart.
     Use this after running OSINT collectors to see updated data.
     """
-    # Simple API key check (set ADMIN_API_KEY in environment)
-    expected_key = os.getenv("ADMIN_API_KEY", "co_refresh_2024")
+    # API key check - ADMIN_API_KEY must be set in environment for security
+    expected_key = os.getenv("ADMIN_API_KEY")
+
+    if not expected_key:
+        raise HTTPException(status_code=503, detail="Admin API not configured - set ADMIN_API_KEY environment variable")
 
     if api_key != expected_key:
         raise HTTPException(status_code=401, detail="Invalid API key")
