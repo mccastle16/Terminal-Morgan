@@ -17,6 +17,7 @@ import aiohttp
 import json
 import re
 import hashlib
+import os
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass, asdict, field
@@ -24,6 +25,10 @@ from bs4 import BeautifulSoup
 import time
 from urllib.parse import quote_plus, urljoin
 from collections import defaultdict, Counter
+
+# API Keys - loaded at runtime from environment variables
+GOOGLE_PLACES_API_KEY = os.getenv("GOOGLE_PLACES_API_KEY")
+YELP_API_KEY = os.getenv("YELP_API_KEY")
 
 # ============================================================================
 # CONFIGURATION
@@ -169,42 +174,94 @@ def calculate_sentiment(reviews: List[str]) -> Dict[str, float]:
     }
 
 # ============================================================================
-# AGENT 1: GOOGLE MAPS SCRAPER
+# AGENT 1: GOOGLE MAPS/PLACES API
 # ============================================================================
 
 class GoogleMapsAgent:
-    """Scrapes Google Maps/Business data"""
-    
+    """Fetches Google Maps/Business data via Places API (preferred) or scraping (fallback)"""
+
     def __init__(self, session: aiohttp.ClientSession):
         self.session = session
-        self.base_url = "https://www.google.com/maps/search/"
-    
+        self.api_key = GOOGLE_PLACES_API_KEY
+        self.places_api_url = "https://places.googleapis.com/v1/places:searchText"
+        self.fallback_url = "https://www.google.com/maps/search/"
+
     async def search(self, business_name: str, location: str) -> Dict[str, Any]:
-        """Search for business on Google Maps"""
+        """Search for business - uses API if available, falls back to scraping"""
+        # Try API first (more reliable, higher confidence)
+        if self.api_key and not self.api_key.startswith("your_"):
+            api_result = await self._search_via_api(business_name, location)
+            if api_result.get("rating") or api_result.get("address"):
+                return api_result
+
+        # Fallback to scraping
+        return await self._search_via_scraping(business_name, location)
+
+    async def _search_via_api(self, business_name: str, location: str) -> Dict[str, Any]:
+        """Search using Google Places API (New)"""
         try:
             query = f"{business_name} {location}"
-            search_url = f"{self.base_url}{quote_plus(query)}"
-            
+            headers = {
+                "Content-Type": "application/json",
+                "X-Goog-Api-Key": self.api_key,
+                "X-Goog-FieldMask": "places.displayName,places.formattedAddress,places.rating,places.userRatingCount,places.nationalPhoneNumber,places.websiteUri,places.types,places.priceLevel,places.regularOpeningHours"
+            }
+            payload = {"textQuery": query, "maxResultCount": 1}
+
+            async with self.session.post(self.places_api_url, headers=headers, json=payload, timeout=CONFIG["timeout"]) as response:
+                if response.status != 200:
+                    return {}
+
+                result = await response.json()
+                places = result.get("places", [])
+
+                if not places:
+                    return {}
+
+                place = places[0]
+                data = {
+                    "source": "google_places_api",
+                    "name": place.get("displayName", {}).get("text", business_name),
+                    "rating": place.get("rating"),
+                    "review_count": place.get("userRatingCount"),
+                    "address": place.get("formattedAddress"),
+                    "phone": place.get("nationalPhoneNumber"),
+                    "website": place.get("websiteUri"),
+                    "hours": place.get("regularOpeningHours", {}),
+                    "categories": place.get("types", []),
+                    "price_level": place.get("priceLevel"),
+                    "confidence": 0.9  # High confidence for API data
+                }
+
+                await asyncio.sleep(CONFIG["rate_limit_delay"])
+                return data
+
+        except Exception as e:
+            print(f"  ⚠️  Google Places API error for {business_name}: {e}")
+            return {}
+
+    async def _search_via_scraping(self, business_name: str, location: str) -> Dict[str, Any]:
+        """Fallback: Search by scraping Google Maps"""
+        try:
+            query = f"{business_name} {location}"
+            search_url = f"{self.fallback_url}{quote_plus(query)}"
             headers = {"User-Agent": CONFIG["user_agent"]}
-            
+
             async with self.session.get(search_url, headers=headers, timeout=CONFIG["timeout"]) as response:
                 html = await response.text()
                 soup = BeautifulSoup(html, 'lxml')
-                
-                # Extract data from HTML
                 data = self._parse_google_maps(soup, business_name)
-                
                 await asyncio.sleep(CONFIG["rate_limit_delay"])
                 return data
-                
+
         except Exception as e:
-            print(f"  ⚠️  Google Maps error for {business_name}: {e}")
-            return {}
-    
+            print(f"  ⚠️  Google Maps scraping error for {business_name}: {e}")
+            return {"source": "google_maps", "confidence": 0.3}
+
     def _parse_google_maps(self, soup: BeautifulSoup, business_name: str) -> Dict[str, Any]:
-        """Parse Google Maps HTML"""
+        """Parse Google Maps HTML (fallback method)"""
         data = {
-            "source": "google_maps",
+            "source": "google_maps_scrape",
             "name": business_name,
             "rating": None,
             "review_count": None,
@@ -214,9 +271,11 @@ class GoogleMapsAgent:
             "hours": {},
             "categories": [],
             "price_level": None,
-            "confidence": 0.5
+            "confidence": 0.5  # Lower confidence for scraped data
         }
-        
+
+        fields_found = 0
+
         # Try to extract rating
         rating_elem = soup.find('span', {'aria-label': re.compile(r'[\d.]+ stars')})
         if rating_elem:
@@ -224,71 +283,147 @@ class GoogleMapsAgent:
             rating_match = re.search(r'([\d.]+)', rating_text)
             if rating_match:
                 data["rating"] = float(rating_match.group(1))
-                data["confidence"] = 0.7
-        
+                fields_found += 1
+
         # Extract review count
         review_elem = soup.find(text=re.compile(r'\d+\s+reviews'))
         if review_elem:
             review_match = re.search(r'(\d+)', review_elem)
             if review_match:
                 data["review_count"] = int(review_match.group(1))
-        
+                fields_found += 1
+
         # Extract address
         address_elem = soup.find('button', {'data-item-id': 'address'})
         if address_elem:
             data["address"] = clean_text(address_elem.get_text())
-        
+            fields_found += 1
+
         # Extract phone
         phone_text = soup.get_text()
         phone = extract_phone(phone_text)
         if phone:
             data["phone"] = phone
-        
+            fields_found += 1
+
         # Extract website
         website_elem = soup.find('a', {'data-item-id': 'authority'})
         if website_elem:
             data["website"] = website_elem.get('href')
-        
+            fields_found += 1
+
+        # Adjust confidence based on fields found
+        data["confidence"] = min(0.3 + (fields_found * 0.1), 0.7)
+
         return data
 
 # ============================================================================
-# AGENT 2: YELP SCRAPER
+# AGENT 2: YELP FUSION API
 # ============================================================================
 
 class YelpAgent:
-    """Scrapes Yelp data"""
-    
+    """Fetches Yelp data via Fusion API (preferred) or scraping (fallback)"""
+
     def __init__(self, session: aiohttp.ClientSession):
         self.session = session
-        self.base_url = "https://www.yelp.com/search"
-    
+        self.api_key = YELP_API_KEY
+        self.api_url = "https://api.yelp.com/v3/businesses/search"
+        self.reviews_url = "https://api.yelp.com/v3/businesses/{}/reviews"
+        self.fallback_url = "https://www.yelp.com/search"
+
     async def search(self, business_name: str, location: str) -> Dict[str, Any]:
-        """Search for business on Yelp"""
+        """Search for business - uses API if available, falls back to scraping"""
+        # Try API first (more reliable, higher confidence)
+        if self.api_key and not self.api_key.startswith("your_"):
+            api_result = await self._search_via_api(business_name, location)
+            if api_result.get("rating") or api_result.get("review_count"):
+                return api_result
+
+        # Fallback to scraping
+        return await self._search_via_scraping(business_name, location)
+
+    async def _search_via_api(self, business_name: str, location: str) -> Dict[str, Any]:
+        """Search using Yelp Fusion API"""
         try:
-            params = {
-                "find_desc": business_name,
-                "find_loc": location
-            }
-            
-            headers = {"User-Agent": CONFIG["user_agent"]}
-            
-            async with self.session.get(self.base_url, params=params, headers=headers, timeout=CONFIG["timeout"]) as response:
-                html = await response.text()
-                soup = BeautifulSoup(html, 'lxml')
-                
-                data = self._parse_yelp(soup, business_name)
-                
+            headers = {"Authorization": f"Bearer {self.api_key}"}
+            params = {"term": business_name, "location": location, "limit": 1}
+
+            async with self.session.get(self.api_url, headers=headers, params=params, timeout=CONFIG["timeout"]) as response:
+                if response.status != 200:
+                    return {}
+
+                result = await response.json()
+                businesses = result.get("businesses", [])
+
+                if not businesses:
+                    return {}
+
+                biz = businesses[0]
+                data = {
+                    "source": "yelp_api",
+                    "name": biz.get("name", business_name),
+                    "rating": biz.get("rating"),
+                    "review_count": biz.get("review_count"),
+                    "price_range": biz.get("price"),
+                    "categories": [c.get("title", "") for c in biz.get("categories", [])],
+                    "phone": biz.get("display_phone"),
+                    "address": ", ".join(biz.get("location", {}).get("display_address", [])),
+                    "is_closed": biz.get("is_closed", False),
+                    "reviews": [],
+                    "confidence": 0.9  # High confidence for API data
+                }
+
+                # Fetch reviews if we have an ID
+                biz_id = biz.get("id")
+                if biz_id:
+                    reviews = await self._fetch_reviews(biz_id)
+                    data["reviews"] = reviews
+
                 await asyncio.sleep(CONFIG["rate_limit_delay"])
                 return data
-                
+
         except Exception as e:
-            print(f"  ⚠️  Yelp error for {business_name}: {e}")
+            print(f"  ⚠️  Yelp API error for {business_name}: {e}")
             return {}
-    
+
+    async def _fetch_reviews(self, business_id: str) -> List[str]:
+        """Fetch reviews for a business"""
+        try:
+            headers = {"Authorization": f"Bearer {self.api_key}"}
+            url = self.reviews_url.format(business_id)
+
+            async with self.session.get(url, headers=headers, timeout=CONFIG["timeout"]) as response:
+                if response.status != 200:
+                    return []
+
+                result = await response.json()
+                reviews = result.get("reviews", [])
+                return [r.get("text", "") for r in reviews[:5]]
+
+        except Exception:
+            return []
+
+    async def _search_via_scraping(self, business_name: str, location: str) -> Dict[str, Any]:
+        """Fallback: Search by scraping Yelp"""
+        try:
+            params = {"find_desc": business_name, "find_loc": location}
+            headers = {"User-Agent": CONFIG["user_agent"]}
+
+            async with self.session.get(self.fallback_url, params=params, headers=headers, timeout=CONFIG["timeout"]) as response:
+                html = await response.text()
+                soup = BeautifulSoup(html, 'lxml')
+                data = self._parse_yelp(soup, business_name)
+                await asyncio.sleep(CONFIG["rate_limit_delay"])
+                return data
+
+        except Exception as e:
+            print(f"  ⚠️  Yelp scraping error for {business_name}: {e}")
+            return {"source": "yelp", "confidence": 0.3}
+
     def _parse_yelp(self, soup: BeautifulSoup, business_name: str) -> Dict[str, Any]:
-        """Parse Yelp HTML"""
+        """Parse Yelp HTML (fallback method)"""
         data = {
-            "source": "yelp",
+            "source": "yelp_scrape",
             "name": business_name,
             "rating": None,
             "review_count": None,
@@ -297,12 +432,14 @@ class YelpAgent:
             "reviews": [],
             "confidence": 0.5
         }
-        
+
+        fields_found = 0
+
         # Find first business result
         business_card = soup.find('div', {'data-testid': re.compile(r'serp-ia-card')})
         if not business_card:
             business_card = soup.find('div', class_=re.compile(r'businessName'))
-        
+
         if business_card:
             # Extract rating
             rating_elem = business_card.find('span', class_=re.compile(r'rating'))
@@ -310,28 +447,37 @@ class YelpAgent:
                 rating_match = re.search(r'([\d.]+)', rating_elem.get('aria-label', ''))
                 if rating_match:
                     data["rating"] = float(rating_match.group(1))
-                    data["confidence"] = 0.8
-            
+                    fields_found += 1
+
             # Extract review count
             review_elem = business_card.find(text=re.compile(r'\d+\s+reviews?'))
             if review_elem:
                 review_match = re.search(r'(\d+)', review_elem)
                 if review_match:
                     data["review_count"] = int(review_match.group(1))
-            
+                    fields_found += 1
+
             # Extract price range
             price_elem = business_card.find('span', text=re.compile(r'^\$+$'))
             if price_elem:
                 data["price_range"] = price_elem.get_text()
-            
+                fields_found += 1
+
             # Extract categories
             category_elems = business_card.find_all('a', class_=re.compile(r'category'))
             data["categories"] = [cat.get_text() for cat in category_elems]
-        
+            if data["categories"]:
+                fields_found += 1
+
         # Extract review snippets
         review_elems = soup.find_all('p', class_=re.compile(r'comment'))
         data["reviews"] = [clean_text(r.get_text()) for r in review_elems[:5]]
-        
+        if data["reviews"]:
+            fields_found += 1
+
+        # Adjust confidence based on fields found
+        data["confidence"] = min(0.3 + (fields_found * 0.1), 0.7)
+
         return data
 
 # ============================================================================
@@ -909,7 +1055,23 @@ class OSINTOrchestrator:
         profile.co_fit_solutions = cofit_result["solutions"]
         profile.engagement_score = cofit_result["engagement_score"]
         profile.priority_tier = cofit_result["priority_tier"]
-        
+
+        # Convert solutions to opportunities format for database compatibility
+        # This ensures the 'opportunities' field is populated alongside 'co_fit_solutions'
+        profile.opportunities = [
+            {
+                "opportunity": solution.get("solution_name", ""),
+                "category": solution.get("solution_category", "general"),
+                "opportunity_category": solution.get("solution_category", "general"),
+                "description": solution.get("description", ""),
+                "potential_impact": solution.get("estimated_impact", "medium"),
+                "priority": solution.get("priority", 3),
+                "confidence": 0.7 + (0.1 * (4 - solution.get("priority", 3))),  # Higher priority = higher confidence
+                "source": "co_fit_analysis"
+            }
+            for solution in cofit_result["solutions"]
+        ]
+
         # Stage 8: Calculate completeness and confidence
         print(f"  └─ Finalizing...")
         profile.data_completeness = self._calculate_completeness(profile)
@@ -922,18 +1084,19 @@ class OSINTOrchestrator:
     def _calculate_completeness(self, profile: BusinessProfile) -> float:
         """Calculate data completeness 0-1"""
         fields_to_check = [
-            bool(profile.name),
-            bool(profile.address),
-            bool(profile.phone),
-            bool(profile.website),
-            bool(profile.ratings.get("google") or profile.ratings.get("yelp")),
-            bool(profile.reviews.get("google_count", 0) + profile.reviews.get("yelp_count", 0)),
-            bool(profile.estimated_revenue),
-            bool(profile.estimated_employees),
-            bool(profile.pain_points),
-            bool(profile.co_fit_solutions)
+            bool(profile.name),                    # 1. Core identity
+            bool(profile.address),                 # 2. Location
+            bool(profile.phone),                   # 3. Contact
+            bool(profile.website),                 # 4. Web presence
+            bool(profile.ratings.get("google") or profile.ratings.get("yelp")),  # 5. Ratings
+            bool(profile.reviews.get("google_count", 0) + profile.reviews.get("yelp_count", 0)),  # 6. Reviews
+            bool(profile.estimated_revenue),       # 7. Financial data
+            bool(profile.estimated_employees),     # 8. Employee data
+            bool(profile.pain_points),             # 9. Pain points
+            bool(profile.opportunities),           # 10. Opportunities (now properly populated)
+            bool(profile.co_fit_solutions)         # 11. Solutions
         ]
-        
+
         return sum(fields_to_check) / len(fields_to_check)
     
     def _calculate_confidence(self, profile: BusinessProfile) -> float:
