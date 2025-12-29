@@ -148,7 +148,7 @@ class Opportunity(Base):
     business_id = Column(String(16), ForeignKey("businesses.business_id"), index=True)
     opportunity = Column(Text)
     opportunity_category = Column(String(100))
-    potential_impact = Column(String(20))
+    potential_impact = Column(String(100))  # Increased from 20 to support detailed impact descriptions
     estimated_value = Column(DECIMAL(15, 2))
     confidence = Column(DECIMAL(3, 2))
     identified_date = Column(DateTime, default=datetime.utcnow)
