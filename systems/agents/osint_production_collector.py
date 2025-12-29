@@ -26,9 +26,10 @@ import time
 from urllib.parse import quote_plus, urljoin
 from collections import defaultdict, Counter
 
-# API Keys - loaded at runtime from environment variables
-GOOGLE_PLACES_API_KEY = os.getenv("GOOGLE_PLACES_API_KEY")
-YELP_API_KEY = os.getenv("YELP_API_KEY")
+# API Keys - loaded from config (which loads .env file)
+from config import settings
+GOOGLE_PLACES_API_KEY = settings.google.places_api_key
+YELP_API_KEY = settings.yelp.api_key
 
 # ============================================================================
 # CONFIGURATION
