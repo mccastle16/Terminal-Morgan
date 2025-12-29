@@ -1,0 +1,33 @@
+# Nixpacks Configuration
+# Prevents API keys from being baked into Docker image layers
+# Documentation: https://nixpacks.com/docs/configuration/file
+
+[phases.setup]
+nixPkgs = ["python311", "postgresql_16.dev", "gcc"]
+
+[phases.install]
+cmds = ["python -m venv --copies /opt/venv && . /opt/venv/bin/activate && pip install -r requirements.txt"]
+
+[phases.build]
+cmds = ["pip install -r requirements.txt"]
+
+[start]
+cmd = "python weekly_refresh.py"
+
+# IMPORTANT: Environment variables should be injected at RUNTIME only
+# Do NOT use [variables] section for secrets - they get baked into image layers
+#
+# Instead, set these in Railway dashboard under Variables tab:
+# - ANTHROPIC_API_KEY
+# - GOOGLE_PLACES_API_KEY
+# - YELP_API_KEY
+# - DATABASE_URL
+# - ADMIN_API_KEY
+#
+# Railway automatically injects dashboard variables at runtime,
+# which prevents them from appearing in build logs or image layers.
+
+# Non-sensitive build variables only
+[variables]
+PYTHONUNBUFFERED = "1"
+PYTHONDONTWRITEBYTECODE = "1"
