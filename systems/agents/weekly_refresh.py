@@ -31,6 +31,41 @@ from config import settings
 USE_POSTGRES = bool(os.getenv("DATABASE_URL"))
 
 
+def run_migrations():
+    """Run database migrations to ensure schema is up to date"""
+    if not USE_POSTGRES:
+        return
+
+    try:
+        from sqlalchemy import create_engine, text
+
+        database_url = os.getenv("DATABASE_URL")
+        engine = create_engine(database_url)
+
+        with engine.connect() as conn:
+            # Migration 001: Increase potential_impact column size
+            # This is idempotent - safe to run multiple times
+            conn.execute(text("""
+                DO $$
+                BEGIN
+                    IF EXISTS (
+                        SELECT 1 FROM information_schema.columns
+                        WHERE table_name = 'opportunities'
+                        AND column_name = 'potential_impact'
+                        AND character_maximum_length < 100
+                    ) THEN
+                        ALTER TABLE opportunities
+                        ALTER COLUMN potential_impact TYPE VARCHAR(100);
+                        RAISE NOTICE 'Migration: potential_impact column increased to VARCHAR(100)';
+                    END IF;
+                END $$;
+            """))
+            conn.commit()
+            log("Database migrations checked/applied")
+    except Exception as e:
+        log(f"Migration warning (non-fatal): {e}", "WARN")
+
+
 def log(message: str, level: str = "INFO"):
     """Simple logging with timestamps"""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -350,6 +385,9 @@ async def main():
     log("=" * 60)
     log("WEEKLY DATA REFRESH STARTING")
     log("=" * 60)
+
+    # Run database migrations first
+    run_migrations()
 
     if args.dry_run:
         log("DRY RUN MODE - No production changes will be made", "WARN")

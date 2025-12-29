@@ -1064,7 +1064,7 @@ class OSINTOrchestrator:
                 "category": solution.get("solution_category", "general"),
                 "opportunity_category": solution.get("solution_category", "general"),
                 "description": solution.get("description", ""),
-                "potential_impact": solution.get("estimated_impact", "medium"),
+                "potential_impact": str(solution.get("estimated_impact", "medium"))[:100],  # Truncate to fit DB column
                 "priority": solution.get("priority", 3),
                 "confidence": 0.7 + (0.1 * (4 - solution.get("priority", 3))),  # Higher priority = higher confidence
                 "source": "co_fit_analysis"
