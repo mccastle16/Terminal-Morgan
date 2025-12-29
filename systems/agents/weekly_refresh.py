@@ -38,6 +38,11 @@ def run_migrations():
 
     try:
         from sqlalchemy import create_engine, text
+        from database import create_tables
+
+        # Ensure tables exist first
+        log("Creating/verifying database tables...")
+        create_tables()
 
         database_url = os.getenv("DATABASE_URL")
         engine = create_engine(database_url)
