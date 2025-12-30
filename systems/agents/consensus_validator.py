@@ -3,9 +3,21 @@ Stage 3: Multi-Agent Consensus Validator
 Increases confidence from 0.6-0.8 to 0.8-0.9 through agent consensus
 
 Architecture:
-- Multiple validation agents with different perspectives
-- Voting-based consensus mechanism
-- Confidence boost based on agreement level
+- Multiple validation agents with different perspectives (5 agents)
+- Voting-based consensus mechanism (67% threshold)
+- Confidence boost based on agreement level (+15% on consensus)
+
+Technical Details:
+- Uses AsyncAnthropic for concurrent API calls (all 5 agents validate in parallel)
+- 30-second timeout per LLM call using asyncio.wait_for()
+- Falls back to heuristic validation on timeout or API failure
+- Expected performance: 2-5 min for 10 businesses (vs 10+ min sequential)
+
+Usage:
+    python weekly_refresh.py --businesses 10 --run-validation
+
+    Or directly:
+    python consensus_validator.py  # runs demo
 """
 
 import asyncio

@@ -154,6 +154,37 @@ python weekly_refresh.py --businesses 10
 
 **Expected**: Data saved to PostgreSQL or JSON, report generated
 
+### 2.3 Live Run with Validation (10 Businesses)
+
+```bash
+python weekly_refresh.py --businesses 10 --run-validation
+```
+
+**Expected Output**:
+```
+[INFO] OSINT collection complete: 10 businesses collected
+[INFO] Starting validation pipeline...
+[INFO] Validation timeout set to 1800 seconds (30 minutes)
+...
+[INFO] Validation complete
+STATUS: SUCCESS
+```
+
+**Validation Details**:
+- Uses async concurrent API calls (5 agents in parallel)
+- Each LLM call has 30-second timeout
+- Falls back to heuristic validation on timeout
+- Expected completion: 2-5 minutes for 10 businesses
+
+### 2.4 Test Consensus Validator Directly
+
+```bash
+cd systems/agents
+python consensus_validator.py
+```
+
+**Expected**: Demo output showing pain point validation with confidence scores
+
 ---
 
 ## Test 3: API Endpoints
@@ -308,6 +339,7 @@ curl -X POST https://terminal-production-27a0.up.railway.app/api/v2/admin/refres
 |------|----------|--------|
 | Agent Tests | All 6 core agents return data | [ ] Pass |
 | Orchestrator | Completes with SUCCESS status | [ ] Pass |
+| Validation | Completes with --run-validation (async, <5 min for 10 biz) | [ ] Pass |
 | API Health | Returns healthy status | [ ] Pass |
 | Data Quality | Completeness >= 85% (target: 89%) | [ ] Pass |
 | Database | Connection successful | [ ] Pass |
