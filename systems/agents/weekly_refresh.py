@@ -143,10 +143,11 @@ def run_validation(input_file: str, output_file: str, business_count: int = 10):
     """Run the validation pipeline"""
     log(f"Starting validation pipeline...")
 
-    # Calculate timeout: ~3 minutes per business (with async, should be faster)
-    # Minimum 10 minutes, maximum 60 minutes
-    timeout_seconds = min(3600, max(600, business_count * 180))
-    log(f"Validation timeout set to {timeout_seconds} seconds ({timeout_seconds // 60} minutes)")
+    # Calculate timeout: ~5 minutes per business (based on actual runs)
+    # Minimum 10 minutes, maximum 10 hours for large runs
+    timeout_seconds = min(36000, max(600, business_count * 300))
+    timeout_hours = timeout_seconds / 3600
+    log(f"Validation timeout set to {timeout_seconds} seconds ({timeout_hours:.1f} hours)")
 
     try:
         # Import and run validation
