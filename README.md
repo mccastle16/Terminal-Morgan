@@ -198,6 +198,12 @@ Five AI validators with different perspectives vote on each insight:
 
 Consensus threshold: 67%. Adds 15% to confidence when reached.
 
+**Technical Implementation:**
+- Uses `AsyncAnthropic` for concurrent API calls (5 agents validate in parallel)
+- 30-second timeout per LLM call with fallback to heuristic validation
+- Run with: `python weekly_refresh.py --businesses 10 --run-validation`
+- Expected: 2-5 minutes for 10 businesses (vs 10+ min sequential)
+
 ---
 
 ## Business Models

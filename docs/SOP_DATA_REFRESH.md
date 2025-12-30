@@ -260,15 +260,22 @@ curl "https://terminal-production-27a0.up.railway.app/api/v2/data-quality/overvi
 
 ### Issue: Validation fails or times out
 
-**Cause:** Missing Anthropic API key or slow LLM response
+**Cause:** Missing Anthropic API key, slow LLM response, or synchronous API calls
 
 **Solution:**
 1. Validation is **skipped by default** for stability
 2. To enable validation, run with `--run-validation` flag:
    ```bash
-   python weekly_refresh.py --run-validation
+   python weekly_refresh.py --businesses 10 --run-validation
    ```
 3. Ensure `ANTHROPIC_API_KEY` is configured if running validation
+4. Timeout scales with business count: ~3 min/business (min 10 min, max 60 min)
+
+**Technical Details:**
+- Validation uses **async concurrent** API calls (5 agents validate in parallel)
+- Each LLM call has a 30-second timeout
+- If a call times out, it falls back to heuristic validation
+- For 10 businesses: expect ~2-5 minutes (was 10+ min before async fix)
 
 ---
 
