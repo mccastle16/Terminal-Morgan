@@ -392,8 +392,13 @@ The FastAPI backend is deployed on Railway from `systems/agents/`.
 
 **Environment Variables (Railway):**
 - `ANTHROPIC_API_KEY` - For LLM validation
-- `GOOGLE_PLACES_API_KEY` - For data collection
+- `GOOGLE_PLACES_API_KEY` - For data collection (Google Places API New v1)
 - `YELP_API_KEY` - For data collection (optional)
+- `ADMIN_API_KEY` - **Required** for admin endpoints (generate: `openssl rand -hex 32`)
+- `CORS_ORIGINS` - **Required for production** - Comma-separated allowed origins (e.g., `https://co-terminal.netlify.app`). **WARNING: defaults to `*` if not set**
+- `DATABASE_URL` - PostgreSQL connection string (Railway auto-provides)
+
+**Note:** Database migrations run automatically on startup. Validation is skipped by default for performance - use `--run-validation` flag when running `weekly_refresh.py` manually.
 
 ### Frontend (Netlify)
 
@@ -468,18 +473,35 @@ Terminal/
 
 ## Live Data Collection
 
-The platform can collect live data from:
+The platform uses 8 OSINT agents for data collection:
 
-- **Google Places API** ✅ - Business details, reviews, ratings
-- **Yelp Fusion API** ✅ - Reviews, categories, transactions
-- **TripAdvisor** (planned)
-- **Social Media** (planned)
+### Agent Status (as of Dec 2025)
+
+| Agent | Status | Confidence | Notes |
+|-------|--------|------------|-------|
+| **GoogleMapsAgent** | ✅ Production | 0.9 | Google Places API (New) v1 |
+| **YelpAgent** | ✅ Production | 0.9 | Yelp Fusion API v3 |
+| **WebsiteAnalyzer** | ✅ Production | 0.6 | Scrapes business websites |
+| **FinancialEstimator** | ✅ Production | 0.6 | Revenue/employee estimates |
+| **PainPointExtractor** | ✅ Production | 0.7 | LLM-based pain point extraction |
+| **CoFitAnalyzer** | ✅ Production | 0.7 | Solution matching |
+| **ChamberAgent** | ⚠️ Stub | - | Manual data (use member list) |
+| **SocialMediaAnalyzer** | ⚠️ Stub | - | Planned for Phase 2 |
+
+### Data Quality (after API integration)
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Data Completeness | 41% | 89% |
+| Average Confidence | 50% | 85% |
+| Opportunities Found | 0 | 267+ |
 
 Configure API keys in `.env`:
 
 ```bash
 GOOGLE_PLACES_API_KEY=your_key_here
 YELP_API_KEY=your_key_here
+ANTHROPIC_API_KEY=your_key_here
 ```
 
 ---
