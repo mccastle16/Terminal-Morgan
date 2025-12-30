@@ -186,14 +186,19 @@ Respond in JSON:
         return self._heuristic_validate(item_type, item_text, business_context)
 
     async def _call_llm(self, prompt: str) -> str:
-        """Call Anthropic API"""
+        """Call Anthropic API (async with timeout)"""
         import anthropic
 
-        client = anthropic.Anthropic(api_key=settings.anthropic.api_key)
-        message = client.messages.create(
-            model="claude-sonnet-4-20250514",
-            max_tokens=500,
-            messages=[{"role": "user", "content": prompt}]
+        client = anthropic.AsyncAnthropic(api_key=settings.anthropic.api_key)
+
+        # Add timeout to prevent hanging (30 seconds per call)
+        message = await asyncio.wait_for(
+            client.messages.create(
+                model="claude-sonnet-4-20250514",
+                max_tokens=500,
+                messages=[{"role": "user", "content": prompt}]
+            ),
+            timeout=30.0
         )
         return message.content[0].text
 
