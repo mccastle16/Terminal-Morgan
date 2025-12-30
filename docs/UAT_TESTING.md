@@ -174,7 +174,11 @@ STATUS: SUCCESS
 - Uses async concurrent API calls (5 agents in parallel)
 - Each LLM call has 30-second timeout
 - Falls back to heuristic validation on timeout
-- Expected completion: 2-5 minutes for 10 businesses
+
+**Actual Performance (Dec 2025):**
+- 88 businesses: ~17 minutes
+- Confidence boost: +16% (0.75 → 0.92-0.95)
+- Min confidence: 0.92, Max: 0.95, Avg: 0.92
 
 ### 2.4 Test Consensus Validator Directly
 

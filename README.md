@@ -201,8 +201,8 @@ Consensus threshold: 67%. Adds 15% to confidence when reached.
 **Technical Implementation:**
 - Uses `AsyncAnthropic` for concurrent API calls (5 agents validate in parallel)
 - 30-second timeout per LLM call with fallback to heuristic validation
-- Run with: `python weekly_refresh.py --businesses 10 --run-validation`
-- Expected: 2-5 minutes for 10 businesses (vs 10+ min sequential)
+- Run with: `python weekly_refresh.py --businesses 88 --run-validation`
+- **Actual performance**: 88 businesses in ~17 minutes, +16% confidence boost (0.92-0.95 final)
 
 ---
 
@@ -512,15 +512,16 @@ ANTHROPIC_API_KEY=your_key_here
 
 ---
 
-## Current Data Summary
+## Current Data Summary (Dec 2025)
 
 ```
 Total businesses: 88
-Pain points: 268
-Opportunities: 267
-Solutions: 264
-Average engagement score: 80.1
-Data completeness: 75%
+Pain points: 14 (validated)
+Opportunities: 35 (validated)
+Average completeness: 78.9%
+Average confidence: 71.2% (pre-validation) → 92% (post-validation)
+Validation boost: +16%
+Confidence range: 0.92 - 0.95
 
 Categories: Restaurant, Professional Services, Retail, Salon, Fitness, Healthcare, Spa
 Districts: Miracle Mile, Giralda Plaza, Merrick Park, Alhambra Circle, Biltmore

@@ -275,7 +275,11 @@ curl "https://terminal-production-27a0.up.railway.app/api/v2/data-quality/overvi
 - Validation uses **async concurrent** API calls (5 agents validate in parallel)
 - Each LLM call has a 30-second timeout
 - If a call times out, it falls back to heuristic validation
-- For 10 businesses: expect ~2-5 minutes (was 10+ min before async fix)
+
+**Actual Performance (Dec 2025):**
+- 10 businesses: ~17 minutes
+- 88 businesses: ~17 minutes (+16% confidence boost)
+- Final confidence range: 0.92 - 0.95
 
 ---
 
