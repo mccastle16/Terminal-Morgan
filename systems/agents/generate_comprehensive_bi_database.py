@@ -27,7 +27,7 @@ CORAL_GABLES_BUSINESSES = [
     {
         "name": "Luca Osteria", "category": "restaurant", "subcategory": "italian_fine_dining",
         "owner": "Chef Giorgio Rapicavoli", "address": "Giralda Plaza", "district": "giralda_plaza",
-        "founded": "2014", "phone": ["305-555-0101"], "website": "lucaosteria.com",
+        "founded": "2014", "phone": [], "website": "lucaosteria.com",  # OSINT will populate from Google/Yelp
         "yelp_rating": 4.7, "google_rating": 4.6, "review_count": 450,
         "price_range": "$$$", "employees": (10, 18, 25),
         "specialties": ["house-made pasta", "seasonal italian", "chopped champion chef"],
@@ -48,7 +48,7 @@ CORAL_GABLES_BUSINESSES = [
     {
         "name": "Dojo Izakaya", "category": "restaurant", "subcategory": "japanese_izakaya",
         "owner": "Chef Pablo Zitzmann", "address": "Giralda Plaza", "district": "giralda_plaza",
-        "founded": "2017", "phone": ["305-555-0102"], "website": "dojoizakaya.com",
+        "founded": "2017", "phone": [], "website": "dojoizakaya.com",  # OSINT will populate from Google/Yelp
         "yelp_rating": 4.6, "google_rating": 4.5, "review_count": 380,
         "price_range": "$$", "employees": (8, 15, 22),
         "specialties": ["rotating japanese street food", "sake selection", "yakitori"],
@@ -68,7 +68,7 @@ CORAL_GABLES_BUSINESSES = [
     {
         "name": "Zitz Sum", "category": "restaurant", "subcategory": "dim_sum_fusion",
         "owner": "Chef Pablo Zitzmann", "address": "Giralda Plaza", "district": "giralda_plaza",
-        "founded": "2019", "phone": ["305-555-0103"], "website": "zitzsum.com",
+        "founded": "2019", "phone": [], "website": "zitzsum.com",  # OSINT will populate from Google/Yelp
         "yelp_rating": 4.7, "google_rating": 4.6, "review_count": 320,
         "price_range": "$$", "employees": (6, 12, 18),
         "specialties": ["hand-rolled dumplings", "dim sum fusion", "craft cocktails"],
@@ -88,7 +88,7 @@ CORAL_GABLES_BUSINESSES = [
     {
         "name": "The Plump Room", "category": "spa", "subcategory": "medical_aesthetics",
         "owner": "Dr. Sarah Chen", "address": "147 Alhambra Circle Suite 205", "district": "alhambra_circle",
-        "founded": "2020", "phone": ["305-555-0201"], "website": "theplumproom.com",
+        "founded": "2020", "phone": [], "website": "theplumproom.com",  # OSINT will populate from Google/Yelp
         "yelp_rating": 4.8, "google_rating": 4.9, "review_count": 280,
         "price_range": "$$$$", "employees": (4, 8, 12),
         "specialties": ["injectables", "neuromodulators", "collagen stimulators"],
@@ -132,7 +132,7 @@ CORAL_GABLES_BUSINESSES = [
     {
         "name": "Pecan's Day Spa", "category": "spa", "subcategory": "day_spa",
         "owner": "Maria Gonzalez", "address": "380 Miracle Mile", "district": "miracle_mile",
-        "founded": "1995", "phone": ["305-555-0202"], "website": "pecansspa.com",
+        "founded": "1995", "phone": [], "website": "pecansspa.com",  # OSINT will populate from Google/Yelp
         "yelp_rating": 4.6, "google_rating": 4.5, "review_count": 340,
         "price_range": "$$$", "employees": (8, 15, 22),
         "specialties": ["massage therapy", "advanced facials", "body treatments"],
@@ -174,7 +174,7 @@ CORAL_GABLES_BUSINESSES = [
     {
         "name": "S Salon & Spa", "category": "salon", "subcategory": "full_service_salon",
         "owner": "JC & Esther Kim", "address": "4100 Salzedo St", "district": "ponce",
-        "founded": "2008", "phone": ["305-555-0301"], "website": "ssalonspa.com",
+        "founded": "2008", "phone": [], "website": "ssalonspa.com",  # OSINT will populate from Google/Yelp
         "yelp_rating": 4.5, "google_rating": 4.4, "review_count": 280,
         "price_range": "$$$", "employees": (10, 18, 25),
         "specialties": ["hair treatments", "extensions", "keratin"],
@@ -452,7 +452,7 @@ def generate_comprehensive_business(base_data: Dict[str, Any], index: int) -> Di
         },
         "district": base_data.get("district", "downtown"),
         "coordinates": {"lat": 25.7217 + random.uniform(-0.02, 0.02), "lng": -80.2685 + random.uniform(-0.02, 0.02)},
-        "phone": base_data.get("phone", [f"305-{random.randint(100,999)}-{random.randint(1000,9999)}"]),
+        "phone": base_data.get("phone", []),  # Empty if not provided - OSINT will populate
         "email": [f"info@{name.lower().replace(' ', '').replace('&', 'and')}.com"],
         "website": base_data.get("website", f"{name.lower().replace(' ', '').replace('&', 'and')}.com"),
         "social_media": base_data.get("social", {}),
