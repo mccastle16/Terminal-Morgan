@@ -139,26 +139,40 @@ async def run_osint_collection(business_limit: int = 100):
         return []
 
 
-def run_validation(input_file: str, output_file: str):
+def run_validation(input_file: str, output_file: str, business_count: int = 10):
     """Run the validation pipeline"""
     log(f"Starting validation pipeline...")
+
+    # Calculate timeout: ~3 minutes per business (with async, should be faster)
+    # Minimum 10 minutes, maximum 60 minutes
+    timeout_seconds = min(3600, max(600, business_count * 180))
+    log(f"Validation timeout set to {timeout_seconds} seconds ({timeout_seconds // 60} minutes)")
 
     try:
         # Import and run validation
         import subprocess
         result = subprocess.run(
-            [sys.executable, "validate_all_data.py"],
+            [sys.executable, "validate_all_data.py", str(business_count)],
             capture_output=True,
             text=True,
-            timeout=600  # 10 minute timeout
+            timeout=timeout_seconds
         )
 
         if result.returncode == 0:
             log("Validation complete")
+            # Print validation output
+            if result.stdout:
+                for line in result.stdout.split('\n')[-20:]:  # Last 20 lines
+                    if line.strip():
+                        log(f"  {line}")
             return True
         else:
             log(f"Validation failed: {result.stderr}", "ERROR")
             return False
+    except subprocess.TimeoutExpired:
+        log(f"Validation timed out after {timeout_seconds} seconds", "ERROR")
+        log("Try running with fewer businesses or skip validation", "WARN")
+        return False
     except Exception as e:
         log(f"Validation error: {e}", "ERROR")
         return False
@@ -428,12 +442,14 @@ async def main():
     # Step 3: Run validation (skipped by default for stability, use --run-validation to enable)
     should_validate = args.run_validation or not args.skip_validation
     if should_validate and args.run_validation:
+        business_count = stats["businesses_processed"] or args.businesses
         validation_ok = run_validation(
             "../data/coral_gables_bi_database_v2.json",
-            "../data/coral_gables_bi_database_validated.json"
+            "../data/coral_gables_bi_database_validated.json",
+            business_count=business_count
         )
         if validation_ok:
-            stats["validated"] = stats["businesses_processed"] or 88  # Fallback to existing count
+            stats["validated"] = business_count
             stats["confidence_boost"] = 0.16  # Typical boost
     else:
         log("Skipping validation (default behavior - use --run-validation to enable)")
