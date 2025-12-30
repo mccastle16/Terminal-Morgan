@@ -131,7 +131,43 @@ def extract_phone(text: str) -> Optional[str]:
     """Extract phone number from text"""
     phone_pattern = r'(\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}'
     match = re.search(phone_pattern, text)
-    return match.group(0) if match else None
+    if match:
+        phone = match.group(0)
+        return validate_phone(phone)
+    return None
+
+
+def validate_phone(phone: str) -> Optional[str]:
+    """
+    Validate phone number - reject fake/invalid numbers.
+    Returns cleaned phone number or None if invalid.
+    """
+    if not phone:
+        return None
+
+    # Clean up the phone number
+    cleaned = re.sub(r'[^\d]', '', phone)
+
+    # Remove leading 1 if present (country code)
+    if len(cleaned) == 11 and cleaned.startswith('1'):
+        cleaned = cleaned[1:]
+
+    if len(cleaned) != 10:
+        return None
+
+    area_code = cleaned[:3]
+    exchange = cleaned[3:6]
+
+    # Reject fake 555 exchange (reserved for fiction)
+    if exchange == '555':
+        return None
+
+    # Reject invalid exchanges (must be 200-999 in North America)
+    if int(exchange) < 200:
+        return None
+
+    # Format as XXX-XXX-XXXX
+    return f"{area_code}-{exchange}-{cleaned[6:]}"
 
 def extract_email(text: str) -> Optional[str]:
     """Extract email from text"""
@@ -977,7 +1013,9 @@ class OSINTOrchestrator:
             profile.address = {"full": google_data["address"]}
         
         if google_data.get("phone"):
-            profile.phone.append(google_data["phone"])
+            validated = validate_phone(google_data["phone"])
+            if validated:
+                profile.phone.append(validated)
         
         if google_data.get("website"):
             profile.website = google_data["website"]

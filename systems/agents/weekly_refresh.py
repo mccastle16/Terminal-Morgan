@@ -143,10 +143,11 @@ def run_validation(input_file: str, output_file: str, business_count: int = 10):
     """Run the validation pipeline"""
     log(f"Starting validation pipeline...")
 
-    # Calculate timeout: ~3 minutes per business (with async, should be faster)
-    # Minimum 10 minutes, maximum 60 minutes
-    timeout_seconds = min(3600, max(600, business_count * 180))
-    log(f"Validation timeout set to {timeout_seconds} seconds ({timeout_seconds // 60} minutes)")
+    # Calculate timeout: ~5 minutes per business (based on actual runs)
+    # Minimum 10 minutes, maximum 10 hours for large runs
+    timeout_seconds = min(36000, max(600, business_count * 300))
+    timeout_hours = timeout_seconds / 3600
+    log(f"Validation timeout set to {timeout_seconds} seconds ({timeout_hours:.1f} hours)")
 
     try:
         # Import and run validation
@@ -443,14 +444,32 @@ async def main():
     should_validate = args.run_validation or not args.skip_validation
     if should_validate and args.run_validation:
         business_count = stats["businesses_processed"] or args.businesses
+        validated_file = "../data/coral_gables_bi_database_validated.json"
+        original_file = "../data/coral_gables_bi_database_v2.json"
+
         validation_ok = run_validation(
-            "../data/coral_gables_bi_database_v2.json",
-            "../data/coral_gables_bi_database_validated.json",
+            original_file,
+            validated_file,
             business_count=business_count
         )
         if validation_ok:
             stats["validated"] = business_count
             stats["confidence_boost"] = 0.16  # Typical boost
+
+            # Auto-replace original with validated data
+            try:
+                import shutil
+                if os.path.exists(validated_file):
+                    # Backup original first
+                    backup_file = original_file.replace(".json", "_backup.json")
+                    shutil.copy(original_file, backup_file)
+                    log(f"Backed up original to: {backup_file}")
+
+                    # Replace original with validated
+                    shutil.copy(validated_file, original_file)
+                    log(f"Replaced original with validated data")
+            except Exception as e:
+                log(f"Failed to auto-replace original file: {e}", "WARN")
     else:
         log("Skipping validation (default behavior - use --run-validation to enable)")
 

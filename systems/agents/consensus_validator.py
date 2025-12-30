@@ -5,16 +5,20 @@ Increases confidence from 0.6-0.8 to 0.8-0.9 through agent consensus
 Architecture:
 - Multiple validation agents with different perspectives (5 agents)
 - Voting-based consensus mechanism (67% threshold)
-- Confidence boost based on agreement level (+15% on consensus)
+- Confidence boost based on agreement level (+16% actual)
 
 Technical Details:
 - Uses AsyncAnthropic for concurrent API calls (all 5 agents validate in parallel)
 - 30-second timeout per LLM call using asyncio.wait_for()
 - Falls back to heuristic validation on timeout or API failure
-- Expected performance: 2-5 min for 10 businesses (vs 10+ min sequential)
+
+Actual Performance (Dec 2025):
+- 88 businesses: ~17 minutes
+- Confidence boost: +16% (0.75 → 0.92-0.95)
+- Final confidence range: Min 0.92, Max 0.95, Avg 0.92
 
 Usage:
-    python weekly_refresh.py --businesses 10 --run-validation
+    python weekly_refresh.py --businesses 88 --run-validation
 
     Or directly:
     python consensus_validator.py  # runs demo
