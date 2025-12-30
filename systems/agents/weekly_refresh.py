@@ -444,14 +444,32 @@ async def main():
     should_validate = args.run_validation or not args.skip_validation
     if should_validate and args.run_validation:
         business_count = stats["businesses_processed"] or args.businesses
+        validated_file = "../data/coral_gables_bi_database_validated.json"
+        original_file = "../data/coral_gables_bi_database_v2.json"
+
         validation_ok = run_validation(
-            "../data/coral_gables_bi_database_v2.json",
-            "../data/coral_gables_bi_database_validated.json",
+            original_file,
+            validated_file,
             business_count=business_count
         )
         if validation_ok:
             stats["validated"] = business_count
             stats["confidence_boost"] = 0.16  # Typical boost
+
+            # Auto-replace original with validated data
+            try:
+                import shutil
+                if os.path.exists(validated_file):
+                    # Backup original first
+                    backup_file = original_file.replace(".json", "_backup.json")
+                    shutil.copy(original_file, backup_file)
+                    log(f"Backed up original to: {backup_file}")
+
+                    # Replace original with validated
+                    shutil.copy(validated_file, original_file)
+                    log(f"Replaced original with validated data")
+            except Exception as e:
+                log(f"Failed to auto-replace original file: {e}", "WARN")
     else:
         log("Skipping validation (default behavior - use --run-validation to enable)")
 
