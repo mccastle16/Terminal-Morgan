@@ -1,0 +1,6754 @@
+[
+  {
+    "name": "Ana B. Garcia, CPA",
+    "category": "Accounting & Consulting",
+    "contact": "Ms. Ana Garcia",
+    "phone": "305-336-2487",
+    "website": "anabgarciacpa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Garcia Santa Mar\u00eda",
+    "category": "Accounting & Consulting",
+    "contact": "Mr. Eric E. Santa Mar\u00eda",
+    "phone": "305-448-0404",
+    "website": "gsmcpas.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami-CFO",
+    "category": "Accounting & Consulting",
+    "contact": "Mr. Rich Pototsky",
+    "phone": "305-676-6977",
+    "website": "miami-cfo.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Molieri Group",
+    "category": "Accounting & Consulting",
+    "contact": "Ms. Sonia Pascual",
+    "phone": "786-742-2001",
+    "website": "molierigroupcpa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Veridian",
+    "category": "Accounting & Consulting",
+    "contact": "Mr. John Lowell",
+    "phone": "305-928-6822",
+    "website": "hancockaskew.com",
+    "chamber_member": true
+  },
+  {
+    "name": "ZOMMA Group, LLP",
+    "category": "Accounting & Consulting",
+    "contact": "Mr. Raymond Zomerfeld, CPA",
+    "phone": "305-444-8288",
+    "website": "zommagroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Accounting to Scale",
+    "category": "Accounting & Tax Services",
+    "contact": "Mr. Daniel Gonzalez",
+    "phone": "305-503-2814",
+    "website": "accountingtoscale.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Cherry Bekaert, LLP",
+    "category": "Accounting & Tax Services",
+    "contact": "Ms. Arlene Labrador",
+    "phone": "786-693-6300",
+    "website": "cbh.com",
+    "chamber_member": true
+  },
+  {
+    "name": "EisnerAmper",
+    "category": "Accounting & Tax Services",
+    "contact": "Mr. Michael Nazlis",
+    "phone": "305-371-6200",
+    "website": "eisneramper.com",
+    "chamber_member": true
+  },
+  {
+    "name": "KSDT, CPA",
+    "category": "Accounting & Tax Services",
+    "contact": "Mr. Eugene Diaz",
+    "phone": "305-670-3370",
+    "website": "ksdtcpa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Scheckner & Hetenyi, PL",
+    "category": "Accounting & Tax Services",
+    "contact": "Mr. Marcell Hetenyi, CPA",
+    "phone": "305-379-0603",
+    "website": "cpa-sh.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Cordo Claims Group, LLC",
+    "category": "Adjusters-Public/Insurance",
+    "contact": "Mr. Jose Luis Cordo",
+    "phone": "877-552-6736",
+    "website": "cordoclaims.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Activate Swag",
+    "category": "Advertising / Marketing / Graphic Design",
+    "contact": "Mr. Patrick Lowenthal",
+    "phone": "800-214-3408",
+    "website": "activateswag.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Cheil/Team Uno",
+    "category": "Advertising / Marketing / Graphic Design",
+    "contact": "Mr. Xavier Mantilla",
+    "phone": "786-725-8532",
+    "website": "cheil.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Clear Channel Outdoor",
+    "category": "Advertising / Marketing / Graphic Design",
+    "contact": "Ms. Carolina Mojena",
+    "phone": "305-803-9191",
+    "website": "clearchanneloutdoor.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Comcast Advertising",
+    "category": "Advertising / Marketing / Graphic Design",
+    "contact": "Ms. Yvette Blanco",
+    "phone": "954-261-9267",
+    "website": "comcastadvertising.com",
+    "chamber_member": true
+  },
+  {
+    "name": "PIL Creative Group",
+    "category": "Advertising / Marketing / Graphic Design",
+    "contact": "Ms. Patricia Linares",
+    "phone": "305-720-3533",
+    "website": "pilcreativegroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ronald Jakubisin & Associates",
+    "category": "Advertising / Marketing / Graphic Design",
+    "contact": "Mr. Ronald Jakubisin",
+    "phone": "954-922-5052",
+    "website": "jakubisin.net",
+    "chamber_member": true
+  },
+  {
+    "name": "The Miami Guide \u2013 Ocean Sky Media, LLC",
+    "category": "Advertising / Marketing / Graphic Design",
+    "contact": "Ms. Banna Fakhoury",
+    "phone": "786-481-0622",
+    "website": "themiamiguide.com",
+    "chamber_member": true
+  },
+  {
+    "name": "ZAG Creates",
+    "category": "Advertising / Marketing / Graphic Design",
+    "contact": "Ms. Zoe Torres",
+    "phone": "786-468-8595",
+    "website": "zagcreates.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables Graphics",
+    "category": "Advertising Specialties / Promotional Products",
+    "contact": "Mr. Martin Morcillo",
+    "phone": "305-351-3210",
+    "website": "coralgablesgraphics.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Life Theory Inc.",
+    "category": "Aesthetics/Healthcare",
+    "contact": "Ms. Melissa Escalona",
+    "phone": "786-676-2592",
+    "website": "lifetheorymia.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Plenitude Med Spa",
+    "category": "Aesthetics/Healthcare",
+    "contact": "Ms. Mirella Besteiro",
+    "phone": "305-298-9034",
+    "website": "plenitudemedspa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Premier NAD+",
+    "category": "Aesthetics/Healthcare",
+    "contact": "Mr. Patrick Uloth",
+    "phone": "786-340-1538",
+    "website": "premieres.com",
+    "chamber_member": true
+  },
+  {
+    "name": "American Airlines",
+    "category": "Airlines",
+    "contact": "Ms. Virginia Sanchez",
+    "phone": "800-433-7300",
+    "website": "aa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Delta Air Lines",
+    "category": "Airlines",
+    "contact": "Mr. Ignacio Borbolla",
+    "phone": "678-674-7588",
+    "website": "delta.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami-Dade County Aviation Department",
+    "category": "Airports",
+    "contact": "Mr. Ralph Cutie",
+    "phone": "305-876-7000",
+    "website": "miami-airport.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Aloft Miami Dadeland",
+    "category": "Apartment Rentals",
+    "contact": "Ms. Gabriela Bilkay",
+    "phone": "786-451-7023",
+    "website": "aloftdadeland.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Gables Columbus Center",
+    "category": "Apartment Rentals",
+    "contact": "Ms. Kasey Salvatierra",
+    "phone": "786-559-7838",
+    "website": "gables.com/columbuscenter",
+    "chamber_member": true
+  },
+  {
+    "name": "Gables Ponce",
+    "category": "Apartment Rentals",
+    "contact": "Ms. Stephanie Bodie",
+    "phone": "305-667-5700",
+    "website": "gables.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Residences at Merrick Park",
+    "category": "Apartment Rentals",
+    "contact": "Ms. Andrea Landin",
+    "phone": "305-448-0098",
+    "website": "residencesatmerrickpark.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Sofia Coral Gables, a Luxury Rental Community",
+    "category": "Apartment Rentals",
+    "contact": "Ms. Sofia Castillo, CAM",
+    "phone": "305-569-1669",
+    "website": "sofiacoralgables.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Reserve at The Plaza",
+    "category": "Apartment Rentals",
+    "contact": "Ms. Hillary Hutchings",
+    "phone": "305-444-0706",
+    "website": "thereserveattheplaza.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Anne Rezac Design",
+    "category": "Architecture / Engineering / Planning / Interior Design",
+    "contact": "Ms. Anne Rezac",
+    "phone": "224-334-7411",
+    "website": "annerezac.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Architectural Design Collaborative Inc.",
+    "category": "Architecture / Engineering / Planning / Interior Design",
+    "contact": "Mr. Raymundo Feito",
+    "phone": "305-442-1188",
+    "website": "adcinternational.net",
+    "chamber_member": true
+  },
+  {
+    "name": "ArX Creative",
+    "category": "Architecture / Engineering / Planning / Interior Design",
+    "contact": "Ms. Maria Eugenia Lanao",
+    "phone": "305-302-0111",
+    "website": "arxcreative.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Bermello, Ajamil & Partners, Inc.",
+    "category": "Architecture / Engineering / Planning / Interior Design",
+    "contact": "Ms. Tere Garcia",
+    "phone": "305-859-2050",
+    "website": "bermelloajamil.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Debowsky Design Group",
+    "category": "Architecture / Engineering / Planning / Interior Design",
+    "contact": "Mr. Stuart Debowsky",
+    "phone": "305-495-2751",
+    "website": "debowsky.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Double C",
+    "category": "Architecture / Engineering / Planning / Interior Design",
+    "contact": "Mr. Shawn Lenihan",
+    "phone": "561-789-3113",
+    "website": "doublec.com",
+    "chamber_member": true
+  },
+  {
+    "name": "G Alvarez Studio, Inc.",
+    "category": "Architecture / Engineering / Planning / Interior Design",
+    "contact": "Ms. Gigi Alvarez",
+    "phone": "305-371-8400",
+    "website": "galvarezstudio.com",
+    "chamber_member": true
+  },
+  {
+    "name": "GFD GROUPS",
+    "category": "Architecture / Engineering / Planning / Interior Design",
+    "contact": "Mr. Guillermo Lopez",
+    "phone": "305-255-2999",
+    "website": "gfdgroups.com",
+    "chamber_member": true
+  },
+  {
+    "name": "HOK",
+    "category": "Architecture / Engineering / Planning / Interior Design",
+    "contact": "Mr. Steven Burgos",
+    "phone": "786-539-0760",
+    "website": "hok.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami Center for Architecture & Design",
+    "category": "Architecture / Engineering / Planning / Interior Design",
+    "contact": "Ms. Cheryl Jacobs",
+    "phone": "305-448-7488",
+    "website": "miamicad.org",
+    "chamber_member": true
+  },
+  {
+    "name": "SB Architects",
+    "category": "Architecture / Engineering / Planning / Interior Design",
+    "contact": "Ms. Michelle Heatherly",
+    "phone": "305-856-2021",
+    "website": "sb-architects.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Zyscovich Architects",
+    "category": "Architecture / Engineering / Planning / Interior Design",
+    "contact": "Ms. Anabella Smith",
+    "phone": "305-372-5222",
+    "website": "zyscovich.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Grove Gallery & Interiors",
+    "category": "Artists & Galleries",
+    "contact": "Ms. Sheila Kuhl",
+    "phone": "305-445-7401",
+    "website": "grovegalleryinteriors.com",
+    "chamber_member": true
+  },
+  {
+    "name": "H Benitez Fine Art Gallery Inc.",
+    "category": "Artists & Galleries",
+    "contact": "Ms. Lissette Benitez",
+    "phone": "786-877-1045",
+    "website": "humbertobenitez.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Studio HD",
+    "category": "Artists & Galleries",
+    "contact": "Ms. Hollye Davidson",
+    "phone": "305-401-8169",
+    "website": "hollyedavidson.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Americas Collection",
+    "category": "Artists & Galleries",
+    "contact": "Ms. Silvia Ortiz",
+    "phone": "305-446-5578",
+    "website": "americascollection.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Law Office of Vanessa D. Torres P.A.",
+    "category": "Attorneys - Aviation Law",
+    "contact": "Ms. Vanessa D. Torres Barcena",
+    "phone": "786-801-0271",
+    "website": "vdtlaw.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Richards Legal Group",
+    "category": "Attorneys - Aviation Law",
+    "contact": "Mr. Richard L. Richards, Esq.",
+    "phone": "305-448-2228",
+    "website": "richpa.net",
+    "chamber_member": true
+  },
+  {
+    "name": "Law Office of Vanessa D. Torres, P.A.",
+    "category": "Attorneys - Business Law",
+    "contact": "Ms. Vanessa D. Torres Barcena",
+    "phone": "786-801-0271",
+    "website": "vdtlaw.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Saade Law Firm, P.A.",
+    "category": "Attorneys - Business Law",
+    "contact": "Mr. Gabriel Saade",
+    "phone": "786-633-1114",
+    "website": "saadelaw.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Brito, PLLC",
+    "category": "Attorneys - Business Law/Litigation",
+    "contact": "Mr. Alejandro Brito",
+    "phone": "305-614-4071",
+    "website": "britopllc.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Cueto Law Group, P.L.",
+    "category": "Attorneys - Business Law/Litigation",
+    "contact": "Mr. Santiago Cueto",
+    "phone": "305-777-0377",
+    "website": "cuetolawgroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "J. Muir & Associates, P.A.",
+    "category": "Attorneys - Business Law/Litigation",
+    "contact": "Ms. Jane Muir",
+    "phone": "786-533-1100",
+    "website": "miamibusiness.law",
+    "chamber_member": true
+  },
+  {
+    "name": "Marsicano + Leyva, PLLC",
+    "category": "Attorneys - Business Law/Litigation",
+    "contact": "Ms. Lauren Marsicano",
+    "phone": "305-721-2917",
+    "website": "mlesquire.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Popok Firm",
+    "category": "Attorneys - Business Law/Litigation",
+    "contact": "Mr. Michael Popok",
+    "phone": "786-999-4285",
+    "website": "thepopokfirm.com",
+    "chamber_member": true
+  },
+  {
+    "name": "EPGD Business Law",
+    "category": "Attorneys - Business/Commercial Law",
+    "contact": "Mr. Eric P. Gros-Dubois, Esq.",
+    "phone": "786-837-6787",
+    "website": "epgdlaw.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ser & Associates, PLLC",
+    "category": "Attorneys - Business/Commercial Law",
+    "contact": "Mrs. Lillian A. Ser, Esq.",
+    "phone": "305-222-7282",
+    "website": "serassociates.com",
+    "chamber_member": true
+  },
+  {
+    "name": "BARAKAT + BOSSA",
+    "category": "Attorneys - Civil Litigation",
+    "contact": "Mr. Brian Barakat, Esq.",
+    "phone": "305-444-3114",
+    "website": "b2b.legal",
+    "chamber_member": true
+  },
+  {
+    "name": "Kurzban Kurzban Tetzeli and Pratt",
+    "category": "Attorneys - Civil Litigation",
+    "contact": "Ms. Helena Tetzeli",
+    "phone": "305-444-0060",
+    "website": "kktplaw.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Beasley, Demos & Brown, LLC",
+    "category": "Attorneys - Commercial Litigation",
+    "contact": "Ms. Stephanie Demos",
+    "phone": "305-669-3131",
+    "website": "beasleydemos.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Kozyak Tropin & Throckmorton, P.A.",
+    "category": "Attorneys - Commercial Litigation",
+    "contact": "Mrs. Maria Dolores Garcia, Esq.",
+    "phone": "305-372-1800",
+    "website": "kttlaw.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Hinshaw & Culbertson, LLP",
+    "category": "Attorneys - Commercial/Finance/Real Estate",
+    "contact": "Ms. Karen Fayson",
+    "phone": "305-358-7747",
+    "website": "hinshawlaw.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Law Office of Francisco A. Marty",
+    "category": "Attorneys - Criminal Defense",
+    "contact": "Mr. Francisco Marty",
+    "phone": "305-545-5282",
+    "website": "criminaldefenseattorneys.miami",
+    "chamber_member": true
+  },
+  {
+    "name": "Donlevy-Rosen & Rosen, P.A.",
+    "category": "Attorneys - Estate Planning, Trusts & Probate",
+    "contact": "Ms. Patricia A. Donlevy-Rosen",
+    "phone": "305-459-3283",
+    "website": "protectyou.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Lavender Greenberg Estate Planning & Probate Law",
+    "category": "Attorneys - Estate Planning, Trusts & Probate",
+    "contact": "Ms. Monique Lavender Greenberg",
+    "phone": "786-832-4694",
+    "website": "lglawmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Morgan Horton Law",
+    "category": "Attorneys - Estate Planning, Trusts & Probate",
+    "contact": "Ms. Laura Morgan Horton",
+    "phone": "305-624-0011",
+    "website": "cmorganlaw.net",
+    "chamber_member": true
+  },
+  {
+    "name": "Ivette O\u2019Doski Consulting",
+    "category": "Attorneys - Government Affairs Consultants",
+    "contact": "Ms. Ivette Arango O'Doski",
+    "phone": "305-632-6452",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "NERO Immigration Law, P.L.",
+    "category": "Attorneys - Immigration & Nationality Law",
+    "contact": "Ms. Deirdre D. Nero, Esq.",
+    "phone": "305-351-1079",
+    "website": "neroimmigration.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Kaufman Dolowich",
+    "category": "Attorneys - Labor & Employment Law",
+    "contact": "Ms. Zascha Blanco Abbott",
+    "phone": "305-610-2843",
+    "website": "kaufmandolowich.com",
+    "chamber_member": true
+  },
+  {
+    "name": "McKellar Poursine PLLC",
+    "category": "Attorneys - Labor & Employment Law",
+    "contact": "Ms. Lisa McKellar Poursine",
+    "phone": "305-721-2954",
+    "website": "mckellarpoursine.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ogletree Deakins",
+    "category": "Attorneys - Labor & Employment Law",
+    "contact": "Mr. Patrick F. Martin",
+    "phone": "305-374-0506",
+    "website": "ogletree.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Rhonda A. Anderson - P.A.",
+    "category": "Attorneys - Litigation",
+    "contact": "Mrs. Rhonda Anderson",
+    "phone": "305-567-3004",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Allen Dyer Doppelt + Gilchrist, P.A",
+    "category": "Attorneys - Patent, Trademark & Copyright Law",
+    "contact": "Mr. Robert H. Thornburg",
+    "phone": "305-374-8303",
+    "website": "allendyer.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Drury Law Firm",
+    "category": "Attorneys - Personal Injury Litigation",
+    "contact": "Mr. Christopher Drury",
+    "phone": "305-723-1100",
+    "website": "drurypa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "George A. David, P.A.",
+    "category": "Attorneys - Personal Injury Litigation",
+    "contact": "Mr. George A. David",
+    "phone": "305-569-9980",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Law Office of Francisco Cieza, P.A.",
+    "category": "Attorneys - Personal Injury Litigation",
+    "contact": "Mr. Francisco Cieza",
+    "phone": "786-423-8144",
+    "website": "ciezalawfirm.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Pita Weber Del Prado",
+    "category": "Attorneys - Personal Injury Litigation",
+    "contact": "Mrs. Rosanna Molinari Weber",
+    "phone": "305-670-2889",
+    "website": "pwdlawfirm.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ball Janik",
+    "category": "Attorneys - Real Estate",
+    "contact": "Ms. Peggy Vivas",
+    "phone": "786-290-1127",
+    "website": "balljanik.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Guilford & Associates",
+    "category": "Attorneys - Real Estate",
+    "contact": "Mr. Frank Guilford",
+    "phone": "305-446-8411",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Haber Law",
+    "category": "Attorneys - Real Estate",
+    "contact": "Ms. Kim Haber",
+    "phone": "305-379-2400",
+    "website": "haber.law",
+    "chamber_member": true
+  },
+  {
+    "name": "Hemisphere Law, P.A.",
+    "category": "Attorneys - Real Estate",
+    "contact": "Mr. Daniel Hernandez",
+    "phone": "305-321-0451",
+    "website": "hemispherelawpa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Jacqueline Salcines, P.A.",
+    "category": "Attorneys - Real Estate",
+    "contact": "Ms. Jacqueline Salcines, Esq.",
+    "phone": "305-669-5280",
+    "website": "salcineslaw.com",
+    "chamber_member": true
+  },
+  {
+    "name": "LAG REALTY INTERNATIONAL, S. A.",
+    "category": "Attorneys - Real Estate",
+    "contact": "Dr. Jorge Lombardi",
+    "phone": "507-340-6444",
+    "website": "laglex.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Flanagan Law Firm, P.A.",
+    "category": "Attorneys - Real Estate Closings & Litigation",
+    "contact": "Mr. Jeffrey Flanagan",
+    "phone": "305-444-1500",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Lomax Legal PLLC",
+    "category": "Attorneys - Trial & Litigation",
+    "contact": "Mr. Chris Lomax",
+    "phone": "305-582-6506",
+    "website": "lomaxlegal.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Algo Law Firm",
+    "category": "Attorneys & Law Firms",
+    "contact": "Ms. Ashley Airaghi",
+    "phone": "305-723-1876",
+    "website": "algofirm.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Berger Singerman",
+    "category": "Attorneys & Law Firms",
+    "contact": "Mr. Edward Baker",
+    "phone": "305-714-4347",
+    "website": "bergersingerman.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Blanco Law Firm, PLLC",
+    "category": "Attorneys & Law Firms",
+    "contact": "Mr. Francoise J. Blanco",
+    "phone": "305-962-0944",
+    "website": "blancointl.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Bounds Law Offices",
+    "category": "Attorneys & Law Firms",
+    "contact": "Mr. Bruce M. Bounds, Esq.",
+    "phone": "305-728-1350",
+    "website": "bounds.law",
+    "chamber_member": true
+  },
+  {
+    "name": "Day Pitney",
+    "category": "Attorneys & Law Firms",
+    "contact": "Mr. Joseph A. Ruiz",
+    "phone": "305-373-4000",
+    "website": "daypitney.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Dream Team Law, PLLC",
+    "category": "Attorneys & Law Firms",
+    "contact": "Ms. Lara C Fernandez",
+    "phone": "866-255-8326",
+    "website": "Dreamteamfightsforyou.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Greenberg Traurig, P.A.",
+    "category": "Attorneys & Law Firms",
+    "contact": "Mr. Jorge L. Navarro",
+    "phone": "305-579-0821",
+    "website": "gtlaw.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Holland & Knight, LLP",
+    "category": "Attorneys & Law Firms",
+    "contact": "Mr. Bradley Houser",
+    "phone": "305-374-8500",
+    "website": "hklaw.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Laura L. Russo, Esq. LLC",
+    "category": "Attorneys & Law Firms",
+    "contact": "Ms. Laura Russo, Esq.",
+    "phone": "305-476-8300",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "McCarter & English, LLP",
+    "category": "Attorneys & Law Firms",
+    "contact": "Ms. Tania Cruz-Gimenez",
+    "phone": "786-385-7372",
+    "website": "mccarter.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Pena Garcia & Diz, PLLC",
+    "category": "Attorneys & Law Firms",
+    "contact": "Mr. Fernando Garcia",
+    "phone": "786-361-4950",
+    "website": "pgdlegal.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Quintana Law, P.A.",
+    "category": "Attorneys & Law Firms",
+    "contact": "Ms. Brittany Quintana Marti",
+    "phone": "305-376-0821",
+    "website": "quintanalawpa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Roy B. Gonas, Attorney",
+    "category": "Attorneys & Law Firms",
+    "contact": "Mr. Roy Gonas Esq.",
+    "phone": "786-420-5598",
+    "website": "rgonasarbitration.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Shutts & Bowen, LLP",
+    "category": "Attorneys & Law Firms",
+    "contact": "Ms. Victoria Mendez",
+    "phone": "305-347-7348",
+    "website": "shutts.com",
+    "chamber_member": true
+  },
+  {
+    "name": "SMGQ Law",
+    "category": "Attorneys & Law Firms",
+    "contact": "Mr. Mitchell Mandler",
+    "phone": "305-377-1000",
+    "website": "smgqlaw.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Hache Law Firm",
+    "category": "Attorneys & Law Firms",
+    "contact": "Ms. Karenin Hache, Esq.",
+    "phone": "305-684-3175",
+    "website": "thehachelawfirm.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Morgan Law Group",
+    "category": "Attorneys & Law Firms",
+    "contact": "Ms. Kaitlyn Jacklin",
+    "phone": "786-530-3795",
+    "website": "policyadvocate.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Zediker Law Firm",
+    "category": "Attorneys & Law Firms",
+    "contact": "Mr. Garrett Zediker",
+    "phone": "305-269-4600",
+    "website": "zedikerlaw.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Fairchild Tropical Botanic Garden",
+    "category": "Attractions",
+    "contact": "Ms. Mary Neustein",
+    "phone": "305-667-1651",
+    "website": "fairchildgarden.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Freeman's | Hindman",
+    "category": "Auction House/Appraiser",
+    "contact": "Ms. Elizabeth Rader",
+    "phone": "305-728-0678",
+    "website": "hindmanauctions.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Show Tech Inc.",
+    "category": "Audio Visual Company",
+    "contact": "Mr. Joe Louissaint",
+    "phone": "305-986-5012",
+    "website": "showtechinc.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Easescreen America, LLC",
+    "category": "Audio Visual/Technology",
+    "contact": "Ms. Nguyen Cabanilla Castilla",
+    "phone": "305-710-5032",
+    "website": "easescreen.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Fohhn Audio Americas, LLC",
+    "category": "Audio Visual/Technology",
+    "contact": "Mr. Jochen Schwarz",
+    "phone": null,
+    "website": "fohnn.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Bean Automotive Group Lexus of Kendall/Kendall Toyota",
+    "category": "Automobile Dealers - Sales, Service & Parts",
+    "contact": "Mr. Joaquin T. Azar",
+    "phone": "786-345-2612",
+    "website": "beanauto.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Braman Honda",
+    "category": "Automobile Dealers - Sales, Service & Parts",
+    "contact": "Mr. Carlos Arana",
+    "phone": "305-216-5751",
+    "website": "bramanhonda.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Mercedes-Benz of Coral Gables",
+    "category": "Automobile Dealers - Sales, Service & Parts",
+    "contact": "Mr. Peter Warwar",
+    "phone": "305-445-8593",
+    "website": "mbcoralgables.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Collection",
+    "category": "Automobile Dealers - Sales, Service & Parts",
+    "contact": "Mr. Kenneth Gorin",
+    "phone": "305-444-5555",
+    "website": "thecollection.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Vintage Cars of Florida, LLC",
+    "category": "Automobile Dealers - Sales, Service & Parts",
+    "contact": "Mr. William A. Bonn",
+    "phone": "305-648-2328",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Williamson Automotive Group",
+    "category": "Automobile Dealers - Sales, Service & Parts",
+    "contact": "Mr. G. Ed Williamson II",
+    "phone": "305-670-7100",
+    "website": "williamsonautomotivegroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Let Them Have Cake, LLC",
+    "category": "Bakeries",
+    "contact": "Ms. Estefania Peynetti",
+    "phone": "305-987-3428",
+    "website": "letthemhavecakemiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Amerant Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Christopher Piombo",
+    "phone": "305-460-4024",
+    "website": "amerantbank.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Banesco USA",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Victor Uranga",
+    "phone": "888-228-1597",
+    "website": "banescousa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Bank of America",
+    "category": "Banking and Financial Services",
+    "contact": "Ms. Grace Hyatt",
+    "phone": "786-999-5562",
+    "website": "bankofamerica.com",
+    "chamber_member": true
+  },
+  {
+    "name": "BankMiami",
+    "category": "Banking and Financial Services",
+    "contact": "Ms. Natalee Keller",
+    "phone": "305-290-7393",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Belmont Bank & Trust",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Henry Amador",
+    "phone": "786-425-3350",
+    "website": "belmontbank.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Centennial Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Joaquin O. Guerrero",
+    "phone": "786-413-1265",
+    "website": "my100bank.com",
+    "chamber_member": true
+  },
+  {
+    "name": "City National Bank of Florida",
+    "category": "Banking and Financial Services",
+    "contact": "Ms. Cinthya Urena",
+    "phone": "305-445-1941",
+    "website": "citynational.com",
+    "chamber_member": true
+  },
+  {
+    "name": "EverBank",
+    "category": "Banking and Financial Services",
+    "contact": "Ms. Amy Betancur",
+    "phone": "305-448-8568",
+    "website": "everbank.com",
+    "chamber_member": true
+  },
+  {
+    "name": "First Citizens Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Mrs. Sara M. Hernandez",
+    "phone": "305-639-7200",
+    "website": "firstcitizens.com",
+    "chamber_member": true
+  },
+  {
+    "name": "First Horizon Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Idalberto de Armas",
+    "phone": "305-442-9991",
+    "website": "firsthorizon.com",
+    "chamber_member": true
+  },
+  {
+    "name": "FirstBank Florida",
+    "category": "Banking and Financial Services",
+    "contact": "Ms. Carla Largaespada",
+    "phone": "305-442-1220",
+    "website": "1firstbank.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Flagstar",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Axel Garcia",
+    "phone": "305-774-0049",
+    "website": "flagstar.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Grove Bank & Trust",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Kevin Ley",
+    "phone": "305-444-6665",
+    "website": "grovebankandtrust.com",
+    "chamber_member": true
+  },
+  {
+    "name": "International Finance Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Ms. Gigi Rivera",
+    "phone": "305-648-8800",
+    "website": "ifbbank.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Northern Trust",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Scott Richey",
+    "phone": "305-529-7702",
+    "website": "ntrs.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ocean Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Julio Laboy",
+    "phone": "786-909-2677",
+    "website": "oceanbank.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Pacific National Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Pablo Estepe Jr.",
+    "phone": "305-539-7633",
+    "website": "pnb.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Pibank USA",
+    "category": "Banking and Financial Services",
+    "contact": "Ms. Maria Peuriot",
+    "phone": "954-636-7777",
+    "website": "pibank.com",
+    "chamber_member": true
+  },
+  {
+    "name": "PNC Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Ms. Audrey Otero",
+    "phone": "786-218-8060",
+    "website": "pnc.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Regions Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Ms. Ryanne Santurio",
+    "phone": "305-774-5219",
+    "website": "regions.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Seacoast Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Joaquin Medina",
+    "phone": "786-814-4747",
+    "website": "seacoastbank.com",
+    "chamber_member": true
+  },
+  {
+    "name": "SouthState Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Ms. Ana Chaoui",
+    "phone": "786-362-8560",
+    "website": "southstatebank.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Synovus Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Nestor J. Mederos",
+    "phone": "305-756-2310",
+    "website": "synovus.com",
+    "chamber_member": true
+  },
+  {
+    "name": "TD Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Alvaro Niebles",
+    "phone": "305-441-5630",
+    "website": "tdbank.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Terrabank",
+    "category": "Banking and Financial Services",
+    "contact": "Ms. Kharina Caldera Soto",
+    "phone": "305-448-4898",
+    "website": "terrabank.com",
+    "chamber_member": true
+  },
+  {
+    "name": "U.S. Century Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Ms. Janessa Cabo",
+    "phone": "305-715-5141",
+    "website": "uscentury.com",
+    "chamber_member": true
+  },
+  {
+    "name": "United Community Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Adolfo Ospina",
+    "phone": "305-667-5511",
+    "website": "ucbi.com",
+    "chamber_member": true
+  },
+  {
+    "name": "University Credit Union",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Al Rose",
+    "phone": "786-425-5024",
+    "website": "ucumiami.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Valley National Bank",
+    "category": "Banking and Financial Services",
+    "contact": "Mr. Jose Hernandez",
+    "phone": "305-341-8558",
+    "website": "valley.com",
+    "chamber_member": true
+  },
+  {
+    "name": "A-Man Barber Shop",
+    "category": "Barbershop",
+    "contact": "Mr. Ayman Al Jawhari",
+    "phone": "305-282-7081",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Yuly Barbershop and Men's Grooming",
+    "category": "Barbershop",
+    "contact": "Ms. Yuly Martinez",
+    "phone": "786-449-0340",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Blanca Fragrance Factory",
+    "category": "Beauty Products",
+    "contact": "Mrs. Jackie Jackson",
+    "phone": "401-954-7670",
+    "website": "blancafragrancefactory.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Little Local",
+    "category": "Beauty Products",
+    "contact": "Ms. Kylie Wang",
+    "phone": "305-439-6641",
+    "website": "littlelocal.co",
+    "chamber_member": true
+  },
+  {
+    "name": "L'Occitane En Provence",
+    "category": "Beauty Products",
+    "contact": "Ms. Katy Vasallo",
+    "phone": "305-445-1040",
+    "website": "loccitane.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Avant-Garde Salon & Spa",
+    "category": "Beauty Salon & Spa",
+    "contact": "Ms. Zasil Zepeda",
+    "phone": "305-442-8136",
+    "website": "avantgardesalonandspa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Bliss Beautique",
+    "category": "Beauty Salon & Spa",
+    "contact": "Ms. Rosario Veras",
+    "phone": "786-679-3057",
+    "website": "blissbeautique.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Cici Skincare",
+    "category": "Beauty Salon & Spa",
+    "contact": "Ms. Cecilia Moron",
+    "phone": "240-394-5733",
+    "website": "ciciskincare.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Silver Mirror Facial Bar",
+    "category": "Beauty Salon & Spa",
+    "contact": "Mr. Matt Maroone",
+    "phone": "786-899-0600",
+    "website": "silvermirror.com/locations/coral-gables",
+    "chamber_member": true
+  },
+  {
+    "name": "Skin Studio By Doctor's Daughter",
+    "category": "Beauty Salon & Spa",
+    "contact": "Ms. Danielle Fox",
+    "phone": "786-942-4704",
+    "website": "skinstudiodd.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Toska Spa & Facial Bar",
+    "category": "Beauty Salon & Spa",
+    "contact": "Ms. Charlotte Prescott",
+    "phone": "786-536-2998",
+    "website": "toskaspa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Voli 305 Vodka",
+    "category": "Beverage-Alcohol",
+    "contact": "Ms. Priscilla Perez",
+    "phone": "305-564-5464",
+    "website": "voli305vodkashop.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Books & Books, Inc.",
+    "category": "Book Dealers, Stores & Depositories",
+    "contact": "Mr. Mitchell Kaplan",
+    "phone": "305-442-4408",
+    "website": "booksandbooks.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Shop Origen Corp.",
+    "category": "Boutique/Jewelry Store",
+    "contact": "Ms. Elisa Londono",
+    "phone": "305-934-1270",
+    "website": "shop-origen.com",
+    "chamber_member": true
+  },
+  {
+    "name": "ContactLink, LLC",
+    "category": "Business and Professional Services",
+    "contact": "Ms. Nguyen Castilla Cabanilla",
+    "phone": "305-710-5032",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "The Pawar Corporation",
+    "category": "Business and Professional Services",
+    "contact": "Mr. Keran Pawar",
+    "phone": "323-463-2204",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "TPE Coaching & Consulting",
+    "category": "Business and Professional Services",
+    "contact": "Ms. Erika Obando, M.C.L.C.",
+    "phone": "954-263-5829",
+    "website": "tpecoaching.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Global Business Brokers - KW Business",
+    "category": "Business Broker",
+    "contact": "Ms. Arlene Mahon",
+    "phone": "305-510-2430",
+    "website": "globalbusinessbroker.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Alianza Strategies",
+    "category": "Business Development/Government Affairs",
+    "contact": "Ms. Myrna Vaca",
+    "phone": "786-897-2680",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Office Edge Coral Gables",
+    "category": "Business Services",
+    "contact": "Ms. Kelly Ramsden",
+    "phone": "305-777-0200",
+    "website": "officeedge.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Turbo Workface",
+    "category": "Business Solutions and Electronic Document Management",
+    "contact": "Ms. Ida Garcia",
+    "phone": "786-624-8963",
+    "website": "turboworkforce.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Trugman Valuation Associates Inc.",
+    "category": "Business Valuation",
+    "contact": "Mr. William Harris",
+    "phone": "954-607-6677",
+    "website": "trugmanvaluation.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Catering by Les",
+    "category": "Caterers & Events",
+    "contact": "Mr. Les Oppenheim",
+    "phone": "305-669-5221",
+    "website": "cateringbyles.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Catering by Lovables",
+    "category": "Caterers & Events",
+    "contact": "Ms. Elizabeth Silverman",
+    "phone": "305-751-1101",
+    "website": "cateringbylovables.com",
+    "chamber_member": true
+  },
+  {
+    "name": "DeleiteS | Events & Catering",
+    "category": "Caterers & Events",
+    "contact": "Ms. Shallya Sanchez Llerena",
+    "phone": "786-657-1834",
+    "website": "deleitesevents.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Board Miami",
+    "category": "Catering",
+    "contact": "Ms. Lorena Castillo",
+    "phone": "786-475-3166",
+    "website": "theboardmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Explore Foster Miami",
+    "category": "Child Care Services",
+    "contact": "Mr. Panos Kourtesis",
+    "phone": "786-624-8661",
+    "website": "explorefostermiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "SnapCrack Chiropractic & Vitamin Infusion",
+    "category": "Chiropractic Physicians",
+    "contact": "Ms. Vanessa Cereceda",
+    "phone": "305-301-8885",
+    "website": "snapcrack.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Christ Journey Church",
+    "category": "Churches",
+    "contact": "Ms. Vannia Enriquez",
+    "phone": "305-448-4425",
+    "website": "christjourney.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables Congregational Church",
+    "category": "Churches",
+    "contact": "Mr. Dennis G. Rodrigues, CPA",
+    "phone": "305-448-7421",
+    "website": "gablesucc.org",
+    "chamber_member": true
+  },
+  {
+    "name": "First UMC Coral Gables - Church",
+    "category": "Churches",
+    "contact": "Rev. Dr. Hedy Collver",
+    "phone": "305-445-2578",
+    "website": "welovecoralgables.org",
+    "chamber_member": true
+  },
+  {
+    "name": "First United Methodist Church of Miami",
+    "category": "Churches",
+    "contact": "Rev. Dr. Audrey Warren",
+    "phone": "305-371-4706",
+    "website": "firstchurchmiami.org",
+    "chamber_member": true
+  },
+  {
+    "name": "St. Philip's Episcopal Church & School",
+    "category": "Churches",
+    "contact": "Rev. Mary E. Conroy",
+    "phone": "305-444-6366",
+    "website": "saintphilips.net",
+    "chamber_member": true
+  },
+  {
+    "name": "The Combined Group Corp.",
+    "category": "Civil Construction",
+    "contact": "Mr. Carlos A. Sotolongo",
+    "phone": "786-316-5838",
+    "website": "thecombinedgroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "ActionCOACH Team Sage",
+    "category": "Coaches & Trainers / Business Development & Leadership",
+    "contact": "Ms. Jody Johnson",
+    "phone": "305-285-9264",
+    "website": "actioncoachteamsage.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Llakhdar Coaching",
+    "category": "Coaches & Trainers / Business Development & Leadership",
+    "contact": "Mr. Hakim A. Lakhdar",
+    "phone": "850-322-8109",
+    "website": "lakhdarcoaching.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Luly B Inc.",
+    "category": "Coaches & Trainers / Business Development & Leadership",
+    "contact": "Ms. Luly Carreras",
+    "phone": "305-417-8817",
+    "website": "lulyb.com",
+    "chamber_member": true
+  },
+  {
+    "name": "PerformanceREWIRED",
+    "category": "Coaches & Trainers / Business Development & Leadership",
+    "contact": "Ms. Jeska Brodbeck",
+    "phone": "601-540-7087",
+    "website": "jeskabrodbeck.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Advanced Automation Programming",
+    "category": "Construction - Engineering & Design",
+    "contact": "Mr. Leonardo Hernandez",
+    "phone": "305-902-1651",
+    "website": "aapmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Brasfield & Gorrie, LLC",
+    "category": "Construction - Engineering & Design",
+    "contact": "Mr. Mike Peters",
+    "phone": "305-938-9800",
+    "website": "brasfieldgorrie.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Albany Homes Construction Inc.",
+    "category": "Construction - Residential and Commercial",
+    "contact": "Ms. Monique Selman",
+    "phone": "786-271-7192",
+    "website": "albanyhomes.us",
+    "chamber_member": true
+  },
+  {
+    "name": "NRI \u2013 Nolan Reynolds International",
+    "category": "Construction / Development",
+    "contact": "Mr. Brent Reynolds",
+    "phone": "305-529-9928",
+    "website": "nrinternational.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Florida Construction & Engineering",
+    "category": "Construction Companies",
+    "contact": "Ms. Stephany Zakhia",
+    "phone": null,
+    "website": "fcebuild.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Florida Construction & Engineering Inc.",
+    "category": "Construction Companies",
+    "contact": "Ms. Stephany Zakhia",
+    "phone": "305-883-7601",
+    "website": "fcebuild.com",
+    "chamber_member": true
+  },
+  {
+    "name": "JWR Construction",
+    "category": "Construction Companies",
+    "contact": "Ms. Josie Legido Correa",
+    "phone": "954-480-2800",
+    "website": "jwrconstruction.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Consulate of Australia - Miami",
+    "category": "Consulates",
+    "contact": "Hon. Don Slesnick",
+    "phone": "305-448-5672",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "MARLY Q, LLC",
+    "category": "Consultant - Public Speaking and Communications",
+    "contact": "Ms. Marly Q Casanova",
+    "phone": "305-908-2483",
+    "website": "marlyq.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Blackmore Consulting",
+    "category": "Consultants - Business / Professional Services",
+    "contact": "Mrs. Yvethe Blackmore",
+    "phone": "786-417-9868",
+    "website": "blackmore-consulting.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Co Underscore",
+    "category": "Consultants - Business / Professional Services",
+    "contact": "Mr. Dietrich Zeledon",
+    "phone": "888-835-5507",
+    "website": "counderscore.com",
+    "chamber_member": true
+  },
+  {
+    "name": "My Xcell Network",
+    "category": "Consultants - Business / Professional Services",
+    "contact": "Mr. Luis \"Luigi\" Gonzalez, Jr.",
+    "phone": "305-704-0521",
+    "website": "myxcell.net",
+    "chamber_member": true
+  },
+  {
+    "name": "Nexus Consultancy",
+    "category": "Consultants - Business / Professional Services",
+    "contact": "Mr. Camilo Osuna",
+    "phone": "786-642-1803",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Stellar Synergy",
+    "category": "Consultants - Business / Professional Services",
+    "contact": "Ms. Barbara Exposito-Fernandez",
+    "phone": "305-467-7552",
+    "website": "stellar-synergy.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Win Woman",
+    "category": "Consultants - Business / Professional Services",
+    "contact": "Ms. Yanyn San Luis",
+    "phone": "305-697-6147",
+    "website": "thewinwoman.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Gamechangers Consulting, LLC",
+    "category": "Consultants-Management & Performance",
+    "contact": "Mr. Sergio Tigera",
+    "phone": "786-457-0113",
+    "website": "sergiotigera.com",
+    "chamber_member": true
+  },
+  {
+    "name": "BOCA Group",
+    "category": "Consultants-Real Estate",
+    "contact": "Mr. Noah Sloane",
+    "phone": "212-983-7010",
+    "website": "bocagroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Trinity Construction Group",
+    "category": "Contractors - General/Custom Homebuilding",
+    "contact": "Mr. Daniel Duran",
+    "phone": "786-431-5770",
+    "website": "trinitygoc.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Greater Miami Convention & Visitors Bureau",
+    "category": "Convention Bureaus",
+    "contact": "Mr. David Whitaker",
+    "phone": "305-539-3000",
+    "website": "miamiandbeaches.com",
+    "chamber_member": true
+  },
+  {
+    "name": "GROU Coffee + Cowork",
+    "category": "Coworking / Mobile Workspaces / Executive Office Suites",
+    "contact": "Ms. Barbara Safina",
+    "phone": "305-877-4320",
+    "website": "groucommunity.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Quest Workspaces",
+    "category": "Coworking / Mobile Workspaces / Executive Office Suites",
+    "contact": "Mr. Carlos Vargas",
+    "phone": "305-200-8700",
+    "website": "questworkspaces.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Castillo & Company, CPA, P.A.",
+    "category": "CPA Firm",
+    "contact": "Ms. Martha Castillo, CPA",
+    "phone": "305-446-4670",
+    "website": "castilloandcompany.com",
+    "chamber_member": true
+  },
+  {
+    "name": "GEMRT & Co., LLP",
+    "category": "CPA Firm",
+    "contact": "Mr. Juan Carlos Gonzalez",
+    "phone": "305-529-5440",
+    "website": "gemrtcpa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Perez-Abreu, Aguerrebere, Sueiro & Torres, P.L.",
+    "category": "CPA Firm",
+    "contact": "Mr. Carlos Perez-Abreu, CPA",
+    "phone": "305-567-0150",
+    "website": "paast.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Sharff, Wittmer, Kurtz, Jackson, & Diaz, P.A.",
+    "category": "CPA Firm",
+    "contact": "Mr. Luis E. Diaz",
+    "phone": "305-666-7229",
+    "website": "swkj-cpa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Zafar Francuz & Company, LLC",
+    "category": "CPA Firm",
+    "contact": "Mr. Greg Francuz, CPA, MBA",
+    "phone": "305-281-3954",
+    "website": "zafarcpas.com",
+    "chamber_member": true
+  },
+  {
+    "name": "NR CPAs and Business Advisors",
+    "category": "CPA/Accountant",
+    "contact": "Mr. Nischay Rawal",
+    "phone": "305-978-1533",
+    "website": "nrcpas.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Inspyre Payments",
+    "category": "Credit Card Processing",
+    "contact": "Mr. Jorge Sarria",
+    "phone": "407-377-6343",
+    "website": "inspyrepay.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Dade County Federal Credit Union",
+    "category": "Credit Unions",
+    "contact": "Ms. Jennifer Gerson",
+    "phone": "786-845-3211",
+    "website": "dcfcu.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Power Financial Credit Union",
+    "category": "Credit Unions",
+    "contact": "Ms. Melvys De la Morena",
+    "phone": "305-219-9066",
+    "website": "powerfi.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Space Coast Credit Union",
+    "category": "Credit Unions",
+    "contact": "Mr. Allan Montero",
+    "phone": "786-932-2419",
+    "website": "sccu.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Arthur Murray Coral Gables Dance Studio",
+    "category": "Dance Instruction",
+    "contact": "Ms. Katia Kanevskaya",
+    "phone": "305-444-6136",
+    "website": "arthur-murray.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Fred Astaire Dance Studios - Coral Gables",
+    "category": "Dance Instruction",
+    "contact": "Ms. Vera Kosarev",
+    "phone": "305-443-0085",
+    "website": "fredastaire.com/coral-gables",
+    "chamber_member": true
+  },
+  {
+    "name": "Royal Ballet Miami Corporation",
+    "category": "Dance Studio",
+    "contact": "Ms. Maia Duschatzky",
+    "phone": "305-728-9587",
+    "website": "miamiroyalballet.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Craft With A Purpose",
+    "category": "Decoration-Remodeling",
+    "contact": "Ms. Joanne Torres",
+    "phone": "305-753-2777",
+    "website": "craftwithapurpose.com",
+    "chamber_member": true
+  },
+  {
+    "name": "South Florida Pumpkin Porches",
+    "category": "Decoration-Remodeling",
+    "contact": "Ms. Isabelle Duran",
+    "phone": "786-685-5889",
+    "website": "southfloridapumpkinporches.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Rose Tree Cottage",
+    "category": "Decoration-Remodeling",
+    "contact": "Mrs. Josie R Esquijarosa",
+    "phone": "305-448-9688",
+    "website": "rosetreecottage.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Benitez Dental Center",
+    "category": "Dentist",
+    "contact": "Dr. Andrea Benitez",
+    "phone": "786-442-2122",
+    "website": "benitezdentalcenter.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Smiles & Sonrisas",
+    "category": "Dentist",
+    "contact": "Dr. Jose M. Gurevich, DDS",
+    "phone": "305-665-5525",
+    "website": "smilesinmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Premier Pediatric Dentistry",
+    "category": "Dentist - Pediatric",
+    "contact": "Dr. Ashley Rosenbaum",
+    "phone": "786-296-1891",
+    "website": "premierpediatricdentistry.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Capsexpress International",
+    "category": "Dietary Supplements",
+    "contact": "Mr. Estevao Rui Calheirana",
+    "phone": null,
+    "website": "capsexpressinternational.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Lighthouse Internet Media",
+    "category": "Digital Marketing",
+    "contact": "Mr. Emilio Yeper",
+    "phone": "305-987-2506",
+    "website": "lighthousemedia.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Bioseafood, LLC",
+    "category": "Distributors - Seafood",
+    "contact": "Mr. Plutarco Cohen",
+    "phone": "305-444-6226",
+    "website": "bioseafoodllc.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Alpha School Miami",
+    "category": "Education",
+    "contact": "Ms. Debby Lichtner",
+    "phone": "305-775-8626",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables Adult Education Center",
+    "category": "Education",
+    "contact": "Ms. Gina Spicer",
+    "phone": "305-443-4871",
+    "website": "coralgablesadultedu.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Goldman Sachs 10,000 Small Businesses at Miami Dade College",
+    "category": "Education",
+    "contact": "Mr. Scott Byrd",
+    "phone": "305-237-7817",
+    "website": "mdc.edu/10ksb",
+    "chamber_member": true
+  },
+  {
+    "name": "Humboldt International University",
+    "category": "Education",
+    "contact": "Mr. Carlos Montes de Oca",
+    "phone": "305-448-7454",
+    "website": "hiuniversity.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Avenues of Excellence Inc.",
+    "category": "Education / Finishing School",
+    "contact": "Ms. Rose Hedgemond",
+    "phone": "786-749-2276",
+    "website": "avenuesofexcellence.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Dion Generators Solutions",
+    "category": "Electrical Contractors",
+    "contact": "Mr. Michael Dion",
+    "phone": "305-450-8787",
+    "website": "diongenerators.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Liberty Elevator Corporation",
+    "category": "Elevator Contractor / Maintenance / Modernization",
+    "contact": "Mr. Douglas Muttart",
+    "phone": "800-522-4551",
+    "website": "libertyelevator.com",
+    "chamber_member": true
+  },
+  {
+    "name": "All Atlantic Benefits",
+    "category": "Employee Benefits",
+    "contact": "Mr. TJ North",
+    "phone": "305-978-3051",
+    "website": "allatlanticbenefits.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Perron & Company",
+    "category": "Employment Agencies",
+    "contact": "Mr. Daniel Perron",
+    "phone": "305-509-6171",
+    "website": "perronandcompany.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Solvo Global",
+    "category": "Employment Agencies",
+    "contact": "Mr. Chris Daley",
+    "phone": "305-318-8541",
+    "website": "solvoglobal.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Alice Bravo & Assoc., LLC",
+    "category": "Engineering & Consulting",
+    "contact": "Ms. Alice Bravo",
+    "phone": "305-458-7541",
+    "website": "alicebravo.com",
+    "chamber_member": true
+  },
+  {
+    "name": "UES",
+    "category": "Engineering & Consulting",
+    "contact": "Ms. Claudia Valencia",
+    "phone": "305-249-8479",
+    "website": "teamues.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Kaseya Center",
+    "category": "Entertainment, Events & Performing Arts",
+    "contact": "Mr. Mark Brown",
+    "phone": "786-777-1000",
+    "website": "kaseyacenter.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami-Dade County Fair & Exposition, Inc.",
+    "category": "Entertainment, Events & Performing Arts",
+    "contact": "Mr. Eduardo F. Cora",
+    "phone": "305-223-7060",
+    "website": "fairexpo.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Seminole Hard Rock Hotel & Casino Hollywood",
+    "category": "Entertainment, Events & Performing Arts",
+    "contact": "Ms. Estefania Diaz Balart",
+    "phone": "954-797-5569",
+    "website": "casino.hardrock.com/hollywood",
+    "chamber_member": true
+  },
+  {
+    "name": "Seraphic Fire",
+    "category": "Entertainment, Events & Performing Arts",
+    "contact": "Mr. JJ Flores",
+    "phone": "305-285-9060",
+    "website": "seraphicfire.org",
+    "chamber_member": true
+  },
+  {
+    "name": "One White Orchid Inc.",
+    "category": "Estate Liquidation Services",
+    "contact": "Mr. Louis Payne",
+    "phone": "305-851-5626",
+    "website": "onewhiteorchid.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Cor-Events Inc.",
+    "category": "Event Planners & Management",
+    "contact": "Ms. Maribel Cordova Ramirez",
+    "phone": "305-281-7477",
+    "website": "cor-events.com",
+    "chamber_member": true
+  },
+  {
+    "name": "ThemeIT Inc.",
+    "category": "Event Planning & Design",
+    "contact": "Ms. Khia C. Joseph",
+    "phone": "888-484-3637",
+    "website": "themeitevents.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ascension Global Staffing & Executive Search",
+    "category": "Executive Search & Career Consultants",
+    "contact": "Ms. Aida Rodriguez",
+    "phone": "786-503-1910",
+    "website": "ascensionsearch.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Phoenix Pro Connect",
+    "category": "Executive Search & Career Consultants",
+    "contact": "Ms. Cynthia Rodriguez-Garces",
+    "phone": "786-290-3996",
+    "website": "phxproconnect.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Florida State Day Celebrations Inc.",
+    "category": "Fairs/Festivals",
+    "contact": "Mr. Iancarlo Arispe",
+    "phone": "786-246-4800",
+    "website": "floridastateday.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Club eXpats - Feria de Sevilla en Miami Event",
+    "category": "Fairs/Festivals",
+    "contact": "Ms. Rebeca Calvet",
+    "phone": "305-608-3509",
+    "website": "clubexpats.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Dedicated Wealth Partners of Raymond James",
+    "category": "Financial Advisors",
+    "contact": "Ms. Dafna Gold",
+    "phone": "917-599-8286",
+    "website": "raymondjames.com/dedicatedwealthpartners",
+    "chamber_member": true
+  },
+  {
+    "name": "Edward Jones",
+    "category": "Financial Advisors",
+    "contact": "Mr. Alex Venot",
+    "phone": "305-460-9594",
+    "website": "edwardjones.com/alex-venot",
+    "chamber_member": true
+  },
+  {
+    "name": "Wealth Enhancement Group",
+    "category": "Financial Advisors",
+    "contact": "Mr. Louis Feldman",
+    "phone": "305-877-8070",
+    "website": "wealthenhancement.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Premia Global Advisors",
+    "category": "Financial Advisors/International",
+    "contact": "Mr. Miguel Sosa",
+    "phone": "786-646-9140",
+    "website": "premiaglobaladvisors.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Emergent Global Investments, LLC",
+    "category": "Financial Advisors/Wealth Management",
+    "contact": "Mr. Cesar Murillo",
+    "phone": "786-964-1952",
+    "website": "emergentgi.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Fontaine Retirement Group",
+    "category": "Financial Advisors/Wealth Management",
+    "contact": "Mr. David Fontaine",
+    "phone": "305-386-7667",
+    "website": "fontaine-retirement.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Insigneo Securities, LLC",
+    "category": "Financial Advisors/Wealth Management",
+    "contact": "Mr. Javier Rivero",
+    "phone": "305-373-9000",
+    "website": "insigneo.com",
+    "chamber_member": true
+  },
+  {
+    "name": "DMG Corporation",
+    "category": "Financial Planning",
+    "contact": "Mr. Giovanny Madrid",
+    "phone": "305-887-1431",
+    "website": "giovannymadridfr.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Roberto Garcia- New York Life",
+    "category": "Financial Planning",
+    "contact": "Mr. Roberto Garcia",
+    "phone": "786-443-1774",
+    "website": "newyorklife.com",
+    "chamber_member": true
+  },
+  {
+    "name": "NPC Financial- DMG Corp.",
+    "category": "Financial Planning",
+    "contact": "Mr. Giovanny Madrid",
+    "phone": "786-241-5516",
+    "website": "npcfinancial.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Integrity Wealth Advisory of Janney",
+    "category": "Financial Professional - Wealth Management",
+    "contact": "Ms. Susan Rutrough",
+    "phone": "786-577-6806",
+    "website": "integritywealthadvisoryjanney.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Acentria",
+    "category": "Financial Services",
+    "contact": "Ms. Natalie Ruiz",
+    "phone": "904-465-0227",
+    "website": "acentria.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Capital One",
+    "category": "Financial Services",
+    "contact": "Mr. Bernard Vieira",
+    "phone": "305-240-3565",
+    "website": "capitalone.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Wealth Management",
+    "category": "Financial Services",
+    "contact": "Mr. Dennis Coral",
+    "phone": "305-671-3914",
+    "website": "coralwm.com",
+    "chamber_member": true
+  },
+  {
+    "name": "DC Financial Services, LLC",
+    "category": "Financial Services",
+    "contact": "Mr. Chris Colston",
+    "phone": "305-951-8381",
+    "website": "2ndchancecredit.net",
+    "chamber_member": true
+  },
+  {
+    "name": "Mutual of Omaha",
+    "category": "Financial Services",
+    "contact": "Mr. Alfonso Bonilla",
+    "phone": "786-655-0163",
+    "website": "agents.mutualofomaha.com/alfonso-bonilla",
+    "chamber_member": true
+  },
+  {
+    "name": "Northwestern Mutual - Coral Gables",
+    "category": "Financial Services",
+    "contact": "Mr. Robert Poleo",
+    "phone": "305-448-5666",
+    "website": "coralgables.nm.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Equitable Advisors",
+    "category": "Financial Services & Advisors",
+    "contact": "Mr. Luis Chiappy",
+    "phone": "305-670-4400",
+    "website": "southflorida.equitableadvisors.com",
+    "chamber_member": true
+  },
+  {
+    "name": "KESK Global Group, LLC",
+    "category": "Financial Services & Advisors",
+    "contact": "Mr. Karel Lens",
+    "phone": "786-523-0003",
+    "website": "keskglobal.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Mariner Wealth Advisors",
+    "category": "Financial Services & Advisors",
+    "contact": "Ms. Michelle Grillone",
+    "phone": "305-443-0230",
+    "website": "marinewealthadvisors.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Pension Services Inc.",
+    "category": "Financial Services & Advisors",
+    "contact": "Mr. Robert Penafiel",
+    "phone": "305-595-5500",
+    "website": "pensionnetwork.net",
+    "chamber_member": true
+  },
+  {
+    "name": "Hamptons Group, LLC",
+    "category": "Financial/Investments",
+    "contact": "Mr. Jeff Bartel",
+    "phone": "305-310-9000",
+    "website": "hamptonsgroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Private Wealth Management of Coral Gables",
+    "category": "Financial/Investments",
+    "contact": "Mr. Al Maulini",
+    "phone": "305-548-2247",
+    "website": "pwmcg.com",
+    "chamber_member": true
+  },
+  {
+    "name": "G.H. Factor, LLC",
+    "category": "Financing Commercial Accounts Receivables",
+    "contact": "Mr. Mauricio Perez",
+    "phone": "786-925-0583",
+    "website": "ghfactor.net",
+    "chamber_member": true
+  },
+  {
+    "name": "Airlab Fitness",
+    "category": "Fitness Centers & Personal Trainers",
+    "contact": "Mr. Varun Varadaraj",
+    "phone": "917-863-4822",
+    "website": "airlabfitness.com",
+    "chamber_member": true
+  },
+  {
+    "name": "EQUINOX",
+    "category": "Fitness Centers & Personal Trainers",
+    "contact": "Mr. Matt Pinder",
+    "phone": "786-497-8200",
+    "website": "equinox.com/clubs/florida/coralgables",
+    "chamber_member": true
+  },
+  {
+    "name": "Orangetheory Fitness Coral Gables",
+    "category": "Fitness Centers & Personal Trainers",
+    "contact": "Ms. Mia Cohen",
+    "phone": "305-797-4611",
+    "website": "orangetheory.com/coral-gables",
+    "chamber_member": true
+  },
+  {
+    "name": "Petal Cartel",
+    "category": "Florist",
+    "contact": "Ms. Jacqueline Ceballos",
+    "phone": "305-794-4712",
+    "website": "petalcartel.com",
+    "chamber_member": true
+  },
+  {
+    "name": "CookinGenie",
+    "category": "Food & Beverage",
+    "contact": "Ms. Laura Madden",
+    "phone": "317-410-0019",
+    "website": "cookingenie.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Hermanos Cantina Grill",
+    "category": "Food & Beverage",
+    "contact": "Mr. Fausto Faraldo",
+    "phone": "305-305-5514",
+    "website": "hermanoscantinagrill.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Door Dash",
+    "category": "Food and Drink Delivery",
+    "contact": "Mr. Darrell Davis",
+    "phone": null,
+    "website": "doordash.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Michy\u2019s Kitchen",
+    "category": "Food and Drink Delivery",
+    "contact": "Ms. Michelle Arana",
+    "phone": "305-587-4965",
+    "website": "michyskitchen.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables Community Foundation",
+    "category": "Foundations",
+    "contact": "Mr. Mauricio Vivero",
+    "phone": "305-446-9670",
+    "website": "gablesfoundation.org",
+    "chamber_member": true
+  },
+  {
+    "name": "The Franchise Tailor",
+    "category": "Franchise Consulting",
+    "contact": "Mr. Eddie Rodriguez",
+    "phone": "305-460-9925",
+    "website": "thefranchisetailor.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Arthur Murray International Inc.",
+    "category": "Franchisor of Dance Studios",
+    "contact": "Mr. Rodney Rett",
+    "phone": "305-445-9645",
+    "website": "arthurmurray.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Caballero Rivero Dignity Memorial",
+    "category": "Funeral Homes & Memorial Parks",
+    "contact": "Mr. Joe Jimenez",
+    "phone": "305-773-0728",
+    "website": "dignitymemorial.com/funeral-homes/florida/miami/caballero-rivero-westchester/9550",
+    "chamber_member": true
+  },
+  {
+    "name": "Van Orsdel Funeral & Cremation Services - Coral Gables",
+    "category": "Funeral Homes & Memorial Parks",
+    "contact": "Mr. Donald Van Orsdel",
+    "phone": "305-446-4412",
+    "website": "vanorsdel.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Kartell",
+    "category": "Furniture-Retail/Wholesale",
+    "contact": "Mr. Aldo Faetti",
+    "phone": "305-573-4010",
+    "website": "kartell.com",
+    "chamber_member": true
+  },
+  {
+    "name": "LRK Seating Products, LLC",
+    "category": "Furniture-Retail/Wholesale",
+    "contact": "Mr.Chris Riccio",
+    "phone": "305-926-6277",
+    "website": "lrkseating.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Waste Management",
+    "category": "Garbage Collection",
+    "contact": "Mr. Jason Neal",
+    "phone": "305-986-6107",
+    "website": "wm.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Arvani Group, LLC",
+    "category": "General Contractors / Construction Management",
+    "contact": "Mr. Nikolas Arvanitopoulos",
+    "phone": "305-803-0313",
+    "website": "arvanibwllc.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Coastal Construction Group",
+    "category": "General Contractors / Construction Management",
+    "contact": "Mr. Tom C. Murphy",
+    "phone": "305-559-4900",
+    "website": "coastalconstruction.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Florida Lemark Corporation",
+    "category": "General Contractors / Construction Management",
+    "contact": "Mr. Emilio Rodriguez",
+    "phone": "305-593-1442",
+    "website": "floridalemark.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Luxon Construction",
+    "category": "General Contractors / Construction Management",
+    "contact": "Mr. Michael Olivera",
+    "phone": "786-862-6033",
+    "website": "luxonconstruction.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Rothstar Construction Inc.",
+    "category": "General Contractors / Construction Management",
+    "contact": "Mr. Larry Starr, Jr.",
+    "phone": "305-442-4462",
+    "website": "rothstar.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Seacoast Construction Inc.",
+    "category": "General Contractors / Construction Management",
+    "contact": "Mr. George Abadie",
+    "phone": "786-433-8740",
+    "website": "seacoastconstruction.net",
+    "chamber_member": true
+  },
+  {
+    "name": "Mystic Healing",
+    "category": "Gift Shop",
+    "contact": "Mr. Danny Daniel",
+    "phone": "786-228-7098",
+    "website": "mystichealing.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Henley & Partners USA Inc.",
+    "category": "Global Citizenship/Residency by Investment",
+    "contact": "Ms. Isabel Quintero",
+    "phone": "786-233-6668",
+    "website": "henleyglobal.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Tax Collectors Office- Miami Dade County",
+    "category": "Government / Policy / Consulting",
+    "contact": "Mr. Dariel Fernandez",
+    "phone": "305-375-1567",
+    "website": "mdctaxcollector.gov",
+    "chamber_member": true
+  },
+  {
+    "name": "McGuire Woods",
+    "category": "Government Consulting",
+    "contact": "Mr. Rhett O'Doski",
+    "phone": "850-322-8786",
+    "website": "mcguirewoods.com",
+    "chamber_member": true
+  },
+  {
+    "name": "City of Coral Gables",
+    "category": "Government Departments & Associations",
+    "contact": "Mr. Peter Iglesias",
+    "phone": "305-446-6800",
+    "website": "coralgables.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami-Dade County",
+    "category": "Government Departments & Associations",
+    "contact": null,
+    "phone": "305-375-5071",
+    "website": "miamidade.gov",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami-Dade County | Transportation Trust",
+    "category": "Government Departments & Associations",
+    "contact": "Mr. Javier Betancourt",
+    "phone": "305-375-1357",
+    "website": "miamidade.gov/citt",
+    "chamber_member": true
+  },
+  {
+    "name": "Office of the Supervisor of Elections",
+    "category": "Government Departments & Associations",
+    "contact": "Dr. Claudia Uribe-Orrett",
+    "phone": "305-499-8332",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Vicki Lopez State Representative - HD 113",
+    "category": "Government Relations / Non-Profit Consulting",
+    "contact": "Ms. Vicki L. Lopez",
+    "phone": "305-315-0740",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Pantin Gov",
+    "category": "Government Relations/Lobbying",
+    "contact": "Mr. Les Pantin",
+    "phone": "305-215-2162",
+    "website": "pantingov.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Robert M. Levy & Associates",
+    "category": "Government Relations/Lobbying",
+    "contact": "Mr. Jose Diaz",
+    "phone": "850-294-7583",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Jolt Charge Inc.",
+    "category": "Green Technology",
+    "contact": "Mr. William Watts",
+    "phone": "973-444-5719",
+    "website": "joltcharge.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Iron Bodyfit",
+    "category": "Gym / Gymnastics",
+    "contact": "Mr. Laurence Goya",
+    "phone": "786-412-7435",
+    "website": "ironbodyfit.us",
+    "chamber_member": true
+  },
+  {
+    "name": "Rumble Boxing Coral Gables",
+    "category": "Gym / Gymnastics",
+    "contact": "Mr. Jose Bonetti",
+    "phone": "786-449-8955",
+    "website": "rumbleboxinggym.com/location/coral-gables",
+    "chamber_member": true
+  },
+  {
+    "name": "Kazmalaje",
+    "category": "Hair Care",
+    "contact": "Ms. Latoya Stirrup",
+    "phone": "305-833-9968",
+    "website": "kazmaleje.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Uni K Wax of Coral Gables",
+    "category": "Hair Removal",
+    "contact": "Mr. Hector Morales",
+    "phone": "305-450-0885",
+    "website": "unikwax.com/coral-gables",
+    "chamber_member": true
+  },
+  {
+    "name": "Global Wellness Hub",
+    "category": "Health",
+    "contact": "Ms. Karen Minor",
+    "phone": "786-558-8892",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Drip N Bodied",
+    "category": "Health & Beauty",
+    "contact": "Ms. Ashley Peters",
+    "phone": "305-908-9282",
+    "website": "dripnbodied.com",
+    "chamber_member": true
+  },
+  {
+    "name": "M2Skin",
+    "category": "Health & Beauty",
+    "contact": "Mr. Michael Mendez",
+    "phone": "407-600-1656",
+    "website": "m2skin.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Perez Neurology",
+    "category": "Health & Beauty",
+    "contact": "Dr. Gabriela Perez",
+    "phone": "305-403-7197",
+    "website": "perezneurology.com",
+    "chamber_member": true
+  },
+  {
+    "name": "US Health Advisors",
+    "category": "Health Care Business Services",
+    "contact": "Mr. Thomas Jones",
+    "phone": "561-428-5448",
+    "website": "ushealthadvisor.net",
+    "chamber_member": true
+  },
+  {
+    "name": "Family Medical Group Gables",
+    "category": "Health Care/Primary Care Medicine",
+    "contact": "Ms. Jannelle Ramirez",
+    "phone": "305-306-0233",
+    "website": "thefamilymedgroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ultimate Medical Center & Spa, LLC",
+    "category": "Health Care/Primary Care Medicine",
+    "contact": "Ms. Ysmelys Hernandez",
+    "phone": "305-889-9237",
+    "website": "ultimatemdcenters.com",
+    "chamber_member": true
+  },
+  {
+    "name": "ChoiceMD",
+    "category": "Health Information Provider",
+    "contact": "Ms. Vanessa Bedoya",
+    "phone": "305-777-0219",
+    "website": "choicemd.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Azul Insured",
+    "category": "Health Insurance",
+    "contact": null,
+    "phone": "305-566-2985",
+    "website": "azulinsured.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Florida Blue",
+    "category": "Health Insurance Plan",
+    "contact": "Mr. Jorge Martinez",
+    "phone": "305-921-7400",
+    "website": "floridablue.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Powering Elite Performers, LLC",
+    "category": "Health/Anti Aging",
+    "contact": "Mr. Ken Smith",
+    "phone": "305-801-6876",
+    "website": "us.shaklee.com/en_US/kensmith",
+    "chamber_member": true
+  },
+  {
+    "name": "Bioenergy Wellness South Miami",
+    "category": "Health/Wellness",
+    "contact": "Ms. Carolina Williams",
+    "phone": "305-590-1894",
+    "website": "bioenergywellnessmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Jackson Health System",
+    "category": "Health/Wellness",
+    "contact": "Mr. Matthew I. Pinzur",
+    "phone": "305-585-1111",
+    "website": "jhsmiami.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Let Go Stress, LLC",
+    "category": "Health/Wellness",
+    "contact": "Rev. Roland Gonzalez",
+    "phone": "786-328-8437",
+    "website": "letgostress.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Life Time",
+    "category": "Health/Wellness",
+    "contact": "Ms. Alejandra Blanco",
+    "phone": "786-437-4467",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Metro Mommy Agency",
+    "category": "Health/Wellness",
+    "contact": "Ms. Esther Rose McCant",
+    "phone": "786-553-3122",
+    "website": "metromommyagency.com",
+    "chamber_member": true
+  },
+  {
+    "name": "OYA.health",
+    "category": "Health/Wellness",
+    "contact": "Ms. Michella Metzler",
+    "phone": "917-647-8314",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Personal ConciergMed",
+    "category": "Health/Wellness",
+    "contact": "Dr. Lianet R Tuduri",
+    "phone": "305-845-8817",
+    "website": "pcm-md.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Stretch Zone Coral Gables",
+    "category": "Health/Wellness",
+    "contact": "Mr. Stephen Montalto",
+    "phone": "786-636-1306",
+    "website": "stretchzone.com/locations/coral-gables",
+    "chamber_member": true
+  },
+  {
+    "name": "Health Care Center of Little Havana",
+    "category": "Healthcare Services",
+    "contact": "Mr. Gustavo Gutierrez",
+    "phone": "305-888-6959",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Hear Right USA",
+    "category": "Healthcare Services",
+    "contact": "Ms. Maria Moreno",
+    "phone": "786-261-5190",
+    "website": "hearrightusa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Life Imaging FLA",
+    "category": "Healthcare Services",
+    "contact": "Ms. Maria Penaloza",
+    "phone": "772-773-6675",
+    "website": "lifeimagingfla.com",
+    "chamber_member": true
+  },
+  {
+    "name": "ADRIANA HOYOS",
+    "category": "High End Furnishings / Interior Design",
+    "contact": "Mr. Eduardo Perez",
+    "phone": "305-794-5525",
+    "website": "adrianahoyos.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Biltmore Hotel",
+    "category": "Historical Sites",
+    "contact": "Mr. Matthias Kammerer",
+    "phone": "855-421-4192",
+    "website": "biltmorehotel.com",
+    "chamber_member": true
+  },
+  {
+    "name": "24/7 Nursing Care Inc.",
+    "category": "Home Health Care Services",
+    "contact": "Mr. Luis Mejer, Jr.",
+    "phone": "786-518-3622",
+    "website": "24-7nursingcare.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Providence Healthcare Services",
+    "category": "Home Health Care Services",
+    "contact": "Ms. Nercy Radcliffe",
+    "phone": "305-220-1088",
+    "website": "providencehhs.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Visiting Angels Miami",
+    "category": "Home Health Care Services",
+    "contact": "Mr. Anthony Acevedo",
+    "phone": "305-728-3153",
+    "website": "visitingangels.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Actually Organized",
+    "category": "Home Improvement",
+    "contact": "Ms. Wendy Jacobs Barcelo",
+    "phone": "917-863-7530",
+    "website": "actuallyorganized.net",
+    "chamber_member": true
+  },
+  {
+    "name": "ARTE CUCINE",
+    "category": "Home Improvement",
+    "contact": "Ms. Josefina Giordano",
+    "phone": "305-456-1372",
+    "website": "arte-cucine.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Florida Restaurant & Lodging Association",
+    "category": "Hospitality & Tourism",
+    "contact": "Ms. Lynne M. Hernandez",
+    "phone": "305-598-3752",
+    "website": "frla.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Greater Miami & The Beaches Hotel Association",
+    "category": "Hospitality & Tourism",
+    "contact": "Ms. Wendy Kallergis",
+    "phone": "305-531-3553",
+    "website": "gmbha.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Smooth Sailing of Miami",
+    "category": "Hospitality & Tourism",
+    "contact": "Mr. Kyle Brown",
+    "phone": "786-493-4391",
+    "website": "smoothsailingmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Moore",
+    "category": "Hospitality & Tourism",
+    "contact": "Mr. Sinan Bozkurt",
+    "phone": "305-209-2100",
+    "website": "mooremiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Tijon Miami",
+    "category": "Hospitality & Tourism",
+    "contact": "Ms. Ana Mota",
+    "phone": "305-766-4953",
+    "website": "tijonmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Baptist Health South Florida",
+    "category": "Hospitals/Health Care Systems",
+    "contact": "Ms. Erin M. Dowd",
+    "phone": "786-596-1960",
+    "website": "baptisthealth.net",
+    "chamber_member": true
+  },
+  {
+    "name": "Mount Sinai Primary & Specialty Care Coral Gables",
+    "category": "Hospitals/Health Care Systems",
+    "contact": "Mr. Oscar Llorente",
+    "phone": "305-390-0596",
+    "website": "msmc.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Nicklaus Children\u2019s Hospital",
+    "category": "Hospitals/Health Care Systems",
+    "contact": "Ms. Arianna Urquia",
+    "phone": "305-663-8435",
+    "website": "nicklauschildrens.org",
+    "chamber_member": true
+  },
+  {
+    "name": "UHealth",
+    "category": "Hospitals/Health Care Systems",
+    "contact": "Ms. Angelica Pardo",
+    "phone": "305-243-3453",
+    "website": "uhealthsystem.com",
+    "chamber_member": true
+  },
+  {
+    "name": "AC Hotel Miami Dadeland",
+    "category": "Hotels & Resorts",
+    "contact": "Ms. Maria Maloney",
+    "phone": "305-668-4490",
+    "website": "marriott.com/miacd",
+    "chamber_member": true
+  },
+  {
+    "name": "Aloft Coral Gables",
+    "category": "Hotels & Resorts",
+    "contact": "Mr. Daniel Suarez",
+    "phone": "305-442-0372",
+    "website": "aloftcoralgables.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Courtyard by Marriott Miami at Dolphin Mall",
+    "category": "Hotels & Resorts",
+    "contact": "Ms. Zuleika Alicea",
+    "phone": "305-994-9343",
+    "website": "marriott.com/miadm",
+    "chamber_member": true
+  },
+  {
+    "name": "Courtyard Marriott Miami Coral Gables",
+    "category": "Hotels & Resorts",
+    "contact": "Ms. Aida Martinez",
+    "phone": "305-443-2301",
+    "website": "marriott.com/miagb",
+    "chamber_member": true
+  },
+  {
+    "name": "Element Miami International Airport",
+    "category": "Hotels & Resorts",
+    "contact": "Ms. Maria Herrera",
+    "phone": "305-636-1600",
+    "website": "element-hotels.marriott.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Four Points by Sheraton Coral Gables",
+    "category": "Hotels & Resorts",
+    "contact": "Ms. Victoria Caldera",
+    "phone": "305-429-0000",
+    "website": "marriott.com/fllfp",
+    "chamber_member": true
+  },
+  {
+    "name": "Hotel Colonnade Coral Gables",
+    "category": "Hotels & Resorts",
+    "contact": "Ms. Stephanie Kopfstedt",
+    "phone": "305-441-2600",
+    "website": "hotelcolonnade.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Hotel St. Michel",
+    "category": "Hotels & Resorts",
+    "contact": "Mr. Daniel Nelms",
+    "phone": "305-444-1666",
+    "website": "hotelstmichel.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Hyatt Regency Coral Gables",
+    "category": "Hotels & Resorts",
+    "contact": "Mr. Mario J. Terran",
+    "phone": "305-441-1234",
+    "website": "coralgables.hyatt.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Loews Coral Gables Hotel",
+    "category": "Hotels & Resorts",
+    "contact": "Mr. Felix Llibre",
+    "phone": "786-772-7676",
+    "website": "loewshotels.com/coral-gables",
+    "chamber_member": true
+  },
+  {
+    "name": "Marriott International - CALA Development",
+    "category": "Hotels & Resorts",
+    "contact": "Mr. Laurent De Kousemaeker",
+    "phone": "305-420-4052",
+    "website": "marriott.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Mayfair House Hotel & Garden",
+    "category": "Hotels & Resorts",
+    "contact": "Mr. Michael Stephens",
+    "phone": "305-441-0000",
+    "website": "mayfairhousemiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Novotel Miami Brickell",
+    "category": "Hotels & Resorts",
+    "contact": "Ms. Fabiola Zerega",
+    "phone": "786-725-3215",
+    "website": "novotelmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Sonesta Miami Airport",
+    "category": "Hotels & Resorts",
+    "contact": "Ms. Maria Liberos",
+    "phone": "786-294-1035",
+    "website": "sonesta.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Ritz Carlton of Coconut Grove, Miami",
+    "category": "Hotels & Resorts",
+    "contact": "Ms. Marina Theard",
+    "phone": "305-644-4680",
+    "website": "ritzcarlton/coconutgrove.com",
+    "chamber_member": true
+  },
+  {
+    "name": "THesis Hotel Miami",
+    "category": "Hotels & Resorts",
+    "contact": "Ms. Joanna Halpin",
+    "phone": "305-667-5611",
+    "website": "thesishotelmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Integrated Management Group, LLC",
+    "category": "Human Capital Management",
+    "contact": null,
+    "phone": "305-786-7488",
+    "website": "integratedmgtgroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The OIS Group",
+    "category": "Human Resources/Risk Management Consultant",
+    "contact": "Mr. Hugh Quinn",
+    "phone": "786-251-3294",
+    "website": "theoisgroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Blueprint IT Consulting, LLC",
+    "category": "Information Technology & Computer Support",
+    "contact": "Ms. Maria Smyslova",
+    "phone": "703-485-5786",
+    "website": "blueprintitconsult.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Eliptek Technology Group",
+    "category": "Information Technology & Computer Support",
+    "contact": "Mr. Marco Ibarra",
+    "phone": "305-887-8200",
+    "website": "eliptek.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Grove Networks Inc.",
+    "category": "Information Technology & Computer Support",
+    "contact": "Mr. Andrew Judge",
+    "phone": "305-448-6126",
+    "website": "grovenetworks.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Parmac Inc.",
+    "category": "Information Technology & Computer Support",
+    "contact": "Ms. Lourdes Machado",
+    "phone": "305-461-0797",
+    "website": "parmac.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Symmetry IT",
+    "category": "Information Technology & Computer Support",
+    "contact": "Mr. Ryan Gomez",
+    "phone": "888-847-0018",
+    "website": "symmetrytech.com",
+    "chamber_member": true
+  },
+  {
+    "name": "TeamLogic IT West Miami",
+    "category": "Information Technology & Computer Support",
+    "contact": "Mr. Guido Candiani",
+    "phone": "305-363-4655",
+    "website": "teamlogicit.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Virtuworks",
+    "category": "Information Technology Security",
+    "contact": "Ms. Cristina Armenteros",
+    "phone": "305-265-0447",
+    "website": "virtuworks.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Brown & Brown Insurance Services Inc.",
+    "category": "Insurance",
+    "contact": "Ms. Isis Garcia",
+    "phone": "305-714-4400",
+    "website": "bbrown.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Keen Battle Mead & Company",
+    "category": "Insurance",
+    "contact": "Mr. Michael W. Battle",
+    "phone": "305-820-6702",
+    "website": "kbmco.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Aflac",
+    "category": "Insurance - Employee Benefits",
+    "contact": "Mr. Michael Porter",
+    "phone": "786-606-2811",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Arthur J. Gallagher",
+    "category": "Insurance - Employee Benefits",
+    "contact": "Ms. Claudia Barrio",
+    "phone": "786-547-0816",
+    "website": "ajg.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Robert J. Shafer & Associates",
+    "category": "Insurance - Employee Benefits",
+    "contact": "Mr. Robert Shafer",
+    "phone": "305-775-3578",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "New York Life",
+    "category": "Insurance - Life",
+    "contact": "Mr. Roger Paz",
+    "phone": "305-537-8116",
+    "website": "newyorklife.com/agent/rpaz01",
+    "chamber_member": true
+  },
+  {
+    "name": "Ascendant Insurance Solutions, LLC",
+    "category": "Insurance & Financial Services",
+    "contact": "Mr. Pablo L. Cejas",
+    "phone": null,
+    "website": "ascendantgroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Dopazo & Associates Insurance Services",
+    "category": "Insurance & Financial Services",
+    "contact": "Mr. Alexander Dopazo",
+    "phone": "305-470-8500",
+    "website": "dopazoinsurance.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Veritran",
+    "category": "Insurance & Financial Services",
+    "contact": "Ms. Yuli Simon",
+    "phone": null,
+    "website": "veritran.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Avante Insurance Group, LLC",
+    "category": "Insurance Agency",
+    "contact": "Mrs. Gabriela Dominguez",
+    "phone": "305-812-7605",
+    "website": "avante-nea.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Red Zone Insurance",
+    "category": "Insurance Brokerage Firm",
+    "contact": null,
+    "phone": "305-255-1901",
+    "website": "redzoneinsurance.com",
+    "chamber_member": true
+  },
+  {
+    "name": "USI Insurance Services",
+    "category": "Insurance Brokerage Firm",
+    "contact": "Mr. Kurt Cushing",
+    "phone": "786-454-2082",
+    "website": "usi.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Noble Insurance Group",
+    "category": "Insurance-Commercial",
+    "contact": "Mr. Aldo Colli",
+    "phone": "305-907-7995",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Allianz-Trade",
+    "category": "Insurance-Financing",
+    "contact": "Mr. Alex Zaldivar",
+    "phone": "305-753-2196",
+    "website": "allianz-trade.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Chiragan",
+    "category": "Interior Design/Home Furnishings",
+    "contact": null,
+    "phone": "786-247-1786",
+    "website": "chiraganhome.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Design Resource Center",
+    "category": "Interior Design/Home Furnishings",
+    "contact": "Mr. Felipe Lerma",
+    "phone": "305-607-4911",
+    "website": "designresourcecentersf.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Fine Line Furniture and Accessories",
+    "category": "Interior Design/Home Furnishings",
+    "contact": "Ms. Agatha Creegan",
+    "phone": "305-661-4414",
+    "website": "fineline.us",
+    "chamber_member": true
+  },
+  {
+    "name": "Terrazzo Granitech USA",
+    "category": "Interior Design/Home Furnishings",
+    "contact": "Mr. Nick Poly",
+    "phone": "917-848-3439",
+    "website": "terrazzo-usa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Fiallo Design",
+    "category": "Interior Designers",
+    "contact": "Ms. Marcia Fiallo",
+    "phone": "305-429-0088",
+    "website": "fiallodesign.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ivette Arango Interiors",
+    "category": "Interior Designers",
+    "contact": "Ms. Ivette Arango",
+    "phone": "305-576-6243",
+    "website": "ivettearango.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Maritza Capiro Interior Designs Corp.",
+    "category": "Interior Designers",
+    "contact": "Ms. Maritza Capiro",
+    "phone": "305-528-2332",
+    "website": "maritzacapiro.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Suraia Patricia Interiors",
+    "category": "Interior Designers",
+    "contact": "Ms. Suraia Rosario",
+    "phone": "786-835-0633",
+    "website": "suraiapatriciainteriors.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Organity",
+    "category": "International",
+    "contact": "Mr. Eugene Smolski",
+    "phone": null,
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "SportsNL / Maurice Ouderland",
+    "category": "International Sports Business",
+    "contact": "Mr. Maurice Ouderland",
+    "phone": "786-614-9889",
+    "website": "sports-nl-en.com",
+    "chamber_member": true
+  },
+  {
+    "name": "McCombie Group",
+    "category": "Investment Banking",
+    "contact": "Mr. Michael Rodriguez",
+    "phone": "305-331-3555",
+    "website": "mccombiegroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Crawford Real Estate Holdings, LLC",
+    "category": "Investment Real Estate",
+    "contact": "Mr. Todd Rubinstein",
+    "phone": "954-588-0609",
+    "website": "crawfordrealestateholdings.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Service Keepers",
+    "category": "Janitorial Commercial Services",
+    "contact": "Mr. Diego Gonzalez",
+    "phone": "786-750-0287",
+    "website": "servicekeepers.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Coblan Italian Kitchen Store",
+    "category": "Kitchen Cabinetry",
+    "contact": "Ms. Silvia Blanco",
+    "phone": "786-724-8485",
+    "website": "coblanstore.com",
+    "chamber_member": true
+  },
+  {
+    "name": "TransForma Translation Services",
+    "category": "Language Services",
+    "contact": "Ms. Carmen Hiers",
+    "phone": "305-722-3827",
+    "website": "transformaonline.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Marbella Perfumes",
+    "category": "Leadership Development",
+    "contact": "Ms. Helida Dodd",
+    "phone": "305-720-7157",
+    "website": "marbellaperfumes.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Bercow Radell Fernandez Larkin and Tapanes, PLLC.",
+    "category": "Legal Services",
+    "contact": "Mr. Paul Savage",
+    "phone": "305-374-5300",
+    "website": "brzoninglaw.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Legal Services of Greater Miami Inc.",
+    "category": "Legal Services",
+    "contact": "Ms. Andrea Angel",
+    "phone": "305-438-2513",
+    "website": "legalservicesmiami.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Ramhofer Garcia",
+    "category": "Legal Services",
+    "contact": "Ms. Naomi Levi Garcia",
+    "phone": "305-481-9733",
+    "website": "ramhofergarcia.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Dream Team Law",
+    "category": "Legal Solutions",
+    "contact": "Mr. Carlos Jimenez",
+    "phone": "786-219-9416",
+    "website": "dreamteamfightsforyou.com",
+    "chamber_member": true
+  },
+  {
+    "name": "InmigranHelp Multiservices, LLC",
+    "category": "Legal Solutions",
+    "contact": "Ms. Ana Carolina Molina",
+    "phone": "832-810-7490",
+    "website": "inmigranhelp.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Erica Simons",
+    "category": "Lifetime Member",
+    "contact": "Ms. Erica Simons",
+    "phone": "786-202-1014",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Hank Langston",
+    "category": "Lifetime Member",
+    "contact": "Mr. Hank Langston",
+    "phone": "305-632-3856",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Joan Reitsma",
+    "category": "Lifetime Member",
+    "contact": "Ms. Joan Reitsma",
+    "phone": "305-527-3204",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Charlotte Lorber Powell",
+    "category": "Lifetime Member",
+    "contact": "Ms. Charlotte Lorber",
+    "phone": "305-444-6000",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Carlos Planas",
+    "category": "Lifetime Member",
+    "contact": "Mr. Carlos Planas",
+    "phone": "305-266-5500",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Frank Rolfes",
+    "category": "Lifetime Member",
+    "contact": "Mr. Frank Rolfes",
+    "phone": "305-448-5990",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Outdoor Lighting Perspectives Miami",
+    "category": "Lighting",
+    "contact": "Mr. Nadim Jamid",
+    "phone": "305-593-5533",
+    "website": "outdoorlights.com/miami",
+    "chamber_member": true
+  },
+  {
+    "name": "Bacardi USA",
+    "category": "Liquors-Wholesale",
+    "contact": "Mr. Eddie Cutillas",
+    "phone": "305-573-8600",
+    "website": "bacardi.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Brown-Forman Beverages",
+    "category": "Liquors-Wholesale",
+    "contact": "Mr. Robinson Brown IV",
+    "phone": "954-218-5040",
+    "website": "b-f.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ryder System Inc.",
+    "category": "Logistics",
+    "contact": "Ms. Amy Federman",
+    "phone": "305-500-4989",
+    "website": "ryder.com",
+    "chamber_member": true
+  },
+  {
+    "name": "We Are Major, LLC",
+    "category": "Management Consulting",
+    "contact": "Ms. Leyanis Diaz",
+    "phone": "305-697-7271",
+    "website": "wearemajor.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Brand Poets",
+    "category": "Marketing / Advertising / Branding",
+    "contact": "Ms. Tana Llinas",
+    "phone": null,
+    "website": "brandpoets.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Fluentica",
+    "category": "Marketing / Advertising / Branding",
+    "contact": "Ms. Wendy Betancourt Reyes",
+    "phone": "347-620-0102",
+    "website": "fluenticanyc.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Four Leaf Marketing & Consulting",
+    "category": "Marketing / Advertising / Branding",
+    "contact": "Mr. Andre Luck",
+    "phone": "305-619-9865",
+    "website": "fourleafmc.com",
+    "chamber_member": true
+  },
+  {
+    "name": "HIGGS HUB",
+    "category": "Marketing / Advertising / Branding",
+    "contact": "Ms. Rosella Papale",
+    "phone": "305-450-6116",
+    "website": "rosellapapale.com",
+    "chamber_member": true
+  },
+  {
+    "name": "J. Wilcox Consulting",
+    "category": "Marketing / Advertising / Branding",
+    "contact": "Ms. Jessica Wilcox",
+    "phone": "305-962-9313",
+    "website": "jwilcoxconsulting.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Markham Yard",
+    "category": "Marketing / Advertising / Branding",
+    "contact": "Ms. Sara Cronin",
+    "phone": "305-445-6642",
+    "website": "markhamyard.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Mazdi | Omnicultural Marketing Agency",
+    "category": "Marketing / Advertising / Branding",
+    "contact": "Mr. Sebastian Gonzalez",
+    "phone": "786-461-8659",
+    "website": "mazdi.us",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami Herald",
+    "category": "Marketing / Advertising / Branding",
+    "contact": "Mr. Raymond Due\u00f1as",
+    "phone": "800-843-4372",
+    "website": "miamiherald.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Parrot Fish Studio",
+    "category": "Marketing / Advertising / Branding",
+    "contact": "Ms. Suzette Lopez",
+    "phone": "305-299-9228",
+    "website": "parrotfishstudio.com",
+    "chamber_member": true
+  },
+  {
+    "name": "WOW MKTG",
+    "category": "Marketing / Advertising / Branding",
+    "contact": "Mr. Jose Dans",
+    "phone": "305-273-8373",
+    "website": "wowmktg.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Xandra Marketing",
+    "category": "Marketing / Advertising / Branding",
+    "contact": "Mrs. Alexandra Silva Labarr",
+    "phone": "954-802-1398",
+    "website": "xandramarketing.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Au Advisors",
+    "category": "Marketing Communications",
+    "contact": "Ms. Aimee Paraso",
+    "phone": "818-613-8580",
+    "website": "strikeau.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Clearwater Project",
+    "category": "Marketing Communications",
+    "contact": "Ms. Tara Auclair, MBA",
+    "phone": "561-212-0903",
+    "website": "theclearwaterproject.net",
+    "chamber_member": true
+  },
+  {
+    "name": "Straight 2 U Solution Services",
+    "category": "Marketing Training/Development Strategies",
+    "contact": "Ms. Winsome Blair Lee",
+    "phone": "678-866-5145",
+    "website": "s2usolutionservice.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Derma Era Holistic Med Spa",
+    "category": "Med Spa/Skincare",
+    "contact": "Ms. Jessie Villar",
+    "phone": "305-707-2134",
+    "website": "dermaleraspa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Estetica Le Fate, LLC",
+    "category": "Med Spa/Skincare",
+    "contact": "Ms. Yusimir Power",
+    "phone": "786-333-2604",
+    "website": "lefatespa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Made In Miami",
+    "category": "Med Spa/Skincare",
+    "contact": "Ms. Swapna Shastri",
+    "phone": "630-414-6810",
+    "website": "drmiamimd.com",
+    "chamber_member": true
+  },
+  {
+    "name": "AI Digital",
+    "category": "Media Advertising",
+    "contact": "Mr. Daniel Friscia",
+    "phone": "347-782-2545",
+    "website": "aidigital.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami New Times",
+    "category": "Media Company",
+    "contact": "Ms. Kristi Kinard",
+    "phone": "305-992-1941",
+    "website": "voicemediagroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "BG Integrative Studio",
+    "category": "Medical & Cosmetic Tatoo",
+    "contact": "Ms. Ysdaly Thielen",
+    "phone": "786-607-3698",
+    "website": "bgmedtattoo.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Gables Medical Billing",
+    "category": "Medical Billing Services",
+    "contact": "Mr. Carlos A. Plana",
+    "phone": "305-273-5566",
+    "website": "gablesmedicalbilling.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Prime Institute",
+    "category": "Medical/Health",
+    "contact": "Dr. Michelle Pearlman",
+    "phone": "786-866-7804",
+    "website": "primeinstitute.us",
+    "chamber_member": true
+  },
+  {
+    "name": "Revitamaxx",
+    "category": "Medical/Health",
+    "contact": "Mr. Chris Forry",
+    "phone": "305-308-8850",
+    "website": "revitamaxx.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Alzheimer\u2019s Association",
+    "category": "Mental Health & Wellness",
+    "contact": "Mr. Milin Espino",
+    "phone": "786-847-7438",
+    "website": "alz.org/miamiwalk",
+    "chamber_member": true
+  },
+  {
+    "name": "Integrated Mind",
+    "category": "Mental Health & Wellness",
+    "contact": "Ms. Belle Valladares-Gottlieb",
+    "phone": "786-835-9886",
+    "website": "myintegratedmind.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Interface Consulting and Psychological Services",
+    "category": "Mental Health Care / Psychologists & Psychiatrists",
+    "contact": "Dr. Irma Campos",
+    "phone": "786-983-6965",
+    "website": "icpstherapy.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Intuitive Counseling",
+    "category": "Mental Health Care / Psychologists & Psychiatrists",
+    "contact": "Ms. Victoria Rodriguez-Hevia",
+    "phone": "305-318-2839",
+    "website": "intuitivecounseling.org",
+    "chamber_member": true
+  },
+  {
+    "name": "South Florida Integrative Medicine",
+    "category": "Mental Health Care / Psychologists & Psychiatrists",
+    "contact": "Mrs. Reed Humphery",
+    "phone": "786-664-7810",
+    "website": "southfloridaintegrativemed.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Orion Merchant Solutions / Petro Solutions",
+    "category": "Merchant / Petroleum Solutions",
+    "contact": "Mr. Marwan Shihadeh",
+    "phone": "305-883-8687",
+    "website": "omsps.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Direct Processing Network",
+    "category": "Merchant Processing",
+    "contact": "Mr. Jose Molina",
+    "phone": "855-955-6111",
+    "website": "directprocessingnetwork.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Evolution Payment Systems",
+    "category": "Merchant Services - Credit Cards",
+    "contact": "Mr. Karl Diaz",
+    "phone": "305-671-3178",
+    "website": "evolutionpayments.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Home Financing Center Inc.",
+    "category": "Mortgage Banker",
+    "contact": "Ms. Claudine Claus",
+    "phone": "305-777-1100",
+    "website": "homefinancingcenter.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Bennett Capital Partners Mortgage Brokers",
+    "category": "Mortgage Brokers",
+    "contact": "Mr. Philip Bennett",
+    "phone": "800-457-9057",
+    "website": "bcpmortgage.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Rize Mortgage, LLC",
+    "category": "Mortgage Financing",
+    "contact": "Mr. Cesar Del Collado",
+    "phone": "786-287-5836",
+    "website": "cesardelcollado.zipforhome.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Metro Fund Inc.",
+    "category": "Mortgage Lender",
+    "contact": "Mr. Orlando Diaz",
+    "phone": "786-369-8412",
+    "website": "metrofundgroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "PS Mortgage Lending",
+    "category": "Mortgage Loans & Bankers",
+    "contact": "Mr. Phil Stevenson, CRMP",
+    "phone": "786-586-3336",
+    "website": "pslending.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Russell Capital Group",
+    "category": "Mortgage Loans & Bankers",
+    "contact": "Ms. Jessica Angulo",
+    "phone": "786-493-7378",
+    "website": "rcgmortgage.com",
+    "chamber_member": true
+  },
+  {
+    "name": "All My Sons Moving & Storage of Miami, LLC",
+    "category": "Moving & Storage",
+    "contact": "Mr. Stephen Staffieri",
+    "phone": "305-787-3335",
+    "website": "allmysons.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Concierge Moving Services",
+    "category": "Moving & Storage",
+    "contact": "Ms. Konny Nakamura",
+    "phone": "786-295-1816",
+    "website": "conciergemovingservices.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Fresh Del Monte Produce Inc.",
+    "category": "Multinationals",
+    "contact": "Ms. Claudia Pou",
+    "phone": "305-520-8400",
+    "website": "freshdelmonte.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables Museum",
+    "category": "Museums",
+    "contact": "Mr. Elvis Fuentes",
+    "phone": "305-603-8067",
+    "website": "coralgablesmuseum.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Frost Science Museum",
+    "category": "Museums",
+    "contact": "Ms. Edie Pearson",
+    "phone": "305-434-9592",
+    "website": "frostscience.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Lowe Art Museum",
+    "category": "Museums",
+    "contact": "Dr. Jill Deupi JD, PHD",
+    "phone": "305-284-3535",
+    "website": "lowemuseum.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Frost School of Music",
+    "category": "Music",
+    "contact": "Ms. Dean Hildee Wilson",
+    "phone": "305-284-2241",
+    "website": "music.miami.edu",
+    "chamber_member": true
+  },
+  {
+    "name": "GLOSSLAB Coral Gables",
+    "category": "Nail Salon",
+    "contact": "Ms. Kristen Dominkovics",
+    "phone": "786-281-3119",
+    "website": "glosslab.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Better Business Bureau Serving SE Florida & the Caribbean",
+    "category": "Non Profit Business Organization",
+    "contact": "Mr. Nicola De Cesare",
+    "phone": "561-842-9278",
+    "website": "bbb.org",
+    "chamber_member": true
+  },
+  {
+    "name": "BOMA Miami-Dade",
+    "category": "Non Profit Business Organization",
+    "contact": "Ms. Jocelynn Serna",
+    "phone": "786-647-2571",
+    "website": "bomamiamidade.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Get Redd Foundation & Consulting",
+    "category": "Non Profit Business Organization",
+    "contact": "Ms. Liudmila Esquerdo",
+    "phone": "786-493-3374",
+    "website": "getredd.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Greater Miami Chamber of Commerce",
+    "category": "Non Profit Business Organization",
+    "contact": "Mr. Alfred Sanchez",
+    "phone": "305-350-7700",
+    "website": "miamichamber.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Great Miami LGBTQ Chamber of Commerce",
+    "category": "Non Profit Business Organization",
+    "contact": "Mr. Steve Adkins",
+    "phone": "305-673-4440",
+    "website": "gogaymiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Recapturing the Vision International Inc",
+    "category": "Non Profit Business Organization",
+    "contact": "Mr. Alex Del Rosario",
+    "phone": "305-232-6003",
+    "website": "rtv.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Summer Of Success",
+    "category": "Non Profit Business Organization",
+    "contact": "Mr. Eddy Martinez",
+    "phone": "305-498-3877",
+    "website": "summerofsuccess.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Comic Kids",
+    "category": "Non Profit Organization-Arts",
+    "contact": "Ms. Kat Barrow-Horth",
+    "phone": "305-300-2213",
+    "website": "comickids.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables Art Cinema",
+    "category": "Non Profit Organization-Arts",
+    "contact": "Ms. Brenda Moe",
+    "phone": "786-472-2249",
+    "website": "gablescinema.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Florida Grand Opera",
+    "category": "Non Profit Organization-Arts",
+    "contact": "Ms. Yesenia Randazzo",
+    "phone": "305-403-3324",
+    "website": "fgo.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Jar of Hearts Inc.",
+    "category": "Non Profit Organization-Arts",
+    "contact": "Ms. Elizabeth Hiciano",
+    "phone": "305-335-5285",
+    "website": "jarofheartsfoundation.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Sanctuary of the Arts",
+    "category": "Non Profit Organization-Arts",
+    "contact": "Mr. Rafael Maldonado-Lopez",
+    "phone": "786-362-5132",
+    "website": "sanctuaryofthearts.org",
+    "chamber_member": true
+  },
+  {
+    "name": "The Opera Atelier",
+    "category": "Non Profit Organization-Arts",
+    "contact": "Ms. Jacqueline Solorzano",
+    "phone": "786-560-6845",
+    "website": "theoperaatelier.org",
+    "chamber_member": true
+  },
+  {
+    "name": "American Legion Post 98",
+    "category": "Non Profit Organizations",
+    "contact": "Mr. Juan Gomez",
+    "phone": "786-897-7948",
+    "website": "alpost98.org",
+    "chamber_member": true
+  },
+  {
+    "name": "American Red Cross",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Deborah Koch",
+    "phone": "786-570-9793",
+    "website": "redcross.org/southflorida",
+    "chamber_member": true
+  },
+  {
+    "name": "Area Stage Company",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Maria Rodaz",
+    "phone": "305-666-2078",
+    "website": "areastage.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Arts & Business Council of Miami",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Renee Pesci",
+    "phone": "305-326-1011",
+    "website": "artsbizmiami.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Big Brothers Big Sisters of Miami",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Rebeka Lengel",
+    "phone": "305-644-7060",
+    "website": "bbbsmiami.org",
+    "chamber_member": true
+  },
+  {
+    "name": "BLUE Missions",
+    "category": "Non Profit Organizations",
+    "contact": "Mr. Richard Sixto Jr",
+    "phone": "888-702-2583",
+    "website": "bluemissions.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Breakthrough T1D",
+    "category": "Non Profit Organizations",
+    "contact": "Mr. Carlos Perez Ruiz",
+    "phone": "786-741-9223",
+    "website": "breakthrought1d.org",
+    "chamber_member": true
+  },
+  {
+    "name": "C. Gables Fraternal Order of Police, Lodge #7",
+    "category": "Non Profit Organizations",
+    "contact": "Mr. Chrisopher Challenger",
+    "phone": "305-446-6703",
+    "website": "coralgablesfop.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Camillus House",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Karlah Hernandez",
+    "phone": "305-533-0192",
+    "website": "camillus.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Chapman Partnership",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Najely Deleon",
+    "phone": "305-329-3000",
+    "website": "chapmanpartnership.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Children's Home Society of Florida",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Gloria Saiz",
+    "phone": "305-254-9759",
+    "website": "chsfl.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables Woman's Club",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Arely Ruiz",
+    "phone": "305-632-5996",
+    "website": "coralgableswomansclub.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Early Learning Coalition of Miami-Dade/Monroe",
+    "category": "Non Profit Organizations",
+    "contact": "Mr. Evelio Torres",
+    "phone": "305-646-7220",
+    "website": "elcmdm.org",
+    "chamber_member": true
+  },
+  {
+    "name": "FCC USA (Soccer for Peace Foundation)",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Danielle Dubuc Wightman",
+    "phone": "786-445-1544",
+    "website": "fcc.futbol/usa",
+    "chamber_member": true
+  },
+  {
+    "name": "Friends of Gables High",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Jacqueline Gross-Kellogg",
+    "phone": "305-446-9670",
+    "website": "friendsofgableshigh.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Friends of The Underline",
+    "category": "Non Profit Organizations",
+    "contact": "Mr. Jake Moskowitz",
+    "phone": "306-603-9896",
+    "website": "theunderline.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Gables Good Government Committee",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Susan Davis",
+    "phone": "305-798-1456",
+    "website": "gablesgoodgovernment.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Habitat for Humanity of Greater Miami",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Maureen Ruggiero",
+    "phone": "305-634-3628",
+    "website": "miamihabitat.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Humane Society of Greater Miami",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Toni Diaz",
+    "phone": "305-749-1816",
+    "website": "humanesocietymiami.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Jose Milton Foundation",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Ana VeigaMilton",
+    "phone": "305-450-8222",
+    "website": "miltonphilanthropy.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Junior Orange Bowl",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Lisa Albizu-Vazquez",
+    "phone": "305-662-1210",
+    "website": "jrorangebowl.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Kiwanis Club of Little Havana Inc.",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Lidia Sanchez",
+    "phone": "305-644-8888",
+    "website": "carnavalmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Kristi House",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Lara Carter",
+    "phone": "305-547-6800",
+    "website": "kristihouse.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Live Like Bella\u00ae Childhood Cancer Foundation",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Mayte Vizcaino",
+    "phone": "786-505-3914",
+    "website": "livelikebella.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami Lighthouse for the Blind and Visually Impaired",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Virginia A. Jacko",
+    "phone": "305-856-4176",
+    "website": "miamilighthouse.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Orange Bowl Committee",
+    "category": "Non Profit Organizations",
+    "contact": "Mr. Tyler Heinkel",
+    "phone": "305-341-4700",
+    "website": "orangebowl.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Ronald McDonald House Charities of South Florida",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Soraya Rivera-Moya",
+    "phone": "786-476-2176",
+    "website": "rmhcsouthflorida.org",
+    "chamber_member": true
+  },
+  {
+    "name": "South Florida After-School All-Stars",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Julie Todaro",
+    "phone": "305-348-9870",
+    "website": "sfasas.org",
+    "chamber_member": true
+  },
+  {
+    "name": "South Florida PBS",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Jeneissy Azcuy",
+    "phone": "305-424-4013",
+    "website": "southfloridapbs.org",
+    "chamber_member": true
+  },
+  {
+    "name": "The Everglades Foundation",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Isabella Gukeisen",
+    "phone": "914-659-5906",
+    "website": "evergladesfoundation.org",
+    "chamber_member": true
+  },
+  {
+    "name": "The Women's Fund Miami Dade",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Vero Korbenfeld",
+    "phone": "305-441-0506",
+    "website": "womensfundmiami.org",
+    "chamber_member": true
+  },
+  {
+    "name": "The WOW Center",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Arlene Peterson",
+    "phone": "786-797-7611",
+    "website": "wowcentermiami.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Toy Drive 'N Events Inc.",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Ana Zecca",
+    "phone": "305-528-6700",
+    "website": "toydriveandevents.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Venezuelan-American Chamber of Commerce",
+    "category": "Non Profit Organizations",
+    "contact": "Mr. Christian Monahan",
+    "phone": "305-307-8393",
+    "website": "venezuelanchamber.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Voices for Children Foundation Inc.",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Kadie Black",
+    "phone": "305-324-5678",
+    "website": "beavoice.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Women for Success Inc.",
+    "category": "Non Profit Organizations",
+    "contact": "Ms. Lauren Marsicano, Esq.",
+    "phone": "305-721-2917",
+    "website": "giveforsuccess.org",
+    "chamber_member": true
+  },
+  {
+    "name": "American Cancer Society",
+    "category": "Non Profit Organizations - Health",
+    "contact": "Ms. Betty Newborn",
+    "phone": "305-962-3797",
+    "website": "cancer.org",
+    "chamber_member": true
+  },
+  {
+    "name": "American Heart Association",
+    "category": "Non Profit Organizations - Health",
+    "contact": "Ms. Katherine Nunez",
+    "phone": "786-304-3577",
+    "website": "heart.org/FL",
+    "chamber_member": true
+  },
+  {
+    "name": "Jackson Health Foundation",
+    "category": "Non Profit Organizations - Health",
+    "contact": "Ms. Alexandra Salcedo",
+    "phone": "305-588-8167",
+    "website": "jacksonhealthfoundation.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Jewish Community Services of South Florida",
+    "category": "Non Profit Organizations - Health",
+    "contact": "Ms. Miriam Singer",
+    "phone": "305-576-6550",
+    "website": "jcsfl.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Pink Luminous Advocacy Project",
+    "category": "Non Profit Organizations - Health",
+    "contact": "Ms. Marylin Dans",
+    "phone": "305-747-8712",
+    "website": "luminousadvocacyproject.com",
+    "chamber_member": true
+  },
+  {
+    "name": "United Way Miami",
+    "category": "Non Profit Organizations - Health",
+    "contact": "Ms. Stephanie Louis",
+    "phone": "305-646-7000",
+    "website": "unitedwaymiami.org",
+    "chamber_member": true
+  },
+  {
+    "name": "4KIDS of South Florida",
+    "category": "Non Profit Organizations - Special Needs",
+    "contact": "Ms. Martha Gonzalez",
+    "phone": "305-951-1779",
+    "website": "4kids.us",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami Learning Experience School",
+    "category": "Non Profit Organizations - Special Needs",
+    "contact": "Mr. Kevin Grace",
+    "phone": "305-275-5900",
+    "website": "mleschool.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami Jewish Health",
+    "category": "Non-Profit Organization - Healthcare Systems",
+    "contact": "Ms. Alison Grewe",
+    "phone": "305-762-3842",
+    "website": "miamijewishhealth.org",
+    "chamber_member": true
+  },
+  {
+    "name": "305 Pink Pack",
+    "category": "Non-Profit Organization - Human Services",
+    "contact": "Ms. Rosemary Carrera",
+    "phone": "305-859-1224",
+    "website": "305pinkpack.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Glory House of Miami",
+    "category": "Non-Profit Organization - Human Services",
+    "contact": "Ms. Georgia Downey",
+    "phone": "786-267-1150",
+    "website": "gloryhouseofmiami.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Branches",
+    "category": "Non-Profit Organization-Education",
+    "contact": "Ms. Isabelle Pike",
+    "phone": "305-442-8306",
+    "website": "branchesfl.org",
+    "chamber_member": true
+  },
+  {
+    "name": "City Year Miami",
+    "category": "Non-Profit Organization-Education",
+    "contact": "Ms. Sheron Williams",
+    "phone": "786-406-7900",
+    "website": "cityyear.org/miami",
+    "chamber_member": true
+  },
+  {
+    "name": "Girl Scouts of Tropical Florida",
+    "category": "Non-Profit Organization-Education",
+    "contact": "Ms. Haley Karl",
+    "phone": "305-253-4841",
+    "website": "girlscoutsfl.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Ismael Cala Foundation",
+    "category": "Non-Profit Organization-Education",
+    "contact": "Ms. Barbara Nunez",
+    "phone": "786-543-0050",
+    "website": "cala-foundation.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Junior Achievement of Greater Miami",
+    "category": "Non-Profit Organization-Education",
+    "contact": "Ms. Debbie Rodriguez",
+    "phone": "305-687-3977",
+    "website": "miami.ja.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami Dade College Kendall Campus",
+    "category": "Non-Profit Organization-Education",
+    "contact": "Dr. Bryan Stewart",
+    "phone": "305-237-2154",
+    "website": "mdc.edu/kendall",
+    "chamber_member": true
+  },
+  {
+    "name": "St. Theresa Catholic School",
+    "category": "Non-Profit Organization-Education",
+    "contact": "Ms. Ashley Sacks Dominguez",
+    "phone": "305-446-9950",
+    "website": "stscg.org",
+    "chamber_member": true
+  },
+  {
+    "name": "The Education Fund",
+    "category": "Non-Profit Organization-Education",
+    "contact": "Ms. Marilen Marnett",
+    "phone": "786-714-0139",
+    "website": "educationfund.org",
+    "chamber_member": true
+  },
+  {
+    "name": "WLRN Radio and Television",
+    "category": "Non-Profit Public Media Organization",
+    "contact": "Ms. Carolina Falla-Flood",
+    "phone": "305-505-6686",
+    "website": "wlrn.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables Professional Firefighters Assn.",
+    "category": "Non-Profit/Professional Association",
+    "contact": "Mr. Wyatt Chickillo",
+    "phone": "305-469-3416",
+    "website": "local1210.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Dade County Medical Association",
+    "category": "Non-Profit/Professional Association",
+    "contact": "Mr. Angel Bosch-Deleon",
+    "phone": "305-324-8717",
+    "website": "miamimed.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Univision Foundation",
+    "category": "Non-Profit/Professional Association",
+    "contact": "Ms. Irisaida Mendez",
+    "phone": "305-998-8410",
+    "website": "univision.org",
+    "chamber_member": true
+  },
+  {
+    "name": "WRK LAB",
+    "category": "Office Furniture & Design",
+    "contact": "Mr. Danny Garcia",
+    "phone": "305-801-2356",
+    "website": "wrklab.com",
+    "chamber_member": true
+  },
+  {
+    "name": "OptFirst Inc.",
+    "category": "Online / Digital Marketing",
+    "contact": "Mr. John Kriney",
+    "phone": "305-401-4983",
+    "website": "optfirst.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables Eye Care",
+    "category": "Optical",
+    "contact": "Dr. Adam Clarin",
+    "phone": "305-444-8331",
+    "website": "coralgableseyecare.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Futura Optical",
+    "category": "Optical",
+    "contact": "Ms. Linnett Molina",
+    "phone": "305-643-1010",
+    "website": "futuraeyedoctors.com",
+    "chamber_member": true
+  },
+  {
+    "name": "LensCrafters",
+    "category": "Optical",
+    "contact": "Ms. Monica Odoardo",
+    "phone": "786-526-5053",
+    "website": "lenscrafters.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Miami-Dade Beacon Council",
+    "category": "Organizations/Associations",
+    "contact": "Mr. Rodrick T. Miller",
+    "phone": "305-579-1300",
+    "website": "beaconcouncil.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Extensis HR",
+    "category": "Payroll and Human Resources",
+    "contact": "Mr. Jorge Elias",
+    "phone": "305-790-5302",
+    "website": "extensishr.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Paycom",
+    "category": "Payroll and Human Resources",
+    "contact": "Mr. Alex Salazar",
+    "phone": "619-609-3731",
+    "website": "paycomonline.com",
+    "chamber_member": true
+  },
+  {
+    "name": "City Permit",
+    "category": "Permit Expeditors",
+    "contact": "Mr. Jesse Tarr",
+    "phone": "305-908-1142",
+    "website": "citypermit.us",
+    "chamber_member": true
+  },
+  {
+    "name": "Equipaws Pet Services",
+    "category": "Pet Care",
+    "contact": "Ms. Flavia Berti",
+    "phone": "305-794-3733",
+    "website": "equipawspetservices.com",
+    "chamber_member": true
+  },
+  {
+    "name": "DoodyCalls of Miami",
+    "category": "Pet Waste Management",
+    "contact": "Mr. Francisco Reyes, Esq.",
+    "phone": "305-520-7904",
+    "website": "doodycalls.com/miami",
+    "chamber_member": true
+  },
+  {
+    "name": "PriveCareRx",
+    "category": "Pharmacy",
+    "contact": "Dr. Damita Joy Ferguson",
+    "phone": "352-284-4390",
+    "website": "privecarerx.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Rainbow Pharmacy",
+    "category": "Pharmacy",
+    "contact": "Mr. Mazen Karnaby",
+    "phone": "305-749-7000",
+    "website": "rainbowpharmacyrx.com",
+    "chamber_member": true
+  },
+  {
+    "name": "RingByName",
+    "category": "Phone/Data Service",
+    "contact": "Mr. Kooi Lim",
+    "phone": "786-567-3040",
+    "website": "ringbyname.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Gustavo Fernandez Photography",
+    "category": "Photography / Portraits / Studio",
+    "contact": "Mr. Gustavo Fernandez",
+    "phone": "925-457-0042",
+    "website": "gustavofernandez.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Lisset Galeyev Photography",
+    "category": "Photography / Portraits / Studio",
+    "contact": "Mr. Edgar Galeyev",
+    "phone": "786-768-5104",
+    "website": "lissetgaleyevphotography.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Mera Photography",
+    "category": "Photography / Portraits / Studio",
+    "contact": "Ms. Merari Biancucci",
+    "phone": "310-926-9704",
+    "website": "portraitsbymera.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Smash Pixel Studio",
+    "category": "Photography / Portraits / Studio",
+    "contact": "Mr. Martin Morcillo",
+    "phone": "786-873-0114",
+    "website": "smashpixelstudio.com",
+    "chamber_member": true
+  },
+  {
+    "name": "APTI American Physical Therapy Institute",
+    "category": "Physical Therapy",
+    "contact": "Ms. Marie Roddam",
+    "phone": "305-323-8653",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables Physical Therapy",
+    "category": "Physical Therapy",
+    "contact": "Mr. Ron Yacoub",
+    "phone": "305-441-5258",
+    "website": "coralgablespt.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Physical Therapy for Mental Sharpness, LLC",
+    "category": "Physical Therapy",
+    "contact": "Mrs. Joyce Gomes Osman",
+    "phone": "786-376-6844",
+    "website": "ptformentalsharpness.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami Derm: Anna Chacon, MD, PA",
+    "category": "Physicians - Dermatology",
+    "contact": "Dr. Anna Chacon",
+    "phone": "305-902-5733",
+    "website": "drannachacon.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Young Skin",
+    "category": "Physicians - Dermatology",
+    "contact": "Dr. Latanya Benjamin, MD",
+    "phone": "954-242-4275",
+    "website": "youngskinmd.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Kidz Medical Services",
+    "category": "Physicians - Pediatric Services",
+    "contact": "Mr. Wayne Brackin",
+    "phone": "305-661-1515",
+    "website": "kidzmedical.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Digital Radiology Inc.",
+    "category": "Physicians & Surgeons",
+    "contact": "Dr. Douglas Hornsby",
+    "phone": "305-759-9293",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Stephan Baker, MD",
+    "category": "Physicians & Surgeons - Plastic & Cosmetic Surgery",
+    "contact": "Ms. Liliane Leao Aguiar",
+    "phone": "305-381-8837",
+    "website": "drbaker.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Jose Rodriguez-Feliz, MD",
+    "category": "Physicians & Surgeons - Plastic Surgery",
+    "contact": "Dr. Jose Rodriguez-Feliz",
+    "phone": "305-563-3030",
+    "website": "rodriguezfelizmd.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Bay Plumbing Company",
+    "category": "Plumbing Services & Plumbing Supplies",
+    "contact": "Mr. Robert Beans",
+    "phone": "305-446-8141",
+    "website": "bayplumbingco.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Borkat Plumbing Services, LLC",
+    "category": "Plumbing Services & Plumbing Supplies",
+    "contact": "Mr. Boris Inclan",
+    "phone": "305-244-6023",
+    "website": "borkatplumbing.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables Plumbing",
+    "category": "Plumbing Services & Plumbing Supplies",
+    "contact": "Mr. Brandon Swanson",
+    "phone": "305-254-3434",
+    "website": "coralgablesplumbing.com",
+    "chamber_member": true
+  },
+  {
+    "name": "SpotOn",
+    "category": "Point of Sale/Merchant Service",
+    "contact": "Mr. Horaczeo Crawford",
+    "phone": "612-251-5709",
+    "website": "spoton.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Minuteman Press",
+    "category": "Printers, Typesetters & Graphics",
+    "contact": "Mr. Bradford Smith",
+    "phone": "305-762-4147",
+    "website": "coralgables.minutemanpress.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Photo Offset Inc.",
+    "category": "Printers, Typesetters & Graphics",
+    "contact": "Ms. Anne Knowles",
+    "phone": "305-666-1067",
+    "website": "photooffset.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Sir Speedy",
+    "category": "Printers, Typesetters & Graphics",
+    "contact": "Mr. Raul Ley",
+    "phone": "305-446-7628",
+    "website": "sirspeedy.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Sykes Printing",
+    "category": "Printers, Typesetters & Graphics",
+    "contact": "Mr. Brian Piper",
+    "phone": "305-444-6505",
+    "website": "sykesprinting.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Stemree of Coral Gables",
+    "category": "Private Tutoring Services",
+    "contact": "Mr. Tyrone Gabriel",
+    "phone": "305-850-5885",
+    "website": "stemtree.com/coralgables",
+    "chamber_member": true
+  },
+  {
+    "name": "Worksite",
+    "category": "Professional Employer Organization",
+    "contact": "Ms. Angie Perez",
+    "phone": "786-427-4015",
+    "website": "worksiteemployee.com",
+    "chamber_member": true
+  },
+  {
+    "name": "HGIT Coral Gables, LLC",
+    "category": "Property Management",
+    "contact": "Ms. Michelle Garcia",
+    "phone": "786-789-4421",
+    "website": "gablesstation.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Secured Debt Investments",
+    "category": "Property Management",
+    "contact": "Ms. Erica Santini",
+    "phone": "305-338-4547",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Alpha Claims Consultants",
+    "category": "Public Adjusting Firm",
+    "contact": "Mr. Gil Martin",
+    "phone": null,
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Dedicated Public Adjusters",
+    "category": "Public Adjusting Firm",
+    "contact": "Ms. Wendy Coffee",
+    "phone": "305-607-2870",
+    "website": "dedicatedpa.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Cabanas Consulting",
+    "category": "Public Relations & Marketing",
+    "contact": "Ms. Katie Cabanas",
+    "phone": "305-322-9272",
+    "website": "cabanas-consulting.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Delgado Garcia Communications",
+    "category": "Public Relations & Marketing",
+    "contact": "Ms. Diana Delgado Garcia",
+    "phone": "305-431-2691",
+    "website": "dg-communications.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Golin",
+    "category": "Public Relations & Marketing",
+    "contact": "Mr. Ian Abrams",
+    "phone": "786-325-0815",
+    "website": "golin.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Green Goddess Public Relations",
+    "category": "Public Relations & Marketing",
+    "contact": "Ms. Cindi Avila",
+    "phone": "646-279-1531",
+    "website": "greengoddesspr.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Kreps PR & Marketing",
+    "category": "Public Relations & Marketing",
+    "contact": "Mr. Israel Kreps",
+    "phone": "305-663-9802",
+    "website": "krepspr.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Longevity PR Agency",
+    "category": "Public Relations & Marketing",
+    "contact": "Ms. Jackie Zayas",
+    "phone": "305-989-4824",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Vine Communications Inc.",
+    "category": "Public Relations & Marketing",
+    "contact": "Mrs. Nikki Deas",
+    "phone": "305-447-8678",
+    "website": "vinecommunicationsinc.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Wragg & Casas Strategic Communications",
+    "category": "Public Relations & Marketing",
+    "contact": "Ms. Jeanmarie Ferrara, Esq.",
+    "phone": "305-372-1234",
+    "website": "wraggcasas.com",
+    "chamber_member": true
+  },
+  {
+    "name": "305 Hive\u00ae Media",
+    "category": "Publishers & Media",
+    "contact": "Ms. Samantha Murphy",
+    "phone": "305-907-7071",
+    "website": "305hive.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables Magazine",
+    "category": "Publishers & Media",
+    "contact": "Mr. Richard Roffman",
+    "phone": "305-995-0995",
+    "website": "coralgablesmagazine.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami's Community Newspapers",
+    "category": "Publishers & Media",
+    "contact": "Mr. Grant Miller",
+    "phone": "305-669-7355",
+    "website": "communitynewspapers.com",
+    "chamber_member": true
+  },
+  {
+    "name": "iHeartMedia",
+    "category": "Radio Stations",
+    "contact": "Ms. Liz Atlas",
+    "phone": "786-512-6353",
+    "website": "iheartmedia.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Compass Real Estate",
+    "category": "Real Estate - Advisor",
+    "contact": "Mr. Gabriel Quiroga",
+    "phone": "786-234-5780",
+    "website": "teamcitronmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "4000 Ponce, LLC (CMC Group)",
+    "category": "Real Estate - Commercial",
+    "contact": "Mr. Buddy Dowlen",
+    "phone": "305-372-0550",
+    "website": "4000ponce.com",
+    "chamber_member": true
+  },
+  {
+    "name": "AJP Ventures Corp.",
+    "category": "Real Estate - Commercial",
+    "contact": "Mr. Alberto J. Perez",
+    "phone": "305-448-2330",
+    "website": "websites.vertilinc.com/ajpcam",
+    "chamber_member": true
+  },
+  {
+    "name": "Avison Young",
+    "category": "Real Estate - Commercial",
+    "contact": "Ms. Lisa Jesmer",
+    "phone": "305-447-7858",
+    "website": "avisonyoung.us",
+    "chamber_member": true
+  },
+  {
+    "name": "Cushman & Wakefield",
+    "category": "Real Estate - Commercial",
+    "contact": "Mr. Alan Kleber",
+    "phone": "305-928-6967",
+    "website": "cushmanwakefield.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Gables Miracle Mile, LLC (Terranova Corp)",
+    "category": "Real Estate - Commercial",
+    "contact": "Ms. Mindy McIlroy",
+    "phone": "305-695-8700",
+    "website": "terranovacorp.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Guilford Property Group Inc.",
+    "category": "Real Estate - Commercial",
+    "contact": "Mr. Gregg Guilford",
+    "phone": "786-567-8474",
+    "website": "gpgroupmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Keller Williams",
+    "category": "Real Estate - Commercial",
+    "contact": "Mr. Tachaka Ray",
+    "phone": "786-747-7426",
+    "website": "kellerwilliams.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Plaza Coral Gables/JLL",
+    "category": "Real Estate - Commercial",
+    "contact": "Mr. Hans Okerstrom",
+    "phone": "305-459-8131",
+    "website": "theplazacoralgables.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ponce Circle Tower",
+    "category": "Real Estate - Commercial",
+    "contact": "Ms. Donna Abood",
+    "phone": "305-447-7855",
+    "website": "poncecircletower.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Solid Title Company",
+    "category": "Real Estate - Commercial",
+    "contact": "Mr. Eddy Duarte",
+    "phone": "305-582-7694",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Steinbauer Associates Inc.",
+    "category": "Real Estate - Commercial",
+    "contact": "Mr. J.R. Steinbauer",
+    "phone": "305-629-9740",
+    "website": "steinbauer.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Allen Morris Company",
+    "category": "Real Estate - Commercial",
+    "contact": "Mr. W. Allen Morris",
+    "phone": "305-443-1000",
+    "website": "allenmorris.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Marks Development Company",
+    "category": "Real Estate - Commercial",
+    "contact": "Mr. Terry Marks",
+    "phone": "312-948-8400",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "The Mazzei Group Inc.",
+    "category": "Real Estate - Commercial",
+    "contact": "Ms. Gina Mazzei Anderhub",
+    "phone": "305-446-5348",
+    "website": "mazzeirealty.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Agave Plaza Trustee, LLC",
+    "category": "Real Estate - Commercial Development",
+    "contact": "Mr. Jose Antonio Perez",
+    "phone": "305-858-1890",
+    "website": "agaveholdingsllc.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Gables Corporate Plaza",
+    "category": "Real Estate - Commercial Office Building",
+    "contact": "Ms. Maria Bottas",
+    "phone": "305-972-4363",
+    "website": "gablescorporateplaza.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Candor Title & Closing Services, LLC",
+    "category": "Real Estate - Consultants",
+    "contact": "Ms. Clarita Rosa",
+    "phone": "305-203-2582",
+    "website": "candortitle.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Audrey Ross Team \u2013 Compass Florida",
+    "category": "Real Estate - Exclusive Residential",
+    "contact": "Ms. Audrey Ross, PhD",
+    "phone": "305-206-4003",
+    "website": "miamirealestate.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Coldwell Banker Realty",
+    "category": "Real Estate - Exclusive Residential",
+    "contact": "Ms. Patricia K. Parker",
+    "phone": "305-773-6343",
+    "website": "klockparkergroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Mauricio J. Barba, RE Broker/Associate",
+    "category": "Real Estate - Exclusive Residential",
+    "contact": "Mr. Mauricio J. Barba",
+    "phone": "305-439-8311",
+    "website": "miamisignaturehomes.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Banna Fakhoury, PA",
+    "category": "Real Estate - Residential",
+    "contact": "Ms. Banna Fakhoury",
+    "phone": "786-481-0622",
+    "website": "bannamiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Berkshire Hathaway HomeServices EWM Realty",
+    "category": "Real Estate - Residential",
+    "contact": "Ms. Emma Garavito",
+    "phone": "305-487-2337",
+    "website": "emmag.ewm.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Douglas Elliman",
+    "category": "Real Estate - Residential",
+    "contact": "Ms. Martha Pomares",
+    "phone": "305-695-6060",
+    "website": "elliman.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Gema Menendez - Keyes Co.",
+    "category": "Real Estate - Residential",
+    "contact": "Ms. Gema Menendez",
+    "phone": null,
+    "website": "gemamenendez.keyes.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ilaria Belloni - BHHS EWM Realty",
+    "category": "Real Estate - Residential",
+    "contact": "Ms. Ilaria Belloni",
+    "phone": "305-607-5556",
+    "website": "presentingmiamihomes.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Lowell International Realty, LLC",
+    "category": "Real Estate - Residential",
+    "contact": "Ms. Lauren Dowlen",
+    "phone": "305-520-5420",
+    "website": "lowellinternationalrealty.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Shelton and Stewart Realtors, LLC",
+    "category": "Real Estate - Residential",
+    "contact": "Ms. Tere Shelton Bernace",
+    "phone": "305-607-7212",
+    "website": "teresheltonbernace.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Audrey Ross Team - Compass Florida",
+    "category": "Real Estate - Residential/Commercial",
+    "contact": "Ms. Audrey Ross, PhD",
+    "phone": "305-206-4003",
+    "website": "miamirealestate.com",
+    "chamber_member": true
+  },
+  {
+    "name": "ICR Advisors",
+    "category": "Real Estate - Residential/Commercial",
+    "contact": "Ms. Ilonka Castillo",
+    "phone": "786-473-9894",
+    "website": "miamiliferealestate.net",
+    "chamber_member": true
+  },
+  {
+    "name": "Keyes Company - Coral Gables Office",
+    "category": "Real Estate - Residential/Commercial",
+    "contact": "Mrs. Elizabeth L. Perez",
+    "phone": "305-984-6344",
+    "website": "elizabethperezteam.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Title Union, LLC",
+    "category": "Real Estate - Title Companies",
+    "contact": "Ms. Hilda Lopez",
+    "phone": "305-842-2272",
+    "website": "titleunion.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Best Practices Title, LLC",
+    "category": "Real Estate - Title Insurance Agency",
+    "contact": "Ms. Giselle Breto",
+    "phone": "305-662-1600",
+    "website": "bestpracticestitle.com",
+    "chamber_member": true
+  },
+  {
+    "name": "4MG Mortgage, LLC",
+    "category": "Real Estate & Financial Services",
+    "contact": "Ms. Ashlin Endter",
+    "phone": "305-762-0314",
+    "website": "4mgmortgage.com",
+    "chamber_member": true
+  },
+  {
+    "name": "ABCO Mortgage",
+    "category": "Real Estate & Financial Services",
+    "contact": "Ms. Lourdes Fortun",
+    "phone": "305-784-7000",
+    "website": "abcomortgage.com",
+    "chamber_member": true
+  },
+  {
+    "name": "BGI Capital",
+    "category": "Real Estate & Financial Services",
+    "contact": "Mr. Robert Barthelmess",
+    "phone": "305-854-0604",
+    "website": "bgicapital.com",
+    "chamber_member": true
+  },
+  {
+    "name": "East Coast Properties & Commercial Real Estate",
+    "category": "Real Estate Brokerage & Development",
+    "contact": "Mr. Miguelangel Salazar",
+    "phone": "786-942-2177",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Gisela Cacciamani @ Berkshire Hathaway HomeServices EWM Realty",
+    "category": "Real Estate Brokerage Firm",
+    "contact": "Ms. Gisela Cacciamani",
+    "phone": "305-733-0795",
+    "website": "giselacacciamani.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami Association of Realtors",
+    "category": "Real Estate Brokers",
+    "contact": "Ms. Teresa King Kinney",
+    "phone": "305-468-7000",
+    "website": "miamire.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Giralda Place",
+    "category": "Real Estate Company",
+    "contact": "Mr. Christopher Brown",
+    "phone": "305-442-6472",
+    "website": "giraldaplace.com",
+    "chamber_member": true
+  },
+  {
+    "name": "One Sotheby's International Realty",
+    "category": "Real Estate Company",
+    "contact": "Ms. Mayi de la Vega",
+    "phone": "786-443-0040",
+    "website": "onesothebysrealty.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Monica Betancourt Group @ Berkshire Hathaway HomeServices EWM Realty",
+    "category": "Real Estate Company",
+    "contact": "Ms. Monica S. Betancourt",
+    "phone": "305-632-7248",
+    "website": "monicabetancourt.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Calta Group",
+    "category": "Real Estate Developers & Investors",
+    "contact": "Mr. Gaetano Caltagirone",
+    "phone": "305-496-9735",
+    "website": "thecaltagroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Codina Partners",
+    "category": "Real Estate Developers & Investors",
+    "contact": "Mr. Lee Casey",
+    "phone": "305-529-1300",
+    "website": "codina.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Constellation Group",
+    "category": "Real Estate Developers & Investors",
+    "contact": "Mr. Trevor Regensburg",
+    "phone": "617-610-6786",
+    "website": "groupconstellation.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Hines",
+    "category": "Real Estate Developers & Investors",
+    "contact": "Ms. Rosemary Altare-Lemus",
+    "phone": "305-444-8900",
+    "website": "hines.com",
+    "chamber_member": true
+  },
+  {
+    "name": "MG Developer",
+    "category": "Real Estate Developers & Investors",
+    "contact": "Mr. Giovanni Insignares",
+    "phone": "305-718-4575",
+    "website": "mgdevelopermiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Sands Investments",
+    "category": "Real Estate Developers & Investors",
+    "contact": "Mr. Charles Sands",
+    "phone": "305-661-7972",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Casa Familia Inc.",
+    "category": "Real Estate Development",
+    "contact": "Ms. Suzi Main",
+    "phone": "786-717-9832",
+    "website": "casafamiliainc.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Colliers International",
+    "category": "Real Estate Property Management",
+    "contact": "Ms. Hilda Mendoza",
+    "phone": "305-455-7615",
+    "website": "colliers.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Pazos & Robaina",
+    "category": "Real Estate Property Management",
+    "contact": "Mr. Jose Pazos",
+    "phone": "305-720-2535",
+    "website": "prmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Robert J. Fewell Company",
+    "category": "Real Estate Property Management",
+    "contact": "Ms. Carole Fewell",
+    "phone": "305-445-7755",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "USAA Realty Company",
+    "category": "Real Estate Property Management",
+    "contact": "Ms. Adrienne Sladek",
+    "phone": "305-443-2956",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Boo Zamek",
+    "category": "Real Estate Sale & Leasing",
+    "contact": "Ms. Boo (Province) Zamek",
+    "phone": "305-984-1143",
+    "website": "compass.com/agents/province-zamek",
+    "chamber_member": true
+  },
+  {
+    "name": "Rita Herrera, Real Estate Broker",
+    "category": "Real Estate Sale & Leasing",
+    "contact": "Ms. Rita Herrera",
+    "phone": "305-300-4760",
+    "website": "londonfoster.com/agents/rita-herrera",
+    "chamber_member": true
+  },
+  {
+    "name": "The Nicolas Group / Compass",
+    "category": "Real Estate Sale & Leasing",
+    "contact": "Mr. Angel Nicolas",
+    "phone": "305-336-0916",
+    "website": "compass.com/agents/miami/angel-nicolas",
+    "chamber_member": true
+  },
+  {
+    "name": "Erin Anding",
+    "category": "Resident Member",
+    "contact": "Ms. Erin Anding",
+    "phone": "305-788-5345",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Macdonald West",
+    "category": "Resident Member",
+    "contact": "Mr. Macdonald West",
+    "phone": null,
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Casa Neos",
+    "category": "Restaurant/Hospitality Group",
+    "contact": "Ms. Cynthia Legrand",
+    "phone": "786-706-0744",
+    "website": "casa-neos.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Shiso Miami",
+    "category": "Restaurant/Hospitality Group",
+    "contact": "Mr. Aldo Narcisi",
+    "phone": "412-760-9370",
+    "website": "shisomiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "450 Gradi",
+    "category": "Restaurants",
+    "contact": "Mr. Vicenzo Esposito",
+    "phone": "786-391-1276",
+    "website": "450gradipizzerias.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Alhambra Station Cafe",
+    "category": "Restaurants",
+    "contact": "Ms. Karina Fava",
+    "phone": "305-441-2676",
+    "website": "alhambrastationcafe.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Arcano - Sabores de Esencia Hispana",
+    "category": "Restaurants",
+    "contact": "Mr. Juan Diego Canahuati",
+    "phone": "305-530-8332",
+    "website": "arcanomiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Armstrong Jazz House",
+    "category": "Restaurants",
+    "contact": "Mr. Alfred Santamaria",
+    "phone": "786-382-3135",
+    "website": "armstrongjazzhouse.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Bachour Restaurant and Bakery",
+    "category": "Restaurants",
+    "contact": "Ms. Ligia Garcia",
+    "phone": "305-203-0552",
+    "website": "antoniobachour.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ball & Chain",
+    "category": "Restaurants",
+    "contact": "Ms. Samantha Nieves",
+    "phone": "786-442-5024",
+    "website": "madroomhospitality.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Bouchon",
+    "category": "Restaurants",
+    "contact": "Ms. Erin Rouchi",
+    "phone": "305-990-1360",
+    "website": "thomaskeller.com/coral-gables-florida/bouchon-bistro",
+    "chamber_member": true
+  },
+  {
+    "name": "Bulla Gastrobar",
+    "category": "Restaurants",
+    "contact": "Ms. Alis Mosquera",
+    "phone": "786-810-6215",
+    "website": "bullagastrobar.com/locations/coral-gables",
+    "chamber_member": true
+  },
+  {
+    "name": "Caf\u00e9 Demetrio",
+    "category": "Restaurants",
+    "contact": "Mr. Demetrio Pina",
+    "phone": "305-448-4949",
+    "website": "cafedemetrio.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Caf\u00e9 Grumpy",
+    "category": "Restaurants",
+    "contact": "Ms. Caroline Bell",
+    "phone": "305-364-5012",
+    "website": "cafegrumpy.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Calista Taverna",
+    "category": "Restaurants",
+    "contact": "Mr. Thomas Fotouras",
+    "phone": "786-310-7660",
+    "website": "calistataverna.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Chocolate Fashion",
+    "category": "Restaurants",
+    "contact": "Ms. Persy Berger",
+    "phone": "305-461-3200",
+    "website": "chocolatefashiononline.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Copper 29 Bar",
+    "category": "Restaurants",
+    "contact": "Ms. Ana Rivera",
+    "phone": "786-580-4689",
+    "website": "copper29bar.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Cortadito Coffee House",
+    "category": "Restaurants",
+    "contact": "Ms. Elba Machado",
+    "phone": "786-410-0175",
+    "website": "cortaditocoffeehouse.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Coyo Taco",
+    "category": "Restaurants",
+    "contact": "Ms. Alicia Smith",
+    "phone": "786-629-7929",
+    "website": "coyo-taco.com/coral-gables",
+    "chamber_member": true
+  },
+  {
+    "name": "Crema Gourmet Espresso Bar",
+    "category": "Restaurants",
+    "contact": "Mr. Yiannas Sotirpoulos",
+    "phone": "786-360-4026",
+    "website": "cremagourmet.com",
+    "chamber_member": true
+  },
+  {
+    "name": "CVI.CHE 105",
+    "category": "Restaurants",
+    "contact": "Ms. Carla Ramon",
+    "phone": "786-527-3939",
+    "website": "ceviche105.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Erba",
+    "category": "Restaurants",
+    "contact": "Mr. Carmelo Pecoraro",
+    "phone": "305-712-7788",
+    "website": "erbamiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Fleming's Prime Steakhouse & Wine Bar Coral Gables",
+    "category": "Restaurants",
+    "contact": "Ms. Zoraida Mata",
+    "phone": "305-569-7995",
+    "website": "flemingssteakhouse.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Fogo de Ch\u00e3o Coral Gables",
+    "category": "Restaurants",
+    "contact": "Ms. Miranda Johnson",
+    "phone": "786-297-8788",
+    "website": "fogo.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Fontana Ristorante",
+    "category": "Restaurants",
+    "contact": "Mr. Pred Starcevic",
+    "phone": "305-913-3200",
+    "website": "biltmorehotel.com/coral-gables-dining/fontana",
+    "chamber_member": true
+  },
+  {
+    "name": "Francesco",
+    "category": "Restaurants",
+    "contact": "Ms. Cynthia Pinto",
+    "phone": "305-797-4039",
+    "website": "francesco-restaurant.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Freddo Traditional Gelato",
+    "category": "Restaurants",
+    "contact": "Mr. Emiliano Deambrosi",
+    "phone": "305-342-9772",
+    "website": "freddo.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Graziano's Gourmet",
+    "category": "Restaurants",
+    "contact": "Mr. Mario L. Graziano",
+    "phone": "305-460-0001",
+    "website": "grazianosgroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Graziano's in the Gables",
+    "category": "Restaurants",
+    "contact": "Mr. Leo Graziano",
+    "phone": "305-774-3599",
+    "website": "grazianosgroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Graziano's Mercado at The Lifetime Building",
+    "category": "Restaurants",
+    "contact": "Ms. Melissa Graziano",
+    "phone": "786-633-3948",
+    "website": "grazianosgroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "JohnMartin's",
+    "category": "Restaurants",
+    "contact": "Mr. Tony Guerra",
+    "phone": "305-209-0609",
+    "website": "johnmartinsmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Keik Bakeshop",
+    "category": "Restaurants",
+    "contact": "Mr. Andres Mendez",
+    "phone": "305-763-1543",
+    "website": "keikbakeshop.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Kitchen 57",
+    "category": "Restaurants",
+    "contact": "Mr. Michael Altman",
+    "phone": "786-238-7179",
+    "website": "kitchen57miami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Kojin 2.0",
+    "category": "Restaurants",
+    "contact": "Ms. Katherine Mederos",
+    "phone": "786-747-1404",
+    "website": "kojin2.com",
+    "chamber_member": true
+  },
+  {
+    "name": "La Pata Gorda",
+    "category": "Restaurants",
+    "contact": "Mr. Josue Sanchez",
+    "phone": "786-741-4961",
+    "website": "lapatagorda.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Los Ranchos Coral Gables",
+    "category": "Restaurants",
+    "contact": "Mr. Rafael Wong",
+    "phone": "305-220-5153",
+    "website": "losranchossteakhouse.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Maiz y Agave",
+    "category": "Restaurants",
+    "contact": "Ms. Maria Vacaflores",
+    "phone": "305-723-9898",
+    "website": "maizyagave.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Major Food Group | Sadelle Restaurant",
+    "category": "Restaurants",
+    "contact": "Ms. Chloe Labiner",
+    "phone": "917-817-8770",
+    "website": "majorfood.com",
+    "chamber_member": true
+  },
+  {
+    "name": "maman",
+    "category": "Restaurants",
+    "contact": "Ms. Chloe Colbert",
+    "phone": "305-603-9206",
+    "website": "mamannyc.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Mamey Miami",
+    "category": "Restaurants",
+    "contact": "Mr. Massimiliano Giua",
+    "phone": "305-266-2639",
+    "website": "mameymiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Misha's Cupcakes",
+    "category": "Restaurants",
+    "contact": "Ms. Misha Kuryla",
+    "phone": "786-200-6153",
+    "website": "mishascupcakes.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Motek Coral Gables",
+    "category": "Restaurants",
+    "contact": "Ms. Krizia Calero",
+    "phone": "305-396-8547",
+    "website": "motekcafe.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Naked Farmer",
+    "category": "Restaurants",
+    "contact": "Ms. Mary Maness",
+    "phone": "305-487-7327",
+    "website": "eatnakedfarmer.com",
+    "chamber_member": true
+  },
+  {
+    "name": "NOMA Beach at Redfish",
+    "category": "Restaurants",
+    "contact": "Ms. Donatella Arpaia",
+    "phone": "786-668-8788",
+    "website": "noma-beach.com",
+    "chamber_member": true
+  },
+  {
+    "name": "P.Pole Pizza",
+    "category": "Restaurants",
+    "contact": "Mr. Stefano Carniato",
+    "phone": "786-618-5287",
+    "website": "ppolepizza.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Palme d'Or",
+    "category": "Restaurants",
+    "contact": "Mr. Patrick Calvarese",
+    "phone": "305-445-8066",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Pei Wei Asian Kitchen",
+    "category": "Restaurants",
+    "contact": "Ms. Noelcy Amador",
+    "phone": "305-444-1370",
+    "website": "peiwei.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Pinecrest Bakery, LLC",
+    "category": "Restaurants",
+    "contact": "Ms. Victoria Ellen Valdes",
+    "phone": "305-400-4686",
+    "website": "pinecrestbakery.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Pisco y Nazca Coral Gables",
+    "category": "Restaurants",
+    "contact": "Ms. Melissa Rivera",
+    "phone": "786-810-4519",
+    "website": "piscoynazca.com/coral-gables",
+    "chamber_member": true
+  },
+  {
+    "name": "Playa Bowls Coral Gables",
+    "category": "Restaurants",
+    "contact": "Ms. Roxanne Vogel",
+    "phone": "786-505-3011",
+    "website": "playabowls.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Portosole Italian Restaurant",
+    "category": "Restaurants",
+    "contact": "Mr. Ivan De Gennaro",
+    "phone": "786-359-4275",
+    "website": "portosolemiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Pura Vida Miami",
+    "category": "Restaurants",
+    "contact": "Mr. Omer Horev",
+    "phone": "305-204-0602",
+    "website": "puravidamiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ristorante ll Duomo Dei Sapori",
+    "category": "Restaurants",
+    "contact": "Mr. Gabriel Fleitas",
+    "phone": "305-381-5604",
+    "website": "ilduomodeisapori.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ruth's Chris Steak House",
+    "category": "Restaurants",
+    "contact": "Ms. Mya Martin",
+    "phone": "305-461-8360",
+    "website": "ruthschris.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Salumeria 104",
+    "category": "Restaurants",
+    "contact": "Ms. Silvia Cadamuro",
+    "phone": "305-640-5547",
+    "website": "salumeria104.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Seasons 52",
+    "category": "Restaurants",
+    "contact": "Mr. Fernando Orms",
+    "phone": "305-442-8552",
+    "website": "seasons52.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Sergio's Restaurant",
+    "category": "Restaurants",
+    "contact": "Mr. John Gazitua",
+    "phone": "305-529-0047",
+    "website": "sergios.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Sexy Fish Miami",
+    "category": "Restaurants",
+    "contact": "Ms. Georgia Zaryckyj",
+    "phone": "305-790-1993",
+    "website": "sexyfishmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Shadow Wagyu",
+    "category": "Restaurants",
+    "contact": "Mr. Alex B. Prendes",
+    "phone": "305-484-3911",
+    "website": "shadowwagyu.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Smith & Wollensky Restaurant",
+    "category": "Restaurants",
+    "contact": "Ms. Autumn Schmidinger",
+    "phone": "305-673-2800",
+    "website": "smithandwollensky.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Sra. Martinez",
+    "category": "Restaurants",
+    "contact": "Mr. David Martinez",
+    "phone": "786-860-5980",
+    "website": "sramartinezmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Sushi Maki",
+    "category": "Restaurants",
+    "contact": "Mr. Abe Ng",
+    "phone": "305-443-1884",
+    "website": "sushimaki.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Talavera Cocina Mexicana",
+    "category": "Restaurants",
+    "contact": "Mr. Andy Anaya",
+    "phone": "305-444-2955",
+    "website": "talaveracocinamexicana.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Collab",
+    "category": "Restaurants",
+    "contact": "Mr. Massimiliano Giua",
+    "phone": "305-667-6766",
+    "website": "thecollabmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Deck At Island Gardens",
+    "category": "Restaurants",
+    "contact": "Ms. Bahar Bayraktar",
+    "phone": "786-627-4949",
+    "website": "islandgardens.com/the-deck",
+    "chamber_member": true
+  },
+  {
+    "name": "Truluck's Oceans Finest Seafood and Crab",
+    "category": "Restaurants",
+    "contact": "Ms. Elizabeth Nourse",
+    "phone": "786-275-5730",
+    "website": "trulucks.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Two Sisters Restaurant",
+    "category": "Restaurants",
+    "contact": "Mr. Joseph Bidwell",
+    "phone": "305-447-6030",
+    "website": "hyatt.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Vinya Table",
+    "category": "Restaurants",
+    "contact": "Mr. Pedro Pozo",
+    "phone": "305-203-4229",
+    "website": "vinyawine.com/coralgables",
+    "chamber_member": true
+  },
+  {
+    "name": "Yard House Coral Gables",
+    "category": "Restaurants",
+    "contact": "Ms. Katie Harrold",
+    "phone": "305-447-9273",
+    "website": "yardhouse.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Zucca",
+    "category": "Restaurants",
+    "contact": "Ms. Lorena Manrique",
+    "phone": "786-580-3731",
+    "website": "zuccamiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Birdie Bistro",
+    "category": "Restaurants - American",
+    "contact": "Ms. Rita Tennyson",
+    "phone": "786-357-8387",
+    "website": "birdiebistro.co",
+    "chamber_member": true
+  },
+  {
+    "name": "Coffee for the Soul",
+    "category": "Restaurants - Bakery/Cafe",
+    "contact": "Ms. Carolina Mesa",
+    "phone": "786-953-6594",
+    "website": "cfscoffee.com",
+    "chamber_member": true
+  },
+  {
+    "name": "SNDWCH Sunset",
+    "category": "Restaurants - Deli",
+    "contact": "Mr. Adrian Patron",
+    "phone": "954-257-4131",
+    "website": "sndwchmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "CLAUDIE RESTAURANT",
+    "category": "Restaurants - French",
+    "contact": "Ms. Melek Simsek",
+    "phone": "305-990-1101",
+    "website": "claudierestaurant.com",
+    "chamber_member": true
+  },
+  {
+    "name": "San Lorenzo Gelato and Pastry",
+    "category": "Restaurants - Ice Cream Shop",
+    "contact": "Ms. Helena Yanalunas",
+    "phone": "248-495-8946",
+    "website": "sanlorenzogelato.com",
+    "chamber_member": true
+  },
+  {
+    "name": "La Rosa Restaurant",
+    "category": "Restaurants - International",
+    "contact": "Mr. Henry Zamarripa",
+    "phone": "305-215-7947",
+    "website": "larosagastrobar.com",
+    "chamber_member": true
+  },
+  {
+    "name": "SHINGO",
+    "category": "Restaurants - Japanese",
+    "contact": "Ms. Kenzie Motai",
+    "phone": "201-286-3015",
+    "website": "shingomiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "RC Cafe",
+    "category": "Restaurants - Latin",
+    "contact": "Ms. Cindy Stewart",
+    "phone": "305-889-8684",
+    "website": "rccafe.miami",
+    "chamber_member": true
+  },
+  {
+    "name": "Emmy Squared Pizza",
+    "category": "Restaurants - Pizza",
+    "contact": "Ms. Nawal Alawamleh",
+    "phone": "786-607-3669",
+    "website": "emmysquaredpizza.com",
+    "chamber_member": true
+  },
+  {
+    "name": "100 Montaditos Coral Gables",
+    "category": "Restaurants - Spanish Cuisine & Tapas",
+    "contact": "Ms. Breezy Leza",
+    "phone": "786-449-5203",
+    "website": "100montaditos.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ann Taylor",
+    "category": "Retail",
+    "contact": "Ms. Stephanie Unzueta",
+    "phone": "786-340-2827",
+    "website": "anntaylor.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Artigiano Inc.",
+    "category": "Retail",
+    "contact": "Mr. Alex Odio",
+    "phone": "305-569-9970",
+    "website": "artigianomens.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Bliss Imprints & Gifts",
+    "category": "Retail",
+    "contact": "Mr. Eddy Martinez",
+    "phone": "305-661-2030",
+    "website": "blissimprints.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Books & Books Inc.",
+    "category": "Retail",
+    "contact": "Mr. Mitchell Kaplan",
+    "phone": "305-442-4408",
+    "website": "booksandbooks.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Camilla - Shops at Merrick Park",
+    "category": "Retail",
+    "contact": "Ms. Lisa Gomez",
+    "phone": "786-206-1298",
+    "website": "camilla.com.au",
+    "chamber_member": true
+  },
+  {
+    "name": "Carve & Burn Designs Inc.",
+    "category": "Retail",
+    "contact": "Mr. Henry Aquino",
+    "phone": "305-458-4717",
+    "website": "carveandburn.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Fine Line Furniture & Accessories",
+    "category": "Retail",
+    "contact": "Ms. Brianna Brown",
+    "phone": "305-661-4414",
+    "website": "fineline.us",
+    "chamber_member": true
+  },
+  {
+    "name": "Flor de Flamenco",
+    "category": "Retail",
+    "contact": "Ms. Roxana D Delgado",
+    "phone": "305-338-3087",
+    "website": "flordeflamenco.com",
+    "chamber_member": true
+  },
+  {
+    "name": "H. Benitez Fine Art Gallery Inc.",
+    "category": "Retail",
+    "contact": "Ms. Lissette Benitez",
+    "phone": "786-877-1045",
+    "website": "humbertobenitez.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Hanna Tiger Asian Market Coral Gables",
+    "category": "Retail",
+    "contact": "Mr. Kun Bao",
+    "phone": "305-209-7688",
+    "website": "hannatiger.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Jae's Jewelers",
+    "category": "Retail",
+    "contact": "Ms. Jill Hornik",
+    "phone": "305-443-7724",
+    "website": "jaesjewelers.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Joy By, LLC",
+    "category": "Retail",
+    "contact": "Ms. Stephanie Dardenne",
+    "phone": "310-729-6070",
+    "website": "holidayjoyby.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Lilly Pulitzer",
+    "category": "Retail",
+    "contact": "Ms. Susan Jordan",
+    "phone": "305-441-9837",
+    "website": "lillypulitzer.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Montica Jewelry",
+    "category": "Retail",
+    "contact": "Ms. Marichi O'Rourke",
+    "phone": "305-446-2957",
+    "website": "montica.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Phillip Morris International",
+    "category": "Retail",
+    "contact": "Mr. Hernan Albamonte",
+    "phone": null,
+    "website": "pmi.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Pure Water Factory, LLC",
+    "category": "Retail",
+    "contact": "Mr. Elliot Durant",
+    "phone": "213-810-2513",
+    "website": "purewaterfactorymiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "S. Pellegrino & Acqua Panna",
+    "category": "Retail",
+    "contact": "Ms. Olga Megrabian",
+    "phone": "305-776-8105",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Sartori Amici / My Grooms Room",
+    "category": "Retail",
+    "contact": "Mr. Sebastian Garcia",
+    "phone": "305-964-5073",
+    "website": "mygroomsroom.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Shops at Merrick Park",
+    "category": "Retail",
+    "contact": "Mr. Carlos Limontes",
+    "phone": "305-529-1215",
+    "website": "shopsatmerrickpark.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Soy Delicious Inc.",
+    "category": "Retail",
+    "contact": "Ms. Georgette Hoyo",
+    "phone": "305-484-9525",
+    "website": "soydelicious.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Violetas",
+    "category": "Retail",
+    "contact": "Ms. Patricia Anton Himmel",
+    "phone": "305-381-0711",
+    "website": "violetashomedesign.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Maison Berger USA Inc.",
+    "category": "Retail - Art Boutique",
+    "contact": "Ms. Joy Chenot",
+    "phone": "805-260-4226",
+    "website": "maison-berger.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Nourish and Refine, LLC (Nourish & Refine)",
+    "category": "Retail - Beauty/Skin Care",
+    "contact": "Ms. Nikki Powers",
+    "phone": "786-626-1956",
+    "website": "nourishandrefine.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Rosa Clar\u00e1",
+    "category": "Retail - Bridal",
+    "contact": "Ms. Lorena Perez",
+    "phone": "786-414-0832",
+    "website": "rosaclara.es",
+    "chamber_member": true
+  },
+  {
+    "name": "Truffle Temptations",
+    "category": "Retail - Concept Store",
+    "contact": "Ms. Eory Madera",
+    "phone": "305-746-0426",
+    "website": "thetruffletemptations.com",
+    "chamber_member": true
+  },
+  {
+    "name": "TRESOR",
+    "category": "Retail - Jewelers",
+    "contact": "Ms. Puja Bordia",
+    "phone": "305-375-0935",
+    "website": "tresorcollection.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Green Home Roofing Inc.",
+    "category": "Roofing Company",
+    "contact": "Mr. Jesse Martinez",
+    "phone": "786-521-0022",
+    "website": "greenhomeroofinginc.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Vortex Roofing & Construction Services",
+    "category": "Roofing Company",
+    "contact": "Mr. Pat Gomez",
+    "phone": "305-216-3247",
+    "website": "vortexroof.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables Adult & Continuing Education Center",
+    "category": "Schools - Education",
+    "contact": "Dr. Louis Dash",
+    "phone": "305-443-4871",
+    "website": "coralgablesadultedu.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Crystal Academy Therapy Center & School - Autism & Developmental Delays",
+    "category": "Schools - Education",
+    "contact": "Mrs. Mary Palacio-Pike",
+    "phone": "305-567-5881",
+    "website": "crystalacademycg.org",
+    "chamber_member": true
+  },
+  {
+    "name": "G.W. Carver Elementary School",
+    "category": "Schools - Education",
+    "contact": "Ms. Patricia Fairclough",
+    "phone": "305-443-5286",
+    "website": "gwces.com",
+    "chamber_member": true
+  },
+  {
+    "name": "The Biltmore School",
+    "category": "Schools - Education",
+    "contact": "Ms. Gina C. Duarte Romero",
+    "phone": "305-266-4666",
+    "website": "biltmoreschool.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Kellogg School of Management, Northwestern University",
+    "category": "Schools - Graduate Business",
+    "contact": "Mr. Rolando Masferrer",
+    "phone": "305-442-7780",
+    "website": "kellogg.northwestern.edu",
+    "chamber_member": true
+  },
+  {
+    "name": "Florida International University",
+    "category": "Schools - Higher Education",
+    "contact": "Mrs. Michelle Palacio",
+    "phone": "305-348-6298",
+    "website": "fiu.edu",
+    "chamber_member": true
+  },
+  {
+    "name": "International Studies Preparatory Academy (ISPA)",
+    "category": "Schools - Language",
+    "contact": "Ms. Alina Diaz-Blanco",
+    "phone": "305-663-7200",
+    "website": "internationalstudiesprep.net",
+    "chamber_member": true
+  },
+  {
+    "name": "The English Center",
+    "category": "Schools - Language-Technology",
+    "contact": "Ms. Yamila Carballo",
+    "phone": "305-445-7731",
+    "website": "tecmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Giralda Preschool of Coral Gables",
+    "category": "Schools - Preschool",
+    "contact": "Ms. Marisa Pluchino",
+    "phone": "786-332-3610",
+    "website": "giraldapreschool.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Gulliver Preparatory School",
+    "category": "Schools-Private",
+    "contact": "Ms. Melissa Perkins",
+    "phone": "786-709-4076",
+    "website": "gulliverprep.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Immaculata - La Salle High School",
+    "category": "Schools-Private",
+    "contact": "Ms. Barbara Branas",
+    "phone": "305-854-2334",
+    "website": "ilsroyals.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Riviera Day School-Riviera Preparatory School",
+    "category": "Schools-Private",
+    "contact": null,
+    "phone": "305-666-1856",
+    "website": "rivieraschools.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables High School",
+    "category": "Schools - Public",
+    "contact": "Mr. Anthony J. Balboa",
+    "phone": "305-443-4871",
+    "website": "cghs.dade.k12.fl.us",
+    "chamber_member": true
+  },
+  {
+    "name": "George Washington Carver Middle School",
+    "category": "Schools - Public",
+    "contact": "Ms. Cristina Basso",
+    "phone": "305-444-7388",
+    "website": "gwcmiddleschool.net",
+    "chamber_member": true
+  },
+  {
+    "name": "MDCPS Office of Community Engagement",
+    "category": "Schools - Public",
+    "contact": "Ms. Shaquellia M. Holmes",
+    "phone": "305-995-2594",
+    "website": "engagemiamidade.net",
+    "chamber_member": true
+  },
+  {
+    "name": "Ponce de Leon Middle School",
+    "category": "Schools - Public",
+    "contact": "Ms. Angela C. Gonzalez",
+    "phone": "305-661-1611",
+    "website": "poncedeleonmiddle.net",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami Dade College - Eduardo J. Padron Campus",
+    "category": "Schools - University/College",
+    "contact": "Mr. Oscar Loynaz",
+    "phone": "305-237-6186",
+    "website": "mdc.edu/padron/",
+    "chamber_member": true
+  },
+  {
+    "name": "Nova Southeastern University",
+    "category": "Schools - University/College",
+    "contact": "Ms. Christine Nu\u00f1ez",
+    "phone": "305-275-2601",
+    "website": "nova.edu",
+    "chamber_member": true
+  },
+  {
+    "name": "University of Florida",
+    "category": "Schools - University/College",
+    "contact": "Ms. Alexa Butler",
+    "phone": "352-392-1667",
+    "website": "ufl.edu",
+    "chamber_member": true
+  },
+  {
+    "name": "University of Miami",
+    "category": "Schools - University/College",
+    "contact": "Ms. Abdias Rodriguez",
+    "phone": "305-284-5478",
+    "website": "miami.edu",
+    "chamber_member": true
+  },
+  {
+    "name": "University of St. Augustine for Health Sciences",
+    "category": "Schools - University/College",
+    "contact": "Ms. Vivian Sanchez",
+    "phone": "786-725-4010",
+    "website": "usa.edu",
+    "chamber_member": true
+  },
+  {
+    "name": "APS Security Group Inc.",
+    "category": "Security Services/Executive Protection",
+    "contact": "Mr. Mauricio Figueras",
+    "phone": "305-591-8282",
+    "website": "apsmiami.com",
+    "chamber_member": true
+  },
+  {
+    "name": "305 Senior",
+    "category": "Senior Care Services",
+    "contact": "Ms. Viviana Laboy",
+    "phone": "786-326-0656",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "MD Senior Placement",
+    "category": "Senior Care Services",
+    "contact": "Ms. Maria Diaz",
+    "phone": "786-326-3933",
+    "website": "mdseniorplacement.org",
+    "chamber_member": true
+  },
+  {
+    "name": "The Palace Coral Gables",
+    "category": "Senior Care Services",
+    "contact": "Mr. Adam Rosenblum",
+    "phone": "305-445-7444",
+    "website": "palacecoralgables.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Home Instead Senior Care",
+    "category": "Senior Homecare Services",
+    "contact": "Mr. Gabriel De Armas Jr.",
+    "phone": "786-845-0888",
+    "website": "homeinstead.com/364",
+    "chamber_member": true
+  },
+  {
+    "name": "Belmont Village Senior Living",
+    "category": "Senior Living",
+    "contact": "Ms. Marisol Sierra",
+    "phone": "305-422-1397",
+    "website": "belmontvillage.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Sunrise Senior Living",
+    "category": "Senior Living",
+    "contact": "Ms. Virginia Del Pino",
+    "phone": "305-564-1400",
+    "website": "sunriseseniorliving.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Riviera Health Resort",
+    "category": "Skilled Nursing & Rehabilitation Center",
+    "contact": "Mr. Richard Stacey",
+    "phone": "786-517-6999",
+    "website": "rivierahealthresort.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Anthony R. Abraham Foundation",
+    "category": "Soccer",
+    "contact": "Mr. Thomas Abraham",
+    "phone": "305-665-2222",
+    "website": "abrahamfoundation.com",
+    "chamber_member": true
+  },
+  {
+    "name": "TheGenieLab, LLC",
+    "category": "Software & Technology Development",
+    "contact": "Mr. Fredy Dellis",
+    "phone": "305-762-0130",
+    "website": "thegenielab.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Skin Local",
+    "category": "Spa/Skincare",
+    "contact": "Ms. Leana Loh Mejia",
+    "phone": "305-322-2941",
+    "website": "theskinlocal.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Speech and Swallowing Continuum",
+    "category": "Speech-Language Pathology",
+    "contact": "Ms. Samantha Hernandez",
+    "phone": "786-210-5344",
+    "website": "speech-swallowing.com",
+    "chamber_member": true
+  },
+  {
+    "name": "FIBA (International Basketball Federation)",
+    "category": "Sporting Events & Entertainment",
+    "contact": "Ms. Rafaela Rivera",
+    "phone": "917-645-2137",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Hard Rock Stadium",
+    "category": "Sporting Events & Entertainment",
+    "contact": "Mr. Marc Weinroth",
+    "phone": "305-943-6581",
+    "website": "hardrockstadium.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Legends - Miami Hurricanes",
+    "category": "Sporting Events & Entertainment",
+    "contact": "Ms. Kayla Blake Grimes",
+    "phone": null,
+    "website": "miamihurricanes.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Miami Marlins",
+    "category": "Sporting Events & Entertainment",
+    "contact": "Mr. Alfredo Mesa",
+    "phone": "305-480-1450",
+    "website": "marlins.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Vestra Consultants",
+    "category": "Staffing Events and Promotions",
+    "contact": "Mr. Ivan Ubierna",
+    "phone": "305-340-2003",
+    "website": "vestraconsultants.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Blue Columbia Holdings",
+    "category": "Staffing Services",
+    "contact": "Ms. Tracy Davies",
+    "phone": "986-221-9584",
+    "website": "lexreception.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Ascendo Resources, LLC",
+    "category": "Staffing/Recruiting",
+    "contact": "Ms. Maria F. Mora",
+    "phone": "305-709-5324",
+    "website": "ascendo.com",
+    "chamber_member": true
+  },
+  {
+    "name": "New Edge Associates",
+    "category": "Staffing/Recruiting",
+    "contact": "Mr. Norman Isaza",
+    "phone": "786-447-9323",
+    "website": "newedgeassociates.com",
+    "chamber_member": true
+  },
+  {
+    "name": "PROWORK US - Multinational Talent Acquisition Company",
+    "category": "Staffing/Recruiting",
+    "contact": "Ms. Diana Rendon",
+    "phone": "305-531-0838",
+    "website": "prowork.us",
+    "chamber_member": true
+  },
+  {
+    "name": "Regis Remote Office Solutions",
+    "category": "Staffing/Recruiting",
+    "contact": "Mr. Julian Valiente",
+    "phone": "786-875-8511",
+    "website": "regisro.com",
+    "chamber_member": true
+  },
+  {
+    "name": "ttg.Talent Solutions",
+    "category": "Staffing/Recruiting",
+    "contact": "Mr. Luis Guardamiro",
+    "phone": "786-796-2795",
+    "website": "usattg.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Onyx Ink",
+    "category": "Stationery/Gifts/Printing",
+    "contact": "Mr. Sergio Andres Reyes",
+    "phone": "305-394-8500",
+    "website": "onyx-ink.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Intermedia Touch Inc.",
+    "category": "Technology",
+    "contact": "Mrs. Cristina Miller",
+    "phone": "305-517-3894",
+    "website": "intermediatouch.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Digital Bay Tech | Smart Home Automation",
+    "category": "Technology",
+    "contact": "Mr. Roger Winnik",
+    "phone": "786-727-2190",
+    "website": "digitalbaytech.com",
+    "chamber_member": true
+  },
+  {
+    "name": "FIS Global",
+    "category": "Technology Finance",
+    "contact": "Ms. Erica Landivar",
+    "phone": null,
+    "website": "fisglobal.com",
+    "chamber_member": true
+  },
+  {
+    "name": "AT&T",
+    "category": "Telephone Communication/Equipment/Consultants",
+    "contact": "Ms. Thais Asper Keane",
+    "phone": "305-347-5454",
+    "website": "att.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Please Hold Advertising",
+    "category": "Telephone On Hold & Voice Mail Messages",
+    "contact": "Mr. Carlos Garcia",
+    "phone": "305-388-3088",
+    "website": "pleasehold.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Actors' Playhouse at the Miracle Theatre",
+    "category": "Theatres",
+    "contact": "Ms. Barbara Stein",
+    "phone": "305-444-9293",
+    "website": "actorsplayhouse.org",
+    "chamber_member": true
+  },
+  {
+    "name": "GableStage",
+    "category": "Theatres",
+    "contact": "Ms. Kate Kramitz",
+    "phone": null,
+    "website": "gablestage.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Florida Retail Federation",
+    "category": "Trade Association",
+    "contact": "Mr. Jon Stolp",
+    "phone": "850-222-4082",
+    "website": "frf.org",
+    "chamber_member": true
+  },
+  {
+    "name": "PROMEXICO / Mexico's Trade & Investment Comm.-Miami",
+    "category": "Trade Services",
+    "contact": "Ms. Lucia Aguilar",
+    "phone": "305-415-9360",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Thailand Trade Office Miami",
+    "category": "Trade Services",
+    "contact": "Ms. Kanya Amorntheerakul",
+    "phone": "786-388-7888",
+    "website": "thaitrade.com",
+    "chamber_member": true
+  },
+  {
+    "name": "American Transportation & Limo",
+    "category": "Translation Services",
+    "contact": "Ms. Valentina Canizales",
+    "phone": "754-715-7756",
+    "website": "americanlimofl.com",
+    "chamber_member": true
+  },
+  {
+    "name": "305 Drive Inc., Limousine Service",
+    "category": "Transportation Services",
+    "contact": "Mr. Branimir Stanimirovic",
+    "phone": "305-310-9357",
+    "website": "305-drive.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Blacklane",
+    "category": "Transportation Services",
+    "contact": "Mr. Max Truen",
+    "phone": "305-684-2519",
+    "website": "blacklane.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Freebee",
+    "category": "Transportation Services",
+    "contact": "Mr. John Janusz",
+    "phone": "305-330-9450",
+    "website": "ridefreebee.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Key Transportation",
+    "category": "Transportation Services",
+    "contact": "Ms. Yolana Salazar",
+    "phone": "305-751-5005",
+    "website": "key-transportation.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Waymo",
+    "category": "Transportation Services",
+    "contact": "Mr. Matt Walsh",
+    "phone": "650-346-0856",
+    "website": "waymo.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Social Bus Company",
+    "category": "Travel - Corporate/Incentive",
+    "contact": "Ms. Daniela Serrano",
+    "phone": "786-658-9760",
+    "website": "socialbuscompany.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Express Travel (a Gray Dawes Company)",
+    "category": "Travel Agencies",
+    "contact": "Ms. Olga Ramudo",
+    "phone": "305-341-1200",
+    "website": "expresstravelus.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Overseas Network",
+    "category": "Travel Agencies",
+    "contact": "Ms. Tricia Menendez",
+    "phone": "786-276-8686",
+    "website": "overseasnetwork.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Sol Kiss Escapes",
+    "category": "Travel Agencies",
+    "contact": "Ms. Sylvia Sulkes",
+    "phone": "305-878-4004",
+    "website": "solkissescapes.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Travel by Design Inc.",
+    "category": "Travel Agencies",
+    "contact": "Ms. Lee Lennon",
+    "phone": "305-443-5441",
+    "website": "travelsbydesign.net",
+    "chamber_member": true
+  },
+  {
+    "name": "L & M Engraving & Trophy Company",
+    "category": "Trophies & Plaques",
+    "contact": "Mr. Sandy Liebowitz",
+    "phone": "305-273-7607",
+    "website": null,
+    "chamber_member": true
+  },
+  {
+    "name": "Michelson's Trophies",
+    "category": "Trophies & Plaques",
+    "contact": "Mr. Efraim Lapscher",
+    "phone": "305-687-9898",
+    "website": "goawards.com",
+    "chamber_member": true
+  },
+  {
+    "name": "UpGrade Education Solutions, LLC",
+    "category": "Tutoring",
+    "contact": "Ms. Estelle Lockhart",
+    "phone": "305-772-1811",
+    "website": "UpGradeEducation.org",
+    "chamber_member": true
+  },
+  {
+    "name": "Florida Power & Light",
+    "category": "Utilities",
+    "contact": "Mrs. Addys Kuryla",
+    "phone": "305-442-5430",
+    "website": "fpl.com",
+    "chamber_member": true
+  },
+  {
+    "name": "GoodVets",
+    "category": "Veterinary Animal Hospital",
+    "contact": "Dr. Emily Abraham",
+    "phone": "305-522-6100",
+    "website": "goodvets.com",
+    "chamber_member": true
+  },
+  {
+    "name": "TB Media Group",
+    "category": "Video Production",
+    "contact": "Ms. Tamika Bickham",
+    "phone": "786-350-8395",
+    "website": "tbmediagroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Videoworks LLC",
+    "category": "Video Production",
+    "contact": "Mr. Neto Almanza",
+    "phone": "956-639-2910",
+    "website": "videoworks.miami",
+    "chamber_member": true
+  },
+  {
+    "name": "Bevi",
+    "category": "Water Filtration Systems",
+    "contact": "Mr. Jose Sanchez",
+    "phone": "305-492-9369",
+    "website": "bevi.co",
+    "chamber_member": true
+  },
+  {
+    "name": "Azzendo Wealth Advisors",
+    "category": "Wealth Management",
+    "contact": "Mr. Alejandro Grillo",
+    "phone": "305-648-9814",
+    "website": "azzendo.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Benesch Investment Group",
+    "category": "Wealth Management",
+    "contact": "Ms. Holly Croxall Barnhart",
+    "phone": "786-607-4050",
+    "website": "beneschinvestmentgroup.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Bowden Wealth Management Group at Bank of America / Merrill Lynch",
+    "category": "Wealth Management",
+    "contact": "Mrs. Amber Bowden",
+    "phone": "305-347-2535",
+    "website": "advisor.ml.com/sites/fl/miami-brickell/bowden-associates",
+    "chamber_member": true
+  },
+  {
+    "name": "Coral Gables Trust Company",
+    "category": "Wealth Management",
+    "contact": "Mr. John W. Harris",
+    "phone": "786-497-1212",
+    "website": "cgtrust.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Evensky & Katz / Foldes Financial Wealth Management",
+    "category": "Wealth Management",
+    "contact": "Mr. David Evensky",
+    "phone": "305-448-8882",
+    "website": "evenskykatz.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Invenio Wealth Partners",
+    "category": "Wealth Management",
+    "contact": "Mr. Joseph Fernandez",
+    "phone": "305-570-2059",
+    "website": "inveniowealth.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Morgan Stanley Wealth Management",
+    "category": "Wealth Management",
+    "contact": "Mr. Carlos Shteremberg",
+    "phone": "786-848-3054",
+    "website": "morganstanley.com",
+    "chamber_member": true
+  },
+  {
+    "name": "VIM Wealth Management",
+    "category": "Wealth Management",
+    "contact": "Mr. Vonnell Martinez",
+    "phone": "305-905-8950",
+    "website": "vimwealthmanagement.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Hydrology Wellness",
+    "category": "Wellness Spa",
+    "contact": "Dr. Alexander Zuriarrain",
+    "phone": "305-798-2453",
+    "website": "hydrologywellness.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Pause Studio Coral Gables",
+    "category": "Wellness Spa",
+    "contact": "Mr. Jonathan Culp",
+    "phone": "513-509-8478",
+    "website": "pausestudio.com/coralgables",
+    "chamber_member": true
+  },
+  {
+    "name": "Vanity Point & Wellness, LLC",
+    "category": "Wellness Spa",
+    "contact": "Ms. Melissa Hernandez Rospigliosi APRN",
+    "phone": "305-799-4576",
+    "website": "vanitypointwellness.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Wine 41",
+    "category": "Wine Concierge Service",
+    "contact": "Mr. Luis Montoto",
+    "phone": "786-429-3957",
+    "website": "wine41.com",
+    "chamber_member": true
+  },
+  {
+    "name": "Yoga Joint",
+    "category": "Yoga Studio",
+    "contact": "Mr. Renaldo Roberson",
+    "phone": "718-913-4990",
+    "website": "yogajoint.com/coral-gables",
+    "chamber_member": true
+  },
+  {
+    "name": "Zoo Miami Foundation",
+    "category": "Zoo Attraction",
+    "contact": "Ms. Natalie Canelas",
+    "phone": "305-255-5551",
+    "website": "zoomiami.org",
+    "chamber_member": true
+  }
+]
