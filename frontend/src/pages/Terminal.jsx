@@ -19,9 +19,14 @@ function formatPhone(phones) {
 }
 
 function getScoreClass(score) {
-  if (score >= 90) return 'score-high'
-  if (score >= 70) return 'score-med'
+  const s = Math.min(score, 100)
+  if (s >= 90) return 'score-high'
+  if (s >= 70) return 'score-med'
   return 'score-low'
+}
+
+function capScore(score) {
+  return Math.min(score || 0, 100)
 }
 
 function getTierClass(tier) {
@@ -117,7 +122,7 @@ function EntityRow({ business, isActive, onClick }) {
           </div>
         </div>
         <div className={`alpha-badge ${scoreClass} ml-2 flex-shrink-0`}>
-          {score.toFixed(0)}
+          {capScore(score).toFixed(0)}
         </div>
       </div>
     </div>
@@ -360,7 +365,7 @@ function BusinessDossier({ business }) {
         <div className="flex gap-4 mb-6">
           <div className="hero-stat">
             <div className="text-xs font-mono text-muted uppercase tracking-wide mb-1">Market Score</div>
-            <div className="text-2xl font-mono font-bold">{(business.engagement_score || 0).toFixed(0)}/100</div>
+            <div className="text-2xl font-mono font-bold">{capScore(business.engagement_score).toFixed(0)}/100</div>
           </div>
           <div className="hero-stat">
             <div className="text-xs font-mono text-muted uppercase tracking-wide mb-1">Priority Tier</div>
@@ -559,9 +564,11 @@ export default function Terminal() {
 
     // Apply filter
     if (filter === 'opportunities') {
-      result = result.filter(b => (b.opportunity_count || 0) > 0 || (b.engagement_score || 0) >= 85)
+      // High opportunity: has identified opportunities OR high score with solutions
+      result = result.filter(b => (b.opportunity_count || 0) > 0 && (b.solution_count || 0) > 0)
     } else if (filter === 'risk') {
-      result = result.filter(b => (b.engagement_score || 0) < 75 || (b.pain_point_count || 0) >= 3)
+      // At risk: low score OR many pain points
+      result = result.filter(b => (b.engagement_score || 0) < 80 || (b.pain_point_count || 0) >= 2)
     }
 
     // Sort by score
