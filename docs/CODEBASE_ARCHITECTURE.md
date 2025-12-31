@@ -1,6 +1,6 @@
 # Coral Gables BI Platform - Codebase Architecture
 
-**Version:** 1.0
+**Version:** 2.0
 **Last Updated:** December 2025
 
 ---
@@ -69,10 +69,10 @@ The Coral Gables Business Intelligence Platform is an OSINT-powered system that:
 │  │ Yelp API    │───▶│ Agent       │───▶│  PostgreSQL Database    │ │
 │  │ Chamber Dir │───▶│ YelpAgent   │    │  ┌─────────────────┐    │ │
 │  │ Websites    │───▶│ ChamberAgent│    │  │ businesses      │    │ │
-│  │ Social Media│───▶│ WebsiteAnal │    │  │ pain_points     │    │ │
-│  └─────────────┘    │ FinancialEst│    │  │ opportunities   │    │ │
-│                     │ PainPointExt│    │  │ co_fit_solutions│    │ │
-│                     │ CoFitAnalyz │    │  └─────────────────┘    │ │
+│  │ Social Media│───▶│ WebsiteAgent│    │  │ pain_points     │    │ │
+│  └─────────────┘    │ FinancialAgt│    │  │ opportunities   │    │ │
+│                     │ PainPointAgt│    │  │ co_fit_solutions│    │ │
+│                     │ CoFitAgent  │    │  └─────────────────┘    │ │
 │                     └─────────────┘    │                         │ │
 │                            │           │  JSON Fallback          │ │
 │                            ▼           │  coral_gables_bi_v2.json│ │
@@ -90,13 +90,14 @@ The Coral Gables Business Intelligence Platform is an OSINT-powered system that:
 │                                                    │               │
 │                                                    ▼               │
 │                                        ┌─────────────────────────┐ │
-│                                        │    REACT DASHBOARD      │ │
+│                                        │   CO_TERMINAL V5.0      │ │
+│                                        │   (Single Page App)     │ │
 │                                        ├─────────────────────────┤ │
-│                                        │ Dashboard.jsx           │ │
-│                                        │ Businesses.jsx          │ │
-│                                        │ BusinessDetail.jsx      │ │
-│                                        │ Analytics.jsx           │ │
-│                                        │ Terminal.jsx            │ │
+│                                        │ Terminal.jsx (only page)│ │
+│                                        │ ├─ Smart Segments       │ │
+│                                        │ ├─ Quadrant Chart       │ │
+│                                        │ ├─ Entity Table         │ │
+│                                        │ └─ Business Dossier     │ │
 │                                        └─────────────────────────┘ │
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
@@ -209,17 +210,17 @@ class BusinessRepository:
 ```
 frontend/
 ├── src/
-│   ├── App.jsx                 # Root component
+│   ├── App.jsx                 # Root component (renders Terminal only)
 │   ├── main.jsx               # Application entry point
-│   ├── index.css              # Global styles (Tailwind)
+│   ├── index.css              # Global styles (dark terminal theme)
 │   ├── components/
-│   │   └── Layout.jsx         # Page layout wrapper
+│   │   └── Layout.jsx         # (Unused - legacy)
 │   └── pages/
-│       ├── Dashboard.jsx      # Main dashboard view
-│       ├── Businesses.jsx     # Business list/search
-│       ├── BusinessDetail.jsx # Single business view
-│       ├── Analytics.jsx      # Market analytics
-│       └── Terminal.jsx       # Advanced terminal UI
+│       ├── Terminal.jsx       # ★ MAIN APP - Single-page terminal UI
+│       ├── Dashboard.jsx      # (Unused - legacy)
+│       ├── Businesses.jsx     # (Unused - legacy)
+│       ├── BusinessDetail.jsx # (Unused - legacy)
+│       └── Analytics.jsx      # (Unused - legacy)
 ├── index.html                 # HTML entry point
 ├── package.json               # NPM dependencies
 ├── vite.config.js            # Vite configuration
@@ -228,26 +229,88 @@ frontend/
 └── netlify.toml              # Netlify deployment config
 ```
 
-### 4.2 Page Components
+> **Note:** The app is a single-page terminal interface. Dashboard, Businesses, BusinessDetail, Analytics, and Layout are legacy files not currently in use.
 
-| Component | Route | Purpose |
-|-----------|-------|---------|
-| `Dashboard.jsx` | `/` | Overview, key metrics, top businesses |
-| `Businesses.jsx` | `/businesses` | Searchable business list |
-| `BusinessDetail.jsx` | `/business/:id` | Full business profile |
-| `Analytics.jsx` | `/analytics` | Market analytics, charts |
-| `Terminal.jsx` | `/terminal` | Advanced query interface |
+### 4.2 Terminal UI Architecture
 
-### 4.3 API Integration
+The application is a single-page "hunter terminal" interface (`Terminal.jsx`) with:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│ HEADER: CO_TERMINAL // V5.0 HUNTER            CORAL GABLES • N TARGETS │
+├─────────────────────────────────────────────────────────────────────┤
+│ LEFT SIDEBAR  │  MAIN CONTENT                      │  RIGHT PANEL   │
+│               │                                    │                │
+│ SMART SEGMENTS│  ┌────────────────────────────┐   │  BUSINESS      │
+│ • All Targets │  │    QUADRANT CHART          │   │  DOSSIER       │
+│ • 💎 Hidden   │  │  (Digital vs Dominance)    │   │                │
+│   Gems        │  │     👑 Titans  💎 Gems     │   │  Tabs:         │
+│ • 👑 Local    │  │     🔄 Turn    ⚠️ Rebuild  │   │  • Overview    │
+│   Titans      │  └────────────────────────────┘   │  • Intel       │
+│ • 🔄 Turnaround│                                   │  • Action      │
+│ • ⚠️ Rebuild  │  ┌────────────────────────────┐   │                │
+│               │  │     ENTITY TABLE           │   │  Contact,      │
+│ SECTOR        │  │  Name | Sector | Alpha | Fit│   │  Pain Points,  │
+│ • Dining      │  │  -------------------------  │   │  Opportunities,│
+│ • Retail      │  │  (Sortable, searchable)    │   │  Solutions,    │
+│ • Professional│  └────────────────────────────┘   │  Script Gen    │
+│ • Healthcare  │                                    │                │
+│ • ...         │                                    │                │
+│               │                                    │                │
+│ DISTRICT      │                                    │                │
+│ • Downtown    │                                    │                │
+│ • Miracle Mile│                                    │                │
+│ • ...         │                                    │                │
+└───────────────┴────────────────────────────────────┴────────────────┘
+```
+
+### 4.3 Smart Segments (Quadrant-Based)
+
+Businesses are segmented by two axes:
+- **Dominance** (Y-axis): Engagement score (threshold: 80)
+- **Digital Maturity** (X-axis): Digital presence score (threshold: 50)
+
+| Segment | Criteria | Icon |
+|---------|----------|------|
+| Hidden Gems | High Dominance, Low Digital | 💎 |
+| Local Titans | High Dominance, High Digital | 👑 |
+| Turnaround | Low Dominance, High Digital | 🔄 |
+| Rebuild | Low Dominance, Low Digital | ⚠️ |
+
+### 4.4 Key Metrics Calculated Client-Side
 
 ```javascript
-// Base API URL (configured per environment)
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+// Opportunity Alpha - Growth potential score (0-100)
+function calculateOpportunityAlpha(business) {
+  const growthPotential = (100 - score) / 100
+  const painFactor = Math.min(painCount * 10, 40)
+  const oppFactor = Math.min(oppCount * 8, 30)
+  const dataFactor = completeness * 20
+  return Math.round(growthPotential * 30 + painFactor + oppFactor + dataFactor)
+}
 
-// Example API calls
-const businesses = await fetch(`${API_URL}/api/v2/businesses`);
-const analytics = await fetch(`${API_URL}/api/v2/analytics/market`);
-const search = await fetch(`${API_URL}/api/v2/search/businesses?q=${query}`);
+// Digital Maturity - Calculated from digital presence (0-100)
+function calculateDigitalMaturity(business) {
+  // Uses: website (+25), instagram (+20), facebook (+15),
+  //       email (+15), google rating (+15), yelp rating (+10)
+}
+
+// Co-Fit Level - Based on alpha score
+function getFitLevel(business) {
+  if (alpha >= 60) return 'HIGH'
+  if (alpha >= 40) return 'MED'
+  return 'LOW'
+}
+```
+
+### 4.5 API Integration
+
+```javascript
+// Fetch all businesses (up to 1000)
+const res = await fetch('/api/v2/businesses?limit=1000')
+
+// Fetch full business details when selected
+const res = await fetch(`/api/v2/businesses/${business.business_id}`)
 ```
 
 ---
@@ -664,7 +727,9 @@ uvicorn bi_api:app --reload --port 8000
 | Configuration | `systems/agents/config.py` |
 | Main Database | `systems/data/coral_gables_bi_database_v2.json` |
 | Frontend Entry | `frontend/src/main.jsx` |
+| Terminal UI | `frontend/src/pages/Terminal.jsx` |
 
 ---
 
-*Document Version: 1.0 | Last Updated: December 2025*
+*Document Version: 2.0 | Last Updated: December 2025*
+*Changes: Updated frontend architecture to reflect single-page Terminal UI (v5.0)*
