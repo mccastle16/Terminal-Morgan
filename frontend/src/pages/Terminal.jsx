@@ -16,20 +16,14 @@ function capScore(score) {
 }
 
 function calculateOpportunityAlpha(business) {
-  // Higher alpha = more opportunity
-  // Based on: pain points, low digital presence, high market potential
   const painCount = business.pain_point_count || 0
   const oppCount = business.opportunity_count || 0
   const completeness = business.data_completeness || 0.5
   const score = capScore(business.engagement_score)
 
-  // Inverse relationship with current score (lower score = more room to grow)
   const growthPotential = (100 - score) / 100
-  // More pain points = more opportunity
   const painFactor = Math.min(painCount * 10, 40)
-  // More identified opportunities = higher alpha
   const oppFactor = Math.min(oppCount * 8, 30)
-  // Data completeness factor
   const dataFactor = completeness * 20
 
   return Math.round(growthPotential * 30 + painFactor + oppFactor + dataFactor)
@@ -53,11 +47,9 @@ function generateThesis(business) {
   if (specialties) {
     return `${category.charAt(0).toUpperCase() + category.slice(1)} specializing in ${specialties}`
   }
-
   if (business.subcategory) {
     return `${business.subcategory.replace(/_/g, ' ')} ${category} in Coral Gables`
   }
-
   return `Local ${category} serving the Coral Gables community`
 }
 
@@ -87,47 +79,22 @@ function getFitLevel(business) {
 }
 
 // ============================================================================
-// SMART SEGMENTS - Predefined filter combinations
+// SMART SEGMENTS
 // ============================================================================
 
 const SMART_SEGMENTS = [
+  { id: 'all', name: 'All Targets', icon: null, filter: () => true },
   {
-    id: 'all',
-    name: 'All Targets',
-    icon: null,
-    filter: () => true
+    id: 'hidden_gems', name: 'Hidden Gems', subtitle: 'High Value, No Tech', icon: '💎',
+    filter: (b) => capScore(b.engagement_score) >= 80 && calculateDigitalMaturity(b) < 50
   },
   {
-    id: 'hidden_gems',
-    name: 'Hidden Gems',
-    subtitle: 'High Value, No Tech',
-    icon: '💎',
-    filter: (b) => {
-      const digital = calculateDigitalMaturity(b)
-      const score = capScore(b.engagement_score)
-      return score >= 80 && digital < 50
-    }
+    id: 'turnaround', name: 'Turnaround', subtitle: 'High Pain, Low Rev', icon: '🔄',
+    filter: (b) => (b.pain_point_count || 0) >= 2 && capScore(b.engagement_score) < 75
   },
   {
-    id: 'turnaround',
-    name: 'Turnaround',
-    subtitle: 'High Pain, Low Rev',
-    icon: '🔄',
-    filter: (b) => {
-      const painCount = b.pain_point_count || 0
-      return painCount >= 2 && capScore(b.engagement_score) < 75
-    }
-  },
-  {
-    id: 'local_titans',
-    name: 'Local Titans',
-    subtitle: 'High All',
-    icon: '👑',
-    filter: (b) => {
-      const score = capScore(b.engagement_score)
-      const digital = calculateDigitalMaturity(b)
-      return score >= 90 && digital >= 60
-    }
+    id: 'local_titans', name: 'Local Titans', subtitle: 'High All', icon: '👑',
+    filter: (b) => capScore(b.engagement_score) >= 90 && calculateDigitalMaturity(b) >= 60
   }
 ]
 
@@ -145,7 +112,7 @@ const SECTORS = [
 ]
 
 // ============================================================================
-// SUB-COMPONENTS
+// HEADER
 // ============================================================================
 
 function Header({ businessCount, targetCount }) {
@@ -154,153 +121,149 @@ function Header({ businessCount, targetCount }) {
       <div className="flex items-center gap-3">
         <div className="live-dot" />
         <span className="font-mono font-bold">CO_TERMINAL</span>
-        <span className="text-muted text-xs font-mono">// V5.0 HUNTER</span>
+        <span className="text-muted text-xs font-mono hidden sm:inline">// V5.0 HUNTER</span>
       </div>
       <div className="text-xs font-mono text-muted uppercase tracking-wide">
-        CORAL GABLES • {targetCount} TARGETS
+        <span className="hidden sm:inline">CORAL GABLES • </span>{targetCount} TARGETS
       </div>
     </header>
   )
 }
 
-function SmartSegmentButton({ segment, isActive, onClick }) {
+// ============================================================================
+// LEFT SIDEBAR
+// ============================================================================
+
+function LeftSidebar({ segment, onSegmentChange, sector, onSectorChange, isMobileOpen, onClose }) {
   return (
-    <button
-      onClick={onClick}
-      className={`w-full text-left px-3 py-2 rounded text-sm transition-colors
-        ${isActive
-          ? 'bg-[#1a1a1a] text-white border border-[#333]'
-          : 'text-muted hover:text-white hover:bg-[#111]'}`}
-    >
-      <div className="flex items-center gap-2">
-        {segment.icon && <span>{segment.icon}</span>}
-        <span>{segment.name}</span>
-      </div>
-      {segment.subtitle && (
-        <div className="text-xs text-muted mt-0.5 ml-6">{segment.subtitle}</div>
+    <>
+      {/* Mobile overlay */}
+      {isMobileOpen && (
+        <div className="fixed inset-0 bg-black/50 z-40 lg:hidden" onClick={onClose} />
       )}
-    </button>
+
+      <aside className={`
+        fixed lg:relative inset-y-0 left-0 z-50 lg:z-auto
+        w-56 bg-[#0a0a0a] border-r border-[#222] flex flex-col flex-shrink-0 p-3
+        transform transition-transform lg:transform-none
+        ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+      `}>
+        <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Smart Segments</div>
+        <div className="space-y-1 mb-6">
+          {SMART_SEGMENTS.map((seg) => (
+            <button
+              key={seg.id}
+              onClick={() => { onSegmentChange(seg.id); onClose(); }}
+              className={`w-full text-left px-3 py-2 rounded text-sm transition-colors
+                ${segment === seg.id ? 'bg-[#1a1a1a] text-white border border-[#333]' : 'text-muted hover:text-white hover:bg-[#111]'}`}
+            >
+              <div className="flex items-center gap-2">
+                {seg.icon && <span>{seg.icon}</span>}
+                <span>{seg.name}</span>
+              </div>
+              {seg.subtitle && <div className="text-xs text-muted mt-0.5 ml-6">{seg.subtitle}</div>}
+            </button>
+          ))}
+        </div>
+
+        <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Sector</div>
+        <div className="space-y-0.5 overflow-y-auto flex-1">
+          {SECTORS.map((sec) => (
+            <button
+              key={sec.id}
+              onClick={() => { onSectorChange(sec.id); onClose(); }}
+              className={`w-full text-left px-3 py-1.5 text-sm transition-colors rounded
+                ${sector === sec.id ? 'bg-cyan text-black font-semibold' : 'text-muted hover:text-white'}`}
+            >
+              {sec.name}
+            </button>
+          ))}
+        </div>
+      </aside>
+    </>
   )
 }
 
-function SectorButton({ sector, isActive, onClick }) {
-  return (
-    <button
-      onClick={onClick}
-      className={`w-full text-left px-3 py-1.5 text-sm transition-colors rounded
-        ${isActive
-          ? 'bg-cyan text-black font-semibold'
-          : 'text-muted hover:text-white'}`}
-    >
-      {sector.name}
-    </button>
-  )
-}
+// ============================================================================
+// QUADRANT CHART - Plots ALL businesses
+// ============================================================================
 
-function LeftSidebar({ segment, onSegmentChange, sector, onSectorChange }) {
+function QuadrantChart({ businesses, onSelect, activeId }) {
+  // Plot businesses based on actual Dominance (engagement) and Digital maturity
+  const plotData = useMemo(() => {
+    return businesses.slice(0, 200).map(b => ({
+      business: b,
+      x: calculateDigitalMaturity(b), // 0-100, left to right
+      y: capScore(b.engagement_score), // 0-100, bottom to top
+    }))
+  }, [businesses])
+
   return (
-    <aside className="w-48 bg-[#0a0a0a] border-r border-[#222] flex flex-col flex-shrink-0 p-3">
-      <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">
-        Smart Segments
+    <div className="h-48 border-b border-[#222] relative bg-[#0a0a0a] hidden md:block">
+      {/* Quadrant labels */}
+      <div className="absolute top-1 left-2 text-[10px] font-mono text-muted">HIGH DOM / LOW DIG</div>
+      <div className="absolute top-1 right-2 text-[10px] font-mono text-muted text-right">HIGH DOM / HIGH DIG</div>
+      <div className="absolute bottom-1 left-2 text-[10px] font-mono text-dim">LOW DOM / LOW DIG</div>
+      <div className="absolute bottom-1 right-2 text-[10px] font-mono text-dim text-right">LOW DOM / HIGH DIG</div>
+
+      {/* Grid lines */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-full h-px bg-[#222]" />
       </div>
-      <div className="space-y-1 mb-6">
-        {SMART_SEGMENTS.map((seg) => (
-          <SmartSegmentButton
-            key={seg.id}
-            segment={seg}
-            isActive={segment === seg.id}
-            onClick={() => onSegmentChange(seg.id)}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="h-full w-px bg-[#222]" />
+      </div>
+
+      {/* Plot points */}
+      {plotData.map(({ business, x, y }) => {
+        const isActive = activeId === business.business_id
+        const isHighValue = y >= 50 && x < 50 // High dominance, low digital = hidden gem
+
+        return (
+          <div
+            key={business.business_id}
+            className={`absolute rounded-full cursor-pointer transition-all
+              ${isActive ? 'w-3 h-3 ring-2 ring-white z-10' : 'w-1.5 h-1.5 hover:w-3 hover:h-3 hover:z-10'}
+              ${isHighValue ? 'bg-cyan' : 'bg-green'}`}
+            style={{
+              left: `${Math.max(5, Math.min(95, x))}%`,
+              bottom: `${Math.max(5, Math.min(95, y))}%`,
+              transform: 'translate(-50%, 50%)'
+            }}
+            onClick={() => onSelect(business)}
+            title={`${business.name} (Score: ${y}, Digital: ${x})`}
           />
-        ))}
-      </div>
-
-      <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">
-        Sector
-      </div>
-      <div className="space-y-0.5">
-        {SECTORS.map((sec) => (
-          <SectorButton
-            key={sec.id}
-            sector={sec}
-            isActive={sector === sec.id}
-            onClick={() => onSectorChange(sec.id)}
-          />
-        ))}
-      </div>
-    </aside>
+        )
+      })}
+    </div>
   )
 }
 
-function EntityTable({ businesses, activeId, onSelect }) {
+// ============================================================================
+// ENTITY TABLE
+// ============================================================================
+
+function EntityTable({ businesses, activeId, onSelect, onMenuClick }) {
   return (
-    <div className="flex-1 flex flex-col bg-[#050505] border-r border-[#222]">
-      {/* Quadrant Header Labels */}
-      <div className="flex border-b border-[#222]">
-        <div className="flex-1 p-2 text-xs font-mono text-muted border-r border-[#222]">
-          <div>HIGH DOMINANCE</div>
-          <div>LOW DIGITAL</div>
-        </div>
-        <div className="flex-1 p-2 text-xs font-mono text-muted text-right">
-          <div>HIGH DOMINANCE</div>
-          <div>HIGH DIGITAL</div>
-        </div>
+    <div className="flex-1 flex flex-col bg-[#050505] min-w-0">
+      {/* Mobile menu button */}
+      <div className="lg:hidden p-2 border-b border-[#222]">
+        <button onClick={onMenuClick} className="text-xs font-mono text-muted px-3 py-1 border border-[#333] rounded">
+          ☰ Filters
+        </button>
       </div>
 
-      {/* Simple Quadrant Visualization */}
-      <div className="h-32 border-b border-[#222] relative bg-[#0a0a0a] flex">
-        <div className="flex-1 border-r border-[#222] relative">
-          {businesses.slice(0, 3).map((b, i) => {
-            const x = 20 + (i * 25)
-            const y = 30 + (i * 20)
-            return (
-              <div
-                key={b.business_id}
-                className="absolute w-2 h-2 rounded-full bg-cyan cursor-pointer hover:scale-150 transition-transform"
-                style={{ left: `${x}%`, top: `${y}%` }}
-                onClick={() => onSelect(b)}
-                title={b.name}
-              />
-            )
-          })}
-        </div>
-        <div className="flex-1 relative">
-          {businesses.slice(3, 6).map((b, i) => {
-            const x = 20 + (i * 25)
-            const y = 20 + (i * 15)
-            return (
-              <div
-                key={b.business_id}
-                className="absolute w-2 h-2 rounded-full bg-green cursor-pointer hover:scale-150 transition-transform"
-                style={{ left: `${x}%`, top: `${y}%` }}
-                onClick={() => onSelect(b)}
-                title={b.name}
-              />
-            )
-          })}
-        </div>
-      </div>
-
-      {/* Low Dominance Labels */}
-      <div className="flex border-b border-[#222]">
-        <div className="flex-1 p-2 text-xs font-mono text-dim border-r border-[#222]">
-          <div>LOW DOMINANCE</div>
-          <div>LOW DIGITAL</div>
-        </div>
-        <div className="flex-1 p-2 text-xs font-mono text-dim text-right">
-          <div>LOW DOMINANCE</div>
-          <div>HIGH DIGITAL</div>
-        </div>
-      </div>
+      <QuadrantChart businesses={businesses} onSelect={onSelect} activeId={activeId} />
 
       {/* Entity Table */}
       <div className="flex-1 overflow-y-auto">
         <table className="w-full">
           <thead className="sticky top-0 bg-[#0a0a0a] border-b border-[#222]">
             <tr className="text-xs font-mono text-muted uppercase">
-              <th className="text-left p-3">Entity Name</th>
-              <th className="text-left p-3">Sector</th>
-              <th className="text-center p-3">Opp Score</th>
-              <th className="text-center p-3">Fit</th>
+              <th className="text-left p-2 sm:p-3">Entity Name</th>
+              <th className="text-left p-2 sm:p-3 hidden sm:table-cell">Sector</th>
+              <th className="text-center p-2 sm:p-3">Alpha</th>
+              <th className="text-center p-2 sm:p-3">Fit</th>
             </tr>
           </thead>
           <tbody>
@@ -316,15 +279,15 @@ function EntityTable({ businesses, activeId, onSelect }) {
                   className={`border-b border-[#1a1a1a] cursor-pointer transition-colors
                     ${isActive ? 'bg-[#141414]' : 'hover:bg-[#111]'}`}
                 >
-                  <td className="p-3 text-sm">{b.name}</td>
-                  <td className="p-3 text-sm text-muted">{b.category?.replace(/_/g, ' ')}</td>
-                  <td className="p-3 text-center">
-                    <span className={`font-mono font-bold px-2 py-0.5 rounded text-sm
+                  <td className="p-2 sm:p-3 text-sm truncate max-w-[150px] sm:max-w-none">{b.name}</td>
+                  <td className="p-2 sm:p-3 text-sm text-muted hidden sm:table-cell">{b.category?.replace(/_/g, ' ')}</td>
+                  <td className="p-2 sm:p-3 text-center">
+                    <span className={`font-mono font-bold px-2 py-0.5 rounded text-xs sm:text-sm
                       ${alpha >= 60 ? 'bg-cyan/20 text-cyan' : alpha >= 40 ? 'bg-gold/20 text-gold' : 'bg-[#222] text-muted'}`}>
                       {alpha}
                     </span>
                   </td>
-                  <td className={`p-3 text-center text-xs font-mono ${fit.color}`}>
+                  <td className={`p-2 sm:p-3 text-center text-xs font-mono ${fit.color}`}>
                     {fit.label}
                   </td>
                 </tr>
@@ -332,28 +295,26 @@ function EntityTable({ businesses, activeId, onSelect }) {
             })}
           </tbody>
         </table>
+        <div className="p-3 text-xs text-muted font-mono border-t border-[#222]">
+          Showing {businesses.length} businesses
+        </div>
       </div>
     </div>
   )
 }
 
-function FrictionTag({ text }) {
-  return (
-    <span className="inline-block px-2 py-1 text-xs bg-[#1a1a1a] text-muted rounded mr-2 mb-2">
-      {text}
-    </span>
-  )
-}
+// ============================================================================
+// BUSINESS DOSSIER - Enhanced with more fields
+// ============================================================================
 
-function BusinessDossier({ business }) {
+function BusinessDossier({ business, onClose }) {
   const [copied, setCopied] = useState(false)
+  const [activeTab, setActiveTab] = useState('overview')
 
   if (!business) {
     return (
-      <div className="w-80 bg-[#0a0a0a] flex items-center justify-center text-muted flex-shrink-0">
-        <div className="text-center">
-          <div className="text-xs font-mono uppercase tracking-wide">Select a target</div>
-        </div>
+      <div className="w-80 bg-[#0a0a0a] items-center justify-center text-muted flex-shrink-0 hidden lg:flex">
+        <div className="text-xs font-mono uppercase tracking-wide">Select a target</div>
       </div>
     )
   }
@@ -364,7 +325,9 @@ function BusinessDossier({ business }) {
   const thesis = generateThesis(business)
   const script = generateOutreachScript(business)
   const painPoints = business.pain_points || []
-  const frictionTags = painPoints.slice(0, 3).map(p => p.category || 'operational')
+  const opportunities = business.opportunities || []
+  const solutions = business.co_fit_solutions || []
+  const techGaps = business.technology_gaps || []
 
   const handleCopyScript = () => {
     navigator.clipboard.writeText(script)
@@ -373,99 +336,322 @@ function BusinessDossier({ business }) {
   }
 
   return (
-    <aside className="w-80 bg-[#0a0a0a] border-l border-[#222] flex flex-col flex-shrink-0 overflow-y-auto">
-      <div className="p-4">
-        {/* Header */}
+    <aside className={`
+      fixed lg:relative inset-0 lg:inset-auto z-50 lg:z-auto
+      w-full lg:w-96 bg-[#0a0a0a] border-l border-[#222] flex flex-col flex-shrink-0 overflow-hidden
+      ${business ? 'block' : 'hidden lg:block'}
+    `}>
+      {/* Mobile close button */}
+      <div className="lg:hidden p-3 border-b border-[#222] flex justify-between items-center">
+        <span className="font-mono text-sm">Business Details</span>
+        <button onClick={onClose} className="text-muted hover:text-white">✕</button>
+      </div>
+
+      {/* Tabs */}
+      <div className="flex border-b border-[#222]">
+        {['overview', 'intel', 'action'].map(tab => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`flex-1 py-2 text-xs font-mono uppercase tracking-wide transition-colors
+              ${activeTab === tab ? 'text-cyan border-b-2 border-cyan' : 'text-muted hover:text-white'}`}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+
+      <div className="flex-1 overflow-y-auto p-4">
+        {/* Header - Always visible */}
         <h2 className="text-xl font-bold mb-1">{business.name}</h2>
         <div className="text-xs text-muted mb-3">
+          {business.address?.street && `${business.address.street}, `}
           {business.address?.city || 'Coral Gables'}, {business.address?.state || 'FL'}
         </div>
 
         {/* Tags */}
-        <div className="flex gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4">
           <span className="px-2 py-0.5 text-xs font-mono bg-cyan text-black rounded">
             {business.category?.toUpperCase().replace(/_/g, ' ')}
           </span>
-          {business.owner && (
-            <span className="px-2 py-0.5 text-xs font-mono bg-accent text-white rounded">
-              OWNER OPERATOR
+          {business.subcategory && (
+            <span className="px-2 py-0.5 text-xs font-mono bg-[#222] text-muted rounded">
+              {business.subcategory.replace(/_/g, ' ')}
+            </span>
+          )}
+          {business.chamber_membership?.is_member && (
+            <span className="px-2 py-0.5 text-xs font-mono bg-green/20 text-green rounded">
+              CHAMBER
             </span>
           )}
         </div>
 
-        {/* Thesis */}
-        <div className="mb-4">
-          <div className="text-xs font-mono text-muted uppercase tracking-wide mb-1">Thesis</div>
-          <div className="text-sm">{thesis}</div>
-        </div>
+        {activeTab === 'overview' && (
+          <>
+            {/* Thesis */}
+            <div className="mb-4">
+              <div className="text-xs font-mono text-muted uppercase tracking-wide mb-1">Thesis</div>
+              <div className="text-sm">{thesis}</div>
+            </div>
 
-        {/* Detected Friction */}
-        <div className="mb-4">
-          <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">
-            Detected Friction (Pain)
-          </div>
-          <div>
-            {frictionTags.map((tag, i) => (
-              <FrictionTag key={i} text={tag} />
-            ))}
-            {painPoints.length > 3 && (
-              <span className="text-xs text-muted">+{painPoints.length - 3} more</span>
+            {/* Key Metrics */}
+            <div className="grid grid-cols-3 gap-2 mb-4">
+              <div className="bg-[#111] p-3 rounded text-center">
+                <div className="text-xl font-mono font-bold text-cyan">{alpha}</div>
+                <div className="text-[10px] text-muted uppercase">Alpha</div>
+              </div>
+              <div className="bg-[#111] p-3 rounded text-center">
+                <div className="text-xl font-mono font-bold text-green">{digitalMaturity}</div>
+                <div className="text-[10px] text-muted uppercase">Digital</div>
+              </div>
+              <div className="bg-[#111] p-3 rounded text-center">
+                <div className="text-xl font-mono font-bold text-gold">{marketPower}</div>
+                <div className="text-[10px] text-muted uppercase">Power</div>
+              </div>
+            </div>
+
+            {/* Business Info */}
+            <div className="space-y-2 mb-4">
+              <div className="text-xs font-mono text-muted uppercase tracking-wide">Business Info</div>
+              {business.owner && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted">Owner</span>
+                  <span>{business.owner}</span>
+                </div>
+              )}
+              {business.founded && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted">Founded</span>
+                  <span>{business.founded}</span>
+                </div>
+              )}
+              {business.years_in_business && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted">Years Active</span>
+                  <span>{business.years_in_business} years</span>
+                </div>
+              )}
+              {business.district && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted">District</span>
+                  <span className="text-cyan">{business.district.replace(/_/g, ' ')}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Ratings */}
+            {business.ratings && (
+              <div className="mb-4">
+                <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Ratings</div>
+                <div className="flex gap-4">
+                  {business.ratings.google && (
+                    <div>
+                      <span className="text-lg font-mono font-bold text-gold">{business.ratings.google}</span>
+                      <span className="text-xs text-muted ml-1">Google</span>
+                    </div>
+                  )}
+                  {business.ratings.yelp && (
+                    <div>
+                      <span className="text-lg font-mono font-bold text-accent">{business.ratings.yelp}</span>
+                      <span className="text-xs text-muted ml-1">Yelp</span>
+                    </div>
+                  )}
+                  {business.reviews?.total && (
+                    <div>
+                      <span className="text-lg font-mono font-bold">{business.reviews.total}</span>
+                      <span className="text-xs text-muted ml-1">Reviews</span>
+                    </div>
+                  )}
+                </div>
+              </div>
             )}
-          </div>
-        </div>
 
-        {/* Opportunity Alpha */}
-        <div className="mb-4">
-          <div className="text-xs font-mono text-green uppercase tracking-wide mb-2">
-            Opportunity Alpha: {alpha}
-          </div>
-          <div className="grid grid-cols-2 gap-2 text-xs text-muted">
-            <div>Digital Maturity: {digitalMaturity}/100</div>
-            <div>Market Power: {marketPower}/100</div>
-          </div>
-        </div>
+            {/* Contact */}
+            <div className="mb-4">
+              <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Contact</div>
+              <div className="space-y-1 text-sm">
+                {business.website && <div className="text-cyan truncate">{business.website}</div>}
+                {business.phone?.length > 0 && <div className="text-muted">{business.phone[0]}</div>}
+                {business.email?.length > 0 && <div className="text-muted truncate">{business.email[0]}</div>}
+              </div>
+            </div>
 
-        {/* Execution Mode */}
-        <div className="border-t border-[#222] pt-4 mt-4">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-gold">⚡</span>
-            <span className="text-xs font-mono text-gold uppercase tracking-wide">Execution Mode</span>
-          </div>
-
-          <div className="bg-[#111] border border-[#222] rounded p-3 text-xs font-mono whitespace-pre-wrap text-muted mb-4">
-            {script}
-          </div>
-
-          <div className="flex gap-2">
-            <button
-              onClick={handleCopyScript}
-              className="flex-1 btn text-xs bg-accent hover:bg-accent/80 text-white border-none"
-            >
-              {copied ? 'Copied!' : 'Copy Script'}
-            </button>
-            <button className="flex-1 btn btn-outline text-xs">
-              Log to CRM
-            </button>
-          </div>
-        </div>
-
-        {/* Additional Details */}
-        {business.website && (
-          <div className="mt-4 pt-4 border-t border-[#222]">
-            <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Contact</div>
-            <div className="text-xs text-cyan">{business.website}</div>
-            {business.phone?.length > 0 && (
-              <div className="text-xs text-muted mt-1">{business.phone[0]}</div>
+            {/* Services */}
+            {business.services?.length > 0 && (
+              <div className="mb-4">
+                <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Services</div>
+                <div className="flex flex-wrap gap-1">
+                  {business.services.slice(0, 6).map((s, i) => (
+                    <span key={i} className="px-2 py-0.5 text-xs bg-[#1a1a1a] text-muted rounded">{s}</span>
+                  ))}
+                </div>
+              </div>
             )}
-          </div>
+          </>
         )}
+
+        {activeTab === 'intel' && (
+          <>
+            {/* Pain Points */}
+            <div className="mb-4">
+              <div className="text-xs font-mono text-accent uppercase tracking-wide mb-2">
+                Detected Friction ({painPoints.length})
+              </div>
+              {painPoints.length > 0 ? (
+                <div className="space-y-2">
+                  {painPoints.map((pp, i) => (
+                    <div key={i} className="bg-[#111] p-2 rounded border-l-2 border-accent">
+                      <div className="text-sm">{pp.pain_point || pp.point}</div>
+                      <div className="flex gap-2 mt-1">
+                        <span className="text-xs text-muted">{pp.category}</span>
+                        <span className="text-xs px-1 bg-[#222] text-accent rounded">{pp.severity}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-sm text-muted">No pain points detected</div>
+              )}
+            </div>
+
+            {/* Opportunities */}
+            <div className="mb-4">
+              <div className="text-xs font-mono text-green uppercase tracking-wide mb-2">
+                Opportunities ({opportunities.length})
+              </div>
+              {opportunities.length > 0 ? (
+                <div className="space-y-2">
+                  {opportunities.map((opp, i) => (
+                    <div key={i} className="bg-[#111] p-2 rounded border-l-2 border-green">
+                      <div className="text-sm">{opp.opportunity}</div>
+                      <div className="text-xs text-muted mt-1">{opp.potential_impact} impact</div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-sm text-muted">No opportunities identified</div>
+              )}
+            </div>
+
+            {/* Tech Gaps */}
+            {techGaps.length > 0 && (
+              <div className="mb-4">
+                <div className="text-xs font-mono text-orange uppercase tracking-wide mb-2">
+                  Technology Gaps
+                </div>
+                <div className="bg-[#111] p-2 rounded font-mono text-xs text-orange">
+                  {techGaps.map((gap, i) => (
+                    <div key={i}>&gt; {gap}</div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Solutions */}
+            {solutions.length > 0 && (
+              <div className="mb-4">
+                <div className="text-xs font-mono text-cyan uppercase tracking-wide mb-2">
+                  Recommended Solutions
+                </div>
+                <div className="space-y-2">
+                  {solutions.map((sol, i) => (
+                    <div key={i} className="bg-[#111] p-2 rounded">
+                      <div className="text-sm font-semibold">{sol.solution_name || sol.solution}</div>
+                      {sol.estimated_impact && (
+                        <div className="text-xs text-green mt-1">{sol.estimated_impact}</div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Estimated Financials */}
+            {business.estimated_revenue && (
+              <div className="mb-4">
+                <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Est. Financials</div>
+                <div className="space-y-1 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted">Revenue</span>
+                    <span className="text-gold">{formatCurrency(business.estimated_revenue.low)} - {formatCurrency(business.estimated_revenue.high)}</span>
+                  </div>
+                  {business.estimated_employees && (
+                    <div className="flex justify-between">
+                      <span className="text-muted">Employees</span>
+                      <span>{business.estimated_employees.low} - {business.estimated_employees.high}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </>
+        )}
+
+        {activeTab === 'action' && (
+          <>
+            {/* Execution Mode */}
+            <div className="mb-4">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-gold">⚡</span>
+                <span className="text-xs font-mono text-gold uppercase tracking-wide">Execution Mode</span>
+              </div>
+              <div className="bg-[#111] border border-[#222] rounded p-3 text-xs font-mono whitespace-pre-wrap text-muted mb-4">
+                {script}
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={handleCopyScript}
+                  className="flex-1 py-2 text-xs font-mono uppercase bg-accent hover:bg-accent/80 text-white rounded"
+                >
+                  {copied ? 'Copied!' : 'Copy Script'}
+                </button>
+                <button className="flex-1 py-2 text-xs font-mono uppercase border border-[#333] text-muted hover:text-white rounded">
+                  Log to CRM
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Actions */}
+            <div className="mb-4">
+              <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Quick Actions</div>
+              <div className="space-y-2">
+                {business.website && (
+                  <a href={`https://${business.website}`} target="_blank" rel="noopener noreferrer"
+                    className="block w-full py-2 text-xs font-mono text-center border border-[#333] text-cyan hover:bg-[#111] rounded">
+                    Visit Website →
+                  </a>
+                )}
+                {business.phone?.length > 0 && (
+                  <a href={`tel:${business.phone[0]}`}
+                    className="block w-full py-2 text-xs font-mono text-center border border-[#333] text-green hover:bg-[#111] rounded">
+                    Call Business →
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {/* Claim Business */}
+            <div className="border-t border-[#222] pt-4">
+              <div className="text-sm font-semibold mb-1">Own this business?</div>
+              <div className="text-xs text-muted mb-3">Claim it to update information</div>
+              <button className="w-full py-2 text-xs font-mono uppercase border border-cyan text-cyan hover:bg-cyan/10 rounded">
+                Claim Business
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Data source footer */}
+      <div className="p-3 border-t border-[#222] text-[10px] text-muted">
+        Sources: {(business.data_sources || []).slice(0, 3).join(' • ')} | Updated: {business.last_updated ? new Date(business.last_updated).toLocaleDateString() : 'N/A'}
       </div>
     </aside>
   )
 }
 
 // ============================================================================
-// MAIN TERMINAL COMPONENT
+// MAIN TERMINAL
 // ============================================================================
 
 export default function Terminal() {
@@ -474,8 +660,8 @@ export default function Terminal() {
   const [loading, setLoading] = useState(true)
   const [segment, setSegment] = useState('all')
   const [sector, setSector] = useState('all')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  // Fetch all businesses on mount
   useEffect(() => {
     async function fetchData() {
       try {
@@ -491,17 +677,14 @@ export default function Terminal() {
     fetchData()
   }, [])
 
-  // Filter businesses based on segment and sector
   const filteredBusinesses = useMemo(() => {
     let result = [...allBusinesses]
 
-    // Apply smart segment filter
     const segmentConfig = SMART_SEGMENTS.find(s => s.id === segment)
     if (segmentConfig?.filter) {
       result = result.filter(segmentConfig.filter)
     }
 
-    // Apply sector filter
     if (sector !== 'all') {
       result = result.filter(b =>
         b.category?.toLowerCase() === sector.toLowerCase() ||
@@ -509,20 +692,16 @@ export default function Terminal() {
       )
     }
 
-    // Sort by opportunity alpha
     result.sort((a, b) => calculateOpportunityAlpha(b) - calculateOpportunityAlpha(a))
-
-    return result.slice(0, 100) // Limit for performance
+    return result // No limit - show all
   }, [allBusinesses, segment, sector])
 
-  // Fetch full business details when selected
   const handleSelect = async (business) => {
     try {
       const res = await fetch(`/api/v2/businesses/${encodeURIComponent(business.business_id)}`)
       const fullData = await res.json()
       setSelectedBusiness(fullData)
     } catch (error) {
-      console.error('Failed to fetch business details:', error)
       setSelectedBusiness(business)
     }
   }
@@ -532,9 +711,7 @@ export default function Terminal() {
       <div className="h-screen flex items-center justify-center bg-[#050505]">
         <div className="text-center">
           <div className="live-dot mx-auto mb-4" style={{ width: 12, height: 12 }} />
-          <div className="font-mono text-muted uppercase tracking-wide text-sm">
-            Initializing Terminal...
-          </div>
+          <div className="font-mono text-muted uppercase tracking-wide text-sm">Initializing Terminal...</div>
         </div>
       </div>
     )
@@ -542,23 +719,26 @@ export default function Terminal() {
 
   return (
     <div className="h-screen flex flex-col bg-[#050505]">
-      <Header
-        businessCount={allBusinesses.length}
-        targetCount={filteredBusinesses.length}
-      />
+      <Header businessCount={allBusinesses.length} targetCount={filteredBusinesses.length} />
       <div className="flex flex-1 overflow-hidden">
         <LeftSidebar
           segment={segment}
           onSegmentChange={setSegment}
           sector={sector}
           onSectorChange={setSector}
+          isMobileOpen={mobileMenuOpen}
+          onClose={() => setMobileMenuOpen(false)}
         />
         <EntityTable
           businesses={filteredBusinesses}
           activeId={selectedBusiness?.business_id}
           onSelect={handleSelect}
+          onMenuClick={() => setMobileMenuOpen(true)}
         />
-        <BusinessDossier business={selectedBusiness} />
+        <BusinessDossier
+          business={selectedBusiness}
+          onClose={() => setSelectedBusiness(null)}
+        />
       </div>
     </div>
   )
