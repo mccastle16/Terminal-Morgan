@@ -1,6 +1,6 @@
 # Coral Gables BI Platform - Codebase Architecture
 
-**Version:** 2.0
+**Version:** 2.1
 **Last Updated:** December 2025
 
 ---
@@ -115,11 +115,9 @@ systems/
 │   ├── bi_api.py               # FastAPI application (main entry point)
 │   ├── config.py               # Configuration management
 │   ├── database.py             # SQLAlchemy models & connection
-│   ├── db_repository.py        # Data access layer (primary)
-│   ├── repository.py           # Alternative repository pattern
+│   ├── db_repository.py        # Data access layer
 │   │
-│   ├── osint_production_collector.py  # Production OSINT agents
-│   ├── osint_orchestrator.py          # Legacy orchestrator (reference)
+│   ├── osint_production_collector.py  # Production OSINT agents (8 agents)
 │   ├── google_places_collector.py     # Google Places API wrapper
 │   ├── yelp_collector.py              # Yelp Fusion API wrapper
 │   │
@@ -133,8 +131,8 @@ systems/
 │   ├── coral_gables_pkp_generator.py  # Single business PKP
 │   ├── migrate_json_to_db.py          # JSON to PostgreSQL migration
 │   │
-│   ├── data/                   # Local data files
-│   │   └── coral_gables_bi_database_v2.json
+│   ├── data/                   # Output files only (refresh reports)
+│   │   └── refresh_report_*.txt
 │   ├── migrations/             # Database migrations
 │   │   └── 001_increase_potential_impact_size.py
 │   │
@@ -143,10 +141,14 @@ systems/
 │   ├── railway.toml           # Railway configuration
 │   └── nixpacks.toml          # Nixpacks build config
 │
-└── data/                       # Shared data directory
-    ├── chamber_members_extracted.json
-    ├── all_businesses_merged.json
-    └── coral_gables_bi_database_v2.json
+└── data/                       # ★ CANONICAL DATA DIRECTORY
+    ├── coral_gables_bi_database_v2.json      # Main production database
+    ├── coral_gables_bi_database_validated.json # Validated version (working file)
+    ├── all_businesses_merged.json             # Source: merged business data
+    ├── chamber_members_extracted.json         # Source: chamber directory
+    ├── coral_gables_top_100_businesses_pkp.json # PKP report output
+    ├── books_and_books_pkp_refined.json       # Example PKP output
+    └── database_schema.sql                    # PostgreSQL schema
 ```
 
 ### 3.2 Module Responsibilities
@@ -731,5 +733,7 @@ uvicorn bi_api:app --reload --port 8000
 
 ---
 
-*Document Version: 2.0 | Last Updated: December 2025*
-*Changes: Updated frontend architecture to reflect single-page Terminal UI (v5.0)*
+*Document Version: 2.1 | Last Updated: December 2025*
+*Changes:*
+- *v2.1: Cleaned up data directories, removed redundant files, consolidated to canonical `systems/data/` path*
+- *v2.0: Updated frontend architecture to reflect single-page Terminal UI (v5.0)*

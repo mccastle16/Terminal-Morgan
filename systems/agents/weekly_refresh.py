@@ -108,21 +108,19 @@ async def run_osint_collection(business_limit: int = 100):
         from osint_production_collector import OSINTOrchestrator, CONFIG
 
         # Load existing businesses to get names and categories
+        # Canonical data location: systems/data/
         business_list = []
-        db_file = os.path.join(os.path.dirname(__file__), "data", "coral_gables_bi_database_v2.json")
-        alt_db_file = os.path.join(os.path.dirname(__file__), "..", "data", "coral_gables_bi_database_v2.json")
+        db_file = os.path.join(os.path.dirname(__file__), "..", "data", "coral_gables_bi_database_v2.json")
 
-        for filepath in [db_file, alt_db_file]:
-            if os.path.exists(filepath):
-                with open(filepath, 'r') as f:
-                    data = json.load(f)
-                    for biz in data.get("businesses", [])[:business_limit]:
-                        business_list.append({
-                            "name": biz.get("name"),
-                            "category": biz.get("category", "unknown")
-                        })
-                log(f"Loaded {len(business_list)} businesses from {filepath}")
-                break
+        if os.path.exists(db_file):
+            with open(db_file, 'r') as f:
+                data = json.load(f)
+                for biz in data.get("businesses", [])[:business_limit]:
+                    business_list.append({
+                        "name": biz.get("name"),
+                        "category": biz.get("category", "unknown")
+                    })
+            log(f"Loaded {len(business_list)} businesses from {db_file}")
 
         if not business_list:
             log("No existing business data found, using default list", "WARN")
@@ -450,8 +448,10 @@ async def main():
     should_validate = args.run_validation or not args.skip_validation
     if should_validate and args.run_validation:
         business_count = stats["businesses_processed"] or args.businesses
-        validated_file = "../data/coral_gables_bi_database_validated.json"
-        original_file = "../data/coral_gables_bi_database_v2.json"
+        # Canonical data location: systems/data/
+        data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+        validated_file = os.path.join(data_dir, "coral_gables_bi_database_validated.json")
+        original_file = os.path.join(data_dir, "coral_gables_bi_database_v2.json")
 
         validation_ok = run_validation(
             original_file,
@@ -489,8 +489,10 @@ async def main():
         else:
             # Fallback to JSON file
             log("Using JSON file for data storage")
-            validated_file = "../data/coral_gables_bi_database_validated.json"
-            production_file = "data/coral_gables_bi_database_v2.json"
+            # Canonical data location: systems/data/
+            data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+            validated_file = os.path.join(data_dir, "coral_gables_bi_database_validated.json")
+            production_file = os.path.join(data_dir, "coral_gables_bi_database_v2.json")
 
             if os.path.exists(validated_file):
                 update_production_data(validated_file, production_file)
