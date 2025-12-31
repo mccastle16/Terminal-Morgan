@@ -1,6 +1,6 @@
 # Coral Gables BI Platform - Codebase Architecture
 
-**Version:** 2.2
+**Version:** 2.3
 **Last Updated:** December 2025
 
 ---
@@ -151,11 +151,12 @@ systems/
 | `config.py` | Environment configuration | `from config import settings` |
 | `database.py` | SQLAlchemy ORM models | `from database import Business` |
 | `db_repository.py` | Data access abstraction (PostgreSQL/JSON) | `get_repository()` |
-| `osint_production_collector.py` | OSINT data collection (8 agents) | `OSINTOrchestrator` |
-| `consensus_validator.py` | Multi-agent validation | `ConsensusValidator` |
-| `weekly_refresh.py` | Scheduled data refresh | CLI script |
+| `osint_production_collector.py` | Stage 1: OSINT data collection (8 agents) | `OSINTOrchestrator` |
+| `pkp_validator.py` | Stage 2: LLM-powered pain point refinement | `run_pkp_refinement()` |
+| `consensus_validator.py` | Stage 3: Multi-agent validation | `ConsensusValidator` |
+| `weekly_refresh.py` | Scheduled data refresh (all 3 stages) | CLI script |
 
-> **Note:** Removed legacy/unused files: `osint_orchestrator.py`, `repository.py`, `pkp_validator.py`, `coral_gables_pkp_generator.py`, `generate_top_100_pkp.py`, `google_places_collector.py`, `yelp_collector.py`.
+> **Note:** Removed legacy/unused files: `osint_orchestrator.py`, `repository.py`, `coral_gables_pkp_generator.py`, `generate_top_100_pkp.py`, `google_places_collector.py`, `yelp_collector.py`.
 
 ### 3.3 Key Classes
 
@@ -169,6 +170,22 @@ class OSINTOrchestrator:
 
     async def collect_market_intelligence(self, businesses: List[Dict]) -> List[BusinessProfile]:
         """Collect intelligence for multiple businesses"""
+```
+
+#### PKPValidator (pkp_validator.py:22)
+```python
+class PKPValidator:
+    """LLM-powered pain point refinement from OSINT observations"""
+
+    async def refine_business(self, business_data: Dict) -> Dict:
+        """Refine pain points for a single business using LLM analysis"""
+
+    async def refine_batch(self, businesses: List[Dict], max_concurrent: int = 5) -> List[Dict]:
+        """Refine pain points for multiple businesses concurrently"""
+
+# Entry point for pipeline integration
+async def run_pkp_refinement(businesses: List[Dict]) -> List[Dict]:
+    """Main entry point for PKP refinement stage"""
 ```
 
 #### ConsensusValidator (consensus_validator.py:295)
@@ -311,7 +328,7 @@ const res = await fetch(`/api/v2/businesses/${business.business_id}`)
 
 ## 5. Data Pipeline
 
-### 5.1 Data Flow
+### 5.1 Data Flow (3-Stage Pipeline)
 
 ```
 Chamber Directory (DOCX)
@@ -322,27 +339,50 @@ Chamber Directory (DOCX)
 └─────────────────────┘
         │
         ▼
-┌─────────────────────┐
-│ OSINT Collection    │
-│ ├─ Google Places    │
-│ ├─ Yelp API         │
-│ ├─ Website Analysis │
-│ └─ Financial Est.   │
-└─────────────────────┘
+╔═════════════════════════════════════════════════════════════════════╗
+║                    STAGE 1: OSINT COLLECTION                        ║
+║─────────────────────────────────────────────────────────────────────║
+║  ┌─────────────────────┐                                            ║
+║  │ OSINTOrchestrator   │                                            ║
+║  │ ├─ GoogleMapsAgent  │ (ratings, reviews, hours)                  ║
+║  │ ├─ YelpAgent        │ (reviews, categories, price)               ║
+║  │ ├─ WebsiteAgent     │ (booking, social links, tech)              ║
+║  │ ├─ SocialMediaAgent │ (followers, engagement)                    ║
+║  │ ├─ ChamberAgent     │ (membership, board position)               ║
+║  │ ├─ FinancialAgent   │ (revenue estimates)                        ║
+║  │ ├─ PainPointAgent   │ (initial pain points from reviews)         ║
+║  │ └─ CoFitAgent       │ (solutions, engagement score)              ║
+║  └─────────────────────┘                                            ║
+║  Output: BusinessProfile with raw_data, initial pain_points         ║
+╚═════════════════════════════════════════════════════════════════════╝
         │
         ▼
-┌─────────────────────┐
-│ LLM Enrichment      │
-│ ├─ Pain Points      │
-│ ├─ Opportunities    │
-│ └─ Co-Fit Solutions │
-└─────────────────────┘
+╔═════════════════════════════════════════════════════════════════════╗
+║                    STAGE 2: PKP REFINEMENT (NEW)                    ║
+║─────────────────────────────────────────────────────────────────────║
+║  ┌─────────────────────┐                                            ║
+║  │ PKPValidator        │                                            ║
+║  │ ├─ Extracts obs     │ (from raw Google, Yelp, website data)      ║
+║  │ ├─ LLM analysis     │ (Claude Sonnet for refinement)             ║
+║  │ └─ Heuristic fallbk │ (when LLM unavailable)                     ║
+║  └─────────────────────┘                                            ║
+║  Output: Refined pain_points with evidence, confidence, severity    ║
+╚═════════════════════════════════════════════════════════════════════╝
         │
         ▼
-┌─────────────────────┐
-│ Consensus Validation│ (5 AI agents vote)
-│ Confidence: 0.75→0.92│
-└─────────────────────┘
+╔═════════════════════════════════════════════════════════════════════╗
+║                    STAGE 3: CONSENSUS VALIDATION                    ║
+║─────────────────────────────────────────────────────────────────────║
+║  ┌─────────────────────┐                                            ║
+║  │ ConsensusValidator  │ (5 AI agents vote)                         ║
+║  │ ├─ INDUSTRY_EXPERT  │                                            ║
+║  │ ├─ LOCAL_MARKET     │                                            ║
+║  │ ├─ OPERATIONS       │                                            ║
+║  │ ├─ CUSTOMER         │                                            ║
+║  │ └─ FINANCIAL        │                                            ║
+║  └─────────────────────┘                                            ║
+║  Output: Validated data with confidence boost (0.75 → 0.92)         ║
+╚═════════════════════════════════════════════════════════════════════╝
         │
         ▼
 ┌─────────────────────┐
@@ -354,13 +394,14 @@ Chamber Directory (DOCX)
 
 ### 5.2 Data Sources & Confidence
 
-| Source | API | Confidence | Rate Limit |
-|--------|-----|------------|------------|
-| Google Places | places.googleapis.com | 0.85-0.90 | $15.76/week |
-| Yelp Fusion | api.yelp.com | 0.80-0.90 | Free tier |
-| Website Scrape | BeautifulSoup | 0.60-0.70 | 2s delay |
-| LLM Enrichment | Anthropic Claude | 0.70-0.80 | ~$10/run |
-| Consensus Validation | Claude (5 agents) | 0.92-0.95 | ~$10/run |
+| Stage | Source | API | Confidence | Rate Limit |
+|-------|--------|-----|------------|------------|
+| 1 | Google Places | places.googleapis.com | 0.85-0.90 | $15.76/week |
+| 1 | Yelp Fusion | api.yelp.com | 0.80-0.90 | Free tier |
+| 1 | Website Scrape | BeautifulSoup | 0.60-0.70 | 2s delay |
+| 1 | LLM Enrichment | Anthropic Claude | 0.70-0.80 | ~$10/run |
+| 2 | PKP Refinement | Claude Sonnet | 0.80-0.90 | ~$5/run |
+| 3 | Consensus Validation | Claude (5 agents) | 0.92-0.95 | ~$10/run |
 
 ### 5.3 Refresh Schedule
 
@@ -397,31 +438,51 @@ Chamber Directory (DOCX)
 | `CUSTOMER` | Customer experience | Would customers care? |
 | `FINANCIAL` | Financial impact | Is this worth addressing? |
 
-### 6.3 Agent Execution Flow
+### 6.3 Agent Execution Flow (3-Stage Pipeline)
 
 ```python
-# 1. Initialize orchestrator
+# STAGE 1: OSINT Collection
 async with OSINTOrchestrator() as orchestrator:
+    profiles = await orchestrator.collect_market_intelligence([
+        {"name": "Books & Books", "category": "retail"},
+        {"name": "Luca Osteria", "category": "restaurant"}
+    ])
 
-    # 2. Collect data for each business
-    profile = await orchestrator.collect_business_profile(
-        business_name="Books & Books",
-        category="retail"
-    )
+# STAGE 2: PKP Refinement (LLM-powered pain point generation)
+from pkp_validator import run_pkp_refinement
 
-    # 3. Stages executed:
-    #    Stage 1: Google Maps data
-    #    Stage 2: Yelp data
-    #    Stage 3: Website analysis
-    #    Stage 4: Chamber check
-    #    Stage 5: Financial estimates
-    #    Stage 6: Sentiment analysis
-    #    Stage 7: Pain point extraction
-    #    Stage 8: Co-Fit analysis
+# Convert profiles to dicts for PKP processing
+business_dicts = [
+    {
+        "name": p.name,
+        "category": p.category,
+        "pain_points": p.pain_points,
+        "raw_data": p.raw_data  # Contains Google, Yelp, website observations
+    }
+    for p in profiles
+]
 
-    # 4. Optional: Consensus validation
-    validator = ConsensusValidator(min_agents=3)
-    validated = await validator.validate_business(profile.to_dict())
+# Refine pain points using LLM analysis
+refined = await run_pkp_refinement(business_dicts)
+# Output: Evidence-backed pain points with confidence, severity, solution hints
+
+# STAGE 3: Consensus Validation (optional, for confidence boost)
+validator = ConsensusValidator(min_agents=3)
+for business in refined:
+    validated = await validator.validate_business(business)
+    # Confidence boost: 0.75 → 0.92
+```
+
+**CLI Execution (weekly_refresh.py):**
+```bash
+# Full pipeline (Stage 1 + Stage 2)
+python weekly_refresh.py --businesses 100
+
+# Full pipeline with Stage 3 validation
+python weekly_refresh.py --businesses 100 --run-validation
+
+# Skip PKP refinement (Stage 1 only)
+python weekly_refresh.py --businesses 100 --skip-pkp
 ```
 
 ---
@@ -697,11 +758,17 @@ profile.raw_data["new_source"] = new_data
 # Regenerate full database
 python generate_comprehensive_bi_database.py
 
-# Weekly refresh (100 businesses)
+# Weekly refresh - Stage 1 (OSINT) + Stage 2 (PKP)
 python weekly_refresh.py --businesses 100
 
-# Weekly refresh with validation
+# Weekly refresh - All 3 stages (OSINT + PKP + Validation)
 python weekly_refresh.py --businesses 100 --run-validation
+
+# Weekly refresh - Stage 1 only (skip PKP refinement)
+python weekly_refresh.py --businesses 100 --skip-pkp
+
+# Dry run (preview only)
+python weekly_refresh.py --businesses 10 --dry-run
 
 # Migrate JSON to PostgreSQL
 python migrate_json_to_db.py
@@ -715,8 +782,10 @@ uvicorn bi_api:app --reload --port 8000
 | Purpose | Path |
 |---------|------|
 | Main API | `systems/agents/bi_api.py` |
-| OSINT Agents | `systems/agents/osint_production_collector.py` |
-| Validation | `systems/agents/consensus_validator.py` |
+| Stage 1: OSINT Agents | `systems/agents/osint_production_collector.py` |
+| Stage 2: PKP Refinement | `systems/agents/pkp_validator.py` |
+| Stage 3: Validation | `systems/agents/consensus_validator.py` |
+| Weekly Refresh (all stages) | `systems/agents/weekly_refresh.py` |
 | Database Models | `systems/agents/database.py` |
 | Configuration | `systems/agents/config.py` |
 | Main Database | `systems/data/coral_gables_bi_database_v2.json` |
@@ -725,8 +794,9 @@ uvicorn bi_api:app --reload --port 8000
 
 ---
 
-*Document Version: 2.2 | Last Updated: December 2025*
+*Document Version: 2.3 | Last Updated: December 2025*
 *Changes:*
+- *v2.3: Integrated PKP Validator as Stage 2 of the 3-stage pipeline (OSINT → PKP → Consensus)*
 - *v2.2: Removed 7 unused scripts (PKP generators, standalone collectors) and 2 stale data files*
 - *v2.1: Cleaned up data directories, removed redundant files, consolidated to canonical `systems/data/` path*
 - *v2.0: Updated frontend architecture to reflect single-page Terminal UI (v5.0)*
