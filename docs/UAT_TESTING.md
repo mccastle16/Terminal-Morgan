@@ -437,6 +437,109 @@ with open('../data/all_businesses_merged.json') as f:
 
 ---
 
+## Test 8: Terminal UI (Quadrant & Smart Segments)
+
+### 8.1 Smart Segments Configuration
+
+The Terminal uses a quadrant visualization with these thresholds:
+
+| Threshold | Value | Based On |
+|-----------|-------|----------|
+| `DOMINANCE_THRESHOLD` | 80 | Top ~30% of engagement scores |
+| `DIGITAL_THRESHOLD` | 50 | Midpoint of digital maturity scale |
+
+### 8.2 Segment Definitions
+
+| Segment | Criteria | Color | Description |
+|---------|----------|-------|-------------|
+| **Hidden Gems** 💎 | Score ≥80, Digital <50 | Cyan | High-potential, low digital presence |
+| **Local Titans** 👑 | Score ≥80, Digital ≥50 | Gold | High-performing, digitally mature |
+| **Turnaround** 🔄 | Score <80, Digital ≥50 | Green | Lower score but digitally present |
+| **Rebuild** ⚠️ | Score <80, Digital <50 | Red/Accent | Need comprehensive improvement |
+
+### 8.3 Digital Maturity Calculation
+
+Digital Maturity score (0-100) is calculated based on online presence:
+
+| Factor | Points |
+|--------|--------|
+| Has website | +25 |
+| Has Instagram | +20 |
+| Has Facebook | +15 |
+| Has email | +15 |
+| Has Google rating | +15 |
+| Has Yelp rating | +10 |
+| **Maximum** | **100** |
+
+### 8.4 Terminal UI Verification
+
+```bash
+# Start frontend
+cd frontend && npm run dev
+
+# Verify in browser at http://localhost:3000
+```
+
+**Test Checklist:**
+
+| Feature | Expected | Status |
+|---------|----------|--------|
+| Quadrant is square (1:1 aspect ratio) | ✓ | [ ] Pass |
+| All 4 segments show dots when businesses exist | ✓ | [ ] Pass |
+| Segment filter matches quadrant coloring | ✓ | [ ] Pass |
+| District filter works | ✓ | [ ] Pass |
+| Business search works | ✓ | [ ] Pass |
+| Table columns are sortable (Name, Sector, Alpha, Fit) | ✓ | [ ] Pass |
+| Clicking business highlights in quadrant | ✓ | [ ] Pass |
+| Dossier panel shows on business selection | ✓ | [ ] Pass |
+
+### 8.5 Segment Distribution Verification
+
+```bash
+# Check data distribution via API
+curl http://localhost:8000/api/v2/businesses | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+businesses = data.get('businesses', [])
+
+def calc_digital(b):
+    score = 0
+    if b.get('website'): score += 25
+    social = b.get('social_media', {}) or {}
+    if social.get('instagram'): score += 20
+    if social.get('facebook'): score += 15
+    emails = b.get('email', []) or []
+    if len(emails) > 0: score += 15
+    ratings = b.get('ratings', {}) or {}
+    if ratings.get('google'): score += 15
+    if ratings.get('yelp'): score += 10
+    return min(score, 100)
+
+gems = turnaround = titans = rebuild = 0
+for b in businesses:
+    score = min(b.get('engagement_score', 0), 100)
+    digital = calc_digital(b)
+    if score >= 80 and digital < 50: gems += 1
+    elif score >= 80 and digital >= 50: titans += 1
+    elif score < 80 and digital >= 50: turnaround += 1
+    else: rebuild += 1
+
+print(f'Hidden Gems: {gems}')
+print(f'Local Titans: {titans}')
+print(f'Turnaround: {turnaround}')
+print(f'Rebuild: {rebuild}')
+print(f'Total: {len(businesses)}')
+"
+```
+
+**Expected Distribution** (for 927 businesses):
+- Hidden Gems: ~100-200
+- Local Titans: ~400-600
+- Turnaround: ~50-150
+- Rebuild: ~5-20
+
+---
+
 ## Acceptance Criteria
 
 | Test | Criteria | Status |
