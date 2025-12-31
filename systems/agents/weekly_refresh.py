@@ -5,13 +5,19 @@ Weekly Data Refresh Script for Coral Gables BI Platform
 This script runs the full OSINT collection and validation pipeline,
 then updates the production data (PostgreSQL or JSON fallback).
 
+Database Size (Dec 2025):
+- 927 businesses total (844 Chamber members + 83 additional)
+- Primary source: Coral Gables Chamber of Commerce member directory
+- Secondary: Google Places API, Yelp Fusion API enrichment
+
 Schedule: Weekly (Sunday 6 AM EST)
-Runtime: ~30-60 minutes depending on business count
+Runtime: ~45-90 minutes for 927 businesses
 
 Usage:
-    python weekly_refresh.py                    # Full refresh
+    python weekly_refresh.py                    # Full refresh (927 businesses)
     python weekly_refresh.py --dry-run          # Preview only
-    python weekly_refresh.py --businesses 10    # Limit businesses
+    python weekly_refresh.py --businesses 100   # Limit businesses
+    python weekly_refresh.py --run-validation   # Include LLM validation
 """
 
 import os
