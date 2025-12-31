@@ -1,0 +1,25 @@
+
+================================================================================
+WEEKLY DATA REFRESH REPORT
+================================================================================
+Timestamp: 2025-12-31T16:30:30.192621
+
+STAGE 1 - OSINT COLLECTION:
+  Businesses Processed: 5
+  Pain Points Found: 12
+  Opportunities Found: 12
+
+STAGE 2 - PKP REFINEMENT:
+  Businesses Refined: 5
+  Refinement Method: llm
+
+STAGE 3 - CONSENSUS VALIDATION:
+  Businesses Validated: 5
+  Confidence Boost: +16.0%
+
+DATA QUALITY:
+  Avg Completeness: 89.1%
+  Avg Confidence: 72.5%
+
+STATUS: SUCCESS
+================================================================================
