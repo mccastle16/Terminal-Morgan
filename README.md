@@ -107,6 +107,58 @@ Top Businesses by Engagement Score:
 
 ---
 
+## Terminal UI: Smart Segments & Quadrant
+
+The Terminal dashboard features a **quadrant visualization** that segments businesses by Dominance (engagement score) and Digital Maturity (online presence).
+
+### Quadrant Layout
+
+```
+                    Digital Maturity →
+                 LOW (<50)          HIGH (≥50)
+              ┌─────────────────┬─────────────────┐
+   HIGH (≥80) │   HIDDEN GEMS   │  LOCAL TITANS   │
+ Dominance    │       💎        │       👑        │
+    Score     │  (Cyan dots)    │  (Gold dots)    │
+      ↓       ├─────────────────┼─────────────────┤
+   LOW (<80)  │     REBUILD     │   TURNAROUND    │
+              │       ⚠️        │       🔄        │
+              │  (Red dots)     │  (Green dots)   │
+              └─────────────────┴─────────────────┘
+```
+
+### Smart Segments
+
+| Segment | Criteria | Description |
+|---------|----------|-------------|
+| **Hidden Gems** 💎 | Score ≥80, Digital <50 | High-potential businesses with weak online presence - prime opportunities for digital services |
+| **Local Titans** 👑 | Score ≥80, Digital ≥50 | Top performers with strong digital presence - partnership/upsell opportunities |
+| **Turnaround** 🔄 | Score <80, Digital ≥50 | Have digital presence but underperforming - operational consulting opportunities |
+| **Rebuild** ⚠️ | Score <80, Digital <50 | Need comprehensive improvement - full-service transformation opportunities |
+
+### Digital Maturity Calculation
+
+| Factor | Points |
+|--------|--------|
+| Has website | +25 |
+| Has Instagram | +20 |
+| Has Facebook | +15 |
+| Has email | +15 |
+| Has Google rating | +15 |
+| Has Yelp rating | +10 |
+| **Maximum** | **100** |
+
+### Terminal Features
+
+- **Quadrant Chart**: Square visualization with color-coded dots for each business
+- **Smart Segment Filters**: Click segment to filter businesses in that quadrant
+- **District Filter**: Filter by Coral Gables district (Miracle Mile, Giralda Plaza, etc.)
+- **Business Search**: Real-time search by business name
+- **Sortable Columns**: Sort by Name, Sector, Alpha Score, or Fit Score
+- **Business Dossier**: Click any business to view full intelligence profile
+
+---
+
 ## How The Sales Workflow Works
 
 ```
