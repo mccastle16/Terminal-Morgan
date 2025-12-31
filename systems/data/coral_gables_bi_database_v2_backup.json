@@ -14,7 +14,7 @@
       "Website Analysis",
       "LLM Enrichment"
     ],
-    "validation_timestamp": "2025-12-31T16:30:26.247556",
+    "validation_timestamp": "2025-12-31T16:15:53.289497",
     "validation_stage": 3
   },
   "ecosystem": {
@@ -165,95 +165,95 @@
       },
       "pain_points": [
         {
-          "pain_point": "Reservation-only model prevents capture of high-value spontaneous diners, particularly in Coral Gables' tourist and shopping district, potentially missing 15-25% additional revenue from walk-in traffic willing to pay premium prices",
+          "pain_point": "Reservation-only model limits walk-in revenue capture",
           "category": "operational",
           "severity": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
-          "consensus_reached": true,
-          "agreement_ratio": 0.8,
-          "validation_stage": 3,
-          "evidence": [
-            "multi_agent_consensus_80%"
-          ],
-          "validated_at": "2025-12-31T16:25:59.885227"
-        },
-        {
-          "pain_point": "Intense restaurant competition in Giralda Plaza corridor affecting customer acquisition and market share",
-          "category": "operational",
-          "severity": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
-          "consensus_reached": true,
-          "agreement_ratio": 0.8,
-          "validation_stage": 3,
-          "evidence": [
-            "multi_agent_consensus_80%"
-          ],
-          "validated_at": "2025-12-31T16:26:05.634665"
-        },
-        {
-          "pain_point": "Seasonal tourism fluctuations create unpredictable revenue swings and staffing challenges, with peak winter months potentially overloading capacity while summer slowdowns threaten profitability",
-          "category": "operational",
-          "severity": "high",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
-          "consensus_reached": true,
-          "agreement_ratio": 0.8,
-          "validation_stage": 3,
-          "evidence": [
-            "multi_agent_consensus_80%"
-          ],
-          "validated_at": "2025-12-31T16:26:19.456739"
-        },
-        {
-          "pain_point": "Kitchen capacity bottlenecks during peak dinner service (7-9 PM) limiting table turnover and compromising food quality standards",
-          "category": "operational",
-          "severity": "high",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
+          "confidence": 0.9,
+          "original_confidence": 0.75,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
           "evidence": [
             "multi_agent_consensus_100%"
           ],
-          "validated_at": "2025-12-31T16:26:27.750229"
+          "validated_at": "2025-12-31T16:15:38.869795"
+        },
+        {
+          "pain_point": "High competition density in Giralda Plaza",
+          "category": "operational",
+          "severity": "medium",
+          "confidence": 0.9,
+          "original_confidence": 0.75,
+          "consensus_reached": true,
+          "agreement_ratio": 1.0,
+          "validation_stage": 3,
+          "evidence": [
+            "multi_agent_consensus_100%"
+          ],
+          "validated_at": "2025-12-31T16:15:39.134077"
+        },
+        {
+          "pain_point": "Seasonal tourism fluctuation affects consistency",
+          "category": "operational",
+          "severity": "high",
+          "confidence": 0.9,
+          "original_confidence": 0.75,
+          "consensus_reached": true,
+          "agreement_ratio": 1.0,
+          "validation_stage": 3,
+          "evidence": [
+            "multi_agent_consensus_100%"
+          ],
+          "validated_at": "2025-12-31T16:15:39.307908"
+        },
+        {
+          "pain_point": "Kitchen capacity constraints during peak hours",
+          "category": "operational",
+          "severity": "high",
+          "confidence": 0.9,
+          "original_confidence": 0.75,
+          "consensus_reached": true,
+          "agreement_ratio": 1.0,
+          "validation_stage": 3,
+          "evidence": [
+            "multi_agent_consensus_100%"
+          ],
+          "validated_at": "2025-12-31T16:15:39.457982"
         }
       ],
       "opportunities": [
         {
-          "opportunity": "Develop a premium lunch delivery program featuring portable Italian specialties (gourmet paninis, pasta bowls, antipasto boxes) targeting Coral Gables business district, with 30-45 minute delivery radius and minimum order thresholds to ensure profitability",
+          "opportunity": "Expand to delivery/takeout for lunch service",
           "category": "growth",
           "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
+          "confidence": 0.85,
+          "original_confidence": 0.7,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
-          "validated_at": "2025-12-31T16:26:36.655213"
+          "validated_at": "2025-12-31T16:15:39.644741"
         },
         {
-          "opportunity": "Create intimate 6-8 seat chef's table experience featuring multi-course Italian tasting menu with wine pairings, priced at $150-200 per person, targeting special occasions and food enthusiasts",
+          "opportunity": "Create chef's table experience for premium pricing",
           "category": "growth",
           "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
+          "confidence": 0.85,
+          "original_confidence": 0.7,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
-          "validated_at": "2025-12-31T16:26:45.880353"
+          "validated_at": "2025-12-31T16:15:39.924284"
         },
         {
-          "opportunity": "Launch weekend pasta-making workshops targeting date nights and small groups, priced at $85-120 per person, including wine pairings and take-home pasta portions",
+          "opportunity": "Launch pasta-making classes for additional revenue",
           "category": "growth",
           "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
+          "confidence": 0.85,
+          "original_confidence": 0.7,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
-          "validated_at": "2025-12-31T16:26:54.275096"
+          "validated_at": "2025-12-31T16:15:40.096994"
         }
       ],
       "technology_gaps": [
@@ -286,7 +286,7 @@
         "tier_1",
         "chamber_member"
       ],
-      "validation_timestamp": "2025-12-31T16:26:54.275324",
+      "validation_timestamp": "2025-12-31T16:15:40.097063",
       "validation_stage": 3
     },
     {
@@ -389,81 +389,81 @@
       },
       "pain_points": [
         {
-          "pain_point": "Complex inventory management due to 60+ rotating menu items requiring fresh Japanese ingredients, varied portion sizes, and seasonal availability tracking",
+          "pain_point": "Complex inventory management with rotating 60+ item menu",
           "category": "operational",
           "severity": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
-          "consensus_reached": true,
-          "agreement_ratio": 0.8,
-          "validation_stage": 3,
-          "evidence": [
-            "multi_agent_consensus_80%"
-          ],
-          "validated_at": "2025-12-31T16:27:01.954922"
-        },
-        {
-          "pain_point": "Staff recruitment and training challenges for authentic Japanese culinary techniques, sake service, and cultural hospitality standards",
-          "category": "operational",
-          "severity": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
+          "confidence": 0.9,
+          "original_confidence": 0.75,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
           "evidence": [
             "multi_agent_consensus_100%"
           ],
-          "validated_at": "2025-12-31T16:27:09.316299"
+          "validated_at": "2025-12-31T16:15:40.765849"
         },
         {
-          "pain_point": "Sourcing and coordinating suppliers for authentic Japanese ingredients and specialty items",
+          "pain_point": "Staff training challenges on specialized Japanese techniques",
+          "category": "operational",
+          "severity": "medium",
+          "confidence": 0.9,
+          "original_confidence": 0.75,
+          "consensus_reached": true,
+          "agreement_ratio": 1.0,
+          "validation_stage": 3,
+          "evidence": [
+            "multi_agent_consensus_100%"
+          ],
+          "validated_at": "2025-12-31T16:15:40.974337"
+        },
+        {
+          "pain_point": "Supplier coordination for authentic ingredients",
           "category": "operational",
           "severity": "high",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
+          "confidence": 0.9,
+          "original_confidence": 0.75,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
           "evidence": [
             "multi_agent_consensus_100%"
           ],
-          "validated_at": "2025-12-31T16:27:17.698310"
+          "validated_at": "2025-12-31T16:15:41.125649"
         }
       ],
       "opportunities": [
         {
-          "opportunity": "Menu engineering analysis to optimize high-margin Japanese dishes and drinks for the Coral Gables market while identifying underperforming traditional items",
+          "opportunity": "Menu engineering to identify top performers",
           "category": "growth",
           "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
-          "consensus_reached": true,
-          "agreement_ratio": 0.8,
-          "validation_stage": 3,
-          "validated_at": "2025-12-31T16:27:25.302224"
-        },
-        {
-          "opportunity": "Standardized training videos for Japanese service standards, sake knowledge, and authentic food preparation techniques",
-          "category": "growth",
-          "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
-          "consensus_reached": true,
-          "agreement_ratio": 0.8,
-          "validation_stage": 3,
-          "validated_at": "2025-12-31T16:27:31.836327"
-        },
-        {
-          "opportunity": "Implement a points-based loyalty program for Dojo Izakaya targeting 2+ monthly visits, offering rewards like complimentary sake tastings, priority seating, and exclusive access to seasonal menu items, with goal of increasing customer retention rate by 15% within 6 months",
-          "category": "growth",
-          "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
+          "confidence": 0.85,
+          "original_confidence": 0.7,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
-          "validated_at": "2025-12-31T16:27:40.251851"
+          "validated_at": "2025-12-31T16:15:41.416442"
+        },
+        {
+          "opportunity": "Standardized training videos for consistency",
+          "category": "growth",
+          "potential_impact": "medium",
+          "confidence": 0.85,
+          "original_confidence": 0.7,
+          "consensus_reached": true,
+          "agreement_ratio": 1.0,
+          "validation_stage": 3,
+          "validated_at": "2025-12-31T16:15:41.594252"
+        },
+        {
+          "opportunity": "Loyalty program for frequent diners",
+          "category": "growth",
+          "potential_impact": "medium",
+          "confidence": 0.85,
+          "original_confidence": 0.7,
+          "consensus_reached": true,
+          "agreement_ratio": 1.0,
+          "validation_stage": 3,
+          "validated_at": "2025-12-31T16:15:41.752620"
         }
       ],
       "technology_gaps": [
@@ -471,7 +471,7 @@
         "Siloed customer data",
         "No business intelligence dashboard"
       ],
-      "engagement_score": 99.7,
+      "engagement_score": 94.7,
       "priority_tier": 1,
       "chamber_membership": {
         "is_member": true,
@@ -496,7 +496,7 @@
         "tier_1",
         "chamber_member"
       ],
-      "validation_timestamp": "2025-12-31T16:27:40.252037",
+      "validation_timestamp": "2025-12-31T16:15:41.752645",
       "validation_stage": 3
     },
     {
@@ -599,81 +599,81 @@
       },
       "pain_points": [
         {
-          "pain_point": "Labor-intensive daily dumpling prep requiring 3-4 hours of skilled labor for 150+ dumplings, limiting menu flexibility and increasing labor costs by 25-30% compared to typical restaurant operations",
+          "pain_point": "Labor-intensive daily dumpling prep (150+ dumplings/day)",
           "category": "operational",
           "severity": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
-          "consensus_reached": true,
-          "agreement_ratio": 0.8,
-          "validation_stage": 3,
-          "evidence": [
-            "multi_agent_consensus_80%"
-          ],
-          "validated_at": "2025-12-31T16:27:47.420427"
-        },
-        {
-          "pain_point": "Maintaining consistent dim sum preparation quality and presentation across day and evening prep shifts",
-          "category": "operational",
-          "severity": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
+          "confidence": 0.9,
+          "original_confidence": 0.75,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
           "evidence": [
             "multi_agent_consensus_100%"
           ],
-          "validated_at": "2025-12-31T16:27:54.960657"
+          "validated_at": "2025-12-31T16:15:41.922890"
         },
         {
-          "pain_point": "Maintaining consistent dim sum quality and fusion flavor profiles during rapid demand growth",
+          "pain_point": "Consistency challenges across multiple prep shifts",
+          "category": "operational",
+          "severity": "medium",
+          "confidence": 0.9,
+          "original_confidence": 0.75,
+          "consensus_reached": true,
+          "agreement_ratio": 1.0,
+          "validation_stage": 3,
+          "evidence": [
+            "multi_agent_consensus_100%"
+          ],
+          "validated_at": "2025-12-31T16:15:42.710039"
+        },
+        {
+          "pain_point": "Scaling quality as demand grows",
           "category": "operational",
           "severity": "high",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
+          "confidence": 0.9,
+          "original_confidence": 0.75,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
           "evidence": [
             "multi_agent_consensus_100%"
           ],
-          "validated_at": "2025-12-31T16:28:02.141560"
+          "validated_at": "2025-12-31T16:15:42.996474"
         }
       ],
       "opportunities": [
         {
-          "opportunity": "Optimize dim sum prep scheduling and kitchen workflow to reduce labor costs while maintaining fresh, handmade quality standards",
+          "opportunity": "Prep schedule optimization to reduce labor costs",
           "category": "growth",
           "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
-          "consensus_reached": true,
-          "agreement_ratio": 0.8,
-          "validation_stage": 3,
-          "validated_at": "2025-12-31T16:28:09.222284"
-        },
-        {
-          "opportunity": "Dim sum fusion recipe standardization system with detailed procedures for traditional techniques, filling ratios, and fusion flavor profiles to ensure consistent quality across all prep staff",
-          "category": "growth",
-          "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
+          "confidence": 0.85,
+          "original_confidence": 0.7,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
-          "validated_at": "2025-12-31T16:28:16.863418"
+          "validated_at": "2025-12-31T16:15:43.200321"
         },
         {
-          "opportunity": "Commissary kitchen for standardized dim sum production and multi-location scaling",
+          "opportunity": "Recipe standardization system for consistency",
           "category": "growth",
           "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
+          "confidence": 0.85,
+          "original_confidence": 0.7,
           "consensus_reached": true,
-          "agreement_ratio": 0.8,
+          "agreement_ratio": 1.0,
           "validation_stage": 3,
-          "validated_at": "2025-12-31T16:28:23.897566"
+          "validated_at": "2025-12-31T16:15:43.352719"
+        },
+        {
+          "opportunity": "Central prep facility for multi-location expansion",
+          "category": "growth",
+          "potential_impact": "medium",
+          "confidence": 0.85,
+          "original_confidence": 0.7,
+          "consensus_reached": true,
+          "agreement_ratio": 1.0,
+          "validation_stage": 3,
+          "validated_at": "2025-12-31T16:15:43.528512"
         }
       ],
       "technology_gaps": [
@@ -681,7 +681,7 @@
         "Siloed customer data",
         "No business intelligence dashboard"
       ],
-      "engagement_score": 97.7,
+      "engagement_score": 92.7,
       "priority_tier": 1,
       "chamber_membership": {
         "is_member": true,
@@ -706,7 +706,7 @@
         "tier_1",
         "chamber_member"
       ],
-      "validation_timestamp": "2025-12-31T16:28:23.897820",
+      "validation_timestamp": "2025-12-31T16:15:43.528546",
       "validation_stage": 3
     },
     {
@@ -809,81 +809,81 @@
       },
       "pain_points": [
         {
-          "pain_point": "Inefficient booking system causing scheduling conflicts and resource misallocation across 15+ specialized medical aesthetic treatments",
+          "pain_point": "Complex booking system for 15+ treatment types",
           "category": "operational",
           "severity": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
+          "confidence": 0.9,
+          "original_confidence": 0.75,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
           "evidence": [
             "multi_agent_consensus_100%"
           ],
-          "validated_at": "2025-12-31T16:28:31.036643"
+          "validated_at": "2025-12-31T16:15:43.802614"
         },
         {
-          "pain_point": "Streamline medical aesthetics consultation workflow to reduce appointment time while maintaining safety and compliance standards",
+          "pain_point": "Client consultation time optimization needed",
           "category": "operational",
           "severity": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
+          "confidence": 0.9,
+          "original_confidence": 0.75,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
           "evidence": [
             "multi_agent_consensus_100%"
           ],
-          "validated_at": "2025-12-31T16:28:38.852302"
+          "validated_at": "2025-12-31T16:15:43.991990"
         },
         {
-          "pain_point": "Follow-up appointment adherence rate of only 65%, resulting in compromised treatment outcomes and 35% revenue loss from scheduled follow-up services",
+          "pain_point": "Follow-up appointment adherence only 65%",
           "category": "operational",
           "severity": "high",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
+          "confidence": 0.9,
+          "original_confidence": 0.75,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
           "evidence": [
             "multi_agent_consensus_100%"
           ],
-          "validated_at": "2025-12-31T16:28:45.890072"
+          "validated_at": "2025-12-31T16:15:44.158972"
         }
       ],
       "opportunities": [
         {
-          "opportunity": "Treatment-specific intelligent booking workflows with consultation requirements, prep instructions, and automated follow-up scheduling",
+          "opportunity": "Intelligent booking flows by treatment type",
           "category": "growth",
           "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
+          "confidence": 0.85,
+          "original_confidence": 0.7,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
-          "validated_at": "2025-12-31T16:28:53.380376"
+          "validated_at": "2025-12-31T16:15:49.761634"
         },
         {
-          "opportunity": "AI-powered intake form analysis to auto-generate consultation briefs and flag medical contraindications",
+          "opportunity": "Automated consultation prep from intake forms",
           "category": "growth",
           "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
-          "consensus_reached": true,
-          "agreement_ratio": 0.8,
-          "validation_stage": 3,
-          "validated_at": "2025-12-31T16:29:01.780637"
-        },
-        {
-          "opportunity": "Automated SMS appointment reminders and follow-up treatment scheduling for medical aesthetics procedures to reduce no-shows and optimize treatment timing",
-          "category": "growth",
-          "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
+          "confidence": 0.85,
+          "original_confidence": 0.7,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
-          "validated_at": "2025-12-31T16:29:08.525438"
+          "validated_at": "2025-12-31T16:15:49.992440"
+        },
+        {
+          "opportunity": "SMS reminder system to boost follow-up adherence",
+          "category": "growth",
+          "potential_impact": "medium",
+          "confidence": 0.85,
+          "original_confidence": 0.7,
+          "consensus_reached": true,
+          "agreement_ratio": 1.0,
+          "validation_stage": 3,
+          "validated_at": "2025-12-31T16:15:50.168279"
         }
       ],
       "technology_gaps": [
@@ -891,7 +891,7 @@
         "Siloed customer data",
         "No business intelligence dashboard"
       ],
-      "engagement_score": 96.3,
+      "engagement_score": 91.3,
       "priority_tier": 1,
       "chamber_membership": {
         "is_member": true,
@@ -916,7 +916,7 @@
         "tier_1",
         "chamber_member"
       ],
-      "validation_timestamp": "2025-12-31T16:29:08.525625",
+      "validation_timestamp": "2025-12-31T16:15:50.168310",
       "validation_stage": 3
     },
     {
@@ -1021,131 +1021,131 @@
       },
       "pain_points": [
         {
-          "pain_point": "Weekend staffing shortages during peak hours leading to long wait times and reduced customer satisfaction",
+          "pain_point": "Weekend capacity management - understaffed during peaks",
           "category": "operational",
           "severity": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
+          "confidence": 0.9,
+          "original_confidence": 0.75,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
           "evidence": [
             "multi_agent_consensus_100%"
           ],
-          "validated_at": "2025-12-31T16:29:15.897352"
+          "validated_at": "2025-12-31T16:15:50.582226"
         },
         {
-          "pain_point": "Limited parking availability in Coral Gables reduces foot traffic by estimated 20%, particularly impacting customers seeking longer stays for reading, studying, or cafe visits",
+          "pain_point": "Parking friction reduces foot traffic by estimated 20%",
           "category": "operational",
           "severity": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
+          "confidence": 0.9,
+          "original_confidence": 0.75,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
           "evidence": [
             "multi_agent_consensus_100%"
           ],
-          "validated_at": "2025-12-31T16:29:24.728087"
+          "validated_at": "2025-12-31T16:15:51.312151"
         },
         {
-          "pain_point": "Optimize third space monetization - customers occupying seating without purchasing reduce revenue per square foot during peak hours",
+          "pain_point": "Third space usage not monetized (people work without buying)",
           "category": "operational",
           "severity": "high",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
+          "confidence": 0.9,
+          "original_confidence": 0.75,
           "consensus_reached": true,
-          "agreement_ratio": 0.8,
+          "agreement_ratio": 1.0,
           "validation_stage": 3,
           "evidence": [
-            "multi_agent_consensus_80%"
+            "multi_agent_consensus_100%"
           ],
-          "validated_at": "2025-12-31T16:29:31.764898"
+          "validated_at": "2025-12-31T16:15:51.502975"
         },
         {
-          "pain_point": "Unable to measure which literary events and author readings convert attendees into book purchases and repeat customers",
+          "pain_point": "Event ROI unclear - no tracking of attendee conversion",
           "category": "operational",
           "severity": "high",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
+          "confidence": 0.9,
+          "original_confidence": 0.75,
           "consensus_reached": true,
-          "agreement_ratio": 0.8,
+          "agreement_ratio": 1.0,
           "validation_stage": 3,
           "evidence": [
-            "multi_agent_consensus_80%"
+            "multi_agent_consensus_100%"
           ],
-          "validated_at": "2025-12-31T16:29:39.911687"
+          "validated_at": "2025-12-31T16:15:52.045684"
         },
         {
-          "pain_point": "Strong Instagram presence (35K followers) with social-to-sales conversion rate below 2-3% industry benchmark for retail",
+          "pain_point": "Strong Instagram (35K) but poor social\u2192sales conversion",
           "category": "operational",
           "severity": "high",
-          "confidence": 0.95,
-          "original_confidence": 0.9,
+          "confidence": 0.9,
+          "original_confidence": 0.75,
           "consensus_reached": true,
-          "agreement_ratio": 0.8,
+          "agreement_ratio": 1.0,
           "validation_stage": 3,
           "evidence": [
-            "multi_agent_consensus_80%"
+            "multi_agent_consensus_100%"
           ],
-          "validated_at": "2025-12-31T16:29:47.588179"
+          "validated_at": "2025-12-31T16:15:52.261883"
         }
       ],
       "opportunities": [
         {
-          "opportunity": "Optimize staff scheduling using historical traffic patterns to balance cafe service demands and book consultation needs across daily, weekly, and seasonal cycles",
+          "opportunity": "Dynamic staff scheduling based on historical traffic",
           "category": "growth",
           "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
+          "confidence": 0.85,
+          "original_confidence": 0.7,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
-          "validated_at": "2025-12-31T16:29:55.728693"
+          "validated_at": "2025-12-31T16:15:52.457342"
         },
         {
-          "opportunity": "Negotiate validated parking partnership with nearby garage to eliminate customer parking barriers and encourage longer cafe visits",
+          "opportunity": "Parking partnership with nearby garage (validated parking)",
           "category": "growth",
           "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
+          "confidence": 0.85,
+          "original_confidence": 0.7,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
-          "validated_at": "2025-12-31T16:30:02.797473"
+          "validated_at": "2025-12-31T16:15:52.666918"
         },
         {
-          "opportunity": "Tiered workspace membership model: Basic ($39/mo) for wifi + seating priority, Premium ($59/mo) adds reserved desk hours + meeting room access + book discounts",
+          "opportunity": "Workspace membership model ($50/mo for regulars)",
           "category": "growth",
           "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
+          "confidence": 0.85,
+          "original_confidence": 0.7,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
-          "validated_at": "2025-12-31T16:30:10.477262"
+          "validated_at": "2025-12-31T16:15:52.870353"
         },
         {
-          "opportunity": "Event ROI analytics dashboard to track attendee-to-customer conversion rates, revenue impact, and repeat visit patterns from bookstore cafe events",
+          "opportunity": "Event analytics dashboard to track conversion",
           "category": "growth",
           "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
-          "consensus_reached": true,
-          "agreement_ratio": 0.8,
-          "validation_stage": 3,
-          "validated_at": "2025-12-31T16:30:18.260496"
-        },
-        {
-          "opportunity": "Instagram shopping integration prioritizing featured books, local author works, and curated gift bundles, with cafe menu items for pickup orders to drive foot traffic",
-          "category": "growth",
-          "potential_impact": "medium",
-          "confidence": 0.95,
-          "original_confidence": 0.85,
+          "confidence": 0.85,
+          "original_confidence": 0.7,
           "consensus_reached": true,
           "agreement_ratio": 1.0,
           "validation_stage": 3,
-          "validated_at": "2025-12-31T16:30:26.247255"
+          "validated_at": "2025-12-31T16:15:53.096832"
+        },
+        {
+          "opportunity": "Instagram shopping integration for immediate purchase",
+          "category": "growth",
+          "potential_impact": "medium",
+          "confidence": 0.85,
+          "original_confidence": 0.7,
+          "consensus_reached": true,
+          "agreement_ratio": 1.0,
+          "validation_stage": 3,
+          "validated_at": "2025-12-31T16:15:53.282695"
         }
       ],
       "technology_gaps": [
@@ -1178,7 +1178,7 @@
         "tier_1",
         "chamber_member"
       ],
-      "validation_timestamp": "2025-12-31T16:30:26.247472",
+      "validation_timestamp": "2025-12-31T16:15:53.282724",
       "validation_stage": 3
     }
   ]
