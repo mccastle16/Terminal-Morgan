@@ -16,8 +16,10 @@ function capScore(score) {
 }
 
 function calculateOpportunityAlpha(business) {
-  const painCount = business.pain_point_count || 0
-  const oppCount = business.opportunity_count || 0
+  // Handle both summary format (pain_point_count) and full format (pain_points array)
+  const painCount = business.pain_point_count ?? business.pain_points?.length ?? 0
+  const oppCount = business.opportunity_count ?? business.opportunities?.length ?? 0
+  const solutionCount = business.solution_count ?? business.co_fit_solutions?.length ?? 0
   const completeness = business.data_completeness || 0.5
   const score = capScore(business.engagement_score)
 
