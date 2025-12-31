@@ -73,6 +73,12 @@ class BusinessSummary(BaseModel):
     pain_point_count: int = 0
     opportunity_count: int = 0
     solution_count: int = 0
+    # Fields for digital maturity calculation
+    website: Optional[str] = None
+    social_media: Optional[Dict[str, Any]] = None
+    email: Optional[List[str]] = None
+    ratings: Optional[Dict[str, Any]] = None
+    digital_maturity: Optional[int] = None
 
 class MarketAnalytics(BaseModel):
     total_businesses: int
