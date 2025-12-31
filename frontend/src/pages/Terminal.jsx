@@ -189,52 +189,92 @@ function LeftSidebar({ segment, onSegmentChange, sector, onSectorChange, isMobil
 // ============================================================================
 
 function QuadrantChart({ businesses, onSelect, activeId }) {
-  // Plot businesses based on actual Dominance (engagement) and Digital maturity
+  // Seeded random for consistent jitter per business
+  const seededRandom = (seed) => {
+    const x = Math.sin(seed) * 10000
+    return x - Math.floor(x)
+  }
+
   const plotData = useMemo(() => {
-    return businesses.slice(0, 200).map(b => ({
-      business: b,
-      x: calculateDigitalMaturity(b), // 0-100, left to right
-      y: capScore(b.engagement_score), // 0-100, bottom to top
-    }))
+    return businesses.slice(0, 300).map((b, idx) => {
+      const baseX = calculateDigitalMaturity(b)
+      const baseY = capScore(b.engagement_score)
+      // Add jitter to spread overlapping points (±8 units)
+      const jitterX = (seededRandom(idx * 13) - 0.5) * 16
+      const jitterY = (seededRandom(idx * 17) - 0.5) * 16
+      return {
+        business: b,
+        x: Math.max(2, Math.min(98, baseX + jitterX)),
+        y: Math.max(2, Math.min(98, baseY + jitterY)),
+        baseX,
+        baseY,
+      }
+    })
   }, [businesses])
 
   return (
-    <div className="h-48 border-b border-[#222] relative bg-[#0a0a0a] hidden md:block">
+    <div className="h-64 border-b border-[#222] relative bg-[#0a0a0a] hidden md:block">
+      {/* Axis labels */}
+      <div className="absolute left-1/2 bottom-1 -translate-x-1/2 text-[10px] font-mono text-muted">
+        DIGITAL MATURITY →
+      </div>
+      <div className="absolute left-1 top-1/2 -translate-y-1/2 text-[10px] font-mono text-muted writing-mode-vertical" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
+        DOMINANCE →
+      </div>
+
       {/* Quadrant labels */}
-      <div className="absolute top-1 left-2 text-[10px] font-mono text-muted">HIGH DOM / LOW DIG</div>
-      <div className="absolute top-1 right-2 text-[10px] font-mono text-muted text-right">HIGH DOM / HIGH DIG</div>
-      <div className="absolute bottom-1 left-2 text-[10px] font-mono text-dim">LOW DOM / LOW DIG</div>
-      <div className="absolute bottom-1 right-2 text-[10px] font-mono text-dim text-right">LOW DOM / HIGH DIG</div>
+      <div className="absolute top-2 left-8 text-[10px] font-mono text-cyan/60">HIDDEN GEMS</div>
+      <div className="absolute top-2 right-2 text-[10px] font-mono text-gold/60">LOCAL TITANS</div>
+      <div className="absolute bottom-6 left-8 text-[10px] font-mono text-muted/40">LOW PRIORITY</div>
+      <div className="absolute bottom-6 right-2 text-[10px] font-mono text-green/60">DIGITAL NATIVE</div>
 
-      {/* Grid lines */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-full h-px bg-[#222]" />
+      {/* Grid lines - quadrant dividers at 50% */}
+      <div className="absolute left-0 right-0 top-1/2 h-px bg-[#333]" />
+      <div className="absolute top-0 bottom-0 left-1/2 w-px bg-[#333]" />
+
+      {/* Minor grid lines */}
+      <div className="absolute left-0 right-0 top-1/4 h-px bg-[#1a1a1a]" />
+      <div className="absolute left-0 right-0 top-3/4 h-px bg-[#1a1a1a]" />
+      <div className="absolute top-0 bottom-0 left-1/4 w-px bg-[#1a1a1a]" />
+      <div className="absolute top-0 bottom-0 left-3/4 w-px bg-[#1a1a1a]" />
+
+      {/* Plot area with padding */}
+      <div className="absolute inset-4">
+        {plotData.map(({ business, x, y, baseX, baseY }) => {
+          const isActive = activeId === business.business_id
+          const isHiddenGem = baseY >= 50 && baseX < 50
+          const isTitan = baseY >= 50 && baseX >= 50
+          const isDigitalNative = baseY < 50 && baseX >= 50
+
+          let color = 'bg-white/30' // Low priority default
+          if (isHiddenGem) color = 'bg-cyan'
+          else if (isTitan) color = 'bg-gold'
+          else if (isDigitalNative) color = 'bg-green'
+
+          return (
+            <div
+              key={business.business_id}
+              className={`absolute rounded-full cursor-pointer transition-all duration-150
+                ${isActive ? 'w-4 h-4 ring-2 ring-white z-20 opacity-100' : 'w-2.5 h-2.5 opacity-70 hover:opacity-100 hover:w-4 hover:h-4 hover:z-10'}
+                ${color}`}
+              style={{
+                left: `${x}%`,
+                bottom: `${y}%`,
+                transform: 'translate(-50%, 50%)'
+              }}
+              onClick={() => onSelect(business)}
+              title={`${business.name}\nDominance: ${baseY} | Digital: ${baseX}`}
+            />
+          )
+        })}
       </div>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="h-full w-px bg-[#222]" />
+
+      {/* Legend */}
+      <div className="absolute top-2 right-1/4 flex gap-3 text-[9px] font-mono">
+        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-cyan" /> Gems</span>
+        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-gold" /> Titans</span>
+        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green" /> Digital</span>
       </div>
-
-      {/* Plot points */}
-      {plotData.map(({ business, x, y }) => {
-        const isActive = activeId === business.business_id
-        const isHighValue = y >= 50 && x < 50 // High dominance, low digital = hidden gem
-
-        return (
-          <div
-            key={business.business_id}
-            className={`absolute rounded-full cursor-pointer transition-all
-              ${isActive ? 'w-3 h-3 ring-2 ring-white z-10' : 'w-1.5 h-1.5 hover:w-3 hover:h-3 hover:z-10'}
-              ${isHighValue ? 'bg-cyan' : 'bg-green'}`}
-            style={{
-              left: `${Math.max(5, Math.min(95, x))}%`,
-              bottom: `${Math.max(5, Math.min(95, y))}%`,
-              transform: 'translate(-50%, 50%)'
-            }}
-            onClick={() => onSelect(business)}
-            title={`${business.name} (Score: ${y}, Digital: ${x})`}
-          />
-        )
-      })}
     </div>
   )
 }
