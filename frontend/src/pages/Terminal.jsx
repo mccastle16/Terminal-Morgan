@@ -89,19 +89,27 @@ function getFitLevel(business) {
 // SMART SEGMENTS
 // ============================================================================
 
+// Threshold for dominance (engagement score) - based on data distribution (min 64.9, avg 86.4)
+const DOMINANCE_THRESHOLD = 80
+const DIGITAL_THRESHOLD = 50
+
 const SMART_SEGMENTS = [
   { id: 'all', name: 'All Targets', icon: null, filter: () => true },
   {
-    id: 'hidden_gems', name: 'Hidden Gems', subtitle: 'High Value, No Tech', icon: '💎',
-    filter: (b) => capScore(b.engagement_score) >= 80 && calculateDigitalMaturity(b) < 50
+    id: 'hidden_gems', name: 'Hidden Gems', subtitle: 'High Score, Low Digital', icon: '💎',
+    filter: (b) => capScore(b.engagement_score) >= DOMINANCE_THRESHOLD && calculateDigitalMaturity(b) < DIGITAL_THRESHOLD
   },
   {
-    id: 'turnaround', name: 'Turnaround', subtitle: 'High Pain, Low Rev', icon: '🔄',
-    filter: (b) => (b.pain_point_count || 0) >= 2 && capScore(b.engagement_score) < 75
+    id: 'local_titans', name: 'Local Titans', subtitle: 'High Score, High Digital', icon: '👑',
+    filter: (b) => capScore(b.engagement_score) >= DOMINANCE_THRESHOLD && calculateDigitalMaturity(b) >= DIGITAL_THRESHOLD
   },
   {
-    id: 'local_titans', name: 'Local Titans', subtitle: 'High All', icon: '👑',
-    filter: (b) => capScore(b.engagement_score) >= 90 && calculateDigitalMaturity(b) >= 60
+    id: 'turnaround', name: 'Turnaround', subtitle: 'Low Score, High Digital', icon: '🔄',
+    filter: (b) => capScore(b.engagement_score) < DOMINANCE_THRESHOLD && calculateDigitalMaturity(b) >= DIGITAL_THRESHOLD
+  },
+  {
+    id: 'rebuild', name: 'Rebuild', subtitle: 'Low Score, Low Digital', icon: '⚠️',
+    filter: (b) => capScore(b.engagement_score) < DOMINANCE_THRESHOLD && calculateDigitalMaturity(b) < DIGITAL_THRESHOLD
   }
 ]
 
@@ -116,6 +124,17 @@ const SECTORS = [
   { id: 'financial_services', name: 'Financial' },
   { id: 'nonprofit', name: 'Nonprofit' },
   { id: 'real_estate', name: 'Real Estate' }
+]
+
+const DISTRICTS = [
+  { id: 'all', name: 'All Districts' },
+  { id: 'downtown', name: 'Downtown' },
+  { id: 'miracle_mile', name: 'Miracle Mile' },
+  { id: 'giralda_plaza', name: 'Giralda Plaza' },
+  { id: 'ponce_circle', name: 'Ponce Circle' },
+  { id: 'coral_way', name: 'Coral Way' },
+  { id: 'riviera', name: 'Riviera' },
+  { id: 'crafts_section', name: 'Crafts Section' }
 ]
 
 // ============================================================================
@@ -141,7 +160,7 @@ function Header({ businessCount, targetCount }) {
 // LEFT SIDEBAR
 // ============================================================================
 
-function LeftSidebar({ segment, onSegmentChange, sector, onSectorChange, isMobileOpen, onClose }) {
+function LeftSidebar({ segment, onSegmentChange, sector, onSectorChange, district, onDistrictChange, isMobileOpen, onClose }) {
   return (
     <>
       {/* Mobile overlay */}
@@ -151,12 +170,12 @@ function LeftSidebar({ segment, onSegmentChange, sector, onSectorChange, isMobil
 
       <aside className={`
         fixed lg:relative inset-y-0 left-0 z-50 lg:z-auto
-        w-56 bg-[#0a0a0a] border-r border-[#222] flex flex-col flex-shrink-0 p-3
+        w-56 bg-[#0a0a0a] border-r border-[#222] flex flex-col flex-shrink-0 p-3 overflow-y-auto
         transform transition-transform lg:transform-none
         ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
         <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Smart Segments</div>
-        <div className="space-y-1 mb-6">
+        <div className="space-y-1 mb-4">
           {SMART_SEGMENTS.map((seg) => (
             <button
               key={seg.id}
@@ -174,7 +193,7 @@ function LeftSidebar({ segment, onSegmentChange, sector, onSectorChange, isMobil
         </div>
 
         <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Sector</div>
-        <div className="space-y-0.5 overflow-y-auto flex-1">
+        <div className="space-y-0.5 mb-4">
           {SECTORS.map((sec) => (
             <button
               key={sec.id}
@@ -183,6 +202,20 @@ function LeftSidebar({ segment, onSegmentChange, sector, onSectorChange, isMobil
                 ${sector === sec.id ? 'bg-cyan text-black font-semibold' : 'text-muted hover:text-white'}`}
             >
               {sec.name}
+            </button>
+          ))}
+        </div>
+
+        <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">District</div>
+        <div className="space-y-0.5">
+          {DISTRICTS.map((dist) => (
+            <button
+              key={dist.id}
+              onClick={() => { onDistrictChange(dist.id); onClose(); }}
+              className={`w-full text-left px-3 py-1.5 text-sm transition-colors rounded
+                ${district === dist.id ? 'bg-gold text-black font-semibold' : 'text-muted hover:text-white'}`}
+            >
+              {dist.name}
             </button>
           ))}
         </div>
@@ -220,7 +253,7 @@ function QuadrantChart({ businesses, onSelect, activeId }) {
   }, [businesses])
 
   return (
-    <div className="h-64 border-b border-[#222] relative bg-[#0a0a0a] hidden md:block">
+    <div className="aspect-square max-h-80 border-b border-[#222] relative bg-[#0a0a0a] hidden md:block">
       {/* Axis labels */}
       <div className="absolute left-1/2 bottom-1 -translate-x-1/2 text-[10px] font-mono text-muted">
         DIGITAL MATURITY →
@@ -235,30 +268,27 @@ function QuadrantChart({ businesses, onSelect, activeId }) {
       <div className="absolute bottom-6 left-8 text-[10px] font-mono text-muted/40">⚠️ REBUILD</div>
       <div className="absolute bottom-6 right-2 text-[10px] font-mono text-green/60">🔄 TURNAROUND</div>
 
-      {/* Grid lines - quadrant dividers at 50% */}
-      <div className="absolute left-0 right-0 top-1/2 h-px bg-[#333]" />
-      <div className="absolute top-0 bottom-0 left-1/2 w-px bg-[#333]" />
-
-      {/* Minor grid lines */}
-      <div className="absolute left-0 right-0 top-1/4 h-px bg-[#1a1a1a]" />
-      <div className="absolute left-0 right-0 top-3/4 h-px bg-[#1a1a1a]" />
-      <div className="absolute top-0 bottom-0 left-1/4 w-px bg-[#1a1a1a]" />
-      <div className="absolute top-0 bottom-0 left-3/4 w-px bg-[#1a1a1a]" />
+      {/* Grid lines - quadrant dividers at threshold values */}
+      {/* Y-axis: DOMINANCE_THRESHOLD (80) = 80% from bottom = 20% from top */}
+      <div className="absolute left-0 right-0 h-px bg-[#333]" style={{ bottom: `${DOMINANCE_THRESHOLD}%` }} />
+      {/* X-axis: DIGITAL_THRESHOLD (50) = 50% from left */}
+      <div className="absolute top-0 bottom-0 w-px bg-[#333]" style={{ left: `${DIGITAL_THRESHOLD}%` }} />
 
       {/* Plot area with padding */}
       <div className="absolute inset-4">
         {plotData.map(({ business, x, y, baseX, baseY }) => {
           const isActive = activeId === business.business_id
-          const isHiddenGem = baseY >= 50 && baseX < 50  // High dominance, low digital
-          const isTitan = baseY >= 50 && baseX >= 50      // High dominance, high digital
-          const isTurnaround = baseY < 50 && baseX >= 50  // Low dominance, high digital
-          const isRebuild = baseY < 50 && baseX < 50      // Low dominance, low digital
+          // Use same thresholds as segment filters
+          const isHiddenGem = baseY >= DOMINANCE_THRESHOLD && baseX < DIGITAL_THRESHOLD
+          const isTitan = baseY >= DOMINANCE_THRESHOLD && baseX >= DIGITAL_THRESHOLD
+          const isTurnaround = baseY < DOMINANCE_THRESHOLD && baseX >= DIGITAL_THRESHOLD
+          const isRebuild = baseY < DOMINANCE_THRESHOLD && baseX < DIGITAL_THRESHOLD
 
           let color = 'bg-white/30' // Default
           if (isHiddenGem) color = 'bg-cyan'
           else if (isTitan) color = 'bg-gold'
           else if (isTurnaround) color = 'bg-green'
-          else if (isRebuild) color = 'bg-red/50'
+          else if (isRebuild) color = 'bg-accent/50'
 
           return (
             <div
@@ -283,7 +313,7 @@ function QuadrantChart({ businesses, onSelect, activeId }) {
         <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-cyan" /> Gems</span>
         <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-gold" /> Titans</span>
         <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green" /> Turn</span>
-        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red/50" /> Rebuild</span>
+        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-accent/50" /> Rebuild</span>
       </div>
     </div>
   )
@@ -293,31 +323,117 @@ function QuadrantChart({ businesses, onSelect, activeId }) {
 // ENTITY TABLE
 // ============================================================================
 
-function EntityTable({ businesses, activeId, onSelect, onMenuClick }) {
+function EntityTable({ businesses, activeId, onSelect, onMenuClick, searchQuery, onSearchChange, sortBy, onSortChange }) {
+  // Sort businesses based on sortBy
+  const sortedBusinesses = useMemo(() => {
+    const sorted = [...businesses]
+    switch (sortBy) {
+      case 'name':
+        sorted.sort((a, b) => (a.name || '').localeCompare(b.name || ''))
+        break
+      case 'name_desc':
+        sorted.sort((a, b) => (b.name || '').localeCompare(a.name || ''))
+        break
+      case 'sector':
+        sorted.sort((a, b) => (a.category || '').localeCompare(b.category || ''))
+        break
+      case 'sector_desc':
+        sorted.sort((a, b) => (b.category || '').localeCompare(a.category || ''))
+        break
+      case 'alpha':
+        sorted.sort((a, b) => calculateOpportunityAlpha(b) - calculateOpportunityAlpha(a))
+        break
+      case 'alpha_asc':
+        sorted.sort((a, b) => calculateOpportunityAlpha(a) - calculateOpportunityAlpha(b))
+        break
+      case 'fit':
+        sorted.sort((a, b) => {
+          const fitOrder = { 'HIGH': 0, 'MED': 1, 'LOW': 2 }
+          return fitOrder[getFitLevel(a).label] - fitOrder[getFitLevel(b).label]
+        })
+        break
+      case 'fit_desc':
+        sorted.sort((a, b) => {
+          const fitOrder = { 'HIGH': 0, 'MED': 1, 'LOW': 2 }
+          return fitOrder[getFitLevel(b).label] - fitOrder[getFitLevel(a).label]
+        })
+        break
+      default:
+        sorted.sort((a, b) => calculateOpportunityAlpha(b) - calculateOpportunityAlpha(a))
+    }
+    return sorted
+  }, [businesses, sortBy])
+
+  const handleSort = (column) => {
+    if (sortBy === column) {
+      onSortChange(column + '_desc')
+    } else if (sortBy === column + '_desc') {
+      onSortChange(column)
+    } else {
+      onSortChange(column)
+    }
+  }
+
+  const getSortIcon = (column) => {
+    if (sortBy === column) return ' ↑'
+    if (sortBy === column + '_desc') return ' ↓'
+    return ''
+  }
+
   return (
     <div className="flex-1 flex flex-col bg-[#050505] min-w-0">
-      {/* Mobile menu button */}
-      <div className="lg:hidden p-2 border-b border-[#222]">
-        <button onClick={onMenuClick} className="text-xs font-mono text-muted px-3 py-1 border border-[#333] rounded">
+      {/* Search and controls bar */}
+      <div className="p-2 border-b border-[#222] flex gap-2 items-center flex-wrap">
+        <button onClick={onMenuClick} className="lg:hidden text-xs font-mono text-muted px-3 py-1.5 border border-[#333] rounded hover:border-cyan">
           ☰ Filters
         </button>
+        <div className="flex-1 min-w-[200px]">
+          <input
+            type="text"
+            placeholder="Search businesses..."
+            value={searchQuery}
+            onChange={(e) => onSearchChange(e.target.value)}
+            className="w-full bg-[#111] border border-[#333] rounded px-3 py-1.5 text-sm font-mono text-white placeholder-muted focus:outline-none focus:border-cyan"
+          />
+        </div>
+        <span className="text-xs font-mono text-muted">{sortedBusinesses.length} results</span>
       </div>
 
-      <QuadrantChart businesses={businesses} onSelect={onSelect} activeId={activeId} />
+      <QuadrantChart businesses={sortedBusinesses} onSelect={onSelect} activeId={activeId} />
 
       {/* Entity Table */}
       <div className="flex-1 overflow-y-auto">
         <table className="w-full">
           <thead className="sticky top-0 bg-[#0a0a0a] border-b border-[#222]">
             <tr className="text-xs font-mono text-muted uppercase">
-              <th className="text-left p-2 sm:p-3">Entity Name</th>
-              <th className="text-left p-2 sm:p-3 hidden sm:table-cell">Sector</th>
-              <th className="text-center p-2 sm:p-3">Alpha</th>
-              <th className="text-center p-2 sm:p-3">Fit</th>
+              <th
+                className="text-left p-2 sm:p-3 cursor-pointer hover:text-cyan select-none"
+                onClick={() => handleSort('name')}
+              >
+                Entity Name{getSortIcon('name')}
+              </th>
+              <th
+                className="text-left p-2 sm:p-3 hidden sm:table-cell cursor-pointer hover:text-cyan select-none"
+                onClick={() => handleSort('sector')}
+              >
+                Sector{getSortIcon('sector')}
+              </th>
+              <th
+                className="text-center p-2 sm:p-3 cursor-pointer hover:text-cyan select-none"
+                onClick={() => handleSort('alpha')}
+              >
+                Alpha{getSortIcon('alpha')}
+              </th>
+              <th
+                className="text-center p-2 sm:p-3 cursor-pointer hover:text-cyan select-none"
+                onClick={() => handleSort('fit')}
+              >
+                Fit{getSortIcon('fit')}
+              </th>
             </tr>
           </thead>
           <tbody>
-            {businesses.map((b) => {
+            {sortedBusinesses.map((b) => {
               const alpha = calculateOpportunityAlpha(b)
               const fit = getFitLevel(b)
               const isActive = activeId === b.business_id
@@ -345,9 +461,6 @@ function EntityTable({ businesses, activeId, onSelect, onMenuClick }) {
             })}
           </tbody>
         </table>
-        <div className="p-3 text-xs text-muted font-mono border-t border-[#222]">
-          Showing {businesses.length} businesses
-        </div>
       </div>
     </div>
   )
@@ -710,6 +823,9 @@ export default function Terminal() {
   const [loading, setLoading] = useState(true)
   const [segment, setSegment] = useState('all')
   const [sector, setSector] = useState('all')
+  const [district, setDistrict] = useState('all')
+  const [searchQuery, setSearchQuery] = useState('')
+  const [sortBy, setSortBy] = useState('alpha')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [dataWarning, setDataWarning] = useState(null)
 
@@ -751,11 +867,13 @@ export default function Terminal() {
   const filteredBusinesses = useMemo(() => {
     let result = [...allBusinesses]
 
+    // Apply segment filter
     const segmentConfig = SMART_SEGMENTS.find(s => s.id === segment)
     if (segmentConfig?.filter) {
       result = result.filter(segmentConfig.filter)
     }
 
+    // Apply sector filter
     if (sector !== 'all') {
       result = result.filter(b =>
         b.category?.toLowerCase() === sector.toLowerCase() ||
@@ -763,9 +881,26 @@ export default function Terminal() {
       )
     }
 
-    result.sort((a, b) => calculateOpportunityAlpha(b) - calculateOpportunityAlpha(a))
-    return result // No limit - show all
-  }, [allBusinesses, segment, sector])
+    // Apply district filter
+    if (district !== 'all') {
+      result = result.filter(b =>
+        b.district?.toLowerCase() === district.toLowerCase() ||
+        b.district?.toLowerCase().includes(district.toLowerCase())
+      )
+    }
+
+    // Apply search filter
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim()
+      result = result.filter(b =>
+        b.name?.toLowerCase().includes(query) ||
+        b.category?.toLowerCase().includes(query) ||
+        b.district?.toLowerCase().includes(query)
+      )
+    }
+
+    return result
+  }, [allBusinesses, segment, sector, district, searchQuery])
 
   const handleSelect = async (business) => {
     try {
@@ -803,6 +938,8 @@ export default function Terminal() {
           onSegmentChange={setSegment}
           sector={sector}
           onSectorChange={setSector}
+          district={district}
+          onDistrictChange={setDistrict}
           isMobileOpen={mobileMenuOpen}
           onClose={() => setMobileMenuOpen(false)}
         />
@@ -811,6 +948,10 @@ export default function Terminal() {
           activeId={selectedBusiness?.business_id}
           onSelect={handleSelect}
           onMenuClick={() => setMobileMenuOpen(true)}
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          sortBy={sortBy}
+          onSortChange={setSortBy}
         />
         <BusinessDossier
           business={selectedBusiness}
