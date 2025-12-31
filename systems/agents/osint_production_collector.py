@@ -518,10 +518,10 @@ class YelpAgent:
         return data
 
 # ============================================================================
-# AGENT 3: WEBSITE ANALYZER
+# AGENT 3: WEBSITE AGENT
 # ============================================================================
 
-class WebsiteAnalyzer:
+class WebsiteAgent:
     """Analyzes business websites"""
     
     def __init__(self, session: aiohttp.ClientSession):
@@ -597,10 +597,10 @@ class WebsiteAnalyzer:
         return data
 
 # ============================================================================
-# AGENT 4: SOCIAL MEDIA ANALYZER
+# AGENT 4: SOCIAL MEDIA AGENT
 # ============================================================================
 
-class SocialMediaAnalyzer:
+class SocialMediaAgent:
     """Analyzes social media presence"""
     
     def __init__(self, session: aiohttp.ClientSession):
@@ -674,10 +674,10 @@ class ChamberAgent:
             return {}
 
 # ============================================================================
-# AGENT 6: REVENUE & EMPLOYEE ESTIMATOR
+# AGENT 6: FINANCIAL AGENT
 # ============================================================================
 
-class FinancialEstimator:
+class FinancialAgent:
     """Estimates revenue and employee count"""
     
     def estimate_revenue(self, business_data: Dict[str, Any]) -> Dict[str, Any]:
@@ -764,10 +764,10 @@ class FinancialEstimator:
         }
 
 # ============================================================================
-# AGENT 7: PAIN POINT EXTRACTOR
+# AGENT 7: PAIN POINT AGENT
 # ============================================================================
 
-class PainPointExtractor:
+class PainPointAgent:
     """Extracts pain points from reviews and observations"""
     
     def extract(self, business_data: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -846,10 +846,10 @@ class PainPointExtractor:
         return pain_points
 
 # ============================================================================
-# AGENT 8: CO_ FIT ANALYZER
+# AGENT 8: CO-FIT AGENT
 # ============================================================================
 
-class CoFitAnalyzer:
+class CoFitAgent:
     """Analyzes fit for Co_ solutions"""
     
     def analyze(self, business_data: Dict[str, Any], pain_points: List[Dict]) -> Dict[str, Any]:
@@ -1028,8 +1028,8 @@ class OSINTOrchestrator:
         # Stage 2: Website analysis
         if profile.website:
             print(f"  ├─ Website analysis...")
-            website_analyzer = WebsiteAnalyzer(self.session)
-            website_data = await website_analyzer.analyze(profile.website, business_name)
+            website_agent = WebsiteAgent(self.session)
+            website_data = await website_agent.analyze(profile.website, business_name)
             profile.raw_data["website"] = website_data
             profile.data_sources.append("website")
             
@@ -1044,16 +1044,16 @@ class OSINTOrchestrator:
         
         # Stage 4: Financial estimates
         print(f"  ├─ Financial estimates...")
-        financial_estimator = FinancialEstimator()
+        financial_agent = FinancialAgent()
         
         business_data_for_estimate = {
             "category": category,
             "review_count": profile.reviews.get("google_count", 0) + profile.reviews.get("yelp_count", 0)
         }
         
-        employee_est = financial_estimator.estimate_employees(business_data_for_estimate)
+        employee_est = financial_agent.estimate_employees(business_data_for_estimate)
         business_data_for_estimate["employee_estimate"] = employee_est
-        revenue_est = financial_estimator.estimate_revenue(business_data_for_estimate)
+        revenue_est = financial_agent.estimate_revenue(business_data_for_estimate)
         
         profile.estimated_employees = employee_est
         profile.estimated_revenue = revenue_est
@@ -1066,7 +1066,7 @@ class OSINTOrchestrator:
         
         # Stage 6: Pain point extraction
         print(f"  ├─ Pain point extraction...")
-        pain_extractor = PainPointExtractor()
+        pain_point_agent = PainPointAgent()
         
         business_data_for_pain = {
             "category": category,
@@ -1076,11 +1076,11 @@ class OSINTOrchestrator:
             "website": profile.website
         }
         
-        profile.pain_points = pain_extractor.extract(business_data_for_pain)
+        profile.pain_points = pain_point_agent.extract(business_data_for_pain)
         
         # Stage 7: Co_ fit analysis
         print(f"  ├─ Co_ fit analysis...")
-        cofit_analyzer = CoFitAnalyzer()
+        cofit_agent = CoFitAgent()
         
         business_data_for_cofit = {
             "category": category,
@@ -1090,7 +1090,7 @@ class OSINTOrchestrator:
             "board_member": chamber_data.get("board_member", False)
         }
         
-        cofit_result = cofit_analyzer.analyze(business_data_for_cofit, profile.pain_points)
+        cofit_result = cofit_agent.analyze(business_data_for_cofit, profile.pain_points)
         profile.co_fit_solutions = cofit_result["solutions"]
         profile.engagement_score = cofit_result["engagement_score"]
         profile.priority_tier = cofit_result["priority_tier"]
@@ -1287,6 +1287,19 @@ async def main():
     print(f"\nTop 3 by engagement score:")
     for p in sorted(profiles, key=lambda x: x.engagement_score, reverse=True)[:3]:
         print(f"  • {p.name}: {p.engagement_score:.0f} (Tier {p.priority_tier})")
+
+# ============================================================================
+# BACKWARDS-COMPATIBLE ALIASES (Deprecated - use *Agent suffix instead)
+# ============================================================================
+# These aliases are provided for backwards compatibility with existing code.
+# New code should use the standardized *Agent class names.
+
+WebsiteAnalyzer = WebsiteAgent  # Deprecated: use WebsiteAgent
+SocialMediaAnalyzer = SocialMediaAgent  # Deprecated: use SocialMediaAgent
+FinancialEstimator = FinancialAgent  # Deprecated: use FinancialAgent
+PainPointExtractor = PainPointAgent  # Deprecated: use PainPointAgent
+CoFitAnalyzer = CoFitAgent  # Deprecated: use CoFitAgent
+
 
 if __name__ == "__main__":
     asyncio.run(main())
