@@ -7,19 +7,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        coral: {
-          50: '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-          500: '#f97316',
-          600: '#ea580c',
-          700: '#c2410c',
-          800: '#9a3412',
-          900: '#7c2d12',
-        }
-      }
+        // Terminal colors
+        bg: '#050505',
+        sidebar: '#0A0A0A',
+        surface: '#111111',
+        'surface-hover': '#1a1a1a',
+        border: '#222222',
+        'border-light': '#333333',
+
+        // Accent colors
+        cyan: '#00F0FF',
+        gold: '#FFD700',
+        green: '#00FF94',
+        accent: '#FF0055',
+        orange: '#FF6B35',
+
+        // Text
+        muted: '#666666',
+        dim: '#444444',
+      },
+      fontFamily: {
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+      },
     },
   },
   plugins: [],
