@@ -89,19 +89,27 @@ function getFitLevel(business) {
 // SMART SEGMENTS
 // ============================================================================
 
+// Threshold for dominance (engagement score) - based on data distribution (min 64.9, avg 86.4)
+const DOMINANCE_THRESHOLD = 80
+const DIGITAL_THRESHOLD = 50
+
 const SMART_SEGMENTS = [
   { id: 'all', name: 'All Targets', icon: null, filter: () => true },
   {
-    id: 'hidden_gems', name: 'Hidden Gems', subtitle: 'High Value, No Tech', icon: '💎',
-    filter: (b) => capScore(b.engagement_score) >= 80 && calculateDigitalMaturity(b) < 50
+    id: 'hidden_gems', name: 'Hidden Gems', subtitle: 'High Score, Low Digital', icon: '💎',
+    filter: (b) => capScore(b.engagement_score) >= DOMINANCE_THRESHOLD && calculateDigitalMaturity(b) < DIGITAL_THRESHOLD
   },
   {
-    id: 'turnaround', name: 'Turnaround', subtitle: 'High Pain, Low Rev', icon: '🔄',
-    filter: (b) => (b.pain_point_count || 0) >= 2 && capScore(b.engagement_score) < 75
+    id: 'local_titans', name: 'Local Titans', subtitle: 'High Score, High Digital', icon: '👑',
+    filter: (b) => capScore(b.engagement_score) >= DOMINANCE_THRESHOLD && calculateDigitalMaturity(b) >= DIGITAL_THRESHOLD
   },
   {
-    id: 'local_titans', name: 'Local Titans', subtitle: 'High All', icon: '👑',
-    filter: (b) => capScore(b.engagement_score) >= 90 && calculateDigitalMaturity(b) >= 60
+    id: 'turnaround', name: 'Turnaround', subtitle: 'Low Score, High Digital', icon: '🔄',
+    filter: (b) => capScore(b.engagement_score) < DOMINANCE_THRESHOLD && calculateDigitalMaturity(b) >= DIGITAL_THRESHOLD
+  },
+  {
+    id: 'rebuild', name: 'Rebuild', subtitle: 'Low Score, Low Digital', icon: '⚠️',
+    filter: (b) => capScore(b.engagement_score) < DOMINANCE_THRESHOLD && calculateDigitalMaturity(b) < DIGITAL_THRESHOLD
   }
 ]
 
@@ -260,24 +268,21 @@ function QuadrantChart({ businesses, onSelect, activeId }) {
       <div className="absolute bottom-6 left-8 text-[10px] font-mono text-muted/40">⚠️ REBUILD</div>
       <div className="absolute bottom-6 right-2 text-[10px] font-mono text-green/60">🔄 TURNAROUND</div>
 
-      {/* Grid lines - quadrant dividers at 50% */}
-      <div className="absolute left-0 right-0 top-1/2 h-px bg-[#333]" />
-      <div className="absolute top-0 bottom-0 left-1/2 w-px bg-[#333]" />
-
-      {/* Minor grid lines */}
-      <div className="absolute left-0 right-0 top-1/4 h-px bg-[#1a1a1a]" />
-      <div className="absolute left-0 right-0 top-3/4 h-px bg-[#1a1a1a]" />
-      <div className="absolute top-0 bottom-0 left-1/4 w-px bg-[#1a1a1a]" />
-      <div className="absolute top-0 bottom-0 left-3/4 w-px bg-[#1a1a1a]" />
+      {/* Grid lines - quadrant dividers at threshold values */}
+      {/* Y-axis: DOMINANCE_THRESHOLD (80) = 80% from bottom = 20% from top */}
+      <div className="absolute left-0 right-0 h-px bg-[#333]" style={{ bottom: `${DOMINANCE_THRESHOLD}%` }} />
+      {/* X-axis: DIGITAL_THRESHOLD (50) = 50% from left */}
+      <div className="absolute top-0 bottom-0 w-px bg-[#333]" style={{ left: `${DIGITAL_THRESHOLD}%` }} />
 
       {/* Plot area with padding */}
       <div className="absolute inset-4">
         {plotData.map(({ business, x, y, baseX, baseY }) => {
           const isActive = activeId === business.business_id
-          const isHiddenGem = baseY >= 50 && baseX < 50  // High dominance, low digital
-          const isTitan = baseY >= 50 && baseX >= 50      // High dominance, high digital
-          const isTurnaround = baseY < 50 && baseX >= 50  // Low dominance, high digital
-          const isRebuild = baseY < 50 && baseX < 50      // Low dominance, low digital
+          // Use same thresholds as segment filters
+          const isHiddenGem = baseY >= DOMINANCE_THRESHOLD && baseX < DIGITAL_THRESHOLD
+          const isTitan = baseY >= DOMINANCE_THRESHOLD && baseX >= DIGITAL_THRESHOLD
+          const isTurnaround = baseY < DOMINANCE_THRESHOLD && baseX >= DIGITAL_THRESHOLD
+          const isRebuild = baseY < DOMINANCE_THRESHOLD && baseX < DIGITAL_THRESHOLD
 
           let color = 'bg-white/30' // Default
           if (isHiddenGem) color = 'bg-cyan'
