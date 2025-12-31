@@ -288,7 +288,7 @@ function QuadrantChart({ businesses, onSelect, activeId }) {
           if (isHiddenGem) color = 'bg-cyan'
           else if (isTitan) color = 'bg-gold'
           else if (isTurnaround) color = 'bg-green'
-          else if (isRebuild) color = 'bg-red/50'
+          else if (isRebuild) color = 'bg-accent/50'
 
           return (
             <div
@@ -313,7 +313,7 @@ function QuadrantChart({ businesses, onSelect, activeId }) {
         <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-cyan" /> Gems</span>
         <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-gold" /> Titans</span>
         <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green" /> Turn</span>
-        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red/50" /> Rebuild</span>
+        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-accent/50" /> Rebuild</span>
       </div>
     </div>
   )
