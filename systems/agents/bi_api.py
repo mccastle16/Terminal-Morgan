@@ -126,6 +126,20 @@ def get_tier_from_score(score: float) -> int:
     else:
         return 4
 
+def calculate_digital_maturity(b: Dict) -> int:
+    """Calculate digital maturity score (0-100) based on online presence"""
+    score = 0
+    if b.get('website'): score += 25
+    social = b.get('social_media', {})
+    if social.get('instagram'): score += 20
+    if social.get('facebook'): score += 15
+    emails = b.get('email', [])
+    if emails and len(emails) > 0: score += 15
+    ratings = b.get('ratings', {})
+    if ratings.get('google'): score += 15
+    if ratings.get('yelp'): score += 10
+    return min(score, 100)
+
 def business_to_summary(b: Dict) -> Dict:
     """Convert business dict to summary format"""
     return {
@@ -140,7 +154,13 @@ def business_to_summary(b: Dict) -> Dict:
         "confidence_score": b.get('confidence_score', 0),
         "pain_point_count": len(b.get('pain_points', [])),
         "opportunity_count": len(b.get('opportunities', [])),
-        "solution_count": len(b.get('co_fit_solutions', []))
+        "solution_count": len(b.get('co_fit_solutions', [])),
+        # Fields for digital maturity calculation
+        "website": b.get('website'),
+        "social_media": b.get('social_media', {}),
+        "email": b.get('email', []),
+        "ratings": b.get('ratings', {}),
+        "digital_maturity": calculate_digital_maturity(b)
     }
 
 # ============================================================================

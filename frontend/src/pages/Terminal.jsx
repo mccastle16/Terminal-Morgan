@@ -32,6 +32,11 @@ function calculateOpportunityAlpha(business) {
 }
 
 function calculateDigitalMaturity(business) {
+  // Use pre-calculated value from API if available
+  if (business.digital_maturity !== undefined) {
+    return business.digital_maturity
+  }
+  // Fallback to calculating from fields
   let score = 0
   if (business.website) score += 25
   if (business.social_media?.instagram) score += 20
@@ -224,11 +229,11 @@ function QuadrantChart({ businesses, onSelect, activeId }) {
         DOMINANCE →
       </div>
 
-      {/* Quadrant labels */}
-      <div className="absolute top-2 left-8 text-[10px] font-mono text-cyan/60">HIDDEN GEMS</div>
-      <div className="absolute top-2 right-2 text-[10px] font-mono text-gold/60">LOCAL TITANS</div>
-      <div className="absolute bottom-6 left-8 text-[10px] font-mono text-muted/40">LOW PRIORITY</div>
-      <div className="absolute bottom-6 right-2 text-[10px] font-mono text-green/60">DIGITAL NATIVE</div>
+      {/* Quadrant labels - describe what each quadrant means */}
+      <div className="absolute top-2 left-8 text-[10px] font-mono text-cyan/60">💎 HIDDEN GEMS</div>
+      <div className="absolute top-2 right-2 text-[10px] font-mono text-gold/60">👑 LOCAL TITANS</div>
+      <div className="absolute bottom-6 left-8 text-[10px] font-mono text-muted/40">⚠️ REBUILD</div>
+      <div className="absolute bottom-6 right-2 text-[10px] font-mono text-green/60">🔄 TURNAROUND</div>
 
       {/* Grid lines - quadrant dividers at 50% */}
       <div className="absolute left-0 right-0 top-1/2 h-px bg-[#333]" />
@@ -244,14 +249,16 @@ function QuadrantChart({ businesses, onSelect, activeId }) {
       <div className="absolute inset-4">
         {plotData.map(({ business, x, y, baseX, baseY }) => {
           const isActive = activeId === business.business_id
-          const isHiddenGem = baseY >= 50 && baseX < 50
-          const isTitan = baseY >= 50 && baseX >= 50
-          const isDigitalNative = baseY < 50 && baseX >= 50
+          const isHiddenGem = baseY >= 50 && baseX < 50  // High dominance, low digital
+          const isTitan = baseY >= 50 && baseX >= 50      // High dominance, high digital
+          const isTurnaround = baseY < 50 && baseX >= 50  // Low dominance, high digital
+          const isRebuild = baseY < 50 && baseX < 50      // Low dominance, low digital
 
-          let color = 'bg-white/30' // Low priority default
+          let color = 'bg-white/30' // Default
           if (isHiddenGem) color = 'bg-cyan'
           else if (isTitan) color = 'bg-gold'
-          else if (isDigitalNative) color = 'bg-green'
+          else if (isTurnaround) color = 'bg-green'
+          else if (isRebuild) color = 'bg-red/50'
 
           return (
             <div
@@ -272,10 +279,11 @@ function QuadrantChart({ businesses, onSelect, activeId }) {
       </div>
 
       {/* Legend */}
-      <div className="absolute top-2 right-1/4 flex gap-3 text-[9px] font-mono">
+      <div className="absolute top-2 right-1/4 flex gap-4 text-[9px] font-mono">
         <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-cyan" /> Gems</span>
         <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-gold" /> Titans</span>
-        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green" /> Digital</span>
+        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green" /> Turn</span>
+        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red/50" /> Rebuild</span>
       </div>
     </div>
   )
