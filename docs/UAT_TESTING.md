@@ -4,6 +4,8 @@
 
 This document provides User Acceptance Testing (UAT) procedures for validating the Coral Gables BI Platform before production deployment.
 
+**Current Database:** 927 businesses (844 verified Chamber members + 83 additional)
+
 ---
 
 ## Pre-Requisites
@@ -123,6 +125,25 @@ asyncio.run(test())
 
 **Expected**: Multiple pain points identified
 
+### 1.5 Phone Validation
+
+```bash
+python -c "
+from osint_production_collector import validate_phone
+
+# Test valid phone
+print(f'Valid: {validate_phone(\"305-442-1234\")}')  # Should return 305-442-1234
+
+# Test fake 555 number
+print(f'Fake 555: {validate_phone(\"305-555-0101\")}')  # Should return None
+
+# Test invalid exchange
+print(f'Invalid: {validate_phone(\"305-114-1234\")}')  # Should return None
+"
+```
+
+**Expected**: Valid phones formatted, invalid phones rejected
+
 ---
 
 ## Test 2: Orchestrator (Full Pipeline)
@@ -154,7 +175,7 @@ python weekly_refresh.py --businesses 10
 
 **Expected**: Data saved to PostgreSQL or JSON, report generated
 
-### 2.3 Live Run with Validation (10 Businesses)
+### 2.3 Live Run with Validation
 
 ```bash
 python weekly_refresh.py --businesses 10 --run-validation
@@ -177,13 +198,37 @@ STATUS: SUCCESS
 
 **Actual Performance (Dec 2025):**
 - 88 businesses: ~17 minutes
+- 927 businesses: ~45 minutes (estimated)
 - Confidence boost: +16% (0.75 → 0.92-0.95)
-- Min confidence: 0.92, Max: 0.95, Avg: 0.92
 
-### 2.4 Test Consensus Validator Directly
+### 2.4 Regenerate Full Database
 
 ```bash
-cd systems/agents
+python generate_comprehensive_bi_database.py
+```
+
+**Expected Output**:
+```
+======================================================================
+🏗️  GENERATING COMPREHENSIVE BUSINESS INTELLIGENCE DATABASE
+======================================================================
+
+📂 Loaded 927 source businesses
+📊 Processing 927 businesses...
+  ✓ Completed processing 927 businesses
+
+======================================================================
+✅ DATABASE GENERATED SUCCESSFULLY
+======================================================================
+📊 Total businesses: 927
+💾 File size: 2299.7 KB
+
+🏛️  CHAMBER MEMBERS: 856 / 927 (92.3%)
+```
+
+### 2.5 Test Consensus Validator Directly
+
+```bash
 python consensus_validator.py
 ```
 
@@ -203,8 +248,8 @@ curl http://localhost:8000/health
 ```json
 {
   "status": "healthy",
-  "version": "2.0.0",
-  "businesses_loaded": 88,
+  "version": "3.0.0",
+  "businesses_loaded": 927,
   "data_source": "PostgreSQL"
 }
 ```
@@ -215,7 +260,7 @@ curl http://localhost:8000/health
 curl http://localhost:8000/api/v2/businesses | jq '.businesses | length'
 ```
 
-**Expected**: Number of businesses (88+)
+**Expected**: 927 (or close to it)
 
 ### 3.3 Search Pain Points
 
@@ -251,7 +296,7 @@ curl http://localhost:8000/api/v2/data-quality/overview | jq
 ```
 
 **Expected Metrics**:
-- `completeness_score`: > 0.80 (80%)
+- `completeness_score`: > 0.85 (85%)
 - `confidence_score`: > 0.70 (70%)
 - `opportunities_count`: > 0
 
@@ -262,6 +307,22 @@ curl http://localhost:8000/api/v2/businesses | jq '.businesses[0].pain_points[] 
 ```
 
 **Expected**: Each pain point has a confidence value (0.5-0.9)
+
+### 4.3 Verify Chamber Member Data
+
+```bash
+curl http://localhost:8000/api/v2/businesses | jq '[.businesses[] | select(.chamber_membership.is_member == true)] | length'
+```
+
+**Expected**: ~856 (92.3% of businesses)
+
+### 4.4 Verify Phone Data Quality
+
+```bash
+curl http://localhost:8000/api/v2/businesses | jq '[.businesses[] | select(.phone | length > 0)] | length'
+```
+
+**Expected**: ~829 businesses with phone numbers (89.4%)
 
 ---
 
@@ -288,7 +349,7 @@ session.close()
 "
 ```
 
-**Expected**: Count > 0
+**Expected**: Count = 927 (or close)
 
 ### 5.3 Verify Auto-Migrations on Startup
 
@@ -337,16 +398,57 @@ curl -X POST https://terminal-production-27a0.up.railway.app/api/v2/admin/refres
 
 ---
 
+## Test 7: Data Source Validation
+
+### 7.1 Verify Chamber Data Extraction
+
+```bash
+python -c "
+import json
+with open('../data/chamber_members_extracted.json') as f:
+    data = json.load(f)
+    print(f'Chamber members: {len(data)}')
+    print(f'With phone: {sum(1 for b in data if b.get(\"phone\"))}')
+    print(f'With website: {sum(1 for b in data if b.get(\"website\"))}')
+"
+```
+
+**Expected**:
+- Chamber members: 844
+- With phone: 829+
+- With website: 792+
+
+### 7.2 Verify Merged Data
+
+```bash
+python -c "
+import json
+with open('../data/all_businesses_merged.json') as f:
+    data = json.load(f)
+    print(f'Total merged: {len(data)}')
+    chamber = sum(1 for b in data if b.get('chamber_membership', {}).get('is_member'))
+    print(f'Chamber members: {chamber}')
+"
+```
+
+**Expected**:
+- Total merged: 927
+- Chamber members: 856+
+
+---
+
 ## Acceptance Criteria
 
 | Test | Criteria | Status |
 |------|----------|--------|
 | Agent Tests | All 6 core agents return data | [ ] Pass |
 | Orchestrator | Completes with SUCCESS status | [ ] Pass |
-| Validation | Completes with --run-validation (async, <5 min for 10 biz) | [ ] Pass |
-| API Health | Returns healthy status | [ ] Pass |
-| Data Quality | Completeness >= 85% (target: 89%) | [ ] Pass |
-| Database | Connection successful | [ ] Pass |
+| Database Generator | Creates 927 businesses | [ ] Pass |
+| Validation | Completes with --run-validation | [ ] Pass |
+| API Health | Returns healthy status, 927 businesses | [ ] Pass |
+| Data Quality | Completeness >= 85%, Chamber >= 92% | [ ] Pass |
+| Phone Validation | No fake 555 numbers, valid exchanges | [ ] Pass |
+| Database | Connection successful, 927 records | [ ] Pass |
 | Auto-Migrations | Tables created on startup | [ ] Pass |
 | Security | Admin endpoints protected | [ ] Pass |
 | CORS | Configured origins allowed | [ ] Pass |
@@ -379,7 +481,31 @@ curl -X POST https://terminal-production-27a0.up.railway.app/api/v2/admin/refres
 **Solution**:
 1. Validation is skipped by default
 2. Only run with `--run-validation` if ANTHROPIC_API_KEY is configured
-3. Limit businesses with `--businesses 10` for testing
+3. Limit businesses with `--businesses 100` for testing
+4. Timeout scales: 5 min/business (max 10 hours)
+
+### Phone Numbers Invalid
+
+**Symptom**: Fake "555" or invalid exchange numbers in data
+
+**Solution**:
+Phone validation is built in:
+- Rejects 555 exchange (reserved for fiction)
+- Rejects exchanges < 200
+- Run `generate_comprehensive_bi_database.py` to regenerate clean data
+
+---
+
+## Data Quality Targets
+
+| Metric | Target | Current |
+|--------|--------|---------|
+| Total businesses | 900+ | 927 |
+| Chamber members | 90%+ | 92.3% |
+| With phone | 85%+ | 89.4% |
+| With website | 80%+ | 85.4% |
+| Avg confidence | 0.85+ | 0.92-0.95 |
+| Tier 1 businesses | 500+ | 612 |
 
 ---
 
@@ -390,6 +516,16 @@ curl -X POST https://terminal-production-27a0.up.railway.app/api/v2/admin/refres
 | Developer | | | |
 | QA | | | |
 | Product Owner | | | |
+
+---
+
+## Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 3.0.0 | Dec 2025 | 927 businesses, Chamber integration, phone validation |
+| 2.0.0 | Dec 2025 | 88 businesses, consensus validation |
+| 1.0.0 | Nov 2025 | Initial 10-business release |
 
 ---
 

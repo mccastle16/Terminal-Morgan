@@ -4,6 +4,35 @@
 
 This document describes the Standard Operating Procedures for refreshing business intelligence data in the Coral Gables BI Platform.
 
+**Current Database Size:** 927 businesses (844 verified Chamber members + 83 additional)
+
+---
+
+## Data Sources
+
+### Primary: Chamber of Commerce Member Directory
+
+The foundation of our database is the **Coral Gables Chamber of Commerce** member directory:
+
+| Metric | Value |
+|--------|-------|
+| Total Chamber members | 844 |
+| With verified phone | 829 (98.2%) |
+| With verified website | 792 (93.8%) |
+| Categories covered | 315 |
+
+**Source file:** `docs/REVISED AO 7.11.2025 All Members By Category(1)[84].docx`
+
+### Secondary: OSINT Enrichment
+
+| Agent | Data Provided | Confidence |
+|-------|---------------|------------|
+| Google Places API | Ratings, reviews, hours, photos | 0.9 |
+| Yelp Fusion API | Ratings, reviews, categories | 0.9 |
+| Website Analyzer | Services, social links | 0.6 |
+| Financial Estimator | Revenue/employee estimates | 0.6 |
+| Pain Point Extractor | LLM-based pain points | 0.7 |
+
 ---
 
 ## Production Services (Railway)
@@ -30,6 +59,14 @@ The platform supports two data storage modes:
 - Data is bundled with deployment
 - Ephemeral - lost on container restart unless committed to git
 
+### Data Files
+
+| File | Size | Contents |
+|------|------|----------|
+| `coral_gables_bi_database_v2.json` | 2.3 MB | 927 businesses with full profiles |
+| `chamber_members_extracted.json` | 180 KB | 844 Chamber members (raw) |
+| `all_businesses_merged.json` | 150 KB | Merged source data |
+
 ---
 
 ## Architecture
@@ -39,16 +76,22 @@ The platform supports two data storage modes:
 │                    DATA REFRESH PIPELINE                         │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
+│  ┌──────────────────┐                                           │
+│  │  Chamber Member  │ (Primary source: 844 businesses)          │
+│  │    Directory     │                                           │
+│  └────────┬─────────┘                                           │
+│           │                                                      │
+│           ▼                                                      │
 │  ┌──────────────────┐    ┌──────────────┐    ┌──────────────┐  │
 │  │ Terminal Cron    │───>│   OSINT      │───>│  Validation  │  │
 │  │ Service          │    │  Collectors  │    │   Pipeline   │  │
-│  │ (Sunday 6AM UTC) │    │  (8 agents)  │    │              │  │
+│  │ (Sunday 6AM UTC) │    │  (8 agents)  │    │  (5 agents)  │  │
 │  └──────────────────┘    └──────────────┘    └──────────────┘  │
 │                                                  │               │
 │                                                  ▼               │
 │  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐      │
 │  │   Terminal   │<───│  PostgreSQL  │<───│   Updated    │      │
-│  │   (Main API) │    │   Database   │    │    Data      │      │
+│  │   (Main API) │    │   Database   │    │ 927 Records  │      │
 │  │              │    │   (Railway)  │    │              │      │
 │  └──────────────┘    └──────────────┘    └──────────────┘      │
 │         │                                                        │
@@ -109,8 +152,8 @@ curl -X POST "https://terminal-production-27a0.up.railway.app/api/v2/admin/refre
 {
   "status": "success",
   "message": "Data refreshed successfully",
-  "businesses_loaded": 88,
-  "refreshed_at": "2025-12-16T12:00:00"
+  "businesses_loaded": 927,
+  "refreshed_at": "2025-12-31T12:00:00"
 }
 ```
 
@@ -121,7 +164,26 @@ curl "https://terminal-production-27a0.up.railway.app/api/v2/admin/refresh-statu
 
 ---
 
-### Method 4: Manual Local Refresh (Full Pipeline - Development)
+### Method 4: Regenerate Database from Chamber Data
+
+**Use when:** Adding new Chamber members or rebuilding from source
+
+```bash
+# 1. Navigate to agents directory
+cd systems/agents
+
+# 2. Run the comprehensive generator (uses merged data)
+python generate_comprehensive_bi_database.py
+
+# Output:
+# - Loads all_businesses_merged.json (927 businesses)
+# - Generates full profiles with pain points, opportunities
+# - Saves to coral_gables_bi_database_v2.json
+```
+
+---
+
+### Method 5: Manual Local Refresh (Full Pipeline - Development)
 
 **Use when:** Testing locally or debugging the refresh pipeline
 
@@ -135,23 +197,48 @@ curl "https://terminal-production-27a0.up.railway.app/api/v2/admin/refresh-statu
 cd systems/agents
 
 # 2. Run the weekly refresh script
-python weekly_refresh.py --businesses 100
+python weekly_refresh.py --businesses 927
 
-# OR run individual steps:
+# OR run with validation (slower, higher quality):
+python weekly_refresh.py --businesses 927 --run-validation
 
-# 2a. Run OSINT collection only
-python osint_production_collector.py
-
-# 2b. Run validation only
-python validate_all_data.py
-
-# 3. Copy validated data to production location
-cp ../data/coral_gables_bi_database_validated.json data/coral_gables_bi_database_v2.json
-
-# 4. Commit and push (triggers Railway auto-deploy)
+# 3. Commit and push (triggers Railway auto-deploy)
 git add data/coral_gables_bi_database_v2.json
 git commit -m "Weekly data refresh $(date +%Y-%m-%d)"
 git push
+```
+
+---
+
+## Chamber Data Update Process
+
+When new Chamber members are added:
+
+### Step 1: Extract Chamber Members
+
+```bash
+# Parse the Chamber directory document
+cd systems/agents
+python -c "
+from docx import Document
+import json
+
+# Parse document (see generate_comprehensive_bi_database.py for full code)
+# Saves to: systems/data/chamber_members_extracted.json
+"
+```
+
+### Step 2: Merge with Existing Data
+
+```bash
+# Merge Chamber members with existing business profiles
+# Saves to: systems/data/all_businesses_merged.json
+```
+
+### Step 3: Regenerate Database
+
+```bash
+python generate_comprehensive_bi_database.py
 ```
 
 ---
@@ -206,8 +293,8 @@ curl "https://terminal-production-27a0.up.railway.app/health"
 ```json
 {
   "status": "healthy",
-  "version": "2.0.0",
-  "businesses_loaded": 88,
+  "version": "3.0.0",
+  "businesses_loaded": 927,
   "data_source": "PostgreSQL"
 }
 ```
@@ -225,9 +312,10 @@ curl "https://terminal-production-27a0.up.railway.app/api/v2/admin/refresh-statu
 **Response:**
 ```json
 {
-  "last_refresh": "2025-12-16T06:00:00",
-  "businesses_loaded": 88,
-  "data_source": "JSON"
+  "last_refresh": "2025-12-31T06:00:00",
+  "businesses_loaded": 927,
+  "chamber_members": 856,
+  "data_source": "PostgreSQL"
 }
 ```
 
@@ -266,10 +354,10 @@ curl "https://terminal-production-27a0.up.railway.app/api/v2/data-quality/overvi
 1. Validation is **skipped by default** for stability
 2. To enable validation, run with `--run-validation` flag:
    ```bash
-   python weekly_refresh.py --businesses 10 --run-validation
+   python weekly_refresh.py --businesses 100 --run-validation
    ```
 3. Ensure `ANTHROPIC_API_KEY` is configured if running validation
-4. Timeout scales with business count: ~3 min/business (min 10 min, max 60 min)
+4. Timeout scales with business count: ~5 min/business (min 10 min, max 10 hours)
 
 **Technical Details:**
 - Validation uses **async concurrent** API calls (5 agents validate in parallel)
@@ -277,9 +365,26 @@ curl "https://terminal-production-27a0.up.railway.app/api/v2/data-quality/overvi
 - If a call times out, it falls back to heuristic validation
 
 **Actual Performance (Dec 2025):**
-- 10 businesses: ~17 minutes
-- 88 businesses: ~17 minutes (+16% confidence boost)
+- 88 businesses: ~17 minutes
+- 927 businesses: ~45 minutes (estimated)
 - Final confidence range: 0.92 - 0.95
+
+### Issue: Invalid phone numbers in data
+
+**Cause:** Fake "555" numbers or invalid exchange codes
+
+**Solution:**
+Phone validation is built into the system. It automatically:
+- Rejects fake "555" numbers (reserved for fiction)
+- Rejects invalid exchange codes (<200)
+- Formats as XXX-XXX-XXXX
+
+To manually clean phone data:
+```bash
+python -c "
+# See osint_production_collector.py for validate_phone() function
+"
+```
 
 ---
 
@@ -291,28 +396,40 @@ curl "https://terminal-production-27a0.up.railway.app/api/v2/data-quality/overvi
 | Yelp Fusion | 500 requests/day | Contact for pricing |
 | Anthropic | Pay-per-use | ~$0.01 per validation |
 
-**Weekly refresh cost (100 businesses):**
-- Google: ~$1.70
-- Yelp: Free (within tier)
-- Anthropic: ~$2.00
-- **Total: ~$4/week or ~$16/month**
+**Weekly refresh cost (927 businesses):**
+- Google: ~$15.76 (927 requests)
+- Yelp: Free (within tier for most)
+- Anthropic: ~$10.00 (if validation enabled)
+- **Total: ~$16-26/week or ~$64-104/month**
 
 ---
 
-## Data Quality Improvements (December 2025)
+## Data Quality Metrics (December 2025)
 
-Recent API integrations significantly improved data quality:
+| Metric | Value |
+|--------|-------|
+| Total businesses | 927 |
+| Chamber members | 856 (92.3%) |
+| With phone | 829 (89.4%) |
+| With website | 792 (85.4%) |
+| Average confidence | 0.92-0.95 (post-validation) |
 
-| Metric | Before | After |
-|--------|--------|-------|
-| Data Completeness | 41% | 89% |
-| Average Confidence | 50% | 85% |
-| Opportunities Found | 0 | 267+ |
+### Category Distribution
 
-This improvement is due to:
-- Google Places API (New) v1 integration (0.9 confidence)
-- Yelp Fusion API v3 integration (0.9 confidence)
-- Fixed API key loading from config
+| Category | Count |
+|----------|-------|
+| Professional Services | 164 |
+| Restaurants | 101 |
+| Financial Services | 77 |
+| Healthcare | 68 |
+| Nonprofits | 66 |
+| Real Estate | 58 |
+| Retail | 43 |
+| Spas | 31 |
+| Education | 26 |
+| Construction | 20 |
+| Hospitality | 16 |
+| Fitness | 15 |
 
 ---
 
@@ -320,9 +437,9 @@ This improvement is due to:
 
 | Tier | Refresh Frequency | Staleness Tolerance |
 |------|-------------------|---------------------|
-| Tier 1 (Hot leads) | Weekly | 7 days max |
-| Tier 2-3 | Bi-weekly | 14 days max |
-| Tier 4 | Monthly | 30 days max |
+| Tier 1 (612 businesses) | Weekly | 7 days max |
+| Tier 2 (278 businesses) | Bi-weekly | 14 days max |
+| Tier 3-4 (37 businesses) | Monthly | 30 days max |
 
 ---
 
@@ -331,10 +448,20 @@ This improvement is due to:
 - [ ] Verify API keys are valid (check Railway logs)
 - [ ] Check cron job is scheduled
 - [ ] Monitor refresh job execution
-- [ ] Verify data loaded count matches expected
+- [ ] Verify data loaded count is ~927
 - [ ] Spot-check 2-3 business records for accuracy
 - [ ] Check dashboard loads correctly
 - [ ] Review any error logs
+
+---
+
+## Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 3.0.0 | Dec 2025 | 927 businesses, Chamber integration |
+| 2.0.0 | Dec 2025 | 88 businesses, consensus validation |
+| 1.0.0 | Nov 2025 | Initial release with 10 businesses |
 
 ---
 

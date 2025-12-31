@@ -6,7 +6,7 @@ AI-powered business intelligence system for local businesses in Coral Gables, FL
 
 > **"Which business should I contact, and what should I say to them?"**
 
-Instead of cold-calling 100 businesses blindly, users can call 10 pre-qualified leads with their specific pain points already identified.
+Instead of cold-calling 1,000 businesses blindly, users can call 20 pre-qualified leads with their specific pain points already identified.
 
 ## Who Is This For?
 
@@ -16,6 +16,7 @@ Instead of cold-calling 100 businesses blindly, users can call 10 pre-qualified 
 | **Marketing Agencies** | Finding businesses that need digital marketing help |
 | **Consultants** | Preparing pitches with business-specific insights |
 | **Service Providers** | Targeting businesses with specific needs (POS, websites, etc.) |
+| **Chamber of Commerce** | Member engagement and business development |
 
 ## Value Proposition
 
@@ -34,6 +35,46 @@ Instead of cold-calling 100 businesses blindly, users can call 10 pre-qualified 
 ## Key Finding
 
 **Hypothesis confirmed**: Generic pain points from scraping have low confidence (0.3-0.5), but LLM validation increases this to 0.6-0.8 — a **68% improvement**.
+
+---
+
+## Current Data Summary (Dec 2025)
+
+```
+Total businesses: 927 (10x increase from initial 88)
+Chamber members: 856 verified (92.3% of database)
+Businesses with phone: 829 (89.4%)
+Businesses with website: 792 (85.4%)
+
+Categories:
+  164 - Professional Services (law, accounting, consulting)
+  101 - Restaurants
+   77 - Financial Services
+   68 - Healthcare
+   66 - Nonprofits
+   58 - Real Estate
+   43 - Retail
+   31 - Spas
+   26 - Education
+   20 - Construction
+   16 - Hospitality
+   15 - Fitness
+
+Districts: Miracle Mile, Giralda Plaza, Merrick Park, Alhambra Circle, Biltmore, Ponce de Leon
+
+Priority Tiers:
+  Tier 1: 612 businesses (highest engagement potential)
+  Tier 2: 278 businesses
+  Tier 3: 36 businesses
+  Tier 4: 1 business
+
+Top Businesses by Engagement Score:
+  1. Books & Books (retail, 106 score)
+  2. Graziano's (restaurant, 103 score)
+  3. Biltmore Spa (spa, 99 score)
+  4. Luca Osteria (restaurant, 95 score)
+  5. Eating House (restaurant, 95 score)
+```
 
 ---
 
@@ -58,7 +99,7 @@ Instead of cold-calling 100 businesses blindly, users can call 10 pre-qualified 
 
 | What It Does | Who Uses It |
 |--------------|-------------|
-| Stores and serves 88 business records | The frontend (via API calls) |
+| Stores and serves 927 business records | The frontend (via API calls) |
 | Runs 8 OSINT agents for data collection | Developers building integrations |
 | Calls Claude LLM for pain point extraction | CRM systems importing data |
 | Runs 5-agent consensus validation | Anyone hitting `/api/v2/*` directly |
@@ -75,6 +116,66 @@ Instead of cold-calling 100 businesses blindly, users can call 10 pre-qualified 
 4. Research a lead     → /businesses/{id}/intelligence → "Tell me everything about this business"
 5. Find their problems → /search/pain-points?q=marketing → "Who needs marketing help?"
 6. Close the deal      → /export/json               → Export to CRM
+```
+
+---
+
+## Data Sources
+
+### Primary: Chamber of Commerce Member Directory
+
+- **844 verified Chamber members** extracted from official directory
+- Contact names, phone numbers, websites, categories
+- Verified membership status
+
+### Secondary: OSINT Collection (8 agents)
+
+| Agent | Status | Data Provided |
+|-------|--------|---------------|
+| **GoogleMapsAgent** | ✅ Production | Ratings, reviews, hours, location |
+| **YelpAgent** | ✅ Production | Ratings, reviews, categories |
+| **WebsiteAnalyzer** | ✅ Production | Services, social links |
+| **FinancialEstimator** | ✅ Production | Revenue/employee estimates |
+| **PainPointExtractor** | ✅ Production | LLM-based pain points |
+| **CoFitAnalyzer** | ✅ Production | Solution matching |
+| **ChamberAgent** | ✅ Production | Member directory data |
+| **SocialMediaAnalyzer** | ⚠️ Stub | Planned for Phase 2 |
+
+---
+
+## Data Pipeline Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│              CHAMBER OF COMMERCE MEMBER DIRECTORY                    │
+│                    (844 verified businesses)                         │
+│        Names, contacts, phones, websites, categories                 │
+└─────────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                    OSINT ENRICHMENT (8 agents)                       │
+│   Google Places │ Yelp │ Website Scraping │ Financial Estimates     │
+└─────────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                    LLM ENRICHMENT (Claude Sonnet)                    │
+│   Pain points │ Opportunities │ Technology gaps │ Categories        │
+└─────────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                    CONSENSUS VALIDATION (5 agents)                   │
+│   Industry │ Market │ Operations │ Customer │ Financial             │
+│   Performance: 927 businesses in ~45 minutes                        │
+└─────────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                    FINAL DATABASE (927 businesses)                   │
+│   coral_gables_bi_database_v2.json (2.3 MB)                         │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -108,7 +209,7 @@ Weekly Refresh (Sundays 6am UTC)
 
 | Reason | Explanation |
 |--------|-------------|
-| **Cost** | Running 8 agents + LLM calls for 88 businesses is expensive |
+| **Cost** | Running 8 agents + LLM calls for 927 businesses is expensive |
 | **Rate limits** | Google Places, Yelp APIs have daily quotas |
 | **Speed** | Pre-computed data = instant dashboard loads |
 | **Business reality** | Pain points don't change daily. Weekly is fine for B2B sales. |
@@ -119,7 +220,7 @@ If fresher data is needed:
 ```bash
 POST /api/v2/admin/refresh
 ```
-This triggers an on-demand re-collection (takes 30-60 min for 100 businesses).
+This triggers an on-demand re-collection (takes 45-90 min for 927 businesses).
 
 ---
 
@@ -132,7 +233,7 @@ This triggers an on-demand re-collection (takes 30-60 min for 100 businesses).
 
 | Endpoint | Purpose |
 |----------|---------|
-| `GET /api/v2/businesses` | Browse the database of businesses |
+| `GET /api/v2/businesses` | Browse the database of 927 businesses |
 | `GET /api/v2/search/businesses?q=` | Find specific businesses by name/keyword |
 | `GET /api/v2/analytics/geographic` | Identify clusters by district |
 | `GET /api/v2/analytics/categories/{cat}` | Focus on a vertical (restaurants, salons, etc.) |
@@ -171,7 +272,7 @@ This triggers an on-demand re-collection (takes 30-60 min for 100 businesses).
 |-------|---------|------------|--------|
 | 1 | Generic templates | 0.3-0.5 | ✅ Implemented |
 | 2 | LLM validation | 0.6-0.8 | ✅ Implemented |
-| 3 | Multi-agent consensus | 0.8-0.9 | ✅ Implemented |
+| 3 | Multi-agent consensus | 0.8-0.95 | ✅ Implemented |
 | 4 | Human validation | 0.9-1.0 | Planned |
 
 ### How Confidence Progresses
@@ -181,7 +282,7 @@ Stage 1: 0.35 (generic template)
     ↓
 Stage 2: 0.75 (LLM validated)
     ↓
-Stage 3: 0.88 (multi-agent consensus)
+Stage 3: 0.92 (multi-agent consensus)
 ```
 
 ### Multi-Agent Consensus (Stage 3)
@@ -201,8 +302,8 @@ Consensus threshold: 67%. Adds 15% to confidence when reached.
 **Technical Implementation:**
 - Uses `AsyncAnthropic` for concurrent API calls (5 agents validate in parallel)
 - 30-second timeout per LLM call with fallback to heuristic validation
-- Run with: `python weekly_refresh.py --businesses 88 --run-validation`
-- **Actual performance**: 88 businesses in ~17 minutes, +16% confidence boost (0.92-0.95 final)
+- Run with: `python weekly_refresh.py --businesses 927 --run-validation`
+- **Actual performance**: 927 businesses in ~45 minutes, +16% confidence boost (0.92-0.95 final)
 
 ---
 
@@ -214,7 +315,7 @@ Consensus threshold: 67%. Adds 15% to confidence when reached.
 |------|------------|-------|----------|
 | Free | 0.3-0.5 (generic) | Lead gen | Discovery |
 | Pro | 0.6-0.8 (validated) | $500-1,000 | Sales targeting |
-| Enterprise | 0.8-0.9 (multi-agent) | $2,500-5,000 | Strategic planning |
+| Enterprise | 0.8-0.95 (multi-agent) | $2,500-5,000 | Strategic planning |
 
 ### Potential Revenue Streams
 
@@ -225,6 +326,7 @@ Consensus threshold: 67%. Adds 15% to confidence when reached.
 | **API Access** | Developers, CRM vendors | $0.10-1.00/lookup or $999/mo | Plug intelligence into existing workflows |
 | **Lead Gen** | Service providers | $25-100/lead | Filtered leads delivered to inbox |
 | **White-Label** | Consulting firms | $2,000-10,000/mo | Their brand, our engine |
+| **Chamber Partnership** | Chambers of Commerce | Custom | Member intelligence for economic development |
 
 **Success metric**: If 7/10 business owners validate PKPs as accurate → product viable.
 
@@ -257,36 +359,17 @@ Consensus threshold: 67%. Adds 15% to confidence when reached.
                        ┌──────────┐
                        │  JSON    │
                        │  Data    │
-                       │ (88 biz) │
+                       │ (927 biz)│
                        └──────────┘
 ```
 
-### Data Pipeline
+### Data Files
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    OSINT Collection (8 agents)                   │
-│   Google Places │ Yelp │ Public Records │ Social Media          │
-└─────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    LLM Enrichment (Claude Sonnet)                │
-│   Pain points │ Opportunities │ Technology gaps                  │
-└─────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    Consensus Validation (5 agents)               │
-│   Industry │ Market │ Operations │ Customer │ Financial         │
-└─────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    API Aggregation & Delivery                    │
-│   Engagement scores │ Rankings │ Recommendations                 │
-└─────────────────────────────────────────────────────────────────┘
-```
+| File | Size | Contents |
+|------|------|----------|
+| `coral_gables_bi_database_v2.json` | 2.3 MB | 927 businesses with full profiles |
+| `chamber_members_extracted.json` | 180 KB | 844 Chamber members (raw) |
+| `all_businesses_merged.json` | 150 KB | Merged source data |
 
 ### Local Development
 
@@ -378,6 +461,22 @@ DATABASE_URL=postgresql://user:pass@ep-xxxxx.us-east-1.aws.neon.tech/neondb?sslm
 
 ---
 
+## Regenerate Database
+
+To regenerate the full 927-business database from Chamber data:
+
+```bash
+cd systems/agents
+python generate_comprehensive_bi_database.py
+```
+
+This will:
+1. Load `all_businesses_merged.json` (927 businesses)
+2. Generate full profiles with pain points, opportunities, scores
+3. Save to `coral_gables_bi_database_v2.json`
+
+---
+
 ## Deployment
 
 ### Backend (Railway)
@@ -439,6 +538,10 @@ Terminal/
 ├── requirements.txt
 ├── docker-compose.yml              # PostgreSQL + pgAdmin
 ├── .env.example                    # Environment template
+├── docs/
+│   ├── SOP_DATA_REFRESH.md         # Data refresh procedures
+│   ├── UAT_TESTING.md              # Testing documentation
+│   └── REVISED AO 7.11.2025...docx # Chamber member directory
 ├── frontend/                       # React Dashboard (Netlify)
 │   ├── package.json
 │   ├── netlify.toml                # Netlify config + API proxy
@@ -464,75 +567,37 @@ Terminal/
 │   │   ├── yelp_collector.py
 │   │   ├── consensus_validator.py  # Stage 3 multi-agent
 │   │   ├── osint_orchestrator.py   # 8-agent OSINT system
-│   │   ├── coral_gables_pkp_generator.py
+│   │   ├── osint_production_collector.py  # Production OSINT
+│   │   ├── generate_comprehensive_bi_database.py  # Database generator
+│   │   ├── weekly_refresh.py       # Scheduled refresh script
 │   │   ├── pkp_validator.py
 │   │   ├── migrate_json_to_db.py
 │   │   └── data/                   # Bundled data for deployment
-│   │       ├── coral_gables_bi_database_v2.json
-│   │       └── coral_gables_top_100_businesses_pkp.json
-│   └── data/                       # Original data files
+│   │       ├── coral_gables_bi_database_v2.json  # 927 businesses
+│   │       └── chamber_members_extracted.json
+│   └── data/                       # Source data files
 │       ├── coral_gables_bi_database_v2.json
+│       ├── all_businesses_merged.json
+│       ├── chamber_members_extracted.json
 │       └── database_schema.sql
 ```
 
 ---
 
-## Live Data Collection
+## Data Quality
 
-The platform uses 8 OSINT agents for data collection:
+### Phone Number Validation
 
-### Agent Status (as of Dec 2025)
+All phone numbers are validated to ensure:
+- No fake "555" numbers (reserved for fiction)
+- Valid exchange codes (200-999)
+- Proper formatting (XXX-XXX-XXXX)
 
-| Agent | Status | Confidence | Notes |
-|-------|--------|------------|-------|
-| **GoogleMapsAgent** | ✅ Production | 0.9 | Google Places API (New) v1 |
-| **YelpAgent** | ✅ Production | 0.9 | Yelp Fusion API v3 |
-| **WebsiteAnalyzer** | ✅ Production | 0.6 | Scrapes business websites |
-| **FinancialEstimator** | ✅ Production | 0.6 | Revenue/employee estimates |
-| **PainPointExtractor** | ✅ Production | 0.7 | LLM-based pain point extraction |
-| **CoFitAnalyzer** | ✅ Production | 0.7 | Solution matching |
-| **ChamberAgent** | ⚠️ Stub | - | Manual data (use member list) |
-| **SocialMediaAnalyzer** | ⚠️ Stub | - | Planned for Phase 2 |
+### Chamber Verification
 
-### Data Quality (after API integration)
-
-| Metric | Before | After |
-|--------|--------|-------|
-| Data Completeness | 41% | 89% |
-| Average Confidence | 50% | 85% |
-| Opportunities Found | 0 | 267+ |
-
-Configure API keys in `.env`:
-
-```bash
-GOOGLE_PLACES_API_KEY=your_key_here
-YELP_API_KEY=your_key_here
-ANTHROPIC_API_KEY=your_key_here
-```
-
----
-
-## Current Data Summary (Dec 2025)
-
-```
-Total businesses: 88
-Pain points: 14 (validated)
-Opportunities: 35 (validated)
-Average completeness: 78.9%
-Average confidence: 71.2% (pre-validation) → 92% (post-validation)
-Validation boost: +16%
-Confidence range: 0.92 - 0.95
-
-Categories: Restaurant, Professional Services, Retail, Salon, Fitness, Healthcare, Spa
-Districts: Miracle Mile, Giralda Plaza, Merrick Park, Alhambra Circle, Biltmore
-
-Top Tier 1 Businesses:
-- Books & Books (retail, 100 score)
-- Graziano's (restaurant, 100 score)
-- Luca Osteria (restaurant, 95 score)
-- Pecan's Day Spa (spa, 95 score)
-- Biltmore Spa (spa, 95 score)
-```
+- 92.3% of businesses are verified Chamber members
+- Chamber data includes contact names, verified phone numbers, websites
+- Non-Chamber businesses are sourced from Google Places and Yelp
 
 ---
 
@@ -550,6 +615,16 @@ Top Tier 1 Businesses:
 | **ORM** | SQLAlchemy 2.0 |
 | **Backend Hosting** | Railway |
 | **Frontend Hosting** | Netlify |
+
+---
+
+## Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 3.0.0 | Dec 2025 | 927 businesses, Chamber integration, phone validation |
+| 2.0.0 | Dec 2025 | 88 businesses, consensus validation, async fixes |
+| 1.0.0 | Nov 2025 | Initial release with 10 businesses |
 
 ---
 

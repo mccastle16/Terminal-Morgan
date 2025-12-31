@@ -98,7 +98,7 @@ class CategoryInsights(BaseModel):
 app = FastAPI(
     title="Coral Gables Business Intelligence API",
     description="Comprehensive OSINT-powered business intelligence platform",
-    version="2.0.0"
+    version="3.0.0"
 )
 
 # CORS middleware - configure allowed origins from environment
@@ -545,7 +545,7 @@ async def health_check():
     """Health check endpoint"""
     return {
         "status": "healthy",
-        "version": "2.0.0",
+        "version": "3.0.0",
         "timestamp": datetime.now().isoformat(),
         "businesses_loaded": len(get_businesses_list()),
         "data_source": repository.get_data_source()
@@ -562,7 +562,7 @@ async def get_system_stats():
         "total_opportunities": stats["total_opportunities"],
         "total_solutions": stats["total_solutions"],
         "categories": list(set(b.get('category', 'unknown') for b in businesses)),
-        "api_version": "2.0.0",
+        "api_version": "3.0.0",
         "data_source": stats["data_source"],
         "last_refresh": stats["last_refresh"]
     }
