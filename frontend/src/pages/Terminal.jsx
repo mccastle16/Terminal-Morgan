@@ -11,529 +11,734 @@ function formatCurrency(value) {
   return `$${value}`
 }
 
-function formatPhone(phones) {
-  if (!phones || phones.length === 0) return null
-  const phone = phones[0]
-  if (typeof phone === 'string') return phone
-  return phone.number || phone
+function capScore(score) {
+  return Math.min(score || 0, 100)
 }
 
-function getScoreClass(score) {
-  if (score >= 90) return 'score-high'
-  if (score >= 70) return 'score-med'
-  return 'score-low'
+function calculateOpportunityAlpha(business) {
+  // Handle both summary format (pain_point_count) and full format (pain_points array)
+  const painCount = business.pain_point_count ?? business.pain_points?.length ?? 0
+  const oppCount = business.opportunity_count ?? business.opportunities?.length ?? 0
+  const solutionCount = business.solution_count ?? business.co_fit_solutions?.length ?? 0
+  const completeness = business.data_completeness || 0.5
+  const score = capScore(business.engagement_score)
+
+  const growthPotential = (100 - score) / 100
+  const painFactor = Math.min(painCount * 10, 40)
+  const oppFactor = Math.min(oppCount * 8, 30)
+  const dataFactor = completeness * 20
+
+  return Math.round(growthPotential * 30 + painFactor + oppFactor + dataFactor)
 }
 
-function getTierClass(tier) {
-  return `tier-${tier || 4}`
+function calculateDigitalMaturity(business) {
+  // Use pre-calculated value from API if available
+  if (business.digital_maturity !== undefined) {
+    return business.digital_maturity
+  }
+  // Fallback to calculating from fields
+  let score = 0
+  if (business.website) score += 25
+  if (business.social_media?.instagram) score += 20
+  if (business.social_media?.facebook) score += 15
+  if (business.email?.length > 0) score += 15
+  if (business.ratings?.google) score += 15
+  if (business.ratings?.yelp) score += 10
+  return Math.min(score, 100)
 }
 
-function getGrade(value, type = 'default') {
-  if (type === 'rating') {
-    if (value >= 4.5) return 'A'
-    if (value >= 4.0) return 'B'
-    if (value >= 3.5) return 'C'
-    return 'D'
+function generateThesis(business) {
+  const category = business.category?.replace(/_/g, ' ') || 'business'
+  const specialties = business.specialties?.slice(0, 2).join(' and ') || business.services?.slice(0, 2).join(' and ')
+
+  if (specialties) {
+    return `${category.charAt(0).toUpperCase() + category.slice(1)} specializing in ${specialties}`
   }
-  if (type === 'sentiment') {
-    if (value >= 0.7) return 'A'
-    if (value >= 0.5) return 'B'
-    if (value >= 0.3) return 'C'
-    return 'D'
+  if (business.subcategory) {
+    return `${business.subcategory.replace(/_/g, ' ')} ${category} in Coral Gables`
   }
-  if (type === 'completeness') {
-    if (value >= 0.8) return 'A'
-    if (value >= 0.6) return 'B'
-    if (value >= 0.4) return 'C'
-    return 'D'
-  }
-  return 'B'
+  return `Local ${category} serving the Coral Gables community`
+}
+
+function generateOutreachScript(business) {
+  const painPoints = business.pain_points || []
+  const mainPain = painPoints[0]?.pain_point || painPoints[0]?.point || 'operational efficiency'
+  const category = business.category?.replace(/_/g, ' ') || 'business'
+
+  return `SUBJECT: Quick Question re: ${business.name}
+
+Hi Owner,
+
+I'm a local strategist in Coral Gables, walking by ${business.name}, ${category.toLowerCase()}.
+
+I noticed you're dealing with ${mainPain.toLowerCase()}.
+
+We built a tool that solves this by [INSERT SOLUTION].
+
+Are you around Tuesday?`
+}
+
+function getFitLevel(business) {
+  const alpha = calculateOpportunityAlpha(business)
+  if (alpha >= 60) return { label: 'HIGH', color: 'text-green' }
+  if (alpha >= 40) return { label: 'MED', color: 'text-gold' }
+  return { label: 'LOW', color: 'text-muted' }
 }
 
 // ============================================================================
-// SUB-COMPONENTS
+// SMART SEGMENTS
 // ============================================================================
 
-function Header({ businessCount, onDownload }) {
+const SMART_SEGMENTS = [
+  { id: 'all', name: 'All Targets', icon: null, filter: () => true },
+  {
+    id: 'hidden_gems', name: 'Hidden Gems', subtitle: 'High Value, No Tech', icon: '💎',
+    filter: (b) => capScore(b.engagement_score) >= 80 && calculateDigitalMaturity(b) < 50
+  },
+  {
+    id: 'turnaround', name: 'Turnaround', subtitle: 'High Pain, Low Rev', icon: '🔄',
+    filter: (b) => (b.pain_point_count || 0) >= 2 && capScore(b.engagement_score) < 75
+  },
+  {
+    id: 'local_titans', name: 'Local Titans', subtitle: 'High All', icon: '👑',
+    filter: (b) => capScore(b.engagement_score) >= 90 && calculateDigitalMaturity(b) >= 60
+  }
+]
+
+const SECTORS = [
+  { id: 'all', name: 'All Sectors' },
+  { id: 'restaurant', name: 'Dining' },
+  { id: 'retail', name: 'Retail' },
+  { id: 'professional_services', name: 'Professional' },
+  { id: 'healthcare', name: 'Healthcare' },
+  { id: 'spa', name: 'Salons & Spas' },
+  { id: 'fitness', name: 'Fitness' },
+  { id: 'financial_services', name: 'Financial' },
+  { id: 'nonprofit', name: 'Nonprofit' },
+  { id: 'real_estate', name: 'Real Estate' }
+]
+
+// ============================================================================
+// HEADER
+// ============================================================================
+
+function Header({ businessCount, targetCount }) {
   return (
-    <header className="h-12 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-[#222] px-4 flex items-center justify-between flex-shrink-0 z-50">
-      <div className="flex items-center gap-2 font-mono font-bold tracking-tight">
+    <header className="h-12 bg-[#0a0a0a] border-b border-[#222] px-4 flex items-center justify-between flex-shrink-0">
+      <div className="flex items-center gap-3">
         <div className="live-dot" />
-        <span>CO_ TERMINAL</span>
-        <span className="text-muted text-sm">v4.0</span>
+        <span className="font-mono font-bold">CO_TERMINAL</span>
+        <span className="text-muted text-xs font-mono hidden sm:inline">// V5.0 HUNTER</span>
       </div>
-      <div className="flex items-center gap-4">
-        <div className="text-xs font-mono text-muted uppercase tracking-wide hide-mobile">
-          {businessCount} ENTITIES // CORAL GABLES
-        </div>
-        <button onClick={onDownload} className="btn btn-outline text-xs">
-          Export JSON
-        </button>
+      <div className="text-xs font-mono text-muted uppercase tracking-wide">
+        <span className="hidden sm:inline">CORAL GABLES • </span>{targetCount} TARGETS
       </div>
     </header>
   )
 }
 
-function FilterBar({ filter, onFilterChange, searchQuery, onSearchChange }) {
+// ============================================================================
+// LEFT SIDEBAR
+// ============================================================================
+
+function LeftSidebar({ segment, onSegmentChange, sector, onSectorChange, isMobileOpen, onClose }) {
   return (
-    <div className="p-3 border-b border-[#222] space-y-3">
-      <input
-        type="text"
-        placeholder="Search businesses..."
-        className="input text-sm"
-        value={searchQuery}
-        onChange={(e) => onSearchChange(e.target.value)}
-      />
-      <div className="flex gap-2">
-        {['all', 'opportunities', 'risk'].map((f) => (
+    <>
+      {/* Mobile overlay */}
+      {isMobileOpen && (
+        <div className="fixed inset-0 bg-black/50 z-40 lg:hidden" onClick={onClose} />
+      )}
+
+      <aside className={`
+        fixed lg:relative inset-y-0 left-0 z-50 lg:z-auto
+        w-56 bg-[#0a0a0a] border-r border-[#222] flex flex-col flex-shrink-0 p-3
+        transform transition-transform lg:transform-none
+        ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+      `}>
+        <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Smart Segments</div>
+        <div className="space-y-1 mb-6">
+          {SMART_SEGMENTS.map((seg) => (
+            <button
+              key={seg.id}
+              onClick={() => { onSegmentChange(seg.id); onClose(); }}
+              className={`w-full text-left px-3 py-2 rounded text-sm transition-colors
+                ${segment === seg.id ? 'bg-[#1a1a1a] text-white border border-[#333]' : 'text-muted hover:text-white hover:bg-[#111]'}`}
+            >
+              <div className="flex items-center gap-2">
+                {seg.icon && <span>{seg.icon}</span>}
+                <span>{seg.name}</span>
+              </div>
+              {seg.subtitle && <div className="text-xs text-muted mt-0.5 ml-6">{seg.subtitle}</div>}
+            </button>
+          ))}
+        </div>
+
+        <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Sector</div>
+        <div className="space-y-0.5 overflow-y-auto flex-1">
+          {SECTORS.map((sec) => (
+            <button
+              key={sec.id}
+              onClick={() => { onSectorChange(sec.id); onClose(); }}
+              className={`w-full text-left px-3 py-1.5 text-sm transition-colors rounded
+                ${sector === sec.id ? 'bg-cyan text-black font-semibold' : 'text-muted hover:text-white'}`}
+            >
+              {sec.name}
+            </button>
+          ))}
+        </div>
+      </aside>
+    </>
+  )
+}
+
+// ============================================================================
+// QUADRANT CHART - Plots ALL businesses
+// ============================================================================
+
+function QuadrantChart({ businesses, onSelect, activeId }) {
+  // Seeded random for consistent jitter per business
+  const seededRandom = (seed) => {
+    const x = Math.sin(seed) * 10000
+    return x - Math.floor(x)
+  }
+
+  const plotData = useMemo(() => {
+    return businesses.slice(0, 300).map((b, idx) => {
+      const baseX = calculateDigitalMaturity(b)
+      const baseY = capScore(b.engagement_score)
+      // Add jitter to spread overlapping points (±8 units)
+      const jitterX = (seededRandom(idx * 13) - 0.5) * 16
+      const jitterY = (seededRandom(idx * 17) - 0.5) * 16
+      return {
+        business: b,
+        x: Math.max(2, Math.min(98, baseX + jitterX)),
+        y: Math.max(2, Math.min(98, baseY + jitterY)),
+        baseX,
+        baseY,
+      }
+    })
+  }, [businesses])
+
+  return (
+    <div className="h-64 border-b border-[#222] relative bg-[#0a0a0a] hidden md:block">
+      {/* Axis labels */}
+      <div className="absolute left-1/2 bottom-1 -translate-x-1/2 text-[10px] font-mono text-muted">
+        DIGITAL MATURITY →
+      </div>
+      <div className="absolute left-1 top-1/2 -translate-y-1/2 text-[10px] font-mono text-muted writing-mode-vertical" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
+        DOMINANCE →
+      </div>
+
+      {/* Quadrant labels - describe what each quadrant means */}
+      <div className="absolute top-2 left-8 text-[10px] font-mono text-cyan/60">💎 HIDDEN GEMS</div>
+      <div className="absolute top-2 right-2 text-[10px] font-mono text-gold/60">👑 LOCAL TITANS</div>
+      <div className="absolute bottom-6 left-8 text-[10px] font-mono text-muted/40">⚠️ REBUILD</div>
+      <div className="absolute bottom-6 right-2 text-[10px] font-mono text-green/60">🔄 TURNAROUND</div>
+
+      {/* Grid lines - quadrant dividers at 50% */}
+      <div className="absolute left-0 right-0 top-1/2 h-px bg-[#333]" />
+      <div className="absolute top-0 bottom-0 left-1/2 w-px bg-[#333]" />
+
+      {/* Minor grid lines */}
+      <div className="absolute left-0 right-0 top-1/4 h-px bg-[#1a1a1a]" />
+      <div className="absolute left-0 right-0 top-3/4 h-px bg-[#1a1a1a]" />
+      <div className="absolute top-0 bottom-0 left-1/4 w-px bg-[#1a1a1a]" />
+      <div className="absolute top-0 bottom-0 left-3/4 w-px bg-[#1a1a1a]" />
+
+      {/* Plot area with padding */}
+      <div className="absolute inset-4">
+        {plotData.map(({ business, x, y, baseX, baseY }) => {
+          const isActive = activeId === business.business_id
+          const isHiddenGem = baseY >= 50 && baseX < 50  // High dominance, low digital
+          const isTitan = baseY >= 50 && baseX >= 50      // High dominance, high digital
+          const isTurnaround = baseY < 50 && baseX >= 50  // Low dominance, high digital
+          const isRebuild = baseY < 50 && baseX < 50      // Low dominance, low digital
+
+          let color = 'bg-white/30' // Default
+          if (isHiddenGem) color = 'bg-cyan'
+          else if (isTitan) color = 'bg-gold'
+          else if (isTurnaround) color = 'bg-green'
+          else if (isRebuild) color = 'bg-red/50'
+
+          return (
+            <div
+              key={business.business_id}
+              className={`absolute rounded-full cursor-pointer transition-all duration-150
+                ${isActive ? 'w-4 h-4 ring-2 ring-white z-20 opacity-100' : 'w-2.5 h-2.5 opacity-70 hover:opacity-100 hover:w-4 hover:h-4 hover:z-10'}
+                ${color}`}
+              style={{
+                left: `${x}%`,
+                bottom: `${y}%`,
+                transform: 'translate(-50%, 50%)'
+              }}
+              onClick={() => onSelect(business)}
+              title={`${business.name}\nDominance: ${baseY} | Digital: ${baseX}`}
+            />
+          )
+        })}
+      </div>
+
+      {/* Legend */}
+      <div className="absolute top-2 right-1/4 flex gap-4 text-[9px] font-mono">
+        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-cyan" /> Gems</span>
+        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-gold" /> Titans</span>
+        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green" /> Turn</span>
+        <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red/50" /> Rebuild</span>
+      </div>
+    </div>
+  )
+}
+
+// ============================================================================
+// ENTITY TABLE
+// ============================================================================
+
+function EntityTable({ businesses, activeId, onSelect, onMenuClick }) {
+  return (
+    <div className="flex-1 flex flex-col bg-[#050505] min-w-0">
+      {/* Mobile menu button */}
+      <div className="lg:hidden p-2 border-b border-[#222]">
+        <button onClick={onMenuClick} className="text-xs font-mono text-muted px-3 py-1 border border-[#333] rounded">
+          ☰ Filters
+        </button>
+      </div>
+
+      <QuadrantChart businesses={businesses} onSelect={onSelect} activeId={activeId} />
+
+      {/* Entity Table */}
+      <div className="flex-1 overflow-y-auto">
+        <table className="w-full">
+          <thead className="sticky top-0 bg-[#0a0a0a] border-b border-[#222]">
+            <tr className="text-xs font-mono text-muted uppercase">
+              <th className="text-left p-2 sm:p-3">Entity Name</th>
+              <th className="text-left p-2 sm:p-3 hidden sm:table-cell">Sector</th>
+              <th className="text-center p-2 sm:p-3">Alpha</th>
+              <th className="text-center p-2 sm:p-3">Fit</th>
+            </tr>
+          </thead>
+          <tbody>
+            {businesses.map((b) => {
+              const alpha = calculateOpportunityAlpha(b)
+              const fit = getFitLevel(b)
+              const isActive = activeId === b.business_id
+
+              return (
+                <tr
+                  key={b.business_id}
+                  onClick={() => onSelect(b)}
+                  className={`border-b border-[#1a1a1a] cursor-pointer transition-colors
+                    ${isActive ? 'bg-[#141414]' : 'hover:bg-[#111]'}`}
+                >
+                  <td className="p-2 sm:p-3 text-sm truncate max-w-[150px] sm:max-w-none">{b.name}</td>
+                  <td className="p-2 sm:p-3 text-sm text-muted hidden sm:table-cell">{b.category?.replace(/_/g, ' ')}</td>
+                  <td className="p-2 sm:p-3 text-center">
+                    <span className={`font-mono font-bold px-2 py-0.5 rounded text-xs sm:text-sm
+                      ${alpha >= 60 ? 'bg-cyan/20 text-cyan' : alpha >= 40 ? 'bg-gold/20 text-gold' : 'bg-[#222] text-muted'}`}>
+                      {alpha}
+                    </span>
+                  </td>
+                  <td className={`p-2 sm:p-3 text-center text-xs font-mono ${fit.color}`}>
+                    {fit.label}
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+        <div className="p-3 text-xs text-muted font-mono border-t border-[#222]">
+          Showing {businesses.length} businesses
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ============================================================================
+// BUSINESS DOSSIER - Enhanced with more fields
+// ============================================================================
+
+function BusinessDossier({ business, onClose }) {
+  const [copied, setCopied] = useState(false)
+  const [activeTab, setActiveTab] = useState('overview')
+
+  if (!business) {
+    return (
+      <div className="w-80 bg-[#0a0a0a] items-center justify-center text-muted flex-shrink-0 hidden lg:flex">
+        <div className="text-xs font-mono uppercase tracking-wide">Select a target</div>
+      </div>
+    )
+  }
+
+  const alpha = calculateOpportunityAlpha(business)
+  const digitalMaturity = calculateDigitalMaturity(business)
+  const marketPower = capScore(business.engagement_score)
+  const thesis = generateThesis(business)
+  const script = generateOutreachScript(business)
+  const painPoints = business.pain_points || []
+  const opportunities = business.opportunities || []
+  const solutions = business.co_fit_solutions || []
+  const techGaps = business.technology_gaps || []
+
+  const handleCopyScript = () => {
+    navigator.clipboard.writeText(script)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  return (
+    <aside className={`
+      fixed lg:relative inset-0 lg:inset-auto z-50 lg:z-auto
+      w-full lg:w-96 bg-[#0a0a0a] border-l border-[#222] flex flex-col flex-shrink-0 overflow-hidden
+      ${business ? 'block' : 'hidden lg:block'}
+    `}>
+      {/* Mobile close button */}
+      <div className="lg:hidden p-3 border-b border-[#222] flex justify-between items-center">
+        <span className="font-mono text-sm">Business Details</span>
+        <button onClick={onClose} className="text-muted hover:text-white">✕</button>
+      </div>
+
+      {/* Tabs */}
+      <div className="flex border-b border-[#222]">
+        {['overview', 'intel', 'action'].map(tab => (
           <button
-            key={f}
-            onClick={() => onFilterChange(f)}
-            className={`filter-btn flex-1 ${filter === f ? 'active' : ''}`}
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`flex-1 py-2 text-xs font-mono uppercase tracking-wide transition-colors
+              ${activeTab === tab ? 'text-cyan border-b-2 border-cyan' : 'text-muted hover:text-white'}`}
           >
-            {f === 'all' ? 'All' : f === 'opportunities' ? 'Opps' : 'Risk'}
+            {tab}
           </button>
         ))}
       </div>
-    </div>
-  )
-}
 
-function EntityRow({ business, isActive, onClick }) {
-  const score = business.engagement_score || 0
-  const scoreClass = getScoreClass(score)
-
-  return (
-    <div
-      onClick={onClick}
-      className={`px-4 py-3 border-b border-[#1a1a1a] cursor-pointer transition-colors
-        ${isActive ? 'bg-[#141414] border-l-2 border-l-[#00F0FF]' : 'hover:bg-[#111]'}`}
-    >
-      <div className="flex items-center justify-between">
-        <div className="min-w-0 flex-1">
-          <div className="font-semibold text-sm truncate">{business.name}</div>
-          <div className="text-xs text-muted mt-0.5 truncate">
-            {business.category} {business.district && `• ${business.district}`}
-          </div>
+      <div className="flex-1 overflow-y-auto p-4">
+        {/* Header - Always visible */}
+        <h2 className="text-xl font-bold mb-1">{business.name}</h2>
+        <div className="text-xs text-muted mb-3">
+          {business.address?.street && `${business.address.street}, `}
+          {business.address?.city || 'Coral Gables'}, {business.address?.state || 'FL'}
         </div>
-        <div className={`alpha-badge ${scoreClass} ml-2 flex-shrink-0`}>
-          {score.toFixed(0)}
-        </div>
-      </div>
-    </div>
-  )
-}
 
-function EntityList({ businesses, activeId, onSelect, filter, onFilterChange, searchQuery, onSearchChange }) {
-  return (
-    <aside className="w-72 bg-[#0a0a0a] border-r border-[#222] flex flex-col flex-shrink-0">
-      <FilterBar
-        filter={filter}
-        onFilterChange={onFilterChange}
-        searchQuery={searchQuery}
-        onSearchChange={onSearchChange}
-      />
-      <div className="flex-1 overflow-y-auto">
-        {businesses.map((b) => (
-          <EntityRow
-            key={b.business_id}
-            business={b}
-            isActive={activeId === b.business_id}
-            onClick={() => onSelect(b)}
-          />
-        ))}
-        {businesses.length === 0 && (
-          <div className="p-4 text-center text-muted text-sm">
-            No businesses found
-          </div>
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          <span className="px-2 py-0.5 text-xs font-mono bg-cyan text-black rounded">
+            {business.category?.toUpperCase().replace(/_/g, ' ')}
+          </span>
+          {business.subcategory && (
+            <span className="px-2 py-0.5 text-xs font-mono bg-[#222] text-muted rounded">
+              {business.subcategory.replace(/_/g, ' ')}
+            </span>
+          )}
+          {business.chamber_membership?.is_member && (
+            <span className="px-2 py-0.5 text-xs font-mono bg-green/20 text-green rounded">
+              CHAMBER
+            </span>
+          )}
+        </div>
+
+        {activeTab === 'overview' && (
+          <>
+            {/* Thesis */}
+            <div className="mb-4">
+              <div className="text-xs font-mono text-muted uppercase tracking-wide mb-1">Thesis</div>
+              <div className="text-sm">{thesis}</div>
+            </div>
+
+            {/* Key Metrics */}
+            <div className="grid grid-cols-3 gap-2 mb-4">
+              <div className="bg-[#111] p-3 rounded text-center">
+                <div className="text-xl font-mono font-bold text-cyan">{alpha}</div>
+                <div className="text-[10px] text-muted uppercase">Alpha</div>
+              </div>
+              <div className="bg-[#111] p-3 rounded text-center">
+                <div className="text-xl font-mono font-bold text-green">{digitalMaturity}</div>
+                <div className="text-[10px] text-muted uppercase">Digital</div>
+              </div>
+              <div className="bg-[#111] p-3 rounded text-center">
+                <div className="text-xl font-mono font-bold text-gold">{marketPower}</div>
+                <div className="text-[10px] text-muted uppercase">Power</div>
+              </div>
+            </div>
+
+            {/* Business Info */}
+            <div className="space-y-2 mb-4">
+              <div className="text-xs font-mono text-muted uppercase tracking-wide">Business Info</div>
+              {business.owner && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted">Owner</span>
+                  <span>{business.owner}</span>
+                </div>
+              )}
+              {business.founded && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted">Founded</span>
+                  <span>{business.founded}</span>
+                </div>
+              )}
+              {business.years_in_business && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted">Years Active</span>
+                  <span>{business.years_in_business} years</span>
+                </div>
+              )}
+              {business.district && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted">District</span>
+                  <span className="text-cyan">{business.district.replace(/_/g, ' ')}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Ratings */}
+            {business.ratings && (
+              <div className="mb-4">
+                <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Ratings</div>
+                <div className="flex gap-4">
+                  {business.ratings.google && (
+                    <div>
+                      <span className="text-lg font-mono font-bold text-gold">{business.ratings.google}</span>
+                      <span className="text-xs text-muted ml-1">Google</span>
+                    </div>
+                  )}
+                  {business.ratings.yelp && (
+                    <div>
+                      <span className="text-lg font-mono font-bold text-accent">{business.ratings.yelp}</span>
+                      <span className="text-xs text-muted ml-1">Yelp</span>
+                    </div>
+                  )}
+                  {business.reviews?.total && (
+                    <div>
+                      <span className="text-lg font-mono font-bold">{business.reviews.total}</span>
+                      <span className="text-xs text-muted ml-1">Reviews</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Contact */}
+            <div className="mb-4">
+              <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Contact</div>
+              <div className="space-y-1 text-sm">
+                {business.website && <div className="text-cyan truncate">{business.website}</div>}
+                {business.phone?.length > 0 && <div className="text-muted">{business.phone[0]}</div>}
+                {business.email?.length > 0 && <div className="text-muted truncate">{business.email[0]}</div>}
+              </div>
+            </div>
+
+            {/* Services */}
+            {business.services?.length > 0 && (
+              <div className="mb-4">
+                <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Services</div>
+                <div className="flex flex-wrap gap-1">
+                  {business.services.slice(0, 6).map((s, i) => (
+                    <span key={i} className="px-2 py-0.5 text-xs bg-[#1a1a1a] text-muted rounded">{s}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
+        )}
+
+        {activeTab === 'intel' && (
+          <>
+            {/* Pain Points */}
+            <div className="mb-4">
+              <div className="text-xs font-mono text-accent uppercase tracking-wide mb-2">
+                Detected Friction ({painPoints.length})
+              </div>
+              {painPoints.length > 0 ? (
+                <div className="space-y-2">
+                  {painPoints.map((pp, i) => (
+                    <div key={i} className="bg-[#111] p-2 rounded border-l-2 border-accent">
+                      <div className="text-sm">{pp.pain_point || pp.point}</div>
+                      <div className="flex gap-2 mt-1">
+                        <span className="text-xs text-muted">{pp.category}</span>
+                        <span className="text-xs px-1 bg-[#222] text-accent rounded">{pp.severity}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-sm text-muted">No pain points detected</div>
+              )}
+            </div>
+
+            {/* Opportunities */}
+            <div className="mb-4">
+              <div className="text-xs font-mono text-green uppercase tracking-wide mb-2">
+                Opportunities ({opportunities.length})
+              </div>
+              {opportunities.length > 0 ? (
+                <div className="space-y-2">
+                  {opportunities.map((opp, i) => (
+                    <div key={i} className="bg-[#111] p-2 rounded border-l-2 border-green">
+                      <div className="text-sm">{opp.opportunity}</div>
+                      <div className="text-xs text-muted mt-1">{opp.potential_impact} impact</div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-sm text-muted">No opportunities identified</div>
+              )}
+            </div>
+
+            {/* Tech Gaps */}
+            {techGaps.length > 0 && (
+              <div className="mb-4">
+                <div className="text-xs font-mono text-orange uppercase tracking-wide mb-2">
+                  Technology Gaps
+                </div>
+                <div className="bg-[#111] p-2 rounded font-mono text-xs text-orange">
+                  {techGaps.map((gap, i) => (
+                    <div key={i}>&gt; {gap}</div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Solutions */}
+            {solutions.length > 0 && (
+              <div className="mb-4">
+                <div className="text-xs font-mono text-cyan uppercase tracking-wide mb-2">
+                  Recommended Solutions
+                </div>
+                <div className="space-y-2">
+                  {solutions.map((sol, i) => (
+                    <div key={i} className="bg-[#111] p-2 rounded">
+                      <div className="text-sm font-semibold">{sol.solution_name || sol.solution}</div>
+                      {sol.estimated_impact && (
+                        <div className="text-xs text-green mt-1">{sol.estimated_impact}</div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Estimated Financials */}
+            {business.estimated_revenue && (
+              <div className="mb-4">
+                <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Est. Financials</div>
+                <div className="space-y-1 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted">Revenue</span>
+                    <span className="text-gold">{formatCurrency(business.estimated_revenue.low)} - {formatCurrency(business.estimated_revenue.high)}</span>
+                  </div>
+                  {business.estimated_employees && (
+                    <div className="flex justify-between">
+                      <span className="text-muted">Employees</span>
+                      <span>{business.estimated_employees.low} - {business.estimated_employees.high}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </>
+        )}
+
+        {activeTab === 'action' && (
+          <>
+            {/* Execution Mode */}
+            <div className="mb-4">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-gold">⚡</span>
+                <span className="text-xs font-mono text-gold uppercase tracking-wide">Execution Mode</span>
+              </div>
+              <div className="bg-[#111] border border-[#222] rounded p-3 text-xs font-mono whitespace-pre-wrap text-muted mb-4">
+                {script}
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={handleCopyScript}
+                  className="flex-1 py-2 text-xs font-mono uppercase bg-accent hover:bg-accent/80 text-white rounded"
+                >
+                  {copied ? 'Copied!' : 'Copy Script'}
+                </button>
+                <button className="flex-1 py-2 text-xs font-mono uppercase border border-[#333] text-muted hover:text-white rounded">
+                  Log to CRM
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Actions */}
+            <div className="mb-4">
+              <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Quick Actions</div>
+              <div className="space-y-2">
+                {business.website && (
+                  <a href={`https://${business.website}`} target="_blank" rel="noopener noreferrer"
+                    className="block w-full py-2 text-xs font-mono text-center border border-[#333] text-cyan hover:bg-[#111] rounded">
+                    Visit Website →
+                  </a>
+                )}
+                {business.phone?.length > 0 && (
+                  <a href={`tel:${business.phone[0]}`}
+                    className="block w-full py-2 text-xs font-mono text-center border border-[#333] text-green hover:bg-[#111] rounded">
+                    Call Business →
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {/* Claim Business */}
+            <div className="border-t border-[#222] pt-4">
+              <div className="text-sm font-semibold mb-1">Own this business?</div>
+              <div className="text-xs text-muted mb-3">Claim it to update information</div>
+              <button className="w-full py-2 text-xs font-mono uppercase border border-cyan text-cyan hover:bg-cyan/10 rounded">
+                Claim Business
+              </button>
+            </div>
+          </>
         )}
       </div>
-      <div className="p-3 border-t border-[#222] text-xs text-muted font-mono">
-        {businesses.length} results
+
+      {/* Data source footer */}
+      <div className="p-3 border-t border-[#222] text-[10px] text-muted">
+        Sources: {(business.data_sources || []).slice(0, 3).join(' • ')} | Updated: {business.last_updated ? new Date(business.last_updated).toLocaleDateString() : 'N/A'}
       </div>
     </aside>
   )
 }
 
-function GradeBox({ label, grade }) {
-  return (
-    <div className="bg-[#0e0e0e] border border-[#222] p-4 rounded-md flex flex-col items-center">
-      <div className={`grade-circle grade-${grade}`}>{grade}</div>
-      <div className="text-xs text-muted mt-2 uppercase tracking-wide">{label}</div>
-    </div>
-  )
-}
-
-function DataRow({ label, value, highlight }) {
-  return (
-    <div className="data-row">
-      <span className="text-xs text-muted uppercase tracking-wide">{label}</span>
-      <span className={`font-mono font-semibold ${highlight || ''}`}>{value}</span>
-    </div>
-  )
-}
-
-function LockedSection({ business, isRevealed, onUnlock, unlockLog }) {
-  const phone = formatPhone(business.phone)
-  const revenue = business.estimated_revenue
-  const employees = business.estimated_employees
-  const techGaps = business.technology_gaps || []
-  const painPoints = business.pain_points || []
-
-  return (
-    <div className={`mt-6 border border-dashed border-[#333] bg-[#080808] rounded-lg relative overflow-hidden ${isRevealed ? 'revealed' : ''}`}>
-      {!isRevealed && (
-        <div className="absolute inset-0 bg-[#050505]/80 z-10 flex flex-col items-center justify-center">
-          <svg className="mb-3" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-          </svg>
-          <button onClick={onUnlock} className="btn btn-primary">
-            Decrypt Dossier
-          </button>
-          {unlockLog && (
-            <div className="console-text mt-3 text-xs">{unlockLog}</div>
-          )}
-        </div>
-      )}
-
-      <div className={`p-5 ${!isRevealed ? 'blur-data' : ''}`}>
-        <DataRow
-          label="Est. Revenue"
-          value={revenue ? `${formatCurrency(revenue.low)} - ${formatCurrency(revenue.high)}` : 'N/A'}
-          highlight="text-gold"
-        />
-        <DataRow
-          label="Est. Employees"
-          value={employees ? `${employees.low} - ${employees.high}` : 'N/A'}
-        />
-        <DataRow
-          label="Direct Phone"
-          value={phone || 'Not available'}
-          highlight="text-cyan"
-        />
-        <DataRow
-          label="Website"
-          value={business.website || 'N/A'}
-          highlight="text-cyan"
-        />
-        {business.email && business.email.length > 0 && (
-          <DataRow
-            label="Email"
-            value={business.email[0]}
-          />
-        )}
-
-        {techGaps.length > 0 && (
-          <div className="mt-5">
-            <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Technology Gaps</div>
-            <div className="bg-[#111] p-3 rounded font-mono text-xs text-orange">
-              {techGaps.map((gap, i) => (
-                <div key={i} className="mb-1">&gt; {gap}</div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {painPoints.length > 0 && (
-          <div className="mt-5">
-            <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Pain Points Detected</div>
-            <div className="space-y-2">
-              {painPoints.slice(0, 4).map((pp, i) => (
-                <div key={i} className="bg-[#111] p-3 rounded border-l-2 border-accent">
-                  <div className="text-sm">{pp.pain_point || pp.point}</div>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-xs text-muted">{pp.category}</span>
-                    <span className="text-xs px-1.5 py-0.5 rounded bg-[#222] text-accent">{pp.severity}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  )
-}
-
-function ClaimBanner({ businessName }) {
-  const [showForm, setShowForm] = useState(false)
-
-  return (
-    <div className="mt-6 border border-[#333] bg-[#0a0a0a] rounded-lg p-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <div className="text-sm font-semibold">Own this business?</div>
-          <div className="text-xs text-muted mt-1">Claim it to update information and respond to insights</div>
-        </div>
-        <button
-          onClick={() => setShowForm(!showForm)}
-          className="btn btn-outline text-xs"
-        >
-          {showForm ? 'Cancel' : 'Claim Business'}
-        </button>
-      </div>
-
-      {showForm && (
-        <div className="mt-4 pt-4 border-t border-[#222] space-y-3">
-          <input type="text" placeholder="Your name" className="input" />
-          <input type="email" placeholder="Business email" className="input" />
-          <input type="tel" placeholder="Phone number" className="input" />
-          <button className="btn btn-primary w-full">Submit Claim Request</button>
-          <p className="text-xs text-muted text-center">We'll verify ownership and contact you within 48 hours</p>
-        </div>
-      )}
-    </div>
-  )
-}
-
-function BusinessDossier({ business }) {
-  const [isRevealed, setIsRevealed] = useState(false)
-  const [unlockLog, setUnlockLog] = useState('')
-
-  // Reset reveal state when business changes
-  useEffect(() => {
-    setIsRevealed(false)
-    setUnlockLog('')
-  }, [business?.business_id])
-
-  const handleUnlock = () => {
-    const steps = [
-      "INITIATING HANDSHAKE...",
-      "QUERYING OSINT SOURCES...",
-      "VALIDATING DATA...",
-      "CROSS-REFERENCING...",
-      "DECRYPTING PAYLOAD...",
-      "ACCESS GRANTED."
-    ]
-
-    let i = 0
-    const interval = setInterval(() => {
-      if (i >= steps.length) {
-        clearInterval(interval)
-        setIsRevealed(true)
-      } else {
-        setUnlockLog(steps[i])
-        i++
-      }
-    }, 250)
-  }
-
-  if (!business) {
-    return (
-      <div className="flex-1 flex flex-col items-center justify-center text-muted">
-        <div className="font-mono text-xl mb-2">AWAITING TARGET</div>
-        <div className="text-xs uppercase tracking-wide">Select an entity to initialize scan</div>
-      </div>
-    )
-  }
-
-  const avgRating = business.ratings?.average || business.ratings?.google || 0
-  const sentiment = business.sentiment?.positive || 0
-  const completeness = business.data_completeness || 0
-  const opportunities = business.opportunities || []
-  const solutions = business.co_fit_solutions || []
-
-  // Generate a sample review/sentiment quote
-  const sentimentQuote = business.reviews?.sample?.[0] ||
-    (avgRating > 4.5 ? "Consistently excellent service and quality. A local favorite." :
-     avgRating > 4.0 ? "Great experience overall with minor areas for improvement." :
-     avgRating > 3.5 ? "Good but inconsistent. Has potential for growth." :
-     "Mixed reviews suggest operational challenges.")
-
-  return (
-    <main className="flex-1 overflow-y-auto bg-[#050505]">
-      <div className="max-w-4xl mx-auto p-8" style={{ animation: 'slideUp 0.3s ease forwards' }}>
-        {/* Header */}
-        <div className="flex items-start justify-between mb-2">
-          <h1 className="text-2xl font-mono font-bold">{business.name}</h1>
-          <div className="text-xs font-mono text-muted">ID: {business.business_id?.slice(0, 8)}</div>
-        </div>
-
-        <div className="text-xs text-muted uppercase tracking-wide mb-6">
-          {business.category?.replace(/_/g, ' ')}
-          {business.subcategory && ` // ${business.subcategory.replace(/_/g, ' ')}`}
-          {business.owner && ` // ${business.owner}`}
-        </div>
-
-        {/* Hero Stats */}
-        <div className="flex gap-4 mb-6">
-          <div className="hero-stat">
-            <div className="text-xs font-mono text-muted uppercase tracking-wide mb-1">Market Score</div>
-            <div className="text-2xl font-mono font-bold">{(business.engagement_score || 0).toFixed(0)}/100</div>
-          </div>
-          <div className="hero-stat">
-            <div className="text-xs font-mono text-muted uppercase tracking-wide mb-1">Priority Tier</div>
-            <div className={`text-2xl font-mono font-bold ${business.priority_tier === 1 ? 'text-green' : business.priority_tier === 2 ? 'text-cyan' : 'text-gold'}`}>
-              Tier {business.priority_tier || 4}
-            </div>
-          </div>
-          <div className="hero-stat">
-            <div className="text-xs font-mono text-muted uppercase tracking-wide mb-1">Data Quality</div>
-            <div className="text-2xl font-mono font-bold">{(completeness * 100).toFixed(0)}%</div>
-          </div>
-        </div>
-
-        {/* Digital Health Scorecard */}
-        <div className="text-xs font-mono text-muted uppercase tracking-wide mb-3">Digital Health Scorecard</div>
-        <div className="grid grid-cols-3 gap-3 mb-6">
-          <GradeBox label="Rating" grade={getGrade(avgRating, 'rating')} />
-          <GradeBox label="Sentiment" grade={getGrade(sentiment, 'sentiment')} />
-          <GradeBox label="Data" grade={getGrade(completeness, 'completeness')} />
-        </div>
-
-        {/* Location & Hours */}
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="card p-4">
-            <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Location</div>
-            <div className="text-sm">
-              {business.address?.street && <div>{business.address.street}</div>}
-              <div>{business.address?.city || 'Coral Gables'}, {business.address?.state || 'FL'} {business.address?.zip}</div>
-              {business.district && <div className="text-cyan mt-1">{business.district.replace(/_/g, ' ')}</div>}
-            </div>
-          </div>
-          <div className="card p-4">
-            <div className="text-xs font-mono text-muted uppercase tracking-wide mb-2">Operations</div>
-            <div className="text-sm space-y-1">
-              {business.founded && <div>Founded: {business.founded}</div>}
-              {business.years_in_business && <div>{business.years_in_business} years in business</div>}
-              {business.chamber_membership?.is_member && (
-                <div className="text-green">Chamber Member</div>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Ratings Detail */}
-        {business.ratings && (
-          <div className="card p-4 mb-6">
-            <div className="text-xs font-mono text-muted uppercase tracking-wide mb-3">Ratings & Reviews</div>
-            <div className="grid grid-cols-3 gap-4">
-              {business.ratings.google && (
-                <div>
-                  <div className="text-2xl font-mono font-bold text-gold">{business.ratings.google}</div>
-                  <div className="text-xs text-muted">Google</div>
-                </div>
-              )}
-              {business.ratings.yelp && (
-                <div>
-                  <div className="text-2xl font-mono font-bold text-accent">{business.ratings.yelp}</div>
-                  <div className="text-xs text-muted">Yelp</div>
-                </div>
-              )}
-              {business.reviews?.total && (
-                <div>
-                  <div className="text-2xl font-mono font-bold">{business.reviews.total}</div>
-                  <div className="text-xs text-muted">Total Reviews</div>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-
-        {/* Sentiment Quote */}
-        <div className="sentiment-box mb-6">
-          {sentimentQuote}
-        </div>
-
-        {/* Opportunities */}
-        {opportunities.length > 0 && (
-          <div className="mb-6">
-            <div className="text-xs font-mono text-muted uppercase tracking-wide mb-3">
-              Growth Opportunities ({opportunities.length})
-            </div>
-            <div className="space-y-2">
-              {opportunities.map((opp, i) => (
-                <div key={i} className="card p-3 border-l-2 border-l-green">
-                  <div className="text-sm">{opp.opportunity}</div>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-xs text-muted">{opp.category}</span>
-                    {opp.potential_impact && (
-                      <span className="text-xs px-1.5 py-0.5 rounded bg-[#222] text-green">
-                        {opp.potential_impact} impact
-                      </span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Solutions */}
-        {solutions.length > 0 && (
-          <div className="mb-6">
-            <div className="text-xs font-mono text-muted uppercase tracking-wide mb-3">
-              Recommended Solutions ({solutions.length})
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {solutions.slice(0, 4).map((sol, i) => (
-                <div key={i} className="card p-3">
-                  <div className="flex items-start justify-between">
-                    <div className="text-sm font-semibold">{sol.solution_name || sol.solution || sol.name}</div>
-                    {sol.priority && (
-                      <span className="text-xs px-1.5 py-0.5 rounded bg-cyan/20 text-cyan">#{sol.priority}</span>
-                    )}
-                  </div>
-                  {sol.description && (
-                    <div className="text-xs text-muted mt-1">{sol.description}</div>
-                  )}
-                  {sol.estimated_impact && (
-                    <div className="text-xs text-green mt-2">{sol.estimated_impact}</div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Locked Intel Section */}
-        <LockedSection
-          business={business}
-          isRevealed={isRevealed}
-          onUnlock={handleUnlock}
-          unlockLog={unlockLog}
-        />
-
-        {/* Claim Business */}
-        <ClaimBanner businessName={business.name} />
-
-        {/* Data Sources */}
-        <div className="mt-6 pt-4 border-t border-[#222]">
-          <div className="flex items-center justify-between text-xs text-muted">
-            <div className="font-mono uppercase tracking-wide">
-              Sources: {(business.data_sources || []).join(' • ')}
-            </div>
-            <div>
-              Last updated: {business.last_updated ? new Date(business.last_updated).toLocaleDateString() : 'N/A'}
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  )
-}
-
 // ============================================================================
-// MAIN TERMINAL COMPONENT
+// MAIN TERMINAL
 // ============================================================================
 
 export default function Terminal() {
-  const [businesses, setBusinesses] = useState([])
   const [allBusinesses, setAllBusinesses] = useState([])
   const [selectedBusiness, setSelectedBusiness] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [filter, setFilter] = useState('all')
-  const [searchQuery, setSearchQuery] = useState('')
+  const [segment, setSegment] = useState('all')
+  const [sector, setSector] = useState('all')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [dataWarning, setDataWarning] = useState(null)
 
-  // Fetch all businesses on mount
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await fetch('/api/v2/businesses?limit=1000')
         const data = await res.json()
+        // Debug: Check if digital_maturity is present in API response
+        if (data.length > 0) {
+          const sample = data[0]
+          console.log('=== API DATA DEBUG ===')
+          console.log('Sample business:', sample.name)
+          console.log('digital_maturity:', sample.digital_maturity)
+          console.log('website:', sample.website)
+          console.log('social_media:', sample.social_media)
+          console.log('ratings:', sample.ratings)
+
+          const withDM = data.filter(b => b.digital_maturity !== undefined).length
+          const withWebsite = data.filter(b => b.website).length
+          console.log(`Businesses with digital_maturity: ${withDM}/${data.length}`)
+          console.log(`Businesses with website: ${withWebsite}/${data.length}`)
+
+          if (withDM === 0) {
+            console.warn('⚠️ BACKEND NEEDS RESTART - digital_maturity field missing from API response!')
+            setDataWarning('Backend needs restart - digital_maturity field missing. Run: uvicorn bi_api:app --reload --port 8000')
+          }
+        }
         setAllBusinesses(data)
-        setBusinesses(data)
       } catch (error) {
         console.error('Failed to fetch businesses:', error)
       } finally {
@@ -543,53 +748,33 @@ export default function Terminal() {
     fetchData()
   }, [])
 
-  // Filter businesses
   const filteredBusinesses = useMemo(() => {
     let result = [...allBusinesses]
 
-    // Apply search
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase()
+    const segmentConfig = SMART_SEGMENTS.find(s => s.id === segment)
+    if (segmentConfig?.filter) {
+      result = result.filter(segmentConfig.filter)
+    }
+
+    if (sector !== 'all') {
       result = result.filter(b =>
-        b.name?.toLowerCase().includes(q) ||
-        b.category?.toLowerCase().includes(q) ||
-        b.district?.toLowerCase().includes(q)
+        b.category?.toLowerCase() === sector.toLowerCase() ||
+        b.category?.toLowerCase().includes(sector.toLowerCase())
       )
     }
 
-    // Apply filter
-    if (filter === 'opportunities') {
-      result = result.filter(b => (b.opportunity_count || 0) > 0 || (b.engagement_score || 0) >= 85)
-    } else if (filter === 'risk') {
-      result = result.filter(b => (b.engagement_score || 0) < 75 || (b.pain_point_count || 0) >= 3)
-    }
+    result.sort((a, b) => calculateOpportunityAlpha(b) - calculateOpportunityAlpha(a))
+    return result // No limit - show all
+  }, [allBusinesses, segment, sector])
 
-    // Sort by score
-    result.sort((a, b) => (b.engagement_score || 0) - (a.engagement_score || 0))
-
-    return result
-  }, [allBusinesses, filter, searchQuery])
-
-  // Fetch full business details when selected
   const handleSelect = async (business) => {
     try {
       const res = await fetch(`/api/v2/businesses/${encodeURIComponent(business.business_id)}`)
       const fullData = await res.json()
       setSelectedBusiness(fullData)
     } catch (error) {
-      console.error('Failed to fetch business details:', error)
       setSelectedBusiness(business)
     }
-  }
-
-  const handleDownload = () => {
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(allBusinesses, null, 2))
-    const el = document.createElement('a')
-    el.setAttribute("href", dataStr)
-    el.setAttribute("download", "CoralGables_Terminal_Export.json")
-    document.body.appendChild(el)
-    el.click()
-    el.remove()
   }
 
   if (loading) {
@@ -597,28 +782,40 @@ export default function Terminal() {
       <div className="h-screen flex items-center justify-center bg-[#050505]">
         <div className="text-center">
           <div className="live-dot mx-auto mb-4" style={{ width: 12, height: 12 }} />
-          <div className="font-mono text-muted uppercase tracking-wide text-sm">
-            Initializing Terminal...
-          </div>
+          <div className="font-mono text-muted uppercase tracking-wide text-sm">Initializing Terminal...</div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="h-screen flex flex-col">
-      <Header businessCount={allBusinesses.length} onDownload={handleDownload} />
+    <div className="h-screen flex flex-col bg-[#050505]">
+      <Header businessCount={allBusinesses.length} targetCount={filteredBusinesses.length} />
+      {dataWarning && (
+        <div className="bg-red-900/50 border-b border-red-500 px-4 py-2 text-sm font-mono text-red-200 flex items-center justify-between">
+          <span>⚠️ {dataWarning}</span>
+          <button onClick={() => setDataWarning(null)} className="text-red-400 hover:text-white">✕</button>
+        </div>
+      )}
       <div className="flex flex-1 overflow-hidden">
-        <EntityList
+        <LeftSidebar
+          segment={segment}
+          onSegmentChange={setSegment}
+          sector={sector}
+          onSectorChange={setSector}
+          isMobileOpen={mobileMenuOpen}
+          onClose={() => setMobileMenuOpen(false)}
+        />
+        <EntityTable
           businesses={filteredBusinesses}
           activeId={selectedBusiness?.business_id}
           onSelect={handleSelect}
-          filter={filter}
-          onFilterChange={setFilter}
-          searchQuery={searchQuery}
-          onSearchChange={setSearchQuery}
+          onMenuClick={() => setMobileMenuOpen(true)}
         />
-        <BusinessDossier business={selectedBusiness} />
+        <BusinessDossier
+          business={selectedBusiness}
+          onClose={() => setSelectedBusiness(null)}
+        />
       </div>
     </div>
   )
