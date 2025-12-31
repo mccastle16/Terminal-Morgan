@@ -155,10 +155,12 @@ systems/
 | `bi_api.py` | FastAPI REST API | `uvicorn bi_api:app` |
 | `config.py` | Environment configuration | `from config import settings` |
 | `database.py` | SQLAlchemy ORM models | `from database import Business` |
-| `db_repository.py` | Data access abstraction | `get_repository()` |
-| `osint_production_collector.py` | OSINT data collection | `OSINTOrchestrator` |
+| `db_repository.py` | Data access abstraction (PostgreSQL/JSON) | `get_repository()` |
+| `osint_production_collector.py` | OSINT data collection (8 agents) | `OSINTOrchestrator` |
 | `consensus_validator.py` | Multi-agent validation | `ConsensusValidator` |
 | `weekly_refresh.py` | Scheduled data refresh | CLI script |
+
+> **Note:** Legacy files `osint_orchestrator.py` and `repository.py` have been removed to eliminate duplicates.
 
 ### 3.3 Key Classes
 
@@ -321,12 +323,12 @@ Chamber Directory (DOCX)
 |-------|--------|----------------|------------|
 | `GoogleMapsAgent` | Google Places API | Name, rating, reviews, hours, phone, website | 0.90 |
 | `YelpAgent` | Yelp Fusion API | Rating, reviews, categories, price range | 0.90 |
-| `WebsiteAnalyzer` | Web scraping | Booking system, social links, technologies | 0.60 |
-| `SocialMediaAnalyzer` | Instagram/Facebook | Followers, engagement, posts | 0.70 |
+| `WebsiteAgent` | Web scraping | Booking system, social links, technologies | 0.60 |
+| `SocialMediaAgent` | Instagram/Facebook | Followers, engagement, posts | 0.70 |
 | `ChamberAgent` | Chamber directory | Membership, board position | 0.90 |
-| `FinancialEstimator` | Heuristics | Revenue estimate, employee count | 0.60 |
-| `PainPointExtractor` | Review analysis | Pain points, severity, category | 0.70 |
-| `CoFitAnalyzer` | LLM analysis | Solutions, engagement score, tier | 0.70 |
+| `FinancialAgent` | Heuristics | Revenue estimate, employee count | 0.60 |
+| `PainPointAgent` | Review analysis | Pain points, severity, category | 0.70 |
+| `CoFitAgent` | LLM analysis | Solutions, engagement score, tier | 0.70 |
 
 ### 6.2 Validation Agents
 
