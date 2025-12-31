@@ -711,12 +711,33 @@ export default function Terminal() {
   const [segment, setSegment] = useState('all')
   const [sector, setSector] = useState('all')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [dataWarning, setDataWarning] = useState(null)
 
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await fetch('/api/v2/businesses?limit=1000')
         const data = await res.json()
+        // Debug: Check if digital_maturity is present in API response
+        if (data.length > 0) {
+          const sample = data[0]
+          console.log('=== API DATA DEBUG ===')
+          console.log('Sample business:', sample.name)
+          console.log('digital_maturity:', sample.digital_maturity)
+          console.log('website:', sample.website)
+          console.log('social_media:', sample.social_media)
+          console.log('ratings:', sample.ratings)
+
+          const withDM = data.filter(b => b.digital_maturity !== undefined).length
+          const withWebsite = data.filter(b => b.website).length
+          console.log(`Businesses with digital_maturity: ${withDM}/${data.length}`)
+          console.log(`Businesses with website: ${withWebsite}/${data.length}`)
+
+          if (withDM === 0) {
+            console.warn('⚠️ BACKEND NEEDS RESTART - digital_maturity field missing from API response!')
+            setDataWarning('Backend needs restart - digital_maturity field missing. Run: uvicorn bi_api:app --reload --port 8000')
+          }
+        }
         setAllBusinesses(data)
       } catch (error) {
         console.error('Failed to fetch businesses:', error)
@@ -770,6 +791,12 @@ export default function Terminal() {
   return (
     <div className="h-screen flex flex-col bg-[#050505]">
       <Header businessCount={allBusinesses.length} targetCount={filteredBusinesses.length} />
+      {dataWarning && (
+        <div className="bg-red-900/50 border-b border-red-500 px-4 py-2 text-sm font-mono text-red-200 flex items-center justify-between">
+          <span>⚠️ {dataWarning}</span>
+          <button onClick={() => setDataWarning(null)} className="text-red-400 hover:text-white">✕</button>
+        </div>
+      )}
       <div className="flex flex-1 overflow-hidden">
         <LeftSidebar
           segment={segment}
