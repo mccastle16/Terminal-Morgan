@@ -1,6 +1,6 @@
 # Coral Gables BI Platform - Codebase Architecture
 
-**Version:** 2.1
+**Version:** 2.2
 **Last Updated:** December 2025
 
 ---
@@ -118,17 +118,11 @@ systems/
 │   ├── db_repository.py        # Data access layer
 │   │
 │   ├── osint_production_collector.py  # Production OSINT agents (8 agents)
-│   ├── google_places_collector.py     # Google Places API wrapper
-│   ├── yelp_collector.py              # Yelp Fusion API wrapper
-│   │
 │   ├── consensus_validator.py         # Multi-agent validation
-│   ├── pkp_validator.py               # PKP refinement validator
 │   ├── validate_all_data.py           # Batch validation script
 │   │
 │   ├── weekly_refresh.py              # Scheduled data refresh
 │   ├── generate_comprehensive_bi_database.py  # DB regeneration
-│   ├── generate_top_100_pkp.py        # PKP report generator
-│   ├── coral_gables_pkp_generator.py  # Single business PKP
 │   ├── migrate_json_to_db.py          # JSON to PostgreSQL migration
 │   │
 │   ├── data/                   # Output files only (refresh reports)
@@ -146,8 +140,6 @@ systems/
     ├── coral_gables_bi_database_validated.json # Validated version (working file)
     ├── all_businesses_merged.json             # Source: merged business data
     ├── chamber_members_extracted.json         # Source: chamber directory
-    ├── coral_gables_top_100_businesses_pkp.json # PKP report output
-    ├── books_and_books_pkp_refined.json       # Example PKP output
     └── database_schema.sql                    # PostgreSQL schema
 ```
 
@@ -163,7 +155,7 @@ systems/
 | `consensus_validator.py` | Multi-agent validation | `ConsensusValidator` |
 | `weekly_refresh.py` | Scheduled data refresh | CLI script |
 
-> **Note:** Legacy files `osint_orchestrator.py` and `repository.py` have been removed to eliminate duplicates.
+> **Note:** Removed legacy/unused files: `osint_orchestrator.py`, `repository.py`, `pkp_validator.py`, `coral_gables_pkp_generator.py`, `generate_top_100_pkp.py`, `google_places_collector.py`, `yelp_collector.py`.
 
 ### 3.3 Key Classes
 
@@ -733,7 +725,8 @@ uvicorn bi_api:app --reload --port 8000
 
 ---
 
-*Document Version: 2.1 | Last Updated: December 2025*
+*Document Version: 2.2 | Last Updated: December 2025*
 *Changes:*
+- *v2.2: Removed 7 unused scripts (PKP generators, standalone collectors) and 2 stale data files*
 - *v2.1: Cleaned up data directories, removed redundant files, consolidated to canonical `systems/data/` path*
 - *v2.0: Updated frontend architecture to reflect single-page Terminal UI (v5.0)*

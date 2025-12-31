@@ -562,21 +562,17 @@ Terminal/
 │   │   ├── bi_api.py               # FastAPI REST API
 │   │   ├── config.py               # Configuration management
 │   │   ├── database.py             # SQLAlchemy models
-│   │   ├── repository.py           # Data access layer
-│   │   ├── google_places_collector.py
-│   │   ├── yelp_collector.py
+│   │   ├── db_repository.py        # Data access layer
 │   │   ├── consensus_validator.py  # Stage 3 multi-agent
-│   │   ├── osint_orchestrator.py   # 8-agent OSINT system
-│   │   ├── osint_production_collector.py  # Production OSINT
+│   │   ├── osint_production_collector.py  # Production OSINT (8 agents)
 │   │   ├── generate_comprehensive_bi_database.py  # Database generator
 │   │   ├── weekly_refresh.py       # Scheduled refresh script
-│   │   ├── pkp_validator.py
-│   │   ├── migrate_json_to_db.py
-│   │   └── data/                   # Bundled data for deployment
-│   │       ├── coral_gables_bi_database_v2.json  # 927 businesses
-│   │       └── chamber_members_extracted.json
-│   └── data/                       # Source data files
-│       ├── coral_gables_bi_database_v2.json
+│   │   ├── validate_all_data.py    # Batch validation script
+│   │   ├── migrate_json_to_db.py   # JSON to PostgreSQL migration
+│   │   └── data/                   # Output files (refresh reports)
+│   │       └── refresh_report_*.txt
+│   └── data/                       # ★ Canonical data directory
+│       ├── coral_gables_bi_database_v2.json  # 927 businesses
 │       ├── all_businesses_merged.json
 │       ├── chamber_members_extracted.json
 │       └── database_schema.sql
