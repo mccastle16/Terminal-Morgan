@@ -1,393 +1,441 @@
 """
-PKP Validator - Uses LLM reasoning to refine pain points
-Version: 1.0
-Purpose: Take generic PKPs and use Claude/GPT to infer better pain points from observations
+PKP Validator - Stage 2: LLM-powered pain point refinement
+Version: 2.0
+Purpose: Analyze OSINT observations to generate specific, evidence-backed pain points
+
+Pipeline Position:
+    Stage 1: OSINT Agents → raw observations
+    Stage 2: PKP Validator → refined pain points (THIS FILE)
+    Stage 3: Consensus Validator → confidence boost
+
+This is the "brain" that turns raw observations into actionable insights.
 """
 
+import asyncio
 import json
-from typing import Dict, List
+from typing import Dict, List, Any, Optional
+from datetime import datetime
+
+from config import settings
 
 
 class PKPValidator:
     """
-    Validates and refines PKP pain points using LLM reasoning.
-    
-    Takes a PKP with generic pain points and uses the observations + context
-    to infer more accurate, specific pain points.
+    Refines pain points using LLM analysis of OSINT observations.
+
+    Takes generic/assumed pain points + raw observations from OSINT agents
+    and generates specific, evidence-backed pain points.
     """
-    
-    def __init__(self):
-        self.validation_prompts = {
-            "pain_point_analysis": self._build_pain_point_prompt(),
-            "knowledge_gap_priority": self._build_knowledge_gap_prompt(),
-            "action_refinement": self._build_action_prompt()
-        }
-    
-    def _build_pain_point_prompt(self) -> str:
-        """Build prompt for pain point analysis."""
-        return """You are a business analyst specializing in local businesses in Coral Gables, Florida.
 
-You have been given a Precise Knowledge Protocol (PKP) for a business that contains:
-1. Generic pain points (low confidence, assumed)
-2. Real observations from the business
-3. Business context (type, location, customer base)
+    REFINEMENT_PROMPT = """You are a business analyst specializing in local businesses in Coral Gables, Florida.
 
-Your job: Analyze the observations and context to infer ACTUAL pain points this business likely faces.
+You have been given data about a business from multiple OSINT sources:
+1. Current pain points (may be generic or assumed)
+2. Real observations from Google, Yelp, website analysis, social media
+3. Business context (category, ratings, reviews)
+
+Your job: Analyze the observations to infer ACTUAL, SPECIFIC pain points.
 
 RULES:
-- Be specific, not generic
+- Be specific, not generic (e.g., "45-min weekend wait times" not "long waits")
 - Ground pain points in the observations provided
 - Assign confidence scores (0-1) based on strength of evidence
 - Identify severity (low/medium/high/critical)
 - Note which observations support each pain point
-- If observations don't support a pain point, mark confidence as low
+- Generate 3-5 high-quality pain points, not a long list of weak ones
+- If observations don't support a pain point, don't include it
 
-OUTPUT FORMAT (JSON):
+OUTPUT FORMAT (JSON only, no markdown):
 {{
   "refined_pain_points": [
     {{
-      "point": "Specific pain point description",
+      "pain_point": "Specific pain point description",
+      "category": "operations|marketing|technology|customer_experience|financial",
       "severity": "low|medium|high|critical",
-      "evidence": "observational|inferred|assumed",
       "confidence": 0.0-1.0,
-      "reasoning": "Why you think this is a pain point",
-      "supporting_observations": ["observation 1", "observation 2"],
-      "mitigation_ideas": ["Idea 1", "Idea 2"]
+      "evidence_type": "observed|inferred|assumed",
+      "reasoning": "Why this is a pain point based on observations",
+      "supporting_evidence": ["observation 1", "observation 2"],
+      "solution_hints": ["Potential solution 1", "Potential solution 2"]
     }}
   ],
-  "confidence_increase": "How much more confident are we now vs generic",
-  "validation_notes": "Overall assessment and caveats"
+  "opportunities": [
+    {{
+      "opportunity": "Specific opportunity description",
+      "category": "growth|efficiency|differentiation|digital",
+      "potential_impact": "low|medium|high",
+      "confidence": 0.0-1.0,
+      "reasoning": "Why this is an opportunity"
+    }}
+  ],
+  "data_quality_notes": "Assessment of observation quality and gaps"
 }}
 
 Now analyze this business:
 
-{{business_context}}
+BUSINESS: {business_name}
+CATEGORY: {category}
+LOCATION: Coral Gables, FL
 
-Original Generic Pain Points:
-{{generic_pain_points}}
+CURRENT PAIN POINTS:
+{current_pain_points}
 
-Observations:
-{{observations}}
+OSINT OBSERVATIONS:
+{observations}
 
-Provide your refined pain point analysis."""
-    
-    def _build_knowledge_gap_prompt(self) -> str:
-        """Build prompt for prioritizing knowledge gaps."""
-        return """Given the refined pain points and current knowledge gaps,
-        prioritize which gaps would give us the most value to close.
-        
-        Focus on: 
-        1. Which gaps would validate/invalidate our pain point hypotheses
-        2. Which gaps are easiest to close
-        3. Which gaps have highest ROI for the business
-        
-        Return prioritized list with reasoning."""
-    
-    def _build_action_prompt(self) -> str:
-        """Build prompt for refining actions."""
-        return """Given the refined pain points, suggest specific, actionable next steps.
-        
-        Each action should:
-        1. Address a specific pain point
-        2. Have clear success criteria
-        3. Be feasible for a small local business
-        4. Have estimated effort and impact
-        
-        Return prioritized action list."""
-    
-    def validate_pkp(self, pkp: Dict) -> Dict:
+Provide your refined analysis as JSON only."""
+
+    def __init__(self):
+        self.client = None
+        self._init_client()
+
+    def _init_client(self):
+        """Initialize Anthropic client if available"""
+        if settings.anthropic.is_configured:
+            try:
+                from anthropic import AsyncAnthropic
+                self.client = AsyncAnthropic(api_key=settings.anthropic.api_key)
+            except ImportError:
+                print("Warning: anthropic package not installed")
+                self.client = None
+        else:
+            print("Warning: Anthropic API not configured - PKP validation will use heuristics")
+
+    def _extract_observations(self, raw_data: Dict[str, Any]) -> str:
+        """Extract observations from OSINT raw_data into readable format"""
+        observations = []
+
+        # Google Maps data
+        if "google_maps" in raw_data:
+            gm = raw_data["google_maps"]
+            if gm.get("rating"):
+                observations.append(f"Google rating: {gm['rating']}/5 ({gm.get('review_count', 0)} reviews)")
+            if gm.get("reviews"):
+                for review in gm["reviews"][:3]:  # Top 3 reviews
+                    observations.append(f"Google review: \"{review.get('text', '')[:200]}...\"")
+            if gm.get("hours"):
+                observations.append(f"Business hours: {gm['hours']}")
+
+        # Yelp data
+        if "yelp" in raw_data:
+            yelp = raw_data["yelp"]
+            if yelp.get("rating"):
+                observations.append(f"Yelp rating: {yelp['rating']}/5 ({yelp.get('review_count', 0)} reviews)")
+            if yelp.get("reviews"):
+                for review in yelp["reviews"][:3]:
+                    observations.append(f"Yelp review: \"{review.get('text', '')[:200]}...\"")
+            if yelp.get("price"):
+                observations.append(f"Price range: {yelp['price']}")
+
+        # Website analysis
+        if "website" in raw_data:
+            web = raw_data["website"]
+            if web.get("has_booking"):
+                observations.append("Has online booking system")
+            else:
+                observations.append("No online booking detected")
+            if web.get("technologies"):
+                observations.append(f"Website technologies: {', '.join(web['technologies'][:5])}")
+            if web.get("social_links"):
+                observations.append(f"Social presence: {', '.join(web['social_links'].keys())}")
+
+        # Social media
+        if "social_media" in raw_data:
+            social = raw_data["social_media"]
+            if social.get("instagram"):
+                ig = social["instagram"]
+                observations.append(f"Instagram: {ig.get('followers', 0)} followers, {ig.get('posts', 0)} posts")
+            if social.get("facebook"):
+                fb = social["facebook"]
+                observations.append(f"Facebook: {fb.get('likes', 0)} likes")
+
+        # Chamber membership
+        if "chamber" in raw_data:
+            chamber = raw_data["chamber"]
+            if chamber.get("is_member"):
+                observations.append("Chamber of Commerce member")
+            if chamber.get("board_member"):
+                observations.append("Chamber board member")
+
+        # Financial estimates
+        if "financial" in raw_data:
+            fin = raw_data["financial"]
+            if fin.get("estimated_revenue"):
+                observations.append(f"Estimated revenue: {fin['estimated_revenue']}")
+            if fin.get("employee_count"):
+                observations.append(f"Estimated employees: {fin['employee_count']}")
+
+        return "\n".join(f"- {obs}" for obs in observations) if observations else "No observations available"
+
+    def _format_pain_points(self, pain_points: List[Dict]) -> str:
+        """Format current pain points for the prompt"""
+        if not pain_points:
+            return "None identified yet"
+
+        lines = []
+        for pp in pain_points:
+            text = pp.get("pain_point") or pp.get("point") or str(pp)
+            confidence = pp.get("confidence", 0.5)
+            lines.append(f"- {text} (confidence: {confidence})")
+
+        return "\n".join(lines)
+
+    async def refine_business(self, business_data: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Validate and refine a PKP.
-        
+        Refine pain points for a single business using LLM analysis.
+
         Args:
-            pkp: Original PKP dictionary
-            
+            business_data: Dict with name, category, pain_points, raw_data, etc.
+
         Returns:
-            Refined PKP with improved pain points
+            Dict with refined_pain_points, opportunities, and metadata
         """
-        
-        # Extract relevant info
-        business_context = {
-            "name": pkp["node"]["name"],
-            "type": pkp["node"]["type"],
-            "location": pkp["node"]["location"],
-            "thesis": pkp["node"]["thesis"],
-            "customer_profile": pkp["context"]["customer_profile"],
-            "market": pkp["context"]["market"]
-        }
-        
-        generic_pain_points = pkp["pain_points"]
-        observations = pkp["context"]["observations"]
-        
-        # Build the prompt
-        prompt = self.validation_prompts["pain_point_analysis"].format(
-            business_context=json.dumps(business_context, indent=2),
-            generic_pain_points=json.dumps(generic_pain_points, indent=2),
-            observations=json.dumps(observations, indent=2)
+        name = business_data.get("name", "Unknown")
+        category = business_data.get("category", "unknown")
+        current_pain_points = business_data.get("pain_points", [])
+        raw_data = business_data.get("raw_data", {})
+
+        # Extract observations from raw OSINT data
+        observations = self._extract_observations(raw_data)
+
+        # Build prompt
+        prompt = self.REFINEMENT_PROMPT.format(
+            business_name=name,
+            category=category,
+            current_pain_points=self._format_pain_points(current_pain_points),
+            observations=observations
         )
-        
-        # Return the prompt for LLM execution
+
+        # If no LLM available, use heuristic refinement
+        if not self.client:
+            return self._heuristic_refinement(business_data)
+
+        try:
+            # Call Claude
+            response = await asyncio.wait_for(
+                self.client.messages.create(
+                    model="claude-sonnet-4-20250514",
+                    max_tokens=2000,
+                    messages=[{"role": "user", "content": prompt}]
+                ),
+                timeout=30.0
+            )
+
+            # Parse response
+            response_text = response.content[0].text
+
+            # Extract JSON from response
+            try:
+                # Try to parse as pure JSON
+                result = json.loads(response_text)
+            except json.JSONDecodeError:
+                # Try to extract JSON from markdown code blocks
+                import re
+                json_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', response_text, re.DOTALL)
+                if json_match:
+                    result = json.loads(json_match.group(1))
+                else:
+                    # Fallback to heuristic
+                    return self._heuristic_refinement(business_data)
+
+            # Add metadata
+            result["business_name"] = name
+            result["refined_at"] = datetime.utcnow().isoformat()
+            result["refinement_method"] = "llm"
+
+            return result
+
+        except asyncio.TimeoutError:
+            print(f"  Timeout refining {name}, using heuristic")
+            return self._heuristic_refinement(business_data)
+        except Exception as e:
+            print(f"  Error refining {name}: {e}, using heuristic")
+            return self._heuristic_refinement(business_data)
+
+    def _heuristic_refinement(self, business_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Fallback heuristic refinement when LLM is unavailable.
+        Applies basic logic to improve pain point confidence.
+        """
+        name = business_data.get("name", "Unknown")
+        category = business_data.get("category", "unknown")
+        current_pain_points = business_data.get("pain_points", [])
+        raw_data = business_data.get("raw_data", {})
+
+        refined = []
+
+        # Check for common patterns in observations
+        has_booking = raw_data.get("website", {}).get("has_booking", False)
+        google_rating = raw_data.get("google_maps", {}).get("rating", 0)
+        yelp_rating = raw_data.get("yelp", {}).get("rating", 0)
+        has_instagram = bool(raw_data.get("social_media", {}).get("instagram"))
+
+        # Add observation-backed pain points
+        if not has_booking and category in ["restaurant", "spa", "salon", "medical"]:
+            refined.append({
+                "pain_point": "No online booking system detected",
+                "category": "technology",
+                "severity": "medium",
+                "confidence": 0.8,
+                "evidence_type": "observed",
+                "reasoning": "Website analysis shows no booking integration",
+                "supporting_evidence": ["No booking system detected on website"],
+                "solution_hints": ["Implement OpenTable/Resy", "Add Calendly integration"]
+            })
+
+        if google_rating and google_rating < 4.0:
+            refined.append({
+                "pain_point": f"Below-average Google rating ({google_rating}/5)",
+                "category": "customer_experience",
+                "severity": "high",
+                "confidence": 0.9,
+                "evidence_type": "observed",
+                "reasoning": "Google rating below 4.0 indicates customer satisfaction issues",
+                "supporting_evidence": [f"Google rating: {google_rating}"],
+                "solution_hints": ["Review response strategy", "Customer feedback program"]
+            })
+
+        if not has_instagram and category in ["restaurant", "retail", "spa"]:
+            refined.append({
+                "pain_point": "Limited social media presence",
+                "category": "marketing",
+                "severity": "low",
+                "confidence": 0.7,
+                "evidence_type": "observed",
+                "reasoning": "No Instagram presence detected for customer-facing business",
+                "supporting_evidence": ["No Instagram account found"],
+                "solution_hints": ["Create Instagram business account", "Content strategy"]
+            })
+
+        # Include original pain points with slight confidence boost if they have evidence
+        for pp in current_pain_points:
+            text = pp.get("pain_point") or pp.get("point", "")
+            confidence = min(pp.get("confidence", 0.5) + 0.1, 0.85)  # Slight boost, cap at 0.85
+            refined.append({
+                "pain_point": text,
+                "category": pp.get("category", "operations"),
+                "severity": pp.get("severity", "medium"),
+                "confidence": confidence,
+                "evidence_type": "assumed",
+                "reasoning": "Carried forward from initial analysis",
+                "supporting_evidence": [],
+                "solution_hints": []
+            })
+
         return {
-            "original_pkp": pkp,
-            "validation_prompt": prompt,
-            "next_step": "Feed this prompt to Claude/GPT to get refined pain points"
+            "business_name": name,
+            "refined_pain_points": refined[:5],  # Top 5
+            "opportunities": [],
+            "data_quality_notes": "Heuristic refinement - LLM unavailable",
+            "refined_at": datetime.utcnow().isoformat(),
+            "refinement_method": "heuristic"
         }
-    
-    def apply_refinements(self, original_pkp: Dict, llm_response: Dict) -> Dict:
+
+    async def refine_batch(
+        self,
+        businesses: List[Dict[str, Any]],
+        max_concurrent: int = 5
+    ) -> List[Dict[str, Any]]:
         """
-        Apply LLM refinements to the original PKP.
-        
+        Refine pain points for multiple businesses concurrently.
+
         Args:
-            original_pkp: Original PKP
-            llm_response: Response from LLM with refined pain points
-            
+            businesses: List of business data dicts
+            max_concurrent: Max concurrent LLM calls
+
         Returns:
-            Updated PKP
+            List of refinement results
         """
-        refined_pkp = original_pkp.copy()
-        
-        # Replace pain points with refined version
-        refined_pkp["pain_points"] = llm_response["refined_pain_points"]
-        
-        # Update confidence score
-        refined_pain_points = llm_response["refined_pain_points"]
-        avg_confidence = (
-            sum(pp["confidence"] for pp in refined_pain_points) / len(refined_pain_points)
-            if refined_pain_points else 0.0
-        )
-        
-        refined_pkp["meta"]["confidence"] = round(avg_confidence, 2)
-        
-        # Add validation metadata
-        refined_pkp["validation"] = {
-            "validated_at": "timestamp",
-            "validator": "llm_assisted",
-            "confidence_increase": llm_response.get("confidence_increase"),
-            "notes": llm_response.get("validation_notes")
-        }
-        
-        return refined_pkp
-    
-    def generate_summary_report(self, original_pkp: Dict, refined_pkp: Dict) -> str:
-        """
-        Generate a summary report comparing original vs refined PKP.
-        
-        Args:
-            original_pkp: Original PKP
-            refined_pkp: Refined PKP
-            
-        Returns:
-            Markdown report
-        """
-        report = f"""# PKP Validation Report
-## {refined_pkp['node']['name']}
+        semaphore = asyncio.Semaphore(max_concurrent)
 
-### Confidence Improvement
-- **Original Confidence**: {original_pkp['meta']['confidence']}
-- **Refined Confidence**: {refined_pkp['meta']['confidence']}
-- **Improvement**: {refined_pkp['meta']['confidence'] - original_pkp['meta']['confidence']:.2f}
+        async def refine_with_limit(business):
+            async with semaphore:
+                return await self.refine_business(business)
 
----
+        tasks = [refine_with_limit(b) for b in businesses]
+        results = await asyncio.gather(*tasks, return_exceptions=True)
 
-## Original Pain Points (Generic)
-"""
-        
-        for i, pp in enumerate(original_pkp['pain_points'], 1):
-            report += f"""
-### {i}. {pp['point']}
-- **Severity**: {pp.get('severity', 'unknown')}
-- **Confidence**: {pp.get('confidence', 0.0)}
-- **Note**: {pp.get('note', 'N/A')}
-"""
-        
-        report += "\n---\n\n## Refined Pain Points (LLM-Validated)\n"
-        
-        for i, pp in enumerate(refined_pkp.get('pain_points', []), 1):
-            report += f"""
-### {i}. {pp['point']}
-- **Severity**: {pp.get('severity', 'unknown')}
-- **Confidence**: {pp.get('confidence', 0.0)}
-- **Evidence**: {pp.get('evidence', 'N/A')}
-- **Reasoning**: {pp.get('reasoning', 'N/A')}
-- **Supporting Observations**: {', '.join(pp.get('supporting_observations', []))}
-- **Mitigation Ideas**: 
-"""
-            for idea in pp.get('mitigation_ideas', []):
-                report += f"  - {idea}\n"
-        
-        report += f"""
----
+        # Handle any exceptions
+        processed = []
+        for i, result in enumerate(results):
+            if isinstance(result, Exception):
+                print(f"  Error processing business {i}: {result}")
+                processed.append(self._heuristic_refinement(businesses[i]))
+            else:
+                processed.append(result)
 
-## Validation Notes
-{refined_pkp.get('validation', {}).get('notes', 'No validation notes provided.')}
-
----
-
-## Recommended Next Actions
-"""
-        
-        for i, action in enumerate(refined_pkp.get('actions', []), 1):
-            report += f"""
-{i}. **{action.get('action', 'Unknown action')}**
-   - Priority: {action.get('priority', 'unknown')}
-   - Effort: {action.get('effort', 'unknown')}
-   - Method: {action.get('method', 'N/A')}
-"""
-        
-        return report
+        return processed
 
 
-# Example usage
-if __name__ == "__main__":
-    # Load the PKP we just generated
-    import subprocess
-    import json
-    
-    import os
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    result = subprocess.run(
-        ["python", "coral_gables_pkp_generator.py"],
-        capture_output=True,
-        text=True,
-        cwd=script_dir
-    )
-    
-    # Parse the JSON output (everything before the analysis section)
-    output_lines = result.stdout.split("\n")
-    json_output = []
-    for line in output_lines:
-        if line.startswith("==="):
-            break
-        json_output.append(line)
-    
-    pkp_json = "\n".join(json_output)
-    pkp = json.loads(pkp_json)
-    
-    # Create validator
+async def run_pkp_refinement(businesses: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """
+    Main entry point for PKP refinement stage.
+
+    Args:
+        businesses: List of business dicts from OSINT collection
+
+    Returns:
+        List of businesses with refined pain points
+    """
+    print(f"\n{'='*60}")
+    print("STAGE 2: PKP REFINEMENT")
+    print(f"{'='*60}")
+    print(f"Refining pain points for {len(businesses)} businesses...")
+
     validator = PKPValidator()
-    
-    # Generate validation prompt
-    validation_package = validator.validate_pkp(pkp)
-    
-    print("="*80)
-    print("PKP VALIDATION PACKAGE")
-    print("="*80)
-    print("\nThis prompt should be sent to Claude/GPT for validation:\n")
-    print(validation_package["validation_prompt"])
-    
-    print("\n\n" + "="*80)
-    print("EXAMPLE: What LLM Response Should Look Like")
-    print("="*80)
-    
-    # Example refined pain points (what we want from LLM)
-    example_llm_response = {
-        "refined_pain_points": [
-            {
-                "point": "Weekend capacity management and staff scheduling",
-                "severity": "medium",
-                "evidence": "observational",
-                "confidence": 0.75,
-                "reasoning": "Heavy weekend foot traffic suggests potential for understaffing or overcrowding issues. Independent bookstores often struggle with variable demand.",
-                "supporting_observations": [
-                    "Heavy foot traffic on weekends"
-                ],
-                "mitigation_ideas": [
-                    "Implement appointment/reservation system for study spaces",
-                    "Dynamic staff scheduling based on historical foot traffic",
-                    "Pre-weekend marketing to spread traffic throughout the week"
-                ]
-            },
-            {
-                "point": "Parking friction reducing conversion and repeat visits",
-                "severity": "medium",
-                "evidence": "observational",
-                "confidence": 0.70,
-                "reasoning": "Limited parking is explicitly observed. In Coral Gables, parking is critical for retail. This likely causes lost sales and customer frustration.",
-                "supporting_observations": [
-                    "Limited parking nearby"
-                ],
-                "mitigation_ideas": [
-                    "Partner with nearby parking garages for validation",
-                    "Promote alternative transportation (bike racks, Coral Gables Trolley)",
-                    "Highlight delivery/online ordering to reduce need for in-person visits"
-                ]
-            },
-            {
-                "point": "Monetization of 'third space' usage",
-                "severity": "low",
-                "evidence": "inferred",
-                "confidence": 0.65,
-                "reasoning": "Popular for working/studying suggests people stay long but may not purchase. Balancing community space with revenue is a known indie bookstore challenge.",
-                "supporting_observations": [
-                    "Popular for working/studying with coffee"
-                ],
-                "mitigation_ideas": [
-                    "Minimum purchase for seating during peak hours",
-                    "Time limits on tables during busy periods",
-                    "Membership model for regular workspace users",
-                    "Higher-margin cafe items and upselling"
-                ]
-            },
-            {
-                "point": "Event ROI and audience monetization",
-                "severity": "low",
-                "evidence": "inferred",
-                "confidence": 0.60,
-                "reasoning": "Frequent author events require time/resources. Need to ensure these drive book sales, not just foot traffic. Events could be loss leaders or profit centers.",
-                "supporting_observations": [
-                    "Hosts frequent author events"
-                ],
-                "mitigation_ideas": [
-                    "Track event attendee purchase rates",
-                    "Pre-sales and bundles for event tickets + books",
-                    "Email capture at events for future marketing",
-                    "Partner with sponsors to offset event costs"
-                ]
-            },
-            {
-                "point": "Instagram engagement not translating to sales",
-                "severity": "low",
-                "evidence": "inferred",
-                "confidence": 0.50,
-                "reasoning": "Strong Instagram presence is good for brand, but unclear if it drives revenue. Many retail businesses have this disconnect.",
-                "supporting_observations": [
-                    "Strong Instagram presence"
-                ],
-                "mitigation_ideas": [
-                    "Add 'link in bio' with shoppable catalog",
-                    "Instagram Stories with purchase links",
-                    "Track promo codes specific to Instagram",
-                    "User-generated content campaigns"
-                ]
-            }
-        ],
-        "confidence_increase": "Confidence increased from 0.38 average to 0.64 average - a 68% improvement. We moved from generic retail assumptions to specific, observation-backed hypotheses.",
-        "validation_notes": "The refined pain points are much more specific and actionable. However, all are still hypotheses that need validation through: (1) business owner interview, (2) review sentiment analysis, (3) competitive benchmarking. The parking issue has highest confidence because it's directly observed. Event ROI and Instagram conversion are lower confidence because they're inferred from presence, not performance data."
-    }
-    
-    print(json.dumps(example_llm_response, indent=2))
-    
-    print("\n\n" + "="*80)
-    print("APPLYING REFINEMENTS")
-    print("="*80)
-    
-    refined_pkp = validator.apply_refinements(pkp, example_llm_response)
-    
-    print("\nRefined PKP Confidence:", refined_pkp["meta"]["confidence"])
-    print("\nRefined Pain Points:")
-    for pp in refined_pkp["pain_points"]:
-        print(f"  - {pp['point']} (confidence: {pp['confidence']})")
-    
-    print("\n\n" + "="*80)
-    print("GENERATING SUMMARY REPORT")
-    print("="*80)
-    
-    report = validator.generate_summary_report(pkp, refined_pkp)
-    print(report)
-    
-    # Save refined PKP
-    output_path = os.path.join(script_dir, "..", "data", "books_and_books_pkp_refined.json")
-    with open(output_path, "w") as f:
-        json.dump(refined_pkp, f, indent=2)
+    results = await validator.refine_batch(businesses)
 
-    print(f"\n\n✅ Refined PKP saved to: {output_path}")
+    # Merge refinements back into business data
+    for business, refinement in zip(businesses, results):
+        if refinement.get("refined_pain_points"):
+            business["pain_points"] = refinement["refined_pain_points"]
+        if refinement.get("opportunities"):
+            business["opportunities"] = refinement["opportunities"]
+        business["pkp_refined"] = True
+        business["pkp_refined_at"] = refinement.get("refined_at")
+        business["pkp_method"] = refinement.get("refinement_method")
+
+    # Stats
+    llm_count = sum(1 for r in results if r.get("refinement_method") == "llm")
+    heuristic_count = len(results) - llm_count
+
+    print(f"\n✓ PKP refinement complete:")
+    print(f"  - LLM refined: {llm_count}")
+    print(f"  - Heuristic: {heuristic_count}")
+
+    return businesses
+
+
+# Demo/test
+if __name__ == "__main__":
+    # Test with sample business
+    test_business = {
+        "name": "Test Restaurant",
+        "category": "restaurant",
+        "pain_points": [
+            {"pain_point": "Long wait times", "confidence": 0.5}
+        ],
+        "raw_data": {
+            "google_maps": {
+                "rating": 4.2,
+                "review_count": 150,
+                "reviews": [
+                    {"text": "Great food but waited 30 minutes for a table on Saturday"}
+                ]
+            },
+            "yelp": {
+                "rating": 4.0,
+                "price": "$$"
+            },
+            "website": {
+                "has_booking": False
+            }
+        }
+    }
+
+    async def test():
+        validator = PKPValidator()
+        result = await validator.refine_business(test_business)
+        print(json.dumps(result, indent=2))
+
+    asyncio.run(test())

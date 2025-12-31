@@ -2,20 +2,24 @@
 ================================================================================
 WEEKLY DATA REFRESH REPORT
 ================================================================================
-Timestamp: 2025-12-29T19:46:47.612851
+Timestamp: 2025-12-31T21:09:40.385938
 
-COLLECTION STATS:
-  Businesses Processed: 10
-  Pain Points Found: 3
+STAGE 1 - OSINT COLLECTION:
+  Businesses Processed: 5
+  Pain Points Found: 13
   Opportunities Found: 7
 
-DATA QUALITY:
-  Avg Completeness: 86.4%
-  Avg Confidence: 74.5%
+STAGE 2 - PKP REFINEMENT:
+  Businesses Refined: 5
+  Refinement Method: heuristic
 
-VALIDATION:
+STAGE 3 - CONSENSUS VALIDATION:
   Businesses Validated: 0
   Confidence Boost: +0.0%
+
+DATA QUALITY:
+  Avg Completeness: 49.1%
+  Avg Confidence: 36.7%
 
 STATUS: SUCCESS
 ================================================================================

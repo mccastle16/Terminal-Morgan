@@ -51,22 +51,17 @@ class BusinessRepository:
         """Load business data from JSON file"""
         script_dir = os.path.dirname(os.path.abspath(__file__))
 
-        data_locations = [
-            os.path.join(script_dir, "data", "coral_gables_bi_database_v2.json"),
-            os.path.join(script_dir, "..", "data", "coral_gables_bi_database_v2.json"),
-        ]
+        # Canonical data location: systems/data/
+        data_path = os.path.join(script_dir, "..", "data", "coral_gables_bi_database_v2.json")
 
-        for data_path in data_locations:
-            try:
-                with open(data_path, 'r') as f:
-                    data = json.load(f)
-                    print(f"Loaded database from: {data_path}")
-                    return data.get('businesses', [])
-            except FileNotFoundError:
-                continue
-
-        print("Warning: No JSON database found")
-        return []
+        try:
+            with open(data_path, 'r') as f:
+                data = json.load(f)
+                print(f"Loaded database from: {data_path}")
+                return data.get('businesses', [])
+        except FileNotFoundError:
+            print(f"Warning: No JSON database found at {data_path}")
+            return []
 
     def _load_from_database(self) -> List[Dict[str, Any]]:
         """Load business data from PostgreSQL"""

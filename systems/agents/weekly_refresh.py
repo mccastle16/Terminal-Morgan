@@ -5,6 +5,11 @@ Weekly Data Refresh Script for Coral Gables BI Platform
 This script runs the full OSINT collection and validation pipeline,
 then updates the production data (PostgreSQL or JSON fallback).
 
+Pipeline Stages:
+    Stage 1: OSINT Collection - Raw observations from Google, Yelp, etc.
+    Stage 2: PKP Refinement - LLM-powered pain point generation (NEW)
+    Stage 3: Consensus Validation - Multi-agent voting for confidence boost
+
 Database Size (Dec 2025):
 - 927 businesses total (844 Chamber members + 83 additional)
 - Primary source: Coral Gables Chamber of Commerce member directory
@@ -17,7 +22,8 @@ Usage:
     python weekly_refresh.py                    # Full refresh (927 businesses)
     python weekly_refresh.py --dry-run          # Preview only
     python weekly_refresh.py --businesses 100   # Limit businesses
-    python weekly_refresh.py --run-validation   # Include LLM validation
+    python weekly_refresh.py --run-validation   # Include Stage 3 validation
+    python weekly_refresh.py --skip-pkp         # Skip Stage 2 PKP refinement
 """
 
 import os
@@ -108,21 +114,19 @@ async def run_osint_collection(business_limit: int = 100):
         from osint_production_collector import OSINTOrchestrator, CONFIG
 
         # Load existing businesses to get names and categories
+        # Canonical data location: systems/data/
         business_list = []
-        db_file = os.path.join(os.path.dirname(__file__), "data", "coral_gables_bi_database_v2.json")
-        alt_db_file = os.path.join(os.path.dirname(__file__), "..", "data", "coral_gables_bi_database_v2.json")
+        db_file = os.path.join(os.path.dirname(__file__), "..", "data", "coral_gables_bi_database_v2.json")
 
-        for filepath in [db_file, alt_db_file]:
-            if os.path.exists(filepath):
-                with open(filepath, 'r') as f:
-                    data = json.load(f)
-                    for biz in data.get("businesses", [])[:business_limit]:
-                        business_list.append({
-                            "name": biz.get("name"),
-                            "category": biz.get("category", "unknown")
-                        })
-                log(f"Loaded {len(business_list)} businesses from {filepath}")
-                break
+        if os.path.exists(db_file):
+            with open(db_file, 'r') as f:
+                data = json.load(f)
+                for biz in data.get("businesses", [])[:business_limit]:
+                    business_list.append({
+                        "name": biz.get("name"),
+                        "category": biz.get("category", "unknown")
+                    })
+            log(f"Loaded {len(business_list)} businesses from {db_file}")
 
         if not business_list:
             log("No existing business data found, using default list", "WARN")
@@ -378,18 +382,22 @@ WEEKLY DATA REFRESH REPORT
 ================================================================================
 Timestamp: {datetime.now().isoformat()}
 
-COLLECTION STATS:
+STAGE 1 - OSINT COLLECTION:
   Businesses Processed: {stats.get('businesses_processed', 0)}
   Pain Points Found: {stats.get('pain_points', 0)}
   Opportunities Found: {stats.get('opportunities', 0)}
 
+STAGE 2 - PKP REFINEMENT:
+  Businesses Refined: {stats.get('pkp_refined', 0)}
+  Refinement Method: {stats.get('pkp_method', 'none')}
+
+STAGE 3 - CONSENSUS VALIDATION:
+  Businesses Validated: {stats.get('validated', 0)}
+  Confidence Boost: +{stats.get('confidence_boost', 0):.1%}
+
 DATA QUALITY:
   Avg Completeness: {stats.get('avg_completeness', 0):.1%}
   Avg Confidence: {stats.get('avg_confidence', 0):.1%}
-
-VALIDATION:
-  Businesses Validated: {stats.get('validated', 0)}
-  Confidence Boost: +{stats.get('confidence_boost', 0):.1%}
 
 STATUS: {stats.get('status', 'UNKNOWN')}
 ================================================================================
@@ -404,6 +412,7 @@ async def main():
     parser.add_argument("--skip-osint", action="store_true", help="Skip OSINT collection, just validate")
     parser.add_argument("--skip-validation", action="store_true", default=True, help="Skip validation step (default: True for stability)")
     parser.add_argument("--run-validation", action="store_true", help="Run validation step (overrides --skip-validation)")
+    parser.add_argument("--skip-pkp", action="store_true", help="Skip PKP refinement stage")
     parser.add_argument("--api-url", default=os.getenv("API_URL", "http://localhost:8000"), help="API URL")
     parser.add_argument("--api-key", default=os.getenv("ADMIN_API_KEY"), help="Admin API key (from ADMIN_API_KEY env var)")
 
@@ -425,6 +434,8 @@ async def main():
         "opportunities": 0,
         "avg_completeness": 0,
         "avg_confidence": 0,
+        "pkp_refined": 0,
+        "pkp_method": "none",
         "validated": 0,
         "confidence_boost": 0,
         "status": "STARTED"
@@ -433,7 +444,8 @@ async def main():
     # Step 1: Check API keys
     api_keys_ok = check_api_keys()
 
-    # Step 2: Run OSINT collection
+    # Stage 1: Run OSINT collection
+    profiles = []
     if not args.skip_osint:
         profiles = await run_osint_collection(args.businesses)
         stats["businesses_processed"] = len(profiles)
@@ -446,12 +458,60 @@ async def main():
     else:
         log("Skipping OSINT collection (--skip-osint)")
 
-    # Step 3: Run validation (skipped by default for stability, use --run-validation to enable)
+    # Stage 2: Run PKP refinement (LLM-powered pain point generation)
+    if profiles and not args.skip_pkp:
+        try:
+            from pkp_validator import run_pkp_refinement
+
+            log("Starting PKP refinement stage...")
+
+            # Convert profiles to dictionaries for PKP processing
+            business_dicts = []
+            for p in profiles:
+                biz_dict = {
+                    "name": p.name,
+                    "category": getattr(p, 'category', 'unknown'),
+                    "pain_points": p.pain_points,
+                    "opportunities": p.opportunities,
+                    "raw_data": getattr(p, 'raw_data', {})
+                }
+                business_dicts.append(biz_dict)
+
+            # Run PKP refinement
+            refined = await run_pkp_refinement(business_dicts)
+
+            # Update profiles with refined pain points
+            for profile, refined_biz in zip(profiles, refined):
+                if refined_biz.get("pain_points"):
+                    profile.pain_points = refined_biz["pain_points"]
+                if refined_biz.get("opportunities"):
+                    profile.opportunities = refined_biz["opportunities"]
+
+            # Update stats
+            stats["pkp_refined"] = len([b for b in refined if b.get("pkp_refined")])
+            llm_count = len([b for b in refined if b.get("pkp_method") == "llm"])
+            stats["pkp_method"] = "llm" if llm_count > len(refined) / 2 else "heuristic"
+
+            # Recalculate pain points/opportunities after refinement
+            stats["pain_points"] = sum(len(p.pain_points) for p in profiles)
+            stats["opportunities"] = sum(len(p.opportunities) for p in profiles)
+
+            log(f"PKP refinement complete: {stats['pkp_refined']} businesses refined")
+        except ImportError as e:
+            log(f"PKP refinement unavailable: {e}", "WARN")
+        except Exception as e:
+            log(f"PKP refinement error: {e}", "ERROR")
+    elif args.skip_pkp:
+        log("Skipping PKP refinement (--skip-pkp)")
+
+    # Stage 3: Run consensus validation (skipped by default for stability, use --run-validation to enable)
     should_validate = args.run_validation or not args.skip_validation
     if should_validate and args.run_validation:
         business_count = stats["businesses_processed"] or args.businesses
-        validated_file = "../data/coral_gables_bi_database_validated.json"
-        original_file = "../data/coral_gables_bi_database_v2.json"
+        # Canonical data location: systems/data/
+        data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+        validated_file = os.path.join(data_dir, "coral_gables_bi_database_validated.json")
+        original_file = os.path.join(data_dir, "coral_gables_bi_database_v2.json")
 
         validation_ok = run_validation(
             original_file,
@@ -489,8 +549,10 @@ async def main():
         else:
             # Fallback to JSON file
             log("Using JSON file for data storage")
-            validated_file = "../data/coral_gables_bi_database_validated.json"
-            production_file = "data/coral_gables_bi_database_v2.json"
+            # Canonical data location: systems/data/
+            data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+            validated_file = os.path.join(data_dir, "coral_gables_bi_database_validated.json")
+            production_file = os.path.join(data_dir, "coral_gables_bi_database_v2.json")
 
             if os.path.exists(validated_file):
                 update_production_data(validated_file, production_file)

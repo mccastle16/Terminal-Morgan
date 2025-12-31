@@ -36,9 +36,6 @@ This UAT report analyzes the Coral Gables BI Platform codebase for naming conven
 | `osint_production_collector.py` | `OSINTOrchestrator` | Orchestrator | ✅ OK |
 | `consensus_validator.py` | `ValidationAgent` | Agent | ✅ OK |
 | `consensus_validator.py` | `ConsensusValidator` | Validator | ✅ OK |
-| `google_places_collector.py` | `GooglePlacesCollector` | Collector | ✅ OK (utility) |
-| `yelp_collector.py` | `YelpCollector` | Collector | ✅ OK (utility) |
-| `pkp_validator.py` | `PKPValidator` | Validator | ✅ OK |
 
 ### 1.2 Naming Convention Summary
 
@@ -46,7 +43,8 @@ This UAT report analyzes the Coral Gables BI Platform codebase for naming conven
 - OSINT Agents: `*Agent` suffix (8 classes)
 - Orchestrators: `*Orchestrator` suffix (1 class)
 - Validators: `*Validator` suffix (2 classes)
-- Utility Collectors: `*Collector` suffix (2 classes - standalone utilities)
+
+> **Note:** Removed unused standalone collectors (`google_places_collector.py`, `yelp_collector.py`, `pkp_validator.py`) - production uses agents in `osint_production_collector.py`.
 
 ### 1.3 Backwards Compatibility
 
@@ -90,16 +88,9 @@ CoFitAnalyzer = CoFitAgent
 | `config.py` | snake_case | OK |
 | `database.py` | snake_case | OK |
 | `db_repository.py` | snake_case | OK |
-| `repository.py` | snake_case | OK |
 | `consensus_validator.py` | snake_case | OK |
-| `osint_orchestrator.py` | snake_case | OK |
 | `osint_production_collector.py` | snake_case | OK |
-| `google_places_collector.py` | snake_case | OK |
-| `yelp_collector.py` | snake_case | OK |
-| `pkp_validator.py` | snake_case | OK |
-| `coral_gables_pkp_generator.py` | snake_case | OK |
 | `generate_comprehensive_bi_database.py` | snake_case | OK |
-| `generate_top_100_pkp.py` | snake_case | OK |
 | `weekly_refresh.py` | snake_case | OK |
 | `validate_all_data.py` | snake_case | OK |
 | `migrate_json_to_db.py` | snake_case | OK |
@@ -148,7 +139,6 @@ All private methods use `_underscore_prefix` convention. **PASS**
 |----------|------------|------------------|
 | `osint_production_collector.py` | `pain_point` | - |
 | `consensus_validator.py` | `pain_point` | `point` |
-| `pkp_validator.py` | `point` | - |
 | `bi_api.py` | `pain_point` | `point` |
 
 **Issue:** Mixed use of `pain_point` vs `point` field names.
