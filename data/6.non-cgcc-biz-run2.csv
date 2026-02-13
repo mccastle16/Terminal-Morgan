@@ -1,0 +1,70 @@
+
+
+business_name,category,specialty,address,phone,website,rating,reviews,source,notes 
+Peter T. Mavrick Law,legal,business law,"Coral Gables, FL",(305) 570-4042,,,,Web, 
+John Patrick Musca Law,legal,criminal defense,"Coral Gables, FL",(305) 203-0333,,,,Web, 
+Law Office of Diaz & NÃºÃ±ez Elorza PA,legal,immigration,"Coral Gables, FL",(305) 521-3299,,,,Web, 
+Law Offices of Rodrigo S. Da Silva PA,legal,immigration,"Miami, FL - Serving Coral Gables",(305) 615-1434,,,,Web, 
+Kurzban Kurzban Tetzeli & Pratt PA,legal,immigration,"Coral Gables, FL",(305) 744-5888,,,,Web, 
+Yablen Valiente,legal,family law,"Coral Gables, FL",(305) 476-5444,,,,Web, 
+Peak Legal,legal,family law,"Miami, FL - Serving Coral Gables",(305) 697-1375,,,,Web, 
+Mandel Law Group PA,legal,family law,"Throughout Florida",(786) 785-2579,,,,Web, 
+Law Offices of Lawrence S. Katz PA,legal,family law,"Miami, FL - Serving Coral Gables",(305) 670-8656,,,,Web, 
+Pamela I. Perry PA,legal,family law,"Coral Gables, FL",(305) 202-3545,,,,Web, 
+David S. Willig Chartered,legal,patents,"Miami, FL - Serving Coral Gables",(305) 990-0562,,,,Web, 
+Borgognoni Law PL,legal,patents,"Coral Gables, FL",(305) 981-6707,,,,Web, 
+Bell Rosquete Reyes Esteban PLLC,legal,patents & trademarks,"Coral Gables, FL",(305) 570-1610,,,,Web, 
+Wolfe Law Miami,legal,patents,"Miami, FL - Serving Coral Gables",(888) 655-4709,,,,Web, 
+Pulver CPA,accounting,,"Coral Gables, FL",,pulvercpa.com,,,Web, A&G CPA Firm,accounting,,"Coral Gables, FL",,,,,Web, 
+E. Gomez CPA LLC,accounting,construction/wholesaling,"Coral Gables, FL",,,,,Web, 
+"De La Hoz, Perez & Barbeito, PLLC",accounting,,"2800 Ponce de Leon Suite 1020, Coral Gables, FL 33134",(305) 448-7590,dpbcpa.com,,,Web, 
+"Verdeja & Alvarez, LLP",accounting,,"Coral Gables, FL 33134",(305) 446-3177,va-cpa.com,,,Web, 
+GEMRT CPAs,accounting,,"Coral Gables, FL",,gemrtcpa.com,,,Web, 
+Compass Real Estate Coral Gables,real_estate,,"Coral Gables, FL",,compass.com,,,Web, 
+One Sotheby's Coral Gables,real_estate,,"1507 Sunset Drive, Coral Gables, FL 33143",(305) 666-0562,onesothebysrealty.com,,,Web, 
+Coldwell Banker Coral Gables,real_estate,,"Coral Gables, FL",,coldwellbanker.com,,,Web, 
+Redfin Coral Gables,real_estate,,"Coral Gables, FL",,redfin.com,,,Web, 
+Fortun Insurance,insurance,,"365 Palermo Ave, Coral Gables, FL 33134",(844) 660-2820,,,,Web, 
+We Insure - Randy Marzullo,insurance,,"1550 Madruga Ave Ste 330, Coral Gables, FL 33146",(844) 472-2011,,,,Web, 
+Wahlstrom Insurance Associates,insurance,,"1107 Genoa St, Coral Gables, FL 33134",(305) 447-8718,,,,Web, 
+"Grover Winston Insurance Group, LLC",insurance,,"2655 LeJune Rd, Ste 533, Coral Gables, FL 33134",(786) 778-3154,,,,Web, 
+Arco Agent Insurance Inc,insurance,,"2000 Ponce de Leon Blvd Ste 515, Coral Gables, FL 33134",(305) 582-2845,,,,Web, 
+"Goosehead Insurance Agency, LLC",insurance,,"2222 Ponce de Leon Blvd Ste 300, Coral Gables, FL 33134",(305) 704-8133,,,,Web, 
+BMS Insurance Agency of Florida LLC,insurance,,"299 Alhambra Cir Ste 212, Coral Gables, FL 33134",(305) 667-7717,,,,Web, 
+Professional Building Solutions,construction,general contractor,"2332 Galiano St, Coral Gables, FL 33134",,,,,Web,
+"Since 2004, 30+ years experience" Oceanside Construction & Remodeling,construction,design build,"161 Madeira Ave Suite 106, Coral Gables, FL 33134",,,,,Web, 
+Rausa Builders Corp,construction,general contractor & roofing,"Coral Gables, FL",,,,,Web,"Since 2005, licensed & insured" Gables Construction Group,construction,commercial & residential,"Coral Gables, FL",,gablesconstructiongroup.com,,,Web,
+Full-service construction company O'Hara Landscape and Maintenance Inc,landscaping,residential & commercial,"Coral Gables, FL",,oharalandscape.com,,,Web,
+"Since 1973, licensed & insured" Landscaping by George,landscaping,full-service,"Coral Gables, FL",,landscapingbygeorge-fl.com,,,Web,
+"Since 1981, 35+ years experience" Landscaping by Steve Blaum,landscaping,design & installation,"Coral Gables, FL",(305) 662-7045,blaumlandscaping.com,,,Web,
+30+ years experience BrightView Landscape,landscaping,commercial,"Coral Gables, FL",,brightview.com,,,Web, 
+Green's Garage,automotive,auto repair,"2221 SW 32nd Ave, Miami, FL 33145",,greensgaragemiami.com,4.6,110,Web,"Since 1957, ASE & NAPA certified" 
+Leader Service,automotive,auto repair,"1700 Coral Way, Miami, FL 33145",(305) 858-1020,leaderservicemiami.com,,,Web,Near Coral Gables Jaguar Land Rover Coral Gables,automotive,dealership service,"155 S Dixie Hwy, Coral Gables, FL 33133",,,,4.6,782,Web, 
+Classic Collision Coral Gables,automotive,collision repair,"2675 SW 69th Court, Miami, FL 33155",(305) 262-6990,classiccollision.com,,,Web, 
+THE COLLECTION,automotive,dealership service,"200 Bird Rd, Coral Gables, FL 33146",,,,4.8,57,Web, 
+Essence Boutique,retail,fashion,"78 Miracle Mile, Coral Gables, FL 33134",(305) 448-6777,,,,Web, 
+Shops at Merrick Park,retail,shopping mall,"358 San Lorenzo Ave, Coral Gables, FL 33146",,shopsatmerrickpark.com,,,Web,"Neiman Marcus, Nordstrom, 115+ shops" 
+Books & Books,retail,bookstore,"Coral Gables, FL",,booksandbooks.com,,,Web, 
+MG Hair Studio,salon,hair color & styling,"Coral Gables, FL",,mghair.miami,,,Web, 
+Spacagna Italian Hair Design,salon,hair services,"Miracle Mile, Coral Gables, FL",,spacagna.com,,,Web,"Since 2018, Italian-trained experts" 
+Highlight Salon Coral Gables,salon,full service,"2100 Ponce De Leon Blvd Suite 111, Coral Gables, FL 33134",(305) 448-0707,highlightcoralgables.com,,,Web, 
+J Nat Hair Studio,salon,hair services,"1340 S. Dixie Highway, suite 150, #202, Coral Gables, FL 33146",,,,,Web, 
+OXIONE BEAUTY & EXTENSIONS,salon,hair & extensions,"1913 Ponce de Leon Blvd, Coral Gables, FL 33134",,,,,Web, Mr. Rooter Plumbing,plumbing,residential & commercial,"Coral Gables, FL",(786) 214-7997,mrrooter.com,,,Web,24/7 service 
+Orr Plumbing,plumbing,emergency & backflow,"Coral Gables, FL",(305) 240-6731,orrplumbing.com,,,Web,"Since 1974, licensed & insured" 
+Roto-Rooter,plumbing,emergency & drain cleaning,"Coral Gables, FL",(305) 461-5521,rotorooter.com,,,Web,"Since 1935, 24/7 service" Falcon Plumbing,plumbing,emergency & repairs,"Coral Gables, FL",(305) 251-7333,falconplumbing.net,,,Web, 
+A1 Underground & Plumbing Services,plumbing,residential & commercial,"Coral Gables, FL",,undergroundplumbers.com,,,Web,20+ years experience 
+Coral Gables Cardiology Associates,healthcare,concierge internal medicine,"475 Biltmore Way, Suite 201, Coral Gables, FL 33134",(305) 443-5291,coralgablescardiology.com,,,Web,Miami Heat team internists 
+Jackson Medical Group Coral Gables,healthcare,primary care & cardiology,"3737 S.W. 8 St., suite B, Coral Gables, FL 33134",,(305) 585-9511,,,Web,Mon-Fri 8am-5pm MD Now Urgent Care Coral Way,healthcare,urgent care,"2750 Coral Way, Coral Gables, FL 33145",(305) 569-9942,mymdnow.com,,,Web,7 days a week 
+Mount Sinai Primary & Specialty Care,healthcare,multi-specialty,"836 Ponce de Leon Boulevard, Suite 200, Coral Gables, FL 33134",(305) 441-0910,msmc.com,,,Web,Mon-Fri 8:30am-5pm 
+The Family Medical Group Coral Gables,healthcare,primary care,"1330 SW 22nd Street, Suite 401, Miami, FL 33145",(305) 306-0233,thefamilymedgroup.com,,,Web,Mon-Sat walk-in 
+Equinox Coral Gables,fitness,luxury health club,"370 San Lorenzo Avenue, Coral Gables, FL 33146",(786) 497-8200,equinox.com,,,Web,Village at Merrick Park Life Time Coral Gables,fitness,luxury athletic resort,"Coral Gables, FL",(786) 437-4407,lifetime.life,,,Web,1.2M sq ft development YouFit Gyms Coral Gables,fitness,affordable gym,"7070 Coral Way, Miami, FL 33155",(888) 968-3481,youfit.com,,,Web, 
+SWEAT440 Coral Gables,fitness,strength training,"Coral Gables, FL",,sweat440.com,,,Web,40-min classes every 10 min F45 Training Coral Gables,fitness,functional group fitness,"Coral Gables, FL",,f45training.com,,,Web, 
+TD Bank Coral Gables Miracle Mile,banking,full service,"2401 Ponce de Leon Boulevard, Coral Gables, FL",(305) 448-8995,td.com,,,Web,"Mon-Fri 8:30am-6pm, Sat-Sun open" 
+First American Bank,banking,full service,"540 Biltmore Way, Coral Gables, FL 33134",(305) 500-9501,firstambank.com,,,Web, Bank of America Coral Gables,banking,full service,"2308 Ponce De Leon Blvd, Coral Gables, FL 33134",,bankofamerica.com,,,Web,Drive-thru ATM Vantage Communications,marketing,advertising,"Coral Gables, FL",,,,,,Web, 
+MyCity Social,marketing,digital marketing,"Coral Gables, FL",,,,,,Web,"Since 2012, no contract" ICS Creative Agency,marketing,full-service creative,"Coral Gables, FL",,icscreativeagency.com,,,Web,"Since 2009, North American based" Doc Digital SEM,marketing,SEO & digital,"Coral Gables, FL",,docdigitalsem.com,,,Web, PG Media,marketing,creative & publicity,"Coral Gables, FL",,,,,,Web,International markets Prime Tech Support,technology,computer repair & IT,"Coral Gables, FL",,primetechsupport.com,,,Web,Same-day service Simple Solution Tech,technology,IT & computer repair,"Coral Gables, FL",,simplesolutiontech.com,,,Web, uBreakiFix by Asurion,technology,device repair,"Coral Gables, FL",,ubreakifix.com,,,Web,"Phone, computer, tablet, gaming" B2B Cloud Solutions,technology,managed IT services,"1 Alhambra Plaza, PH Floor, Coral Gables, FL 33134",(305) 593-9934,b2bcloudsolutions.com,,,Web, Crespo Design Group,design,interior design,"Tampa serving Coral Gables",(813) 831-0949,crespodesigngroup.com,,,Web,15+ years experience SOIA Design,design,interior design,"Coral Gables, FL",,soiadesign.com,,,Web,Residential & commercial Elizabeth Ghia Interiors,design,interior design,"Coral Gables, FL",,elizabethghia.com,,,Web,"Serving Coral Gables, Miami Beach, Fisher Island" Coral Gables Animal Hospital,veterinary,dogs & cats,"4569 Ponce de Leon, Coral Gables, FL 33146",(305) 667-5821,coralgablesanimalhospital.com,,,Web,Mon-Sat Royal Vet,veterinary,wellness & emergency,"4569 Ponce de Leon, Coral Gables, FL 33146",(305) 667-5821,royalvet.com,,,Web,Exotic animals too 
+Banfield Pet Hospital,veterinary,full service,"3176 SW 22nd St, Coral Gables, FL 33145",(786) 796-2241,banfield.com,,,Web,7 days a week 
+Gables Animal Clinic,veterinary,dogs & cats,"Coral Gables, FL",,,,,Web,English & Spanish Sylvan Learning Coral Gables,education,tutoring K-12,"Coral Gables, FL 33132",(305) 407-5492,sylvanlearning.com,,,Web,
+Math & reading focus Gables Tutoring,education,test prep,"Coral Gables, FL",,gablestutoring.com,,,Web, 
+Coral Gables Museum,venues,events & weddings,"285 Aragon Ave, Coral Gables, FL 33134",,(305) 603-8067,coralgablesmuseum.org,,,Web,
+1939 historic building Loews Coral Gables Hotel,venues,meetings & events,"Coral Gables, FL",,loewshotels.com,,,Web,
+"30,000 sq ft meeting space" Comber Hall,venues,weddings & events,"Coral Gables, FL",,comberhall.com,,,Web,"Built 1926, historic venue"
