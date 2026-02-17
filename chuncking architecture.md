@@ -1,5 +1,5 @@
 
-# Coral Gables Full-District OSINT â€” Chunking Architecture
+# Coral Gables Full-District OSINT Chunking Architecture
 # The $0 Path to 4,500+ Businesses
 
 ## THE PROBLEM
@@ -10,7 +10,7 @@
 - Yelp API needs auth
 - We need the remaining ~3,000 businesses
 
-## THE INSIGHT: CHUNK BY CATEGORY Ã— GEOGRAPHY
+## THE INSIGHT: CHUNK BY CATEGORY GEOGRAPHY
 
 Google Maps, Yelp, and every business directory share the same constraint:
 they cap results per query (Google: 60, Yelp: 240, Outscraper free: 500).
@@ -34,7 +34,7 @@ each returning a small batch. Deduplicate at the end.
 
 ## THE CHUNKING STRATEGY
 
-### Chunk Dimension 1: GEOGRAPHY (4 zip codes Ã— grid points)
+### Chunk Dimension 1: GEOGRAPHY (4 zip codes — grid points)
 ```
 33134 â†’ 5 grid points (downtown core, densest)
 33146 â†’ 4 grid points (UM/Merrick Park)  
