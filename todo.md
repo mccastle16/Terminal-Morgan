@@ -32,6 +32,5 @@
 
 ## Documentation
 
-- [x] Consolidate `agent-schemas/` — redundant files removed, legacy outputs deleted
 - [ ] Update `OSINT PIPELINE.md` counts after each gap-fill run
 - [ ] Document API key setup and rate-limit strategy
