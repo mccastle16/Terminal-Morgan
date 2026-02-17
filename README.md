@@ -26,8 +26,10 @@ Terminal/
 |   |-- 5. non-cgcc-biz-run2.csv   # Non-chamber businesses run 2 (67)
 |   |-- 6. ten-chunk-business.csv  # 10-chunk OSM pipeline (1,366 rows)
 |
-|-- documents/                     # Non-CSV reference documents
-|   |-- osint-full-schema.md       # 27-field schema reference (was 3. osint-full.csv)
+|-- documents/                     # Reference documents + pipeline outputs
+|   |-- osint-full-schema.md       # 27-field schema reference
+|   |-- validation-report-25.md    # Agent 2 validation report (25 businesses)
+|   |-- pkp-synthesis-25.md        # Agent 3 PKP synthesis (25 businesses)
 |
 |-- scripts/                       # Python agent scripts
 |   |-- 1. agent1-osint.py         # Agent 1: Discovery / Scraper
@@ -35,12 +37,6 @@ Terminal/
 |   |-- 3. agent3-synthesizer.py   # Agent 3: CSV Output / Synthesis
 |   |-- 4. chunkedscraper.py       # Monthly chunked scraper (production)
 |   |-- 5. ten-chunk-script.py     # 10-chunk OSM Overpass pipeline
-|
-|-- agent-schemas/                 # Agent documentation + schema
-|   |-- agent1-schema.md           # Agent 1 CSV header spec
-|   |-- agent2-validator.md        # Validation report (25 businesses)
-|   |-- agent3-synthesis.md        # PKP synthesis (25 businesses)
-|   |-- agents1-3_schema.csv       # Full schema definition
 |
 |-- dashboard/                     # React/Vite frontend (visualization)
 |   |-- src/pages/                 # 15+ specialized views
