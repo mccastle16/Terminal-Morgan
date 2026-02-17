@@ -32,7 +32,6 @@
 
 ## Documentation
 
-- [x] Consolidate `agent-schemas/` into `documents/` (redundant files removed)
-- [ ] Keep `documents/osint-full-schema.md` in sync with any schema changes
+- [x] Consolidate `agent-schemas/` — redundant files removed, legacy outputs deleted
 - [ ] Update `OSINT PIPELINE.md` counts after each gap-fill run
 - [ ] Document API key setup and rate-limit strategy
