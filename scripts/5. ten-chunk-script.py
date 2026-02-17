@@ -11,7 +11,6 @@ Requirements:
 
 Inputs:
   - cgcc-member.md           (raw Chamber scrape)
-  - agent1-scraper.csv       (Agent 1 deep OSINT export)
 
 Output:
   - all_biz_osint_v4.csv
