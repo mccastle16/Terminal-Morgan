@@ -19,13 +19,15 @@ Terminal/
 |
 |-- data/                          # CSV datasets (raw + processed)
 |   |-- master_all_businesses.csv  # <-- MASTER: 1,689 deduped businesses
-|   |-- 1. agent1-scraper.csv      # Agent 1 deep OSINT (25 businesses)
-|   |-- 1. osint-cgcc.csv          # CGCC enriched v1 (858 rows)
-|   |-- 2. osint-cgcc.csv          # CGCC + OSM merged v2 (1,475 rows)
-|   |-- 4. final-osint.csv         # Cleaned final run (1,128 rows)
-|   |-- 5.non-cgcc-biz-run1.csv    # Non-chamber businesses run 1 (63)
-|   |-- 6.non-cgcc-biz-run2.csv    # Non-chamber businesses run 2 (67)
-|   |-- 7. ten-chunk-business.csv  # 10-chunk OSM pipeline (1,366 rows)
+|   |-- 1. cgcc-osint-v1.csv       # CGCC enriched v1 (858 rows)
+|   |-- 2. cgcc-osint-v2.csv       # CGCC + OSM merged v2 (1,475 rows)
+|   |-- 3. final-osint.csv         # Cleaned final run (1,128 rows)
+|   |-- 4. non-cgcc-biz-run1.csv   # Non-chamber businesses run 1 (63)
+|   |-- 5. non-cgcc-biz-run2.csv   # Non-chamber businesses run 2 (67)
+|   |-- 6. ten-chunk-business.csv  # 10-chunk OSM pipeline (1,366 rows)
+|
+|-- documents/                     # Non-CSV reference documents
+|   |-- osint-full-schema.md       # 27-field schema reference (was 3. osint-full.csv)
 |
 |-- scripts/                       # Python agent scripts
 |   |-- 1. agent1-osint.py         # Agent 1: Discovery / Scraper
@@ -150,7 +152,6 @@ The production scraper (`scripts/4. chunkedscraper.py`) contains the real implem
 |--------|--------:|--------|
 | CGCC Member Directory | 836 | Done |
 | OSM Overpass (10 chunks) | 811 | Done |
-| Agent 1 Deep OSINT | 25 | Done |
 | Non-Chamber Scrapes | 131 | Done |
 | **Deduped Total** | **1,689** | **Current** |
 
