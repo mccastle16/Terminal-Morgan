@@ -1,4 +1,4 @@
-# CORAL GABLES DIRECTORY
+# CORAL GABLES DIRECTORY - Members and non bembers
 
 **New Categories Added:**
 1. **Legal Services** (14 firms) - Immigration, family law, patents, criminal defense, business law
