@@ -2,11 +2,11 @@
 
 ## Pipeline — Agent Implementation
 
-- [ ] Wire Agent 1 (`scripts/1. agent1-osint.py`) with real API integrations (Outscraper, Apify, SerpApi)
-- [ ] Refactor `scripts/4. chunkedscraper.py` logic into Agent 1 framework
-- [ ] Implement fuzzy dedup engine in Agent 2 (`scripts/2. agent2-validator.py`)
-- [ ] Add geo-validation and LLM-based coherence checks to Agent 2
-- [ ] Build PKP synthesis and multi-agent consensus scoring in Agent 3 (`scripts/3. agent3-synthesizer.py`)
+- [x] Wire Agent 1 with real API integrations (Outscraper, Apify, SerpApi, OSM)
+- [x] Refactor `scripts/4. chunkedscraper.py` logic into Agent 1 framework
+- [x] Implement fuzzy dedup engine in Agent 2 (fuzzywuzzy, threshold=85)
+- [x] Add geo-validation and coherence checks to Agent 2 (bounds, zip inference, field scoring)
+- [ ] Build PKP synthesis and multi-agent consensus scoring in Agent 3
 
 ## Data — Gap Fill to 4,500
 
