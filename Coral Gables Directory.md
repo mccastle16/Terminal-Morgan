@@ -21,13 +21,13 @@
 All businesses are verified Coral Gables locations with contact info, addresses, specialties, and years in business where available. Ready for your OSINT enrichment pipeline! 🎯
 
 Sources
-[1] Coral Gables, Florida - Stantec https://www.stantec.com/en/offices/united-states-locations/florida-offices-filtered/coral-gables-florida-office
-[2] Business Consulting & Advisory Services In Coral Gables, FL ... https://botwinick.com/services/business-consulting-advisory-coral-gables/
-[3] Managed IT Services Coral Gables - MSP Solutions | Nerds Support https://nerdssupport.com/managed-it-services-for-coral-gables/
-[4] Offices - Capital City Consulting https://cccfla.com/offices/
-[5] Business Consulting Companies in Coral Gables, FL | Indeed.com https://www.indeed.com/companies/best-Business-Consulting-companies-in-Coral-Gables,-FL
-[6] IT Consulting & IT Outsourcing Services - Miami - b2b Cloud Solutions https://www.b2bcloudsolutions.com/managed-services/it-consulting/
-[7] Florida audit, tax and consulting - RSM US https://rsmus.com/locations/florida.html
+1. Coral Gables, Florida - Stantec https://www.stantec.com/en/offices/united-states-locations/florida-offices-filtered/coral-gables-florida-office
+2. Business Consulting & Advisory Services In Coral Gables, FL ... https://botwinick.com/services/business-consulting-advisory-coral-gables/
+3. Managed IT Services Coral Gables - MSP Solutions | Nerds Support https://nerdssupport.com/managed-it-services-for-coral-gables/
+4. Offices - Capital City Consulting https://cccfla.com/offices/
+5. Business Consulting Companies in Coral Gables, FL | Indeed.com https://www.indeed.com/companies/best-Business-Consulting-companies-in-Coral-Gables,-FL
+6. IT Consulting & IT Outsourcing Services - Miami - b2b Cloud Solutions https://www.b2bcloudsolutions.com/managed-services/it-consulting/
+7. Florida audit, tax and consulting - RSM US https://rsmus.com/locations/florida.html
 [8] Business Consultants near Coral Gables, FL | Better Business Bureau https://www.bbb.org/us/fl/coral-gables/category/business-consultant
 [9] Managed IT, IT Support, and IT Services in Coral Gables, Florida https://www.cpt-florida.com/managed-it-services-miami-dade-county/it-services-coral-gables/
 [10] Kaufman Rossin | CPA & Advisory Services https://kaufmanrossin.com
