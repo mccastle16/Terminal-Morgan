@@ -94,8 +94,9 @@ You need **zero keys** to start — OSM Overpass is unlimited and free. The paid
 4. After login, go to **Dashboard → API Key** ([https://serpapi.com/manage-api-key](https://serpapi.com/manage-api-key))
 5. Copy the API key
 
-**Free tier details:**
-- 100 searches per month
+**Plan details:**
+- Free tier: 100 searches/month (no credit card)
+- Developer plan ($75/mo): 5,000 searches/month
 - Each search returns 1 enrichment record (we search by business name)
 - Best used for backfilling ratings on records that lack them
 - Resets monthly
@@ -281,14 +282,14 @@ python "scripts/0. orchestrator.py" --enrich
 Ratings enrichment goes through Agent 1 → Agent 2 (staging merge fills blanks):
 
 ```bash
-# Collect ratings for up to 100 businesses missing them
-python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --limit 100
+# Collect ratings for businesses missing them (default limit: 5000)
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
 
 # Merge the enrichment data into master
 python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv
 ```
 
-SerpApi free tier = 100/month. To enrich all ~1,570 records missing ratings, this takes ~16 months at free tier, or upgrade to a paid plan.
+SerpApi Developer plan (5,000/month) can enrich all ~1,570 records missing ratings in a single pass (~26 minutes at 1 req/sec). On the free tier (100/month), it would take ~16 months.
 
 ### Geocoding rate limits
 
@@ -415,6 +416,18 @@ If you see `'OutscraperClient' object has no attribute 'google_maps_search_v2'`,
 - `google_maps_search_v2()` was removed — use `google_maps_search()` instead
 
 The agent scripts already use the current API. If you're on an older version of this repo, pull the latest changes.
+
+### numpy / numexpr version conflict
+
+If you see `A]module compiled against NumPy 1.x cannot run against NumPy 2.x`, your numpy and numexpr versions are mismatched. Common on Anaconda installs.
+
+```bash
+# Fix by upgrading numexpr to match numpy 2.x:
+pip install --upgrade numexpr
+
+# Or downgrade numpy to 1.x if you need other packages pinned:
+pip install 'numpy<2'
+```
 
 ### "No staging records found"
 

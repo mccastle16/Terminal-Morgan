@@ -482,8 +482,8 @@ Examples:
     parser.add_argument(
         "--limit",
         type=int,
-        default=100,
-        help="Max records to enrich (serpapi only)",
+        default=5000,
+        help="Max records to enrich (serpapi only, default=5000 for Developer plan)",
     )
     args = parser.parse_args()
 
