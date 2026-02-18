@@ -28,6 +28,11 @@ git clone <repo-url> && cd Terminal
 
 # Install core dependencies
 pip install requests pandas fuzzywuzzy python-Levenshtein
+
+# Per-source (install only what you use):
+pip install outscraper             # for Outscraper (v6+ required)
+pip install apify-client           # for Apify
+pip install google-search-results  # for SerpApi
 ```
 
 ---
@@ -120,22 +125,14 @@ pip install google-search-results
 
 ## 3. Set Up Environment
 
-### Option A: Export keys in your shell
-
-```bash
-export OUTSCRAPER_KEY="your_outscraper_key_here"
-export APIFY_TOKEN="your_apify_token_here"
-export SERPAPI_KEY="your_serpapi_key_here"
-```
-
-### Option B: Use a `.env` file
+### Create your `.env` file
 
 ```bash
 # Copy the example
 cp .env.example .env
 
-# Edit with your keys
-nano .env
+# Edit with your actual keys
+nano .env   # or open in your editor of choice
 ```
 
 `.env` contents:
@@ -145,20 +142,40 @@ APIFY_TOKEN=your_apify_token_here
 SERPAPI_KEY=your_serpapi_key_here
 ```
 
-Then source it before running:
+> **Important:** The `.env` file is gitignored and will NOT be pushed to the repository. This is intentional — never commit API keys. Each analyst needs their own `.env` file.
+
+### Load keys into your shell
+
+The Python scripts read API keys via `os.environ.get()`, which only sees **exported** environment variables. You must load and export them before running any agent.
+
 ```bash
-source .env
-# or
-export $(cat .env | xargs)
+# Recommended method (works in both bash and zsh):
+set -a && source .env && set +a
 ```
 
-### Verify keys are set
+> **Why `set -a`?** Running `source .env` alone sets shell variables, but doesn't **export** them to child processes. The `set -a` flag tells your shell to auto-export every variable defined during `source`, so Python can see them. `set +a` turns auto-export back off afterward. This is especially important on **macOS** where the default shell is **zsh** — the commonly suggested `export $(cat .env | xargs)` often fails in zsh with a "not valid in this context" error.
+
+**Alternatives (if you prefer):**
+
+```bash
+# Bash-only (may fail in zsh):
+export $(cat .env | xargs)
+
+# Manual export (always works, any shell):
+export OUTSCRAPER_KEY="your_outscraper_key_here"
+export APIFY_TOKEN="your_apify_token_here"
+export SERPAPI_KEY="your_serpapi_key_here"
+```
+
+### Verify keys are loaded
 
 ```bash
 echo "Outscraper: ${OUTSCRAPER_KEY:0:8}..."
 echo "Apify:      ${APIFY_TOKEN:0:8}..."
 echo "SerpApi:    ${SERPAPI_KEY:0:8}..."
 ```
+
+If any key prints blank, re-run the `set -a && source .env && set +a` command. You need to do this **once per terminal session** (keys don't persist after closing the terminal).
 
 ---
 
@@ -374,15 +391,30 @@ python "scripts/0. orchestrator.py" --sources osm
 
 ## 8. Troubleshooting
 
-### "OUTSCRAPER_KEY not set"
+### "OUTSCRAPER_KEY not set" (or any key shows blank)
+
+This almost always means the keys weren't **exported** to the environment. Re-run:
 
 ```bash
-# Check if the variable is exported
-echo $OUTSCRAPER_KEY
+set -a && source .env && set +a
 
-# If empty, set it
-export OUTSCRAPER_KEY="your_key_here"
+# Verify:
+echo $OUTSCRAPER_KEY
 ```
+
+Common pitfalls:
+- `source .env` without `set -a` sets shell variables but doesn't export them — Python can't see them
+- `export $(cat .env | xargs)` fails in zsh — use the `set -a` method instead
+- Keys don't persist across terminal sessions — re-run the source command each time you open a new terminal
+
+### Outscraper `google_maps_search_v2` error
+
+If you see `'OutscraperClient' object has no attribute 'google_maps_search_v2'`, you have `outscraper` v6+. The SDK was updated:
+
+- `ApiClient` was renamed to `OutscraperClient` (though `ApiClient` still works as an alias)
+- `google_maps_search_v2()` was removed — use `google_maps_search()` instead
+
+The agent scripts already use the current API. If you're on an older version of this repo, pull the latest changes.
 
 ### "No staging records found"
 

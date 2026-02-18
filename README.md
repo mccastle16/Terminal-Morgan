@@ -244,15 +244,35 @@ See [howto.md § Adapting to a Different City](./howto.md#adapting-to-a-differen
 pip install requests pandas fuzzywuzzy python-Levenshtein
 
 # Per-source (install only what you use):
-pip install outscraper          # for Outscraper
-pip install apify-client        # for Apify
+pip install outscraper             # for Outscraper (v6+)
+pip install apify-client           # for Apify
 pip install google-search-results  # for SerpApi
+```
 
-# Set API keys (see howto.md for where to get them)
-export OUTSCRAPER_KEY=your_key
-export APIFY_TOKEN=your_token
-export SERPAPI_KEY=your_key
+### Set up API keys
 
+Copy the example `.env` and fill in your keys (see [howto.md](./howto.md) for where to get them):
+
+```bash
+cp .env.example .env
+# Edit .env with your actual API keys
+```
+
+Then **load the keys into your shell**. This step is critical — the Python scripts read keys from environment variables, not from the `.env` file directly.
+
+```bash
+# Recommended (works in both bash and zsh):
+set -a && source .env && set +a
+
+# Verify keys are loaded:
+echo $OUTSCRAPER_KEY
+```
+
+> **Why `set -a`?** Running `source .env` alone sets shell variables, but doesn't **export** them. Python's `os.environ.get()` only sees exported variables. The `set -a` flag tells your shell to auto-export every variable set during `source`, and `set +a` turns that behavior back off. This is especially important on macOS where the default shell is zsh.
+
+### Run the pipeline
+
+```bash
 # Run the full pipeline concurrently
 python "scripts/0. orchestrator.py" --all
 
