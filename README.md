@@ -126,12 +126,12 @@ python "scripts/0. orchestrator.py" --merge-only
 
 **Status: Production-ready.** Four source adapters fully implemented:
 
-| Source | Method | Cost | Expected Yield |
-|--------|--------|------|---------------:|
-| **Outscraper** | Google Maps API | 500 free/month | +400-500/run |
-| **Apify** | Google Places actor | $5 free credit | +600-700 |
-| **SerpApi** | Google Maps local results | 100 free/month | Enrichment only |
-| **OSM Overpass** | OpenStreetMap queries | Unlimited, free | +800 |
+| Source | Method | Cost | Actual/Expected Yield |
+|--------|--------|------|----------------------:|
+| **OSM Overpass** | OpenStreetMap queries | Unlimited, free | 562 raw records |
+| **Outscraper** | Google Maps API | 500 free/month | 380 + 491 + 433 = 1,304 raw |
+| **Apify** | Google Places actor | $5 free credit | ~600-700 expected |
+| **SerpApi** | Google Maps local results | 5,000/month (Developer) | Enrichment (ratings backfill) |
 
 ### Agent 2 — Validator & Merger (`scripts/2. agent2-validator.py`)
 
@@ -180,12 +180,12 @@ python "scripts/3. agent3-synthesizer.py" --master data/master_all_businesses.cs
 
 Monthly free-tier API stacking via Agent 0 orchestrator:
 
-| Tool | Free Tier | Expected Yield |
-|------|-----------|---------------:|
-| Outscraper | 500/month | +400-500/run |
-| Apify | $5 credit | +600-700 |
-| SerpApi | 100 searches/month | Enrichment only |
-| OSM (re-run) | Unlimited | +100-200 new |
+| Tool | Tier | Actual/Expected Yield |
+|------|------|----------------------:|
+| OSM Overpass | Unlimited, free | 562 raw (first run) |
+| Outscraper | 500 free/month | 1,304 raw across 3 runs |
+| Apify | $5 one-time credit | ~600-700 expected |
+| SerpApi | 5,000/month (Developer) | Enrichment only (ratings) |
 | **Projected Total** | | **~4,300** |
 
 ### Phase 3 — Enrichment (Ready)
@@ -198,7 +198,7 @@ Backfill missing fields on existing 1,665 records via Agent 2 `--enrich`:
 | Address (63% missing) | Reverse geocode via Nominatim | Free |
 | Postcode / Neighborhood | Infer from coordinates | Free (local) |
 | Categories (774 "other") | Keyword re-mapping from business name | Free (local) |
-| Ratings (94% missing) | SerpApi enrichment pass | 100 free/month |
+| Ratings (94% missing) | SerpApi enrichment pass | 5,000/month (Developer plan) |
 
 ### Phase 4 — PKP Synthesis (Ready)
 
@@ -244,15 +244,35 @@ See [howto.md § Adapting to a Different City](./howto.md#adapting-to-a-differen
 pip install requests pandas fuzzywuzzy python-Levenshtein
 
 # Per-source (install only what you use):
-pip install outscraper          # for Outscraper
-pip install apify-client        # for Apify
+pip install outscraper             # for Outscraper (v6+)
+pip install apify-client           # for Apify
 pip install google-search-results  # for SerpApi
+```
 
-# Set API keys (see howto.md for where to get them)
-export OUTSCRAPER_KEY=your_key
-export APIFY_TOKEN=your_token
-export SERPAPI_KEY=your_key
+### Set up API keys
 
+Copy the example `.env` and fill in your keys (see [howto.md](./howto.md) for where to get them):
+
+```bash
+cp .env.example .env
+# Edit .env with your actual API keys
+```
+
+Then **load the keys into your shell**. This step is critical — the Python scripts read keys from environment variables, not from the `.env` file directly.
+
+```bash
+# Recommended (works in both bash and zsh):
+set -a && source .env && set +a
+
+# Verify keys are loaded:
+echo $OUTSCRAPER_KEY
+```
+
+> **Why `set -a`?** Running `source .env` alone sets shell variables, but doesn't **export** them. Python's `os.environ.get()` only sees exported variables. The `set -a` flag tells your shell to auto-export every variable set during `source`, and `set +a` turns that behavior back off. This is especially important on macOS where the default shell is zsh.
+
+### Run the pipeline
+
+```bash
 # Run the full pipeline concurrently
 python "scripts/0. orchestrator.py" --all
 
