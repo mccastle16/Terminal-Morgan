@@ -28,6 +28,11 @@ git clone <repo-url> && cd Terminal
 
 # Install core dependencies
 pip install requests pandas fuzzywuzzy python-Levenshtein
+
+# Per-source (install only what you use):
+pip install outscraper             # for Outscraper (v6+ required)
+pip install apify-client           # for Apify
+pip install google-search-results  # for SerpApi
 ```
 
 ---
@@ -52,7 +57,7 @@ You need **zero keys** to start — OSM Overpass is unlimited and free. The paid
 - 500 Google Maps search requests per month
 - No credit card required
 - Resets on the 1st of each month
-- Each request returns up to 25 results → **500 requests = ~12,500 potential records** (heavily deduped down to ~400-500 net new)
+- Each request returns up to 25 results → **60 queries across 3 runs = ~1,300 raw records** (deduped down to ~400-600 net new by Agent 2)
 
 **Rate limits:** No documented hard limit, but space requests 2s apart (Agent 1 does this automatically).
 
@@ -89,8 +94,9 @@ You need **zero keys** to start — OSM Overpass is unlimited and free. The paid
 4. After login, go to **Dashboard → API Key** ([https://serpapi.com/manage-api-key](https://serpapi.com/manage-api-key))
 5. Copy the API key
 
-**Free tier details:**
-- 100 searches per month
+**Plan details:**
+- Free tier: 100 searches/month (no credit card)
+- Developer plan ($75/mo): 5,000 searches/month
 - Each search returns 1 enrichment record (we search by business name)
 - Best used for backfilling ratings on records that lack them
 - Resets monthly
@@ -114,28 +120,20 @@ pip install google-search-results
 - Returns: name, coordinates, phone, website, address (when tagged)
 - Does NOT return: ratings, reviews, price tier
 
-**Expected yield:** ~800 businesses in the Coral Gables bounding box.
+**Expected yield:** ~560 businesses in the Coral Gables bounding box (10-chunk geographic sweep). Some chunks may 504 timeout on busy Overpass servers — re-run to pick up missed chunks.
 
 ---
 
 ## 3. Set Up Environment
 
-### Option A: Export keys in your shell
-
-```bash
-export OUTSCRAPER_KEY="your_outscraper_key_here"
-export APIFY_TOKEN="your_apify_token_here"
-export SERPAPI_KEY="your_serpapi_key_here"
-```
-
-### Option B: Use a `.env` file
+### Create your `.env` file
 
 ```bash
 # Copy the example
 cp .env.example .env
 
-# Edit with your keys
-nano .env
+# Edit with your actual keys
+nano .env   # or open in your editor of choice
 ```
 
 `.env` contents:
@@ -145,20 +143,40 @@ APIFY_TOKEN=your_apify_token_here
 SERPAPI_KEY=your_serpapi_key_here
 ```
 
-Then source it before running:
+> **Important:** The `.env` file is gitignored and will NOT be pushed to the repository. This is intentional — never commit API keys. Each analyst needs their own `.env` file.
+
+### Load keys into your shell
+
+The Python scripts read API keys via `os.environ.get()`, which only sees **exported** environment variables. You must load and export them before running any agent.
+
 ```bash
-source .env
-# or
-export $(cat .env | xargs)
+# Recommended method (works in both bash and zsh):
+set -a && source .env && set +a
 ```
 
-### Verify keys are set
+> **Why `set -a`?** Running `source .env` alone sets shell variables, but doesn't **export** them to child processes. The `set -a` flag tells your shell to auto-export every variable defined during `source`, so Python can see them. `set +a` turns auto-export back off afterward. This is especially important on **macOS** where the default shell is **zsh** — the commonly suggested `export $(cat .env | xargs)` often fails in zsh with a "not valid in this context" error.
+
+**Alternatives (if you prefer):**
+
+```bash
+# Bash-only (may fail in zsh):
+export $(cat .env | xargs)
+
+# Manual export (always works, any shell):
+export OUTSCRAPER_KEY="your_outscraper_key_here"
+export APIFY_TOKEN="your_apify_token_here"
+export SERPAPI_KEY="your_serpapi_key_here"
+```
+
+### Verify keys are loaded
 
 ```bash
 echo "Outscraper: ${OUTSCRAPER_KEY:0:8}..."
 echo "Apify:      ${APIFY_TOKEN:0:8}..."
 echo "SerpApi:    ${SERPAPI_KEY:0:8}..."
 ```
+
+If any key prints blank, re-run the `set -a && source .env && set +a` command. You need to do this **once per terminal session** (keys don't persist after closing the terminal).
 
 ---
 
@@ -217,8 +235,8 @@ python "scripts/1. agent1-osint.py" --source outscraper --run 3  # hospitality &
 # Apify — single run, all categories
 python "scripts/1. agent1-osint.py" --source apify
 
-# SerpApi — enrichment pass (needs existing master)
-python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --limit 100
+# SerpApi — enrichment pass (needs existing master, default limit: 5000)
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
 
 # OSM Overpass — 10-chunk geographic sweep
 python "scripts/1. agent1-osint.py" --source osm
@@ -244,7 +262,7 @@ The master CSV has significant gaps in existing records. Enrichment backfills th
 | Postcode missing | Infer from coordinates (nearest centroid) | Free (local) |
 | Neighborhood missing | Infer from coordinates (boundary rules) | Free (local) |
 | Category = "other" (774) | Re-map using business name keywords | Free (local) |
-| Ratings missing (94%) | SerpApi enrichment pass | 100 free/month |
+| Ratings missing (94%) | SerpApi enrichment pass | 5,000/month (Developer) |
 
 ### Run enrichment
 
@@ -264,14 +282,14 @@ python "scripts/0. orchestrator.py" --enrich
 Ratings enrichment goes through Agent 1 → Agent 2 (staging merge fills blanks):
 
 ```bash
-# Collect ratings for up to 100 businesses missing them
-python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --limit 100
+# Collect ratings for businesses missing them (default limit: 5000)
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
 
 # Merge the enrichment data into master
 python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv
 ```
 
-SerpApi free tier = 100/month. To enrich all ~1,570 records missing ratings, this takes ~16 months at free tier, or upgrade to a paid plan.
+SerpApi Developer plan (5,000/month) can enrich all ~1,570 records missing ratings in a single pass (~26 minutes at 1 req/sec). On the free tier (100/month), it would take ~16 months.
 
 ### Geocoding rate limits
 
@@ -326,8 +344,8 @@ python "scripts/0. orchestrator.py" --sources outscraper
 # 2. Run enrichment pass
 python "scripts/0. orchestrator.py" --enrich
 
-# 3. Run SerpApi ratings enrichment (100 free)
-python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --limit 100
+# 3. Run SerpApi ratings enrichment (5,000/month on Developer plan)
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
 python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv
 
 # 4. PKP synthesis + export
@@ -360,29 +378,65 @@ python "scripts/0. orchestrator.py" --sources osm
 
 ### Projected timeline to 4,400
 
-| Month | Source | Expected Net New | Running Total |
-|-------|--------|------------------:|--------------:|
-| Current | Baseline | — | 1,665 |
-| 1 | Outscraper + Apify + OSM | +1,200 | ~2,865 |
-| 2 | Outscraper + SerpApi enrich | +400 | ~3,265 |
-| 3 | Outscraper + SerpApi enrich | +350 | ~3,615 |
-| 4 | Outscraper + SerpApi enrich | +300 | ~3,915 |
-| 5 | Outscraper + SerpApi enrich | +250 | ~4,165 |
-| 6 | Outscraper + final sweep | +200 | **~4,365** |
+| Month | Source | Raw Collected | Net New (after dedup) | Running Total |
+|-------|--------|:-------------:|----------------------:|--------------:|
+| Current | Baseline | — | — | 1,665 |
+| 1 (Feb) | OSM + Outscraper (x3) + SerpApi | 562 + 1,304 + enrichment | TBD after Agent 2 dedup | TBD |
+| 2 | Outscraper (x3) + Apify + SerpApi | ~1,300 + ~700 | +800-1,000 | ~3,500 |
+| 3 | Outscraper (x3) + SerpApi | ~1,300 | +300-400 | ~3,900 |
+| 4 | Outscraper (x3) + OSM re-run | ~1,300 + ~200 | +200-300 | ~4,200 |
+| 5 | Outscraper (final sweep) | ~1,000 | +100-200 | **~4,400** |
+
+> **Note:** Actual yields from first run — OSM: 562 raw, Outscraper: 380 (food) + 491 (professional) + 433 (services) = 1,304 raw. SerpApi enriches existing records (ratings backfill) rather than adding new rows. Net new after Agent 2 dedup is typically 30-50% of raw count.
 
 ---
 
 ## 8. Troubleshooting
 
-### "OUTSCRAPER_KEY not set"
+### "OUTSCRAPER_KEY not set" (or any key shows blank)
+
+This almost always means the keys weren't **exported** to the environment. Re-run:
 
 ```bash
-# Check if the variable is exported
-echo $OUTSCRAPER_KEY
+set -a && source .env && set +a
 
-# If empty, set it
-export OUTSCRAPER_KEY="your_key_here"
+# Verify:
+echo $OUTSCRAPER_KEY
 ```
+
+Common pitfalls:
+- `source .env` without `set -a` sets shell variables but doesn't export them — Python can't see them
+- `export $(cat .env | xargs)` fails in zsh — use the `set -a` method instead
+- Keys don't persist across terminal sessions — re-run the source command each time you open a new terminal
+
+### Outscraper `google_maps_search_v2` error
+
+If you see `'OutscraperClient' object has no attribute 'google_maps_search_v2'`, you have `outscraper` v6+. The SDK was updated:
+
+- `ApiClient` was renamed to `OutscraperClient` (though `ApiClient` still works as an alias)
+- `google_maps_search_v2()` was removed — use `google_maps_search()` instead
+
+The agent scripts already use the current API. If you're on an older version of this repo, pull the latest changes.
+
+### numpy version conflict (`_ARRAY_API not found` or `compiled against NumPy 1.x`)
+
+If you see `_ARRAY_API not found` or `module compiled against NumPy 1.x cannot run against NumPy 2.x`, compiled packages like `numexpr` and `bottleneck` are incompatible with your numpy version. This is common on **Anaconda** installs where numpy 2.x ships but other packages are compiled against 1.x.
+
+**Recommended fix — downgrade numpy (most reliable for Anaconda):**
+
+```bash
+pip install 'numpy<2'
+```
+
+This resolves all related conflicts at once (`numexpr`, `bottleneck`, `scipy`, etc.). You'll see red dependency warnings from pip — these are safe to ignore as long as pandas imports without errors.
+
+**Alternative — upgrade everything to numpy 2.x:**
+
+```bash
+pip install --upgrade numexpr bottleneck
+```
+
+This only works if all your packages have numpy 2.x-compatible wheels available.
 
 ### "No staging records found"
 
