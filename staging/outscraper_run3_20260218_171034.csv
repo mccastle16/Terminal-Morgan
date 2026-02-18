@@ -1,0 +1,434 @@
+business_name,phone,website,address,lat,lon,postcode,rating,review_count,category_raw,price,source
+Aloft Coral Gables,+1 305-442-0372,,,25.747643,-80.26310219999999,33134,4.0,,Hotel,3 stars,outscraper
+Hyatt Regency Coral Gables,+1 305-441-1234,,,25.7518784,-80.2558201,33134,4.5,,Hotel,4 stars,outscraper
+Loews Coral Gables Hotel,+1 786-772-7600,,,25.7447406,-80.2574254,33134,4.6,,Hotel,4 stars,outscraper
+Courtyard by Marriott Miami Coral Gables,+1 305-443-2301,,,25.7538239,-80.2624606,33134,4.1,,Hotel,4 stars,outscraper
+Rodeway Inn South Miami - Coral Gables,+1 786-408-9221,,,25.7054159,-80.29105229999999,33143,2.7,,Hotel,3 stars,outscraper
+"Hotel Colonnade Coral Gables, Autograph Collection",+1 305-441-2600,,,25.750383799999998,-80.2582532,33134,4.5,,Hotel,4 stars,outscraper
+Thesis Hotel Miami Coral Gables,+1 305-667-5611,,,25.7127169,-80.278579,33146,4.2,,Hotel,4 stars,outscraper
+Four Points by Sheraton Coral Gables,+1 305-567-0534,,,25.7352462,-80.2576016,33146,4.2,,Hotel,3 stars,outscraper
+Biltmore Hotel Miami Coral Gables,+1 855-969-3080,,,25.7407941,-80.27867959999999,33134,4.4,,Hotel,4 stars,outscraper
+Hotel St. Michel,+1 800-848-4683,,,25.752909,-80.258479,33134,4.4,,Hotel,3 stars,outscraper
+"Arya Hotel and Suites Coconut Grove, WorldHotels Distinctive",+1 305-529-2828,,,25.727158799999998,-80.24088689999999,33133,4.1,,Hotel,4 stars,outscraper
+Ponce de Leon Hotel,+1 305-444-9934,,,25.756194999999998,-80.25856399999999,33134,4.0,,Hotel,2 stars,outscraper
+ChateauBleau Hotel,+1 305-448-2634,,,25.760781599999998,-80.2586978,33134,2.9,,Hotel,3 stars,outscraper
+Gables Inn,+1 305-661-7999,,,25.7217254,-80.26757649999999,33146,3.5,,Hotel,2 stars,outscraper
+Extended Stay America Premier Suites- Miami - Coral Gables,+1 305-443-7444,,,25.7496551,-80.2532464,33145,3.9,,Extended stay hotel,2 stars,outscraper
+Mayfair House Hotel & Garden,+1 305-441-0000,,,25.7289547,-80.2413687,33133,4.6,,Hotel,5 stars,outscraper
+Hampton Inn Miami-Coconut Grove/Coral Gables,+1 305-448-2800,,,25.738502,-80.2393448,33133,4.3,,Hotel,3 stars,outscraper
+Best Western Plus Miami Intl Airport Hotel & Suites Coral Gables,+1 305-774-6100,,,25.771276999999998,-80.262816,33134,4.0,,Hotel,4 stars,outscraper
+Gables Cove Hotel,+1 213-594-7549,,,25.7640344,-80.2716173,33134,3.8,,Hotel,2 stars,outscraper
+Private Oasis at Arya,+1 305-798-8811,,,25.727273699999998,-80.2405395,33133,4.5,,Hotel,None,outscraper
+The Mutiny Hotel by Provident Hotels & Resorts,+1 866-610-1814,,,25.727172,-80.239808,33133,4.3,,Hotel,4 stars,outscraper
+Hilton Miami Airport Blue Lagoon,+1 305-262-1000,,,25.7819729,-80.2786043,33126,3.9,,Hotel,4 stars,outscraper
+Regency Miami Airport by Sonesta,+1 305-441-1600,,,25.781769999999998,-80.2649323,33126,3.6,,Hotel,3 stars,outscraper
+Courtyard by Marriott Miami Coconut Grove,+1 305-858-2500,,,25.7313686,-80.2359074,33133,3.9,,Hotel,3 stars,outscraper
+Miami Marriott Dadeland,+1 305-670-1035,,,25.685866299999997,-80.313626,33156,4.2,,Hotel,4 stars,outscraper
+Equinox Bryant Park,+1 212-299-0562,,,40.754686,-73.985472,10036,3.9,,Gym,None,outscraper
+SWEAT440 Fitness Gables,+1 888-507-9328,,,25.7336441,-80.2617956,33146,4.9,,Gym,None,outscraper
+Equinox High Line,+1 212-367-0863,,,40.7438299,-74.00672469999999,10011,3.8,,Gym,None,outscraper
+Equinox Greenwich Avenue,+1 212-620-0103,,,40.7375937,-74.0019133,10014,3.4,,Gym,None,outscraper
+RZone Fitness Coral Gables,+1 305-461-1090,,,25.7478217,-80.2569252,33134,4.9,,Gym,None,outscraper
+Equinox Gramercy,+1 212-320-9870,,,40.7405489,-73.9855549,10010,3.9,,Gym,None,outscraper
+Equinox Rockefeller Center,+1 212-218-8600,,,40.7591792,-73.9780648,10111,4.3,,Gym,None,outscraper
+Equinox Wall Street,+1 212-964-6688,,,40.707538299999996,-74.0109028,10005,3.6,,Gym,None,outscraper
+Equinox Tribeca,+1 212-566-6555,,,40.7141211,-74.00985159999999,10007,3.4,,Gym,None,outscraper
+Rumble Boxing,+1 347-571-5039,,,40.7284942,-73.99395849999999,10003,3.9,,Boxing gym,None,outscraper
+Orangetheory Fitness,+1 305-460-6006,,,25.7508029,-80.2609818,33134,4.8,,Gym,None,outscraper
+Method X Fitness Coral Gables,+1 305-299-9666,,,25.748645999999997,-80.26440869999999,33134,4.8,,Gym,None,outscraper
+Fyt Personal Training,None,,,40.718740499999996,-73.9897616,10002,4.4,,Personal trainer,None,outscraper
+Life Time,+1 786-437-4400,,,25.728302199999998,-80.260038,33133,3.8,,Gym,None,outscraper
+YouFit Gyms Coral Gables,+1 888-968-3481,,,25.7448393,-80.3104717,33155,4.1,,Fitness center,None,outscraper
+LEGACY,+1 305-240-1096,,,25.7504584,-80.2555241,33134,4.7,,Gym,None,outscraper
+BÜNDA Coral Gables,+1 305-200-3117,,,25.7505706,-80.255271,33134,4.5,,Gym,None,outscraper
+Ghost Gym Miami,+1 786-922-0006,,,25.7499398,-80.2426156,33145,4.9,,Gym,None,outscraper
+clubX fitness - Coral Gables,+1 305-667-3539,,,25.713918399999997,-80.2765288,33146,4.6,,Fitness center,None,outscraper
+54D Coral Gables,+1 786-817-7008,,,25.732798799999998,-80.25874689999999,33146,4.6,,Gym,None,outscraper
+F45 Training Coral Gables,+1 786-464-9919,,,25.7029976,-80.2907376,33143,4.9,,Fitness center,None,outscraper
+TruFusion Coral Gables,+1 305-851-5252,,,25.7513094,-80.2611423,33134,4.6,,Yoga studio,None,outscraper
+AIRLAB Fitness Coral Gables,+1 305-396-8548,,,25.7526427,-80.2553133,33134,5.0,,Fitness center,None,outscraper
+54D STEEL Coral Gables,+1 786-817-7008,,,25.7326917,-80.25885579999999,33146,5.0,,Gym,None,outscraper
+The Biltmore Hotel Fitness Center,+1 305-913-3102,,,25.740818599999997,-80.2784533,33134,4.3,,Fitness center,None,outscraper
+Lamour spa fl,+1 305-992-0630,,,25.755814899999997,-80.2582951,33134,4.9,,Spa,None,outscraper
+Pecan's Day Spa,+1 305-284-8636,,,25.748039499999997,-80.265258,33134,4.9,,Day spa,None,outscraper
+The Biltmore Spa Miami,+1 305-913-3187,,,25.740872,-80.2786119,33134,3.9,,Spa,None,outscraper
+Serenity Spa Coral Gables,+1 786-800-9595,,,25.747537899999998,-80.25830049999999,33134,4.9,,Massage spa,None,outscraper
+Classic Vantage Spa & Wellness,+1 786-953-6491,,,25.7539126,-80.25970509999999,33134,4.9,,Day spa,None,outscraper
+The Spa at Loews Coral Gables,+1 786-772-7715,,,25.744987,-80.257656,33134,4.5,,Day spa,None,outscraper
+Mood Wellness Spa,+1 786-327-1713,,,25.749781799999997,-80.2603693,33134,4.2,,Spa,None,outscraper
+Life Spa Coral Gables,+1 786-437-4424,,,25.7282835,-80.26002299999999,33133,4.8,,Spa and health club,None,outscraper
+Afrasense Massage Therapy,+1 754-265-9198,,,25.744150899999998,-80.2602461,33134,4.9,,Massage spa,None,outscraper
+Vali Spa Coral Gables,+1 786-292-6120,,,25.755382599999997,-80.2579899,33134,5.0,,Spa,None,outscraper
+Spa Bar Miami,+1 305-812-3881,,,25.748632999999998,-80.26435099999999,33134,4.9,,Day spa,None,outscraper
+Guapas Natural Spa,+1 786-516-1883,,,25.750481999999998,-80.25579719999999,33134,5.0,,Spa and health club,None,outscraper
+Loly Spa Miami,+1 786-659-7859,,,25.7505715,-80.25588479999999,33134,5.0,,Day spa,None,outscraper
+Lauren's Face the Day,+1 305-448-9400,,,25.7533027,-80.26257729999999,33134,5.0,,Day spa,None,outscraper
+Toma Head Spa,+1 813-551-0306,,,25.7505715,-80.25588479999999,33134,4.9,,Spa,None,outscraper
+Golden Asian Massage & Spa,+1 305-569-7188,,,25.7486371,-80.25473989999999,33134,4.6,,Massage spa,None,outscraper
+Evolution Salon & Spa,+1 305-448-8222,,,25.751265399999998,-80.256112,33134,4.8,,Hair salon,None,outscraper
+Le Petit Spa Corp. - Coral Gables,+1 786-801-1140,,,25.7506389,-80.25533519999999,33134,4.9,,Spa,None,outscraper
+The Healing Balm Holistic Wellness Spa,+1 786-657-8698,,,25.744150899999998,-80.2602461,33134,4.8,,Massage therapist,None,outscraper
+Avant-Garde Salon & Spa,+1 305-442-8136,,,25.7499675,-80.2578541,33134,4.9,,Beauty salon,None,outscraper
+Facial Mania Med Spa - Coral Gables,+1 305-376-7261,,,25.734361399999997,-80.2610912,33146,4.7,,Medical spa,None,outscraper
+Liks Beauty and Wellness Spa- Facial and Body Contouring,+1 954-505-0734,,,25.7471303,-80.2618949,33134,4.9,,Skin care clinic,None,outscraper
+Plenitude MedSpa,+1 786-400-1615,,,25.750415399999998,-80.26148189999999,33134,5.0,,Medical spa,None,outscraper
+Mint Wellness Center,+1 954-203-5361,,,25.749617999999998,-80.261828,33134,3.9,,Spa,None,outscraper
+Models Dream Spa,+1 786-930-2023,,,25.750481999999998,-80.25579719999999,33134,5.0,,Day spa,None,outscraper
+Yoga Joint Coral Gables,+1 786-334-5052,,,25.7526156,-80.25568539999999,33134,4.9,,Yoga studio,None,outscraper
+Break Free Movement,+1 305-456-8234,,,25.7330383,-80.2582243,33146,4.8,,Yoga studio,None,outscraper
+Daily Flows Movement Studio,+1 786-710-3059,,,25.750505399999998,-80.243794,33145,5.0,,Yoga studio,None,outscraper
+Equinox Bryant Park,+1 212-299-0562,,,40.754686,-73.985472,10036,3.9,,Yoga studio,None,outscraper
+Suvayoga,+1 305-338-7038,,,25.7518708,-80.2583432,33134,5.0,,Yoga studio,None,outscraper
+TruFusion Coral Gables,+1 305-851-5252,,,25.7513094,-80.2611423,33134,4.6,,Yoga studio,None,outscraper
+Equinox Greenwich Avenue,+1 212-620-0103,,,40.7375937,-74.0019133,10014,3.4,,Yoga studio,None,outscraper
+Equinox Wall Street,+1 212-964-6688,,,40.707538299999996,-74.0109028,10005,3.6,,Yoga studio,None,outscraper
+Equinox High Line,+1 212-367-0863,,,40.7438299,-74.00672469999999,10011,3.8,,Yoga studio,None,outscraper
+Equinox Tribeca,+1 212-566-6555,,,40.7141211,-74.00985159999999,10007,3.4,,Yoga studio,None,outscraper
+Equinox Gramercy,+1 212-320-9870,,,40.7405489,-73.9855549,10010,3.9,,Yoga studio,None,outscraper
+Casa Vinyasa Miami,+1 786-238-7327,,,25.709183,-80.28236749999999,33146,4.9,,Yoga studio,None,outscraper
+Body & Brain Yoga Tai Chi,+1 305-443-7617,,,25.7550267,-80.25865639999999,33134,4.8,,Yoga studio,None,outscraper
+Lightrail Yoga,+1 786-294-1264,,,25.740793,-80.2586511,33134,5.0,,Yoga studio,None,outscraper
+Equinox Rockefeller Center,+1 212-218-8600,,,40.7591792,-73.9780648,10111,4.3,,Yoga studio,None,outscraper
+Alma Bella Yoga,+1 305-282-5345,,,25.7441553,-80.2602277,33134,5.0,,Yoga studio,None,outscraper
+Body Hot Pilates,+1 786-542-3059,,,25.751308899999998,-80.2594835,33134,4.8,,Pilates studio,None,outscraper
+Glow Pilates Reformer,+1 305-934-1154,,,25.7504234,-80.2615907,33134,4.8,,Pilates studio,None,outscraper
+Flying with Air - Yoga & Dance,+1 917-674-5684,,,25.7570464,-80.25917679999999,33134,5.0,,Yoga studio,None,outscraper
+Thrive Yoga Miami,None,,,25.6918445,-80.28514229999999,33143,4.8,,Yoga studio,None,outscraper
+The Peacemaker,+1 813-786-5477,,,25.693528999999998,-80.3242686,33143,5.0,,Yoga studio,None,outscraper
+Pilates Gaia,+1 786-899-0337,,,25.7476107,-80.2591569,33134,4.6,,Pilates studio,None,outscraper
+TREMBLE,+1 833-873-6253,,,25.7330383,-80.2582243,33146,4.8,,Pilates studio,None,outscraper
+Mat & Maternity,+1 786-309-5784,,,25.7499395,-80.2630013,33134,5.0,,Yoga studio,None,outscraper
+Equinox Coral Gables,+1 786-497-8200,,,25.7318154,-80.2607785,33146,3.6,,Yoga studio,None,outscraper
+Avant-Garde Salon & Spa,+1 305-442-8136,,,25.7499675,-80.2578541,33134,4.9,,Hair salon,None,outscraper
+Conde Hair Salon,+1 786-789-2232,,,25.747722,-80.25473989999999,33134,4.9,,Hair salon,None,outscraper
+Madison Reed Hair Color Bar Coral Gables,+1 305-487-8812,,,25.731928399999997,-80.2595853,33146,4.7,,Hair salon,None,outscraper
+MG Hair Studios in Coral Gables. Best Hair Color Salon,+1 305-774-7151,,,25.748054999999997,-80.265025,33134,5.0,,Hair salon,None,outscraper
+Sol & Style Hair and Beauty Salon,+1 786-767-1324,,,25.756158,-80.25861239999999,33134,4.8,,Hair salon,None,outscraper
+Highlight Salon and Spa,+1 305-448-0707,,,25.753574999999998,-80.259006,33134,5.0,,Beauty salon,None,outscraper
+Quuant Hair Salon,+1 305-460-0097,,,25.7468151,-80.2587796,33134,4.9,,Hair salon,None,outscraper
+Bliss Beautique,+1 786-254-7844,,,25.7515681,-80.2584608,33134,4.9,,Hair salon,None,outscraper
+La Bella Salon,+1 305-444-1412,,,25.749092899999997,-80.2553932,33134,4.8,,Hair salon,None,outscraper
+Hair House,+1 305-607-4385,,,25.753316599999998,-80.26271559999999,33134,4.9,,Hair salon,None,outscraper
+Henrrystylesalon,+1 305-447-8628,,,25.7632191,-80.2848817,33134,4.8,,Hair salon,None,outscraper
+Avalon Salon,+1 305-445-2631,,,25.7489563,-80.25649539999999,33134,4.9,,Hair salon,None,outscraper
+Bossa Hair Salon,+1 786-609-6836,,,25.7047459,-80.28522389999999,33143,4.9,,Beauty salon,None,outscraper
+THE MANE GROUP SALON,+1 305-284-1095,,,25.7096289,-80.2817499,33146,4.9,,Hair salon,None,outscraper
+Muse In the Gables,+1 305-446-9696,,,25.7584661,-80.2592975,33134,4.8,,Beauty salon,None,outscraper
+Cosa bella beauty salon and spa,+1 305-444-0063,,,25.7631463,-80.26348329999999,33134,4.9,,Beauty salon,None,outscraper
+Emiliano Breit Salon & Spa,+1 786-899-0923,,,25.7477958,-80.25840629999999,33134,4.9,,Hair salon,None,outscraper
+Hair Color by Rosa,+1 786-463-2469,,,25.7505715,-80.25588479999999,33134,4.6,,Hair salon,None,outscraper
+Portfolio Salon,+1 305-443-0101,,,25.7497813,-80.2603616,33134,4.8,,Hair salon,None,outscraper
+Evolution Salon & Spa,+1 305-448-8222,,,25.751265399999998,-80.256112,33134,4.8,,Hair salon,None,outscraper
+Artisan Beauty Studio and Art Gallery,+1 305-444-0988,,,25.756790199999998,-80.25867769999999,33134,4.9,,Hair salon,None,outscraper
+Isabella Ladera Salón,+1 786-858-9098,,,25.7584624,-80.2587176,33134,4.8,,Beauty salon,None,outscraper
+SUPERCUTS,+1 305-834-4943,,,25.7510175,-80.2584639,33134,4.6,,Hair salon,None,outscraper
+Joncoiffure Hair Studio,+1 305-607-8942,,,25.748191199999997,-80.258845,33134,4.6,,Hair salon,None,outscraper
+Salons by JC Coral Gables on Miracle Mile,+1 305-209-9384,,,25.750481999999998,-80.25579719999999,33134,4.9,,Beauty salon,None,outscraper
+Nicest Barbers Barbershop,+1 786-203-7668,,,25.753941299999997,-80.25984009999999,33134,5.0,,Barber shop,None,outscraper
+Miami Old School Barbershop - Coral Gables,+1 786-781-4819,,,25.7495713,-80.25553479999999,33134,4.9,,Barber shop,None,outscraper
+Dundun’s - Barber Shop Coral Gables,+1 786-689-5516,,,25.748580699999998,-80.2543589,33145,5.0,,Barber shop,None,outscraper
+Barber Studio M.I,+1 305-337-9335,,,25.7505715,-80.25588479999999,33134,5.0,,Barber shop,None,outscraper
+The Well Groomed Gentleman - Barbershop,+1 786-353-2196,,,25.749372299999997,-80.257373,33134,4.7,,Barber shop,None,outscraper
+ManCave for Men - The Plaza Coral Gables,+1 786-977-1977,,,25.7443076,-80.2581079,33134,4.9,,Barber shop,None,outscraper
+The Spot Barbershop - Ponce,+1 786-592-5290,,,25.756900899999998,-80.2590551,33134,4.6,,Barber shop,None,outscraper
+The Cut - Vip Barber Lounge,+1 305-209-6080,,,25.771527,-80.2618756,33134,5.0,,Barber shop,None,outscraper
+Armando Palacios Barber Studio - Coral Gables,+1 786-469-1573,,,25.7504816,-80.23936359999999,33145,5.0,,Barber shop,None,outscraper
+A-Man Barbershop,+1 305-282-7081,,,25.750481999999998,-80.25579719999999,33134,5.0,,Barber shop,None,outscraper
+The Spot Barbershop - Merrick Park,+1 786-409-2748,,,25.733837599999998,-80.2605786,33146,4.7,,Barber shop,None,outscraper
+Alchemy Hair Lab,+1 305-204-6476,,,25.7526394,-80.2611859,33134,4.9,,Barber shop,None,outscraper
+Cesar Barbershop,+1 786-568-2241,,,25.771658799999997,-80.25656579999999,33134,4.9,,Barber shop,None,outscraper
+Blondebarber Barbershop - Coral Gables,+1 786-501-0283,,,25.753702699999998,-80.2584529,33134,5.0,,Barber shop,None,outscraper
+Home Base Barbershop,+1 305-476-9611,,,25.7649534,-80.2575501,33134,4.8,,Barber shop,None,outscraper
+OPTIMUS BARBERSHOP,+1 305-606-6081,,,25.7507719,-80.23117769999999,33145,4.6,,Barber shop,None,outscraper
+Prestigious Image Barbershop and Spa,+1 305-640-8775,,,25.755382599999997,-80.2579899,33134,4.8,,Barber shop,None,outscraper
+Samicutz,+1 786-970-8623,,,25.755382599999997,-80.2579899,33134,4.8,,Barber shop,None,outscraper
+The Men’s Room Barbershop,+1 305-815-5865,,,25.755373199999998,-80.25799289999999,33134,4.9,,Barber shop,None,outscraper
+The Spot Barbershop - Coral Way,+1 786-592-5199,,,25.750450999999998,-80.2497308,33145,4.7,,Barber shop,None,outscraper
+Masterpiece Barbers Barbershop,+1 786-760-1876,,,25.7505715,-80.25588479999999,33134,5.0,,Barber shop,None,outscraper
+Upper Kutz LLC,+1 305-456-1872,,,25.712448,-80.2779102,33146,4.8,,Barber shop,None,outscraper
+Grind Hard Barbershop,+1 786-506-9831,,,25.748565799999998,-80.2540557,33145,5.0,,Barber shop,None,outscraper
+Hot Heads Barber Shop,+1 305-662-4135,,,25.7116221,-80.2795233,33146,4.9,,Barber shop,None,outscraper
+ManKind Grooming & Services,+1 305-446-2500,,,25.750131399999997,-80.260561,33134,4.7,,Barber shop,None,outscraper
+Nails & Pearls Spa,+1 786-501-0283,,,25.7537365,-80.258436,33134,4.9,,Nail salon,None,outscraper
+"Ostenta Beauty Concept Coral Gables - Nails, Lashes & Facials",+1 786-781-3061,,,25.7495135,-80.2555239,33134,4.9,,Nail salon,None,outscraper
+Nails by Yc,+1 786-869-1842,,,25.753322599999997,-80.2590953,33134,5.0,,Beauty salon,None,outscraper
+GLOSS Nail Bar/GLOSS Naturals - Coral Gables,+1 305-569-7700,,,25.7497813,-80.2600209,33134,4.5,,Nail salon,None,outscraper
+Barby Nails Spa,+1 305-433-5441,,,25.749086,-80.2591364,33134,4.8,,Nail salon,None,outscraper
+Speranza Nails Boutique - Coral Gables,+1 786-593-2969,,,25.750481999999998,-80.25579719999999,33134,4.7,,Nail salon,None,outscraper
+Icon Nails Spa,+1 305-364-5628,,,25.7503763,-80.26187019999999,33134,4.2,,Nail salon,None,outscraper
+D & M Nails,+1 754-314-7082,,,25.7055385,-80.2838955,33146,5.0,,Nail salon,None,outscraper
+My Time Nail Bar,+1 305-332-7305,,,25.748161099999997,-80.2642219,33134,4.2,,Nail salon,None,outscraper
+Crazy For Nails Corp,+1 786-380-2558,,,25.7570809,-80.2585682,33134,5.0,,Nail salon,None,outscraper
+Mi Nail Bar Coral Gables,+1 786-953-6365,,,25.7492546,-80.2565808,33134,4.2,,Nail salon,None,outscraper
+Venetian Nail Spa Coral Way,+1 786-599-1217,,,25.7501817,-80.24958409999999,33145,3.2,,Nail salon,None,outscraper
+Nails Del Rosario,+1 786-479-5899,,,25.7500608,-80.2606272,33134,5.0,,Nail salon,None,outscraper
+MANIPEDI Boutique,+1 786-290-1813,,,25.7507278,-80.23400529999999,33145,5.0,,Nail salon,None,outscraper
+Ritzy's Nails,+1 305-562-8336,,,25.7123289,-80.27815009999999,33146,5.0,,Nail salon,None,outscraper
+The Dazzle Nails Boutique,+1 305-962-6090,,,25.7312138,-80.2603584,33146,5.0,,Nail salon,None,outscraper
+The Nail Bar,+1 786-452-7484,,,25.7712656,-80.27187719999999,33134,4.1,,Nail salon,None,outscraper
+Sury Nail Art,+1 786-254-7363,,,25.763935399999998,-80.28496229999999,33134,5.0,,Nail salon,None,outscraper
+Gables Nails Salon,+1 305-529-5800,,,25.754575,-80.25899199999999,33134,3.7,,Nail salon,None,outscraper
+Nailsart by Karla,+1 561-690-1132,,,25.753574999999998,-80.259006,33134,5.0,,Nail salon,None,outscraper
+Ola’s Beauty Room,+1 786-839-7849,,,25.7092556,-80.2816531,33146,5.0,,Nail salon,None,outscraper
+Towerz Nails & Spa Coral Gables,+1 786-378-7166,,,25.757610099999997,-80.2546124,33145,4.7,,Nail salon,None,outscraper
+Oh Mary Nails,+1 786-982-4755,,,25.748039499999997,-80.265258,33134,5.0,,Nail salon,None,outscraper
+Flagler Nails,+1 305-722-0505,,,25.770700899999998,-80.28110889999999,33134,4.5,,Nail salon,None,outscraper
+Asian Nails and Spa,+1 786-431-1312,,,25.733690799999998,-80.2604209,33146,3.3,,Nail salon,None,outscraper
+Bliss Beautique,+1 786-254-7844,,,25.7515681,-80.2584608,33134,4.9,,Beauty salon,None,outscraper
+Conde Hair Salon,+1 786-789-2232,,,25.747722,-80.25473989999999,33134,4.9,,Hair salon,None,outscraper
+Sol & Style Hair and Beauty Salon,+1 786-767-1324,,,25.756158,-80.25861239999999,33134,4.8,,Hair salon,None,outscraper
+Avant-Garde Salon & Spa,+1 305-442-8136,,,25.7499675,-80.2578541,33134,4.9,,Beauty salon,None,outscraper
+La Bella Salon,+1 305-444-1412,,,25.749092899999997,-80.2553932,33134,4.8,,Beauty salon,None,outscraper
+Highlight Salon and Spa,+1 305-448-0707,,,25.753574999999998,-80.259006,33134,5.0,,Beauty salon,None,outscraper
+Madison Reed Hair Color Bar Coral Gables,+1 305-487-8812,,,25.731928399999997,-80.2595853,33146,4.7,,Hair salon,None,outscraper
+Cosa bella beauty salon and spa,+1 305-444-0063,,,25.7631463,-80.26348329999999,33134,4.9,,Beauty salon,None,outscraper
+Salons by JC Coral Gables on Miracle Mile,+1 305-209-9384,,,25.750481999999998,-80.25579719999999,33134,4.9,,Beauty salon,None,outscraper
+Artisan Beauty Studio and Art Gallery,+1 305-444-0988,,,25.756790199999998,-80.25867769999999,33134,4.9,,Beauty salon,None,outscraper
+Muse In the Gables,+1 305-446-9696,,,25.7584661,-80.2592975,33134,4.8,,Beauty salon,None,outscraper
+Quuant Hair Salon,+1 305-460-0097,,,25.7468151,-80.2587796,33134,4.9,,Hair salon,None,outscraper
+Hair House,+1 305-607-4385,,,25.753316599999998,-80.26271559999999,33134,4.9,,Hair salon,None,outscraper
+MG Hair Studios in Coral Gables. Best Hair Color Salon,+1 305-774-7151,,,25.748054999999997,-80.265025,33134,5.0,,Beauty salon,None,outscraper
+Avalon Salon,+1 305-445-2631,,,25.7489563,-80.25649539999999,33134,4.9,,Beauty salon,None,outscraper
+CR Beauty Studio LLC,+1 305-444-7443,,,25.7501297,-80.2603926,33134,5.0,,Beauty salon,None,outscraper
+Cachet Beauty Salon by Ana Vigil,+1 786-237-9149,,,25.7717755,-80.2644043,33134,4.9,,Beauty salon,None,outscraper
+Evolution Salon & Spa,+1 305-448-8222,,,25.751265399999998,-80.256112,33134,4.8,,Hair salon,None,outscraper
+Emiliano Breit Salon & Spa,+1 786-899-0923,,,25.7477958,-80.25840629999999,33134,4.9,,Hair salon,None,outscraper
+OXIONE BEAUTY & EXTENSIONS,+1 305-967-8452,,,25.7549669,-80.25854,33134,5.0,,Hair salon,None,outscraper
+Henrrystylesalon,+1 305-447-8628,,,25.7632191,-80.2848817,33134,4.8,,Hair salon,None,outscraper
+Portfolio Salon,+1 305-443-0101,,,25.7497813,-80.2603616,33134,4.8,,Beauty salon,None,outscraper
+Bossa Hair Salon,+1 786-609-6836,,,25.7047459,-80.28522389999999,33143,4.9,,Beauty salon,None,outscraper
+Beauty Atelier,+1 786-620-8055,,,25.7653955,-80.25797209999999,33134,5.0,,Beauty salon,None,outscraper
+Isabella Ladera Salón,+1 786-858-9098,,,25.7584624,-80.2587176,33134,4.8,,Beauty salon,None,outscraper
+Leader Service,+1 305-858-1020,,,25.7505761,-80.22227889999999,33145,4.9,,Auto repair shop,None,outscraper
+Goodyear Auto Service,+1 305-446-8101,,,25.7347148,-80.2536722,33133,4.1,,Tire shop,None,outscraper
+Tires Plus,+1 786-671-3880,,,25.7347517,-80.2564821,33146,4.4,,Auto repair shop,None,outscraper
+Coral Gables Mobile Auto Repair,+1 786-964-1866,,,25.7267987,-80.2631522,33146,5.0,,Auto repair shop,None,outscraper
+La Perla Auto Repair Corp,+1 786-401-7020,,,25.7477011,-80.3039369,33155,4.5,,Car repair and maintenance service,None,outscraper
+Green's Garage,+1 305-444-8881,,,25.749578399999997,-80.2462346,33145,4.6,,Auto repair shop,None,outscraper
+European Auto Service Center,+1 305-446-0061,,,25.7352706,-80.2558105,33146,4.7,,Auto repair shop,None,outscraper
+J C Auto Services,+1 305-403-0097,,,25.771065699999998,-80.2878367,33134,5.0,,Auto repair shop,None,outscraper
+A Auto Tech Inc,+1 305-448-4100,,,25.7338563,-80.2566882,33146,4.8,,Auto body shop,None,outscraper
+M C Auto Tech,+1 305-662-6273,,,25.706404799999998,-80.2894105,33143,4.8,,Auto repair shop,None,outscraper
+Jiffy Lube,+1 305-661-9928,,,25.7318504,-80.3032169,33155,4.4,,Oil change service,None,outscraper
+Miami's Quality Auto Repair,+1 305-574-9099,,,25.7284848,-80.3084442,33155,4.7,,Auto repair shop,None,outscraper
+Alex Express Auto Repair,+1 786-443-5409,,,25.757672499999998,-80.236931,33145,4.9,,Auto repair shop,None,outscraper
+Rey's Auto Repair Shop,+1 305-541-7339,,,25.767990299999997,-80.2193274,33135,4.9,,Auto repair shop,None,outscraper
+Tony’s Vehicle Solutions,+1 786-703-9084,,,25.765735,-80.25485599999999,33135,4.8,,Auto repair shop,None,outscraper
+German Car Care,+1 305-774-1024,,,25.7265744,-80.2611206,33133,4.5,,Auto repair shop,None,outscraper
+Dixie Auto Service Inc,+1 305-667-5096,,,25.698417199999998,-80.296453,33143,4.7,,Auto repair shop,None,outscraper
+Tire Kingdom,+1 786-598-8327,,,25.735312699999998,-80.2552369,33146,4.5,,Tire shop,None,outscraper
+Flagler Auto Repair,+1 305-269-3080,,,25.7551505,-80.2876661,33155,4.6,,Auto repair shop,None,outscraper
+Star Auto Services Inc,+1 305-265-4585,,,25.7484613,-80.3074297,33155,4.7,,Auto repair shop,None,outscraper
+Lucas Auto Repair,+1 305-264-0220,,,25.766349899999998,-80.308358,33144,4.8,,Auto repair shop,None,outscraper
+Miami Auto Repair Shop Brakes Tune Ups Multiser Versailles,+1 786-474-1311,,,25.765152099999998,-80.2478759,33135,3.9,,Auto repair shop,None,outscraper
+Tires King of Miami 2,+1 305-445-7244,,,25.7450729,-80.2384163,33133,4.7,,Tire shop,None,outscraper
+Countach Inc.,+1 305-443-1468,,,25.731997,-80.256704,33146,3.6,,Auto body shop,None,outscraper
+CALIX TIRES INC,+1 305-444-0103,,,25.7641678,-80.2672293,33134,4.7,,Tire shop,None,outscraper
+Carmania of Coral Gables,+1 786-446-9446,,,25.7717267,-80.27297639999999,33134,4.3,,Car dealer,None,outscraper
+The Collection,+1 305-444-5555,,,25.734402499999998,-80.2594341,33146,4.6,,Car dealer,None,outscraper
+Mercedes-Benz of Coral Gables,+1 786-284-1010,,,25.7460004,-80.26008949999999,33134,4.8,,Mercedes-Benz dealer,None,outscraper
+THE COLLECTION Audi,+1 786-885-3479,,,25.7346525,-80.2593358,33146,4.8,,Audi dealer,None,outscraper
+AutoNation Chevrolet Coral Gables,+1 305-707-0139,,,25.7648334,-80.2626495,33134,4.3,,Chevrolet dealer,None,outscraper
+Gables Auto Brokers Inc.,+1 305-364-5448,,,25.7324299,-80.37407379999999,33165,4.8,,Car dealer,None,outscraper
+The Collection Aston Martin,+1 786-885-3486,,,25.7346763,-80.2587832,33146,4.8,,Car dealer,None,outscraper
+Polestar Miami,+1 786-963-7025,,,25.749069199999997,-80.2615125,33134,5.0,,Car dealer,None,outscraper
+Land Rover Coral Gables,+1 305-476-4000,,,25.7300492,-80.25760749999999,33133,4.8,,Land Rover dealer,None,outscraper
+Tropical Used Cars,+1 305-290-3080,,,25.771162,-80.2869039,33134,4.4,,Chevrolet dealer,None,outscraper
+THE COLLECTION Porsche,+1 786-885-3481,,,25.7346763,-80.2587832,33146,4.8,,Porsche dealer,None,outscraper
+Formula Miami,+1 305-443-1515,,,25.7346427,-80.2562208,33146,4.8,,Car dealer,None,outscraper
+Miami Auto Collection Inc,+1 305-264-5506,,,25.743485999999997,-80.308013,33155,4.8,,Car dealer,None,outscraper
+The Collection Ferrari,+1 786-885-3490,,,25.7347054,-80.25922589999999,33146,4.6,,Ferrari dealer,None,outscraper
+Ocean Auto Club,+1 786-718-1225,,,25.732879099999998,-80.3115382,33155,4.6,,Car dealer,None,outscraper
+Ferco Motors,+1 305-541-3386,,,25.7717277,-80.2239268,33135,4.5,,Car dealer,None,outscraper
+THE COLLECTION Alfa Romeo,+1 786-885-3487,,,25.7346763,-80.2587832,33146,4.2,,Alfa Romeo dealer,None,outscraper
+Jaguar Coral Gables,+1 305-476-4000,,,25.7300492,-80.25760749999999,33133,4.8,,Jaguar dealer,None,outscraper
+Deel Volkswagen Coral Gables,+1 305-448-3335,,,25.7353015,-80.2521931,33133,4.6,,Volkswagen dealer,None,outscraper
+U Auto Lease,+1 305-901-6161,,,25.754280599999998,-80.2590518,33134,5.0,,Car leasing service,None,outscraper
+Ussery Automotive Group,+1 305-567-3444,,,25.7459953,-80.26097639999999,33134,3.0,,Mercedes-Benz dealer,None,outscraper
+AutoNation Chevrolet Coral Gables Service Center,+1 305-707-0139,,,25.7645619,-80.26294399999999,33134,4.3,,Car repair and maintenance service,None,outscraper
+"LifeClinic Chiropractic & Rehabilitation - Coral Gables, FL",+1 786-437-4458,,,25.728306,-80.26003879999999,33133,4.9,,Chiropractor,None,outscraper
+German Car Care,+1 305-774-1024,,,25.7265744,-80.2611206,33133,4.5,,Auto repair shop,None,outscraper
+INFINITI of Coral Gables,None,,,25.746564799999998,-80.2619263,33134,4.8,,Infiniti dealer,None,outscraper
+Society Cleaners - Dry Cleaning Company,+1 305-444-6611,,,25.764364999999998,-80.259816,33134,4.7,,Dry cleaner,None,outscraper
+Grove Cleaners,+1 305-567-9007,,,25.7556454,-80.25913059999999,33134,4.2,,Dry cleaner,None,outscraper
+Giralda Cleaners Inc,+1 305-447-2532,,,25.7514932,-80.2573622,33134,3.4,,Dry cleaner,None,outscraper
+Coral Way Cleaners,+1 305-446-1345,,,25.746070399999997,-80.2618462,33134,4.7,,Dry cleaner,None,outscraper
+Mr Jeff Cleaners,+1 786-505-0201,,,25.7046305,-80.2850677,33143,4.4,,Dry cleaner,None,outscraper
+Catalonia Cleaners Gables,+1 786-391-0094,,,25.7445852,-80.2603283,33134,4.0,,Dry cleaner,None,outscraper
+Gables Laundry,+1 305-443-1110,,,25.758689099999998,-80.2592382,33134,3.8,,Laundromat,None,outscraper
+Pierre’s French Cleaners,+1 305-441-1015,,,25.751834199999998,-80.2602063,33134,5.0,,Dry cleaner,None,outscraper
+Oxxo Care Cleaners Merrick Park,+1 305-441-2996,,,25.733038999999998,-80.2609883,33146,4.4,,Dry cleaner,None,outscraper
+LaSalle Dry Cleaners,+1 305-446-6458,,,25.750306199999997,-80.2626039,33134,3.3,,Dry cleaner,None,outscraper
+La Elegante Cleaners,+1 305-444-8711,,,25.7649568,-80.25760799999999,33134,4.1,,Dry cleaner,None,outscraper
+Natural Press,+1 305-854-1044,,,25.7507219,-80.2316914,33145,4.0,,Dry cleaner,None,outscraper
+Mr Jeff Cleaners,+1 305-446-3013,,,25.7501084,-80.2412054,33145,4.1,,Dry cleaner,None,outscraper
+THE DRYCLEANING FACTORY,+1 305-726-7777,,,25.7706204,-80.2886948,33144,4.6,,Dry cleaner,None,outscraper
+Giralda Cleaners Inc,+1 305-447-2532,,,25.7497865,-80.2874911,33155,4.5,,Dry cleaner,None,outscraper
+One Stop Dry Cleaning,+1 305-860-1444,,,25.750825,-80.231151,33145,4.2,,Dry cleaner,None,outscraper
+Oxxo Care Cleaners Coral Gables,+1 305-661-6126,,,25.706631899999998,-80.283895,33146,4.3,,Dry cleaner,None,outscraper
+Rey's,+1 305-443-0839,,,25.7503299,-80.2625917,33134,3.3,,Dry cleaner,None,outscraper
+Devon Cleaners,+1 305-662-5888,,,25.7087194,-80.2830987,33146,2.7,,Dry cleaner,None,outscraper
+Chase Bank,+1 305-442-0089,,,25.7521609,-80.2617334,33134,3.5,,Bank,None,outscraper
+Chase Bank,+1 305-443-3969,,,25.7338,-80.25829999999999,33146,2.7,,Bank,None,outscraper
+Bank of America Financial Center,+1 305-669-6694,,,25.709241,-80.28284099999999,33146,3.0,,Bank,None,outscraper
+Chase Bank,+1 305-444-0754,,,25.7500322,-80.239447,33145,3.0,,Bank,None,outscraper
+Bank of America (with Drive-thru ATM),+1 305-442-2787,,,25.751024599999997,-80.2589732,33134,2.5,,Bank,None,outscraper
+Regions Bank,+1 305-774-5671,,,25.7458884,-80.2592725,33134,4.3,,Bank,None,outscraper
+Ocean Bank,+1 305-446-1919,,,25.747440599999997,-80.2619868,33134,4.9,,Bank,None,outscraper
+Chase Bank,+1 305-740-0618,,,25.707784999999998,-80.284474,33146,3.4,,Bank,None,outscraper
+Chase Bank,+1 305-569-0083,,,25.749606,-80.25435399999999,33145,3.0,,Bank,None,outscraper
+Synovus Bank,+1 888-796-6887,,,25.7525528,-80.25705239999999,33134,5.0,,Bank,None,outscraper
+Chase Bank,+1 305-442-8127,,,25.759244,-80.259204,33134,3.8,,Bank,None,outscraper
+Northern Trust,+1 305-529-7700,,,25.748473,-80.2658927,33134,4.1,,Investment bank,None,outscraper
+Flagstar Bank,+1 305-774-0049,,,25.7469444,-80.2582255,33134,4.2,,Bank,None,outscraper
+TD Bank,+1 305-448-8995,,,25.7493689,-80.2584826,33134,3.7,,Bank,None,outscraper
+Citizens,+1 305-341-2465,,,25.7514926,-80.2590082,33134,3.2,,Bank,None,outscraper
+FirstBank Florida - Coral Gables,+1 305-442-1220,,,25.7449901,-80.2586271,33134,4.0,,Bank,None,outscraper
+Ocean Bank,+1 305-665-8041,,,25.7047192,-80.28524809999999,33143,4.8,,Bank,None,outscraper
+PNC Bank,+1 786-804-6311,,,25.7466005,-80.2589782,33134,3.5,,Bank,None,outscraper
+City National Bank of Florida,+1 305-445-1941,,,25.7457806,-80.26218829999999,33134,3.8,,Bank,None,outscraper
+Citi,+1 786-235-9303,,,25.7512737,-80.2623716,33134,2.7,,Bank,None,outscraper
+First Citizens Bank,+1 305-639-7200,,,25.7452608,-80.26008039999999,33134,3.8,,Bank,None,outscraper
+Belmont Bank & Trust,+1 786-425-3350,,,25.7539126,-80.25970509999999,33134,5.0,,Bank,None,outscraper
+Grove Bank & Trust,+1 305-444-6665,,,25.752613,-80.262675,33134,5.0,,Bank,None,outscraper
+Bank of America Financial Center,+1 305-446-2343,,,25.7281987,-80.24578869999999,33133,3.4,,Bank,None,outscraper
+Seacoast Bank,+1 786-814-4747,,,25.7516747,-80.2620099,33134,3.4,,Bank,None,outscraper
+Amigos Tutoring (Coral Gables),+1 305-763-2913,,,25.7503945,-80.2284612,33145,5,,Tutoring service,None,outscraper
+GradePower Learning Coral Gables,+1 305-680-0164,,,25.746916,-80.2592547,33134,5,,Tutoring service,None,outscraper
+Fred Astaire Dance Studios,+1 305-443-0085,,,25.7507318,-80.2568665,33134,5.0,,Dance school,None,outscraper
+Arthur Murray Dance Studio Coral Gables,+1 305-444-6136,,,25.7452586,-80.2588681,33134,4.8,,Dance school,None,outscraper
+The Core Dance Center,+1 786-539-3238,,,25.7503371,-80.2442794,33145,4.8,,Dance school,None,outscraper
+Miami International Dance Academy,+1 305-986-8470,,,25.7716095,-80.2715999,33134,4.7,,Ballet school,None,outscraper
+Miami Royal Ballet Dance School,+1 305-396-8839,,,25.7329886,-80.2604404,33146,4.9,,Dance school,None,outscraper
+Coral Gables Congregational United Church of Christ,+1 305-448-7421,,,25.7425203,-80.2784914,33134,4.8,363,United Church of Christ,None,outscraper
+Central Christian Church (CCC Gables),+1 305-446-6132,,,25.757997999999997,-80.259844,33134,4.9,54,Christian church,None,outscraper
+Christ Journey Church,+1 305-448-4425,,,25.7413247,-80.2671127,33134,4.8,113,Church,None,outscraper
+Generation Church,None,,,25.7165851,-80.2715072,33146,5.0,45,Christian church,None,outscraper
+St. Augustine Church & Catholic Student Center at the University of Miami,+1 305-661-1648,,,25.7185824,-80.28326469999999,33146,4.8,268,Catholic church,None,outscraper
+Coral Gables Baptist Church,+1 305-665-4072,,,25.718774999999997,-80.269834,33146,5.0,14,Baptist church,None,outscraper
+Church of the Little Flower,+1 305-446-9950,,,25.7445403,-80.2813513,33134,4.5,148,Catholic church,None,outscraper
+St George Antiochian Orthodox Cathedral,+1 305-444-6541,,,25.7452224,-80.26129019999999,33134,4.8,35,Eastern Orthodox Church,None,outscraper
+First United Methodist Church of Coral Gables & The Growing Place School,+1 305-445-2578,,,25.749174399999998,-80.2649775,33134,4.9,12,United Methodist church,None,outscraper
+Granada Church,+1 305-444-8435,,,25.7347413,-80.2727202,33134,4.8,124,Presbyterian church,None,outscraper
+St. Mark's Lutheran Church,+1 305-444-0425,,,25.7353582,-80.2625958,33134,5.0,16,Lutheran church,None,outscraper
+St James Evangelical Lutheran,+1 305-443-0014,,,25.7609411,-80.2575792,33134,4.5,12,Church,None,outscraper
+Central Christian Church - Food Distribution Center,+1 305-446-6132,,,25.757942099999998,-80.2598241,33134,4.9,20,Food bank,None,outscraper
+National Shrine of Our Lady of Charity,+1 305-854-2404,,,25.7408878,-80.2113859,33133,4.9,4279,Catholic church,None,outscraper
+La Roca Miami,+1 520-245-7020,,,25.7315145,-80.2601638,33146,4.9,35,Christian church,None,outscraper
+Spanish Church of God Inc,+1 305-443-6381,,,25.766415499999997,-80.2630648,33134,4.8,6,Church,None,outscraper
+St Theresa Convent,+1 305-448-0662,,,25.7438996,-80.28131429999999,33134,5.0,2,Church,None,outscraper
+Greater St Paul A.M.E. Church,+1 305-448-2742,,,25.7267103,-80.25322849999999,33133,4.8,26,Methodist church,None,outscraper
+Calvary Church of the Nazarene,+1 305-445-7595,,,25.7462609,-80.24639119999999,33145,4.9,18,Church of the Nazarene,None,outscraper
+"Chapel of the Venerable Bede, Episcopal Church Center at University of Miami",+1 305-284-2333,,,25.7176489,-80.27493659999999,33146,4.9,16,Episcopal church,None,outscraper
+Plymouth Congregational Church,+1 305-444-6521,,,25.722588599999998,-80.2482054,33133,4.7,141,Church,None,outscraper
+St Philip's Episcopal Church and School,+1 305-444-6366,,,25.748293699999998,-80.2782568,33134,4.6,41,Episcopal church,None,outscraper
+Our Lady of Sorrows Catholic Church,+1 305-447-8911,,,25.771655799999998,-80.273946,33134,4.8,200,Catholic church,None,outscraper
+St Raymond of Peñafort Catholic Church,+1 305-446-2427,,,25.755560199999998,-80.2515262,33145,4.8,440,Catholic church,None,outscraper
+Elevate Miami Church,+1 786-409-5608,,,25.738804,-80.24373849999999,33133,4.7,47,Church,None,outscraper
+Coral Gables Community Foundation,+1 305-446-9670,,,25.7501157,-80.2604022,33134,5.0,,Foundation,None,outscraper
+Center for Social Change,+1 786-235-8030,,,25.7509339,-80.2286556,33145,4.7,,Non-profit organization,None,outscraper
+Junior Achievement of Greater Miami,+1 305-687-3977,,,25.7517365,-80.2559326,33134,4.3,,Non-profit organization,None,outscraper
+Peacock Foundation Inc,+1 305-373-1386,,,25.7340275,-80.2590105,33146,5.0,,Foundation,None,outscraper
+Refugee Assistance Alliance,None,,,25.7554303,-80.2586271,33134,5.0,,Non-profit organization,None,outscraper
+Junior League of Miami,+1 305-443-0160,,,25.7482357,-80.2693961,33134,4.6,,Non-profit organization,None,outscraper
+The International SeaKeepers Society,+1 786-924-6209,,,25.7505737,-80.25971179999999,33134,5.0,,Non-profit organization,None,outscraper
+HandsOn South Florida (Miami),+1 305-504-4510,,,25.7509107,-80.2286894,33145,4.3,,Non-profit organization,None,outscraper
+Foundation of the Americas,+1 305-300-8881,,,25.740818599999997,-80.2784533,33134,,,Foundation,None,outscraper
+American Children's Orchestras,+1 305-285-2303,,,25.7503691,-80.2294216,33145,4.3,,Social services organization,None,outscraper
+Honduras Foundation of USA,+1 305-774-0214,,,25.7445178,-80.2596452,33134,4.7,,Social services organization,None,outscraper
+Together for kids USA,+1 786-416-4889,,,25.7690937,-80.2632982,33134,5.0,,Non-profit organization,None,outscraper
+COPD Foundation,+1 866-731-2673,,,25.741395999999998,-80.25865979999999,33134,4.0,,Non-profit organization,None,outscraper
+City Year Miami,+1 786-406-7900,,,25.7532952,-80.2580065,33134,5.0,,Non-profit organization,None,outscraper
+Live Like Bella Childhood Cancer Foundation,+1 786-505-3914,,,25.7527656,-80.2581902,33134,5.0,,Non-profit organization,None,outscraper
+Tropical Audubon Society,+1 305-667-7337,,,25.704248699999997,-80.2842415,33143,4.8,,Non-profit organization,None,outscraper
+Coconut Grove Cares,+1 305-446-6216,,,25.7268121,-80.2557939,33133,4.9,,Non-profit organization,None,outscraper
+Fundacion Manos del Sur,+1 305-860-6529,,,25.711398199999998,-80.279476,33146,,,Non-profit organization,None,outscraper
+Global Foundation for Democracy and Development,+1 786-233-9877,,,25.7482732,-80.2561336,33134,5.0,,Non-profit organization,None,outscraper
+Global Ties Miami,+1 305-421-6344,,,25.7460402,-80.25467549999999,33134,5.0,,Non-profit organization,None,outscraper
+Sunshine For All,+1 305-285-3217,,,25.75112,-80.21890189999999,33145,4.5,,Non-profit organization,None,outscraper
+Community Coalition Inc,+1 305-854-2882,,,25.7503945,-80.2284612,33145,5.0,,Non-profit organization,None,outscraper
+Ronald McDonald House Charities of South Florida,+1 305-324-5683,,,25.7887472,-80.2130495,33136,4.8,,Social services organization,None,outscraper
+Push Forward Project,+1 786-509-9671,,,25.7471815,-80.2608451,33134,,,Non-profit organization,None,outscraper
+Spotlight Miami,None,,,25.7503808,-80.2589327,33134,,,Non-profit organization,None,outscraper
+CMR Construction Group,+1 786-305-6289,,,25.748227,-80.2560404,33134,4.8,,General contractor,None,outscraper
+Gables Construction Group,+1 305-459-1177,,,25.740818599999997,-80.2784533,33134,5.0,,Construction company,None,outscraper
+Fab's Construction & Remodeling,+1 305-833-8062,,,25.757054399999998,-80.25916629999999,33134,4.8,,Construction company,None,outscraper
+Torre Construction & Development,+1 305-442-9494,,,25.748528,-80.25916509999999,33134,5.0,,Construction company,None,outscraper
+"Trinity Construction Group, LLC.",+1 786-431-5770,,,25.7256251,-80.26231829999999,33146,4.9,,Construction company,None,outscraper
+FXD Construction,+1 305-456-1243,,,25.7456756,-80.26129569999999,33134,5.0,,Contractor,None,outscraper
+Cutting Edge Innovative,+1 786-957-7775,,,25.7535608,-80.2548839,33134,4.8,,Construction company,None,outscraper
+One Stop Construction,+1 305-442-2799,,,25.7692983,-80.2641263,33134,4.6,,Construction company,None,outscraper
+"Abascal Group, Inc. Residential + Commercial Construction",+1 305-498-5035,,,25.733601399999998,-80.2790819,33146,5.0,,Construction company,None,outscraper
+Beauchamp Construction Co Inc,+1 305-445-0819,,,25.753371599999998,-80.25912029999999,33134,4.3,,General contractor,None,outscraper
+RC Coast Construction,+1 786-291-7892,,,25.7478038,-80.2542787,33145,5.0,,Construction company,None,outscraper
+Juneau Construction Company,+1 305-438-7666,,,25.7521795,-80.25494909999999,33134,4.8,,General contractor,None,outscraper
+Amerifirst Construction Corp - CGC # 1507077,+1 305-306-1415,,,25.7554303,-80.2586271,33134,5.0,,Construction company,None,outscraper
+Rothstar Construction,+1 305-442-4462,,,25.7445178,-80.2596452,33134,5.0,,Construction company,None,outscraper
+Madison Construction Group Inc.,+1 305-220-8997,,,25.7241672,-80.3147829,33155,5.0,,Construction company,None,outscraper
+"Safcoconstruction, Inc.",+1 786-655-6464,,,25.7526363,-80.2611969,33134,5.0,,Construction company,None,outscraper
+Perillo Construction Inc.,+1 305-441-0022,,,25.7532952,-80.2580065,33134,3.0,,Construction company,None,outscraper
+Hidalgo Construction,+1 305-569-0060,,,25.746790599999997,-80.25827369999999,33134,5.0,,Contractor,None,outscraper
+Century Homebuilders Group,+1 305-599-8100,,,25.7556849,-80.25864589999999,33134,3.7,,Real estate developer,None,outscraper
+Construction VOSS,+1 305-481-9626,,,25.7325047,-80.256129,33146,4.2,,Construction company,None,outscraper
+Milton Construction,+1 305-444-5435,,,25.7473097,-80.238327,33145,5.0,,Construction company,None,outscraper
+FCE - Florida Construction and Engineering,+1 305-883-7601,,,25.7481883,-80.2581702,33134,5.0,,Construction company,None,outscraper
+Colmar Construction Corp,+1 786-686-8639,,,25.7282834,-80.2600236,33133,5.0,,General contractor,None,outscraper
+Admer Construction Group,+1 305-697-5970,,,25.783494599999997,-80.2916493,33126,4.8,,Construction company,None,outscraper
+GD Construction LLC,+1 305-200-5596,,,25.7436877,-80.2266635,33133,5.0,,Construction company,None,outscraper
+CMR Construction Group,+1 786-305-6289,,,25.748227,-80.2560404,33134,4.8,,General contractor,None,outscraper
+Gables Construction Group,+1 305-459-1177,,,25.740818599999997,-80.2784533,33134,5.0,,Construction company,None,outscraper
+Fab's Construction & Remodeling,+1 305-833-8062,,,25.757054399999998,-80.25916629999999,33134,4.8,,General contractor,None,outscraper
+Torre Construction & Development,+1 305-442-9494,,,25.748528,-80.25916509999999,33134,5.0,,General contractor,None,outscraper
+Cutting Edge Innovative,+1 786-957-7775,,,25.7535608,-80.2548839,33134,4.8,,Construction company,None,outscraper
+FXD Construction,+1 305-456-1243,,,25.7456756,-80.26129569999999,33134,5.0,,Contractor,None,outscraper
+One Stop Construction,+1 305-442-2799,,,25.7692983,-80.2641263,33134,4.6,,Construction company,None,outscraper
+RC Coast Construction,+1 786-291-7892,,,25.7478038,-80.2542787,33145,5.0,,Construction company,None,outscraper
+"Trinity Construction Group, LLC.",+1 786-431-5770,,,25.7256251,-80.26231829999999,33146,4.9,,Construction company,None,outscraper
+"Safcoconstruction, Inc.",+1 786-655-6464,,,25.7526363,-80.2611969,33134,5.0,,Construction company,None,outscraper
+Beauchamp Construction Co Inc,+1 305-445-0819,,,25.753371599999998,-80.25912029999999,33134,4.3,,General contractor,None,outscraper
+EZ General Contractor LLC,+1 786-412-5710,,,25.742574299999998,-80.3217241,33155,4.9,,General contractor,None,outscraper
+Hidalgo Construction,+1 305-569-0060,,,25.746790599999997,-80.25827369999999,33134,5.0,,Contractor,None,outscraper
+"Abascal Group, Inc. Residential + Commercial Construction",+1 305-498-5035,,,25.733601399999998,-80.2790819,33146,5.0,,Construction company,None,outscraper
+Perillo Construction Inc.,+1 305-441-0022,,,25.7532952,-80.2580065,33134,3.0,,General contractor,None,outscraper
+Oceanside Construction & Remodeling,+1 786-866-9670,,,25.7560117,-80.2581513,33134,,,Construction company,None,outscraper
+Colmar Construction Corp,+1 786-686-8639,,,25.7282834,-80.2600236,33133,5.0,,General contractor,None,outscraper
+Coral Gables Residential Roofing Contractors Pros,+1 645-231-0972,,,25.756515999999998,-80.2737121,33134,5.0,,Roofing contractor,None,outscraper
+FCE - Florida Construction and Engineering,+1 305-883-7601,,,25.7481883,-80.2581702,33134,5.0,,Construction company,None,outscraper
+Rothstar Construction,+1 305-442-4462,,,25.7445178,-80.2596452,33134,5.0,,Construction company,None,outscraper
+Atlantic Crystals Construction,+1 855-817-8115,,,25.752709799999998,-80.2582005,33134,5.0,,Contractor,None,outscraper
+Golden Sands General Contractors,+1 305-633-3336,,,25.7642122,-80.2562925,33134,4.8,,General contractor,None,outscraper
+Construction VOSS,+1 305-481-9626,,,25.7325047,-80.256129,33146,4.2,,Construction company,None,outscraper
+Lucky Concrete Coral Gables,+1 786-692-4274,,,25.748645999999997,-80.26440869999999,33134,5.0,,Concrete contractor,None,outscraper
+Albany Homes Construction Inc.,+1 786-964-7969,,,25.7245287,-80.26371189999999,33146,3.9,,General contractor,None,outscraper
+Coral Gables Plumbing Co,+1 305-280-9196,,,25.6482742,-80.3341007,33176,4.8,,Plumber,None,outscraper
+Coral Gables Plumbers,+1 305-600-5510,,,25.706921599999998,-80.25724029999999,33133,3.0,,Plumber,None,outscraper
+Miami 24/7 Plumbing - Miami Emergency Plumbers,+1 305-440-0878,,,25.759981099999997,-80.24667629999999,33145,4.8,,Plumber,None,outscraper
+AS Plumbing & Heating Coral Gables,+1 305-686-4751,,,25.7335779,-80.26149079999999,33146,5.0,,Plumber,None,outscraper
+Coral Reef Plumbing,+1 305-361-6769,,,25.7828202,-80.31365339999999,33126,4.3,,Plumber,None,outscraper
+EZ Miami Plumbing Service Repair & Emergency,+1 305-250-8557,,,25.7583001,-80.2512335,33145,4.2,,Plumber,None,outscraper
+Coral Plumbing & Services,+1 645-215-3850,,,25.732791199999998,-80.26136009999999,33146,5.0,,Plumber,None,outscraper
+Elekron Electric Inc,+1 786-423-5230,,,25.7503608,-80.2569431,33134,5.0,,Electrician,None,outscraper
+Xmart Power Electric,+1 800-741-5257,,,25.7096451,-80.28200149999999,33146,5.0,,Electrician,None,outscraper
+Duncan Electrical Service,+1 305-315-4904,,,25.7333571,-80.26098089999999,33146,4.1,,Electrician,None,outscraper
+Electric Sun Tanning Salons,+1 786-717-5234,,,25.70901,-80.28571409999999,33143,5.0,,Tanning salon,None,outscraper
+Mister Sparky,+1 305-203-0964,,,25.6537547,-80.38280139999999,33176,4.7,,Electrician,None,outscraper
+Alex All Electric,+1 786-362-9679,,,25.7296181,-80.3360848,33165,4.9,,Electrician,None,outscraper
+Miami Electrical Services,+1 844-987-9393,,,25.759684699999998,-80.2307507,33145,4.7,,Electrician,None,outscraper
+Max Appliance Repair Miami,+1 786-733-9343,,,25.7472164,-80.2608375,33134,4.9,,Appliance repair service,None,outscraper
+Leader Service,+1 305-858-1020,,,25.7505761,-80.22227889999999,33145,4.9,,Auto repair shop,None,outscraper
+Electrik Pros,+1 305-239-4959,,,25.7832631,-80.28141959999999,33126,4.7,,Electrician,None,outscraper
+CPS Electric Inc,+1 786-224-9656,,,25.7890242,-80.2413325,33125,4.7,,Electrician,None,outscraper
+2555 Ponce De Leon,+1 305-444-8900,,,25.7480035,-80.258028,33134,4.8,,Business center,None,outscraper
+Polestar Miami,+1 786-963-7025,,,25.749069199999997,-80.2615125,33134,5.0,,Car dealer,None,outscraper
+BestHVAC Air Conditioning Repairs,+1 786-937-4957,,,25.7497676,-80.2497743,33145,4.3,,HVAC contractor,None,outscraper
+DoubleDay Engineering,+1 305-209-2396,,,25.7515492,-80.256388,33134,4.7,,Structural engineer,None,outscraper
+Sub-Zero Repair Services,+1 800-651-4528,,,25.7570464,-80.25917679999999,33134,5.0,,Appliance repair service,None,outscraper
+Obe Power Charging Station,+1 888-951-1118,,,25.7648531,-80.2571304,33134,5.0,,Electric vehicle charging station,None,outscraper
+EVgo Charging Station,+1 877-494-3833,,,25.748994399999997,-80.26443689999999,33134,2.5,,Electric vehicle charging station,None,outscraper
+SERVPRO of Wynwood,+1 305-377-2325,,,25.750106499999998,-80.2373132,33145,5.0,,Water damage restoration service,None,outscraper
+Green's Garage,+1 305-444-8881,,,25.749578399999997,-80.2462346,33145,4.6,,Auto repair shop,None,outscraper
+"Safcoconstruction, Inc.",+1 786-655-6464,,,25.7526363,-80.2611969,33134,5.0,,Construction company,None,outscraper
+Cool It Air Conditioning Repair,+1 305-850-6490,,,25.7341412,-80.2610479,33146,4.5,,Air conditioning repair service,None,outscraper
+Modern Homes,+1 786-322-0471,,,25.7289376,-80.25606619999999,33133,,,Television repair service,None,outscraper
+UrbanChill AC Repairs Coral Gables,+1 786-882-8468,,,25.7517413,-80.2573532,33134,4.4,,Air conditioning repair service,None,outscraper
+Trusted Electrical Solutions,+1 786-342-9582,,,25.6408462,-80.3809855,33176,5.0,,Electrician,None,outscraper
