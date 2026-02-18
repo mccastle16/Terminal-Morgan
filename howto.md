@@ -57,7 +57,7 @@ You need **zero keys** to start — OSM Overpass is unlimited and free. The paid
 - 500 Google Maps search requests per month
 - No credit card required
 - Resets on the 1st of each month
-- Each request returns up to 25 results → **500 requests = ~12,500 potential records** (heavily deduped down to ~400-500 net new)
+- Each request returns up to 25 results → **60 queries across 3 runs = ~1,300 raw records** (deduped down to ~400-600 net new by Agent 2)
 
 **Rate limits:** No documented hard limit, but space requests 2s apart (Agent 1 does this automatically).
 
@@ -120,7 +120,7 @@ pip install google-search-results
 - Returns: name, coordinates, phone, website, address (when tagged)
 - Does NOT return: ratings, reviews, price tier
 
-**Expected yield:** ~800 businesses in the Coral Gables bounding box.
+**Expected yield:** ~560 businesses in the Coral Gables bounding box (10-chunk geographic sweep). Some chunks may 504 timeout on busy Overpass servers — re-run to pick up missed chunks.
 
 ---
 
@@ -235,8 +235,8 @@ python "scripts/1. agent1-osint.py" --source outscraper --run 3  # hospitality &
 # Apify — single run, all categories
 python "scripts/1. agent1-osint.py" --source apify
 
-# SerpApi — enrichment pass (needs existing master)
-python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --limit 100
+# SerpApi — enrichment pass (needs existing master, default limit: 5000)
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
 
 # OSM Overpass — 10-chunk geographic sweep
 python "scripts/1. agent1-osint.py" --source osm
@@ -262,7 +262,7 @@ The master CSV has significant gaps in existing records. Enrichment backfills th
 | Postcode missing | Infer from coordinates (nearest centroid) | Free (local) |
 | Neighborhood missing | Infer from coordinates (boundary rules) | Free (local) |
 | Category = "other" (774) | Re-map using business name keywords | Free (local) |
-| Ratings missing (94%) | SerpApi enrichment pass | 100 free/month |
+| Ratings missing (94%) | SerpApi enrichment pass | 5,000/month (Developer) |
 
 ### Run enrichment
 
@@ -344,8 +344,8 @@ python "scripts/0. orchestrator.py" --sources outscraper
 # 2. Run enrichment pass
 python "scripts/0. orchestrator.py" --enrich
 
-# 3. Run SerpApi ratings enrichment (100 free)
-python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --limit 100
+# 3. Run SerpApi ratings enrichment (5,000/month on Developer plan)
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
 python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv
 
 # 4. PKP synthesis + export
@@ -378,15 +378,16 @@ python "scripts/0. orchestrator.py" --sources osm
 
 ### Projected timeline to 4,400
 
-| Month | Source | Expected Net New | Running Total |
-|-------|--------|------------------:|--------------:|
-| Current | Baseline | — | 1,665 |
-| 1 | Outscraper + Apify + OSM | +1,200 | ~2,865 |
-| 2 | Outscraper + SerpApi enrich | +400 | ~3,265 |
-| 3 | Outscraper + SerpApi enrich | +350 | ~3,615 |
-| 4 | Outscraper + SerpApi enrich | +300 | ~3,915 |
-| 5 | Outscraper + SerpApi enrich | +250 | ~4,165 |
-| 6 | Outscraper + final sweep | +200 | **~4,365** |
+| Month | Source | Raw Collected | Net New (after dedup) | Running Total |
+|-------|--------|:-------------:|----------------------:|--------------:|
+| Current | Baseline | — | — | 1,665 |
+| 1 (Feb) | OSM + Outscraper (x3) + SerpApi | 562 + 1,304 + enrichment | TBD after Agent 2 dedup | TBD |
+| 2 | Outscraper (x3) + Apify + SerpApi | ~1,300 + ~700 | +800-1,000 | ~3,500 |
+| 3 | Outscraper (x3) + SerpApi | ~1,300 | +300-400 | ~3,900 |
+| 4 | Outscraper (x3) + OSM re-run | ~1,300 + ~200 | +200-300 | ~4,200 |
+| 5 | Outscraper (final sweep) | ~1,000 | +100-200 | **~4,400** |
+
+> **Note:** Actual yields from first run — OSM: 562 raw, Outscraper: 380 (food) + 491 (professional) + 433 (services) = 1,304 raw. SerpApi enriches existing records (ratings backfill) rather than adding new rows. Net new after Agent 2 dedup is typically 30-50% of raw count.
 
 ---
 
@@ -417,17 +418,25 @@ If you see `'OutscraperClient' object has no attribute 'google_maps_search_v2'`,
 
 The agent scripts already use the current API. If you're on an older version of this repo, pull the latest changes.
 
-### numpy / numexpr version conflict
+### numpy version conflict (`_ARRAY_API not found` or `compiled against NumPy 1.x`)
 
-If you see `A]module compiled against NumPy 1.x cannot run against NumPy 2.x`, your numpy and numexpr versions are mismatched. Common on Anaconda installs.
+If you see `_ARRAY_API not found` or `module compiled against NumPy 1.x cannot run against NumPy 2.x`, compiled packages like `numexpr` and `bottleneck` are incompatible with your numpy version. This is common on **Anaconda** installs where numpy 2.x ships but other packages are compiled against 1.x.
+
+**Recommended fix — downgrade numpy (most reliable for Anaconda):**
 
 ```bash
-# Fix by upgrading numexpr to match numpy 2.x:
-pip install --upgrade numexpr
-
-# Or downgrade numpy to 1.x if you need other packages pinned:
 pip install 'numpy<2'
 ```
+
+This resolves all related conflicts at once (`numexpr`, `bottleneck`, `scipy`, etc.). You'll see red dependency warnings from pip — these are safe to ignore as long as pandas imports without errors.
+
+**Alternative — upgrade everything to numpy 2.x:**
+
+```bash
+pip install --upgrade numexpr bottleneck
+```
+
+This only works if all your packages have numpy 2.x-compatible wheels available.
 
 ### "No staging records found"
 
