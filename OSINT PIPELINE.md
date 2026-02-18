@@ -1,10 +1,10 @@
 # OSINT Pipeline — Execution Summary
 
-> 6-run chunked pipeline producing a unified **1,333-business master CSV** at $0 cost.
+> Four-agent pipeline producing a unified **1,665-business master CSV** at $0 cost, targeting ~4,400.
 
 ---
 
-## Pipeline Results
+## Pipeline Results — Phase 1 (Baseline)
 
 | Run | Target | Source | Records |
 |-----|--------|--------|--------:|
@@ -20,24 +20,24 @@
 | 6c | Entertainment / Craft | OSM Overpass | 25 |
 | | **OSM Total (deduped)** | | **811** |
 | | **CGCC Members** | Directory parse | **836** |
-| | **Agent 1 Deep OSINT** | Enrichment | **25** |
-| | **Final Merged (deduped)** | | **1,333** |
+| | **Non-chamber scrapes** | Manual + semi-auto | **131** |
+| | **Final Merged (deduped)** | | **1,665** |
 
 ---
 
-## Growth Projection — $0 to 4,500+
+## Growth Projection — $0 to 4,400+
 
-Monthly free-tier API stacking to close the gap from 1,333 to the ~4,520 target:
+Monthly free-tier API stacking via Agent 0 orchestrator:
 
-| Run | Month | Tool | Free Tier | Expected Net New |
-|-----|-------|------|-----------|------------------:|
-| 1 | Mar | Outscraper | 500/mo | +400 |
-| 2 | Apr | Outscraper | 500/mo | +350 |
-| 3 | May | Apify | $5 credit (~700) | +600 |
-| 4 | Jun | Outscraper | 500/mo | +300 |
-| 5 | Jul | SerpApi | 100 searches/mo | +0 (enrichment) |
-| 6 | Aug | Local merge | — | Dedup + Validation |
-| | **Projected Total** | | | **~4,316** |
+| Run | Month | Tool | Free Tier | Expected Net New | Running Total |
+|-----|-------|------|-----------|------------------:|--------------:|
+| — | Current | Baseline | — | — | 1,665 |
+| 1 | Month 1 | Outscraper + Apify + OSM | 500/mo + $5 + free | +1,200 | ~2,865 |
+| 2 | Month 2 | Outscraper + SerpApi enrich | 500/mo + 100/mo | +400 | ~3,265 |
+| 3 | Month 3 | Outscraper + SerpApi enrich | 500/mo + 100/mo | +350 | ~3,615 |
+| 4 | Month 4 | Outscraper + SerpApi enrich | 500/mo + 100/mo | +300 | ~3,915 |
+| 5 | Month 5 | Outscraper + SerpApi enrich | 500/mo + 100/mo | +250 | ~4,165 |
+| 6 | Month 6 | Outscraper + final sweep | 500/mo | +200 | **~4,365** |
 
 ---
 
@@ -45,36 +45,70 @@ Monthly free-tier API stacking to close the gap from 1,333 to the ~4,520 target:
 
 | Metric | Count | % |
 |--------|------:|--:|
-| **Total Businesses** | 1,333 | — |
-| Chamber Members | 835 | 63% |
-| Non-Members (OSM) | 498 | 37% |
-| Has Lat/Lon | 544 | 41% |
-| Has Phone | 1,013 | 76% |
-| Has Website | 974 | 73% |
-| Has Address | 416 | 31% |
+| **Total Businesses** | 1,665 | — |
+| Chamber Members | 883 | 53% |
+| Non-Members | 782 | 47% |
+| Has Lat/Lon | ~694 | 42% |
+| Has Phone | ~1,133 | 68% |
+| Has Website | ~1,112 | 67% |
+| Has Address | ~621 | 37% |
+| Has Rating | ~97 | 6% |
+| Category = "other" | 774 | 46% |
 | Red Flags | 8 | — |
 
 ---
 
-## Production Script
+## Production Commands
 
 ```bash
+# Set API keys
 export OUTSCRAPER_KEY=your_key_here
 export APIFY_TOKEN=your_token_here
 export SERPAPI_KEY=your_key_here
 
-python cg_chunked_scraper.py --run 1  # Outscraper — restaurants + retail
-python cg_chunked_scraper.py --run 2  # Outscraper — professional + healthcare
-python cg_chunked_scraper.py --run 3  # Apify — all categories gap fill
-python cg_chunked_scraper.py --run 4  # Outscraper — hospitality + wellness
-python cg_chunked_scraper.py --run 5  # SerpApi — rating enrichment
-python cg_chunked_scraper.py --run 6  # Final dedup + merge + validation
+# Run full pipeline concurrently (Agent 0 → Agent 1 × N → Agent 2 → Agent 3)
+python "scripts/0. orchestrator.py" --all
+
+# Run individual sources
+python "scripts/1. agent1-osint.py" --source osm
+python "scripts/1. agent1-osint.py" --source outscraper --run 1
+python "scripts/1. agent1-osint.py" --source apify
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
+
+# Validate and merge staging into master
+python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv
+
+# Enrich existing data (geocoding, categories)
+python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv --enrich
+
+# PKP synthesis + export to dashboard
+python "scripts/3. agent3-synthesizer.py" --master data/master_all_businesses.csv --action synthesize
+python "scripts/3. agent3-synthesizer.py" --master data/master_all_businesses.csv --action export
 ```
 
-Each run writes to `staging/`. Run 6 performs fuzzy dedup (fuzzywuzzy ratio > 85), merges into the master CSV, and archives staging data.
+---
+
+## Four-Agent Architecture
+
+```
+Agent 0 (Orchestrator) — Concurrent pipeline runner
+  ├── Agent 1 (OSM)        ─┐
+  ├── Agent 1 (Outscraper)  ├── staging/*.csv
+  ├── Agent 1 (Apify)       │
+  └── Agent 1 (SerpApi)    ─┘
+           │
+           ▼
+Agent 2 (Validator) — Normalize → Fuzzy dedup → Validate → Merge
+Agent 2 (Enrichment) — Geocode → Reverse geocode → Re-categorize
+           │
+           ▼
+Agent 3 (Synthesizer) — PKP synthesis → Export → Stats
+```
 
 ---
 
 ## Core Insight
 
-Every business API caps **results per query**, not **queries per account**. The strategy: generate hundreds of narrow `(category x zip)` combinations, each returning a small batch, then deduplicate at merge time. Five free tiers stacked together outperform any single paid API.
+Every business API caps **results per query**, not **queries per account**. The strategy: generate hundreds of narrow `(category × zip)` combinations, each returning a small batch, then deduplicate at merge time. Five free tiers stacked together outperform any single paid API.
+
+See [howto.md](./howto.md) for the full step-by-step guide.

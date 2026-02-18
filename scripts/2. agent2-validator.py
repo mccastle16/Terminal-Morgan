@@ -564,6 +564,265 @@ def archive_staging(staging_dir: str):
         print(f"  Archived: {csv_file.name} -> archived/{dest.name}")
 
 
+# ── Enrichment ────────────────────────────────────────────────────
+NOMINATIM_URL = "https://nominatim.openstreetmap.org"
+NOMINATIM_HEADERS = {"User-Agent": "CoralGablesOSINT/1.0 (business-data-enrichment)"}
+
+
+def geocode_address(address: str) -> Tuple[Optional[float], Optional[float]]:
+    """Forward geocode an address via Nominatim (free, no key)."""
+    import requests
+
+    if not address:
+        return None, None
+    try:
+        resp = requests.get(
+            f"{NOMINATIM_URL}/search",
+            params={"q": address, "format": "json", "limit": 1,
+                    "countrycodes": "us", "viewbox": "-80.31,25.77,-80.23,25.69"},
+            headers=NOMINATIM_HEADERS,
+            timeout=10,
+        )
+        if resp.status_code == 200 and resp.json():
+            result = resp.json()[0]
+            return float(result["lat"]), float(result["lon"])
+    except Exception:
+        pass
+    return None, None
+
+
+def reverse_geocode(lat: float, lon: float) -> str:
+    """Reverse geocode lat/lon to an address via Nominatim (free, no key)."""
+    import requests
+
+    try:
+        resp = requests.get(
+            f"{NOMINATIM_URL}/reverse",
+            params={"lat": lat, "lon": lon, "format": "json"},
+            headers=NOMINATIM_HEADERS,
+            timeout=10,
+        )
+        if resp.status_code == 200:
+            data = resp.json()
+            return data.get("display_name", "").split(", Miami-Dade")[0]
+    except Exception:
+        pass
+    return ""
+
+
+def enrich_master(master_path: str, dry_run: bool = False) -> None:
+    """
+    Enrichment pass on existing master CSV. Backfills:
+      1. lat/lon for rows that have address but no coordinates
+      2. address for rows that have lat/lon but no address
+      3. postcode/neighborhood for rows that now have coordinates
+      4. re-map "other" categories using business name keywords
+    Respects Nominatim rate limit: 1 request/second.
+    """
+    import time as _time
+
+    df = load_master(master_path)
+    if df.empty:
+        print("  No records to enrich.")
+        return
+
+    total = len(df)
+    stats = {"geocoded": 0, "reverse_geocoded": 0, "zip_inferred": 0,
+             "neighborhood_inferred": 0, "recategorized": 0, "skipped": 0}
+
+    print(f"\n  Enrichment pass on {total} records...\n")
+
+    # ── Pass 1: Forward geocode (address → lat/lon) ──────────────
+    needs_geocode = df[
+        (df["address"].fillna("") != "") &
+        ((df["lat"].fillna("") == "") | (df["lon"].fillna("") == ""))
+    ]
+    print(f"  Pass 1: Forward geocode — {len(needs_geocode)} rows have address but no lat/lon")
+
+    for idx in needs_geocode.index:
+        address = str(df.loc[idx, "address"])
+        # Append Coral Gables if not already present
+        if "coral gables" not in address.lower():
+            address = f"{address}, Coral Gables, FL"
+
+        lat, lon = geocode_address(address)
+        if lat is not None and lon is not None:
+            if in_coral_gables(lat, lon):
+                if not dry_run:
+                    df.loc[idx, "lat"] = str(lat)
+                    df.loc[idx, "lon"] = str(lon)
+                stats["geocoded"] += 1
+            else:
+                stats["skipped"] += 1
+        _time.sleep(1.1)  # Nominatim rate limit: 1 req/sec
+
+        if stats["geocoded"] % 25 == 0 and stats["geocoded"] > 0:
+            print(f"    ... geocoded {stats['geocoded']} so far")
+
+    print(f"    Geocoded: {stats['geocoded']}")
+
+    # ── Pass 2: Reverse geocode (lat/lon → address) ──────────────
+    needs_reverse = df[
+        ((df["lat"].fillna("") != "") & (df["lon"].fillna("") != "")) &
+        (df["address"].fillna("") == "")
+    ]
+    print(f"\n  Pass 2: Reverse geocode — {len(needs_reverse)} rows have lat/lon but no address")
+
+    for idx in needs_reverse.index:
+        try:
+            lat = float(df.loc[idx, "lat"])
+            lon = float(df.loc[idx, "lon"])
+        except (ValueError, TypeError):
+            continue
+
+        address = reverse_geocode(lat, lon)
+        if address:
+            if not dry_run:
+                df.loc[idx, "address"] = address
+            stats["reverse_geocoded"] += 1
+        _time.sleep(1.1)
+
+        if stats["reverse_geocoded"] % 25 == 0 and stats["reverse_geocoded"] > 0:
+            print(f"    ... reverse geocoded {stats['reverse_geocoded']} so far")
+
+    print(f"    Reverse geocoded: {stats['reverse_geocoded']}")
+
+    # ── Pass 3: Infer postcode + neighborhood from coordinates ───
+    needs_zip = df[
+        ((df["lat"].fillna("") != "") & (df["lon"].fillna("") != "")) &
+        (df["postcode"].fillna("") == "")
+    ]
+    print(f"\n  Pass 3: Zip/neighborhood inference — {len(needs_zip)} rows missing postcode")
+
+    for idx in needs_zip.index:
+        try:
+            lat = float(df.loc[idx, "lat"])
+            lon = float(df.loc[idx, "lon"])
+        except (ValueError, TypeError):
+            continue
+        if not dry_run:
+            df.loc[idx, "postcode"] = infer_zip(lat, lon)
+            stats["zip_inferred"] += 1
+
+    # Neighborhood for all rows with coords but no neighborhood
+    needs_neighborhood = df[
+        ((df["lat"].fillna("") != "") & (df["lon"].fillna("") != "")) &
+        ((df["neighborhood_area"].fillna("") == "") |
+         (df["neighborhood_area"].fillna("") == "Coral Gables"))
+    ]
+    for idx in needs_neighborhood.index:
+        try:
+            lat = float(df.loc[idx, "lat"])
+            lon = float(df.loc[idx, "lon"])
+        except (ValueError, TypeError):
+            continue
+        neighborhood = infer_neighborhood(lat, lon)
+        if neighborhood and neighborhood != "Coral Gables":
+            if not dry_run:
+                df.loc[idx, "neighborhood_area"] = neighborhood
+            stats["neighborhood_inferred"] += 1
+
+    print(f"    Zip codes inferred: {stats['zip_inferred']}")
+    print(f"    Neighborhoods inferred: {stats['neighborhood_inferred']}")
+
+    # ── Pass 4: Re-categorize "other" using business name ────────
+    is_other = df["category_primary"].fillna("other") == "other"
+    other_rows = df[is_other]
+    print(f"\n  Pass 4: Re-categorize — {len(other_rows)} rows currently 'other'")
+
+    # Build extended keyword rules from business name
+    NAME_CATEGORY_HINTS = [
+        ("restaurant", "food_beverage"), ("grill", "food_beverage"),
+        ("pizza", "food_beverage"), ("sushi", "food_beverage"),
+        ("cafe", "food_beverage"), ("coffee", "food_beverage"),
+        ("bakery", "food_beverage"), ("bar ", "food_beverage"),
+        ("brewery", "food_beverage"), ("taco", "food_beverage"),
+        ("burger", "food_beverage"), ("deli", "food_beverage"),
+        ("ice cream", "food_beverage"), ("steakhouse", "food_beverage"),
+        ("bistro", "food_beverage"), ("trattoria", "food_beverage"),
+        ("law", "legal"), ("attorney", "legal"), ("legal", "legal"),
+        ("esq", "legal"), ("notary", "legal"),
+        ("accounting", "accounting"), ("cpa", "accounting"), ("tax", "accounting"),
+        ("bank", "banking"), ("credit union", "banking"),
+        ("financial", "financial_services"), ("wealth", "financial_services"),
+        ("invest", "financial_services"), ("capital", "financial_services"),
+        ("insurance", "insurance"), ("allstate", "insurance"),
+        ("state farm", "insurance"), ("geico", "insurance"),
+        ("real estate", "real_estate"), ("realty", "real_estate"),
+        ("properties", "real_estate"), ("mortgage", "real_estate"),
+        ("doctor", "healthcare"), ("medical", "healthcare"),
+        ("dental", "healthcare"), ("dentist", "healthcare"),
+        ("clinic", "healthcare"), ("hospital", "healthcare"),
+        ("pharmacy", "healthcare"), ("orthodont", "healthcare"),
+        ("dermatolog", "healthcare"), ("pediatr", "healthcare"),
+        ("chiropract", "healthcare"), ("optom", "healthcare"),
+        ("physical therapy", "healthcare"), ("urgent care", "healthcare"),
+        ("hotel", "hospitality"), ("inn ", "hospitality"),
+        ("resort", "hospitality"), ("travel", "hospitality"),
+        ("school", "education"), ("academy", "education"),
+        ("university", "education"), ("college", "education"),
+        ("tutor", "education"), ("learning", "education"),
+        ("montessori", "education"), ("preschool", "education"),
+        ("church", "nonprofit"), ("temple", "nonprofit"),
+        ("synagogue", "nonprofit"), ("mosque", "nonprofit"),
+        ("foundation", "nonprofit"), ("charity", "nonprofit"),
+        ("salon", "personal_services"), ("barber", "personal_services"),
+        ("hair", "personal_services"), ("nail", "personal_services"),
+        ("beauty", "personal_services"), ("spa", "wellness"),
+        ("fitness", "wellness"), ("gym", "wellness"),
+        ("yoga", "wellness"), ("pilates", "wellness"),
+        ("crossfit", "wellness"), ("martial art", "wellness"),
+        ("architect", "professional_services"),
+        ("engineer", "professional_services"),
+        ("consult", "consulting"), ("advisory", "consulting"),
+        ("marketing", "marketing"), ("advertis", "marketing"),
+        ("design", "marketing"), ("media", "marketing"),
+        ("construction", "construction"), ("contractor", "construction"),
+        ("plumb", "construction"), ("electric", "construction"),
+        ("roofing", "construction"), ("painting", "construction"),
+        ("auto", "auto_dealer"), ("car wash", "auto_dealer"),
+        ("tire", "auto_dealer"), ("mechanic", "auto_dealer"),
+        ("gallery", "arts_culture"), ("museum", "arts_culture"),
+        ("theatre", "arts_culture"), ("theater", "arts_culture"),
+        ("tech", "technology"), ("software", "technology"),
+        ("IT ", "technology"), ("computer", "technology"),
+        ("cyber", "technology"), ("cloud", "technology"),
+        ("cleaners", "retail"), ("dry clean", "retail"),
+        ("boutique", "retail"), ("jewelry", "retail"),
+        ("optical", "retail"), ("pet", "retail"),
+        ("flower", "retail"), ("florist", "retail"),
+    ]
+
+    for idx in other_rows.index:
+        name = str(df.loc[idx, "business_name"]).lower()
+        secondary = str(df.loc[idx, "category_secondary"]).lower()
+        combined = f"{name} {secondary}"
+
+        for keyword, category in NAME_CATEGORY_HINTS:
+            if keyword in combined:
+                if not dry_run:
+                    df.loc[idx, "category_primary"] = category
+                stats["recategorized"] += 1
+                break
+
+    print(f"    Recategorized: {stats['recategorized']}")
+
+    # ── Write ─────────────────────────────────────────────────────
+    if not dry_run:
+        df = df.sort_values("business_name", key=lambda x: x.str.lower())
+        df.to_csv(master_path, index=False)
+        print(f"\n  Master updated: {len(df)} records -> {master_path}")
+    else:
+        print(f"\n  DRY RUN: no changes written")
+
+    print(f"\n  Enrichment summary:")
+    print(f"    Forward geocoded:        {stats['geocoded']}")
+    print(f"    Reverse geocoded:        {stats['reverse_geocoded']}")
+    print(f"    Zip codes inferred:      {stats['zip_inferred']}")
+    print(f"    Neighborhoods inferred:  {stats['neighborhood_inferred']}")
+    print(f"    Categories re-mapped:    {stats['recategorized']}")
+
+
 # ── CLI ───────────────────────────────────────────────────────────
 def main():
     parser = argparse.ArgumentParser(
@@ -574,6 +833,8 @@ Examples:
   python "2. agent2-validator.py" --master data/master_all_businesses.csv
   python "2. agent2-validator.py" --master data/master_all_businesses.csv --dry-run
   python "2. agent2-validator.py" --master data/master_all_businesses.csv --staging staging/
+  python "2. agent2-validator.py" --master data/master_all_businesses.csv --enrich
+  python "2. agent2-validator.py" --master data/master_all_businesses.csv --enrich --dry-run
         """,
     )
     parser.add_argument(
@@ -597,8 +858,25 @@ Examples:
         default=85,
         help="Fuzzy match threshold (default: 85)",
     )
+    parser.add_argument(
+        "--enrich",
+        action="store_true",
+        help="Enrichment mode: backfill geocoding, addresses, categories on existing master",
+    )
     args = parser.parse_args()
 
+    # ── Enrichment mode ──────────────────────────────────────────
+    if args.enrich:
+        print(f"\n{'='*60}")
+        print(f"  AGENT 2 — ENRICHMENT MODE")
+        print(f"  Master: {args.master}")
+        print(f"  Mode: {'DRY RUN' if args.dry_run else 'LIVE'}")
+        print(f"{'='*60}")
+        enrich_master(args.master, args.dry_run)
+        print(f"\n  Done.\n")
+        return
+
+    # ── Normal staging merge mode ────────────────────────────────
     print(f"\n{'='*60}")
     print(f"  AGENT 2 — VALIDATOR & MERGER")
     print(f"  Master: {args.master}")
