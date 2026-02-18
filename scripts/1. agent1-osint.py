@@ -191,9 +191,9 @@ def scrape_outscraper(run_num: int = 1) -> List[Dict[str, str]]:
         print("  ERROR: OUTSCRAPER_KEY not set")
         return []
 
-    from outscraper import ApiClient
+    from outscraper import OutscraperClient
 
-    client = ApiClient(api_key=OUTSCRAPER_KEY)
+    client = OutscraperClient(api_key=OUTSCRAPER_KEY)
     queries = OUTSCRAPER_CHUNKS.get(run_num, [])
     if not queries:
         print(f"  No queries defined for run {run_num}")
@@ -203,7 +203,7 @@ def scrape_outscraper(run_num: int = 1) -> List[Dict[str, str]]:
     for query in queries:
         print(f"    Outscraper: {query}")
         try:
-            results = client.google_maps_search_v2(
+            results = client.google_maps_search(
                 [query], limit=25, language="en", region="US"
             )
             for batch in results:
