@@ -8,7 +8,9 @@
 
 A structured OSINT database and agent-based pipeline for collecting, validating, and synthesizing business data across **Coral Gables, FL** (zip codes 33134, 33146, 33133, 33143). The goal: build the most complete picture of the local business ecosystem at zero cost, using stacked free-tier APIs and multi-agent validation.
 
-**Current state:** 1,689 unique businesses (deduped across all sources), against a target of ~4,520 active entities.
+**Current state:** 1,665 unique businesses (deduped across all sources), against a target of ~4,400 active entities.
+
+**New here?** See [howto.md](./howto.md) for the step-by-step guide to getting API keys and running the full pipeline.
 
 ---
 
@@ -18,7 +20,7 @@ A structured OSINT database and agent-based pipeline for collecting, validating,
 Terminal/
 |
 |-- data/                          # CSV datasets (raw + processed)
-|   |-- master_all_businesses.csv  # <-- MASTER: 1,689 deduped businesses
+|   |-- master_all_businesses.csv  # <-- MASTER: 1,665 deduped businesses
 |   |-- 1. cgcc-osint-v1.csv       # CGCC enriched v1 (858 rows)
 |   |-- 2. cgcc-osint-v2.csv       # CGCC + OSM merged v2 (1,475 rows)
 |   |-- 3. final-osint.csv         # Cleaned final run (1,128 rows)
@@ -27,111 +29,139 @@ Terminal/
 |   |-- 6. ten-chunk-business.csv  # 10-chunk OSM pipeline (1,366 rows)
 |
 |-- scripts/                       # Python agent scripts
+|   |-- 0. orchestrator.py         # Agent 0: Concurrent pipeline runner
 |   |-- 1. agent1-osint.py         # Agent 1: Discovery / Scraper
-|   |-- 2. agent2-validator.py     # Agent 2: Normalization / Validation
-|   |-- 3. agent3-synthesizer.py   # Agent 3: CSV Output / Synthesis
-|   |-- 4. chunkedscraper.py       # Monthly chunked scraper (production)
-|   |-- 5. ten-chunk-script.py     # 10-chunk OSM Overpass pipeline
+|   |-- 2. agent2-validator.py     # Agent 2: Normalization / Validation / Enrichment
+|   |-- 3. agent3-synthesizer.py   # Agent 3: PKP Synthesis / Export
+|   |-- 4. chunkedscraper.py       # Monthly chunked scraper (legacy)
+|   |-- 5. ten-chunk-script.py     # 10-chunk OSM Overpass pipeline (legacy)
+|
+|-- staging/                       # Agent 1 output → Agent 2 input
 |
 |-- dashboard/                     # React/Vite frontend (visualization)
 |   |-- src/pages/                 # 15+ specialized views
 |   |-- public/data/               # Dashboard data feed
 |
+|-- howto.md                       # Step-by-step pipeline guide + API key setup
 |-- CGCC-members.md                # Raw CGCC member directory (~836 members)
 |-- coralgables-osint.md           # Strategic intelligence framework
 |-- OSINT PIPELINE.md              # Pipeline execution summary
 |-- chuncking architecture.md      # $0 chunking strategy
-|-- final-output-schema.md         # Output CSV schema spec
+|-- final-output-schema.md         # Output CSV schema spec (27 + 7 PKP fields)
 |-- Coral Gables Directory.md      # Non-member category expansion
 |-- Strategy for Incremental Gap-Fill Scrape.md
+|-- todo.md                        # Project task tracker
 ```
 
 ---
 
 ## Master CSV — `data/master_all_businesses.csv`
 
-**1,689 unique businesses** consolidated from 9 source files, deduplicated by normalized business name.
+**1,665 unique businesses** consolidated from 9 source files, deduplicated by normalized business name.
 
 ### Coverage Breakdown
 
 | Metric | Count |
 |--------|------:|
-| **Total unique businesses** | 1,689 |
+| **Total unique businesses** | 1,665 |
 | Chamber members | 883 |
-| Non-members | 806 |
+| Non-members | 782 |
+| **Target** | ~4,400 |
+| **Gap remaining** | ~2,735 |
 
-### Top Categories
+### Field Completeness
 
-| Category | Count |
-|----------|------:|
-| Other / Uncategorized | 774 |
-| Food & Beverage | 224 |
-| Retail | 174 |
-| Accounting | 84 |
-| Healthcare | 60 |
-| Hospitality | 57 |
-| Professional Services | 41 |
-| Education | 38 |
-| Nonprofit | 34 |
-| Legal | 31 |
-| Real Estate | 28 |
-| Insurance | 25 |
-| Wellness | 22 |
+| Field | Fill Rate | Notes |
+|-------|----------:|-------|
+| business_name | 100% | Always present |
+| chamber_member | 100% | Y/N flag |
+| category_primary | ~100% | 774 still "other" |
+| phone | 68% | |
+| website | 67% | |
+| contact_name | 51% | |
+| lat / lon | 42% | |
+| address | 37% | |
+| rating_primary_value | 6% | Major gap |
+| top_delights / top_pain_points | 3% | Major gap |
 
 ### Schema
 
-See [final-output-schema.md](./final-output-schema.md) for the full 27-field specification. Key fields:
+See [final-output-schema.md](./final-output-schema.md) for the full 27-field + 7 PKP field specification. Key fields:
 
 - **Identity:** `business_id`, `business_name`, `contact_name`, `phone`, `website`
 - **Location:** `address`, `lat`, `lon`, `postcode`, `neighborhood_area`
 - **Classification:** `category_primary`, `category_secondary`, `price_tier`
 - **OSINT:** `rating_primary_value`, `top_delights`, `top_pain_points`, `osint_confidence`
 - **Validation:** `validation_tier`, `red_flag_present`, `red_flag_severity`
+- **PKP:** `pkp_node_type`, `pkp_edges_summary`, `pkp_key_signals`, `pkp_primary_risks`, `pkp_primary_actions`
 - **Meta:** `chamber_member`, `source_file`, `batch_id`
 
 ---
 
-## Three-Agent Pipeline
+## Four-Agent Pipeline
 
-### Agent 1 — Discovery (`scripts/1. agent1-osint.py`)
+### Agent 0 — Orchestrator (`scripts/0. orchestrator.py`)
 
-**Role:** Entity resolution and data ingestion. Takes a query, hits multiple sources (web, APIs, databases), returns raw heterogeneous records.
+**Role:** Runs the full pipeline with concurrent source collection. Launches multiple Agent 1 instances in parallel, then chains Agent 2 and Agent 3.
 
-**Current implementation:** Scaffold with config, query interface, and metadata structure. Core collection logic (API calls, scraping) is stubbed with `TODO` placeholders.
+**Status: Production-ready.**
 
-### Agent 2 — Validation (`scripts/2. agent2-validator.py`)
+```bash
+# Run everything concurrently
+python "scripts/0. orchestrator.py" --all
 
-**Role:** Normalizes Agent 1's raw output into canonical schema fields. Maps inconsistent field names, applies enrichment (geocoding, NAICS mapping).
+# Selective sources
+python "scripts/0. orchestrator.py" --sources osm,outscraper
 
-**Current implementation:** Working normalization with field mapping for 10 canonical columns. Enrichment hooks are stubbed.
+# Enrichment only (geocoding, categories)
+python "scripts/0. orchestrator.py" --enrich
 
-### Agent 3 — Synthesis (`scripts/3. agent3-synthesizer.py`)
+# Merge existing staging without new collection
+python "scripts/0. orchestrator.py" --merge-only
+```
 
-**Role:** Persists normalized records to CSV. Infers headers from data, writes to configurable output directory.
+### Agent 1 — Discovery Scraper (`scripts/1. agent1-osint.py`)
 
-**Current implementation:** Fully functional CSV writer with auto-header inference and configurable output paths.
+**Role:** Collects raw business records from multiple sources and writes them to staging CSVs.
 
-### Agent Analysis — Are They Meeting the Need?
+**Status: Production-ready.** Four source adapters fully implemented:
 
-**Short answer: the architecture is sound, but the agents are scaffolds, not production scrapers.**
+| Source | Method | Cost | Expected Yield |
+|--------|--------|------|---------------:|
+| **Outscraper** | Google Maps API | 500 free/month | +400-500/run |
+| **Apify** | Google Places actor | $5 free credit | +600-700 |
+| **SerpApi** | Google Maps local results | 100 free/month | Enrichment only |
+| **OSM Overpass** | OpenStreetMap queries | Unlimited, free | +800 |
 
-The actual data collection has been done through two separate mechanisms:
+### Agent 2 — Validator & Merger (`scripts/2. agent2-validator.py`)
 
-1. **Manual/semi-automated runs** documented in the `.md` files and the `non-cgcc-biz` CSVs
-2. **The 10-chunk Overpass script** (`scripts/5. ten-chunk-script.py`) which is the only fully implemented scraper — it pulled 811 businesses from OpenStreetMap
+**Role:** Normalizes raw staging CSVs to canonical schema, deduplicates against master, validates fields, and writes updated master. Also runs enrichment passes on existing data.
 
-The three agent scripts (`agent1`, `agent2`, `agent3`) define the correct pipeline architecture:
-- Agent 1 discovers and collects raw data
-- Agent 2 normalizes and validates
-- Agent 3 outputs to CSV
+**Status: Production-ready.** Two modes:
 
-But their core logic remains `TODO`. The real scraping work has been done by the chunked scripts and manual collection. To close the gap to 4,520 businesses, the agents need:
+- **Merge mode** (default): Ingest staging CSVs, normalize, fuzzy dedup, validate, merge into master
+- **Enrich mode** (`--enrich`): Backfill existing master rows — forward/reverse geocoding via Nominatim, zip/neighborhood inference, category re-mapping from business name keywords
 
-- **Agent 1:** Actual API integrations (Outscraper, Apify, SerpApi) — currently only defined in `scripts/4. chunkedscraper.py`
-- **Agent 2:** Fuzzy dedup engine, geo-validation, LLM-based coherence checks — described in `agent-schemas/agent2-validator.md` but not coded
-- **Agent 3:** PKP synthesis, multi-agent consensus scoring — described in `agent-schemas/agent3-synthesis.md` but not coded
+```bash
+python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv
+python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv --enrich
+```
 
-The production scraper (`scripts/4. chunkedscraper.py`) contains the real implementation of what Agent 1 + Agent 2 should do. The path forward is to refactor that script's logic into the agent framework.
+### Agent 3 — Synthesizer & Exporter (`scripts/3. agent3-synthesizer.py`)
+
+**Role:** Exports master CSV for dashboard, runs PKP synthesis, and reports stats.
+
+**Status: Production-ready.** Four actions:
+
+- `--action export` — Copy master to `dashboard/public/data/` (full + lite versions)
+- `--action stats` — Print coverage stats, category breakdown, field completeness
+- `--action schema` — Validate master CSV against canonical schema
+- `--action synthesize` — Run PKP synthesis (node type, edges, picks/shovels, undercurrents, signals, risks, actions)
+
+```bash
+python "scripts/3. agent3-synthesizer.py" --master data/master_all_businesses.csv --action synthesize
+python "scripts/3. agent3-synthesizer.py" --master data/master_all_businesses.csv --action export
+```
 
 ---
 
@@ -144,20 +174,37 @@ The production scraper (`scripts/4. chunkedscraper.py`) contains the real implem
 | CGCC Member Directory | 836 | Done |
 | OSM Overpass (10 chunks) | 811 | Done |
 | Non-Chamber Scrapes | 131 | Done |
-| **Deduped Total** | **1,689** | **Current** |
+| **Deduped Total** | **1,665** | **Current** |
 
-### Phase 2 — Gap Fill (Planned)
+### Phase 2 — Gap Fill (In Progress)
 
-Monthly free-tier API stacking using `scripts/4. chunkedscraper.py`:
+Monthly free-tier API stacking via Agent 0 orchestrator:
 
 | Tool | Free Tier | Expected Yield |
 |------|-----------|---------------:|
-| Outscraper | 500/month | +400–500/run |
-| Apify | $5 credit | +600–700 |
+| Outscraper | 500/month | +400-500/run |
+| Apify | $5 credit | +600-700 |
 | SerpApi | 100 searches/month | Enrichment only |
+| OSM (re-run) | Unlimited | +100-200 new |
 | **Projected Total** | | **~4,300** |
 
-See [chuncking architecture.md](./chuncking%20architecture.md) and [OSINT PIPELINE.md](./OSINT%20PIPELINE.md) for full details.
+### Phase 3 — Enrichment (Ready)
+
+Backfill missing fields on existing 1,665 records via Agent 2 `--enrich`:
+
+| Gap | Strategy | Cost |
+|-----|----------|------|
+| Lat/lon (58% missing) | Forward geocode via Nominatim | Free |
+| Address (63% missing) | Reverse geocode via Nominatim | Free |
+| Postcode / Neighborhood | Infer from coordinates | Free (local) |
+| Categories (774 "other") | Keyword re-mapping from business name | Free (local) |
+| Ratings (94% missing) | SerpApi enrichment pass | 100 free/month |
+
+### Phase 4 — PKP Synthesis (Ready)
+
+Run Agent 3 `--action synthesize` to populate 7 PKP graph fields on all records.
+
+See [howto.md](./howto.md) for the full step-by-step guide and monthly cadence.
 
 ---
 
@@ -184,30 +231,42 @@ This framework is designed to be **domain-agnostic**. The same agent pipeline, c
 1. Replace zip codes and geographic bounds
 2. Adjust category taxonomy
 3. Point the scraper at local directories
-4. Run the same three-agent pipeline
+4. Run the same four-agent pipeline
 
-The Portable Knowledge Protocol (PKP) treats every business as a graph node with 7 structured keys: Node, Edges, Picks/Shovels, Undercurrents, Signals, Risks, and Actions.
+See [howto.md § Adapting to a Different City](./howto.md#adapting-to-a-different-city) for specifics.
 
 ---
 
 ## Getting Started
 
 ```bash
-# Install dependencies for the scraper pipeline
-pip install requests pandas beautifulsoup4 fuzzywuzzy python-Levenshtein
+# Install dependencies
+pip install requests pandas fuzzywuzzy python-Levenshtein
 
-# Run the 10-chunk OSM scraper (free, no API keys needed)
-python scripts/5.\ ten-chunk-script.py
+# Per-source (install only what you use):
+pip install outscraper          # for Outscraper
+pip install apify-client        # for Apify
+pip install google-search-results  # for SerpApi
 
-# For paid API enrichment (set keys first)
+# Set API keys (see howto.md for where to get them)
 export OUTSCRAPER_KEY=your_key
 export APIFY_TOKEN=your_token
 export SERPAPI_KEY=your_key
-python scripts/4.\ chunkedscraper.py --run 1
+
+# Run the full pipeline concurrently
+python "scripts/0. orchestrator.py" --all
+
+# Or just OSM (free, no keys needed)
+python "scripts/0. orchestrator.py" --sources osm
+
+# Enrich existing data (geocoding, categories)
+python "scripts/0. orchestrator.py" --enrich
 
 # Dashboard
 cd dashboard && npm install && npm run dev
 ```
+
+For the complete walkthrough including API key signup, monthly cadence, and troubleshooting, see **[howto.md](./howto.md)**.
 
 ---
 
