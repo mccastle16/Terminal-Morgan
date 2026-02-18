@@ -10,6 +10,8 @@ A structured OSINT database and agent-based pipeline for collecting, validating,
 
 **Current state:** 1,665 unique businesses (deduped across all sources), against a target of ~4,400 active entities.
 
+**New here?** See [howto.md](./howto.md) for the step-by-step guide to getting API keys and running the full pipeline.
+
 ---
 
 ## Project Structure
@@ -27,9 +29,10 @@ Terminal/
 |   |-- 6. ten-chunk-business.csv  # 10-chunk OSM pipeline (1,366 rows)
 |
 |-- scripts/                       # Python agent scripts
+|   |-- 0. orchestrator.py         # Agent 0: Concurrent pipeline runner
 |   |-- 1. agent1-osint.py         # Agent 1: Discovery / Scraper
-|   |-- 2. agent2-validator.py     # Agent 2: Normalization / Validation
-|   |-- 3. agent3-synthesizer.py   # Agent 3: Export / Synthesis
+|   |-- 2. agent2-validator.py     # Agent 2: Normalization / Validation / Enrichment
+|   |-- 3. agent3-synthesizer.py   # Agent 3: PKP Synthesis / Export
 |   |-- 4. chunkedscraper.py       # Monthly chunked scraper (legacy)
 |   |-- 5. ten-chunk-script.py     # 10-chunk OSM Overpass pipeline (legacy)
 |
@@ -39,11 +42,12 @@ Terminal/
 |   |-- src/pages/                 # 15+ specialized views
 |   |-- public/data/               # Dashboard data feed
 |
+|-- howto.md                       # Step-by-step pipeline guide + API key setup
 |-- CGCC-members.md                # Raw CGCC member directory (~836 members)
 |-- coralgables-osint.md           # Strategic intelligence framework
 |-- OSINT PIPELINE.md              # Pipeline execution summary
 |-- chuncking architecture.md      # $0 chunking strategy
-|-- final-output-schema.md         # Output CSV schema spec
+|-- final-output-schema.md         # Output CSV schema spec (27 + 7 PKP fields)
 |-- Coral Gables Directory.md      # Non-member category expansion
 |-- Strategy for Incremental Gap-Fill Scrape.md
 |-- todo.md                        # Project task tracker
@@ -82,18 +86,39 @@ Terminal/
 
 ### Schema
 
-See [final-output-schema.md](./final-output-schema.md) for the full 27-field specification. Key fields:
+See [final-output-schema.md](./final-output-schema.md) for the full 27-field + 7 PKP field specification. Key fields:
 
 - **Identity:** `business_id`, `business_name`, `contact_name`, `phone`, `website`
 - **Location:** `address`, `lat`, `lon`, `postcode`, `neighborhood_area`
 - **Classification:** `category_primary`, `category_secondary`, `price_tier`
 - **OSINT:** `rating_primary_value`, `top_delights`, `top_pain_points`, `osint_confidence`
 - **Validation:** `validation_tier`, `red_flag_present`, `red_flag_severity`
+- **PKP:** `pkp_node_type`, `pkp_edges_summary`, `pkp_key_signals`, `pkp_primary_risks`, `pkp_primary_actions`
 - **Meta:** `chamber_member`, `source_file`, `batch_id`
 
 ---
 
-## Three-Agent Pipeline
+## Four-Agent Pipeline
+
+### Agent 0 — Orchestrator (`scripts/0. orchestrator.py`)
+
+**Role:** Runs the full pipeline with concurrent source collection. Launches multiple Agent 1 instances in parallel, then chains Agent 2 and Agent 3.
+
+**Status: Production-ready.**
+
+```bash
+# Run everything concurrently
+python "scripts/0. orchestrator.py" --all
+
+# Selective sources
+python "scripts/0. orchestrator.py" --sources osm,outscraper
+
+# Enrichment only (geocoding, categories)
+python "scripts/0. orchestrator.py" --enrich
+
+# Merge existing staging without new collection
+python "scripts/0. orchestrator.py" --merge-only
+```
 
 ### Agent 1 — Discovery Scraper (`scripts/1. agent1-osint.py`)
 
@@ -108,48 +133,35 @@ See [final-output-schema.md](./final-output-schema.md) for the full 27-field spe
 | **SerpApi** | Google Maps local results | 100 free/month | Enrichment only |
 | **OSM Overpass** | OpenStreetMap queries | Unlimited, free | +800 |
 
-Features: chunked query matrices by category (food, professional, services), free-tier stacking, staging CSV output with common field format.
-
-```bash
-python "scripts/1. agent1-osint.py" --source osm
-python "scripts/1. agent1-osint.py" --source outscraper --run 1
-python "scripts/1. agent1-osint.py" --source apify
-python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
-```
-
 ### Agent 2 — Validator & Merger (`scripts/2. agent2-validator.py`)
 
-**Role:** Normalizes raw staging CSVs to canonical schema, deduplicates against master, validates fields, and writes updated master.
+**Role:** Normalizes raw staging CSVs to canonical schema, deduplicates against master, validates fields, and writes updated master. Also runs enrichment passes on existing data.
 
-**Status: Production-ready.** Full pipeline implemented:
+**Status: Production-ready.** Two modes:
 
-- **Normalization:** Phone formatting, coordinate parsing, category mapping (50+ keyword rules), zip/neighborhood inference from coordinates
-- **Fuzzy dedup:** Two-pass — exact normalized-key match, then fuzzywuzzy ratio >= 85
-- **Geo-validation:** Coral Gables bounding box check, zip centroid inference via haversine
-- **Validation scoring:** Tiered confidence (High/Moderate/Low) based on field completeness, geo bounds, contact info, rating sanity
-- **Merge logic:** Fill blanks on existing records, append truly new ones, archive processed staging files
+- **Merge mode** (default): Ingest staging CSVs, normalize, fuzzy dedup, validate, merge into master
+- **Enrich mode** (`--enrich`): Backfill existing master rows — forward/reverse geocoding via Nominatim, zip/neighborhood inference, category re-mapping from business name keywords
 
 ```bash
 python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv
-python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv --dry-run
+python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv --enrich
 ```
 
 ### Agent 3 — Synthesizer & Exporter (`scripts/3. agent3-synthesizer.py`)
 
-**Role:** Exports master CSV for dashboard and downstream consumers.
+**Role:** Exports master CSV for dashboard, runs PKP synthesis, and reports stats.
 
-**Status: Partial.** Export, stats, and schema validation are implemented. PKP synthesis and multi-source consensus scoring are not yet built.
+**Status: Production-ready.** Four actions:
 
 - `--action export` — Copy master to `dashboard/public/data/` (full + lite versions)
 - `--action stats` — Print coverage stats, category breakdown, field completeness
-- `--action schema` — Validate master CSV against canonical 27-field schema
+- `--action schema` — Validate master CSV against canonical schema
+- `--action synthesize` — Run PKP synthesis (node type, edges, picks/shovels, undercurrents, signals, risks, actions)
 
 ```bash
+python "scripts/3. agent3-synthesizer.py" --master data/master_all_businesses.csv --action synthesize
 python "scripts/3. agent3-synthesizer.py" --master data/master_all_businesses.csv --action export
-python "scripts/3. agent3-synthesizer.py" --master data/master_all_businesses.csv --action stats
 ```
-
-**Remaining:** PKP synthesis (delights/pain points extraction, multi-agent consensus scoring).
 
 ---
 
@@ -166,26 +178,33 @@ python "scripts/3. agent3-synthesizer.py" --master data/master_all_businesses.cs
 
 ### Phase 2 — Gap Fill (In Progress)
 
-Monthly free-tier API stacking via Agent 1:
+Monthly free-tier API stacking via Agent 0 orchestrator:
 
 | Tool | Free Tier | Expected Yield |
 |------|-----------|---------------:|
-| Outscraper | 500/month | +400–500/run |
-| Apify | $5 credit | +600–700 |
+| Outscraper | 500/month | +400-500/run |
+| Apify | $5 credit | +600-700 |
 | SerpApi | 100 searches/month | Enrichment only |
-| OSM (re-run) | Unlimited | +100–200 new |
+| OSM (re-run) | Unlimited | +100-200 new |
 | **Projected Total** | | **~4,300** |
 
-### Phase 3 — Enrichment (Planned)
+### Phase 3 — Enrichment (Ready)
 
-Backfill missing fields on existing 1,665 records:
+Backfill missing fields on existing 1,665 records via Agent 2 `--enrich`:
 
-| Gap | Strategy |
-|-----|----------|
-| Ratings (94% missing) | SerpApi batch enrichment |
-| Lat/lon (58% missing) | Nominatim geocoding from address |
-| Address (63% missing) | Reverse geocoding from lat/lon |
-| Categories (774 "other") | Keyword re-mapping + Google Places category |
+| Gap | Strategy | Cost |
+|-----|----------|------|
+| Lat/lon (58% missing) | Forward geocode via Nominatim | Free |
+| Address (63% missing) | Reverse geocode via Nominatim | Free |
+| Postcode / Neighborhood | Infer from coordinates | Free (local) |
+| Categories (774 "other") | Keyword re-mapping from business name | Free (local) |
+| Ratings (94% missing) | SerpApi enrichment pass | 100 free/month |
+
+### Phase 4 — PKP Synthesis (Ready)
+
+Run Agent 3 `--action synthesize` to populate 7 PKP graph fields on all records.
+
+See [howto.md](./howto.md) for the full step-by-step guide and monthly cadence.
 
 ---
 
@@ -212,9 +231,9 @@ This framework is designed to be **domain-agnostic**. The same agent pipeline, c
 1. Replace zip codes and geographic bounds
 2. Adjust category taxonomy
 3. Point the scraper at local directories
-4. Run the same three-agent pipeline
+4. Run the same four-agent pipeline
 
-The Portable Knowledge Protocol (PKP) treats every business as a graph node with 7 structured keys: Node, Edges, Picks/Shovels, Undercurrents, Signals, Risks, and Actions.
+See [howto.md § Adapting to a Different City](./howto.md#adapting-to-a-different-city) for specifics.
 
 ---
 
@@ -229,26 +248,25 @@ pip install outscraper          # for Outscraper
 pip install apify-client        # for Apify
 pip install google-search-results  # for SerpApi
 
-# Run Agent 1 — collect raw data (OSM is free, no keys needed)
-python "scripts/1. agent1-osint.py" --source osm
+# Set API keys (see howto.md for where to get them)
+export OUTSCRAPER_KEY=your_key
+export APIFY_TOKEN=your_token
+export SERPAPI_KEY=your_key
 
-# Run Agent 2 — normalize, dedup, merge into master
-python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv
+# Run the full pipeline concurrently
+python "scripts/0. orchestrator.py" --all
 
-# Run Agent 3 — export to dashboard
-python "scripts/3. agent3-synthesizer.py" --master data/master_all_businesses.csv --action export
+# Or just OSM (free, no keys needed)
+python "scripts/0. orchestrator.py" --sources osm
+
+# Enrich existing data (geocoding, categories)
+python "scripts/0. orchestrator.py" --enrich
 
 # Dashboard
 cd dashboard && npm install && npm run dev
 ```
 
-### Environment Variables
-
-```bash
-export OUTSCRAPER_KEY=your_key    # Outscraper API key (500 free/month)
-export APIFY_TOKEN=your_token     # Apify API token ($5 free credit)
-export SERPAPI_KEY=your_key       # SerpApi key (100 free/month)
-```
+For the complete walkthrough including API key signup, monthly cadence, and troubleshooting, see **[howto.md](./howto.md)**.
 
 ---
 
