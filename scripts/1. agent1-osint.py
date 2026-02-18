@@ -312,13 +312,27 @@ def scrape_serpapi(
     targets = df[df[col].isna()].head(limit)
 
     records: List[Dict[str, str]] = []
-    for _, row in targets.iterrows():
+    total = len(targets)
+    no_results = 0
+    errors = 0
+
+    print(f"  Querying {total} businesses missing ratings...")
+
+    for i, (_, row) in enumerate(targets.iterrows(), 1):
         name = str(row.get("business_name", ""))
         if not name:
             continue
+
+        # Build search query — include address if available for better matching
+        address = str(row.get("address", "")) if pd.notna(row.get("address")) else ""
+        if address and "Coral Gables" in address:
+            query = f"{name} {address}"
+        else:
+            query = f"{name} Coral Gables FL"
+
         params = {
             "engine": "google_maps",
-            "q": f"{name} Coral Gables FL",
+            "q": query,
             "type": "search",
             "api_key": SERPAPI_KEY,
         }
@@ -326,6 +340,13 @@ def scrape_serpapi(
             search = GoogleSearch(params)
             results = search.get_dict()
             local = results.get("local_results", [])
+
+            # Also check place_results (single-place match)
+            if not local and "place_results" in results:
+                place = results["place_results"]
+                if place.get("rating"):
+                    local = [place]
+
             if local:
                 top = local[0]
                 records.append(
@@ -335,16 +356,23 @@ def scrape_serpapi(
                         website=top.get("website", ""),
                         address=top.get("address", ""),
                         rating=top.get("rating", ""),
-                        review_count=top.get("reviews", ""),
+                        review_count=top.get("reviews", top.get("reviews_original", "")),
                         category_raw=top.get("type", ""),
                         source="serpapi",
                     )
                 )
+            else:
+                no_results += 1
             time.sleep(1)  # rate limit
         except Exception as e:
+            errors += 1
             print(f"    Error for {name}: {e}")
 
-    print(f"  SerpApi: {len(records)} enrichment records")
+        # Progress every 50 queries
+        if i % 50 == 0 or i == total:
+            print(f"    [{i}/{total}] {len(records)} matched, {no_results} no results, {errors} errors")
+
+    print(f"  SerpApi: {len(records)} enrichment records ({no_results} no results, {errors} errors)")
     return records
 
 
