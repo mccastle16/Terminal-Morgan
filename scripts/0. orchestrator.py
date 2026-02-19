@@ -50,6 +50,9 @@ STAGING_DIR = PROJECT_ROOT / "staging"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
+# Import _shared first — this triggers .env auto-loading via python-dotenv
+import _shared  # noqa: F401 — side-effect: loads .env
+
 
 # ── Module loaders (handles filenames with spaces) ───────────────
 def _load_module(name: str, filename: str):
@@ -312,7 +315,19 @@ Examples:
     print(f"  Started: {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"  Master:  {args.master}")
     print(f"  Mode:    {'DRY RUN' if args.dry_run else 'LIVE'}")
-    print(f"{'='*60}\n")
+    print(f"{'='*60}")
+
+    # Key status banner — confirms .env was loaded correctly
+    print(f"\n  API Keys:")
+    for name, env_var in [("Outscraper", "OUTSCRAPER_KEY"),
+                          ("Apify", "APIFY_TOKEN"),
+                          ("SerpApi", "SERPAPI_KEY")]:
+        val = os.environ.get(env_var, "")
+        if val and val != f"your_{env_var.lower()}_here":
+            print(f"    {name:12s} {val[:8]}...  [loaded]")
+        else:
+            print(f"    {name:12s} {'—':8s}    [not set]")
+    print()
 
     # ── Enrichment-only mode ─────────────────────────────────────
     if args.enrich:

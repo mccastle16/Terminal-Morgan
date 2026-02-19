@@ -3,9 +3,24 @@ Shared constants and utilities for the OSINT pipeline.
 Imported by Agents 1, 2, and 3 to avoid duplication.
 """
 
+import os
 import re
 from math import asin, cos, radians, sin, sqrt
+from pathlib import Path
 from typing import Optional, Tuple
+
+# ── Auto-load .env on import ────────────────────────────────────
+# Looks for .env in the project root (one level above scripts/).
+# Falls back silently if python-dotenv isn't installed or .env is missing.
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+_ENV_PATH = _PROJECT_ROOT / ".env"
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv(_ENV_PATH)
+except ImportError:
+    # python-dotenv not installed — keys must be set in shell environment
+    pass
 
 # ── Canonical schema ─────────────────────────────────────────────
 CANONICAL_FIELDS = [

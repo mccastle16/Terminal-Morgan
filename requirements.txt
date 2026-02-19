@@ -1,0 +1,18 @@
+# Coral Gables OSINT Pipeline — Dependencies
+# Install: pip install -r requirements.txt
+
+# ── Core (required by all agents) ───────────────────────────────
+pandas>=2.0
+python-dotenv>=1.0          # auto-loads .env — no more manual sourcing
+
+# ── Agent 1: OSINT collection ───────────────────────────────────
+requests>=2.28
+
+# ── Agent 2: Validation & deduplication ─────────────────────────
+fuzzywuzzy>=0.18
+python-Levenshtein>=0.21    # C-accelerated fuzzy matching
+
+# ── Per-source API clients (install only what you use) ──────────
+outscraper>=3.0             # Outscraper Google Maps
+apify-client>=1.6           # Apify actors
+google-search-results>=2.4  # SerpApi
