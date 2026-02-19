@@ -39,36 +39,37 @@ Dual-licensing requirement: both City of Coral Gables BTR and Miami-Dade County 
 
 ---
 
-## Three-Agent Architecture
+## Four-Agent Architecture
+
+All agents share constants and utilities via `scripts/_shared.py` (CANONICAL_FIELDS, geo constants, normalize_key/phone, haversine, infer_zip/neighborhood).
+
+### Agent 0 — Orchestrator (`scripts/0. orchestrator.py`)
+
+Runs the full pipeline end-to-end. Imports Agents 1-3 directly via `importlib` (no subprocess overhead) and runs I/O-bound scrapers concurrently via `ThreadPoolExecutor`.
 
 ### Agent 1 — Scraper (Entity Resolution)
 
-Ingests data from Google Places, Yelp Fusion, OSM, and public directories.
+Ingests data from OSM Overpass, Outscraper (Google Maps), Apify (Google Places), and SerpApi (enrichment).
 
 | Field | Mechanism |
 |-------|-----------|
-| `business_id` | SHA-256 hash of name + lat/lon |
-| `contact_stack` | Phone, email, social extraction |
-| `classification` | NAICS / SIC cross-reference |
-| `operational_hrs` | API fetch + website validation |
-| `sentiment_raw` | Review text arrays |
+| `business_id` | Normalized name key (stripped of LLC/Inc/etc.) |
+| `contact_stack` | Phone, website extraction |
+| `classification` | Raw category from source API |
+| `rating / reviews` | Outscraper, Apify, SerpApi |
+| `lat / lon` | OSM coordinates, Outscraper/Apify geocoding |
 
 ### Agent 2 — Validator (Confidence & Integrity)
 
-Applies heuristic and semantic checks to every record:
-- **Heuristic:** Address within target zips, required fields present
-- **Semantic:** LLM-based coherence analysis (e.g., does "Fine Dining" align with a $15 avg check?)
-- Output: `validation_tier` (Low / Moderate / High) and `validation_confidence` (0.0–1.0)
+Normalizes, deduplicates, validates, and merges staging records into master. Fully vectorized sanitization (pandas ops, no iterrows). Pre-computed key→index dicts for O(1) merge lookups. Fuzzy dedup via `process.extractOne()` (fuzzywuzzy, threshold=85).
 
-### Agent 3 — Consensus (Collaborative Arbitrage)
+- **Merge mode:** Ingest staging → normalize → fuzzy dedup → validate → merge
+- **Enrich mode:** Forward/reverse geocoding via Nominatim, zip/neighborhood inference, category re-mapping
+- Output: `validation_tier` (Low / Moderate / High) and `osint_confidence` (0.0–1.0)
 
-Generates qualitative features (`top_delights`, `top_pain_points`) through multi-agent agreement:
+### Agent 3 — Synthesizer & Exporter
 
-```
-R_agreement = count(Agreed) / count(Total) >= 0.6
-```
-
-Minimum 5 agents per qualitative data point. Consensus refines raw sentiment into actionable intelligence.
+Exports master CSV for dashboard, runs PKP synthesis (node type, edges, picks/shovels, undercurrents, signals, risks, actions), and reports coverage stats.
 
 ---
 

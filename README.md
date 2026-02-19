@@ -29,12 +29,11 @@ Terminal/
 |   |-- 6. ten-chunk-business.csv  # 10-chunk OSM pipeline (1,366 rows)
 |
 |-- scripts/                       # Python agent scripts
-|   |-- 0. orchestrator.py         # Agent 0: Concurrent pipeline runner
+|   |-- _shared.py                 # Shared constants + utilities (schema, geo, normalize)
+|   |-- 0. orchestrator.py         # Agent 0: Pipeline runner (direct imports, ThreadPool)
 |   |-- 1. agent1-osint.py         # Agent 1: Discovery / Scraper
 |   |-- 2. agent2-validator.py     # Agent 2: Normalization / Validation / Enrichment
 |   |-- 3. agent3-synthesizer.py   # Agent 3: PKP Synthesis / Export
-|   |-- 4. chunkedscraper.py       # Monthly chunked scraper (legacy)
-|   |-- 5. ten-chunk-script.py     # 10-chunk OSM Overpass pipeline (legacy)
 |
 |-- staging/                       # Agent 1 output → Agent 2 input
 |
@@ -46,7 +45,7 @@ Terminal/
 |-- CGCC-members.md                # Raw CGCC member directory (~836 members)
 |-- coralgables-osint.md           # Strategic intelligence framework
 |-- OSINT PIPELINE.md              # Pipeline execution summary
-|-- chuncking architecture.md      # $0 chunking strategy
+|-- chuncking architecture.md      # $0 chunking strategy (historical)
 |-- final-output-schema.md         # Output CSV schema spec (27 + 7 PKP fields)
 |-- Coral Gables Directory.md      # Non-member category expansion
 |-- Strategy for Incremental Gap-Fill Scrape.md
@@ -101,7 +100,7 @@ See [final-output-schema.md](./final-output-schema.md) for the full 27-field + 7
 
 ### Agent 0 — Orchestrator (`scripts/0. orchestrator.py`)
 
-**Role:** Runs the full pipeline with concurrent source collection. Launches multiple Agent 1 instances in parallel, then chains Agent 2 and Agent 3.
+**Role:** Runs the full pipeline with concurrent source collection. Imports Agent 1/2/3 modules directly via `importlib` (no subprocess overhead) and runs I/O-bound scrapers in parallel via `ThreadPoolExecutor`.
 
 **Status: Production-ready.**
 
@@ -134,7 +133,7 @@ python "scripts/0. orchestrator.py" --merge-only
 
 ### Agent 2 — Validator & Merger (`scripts/2. agent2-validator.py`)
 
-**Role:** Normalizes raw staging CSVs to canonical schema, deduplicates against master, validates fields, and writes updated master. Also runs enrichment passes on existing data.
+**Role:** Normalizes raw staging CSVs to canonical schema, deduplicates against master, validates fields, and writes updated master. Also runs enrichment passes on existing data. Sanitization is fully vectorized (pandas ops); merge uses pre-computed key→index dicts for O(1) lookups; fuzzy matching uses `process.extractOne()`.
 
 **Status: Production-ready.** Two modes:
 
@@ -228,9 +227,9 @@ Tech stack: React, Vite, Tailwind CSS, client-side CSV parsing.
 
 This framework is designed to be **domain-agnostic**. The same agent pipeline, chunking strategy, and PKP schema can be applied to any municipality or business district:
 
-1. Replace zip codes and geographic bounds
-2. Adjust category taxonomy
-3. Point the scraper at local directories
+1. Update geographic constants in `scripts/_shared.py` (zips, bounds, centroids, neighborhoods)
+2. Adjust category taxonomy and query strings in Agent 1
+3. Update PKP synthesis rules in Agent 3
 4. Run the same four-agent pipeline
 
 See [howto.md § Adapting to a Different City](./howto.md#adapting-to-a-different-city) for specifics.

@@ -11,6 +11,15 @@
 - [x] Build PKP synthesis in Agent 3 (`--action synthesize`)
 - [x] Write `howto.md` — step-by-step API key acquisition + pipeline guide
 
+## Pipeline — Optimization (Feb 19, 2026)
+
+- [x] Delete dead scripts 4 (chunkedscraper) and 5 (ten-chunk-script) — ~1,000 lines removed
+- [x] Extract shared constants + utilities into `scripts/_shared.py` (CANONICAL_FIELDS, geo, normalize_key/phone, haversine, etc.)
+- [x] Pre-compute key→index dict in `merge_into_master()` — O(1) lookups instead of O(n) `.apply()` scans
+- [x] Vectorize `sanitize_master()` — replace 7 `iterrows` loops with pandas vectorized ops
+- [x] Switch `fuzzy_match()` to `process.extractOne()` with `score_cutoff` for faster dedup
+- [x] Convert Agent 0 from subprocess.run to direct function imports (importlib + ThreadPoolExecutor)
+
 ## Data — Gap Fill to 4,400
 
 - [x] Run OSM + Outscraper (x3) + SerpApi enrichment — Month 1 (Feb 2026): +1,219 new → 2,884 total
@@ -51,3 +60,4 @@
 - [x] Write `howto.md` with API key signup and pipeline guide
 - [x] Update `OSINT PIPELINE.md` counts after Month 1 gap-fill run
 - [x] Update all .md files with 2,884-record post-merge stats (Feb 19, 2026)
+- [x] Update all .md files to reflect optimization refactor (dead script deletion, _shared.py, vectorization, direct imports)

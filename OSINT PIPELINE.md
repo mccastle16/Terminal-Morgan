@@ -121,18 +121,33 @@ python "scripts/3. agent3-synthesizer.py" --master data/master_all_businesses.cs
 ## Four-Agent Architecture
 
 ```
-Agent 0 (Orchestrator) — Concurrent pipeline runner
+Agent 0 (Orchestrator) — Direct imports via importlib, ThreadPoolExecutor
   ├── Agent 1 (OSM)        ─┐
-  ├── Agent 1 (Outscraper)  ├── staging/*.csv
+  ├── Agent 1 (Outscraper)  ├── staging/*.csv (concurrent threads)
   ├── Agent 1 (Apify)       │
   └── Agent 1 (SerpApi)    ─┘
            │
            ▼
 Agent 2 (Validator) — Normalize → Fuzzy dedup → Validate → Merge
+  (vectorized sanitize, O(1) key→index merge, process.extractOne())
 Agent 2 (Enrichment) — Geocode → Reverse geocode → Re-categorize
            │
            ▼
 Agent 3 (Synthesizer) — PKP synthesis → Export → Stats
+
+_shared.py — Single source of truth for schema, geo constants, utilities
+  (imported by Agents 1, 2, and 3)
+```
+
+### Scripts Directory
+
+```
+scripts/
+├── _shared.py              # Shared constants + utilities
+├── 0. orchestrator.py      # Pipeline coordinator (direct imports)
+├── 1. agent1-osint.py      # 4 source scrapers
+├── 2. agent2-validator.py  # Validate, merge, enrich (vectorized)
+└── 3. agent3-synthesizer.py # Export + PKP synthesis
 ```
 
 ---

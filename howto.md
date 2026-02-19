@@ -481,7 +481,9 @@ Then restart the dev server or hard-refresh the browser.
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                  Agent 0 — Orchestrator                     │
-│                python "0. orchestrator.py" --all            │
+│      python "0. orchestrator.py" --all                      │
+│      Direct imports via importlib (no subprocess overhead)  │
+│      ThreadPoolExecutor for concurrent I/O-bound scrapers   │
 └─────────────┬───────────┬───────────┬───────────┬───────────┘
               │           │           │           │
               ▼           ▼           ▼           ▼
@@ -501,6 +503,7 @@ Then restart the dev server or hard-refresh the browser.
          │     Agent 2 — Validator & Merger        │
          │  normalize → fuzzy dedup → validate     │
          │  → merge into master → archive staging  │
+         │  (vectorized sanitize, O(1) key lookup) │
          │                                         │
          │  --enrich: geocode, reverse geocode,    │
          │            re-categorize, infer zip      │
@@ -519,6 +522,14 @@ Then restart the dev server or hard-refresh the browser.
          │  synthesize → PKP node/edge/signal/risk │
          │  stats → coverage report                │
          └─────────────────────────────────────────┘
+
+         ┌─────────────────────────────────────────┐
+         │     _shared.py — Shared Module          │
+         │  CANONICAL_FIELDS, geo constants,        │
+         │  normalize_key/phone, haversine,         │
+         │  infer_zip/neighborhood                  │
+         │  (imported by Agents 1, 2, and 3)        │
+         └─────────────────────────────────────────┘
 ```
 
 ---
@@ -527,8 +538,8 @@ Then restart the dev server or hard-refresh the browser.
 
 This pipeline is city-agnostic. To target a different municipality:
 
-1. **Agent 1:** Update `CORAL_GABLES_ZIPS`, `OSM_BBOX`, and query strings in `1. agent1-osint.py`
-2. **Agent 2:** Update `CG_BOUNDS`, `CG_ZIPS`, `ZIP_CENTROIDS`, and neighborhood rules in `2. agent2-validator.py`
+1. **`_shared.py`:** Update `CORAL_GABLES_ZIPS`, `CG_BOUNDS`, `ZIP_CENTROIDS`, `OSM_BBOX`, and neighborhood rules — all geo constants live in one file
+2. **Agent 1:** Update query strings in `1. agent1-osint.py` (search terms reference zip codes from `_shared.py`)
 3. **Agent 3:** Update `NEIGHBORHOOD_EDGES`, `PICKS_SHOVELS`, and `UNDERCURRENTS` dicts in `3. agent3-synthesizer.py`
 4. Run the same pipeline: `python "scripts/0. orchestrator.py" --all`
 
