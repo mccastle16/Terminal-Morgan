@@ -1,18 +1,18 @@
 # Strategy — Incremental Gap-Fill Scrape
 
-> Close the gap between the current 1,366-business baseline and the ~4,520 target by only adding what's missing.
+> Close the gap between the current **2,884-business** dataset and the ~4,520 target by only adding what's missing.
+>
+> **Update (Feb 2026):** Month 1 gap-fill completed. OSM + Outscraper (x3) + SerpApi enrichment added 1,219 net new businesses (1,665 → 2,884). ~1,500 remaining to target.
 
 ---
 
 ## Approach
 
-1. Load existing 1,366 records as a **deduplication filter**
+1. Load existing 2,884 records as a **deduplication filter**
 2. Run Google Maps searches (via Outscraper or similar) for Coral Gables ZIPs
-3. Fuzzy-match each result against the existing set
+3. Fuzzy-match each result against the existing set (threshold: 85)
 4. Only add businesses not already captured
-5. Output an incremental CSV (e.g., `cg_gap_fill_v5.csv`)
-
-**Result:** 1,366 + new gap-fill = 2,000–2,500+
+5. Merge via Agent 2 pipeline (normalize → dedup → validate → merge)
 
 ---
 

@@ -1,6 +1,6 @@
 # OSINT Pipeline — Execution Summary
 
-> Four-agent pipeline producing a unified **1,665-business master CSV** at $0 cost, targeting ~4,400.
+> Four-agent pipeline producing a unified **2,884-business master CSV** at near-$0 cost, targeting ~4,400.
 
 ---
 
@@ -21,40 +21,70 @@
 | | **OSM Total (deduped)** | | **811** |
 | | **CGCC Members** | Directory parse | **836** |
 | | **Non-chamber scrapes** | Manual + semi-auto | **131** |
-| | **Final Merged (deduped)** | | **1,665** |
+| | **Phase 1 Merged (deduped)** | | **1,665** |
 
 ---
 
-## Growth Projection — $0 to 4,400+
+## Pipeline Results — Phase 2, Month 1 (Feb 2026)
 
-Monthly free-tier API stacking via Agent 0 orchestrator:
-
-| Run | Month | Tool | Free Tier | Expected Net New | Running Total |
-|-----|-------|------|-----------|------------------:|--------------:|
-| — | Current | Baseline | — | — | 1,665 |
-| 1 | Month 1 | Outscraper + Apify + OSM | 500/mo + $5 + free | +1,200 | ~2,865 |
-| 2 | Month 2 | Outscraper + SerpApi enrich | 500/mo + 100/mo | +400 | ~3,265 |
-| 3 | Month 3 | Outscraper + SerpApi enrich | 500/mo + 100/mo | +350 | ~3,615 |
-| 4 | Month 4 | Outscraper + SerpApi enrich | 500/mo + 100/mo | +300 | ~3,915 |
-| 5 | Month 5 | Outscraper + SerpApi enrich | 500/mo + 100/mo | +250 | ~4,165 |
-| 6 | Month 6 | Outscraper + final sweep | 500/mo | +200 | **~4,365** |
+| Run | Source | Raw Records | Net Result |
+|-----|--------|------------:|-----------:|
+| OSM Overpass | 10-chunk geographic sweep | 562 | merged |
+| Outscraper Run 1 | Food & retail categories | 380 | merged |
+| Outscraper Run 2 | Professional & healthcare | 491 | merged |
+| Outscraper Run 3 | Hospitality & services | 433 | merged |
+| SerpApi | Ratings backfill (1,568 queried) | 1,446 matched | enrichment |
+| | **Agent 2 Merge Result** | | **+1,219 new, 2,165 enriched** |
+| | **Running Total** | | **2,884** |
 
 ---
 
-## Current Data Coverage
+## Growth Projection — to 4,400+
+
+| Run | Month | Tool | Free Tier | Actual/Expected Net New | Running Total |
+|-----|-------|------|-----------|------------------------:|--------------:|
+| — | Baseline | Phase 1 | — | — | 1,665 |
+| 1 | Month 1 (Feb) | OSM + Outscraper (x3) + SerpApi | free + 500/mo + 5,000/mo | **+1,219** | **2,884** |
+| 2 | Month 2 (Mar) | Outscraper (x3) + Apify + SerpApi | 500/mo + $5 + 5,000/mo | +600-800 | ~3,500-3,700 |
+| 3 | Month 3 (Apr) | Outscraper (x3) + SerpApi | 500/mo + 5,000/mo | +300-400 | ~3,900 |
+| 4 | Month 4 (May) | Outscraper (x3) + OSM re-run | 500/mo + free | +200-300 | ~4,200 |
+| 5 | Month 5 (Jun) | Outscraper (final sweep) | 500/mo | +100-200 | **~4,400** |
+
+---
+
+## Current Data Coverage (as of Feb 19, 2026)
 
 | Metric | Count | % |
 |--------|------:|--:|
-| **Total Businesses** | 1,665 | — |
-| Chamber Members | 883 | 53% |
-| Non-Members | 782 | 47% |
-| Has Lat/Lon | ~694 | 42% |
-| Has Phone | ~1,133 | 68% |
-| Has Website | ~1,112 | 67% |
-| Has Address | ~621 | 37% |
-| Has Rating | ~97 | 6% |
-| Category = "other" | 774 | 46% |
-| Red Flags | 8 | — |
+| **Total Businesses** | 2,884 | — |
+| Chamber Members | 843 | 29% |
+| Non-Members | 2,041 | 71% |
+| Has Phone | 2,627 | 91% |
+| Has Rating | 2,533 | 88% |
+| Has Neighborhood | 2,793 | 97% |
+| Has Lat/Lon | 2,022 | 70% |
+| Has Postcode | 2,022 | 70% |
+| Has Website | 1,522 | 53% |
+| Has Address | 1,514 | 52% |
+| Category = "other" | 691 | 24% |
+| Red Flags | 10 | — |
+
+### Validation Tiers
+
+| Tier | Count |
+|------|------:|
+| High | 1,185 |
+| Moderate | 1,319 |
+| Low | 368 |
+| Unvalidated | 12 |
+
+### PKP Node Types
+
+| Type | Count | % |
+|------|------:|--:|
+| Asset | 1,690 | 58.6% |
+| Platform | 702 | 24.3% |
+| Infrastructure | 492 | 17.1% |
 
 ---
 

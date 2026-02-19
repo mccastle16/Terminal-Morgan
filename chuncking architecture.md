@@ -5,9 +5,9 @@
 ## Problem
 
 - ~4,520 active businesses in Coral Gables; ~10,000+ total entities
-- Current coverage: 1,476 (33%)
+- Current coverage: **2,884 (64%)** — up from 1,476 baseline after Month 1 gap-fill
 - Paid APIs are expensive (Google Places $200/mo, BTR bulk ~$4,500)
-- Need ~3,000 more businesses at zero cost
+- Need ~1,500 more businesses at near-zero cost
 
 ---
 
@@ -54,12 +54,12 @@ APIs cap **results per query**, not **queries per account**. Chunk by `(category
 
 ## Pipeline Phases
 
-| Phase | Timing | Actions | Expected Net New |
+| Phase | Timing | Actions | Net New |
 |-------|--------|---------|------------------:|
-| 1 | Done | OSM + CGCC + Agent 1 | 1,476 (baseline) |
-| 2 | Weeks 2-3 | Outscraper + Apify + Yelp scrape | +1,500-2,500 |
-| 3 | Weeks 4-6 | SerpApi + Scrap.io + YP/BBB | +500-1,000 |
-| 4 | Week 7+ | Agent 2 validation + Agent 3 consensus | Final 3,500-5,000 |
+| 1 | Done | OSM + CGCC + Agent 1 | 1,665 (baseline) |
+| 2 | Done (Feb 2026) | OSM + Outscraper (x3) + SerpApi | **+1,219 → 2,884** |
+| 3 | Month 2-3 | Outscraper + Apify + SerpApi | +600-1,000 |
+| 4 | Month 4-5 | Outscraper + OSM re-run + final sweep | +300-500 → **~4,400** |
 
 ---
 

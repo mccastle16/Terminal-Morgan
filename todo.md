@@ -13,31 +13,34 @@
 
 ## Data — Gap Fill to 4,400
 
-- [ ] Run Outscraper free-tier batch (Month 1: +400 expected)
-- [ ] Run Outscraper free-tier batch (Month 2: +350 expected)
-- [ ] Run Apify $5 credit batch (+600 expected)
-- [ ] Run SerpApi enrichment pass (ratings + review counts, 100/month)
-- [ ] Final dedup + merge + validation pass
+- [x] Run OSM + Outscraper (x3) + SerpApi enrichment — Month 1 (Feb 2026): +1,219 new → 2,884 total
+- [x] Run Agent 2 merge (3,384 staging records → 1,219 new + 2,165 enriched)
+- [x] Run SerpApi enrichment pass — 1,568 queried, 1,446 matched (92.2%)
+- [ ] Run Outscraper free-tier batch (Month 2: +400-600 expected)
+- [ ] Run Apify $5 credit batch (+600-700 expected)
+- [ ] Run Outscraper free-tier batch (Month 3: +300-400 expected)
 - [ ] Re-run OSM quarterly for new mapper contributions
+- [ ] Final dedup + merge + validation pass at ~4,400
 
 ## Data Quality — Enrichment
 
-- [ ] Run Agent 2 `--enrich` to geocode addresses → lat/lon (~620 rows)
-- [ ] Run Agent 2 `--enrich` to reverse geocode lat/lon → addresses (~970 rows)
-- [ ] Run Agent 2 `--enrich` to re-categorize 774 "other" businesses
-- [ ] Run SerpApi to backfill ratings (94% missing, 100/month free)
-- [ ] Resolve 8 red-flagged businesses (review manipulation, billing fraud, etc.)
-- [ ] Standardize `neighborhood_area` values across all sources
+- [x] Run SerpApi to backfill ratings (was 6% → now 88%)
+- [ ] Run Agent 2 `--enrich` to forward geocode addresses → lat/lon (~697 rows)
+- [ ] Run Agent 2 `--enrich` to reverse geocode lat/lon → addresses
+- [ ] Run Agent 2 `--enrich` to re-categorize remaining 691 "other" businesses
+- [ ] Resolve 10 red-flagged businesses
+- [ ] Standardize `category_primary` casing inconsistencies (e.g., "Consulting" vs "consulting")
 
 ## PKP Synthesis
 
-- [ ] Run Agent 3 `--action synthesize` on full master CSV
+- [x] Run Agent 3 `--action synthesize` on full master CSV (2,884 records)
+- [x] Exported to dashboard: union_all_businesses.csv + businesses_lite.csv
 - [ ] Review and refine PKP undercurrents for Coral Gables specifics
 - [ ] Add multi-source consensus scoring (when 2+ sources agree on a field)
 
 ## Dashboard
 
-- [ ] Sync `dashboard/public/data/` with latest master CSV (Agent 3 export)
+- [x] Sync `dashboard/public/data/` with latest master CSV (Agent 3 export)
 - [ ] Add map view using lat/lon data
 - [ ] Build export functionality (CSV, PDF reports)
 - [ ] Add PKP visualization (node type distribution, edge network)
@@ -46,4 +49,5 @@
 
 - [x] Update `README.md` with current agent status and pipeline architecture
 - [x] Write `howto.md` with API key signup and pipeline guide
-- [ ] Update `OSINT PIPELINE.md` counts after each gap-fill run
+- [x] Update `OSINT PIPELINE.md` counts after Month 1 gap-fill run
+- [x] Update all .md files with 2,884-record post-merge stats (Feb 19, 2026)

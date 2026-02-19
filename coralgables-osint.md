@@ -8,7 +8,7 @@
 
 Coral Gables houses **~4,520 active businesses** and **~150 multinational corporations** within a Mediterranean-style urban corridor anchored by Miracle Mile, Giralda Plaza, and Merrick Park. This framework transforms fragmented datasets into a dynamic knowledge graph through three coordinated agent pods: **Scraper**, **Validator**, and **Consensus**.
 
-**Target output:** `all_biz_osint.csv` — the definitive business intelligence dataset for zip codes 33134, 33146, 33133, and 33143.
+**Current output:** `data/master_all_businesses.csv` — **2,884 businesses** (as of Feb 2026), the definitive business intelligence dataset for zip codes 33134, 33146, 33133, and 33143. Targeting ~4,400.
 
 ---
 
@@ -151,15 +151,16 @@ Premium expansion driven by affluent clientele investing in medical aesthetics a
 
 ---
 
-## Data Pipeline: `all_biz_osint.csv`
+## Data Pipeline: `data/master_all_businesses.csv`
 
-| Step | Action | Sources |
-|------|--------|---------|
-| 1 | Population baseline | BTR master file (filtered by CG zips) |
-| 2 | Chamber enrichment | CGCC membership + BID directory |
-| 3 | OSINT augmentation | Google, Yelp, LinkedIn via Agent 1 |
-| 4 | Consensus validation | Agent 3 multi-agent agreement |
-| 5 | Risk & action generation | PKP risks + recommended actions |
+| Step | Action | Sources | Status |
+|------|--------|---------|--------|
+| 1 | Population baseline | CGCC directory + OSM Overpass (10 chunks) | Done (1,665) |
+| 2 | Gap-fill Month 1 | OSM + Outscraper (x3) + SerpApi enrichment | Done (+1,219 → 2,884) |
+| 3 | Validation & merge | Agent 2 normalize → fuzzy dedup → validate | Done |
+| 4 | PKP synthesis | Agent 3 node type, edges, signals, risks, actions | Done |
+| 5 | Dashboard export | Agent 3 → dashboard/public/data/ | Done |
+| 6 | Ongoing gap-fill | Monthly Outscraper + Apify + OSM re-runs | In progress |
 
 ---
 
