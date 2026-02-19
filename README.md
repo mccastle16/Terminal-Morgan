@@ -19,24 +19,18 @@ A structured OSINT database and agent-based pipeline for collecting, validating,
 ```
 Terminal/
 |
-|-- data/                          # CSV datasets (raw + processed)
+|-- data/                          # CSV datasets
 |   |-- master_all_businesses.csv  # <-- MASTER: 2,884 deduped businesses
-|   |-- 1. cgcc-osint-v1.csv       # CGCC enriched v1 (858 rows)
-|   |-- 2. cgcc-osint-v2.csv       # CGCC + OSM merged v2 (1,475 rows)
-|   |-- 3. final-osint.csv         # Cleaned final run (1,128 rows)
-|   |-- 4. non-cgcc-biz-run1.csv   # Non-chamber businesses run 1 (63)
-|   |-- 5. non-cgcc-biz-run2.csv   # Non-chamber businesses run 2 (67)
-|   |-- 6. ten-chunk-business.csv  # 10-chunk OSM pipeline (1,366 rows)
 |
 |-- scripts/                       # Python agent scripts
-|   |-- 0. orchestrator.py         # Agent 0: Concurrent pipeline runner
+|   |-- _shared.py                 # Shared constants + utilities (schema, geo, normalize)
+|   |-- 0. orchestrator.py         # Agent 0: Pipeline runner (direct imports, ThreadPool)
 |   |-- 1. agent1-osint.py         # Agent 1: Discovery / Scraper
 |   |-- 2. agent2-validator.py     # Agent 2: Normalization / Validation / Enrichment
 |   |-- 3. agent3-synthesizer.py   # Agent 3: PKP Synthesis / Export
-|   |-- 4. chunkedscraper.py       # Monthly chunked scraper (legacy)
-|   |-- 5. ten-chunk-script.py     # 10-chunk OSM Overpass pipeline (legacy)
 |
 |-- staging/                       # Agent 1 output → Agent 2 input
+|   |-- archived/                  # Source CSVs after merge (OSM, Outscraper, SerpApi runs)
 |
 |-- dashboard/                     # React/Vite frontend (visualization)
 |   |-- src/pages/                 # 15+ specialized views
@@ -46,7 +40,7 @@ Terminal/
 |-- CGCC-members.md                # Raw CGCC member directory (~836 members)
 |-- coralgables-osint.md           # Strategic intelligence framework
 |-- OSINT PIPELINE.md              # Pipeline execution summary
-|-- chuncking architecture.md      # $0 chunking strategy
+|-- chuncking architecture.md      # $0 chunking strategy (historical)
 |-- final-output-schema.md         # Output CSV schema spec (27 + 7 PKP fields)
 |-- Coral Gables Directory.md      # Non-member category expansion
 |-- Strategy for Incremental Gap-Fill Scrape.md
@@ -57,7 +51,7 @@ Terminal/
 
 ## Master CSV — `data/master_all_businesses.csv`
 
-**2,884 unique businesses** consolidated from multiple source files, deduplicated by normalized business name with fuzzy matching.
+**2,884 unique businesses** consolidated from multiple source runs, deduplicated by normalized business name with fuzzy matching. This is the single source of truth — all legacy intermediate CSVs (v1, v2, non-chamber scrapes, 10-chunk OSM) have been merged in and deleted. Raw source CSVs from each pipeline run are preserved in `staging/archived/`.
 
 ### Coverage Breakdown
 
@@ -80,8 +74,10 @@ Terminal/
 | rating_primary_value | 88% | Via SerpApi enrichment |
 | lat / lon | 70% | |
 | postcode | 70% | Inferred from coordinates |
-| website | 53% | |
+| website | 53% | 856 bare-domain URLs fixed with `https://` prefix |
 | address | 52% | |
+
+**Data quality (Feb 19):** 422 person-name contaminations cleared from `category_secondary` (CGCC column misalignment), 17 star-rating values removed from `price_tier` (already captured in `rating_primary_value`).
 
 ### Schema
 
@@ -101,7 +97,7 @@ See [final-output-schema.md](./final-output-schema.md) for the full 27-field + 7
 
 ### Agent 0 — Orchestrator (`scripts/0. orchestrator.py`)
 
-**Role:** Runs the full pipeline with concurrent source collection. Launches multiple Agent 1 instances in parallel, then chains Agent 2 and Agent 3.
+**Role:** Runs the full pipeline with concurrent source collection. Imports Agent 1/2/3 modules directly via `importlib` (no subprocess overhead) and runs I/O-bound scrapers in parallel via `ThreadPoolExecutor`.
 
 **Status: Production-ready.**
 
@@ -130,11 +126,11 @@ python "scripts/0. orchestrator.py" --merge-only
 | **OSM Overpass** | OpenStreetMap queries | Unlimited, free | 562 raw records |
 | **Outscraper** | Google Maps API | 500 free/month | 380 + 491 + 433 = 1,304 raw |
 | **Apify** | Google Places actor | $5 free credit | ~600-700 expected |
-| **SerpApi** | Google Maps local results | 5,000/month (Developer) | 1,446 matched (ratings backfill) |
+| **SerpApi** | Google Maps local results | 5,000/month (Developer) | 1,446 matched — field-targeted via `--target` |
 
 ### Agent 2 — Validator & Merger (`scripts/2. agent2-validator.py`)
 
-**Role:** Normalizes raw staging CSVs to canonical schema, deduplicates against master, validates fields, and writes updated master. Also runs enrichment passes on existing data.
+**Role:** Normalizes raw staging CSVs to canonical schema, deduplicates against master, validates fields, and writes updated master. Also runs enrichment passes on existing data. Sanitization is fully vectorized (pandas ops, 11 steps: junk removal, coordinate bounds, category normalization, source casing, phone→website rescue, rating/review validation, bare-domain URL fix, person-name clearing, price_tier normalization). Merge uses pre-computed key→index dicts for O(1) lookups with blanks-only fill on existing records. Fuzzy matching uses `process.extractOne()`.
 
 **Status: Production-ready.** Two modes:
 
@@ -228,9 +224,9 @@ Tech stack: React, Vite, Tailwind CSS, client-side CSV parsing.
 
 This framework is designed to be **domain-agnostic**. The same agent pipeline, chunking strategy, and PKP schema can be applied to any municipality or business district:
 
-1. Replace zip codes and geographic bounds
-2. Adjust category taxonomy
-3. Point the scraper at local directories
+1. Update geographic constants in `scripts/_shared.py` (zips, bounds, centroids, neighborhoods)
+2. Adjust category taxonomy and query strings in Agent 1
+3. Update PKP synthesis rules in Agent 3
 4. Run the same four-agent pipeline
 
 See [howto.md § Adapting to a Different City](./howto.md#adapting-to-a-different-city) for specifics.

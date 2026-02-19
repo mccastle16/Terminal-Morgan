@@ -84,7 +84,7 @@ You need **zero keys** to start — OSM Overpass is unlimited and free. The paid
 
 ### 2c. SerpApi (100 free searches/month)
 
-**What it does:** Queries Google Maps search results via a clean JSON API. Best for **enrichment** (adding ratings/reviews to records that already have a name).
+**What it does:** Queries Google Maps search results via a clean JSON API. Best for **enrichment** — backfilling website, address, ratings, reviews, and price data on records that already have a name. Supports field-targeted queries via `--target`.
 
 **Sign up:**
 
@@ -98,7 +98,7 @@ You need **zero keys** to start — OSM Overpass is unlimited and free. The paid
 - Free tier: 100 searches/month (no credit card)
 - Developer plan ($75/mo): 5,000 searches/month
 - Each search returns 1 enrichment record (we search by business name)
-- Best used for backfilling ratings on records that lack them
+- Supports `--target` flag to choose which gap to fill: `missing-rating`, `missing-website`, `missing-address`, `missing-reviews`, or `any-gap`
 - Resets monthly
 - Rate limit: 1 request/second (Agent 1 handles this)
 
@@ -235,8 +235,10 @@ python "scripts/1. agent1-osint.py" --source outscraper --run 3  # hospitality &
 # Apify — single run, all categories
 python "scripts/1. agent1-osint.py" --source apify
 
-# SerpApi — enrichment pass (needs existing master, default limit: 5000)
-python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
+# SerpApi — field-targeted enrichment (needs existing master, default limit: 5000)
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv                              # default: missing-rating
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --target missing-website      # 1,359 rows need websites
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --target any-gap --limit 500  # any missing field
 
 # OSM Overpass — 10-chunk geographic sweep
 python "scripts/1. agent1-osint.py" --source osm
@@ -277,17 +279,28 @@ python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv 
 python "scripts/0. orchestrator.py" --enrich
 ```
 
-### Enrichment for ratings (SerpApi)
+### Field-targeted enrichment (SerpApi)
 
-Ratings enrichment goes through Agent 1 → Agent 2 (staging merge fills blanks):
+SerpApi enrichment goes through Agent 1 → Agent 2 (staging merge fills blanks on existing rows without overwriting):
 
 ```bash
-# Collect ratings for businesses missing them (default limit: 5000)
-python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
+# Target a specific gap (default: missing-rating)
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --target missing-website
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --target any-gap --limit 500
 
-# Merge the enrichment data into master
+# Merge the enrichment data into master (blanks-only fill)
 python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv
 ```
+
+Available `--target` values:
+
+| Target | Records | What it fills |
+|--------|--------:|---------------|
+| `missing-rating` | 356 | rating, reviews, price, website, address |
+| `missing-website` | 1,359 | website, phone, address, rating |
+| `missing-address` | 1,368 | address, phone, website, rating |
+| `missing-reviews` | 2,601 | review_count, rating, website |
+| `any-gap` | 2,751 | OR of all above — any record with any gap |
 
 SerpApi Developer plan (5,000/month) enriched 1,446 of 1,568 records missing ratings in a single 26-minute pass (92.2% match rate). On the free tier (100/month), this would have taken ~16 months.
 
@@ -481,7 +494,9 @@ Then restart the dev server or hard-refresh the browser.
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                  Agent 0 — Orchestrator                     │
-│                python "0. orchestrator.py" --all            │
+│      python "0. orchestrator.py" --all                      │
+│      Direct imports via importlib (no subprocess overhead)  │
+│      ThreadPoolExecutor for concurrent I/O-bound scrapers   │
 └─────────────┬───────────┬───────────┬───────────┬───────────┘
               │           │           │           │
               ▼           ▼           ▼           ▼
@@ -501,6 +516,7 @@ Then restart the dev server or hard-refresh the browser.
          │     Agent 2 — Validator & Merger        │
          │  normalize → fuzzy dedup → validate     │
          │  → merge into master → archive staging  │
+         │  (vectorized sanitize, O(1) key lookup) │
          │                                         │
          │  --enrich: geocode, reverse geocode,    │
          │            re-categorize, infer zip      │
@@ -519,6 +535,14 @@ Then restart the dev server or hard-refresh the browser.
          │  synthesize → PKP node/edge/signal/risk │
          │  stats → coverage report                │
          └─────────────────────────────────────────┘
+
+         ┌─────────────────────────────────────────┐
+         │     _shared.py — Shared Module          │
+         │  CANONICAL_FIELDS, geo constants,        │
+         │  normalize_key/phone, haversine,         │
+         │  infer_zip/neighborhood                  │
+         │  (imported by Agents 1, 2, and 3)        │
+         └─────────────────────────────────────────┘
 ```
 
 ---
@@ -527,8 +551,8 @@ Then restart the dev server or hard-refresh the browser.
 
 This pipeline is city-agnostic. To target a different municipality:
 
-1. **Agent 1:** Update `CORAL_GABLES_ZIPS`, `OSM_BBOX`, and query strings in `1. agent1-osint.py`
-2. **Agent 2:** Update `CG_BOUNDS`, `CG_ZIPS`, `ZIP_CENTROIDS`, and neighborhood rules in `2. agent2-validator.py`
+1. **`_shared.py`:** Update `CORAL_GABLES_ZIPS`, `CG_BOUNDS`, `ZIP_CENTROIDS`, `OSM_BBOX`, and neighborhood rules — all geo constants live in one file
+2. **Agent 1:** Update query strings in `1. agent1-osint.py` (search terms reference zip codes from `_shared.py`)
 3. **Agent 3:** Update `NEIGHBORHOOD_EDGES`, `PICKS_SHOVELS`, and `UNDERCURRENTS` dicts in `3. agent3-synthesizer.py`
 4. Run the same pipeline: `python "scripts/0. orchestrator.py" --all`
 

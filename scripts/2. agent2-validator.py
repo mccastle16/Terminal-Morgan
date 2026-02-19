@@ -31,137 +31,24 @@ import os
 import re
 import shutil
 from datetime import datetime
-from math import asin, cos, radians, sin, sqrt
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 import pandas as pd
 
-# ── Canonical schema ──────────────────────────────────────────────
-CANONICAL_FIELDS = [
-    "business_id",
-    "business_name",
-    "contact_name",
-    "phone",
-    "website",
-    "address",
-    "lat",
-    "lon",
-    "postcode",
-    "neighborhood_area",
-    "category_primary",
-    "category_secondary",
-    "price_tier",
-    "rating_primary_value",
-    "rating_primary_source",
-    "rating_primary_review_count",
-    "top_delights",
-    "top_pain_points",
-    "osint_confidence",
-    "validation_tier",
-    "red_flag_present",
-    "red_flag_severity",
-    "red_flag_notes",
-    "chamber_member",
-    "source_file",
-    "batch_id",
-    "last_reviewed_date",
-]
-
-# Coral Gables geographic bounds
-CG_BOUNDS = {
-    "lat_min": 25.693,
-    "lat_max": 25.770,
-    "lon_min": -80.310,
-    "lon_max": -80.225,
-}
-
-CG_ZIPS = {"33134", "33146", "33133", "33143"}
-
-ZIP_CENTROIDS = {
-    "33134": (25.7497, -80.2589),
-    "33146": (25.7210, -80.2750),
-    "33133": (25.7570, -80.2410),
-    "33143": (25.7050, -80.2900),
-}
-
-
-# ── Utilities ─────────────────────────────────────────────────────
-def normalize_key(name: str) -> str:
-    """Lowercase, strip non-alphanumeric, remove common suffixes."""
-    if not name:
-        return ""
-    k = re.sub(r"[^a-z0-9]", "", name.lower().strip())
-    for sfx in ("llc", "inc", "llp", "pa", "pllc", "corp", "ltd"):
-        k = k.replace(sfx, "")
-    return k.strip()
-
-
-def normalize_phone(phone: str) -> str:
-    """Normalize phone to (XXX) XXX-XXXX format. Rejects non-phone values."""
-    if not phone or not isinstance(phone, str):
-        return ""
-    # Reject if it looks like a URL, business name, or address (no digits in first 5 chars)
-    stripped = phone.strip()
-    if "." in stripped and not any(c.isdigit() for c in stripped[:5]):
-        return ""  # It's a URL or name, not a phone
-    if re.search(r"\d{5}", stripped) and ("FL" in stripped or "Coral" in stripped):
-        return ""  # It's an address, not a phone
-    digits = re.sub(r"[^\d]", "", stripped)
-    if len(digits) == 10:
-        return f"({digits[:3]}) {digits[3:6]}-{digits[6:]}"
-    if len(digits) == 11 and digits[0] == "1":
-        return f"({digits[1:4]}) {digits[4:7]}-{digits[7:]}"
-    return stripped
-
-
-def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    """Distance in km between two lat/lon points."""
-    R = 6371
-    dlat = radians(lat2 - lat1)
-    dlon = radians(lon2 - lon1)
-    a = sin(dlat / 2) ** 2 + cos(radians(lat1)) * cos(radians(lat2)) * sin(dlon / 2) ** 2
-    return R * 2 * asin(sqrt(a))
-
-
-def in_coral_gables(lat: Optional[float], lon: Optional[float]) -> bool:
-    """Check if coordinates fall within Coral Gables bounds."""
-    if lat is None or lon is None:
-        return True  # can't disqualify without coords
-    return (
-        CG_BOUNDS["lat_min"] <= lat <= CG_BOUNDS["lat_max"]
-        and CG_BOUNDS["lon_min"] <= lon <= CG_BOUNDS["lon_max"]
-    )
-
-
-def infer_zip(lat: Optional[float], lon: Optional[float]) -> str:
-    """Infer zip code from coordinates using nearest centroid."""
-    if lat is None or lon is None:
-        return ""
-    return min(ZIP_CENTROIDS, key=lambda z: haversine(lat, lon, *ZIP_CENTROIDS[z]))
-
-
-def infer_neighborhood(lat: Optional[float], lon: Optional[float]) -> str:
-    """Infer neighborhood from coordinates."""
-    if lat is None or lon is None:
-        return ""
-    if 25.748 < lat < 25.751 and -80.264 < lon < -80.256:
-        return "Miracle Mile"
-    if -80.260 < lon < -80.255 and 25.740 < lat < 25.760:
-        return "Ponce de Leon Corridor"
-    if 25.750 < lat < 25.758 and -80.268 < lon < -80.258:
-        return "Alhambra Circle"
-    if 25.728 < lat < 25.734 and -80.268 < lon < -80.262:
-        return "Merrick Park"
-    if 25.714 < lat < 25.726 and -80.285 < lon < -80.270:
-        return "University of Miami"
-    if -80.245 < lon < -80.235:
-        return "Douglas Road Corridor"
-    if lat < 25.710:
-        return "Sunset / South Gables"
-    if 25.730 < lat < 25.740:
-        return "Bird Road Corridor"
-    return "Coral Gables"
+from _shared import (
+    CANONICAL_FIELDS,
+    CG_BOUNDS,
+    CG_ZIPS_SET as CG_ZIPS,
+    NOMINATIM_HEADERS,
+    NOMINATIM_URL,
+    haversine,
+    in_coral_gables,
+    infer_neighborhood,
+    infer_zip,
+    normalize_key,
+    normalize_phone,
+)
 
 
 # ── Category mapping ──────────────────────────────────────────────
@@ -468,6 +355,7 @@ def sanitize_master(df: pd.DataFrame) -> Tuple[pd.DataFrame, Dict[str, int]]:
     """
     Post-load / post-merge sanitization pass on the master DataFrame.
     Fixes column misalignment, casing, out-of-bounds coords, and junk rows.
+    Uses vectorized pandas operations for performance.
     Returns (cleaned_df, stats).
     """
     stats: Dict[str, int] = {
@@ -479,6 +367,8 @@ def sanitize_master(df: pd.DataFrame) -> Tuple[pd.DataFrame, Dict[str, int]]:
         "rating_value_fixed": 0,
         "review_count_fixed": 0,
         "website_fixed": 0,
+        "cat2_person_cleared": 0,
+        "price_tier_fixed": 0,
     }
 
     # 1. Remove junk rows (category headers masquerading as businesses)
@@ -486,90 +376,125 @@ def sanitize_master(df: pd.DataFrame) -> Tuple[pd.DataFrame, Dict[str, int]]:
     stats["junk_removed"] = int(junk_mask.sum())
     df = df[~junk_mask].copy()
 
-    # 2. Clear out-of-bounds coordinates (must be near Coral Gables: lat ~25.7)
-    for idx, row in df.iterrows():
-        lat_str = str(row.get("lat", ""))
-        if lat_str:
-            try:
-                lat = float(lat_str)
-                if lat < 24.0 or lat > 27.0:
-                    df.loc[idx, "lat"] = ""
-                    df.loc[idx, "lon"] = ""
-                    stats["coords_cleared"] += 1
-            except (ValueError, TypeError):
-                df.loc[idx, "lat"] = ""
-                df.loc[idx, "lon"] = ""
-                stats["coords_cleared"] += 1
+    # 2. Clear out-of-bounds coordinates (vectorized)
+    lat_numeric = pd.to_numeric(df["lat"], errors="coerce")
+    bad_coords = lat_numeric.notna() & ((lat_numeric < 24.0) | (lat_numeric > 27.0))
+    # Also catch non-numeric lat strings that had content
+    non_numeric_lat = lat_numeric.isna() & (df["lat"].fillna("").str.strip() != "")
+    clear_mask = bad_coords | non_numeric_lat
+    stats["coords_cleared"] = int(clear_mask.sum())
+    df.loc[clear_mask, "lat"] = ""
+    df.loc[clear_mask, "lon"] = ""
 
-    # 3. Normalize category_primary to canonical lowercase values
-    for idx, row in df.iterrows():
-        cat = str(row.get("category_primary", "")).strip()
-        cat_lower = cat.lower()
-        if cat_lower in CATEGORY_NORMALIZE:
-            df.loc[idx, "category_primary"] = CATEGORY_NORMALIZE[cat_lower]
-            stats["category_fixed"] += 1
-        elif cat_lower not in VALID_CATEGORIES:
-            # Unknown category — check if it contains an address
-            if re.search(r"\d{5}", cat) or "FL" in cat:
-                df.loc[idx, "category_primary"] = "other"
-                stats["category_fixed"] += 1
-            elif cat != cat_lower:
-                # Fix casing only
-                df.loc[idx, "category_primary"] = cat_lower
-                stats["category_fixed"] += 1
-        elif cat != cat_lower:
-            df.loc[idx, "category_primary"] = cat_lower
-            stats["category_fixed"] += 1
+    # 3. Normalize category_primary (vectorized)
+    cat_col = df["category_primary"].fillna("").str.strip()
+    cat_lower = cat_col.str.lower()
+    original_cat = cat_col.copy()
+
+    # Apply CATEGORY_NORMALIZE mapping
+    mapped = cat_lower.map(CATEGORY_NORMALIZE)
+    has_mapping = mapped.notna()
+    df.loc[has_mapping, "category_primary"] = mapped[has_mapping]
+
+    # For unmapped: check if it's a valid category
+    unmapped = ~has_mapping
+    is_valid = cat_lower.isin(VALID_CATEGORIES)
+    is_address = cat_col.str.contains(r"\d{5}", regex=True, na=False) | cat_col.str.contains("FL", na=False)
+
+    # Unknown + looks like address → "other"
+    fix_to_other = unmapped & ~is_valid & is_address
+    df.loc[fix_to_other, "category_primary"] = "other"
+
+    # Unknown + not address + wrong casing → lowercase
+    fix_casing = unmapped & ~is_valid & ~is_address & (cat_col != cat_lower)
+    df.loc[fix_casing, "category_primary"] = cat_lower[fix_casing]
+
+    # Valid but wrong casing → lowercase
+    valid_wrong_case = unmapped & is_valid & (cat_col != cat_lower)
+    df.loc[valid_wrong_case, "category_primary"] = cat_lower[valid_wrong_case]
+
+    stats["category_fixed"] = int((has_mapping | fix_to_other | fix_casing | valid_wrong_case).sum())
 
     # Fill empty categories
     empty_cat = df["category_primary"].fillna("") == ""
     df.loc[empty_cat, "category_primary"] = "other"
 
-    # 4. Normalize source_file casing
+    # 4. Normalize source_file casing (vectorized)
     source_map = {"OSM": "osm", "TA": "ta", "CGCC": "cgcc"}
-    for idx, row in df.iterrows():
-        sf = str(row.get("source_file", ""))
-        if sf in source_map:
-            df.loc[idx, "source_file"] = source_map[sf]
-            stats["source_normalized"] += 1
-        # Fix concatenated sources (OSM+OSM → osm)
-        if "+" in sf:
-            df.loc[idx, "source_file"] = sf.split("+")[0].lower()
-            stats["source_normalized"] += 1
+    sf_col = df["source_file"].fillna("")
+    mapped_src = sf_col.map(source_map)
+    src_direct = mapped_src.notna()
+    df.loc[src_direct, "source_file"] = mapped_src[src_direct]
 
-    # 5. Fix phone values that are URLs or addresses
-    for idx, row in df.iterrows():
-        ph = str(row.get("phone", ""))
-        if ph and "." in ph and not any(c.isdigit() for c in ph[:5]):
-            if not row.get("website"):
-                df.loc[idx, "website"] = ph
-            df.loc[idx, "phone"] = ""
-            stats["phone_fixed"] += 1
+    # Fix concatenated sources (OSM+OSM → osm)
+    has_plus = sf_col.str.contains("+", regex=False, na=False) & ~src_direct
+    df.loc[has_plus, "source_file"] = sf_col[has_plus].str.split("+").str[0].str.lower()
+    stats["source_normalized"] = int((src_direct | has_plus).sum())
 
-    # 6. Clear non-numeric rating_primary_value
-    for idx, row in df.iterrows():
-        rv = str(row.get("rating_primary_value", ""))
-        if rv:
-            try:
-                float(rv)
-            except ValueError:
-                df.loc[idx, "rating_primary_value"] = ""
-                stats["rating_value_fixed"] += 1
+    # 5. Fix phone values that are URLs or addresses (vectorized)
+    ph_col = df["phone"].fillna("")
+    has_dot = ph_col.str.contains(".", regex=False, na=False)
+    first5 = ph_col.str[:5]
+    no_digit_start = ~first5.str.contains(r"\d", regex=True, na=False)
+    phone_is_url = (ph_col != "") & has_dot & no_digit_start
+    # Move URL-phones to website where website is empty
+    no_website = df["website"].fillna("") == ""
+    df.loc[phone_is_url & no_website, "website"] = ph_col[phone_is_url & no_website]
+    df.loc[phone_is_url, "phone"] = ""
+    stats["phone_fixed"] = int(phone_is_url.sum())
 
-    # 7. Clear non-numeric rating_primary_review_count
-    for idx, row in df.iterrows():
-        rrc = str(row.get("rating_primary_review_count", ""))
-        if rrc and not rrc.replace(".", "").replace("-", "").isdigit():
-            df.loc[idx, "rating_primary_review_count"] = ""
-            stats["review_count_fixed"] += 1
+    # 6. Clear non-numeric rating_primary_value (vectorized)
+    rv_col = df["rating_primary_value"].fillna("")
+    rv_has_content = rv_col.str.strip() != ""
+    rv_numeric = pd.to_numeric(rv_col, errors="coerce")
+    rv_bad = rv_has_content & rv_numeric.isna()
+    stats["rating_value_fixed"] = int(rv_bad.sum())
+    df.loc[rv_bad, "rating_primary_value"] = ""
 
-    # 8. Clear invalid website values
-    for idx, row in df.iterrows():
-        ws = str(row.get("website", ""))
-        if ws in ("Web", "No website", ""):
-            if ws:
-                df.loc[idx, "website"] = ""
-                stats["website_fixed"] += 1
+    # 7. Clear non-numeric rating_primary_review_count (vectorized)
+    rrc_col = df["rating_primary_review_count"].fillna("")
+    rrc_has_content = rrc_col.str.strip() != ""
+    rrc_numeric = pd.to_numeric(rrc_col, errors="coerce")
+    rrc_bad = rrc_has_content & rrc_numeric.isna()
+    stats["review_count_fixed"] = int(rrc_bad.sum())
+    df.loc[rrc_bad, "rating_primary_review_count"] = ""
+
+    # 8. Clear invalid website values (vectorized)
+    ws_col = df["website"].fillna("")
+    ws_bad = ws_col.isin({"Web", "No website"})
+    stats["website_fixed"] = int(ws_bad.sum())
+    df.loc[ws_bad, "website"] = ""
+
+    # 9. Fix bare-domain websites (no protocol) — vectorized
+    ws_col2 = df["website"].fillna("")
+    ws_has_content = ws_col2.str.strip() != ""
+    ws_no_proto = ~ws_col2.str.startswith(("http://", "https://"), na=False)
+    ws_has_dot = ws_col2.str.contains(".", regex=False, na=False)
+    bare_domain = ws_has_content & ws_no_proto & ws_has_dot
+    df.loc[bare_domain, "website"] = "https://" + ws_col2[bare_domain]
+    stats["website_fixed"] += int(bare_domain.sum())
+
+    # 10. Clear person-name contamination from category_secondary (CGCC column misalignment)
+    #     Known CGCC rep names that leaked into category field during initial import.
+    KNOWN_PERSON_NAMES = {
+        "Ekrem Ozer", "Ana Rodriguez", "Matthew  Shippey", "Matthew Shippey",
+        "Helen Valdez Obando",
+    }
+    cat2_col = df["category_secondary"].fillna("")
+    cat2_norm = cat2_col.str.replace(r"\s+", " ", regex=True).str.strip()
+    is_person = cat2_norm.isin(KNOWN_PERSON_NAMES)
+    stats["cat2_person_cleared"] = int(is_person.sum())
+    df.loc[is_person, "category_secondary"] = ""
+
+    # 11. Normalize price_tier — extract star ratings, clear junk
+    pt_col = df["price_tier"].fillna("")
+    # "4 stars" / "3 stars" → clear (rating already in rating_primary_value)
+    pt_stars = pt_col.str.match(r"^\d+\s*stars?$", case=False, na=False)
+    # "Unknown" → clear
+    pt_unknown = pt_col.str.lower() == "unknown"
+    pt_fix = pt_stars | pt_unknown
+    stats["price_tier_fixed"] = int(pt_fix.sum())
+    df.loc[pt_fix, "price_tier"] = ""
 
     return df, stats
 
@@ -606,22 +531,30 @@ def load_staging(staging_dir: str) -> List[Dict[str, str]]:
 
 
 def fuzzy_match(name: str, existing_names: List[str], threshold: int = 85) -> Optional[str]:
-    """Find best fuzzy match above threshold. Returns matched name or None."""
-    from fuzzywuzzy import fuzz
+    """Find best fuzzy match above threshold using process.extractOne().
+    Returns matched name or None."""
+    from fuzzywuzzy import process
 
-    best_match = None
-    best_score = 0
-    name_lower = name.lower()
+    if not existing_names:
+        return None
 
-    for en in existing_names:
-        score = fuzz.ratio(name_lower, en.lower())
-        if score > best_score:
-            best_score = score
-            best_match = en
-
-    if best_score >= threshold:
-        return best_match
+    result = process.extractOne(name, existing_names, score_cutoff=threshold)
+    if result:
+        return result[0]
     return None
+
+
+def _fill_blanks(master_df: pd.DataFrame, idx: int, record: Dict[str, str], dry_run: bool):
+    """Fill blank fields on an existing master row from a new record."""
+    if dry_run:
+        return
+    for col in CANONICAL_FIELDS:
+        if col not in master_df.columns:
+            continue
+        existing_val = str(master_df.loc[idx, col])
+        new_val = record.get(col, "")
+        if (not existing_val or existing_val == "nan") and new_val:
+            master_df.loc[idx, col] = new_val
 
 
 def merge_into_master(
@@ -635,12 +568,22 @@ def merge_into_master(
     """
     stats = {"new": 0, "merged": 0, "skipped": 0, "out_of_bounds": 0}
 
-    if master_df.empty:
-        existing_names = []
-        existing_keys: Set[str] = set()
-    else:
-        existing_names = master_df["business_name"].dropna().tolist()
-        existing_keys = {normalize_key(n) for n in existing_names}
+    # Pre-compute key→row-index and name→row-index lookup dicts (O(n) once)
+    key_to_idx: Dict[str, int] = {}
+    name_to_idx: Dict[str, int] = {}
+    existing_names: List[str] = []
+
+    if not master_df.empty:
+        for i, row in master_df.iterrows():
+            name = str(row.get("business_name", ""))
+            if not name or name == "nan":
+                continue
+            key = normalize_key(name)
+            if key and key not in key_to_idx:
+                key_to_idx[key] = i
+            if name not in name_to_idx:
+                name_to_idx[name] = i
+            existing_names.append(name)
 
     rows_to_append = []
 
@@ -655,49 +598,29 @@ def merge_into_master(
             stats["skipped"] += 1
             continue
 
-        # Quick exact-key dedup
-        if key in existing_keys:
-            # Merge: fill blanks on existing record
-            if not master_df.empty:
-                idx = master_df[
-                    master_df["business_name"].apply(normalize_key) == key
-                ].index
-                if len(idx) > 0:
-                    i = idx[0]
-                    for col in CANONICAL_FIELDS:
-                        existing_val = str(master_df.loc[i, col]) if col in master_df.columns else ""
-                        new_val = record.get(col, "")
-                        if (not existing_val or existing_val == "nan") and new_val:
-                            if not dry_run:
-                                master_df.loc[i, col] = new_val
-                    stats["merged"] += 1
-                    continue
+        # Quick exact-key dedup via dict lookup (O(1))
+        if key in key_to_idx:
+            _fill_blanks(master_df, key_to_idx[key], record, dry_run)
+            stats["merged"] += 1
+            continue
 
         # Fuzzy dedup
         if existing_names:
             match = fuzzy_match(name, existing_names)
-            if match:
-                idx = master_df[master_df["business_name"] == match].index
-                if len(idx) > 0:
-                    i = idx[0]
-                    for col in CANONICAL_FIELDS:
-                        existing_val = str(master_df.loc[i, col]) if col in master_df.columns else ""
-                        new_val = record.get(col, "")
-                        if (not existing_val or existing_val == "nan") and new_val:
-                            if not dry_run:
-                                master_df.loc[i, col] = new_val
-                    stats["merged"] += 1
-                    continue
+            if match and match in name_to_idx:
+                _fill_blanks(master_df, name_to_idx[match], record, dry_run)
+                stats["merged"] += 1
+                continue
 
-        # Truly new record
-        existing_keys.add(key)
+        # Truly new record — update lookups for subsequent records
+        key_to_idx[key] = -1  # placeholder; real index assigned after concat
+        name_to_idx[name] = -1
         existing_names.append(name)
         rows_to_append.append(record)
         stats["new"] += 1
 
     if rows_to_append and not dry_run:
         new_df = pd.DataFrame(rows_to_append)
-        # Ensure all canonical columns exist
         for col in CANONICAL_FIELDS:
             if col not in new_df.columns:
                 new_df[col] = ""
@@ -723,10 +646,6 @@ def archive_staging(staging_dir: str):
 
 
 # ── Enrichment ────────────────────────────────────────────────────
-NOMINATIM_URL = "https://nominatim.openstreetmap.org"
-NOMINATIM_HEADERS = {"User-Agent": "CoralGablesOSINT/1.0 (business-data-enrichment)"}
-
-
 def geocode_address(address: str) -> Tuple[Optional[float], Optional[float]]:
     """Forward geocode an address via Nominatim (free, no key)."""
     import requests

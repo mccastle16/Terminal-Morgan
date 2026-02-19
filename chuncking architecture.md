@@ -63,12 +63,15 @@ APIs cap **results per query**, not **queries per account**. Chunk by `(category
 
 ---
 
-## Dedup Engine
+## Dedup Engine (Agent 2)
 
-- Fuzzy name match (fuzzywuzzy, ratio > 85)
+- Pre-computed key→index dict for O(1) exact-match lookups (normalized name key)
+- Fuzzy name match via `process.extractOne()` (fuzzywuzzy, score_cutoff=85)
 - Lat/lon proximity (< 50m = same entity)
 - Phone number exact match
 - Website domain match
+
+All sanitization is fully vectorized (pandas ops, no iterrows loops) — 11 steps: junk removal, coordinate bounds, category normalization, source casing, phone→website rescue, rating/review validation, invalid website clearing, bare-domain URL fix, person-name clearing from `category_secondary`, and `price_tier` normalization. Shared constants and utilities live in `scripts/_shared.py`.
 
 ## Merge Priority
 
