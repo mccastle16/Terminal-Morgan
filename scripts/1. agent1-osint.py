@@ -289,8 +289,18 @@ def scrape_apify() -> List[Dict[str, str]]:
 def scrape_serpapi(
     master_csv: Optional[str] = None,
     limit: int = 100,
+    target: str = "missing-rating",
 ) -> List[Dict[str, str]]:
-    """Enrich existing records that lack ratings via SerpApi."""
+    """
+    Enrich existing records via SerpApi.
+
+    target controls which records to query:
+      missing-rating   — rows with no rating_primary_value (original behavior)
+      missing-website  — rows with no website
+      missing-address  — rows with no address
+      missing-reviews  — rows with no rating_primary_review_count
+      any-gap          — rows missing ANY of: website, address, rating, review_count
+    """
     if not SERPAPI_KEY:
         print("  ERROR: SERPAPI_KEY not set")
         return []
@@ -303,10 +313,34 @@ def scrape_serpapi(
         print("  ERROR: --master required for serpapi enrichment")
         return []
 
-    df = pd.read_csv(master_csv)
-    # Find records missing a rating
-    col = "rating_primary_value" if "rating_primary_value" in df.columns else "rating"
-    targets = df[df[col].isna()].head(limit)
+    df = pd.read_csv(master_csv, dtype=str).fillna("")
+
+    # Build target filter based on --target flag
+    FIELD_MAP = {
+        "missing-rating": ["rating_primary_value"],
+        "missing-website": ["website"],
+        "missing-address": ["address"],
+        "missing-reviews": ["rating_primary_review_count"],
+        "any-gap": ["website", "address", "rating_primary_value", "rating_primary_review_count"],
+    }
+
+    target_fields = FIELD_MAP.get(target, FIELD_MAP["missing-rating"])
+
+    if target == "any-gap":
+        # OR logic: missing ANY of the fields
+        mask = pd.Series(False, index=df.index)
+        for field in target_fields:
+            if field in df.columns:
+                mask = mask | (df[field].str.strip() == "")
+    else:
+        # AND logic: missing ALL specified fields
+        mask = pd.Series(True, index=df.index)
+        for field in target_fields:
+            if field in df.columns:
+                mask = mask & (df[field].str.strip() == "")
+
+    targets = df[mask].head(limit)
+    print(f"  Target: {target} ({len(targets)} of {mask.sum()} matching records, limit={limit})")
 
     records: List[Dict[str, str]] = []
     total = len(targets)
@@ -510,6 +544,14 @@ Examples:
         default=5000,
         help="Max records to enrich (serpapi only, default=5000 for Developer plan)",
     )
+    parser.add_argument(
+        "--target",
+        type=str,
+        default="missing-rating",
+        choices=["missing-rating", "missing-website", "missing-address",
+                 "missing-reviews", "any-gap"],
+        help="Which records to target for SerpApi enrichment (default: missing-rating)",
+    )
     args = parser.parse_args()
 
     print(f"\n{'='*60}")
@@ -522,7 +564,7 @@ Examples:
     elif args.source == "apify":
         records = scrape_apify()
     elif args.source == "serpapi":
-        records = scrape_serpapi(args.master, args.limit)
+        records = scrape_serpapi(args.master, args.limit, args.target)
     elif args.source == "osm":
         records = scrape_osm()
     else:

@@ -367,6 +367,8 @@ def sanitize_master(df: pd.DataFrame) -> Tuple[pd.DataFrame, Dict[str, int]]:
         "rating_value_fixed": 0,
         "review_count_fixed": 0,
         "website_fixed": 0,
+        "cat2_person_cleared": 0,
+        "price_tier_fixed": 0,
     }
 
     # 1. Remove junk rows (category headers masquerading as businesses)
@@ -462,6 +464,37 @@ def sanitize_master(df: pd.DataFrame) -> Tuple[pd.DataFrame, Dict[str, int]]:
     ws_bad = ws_col.isin({"Web", "No website"})
     stats["website_fixed"] = int(ws_bad.sum())
     df.loc[ws_bad, "website"] = ""
+
+    # 9. Fix bare-domain websites (no protocol) — vectorized
+    ws_col2 = df["website"].fillna("")
+    ws_has_content = ws_col2.str.strip() != ""
+    ws_no_proto = ~ws_col2.str.startswith(("http://", "https://"), na=False)
+    ws_has_dot = ws_col2.str.contains(".", regex=False, na=False)
+    bare_domain = ws_has_content & ws_no_proto & ws_has_dot
+    df.loc[bare_domain, "website"] = "https://" + ws_col2[bare_domain]
+    stats["website_fixed"] += int(bare_domain.sum())
+
+    # 10. Clear person-name contamination from category_secondary (CGCC column misalignment)
+    #     Known CGCC rep names that leaked into category field during initial import.
+    KNOWN_PERSON_NAMES = {
+        "Ekrem Ozer", "Ana Rodriguez", "Matthew  Shippey", "Matthew Shippey",
+        "Helen Valdez Obando",
+    }
+    cat2_col = df["category_secondary"].fillna("")
+    cat2_norm = cat2_col.str.replace(r"\s+", " ", regex=True).str.strip()
+    is_person = cat2_norm.isin(KNOWN_PERSON_NAMES)
+    stats["cat2_person_cleared"] = int(is_person.sum())
+    df.loc[is_person, "category_secondary"] = ""
+
+    # 11. Normalize price_tier — extract star ratings, clear junk
+    pt_col = df["price_tier"].fillna("")
+    # "4 stars" / "3 stars" → clear (rating already in rating_primary_value)
+    pt_stars = pt_col.str.match(r"^\d+\s*stars?$", case=False, na=False)
+    # "Unknown" → clear
+    pt_unknown = pt_col.str.lower() == "unknown"
+    pt_fix = pt_stars | pt_unknown
+    stats["price_tier_fixed"] = int(pt_fix.sum())
+    df.loc[pt_fix, "price_tier"] = ""
 
     return df, stats
 
