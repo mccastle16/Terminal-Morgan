@@ -8,7 +8,7 @@
 
 A structured OSINT database and agent-based pipeline for collecting, validating, and synthesizing business data across **Coral Gables, FL** (zip codes 33134, 33146, 33133, 33143). The goal: build the most complete picture of the local business ecosystem at zero cost, using stacked free-tier APIs and multi-agent validation.
 
-**Current state:** 1,665 unique businesses (deduped across all sources), against a target of ~4,400 active entities.
+**Current state:** 2,884 unique businesses (deduped across all sources), against a target of ~4,400 active entities.
 
 **New here?** See [howto.md](./howto.md) for the step-by-step guide to getting API keys and running the full pipeline.
 
@@ -20,7 +20,7 @@ A structured OSINT database and agent-based pipeline for collecting, validating,
 Terminal/
 |
 |-- data/                          # CSV datasets (raw + processed)
-|   |-- master_all_businesses.csv  # <-- MASTER: 1,665 deduped businesses
+|   |-- master_all_businesses.csv  # <-- MASTER: 2,884 deduped businesses
 |   |-- 1. cgcc-osint-v1.csv       # CGCC enriched v1 (858 rows)
 |   |-- 2. cgcc-osint-v2.csv       # CGCC + OSM merged v2 (1,475 rows)
 |   |-- 3. final-osint.csv         # Cleaned final run (1,128 rows)
@@ -57,32 +57,31 @@ Terminal/
 
 ## Master CSV — `data/master_all_businesses.csv`
 
-**1,665 unique businesses** consolidated from 9 source files, deduplicated by normalized business name.
+**2,884 unique businesses** consolidated from multiple source files, deduplicated by normalized business name with fuzzy matching.
 
 ### Coverage Breakdown
 
 | Metric | Count |
 |--------|------:|
-| **Total unique businesses** | 1,665 |
-| Chamber members | 883 |
-| Non-members | 782 |
+| **Total unique businesses** | 2,884 |
+| Chamber members | 843 |
+| Non-members | 2,041 |
 | **Target** | ~4,400 |
-| **Gap remaining** | ~2,735 |
+| **Gap remaining** | ~1,516 |
 
 ### Field Completeness
 
 | Field | Fill Rate | Notes |
 |-------|----------:|-------|
 | business_name | 100% | Always present |
-| chamber_member | 100% | Y/N flag |
-| category_primary | ~100% | 774 still "other" |
-| phone | 68% | |
-| website | 67% | |
-| contact_name | 51% | |
-| lat / lon | 42% | |
-| address | 37% | |
-| rating_primary_value | 6% | Major gap |
-| top_delights / top_pain_points | 3% | Major gap |
+| category_primary | 100% | 691 still "other" |
+| neighborhood_area | 97% | Inferred from coordinates |
+| phone | 91% | |
+| rating_primary_value | 88% | Via SerpApi enrichment |
+| lat / lon | 70% | |
+| postcode | 70% | Inferred from coordinates |
+| website | 53% | |
+| address | 52% | |
 
 ### Schema
 
@@ -126,12 +125,12 @@ python "scripts/0. orchestrator.py" --merge-only
 
 **Status: Production-ready.** Four source adapters fully implemented:
 
-| Source | Method | Cost | Actual/Expected Yield |
+| Source | Method | Cost | Actual Yield |
 |--------|--------|------|----------------------:|
 | **OSM Overpass** | OpenStreetMap queries | Unlimited, free | 562 raw records |
 | **Outscraper** | Google Maps API | 500 free/month | 380 + 491 + 433 = 1,304 raw |
 | **Apify** | Google Places actor | $5 free credit | ~600-700 expected |
-| **SerpApi** | Google Maps local results | 5,000/month (Developer) | Enrichment (ratings backfill) |
+| **SerpApi** | Google Maps local results | 5,000/month (Developer) | 1,446 matched (ratings backfill) |
 
 ### Agent 2 — Validator & Merger (`scripts/2. agent2-validator.py`)
 
@@ -174,35 +173,36 @@ python "scripts/3. agent3-synthesizer.py" --master data/master_all_businesses.cs
 | CGCC Member Directory | 836 | Done |
 | OSM Overpass (10 chunks) | 811 | Done |
 | Non-Chamber Scrapes | 131 | Done |
-| **Deduped Total** | **1,665** | **Current** |
+| **Deduped Total** | **1,665** | **Done** |
 
-### Phase 2 — Gap Fill (In Progress)
+### Phase 2 — Gap Fill Month 1 (Complete)
 
-Monthly free-tier API stacking via Agent 0 orchestrator:
+Agent 0/1 pipeline run (Feb 2026): OSM + Outscraper (x3) + SerpApi enrichment.
 
-| Tool | Tier | Actual/Expected Yield |
+| Tool | Tier | Actual Yield |
 |------|------|----------------------:|
-| OSM Overpass | Unlimited, free | 562 raw (first run) |
+| OSM Overpass | Unlimited, free | 562 raw |
 | Outscraper | 500 free/month | 1,304 raw across 3 runs |
-| Apify | $5 one-time credit | ~600-700 expected |
-| SerpApi | 5,000/month (Developer) | Enrichment only (ratings) |
-| **Projected Total** | | **~4,300** |
+| SerpApi | 5,000/month (Developer) | 1,446 matched (92.2% match rate) |
+| **Agent 2 Merge** | | **+1,219 new, 2,165 enriched** |
+| **Running Total** | | **2,884** |
 
-### Phase 3 — Enrichment (Ready)
+### Phase 3 — Gap Fill Months 2-5 (Next)
 
-Backfill missing fields on existing 1,665 records via Agent 2 `--enrich`:
+Continue monthly free-tier stacking to reach ~4,400:
 
 | Gap | Strategy | Cost |
 |-----|----------|------|
-| Lat/lon (58% missing) | Forward geocode via Nominatim | Free |
-| Address (63% missing) | Reverse geocode via Nominatim | Free |
-| Postcode / Neighborhood | Infer from coordinates | Free (local) |
-| Categories (774 "other") | Keyword re-mapping from business name | Free (local) |
-| Ratings (94% missing) | SerpApi enrichment pass | 5,000/month (Developer plan) |
+| Lat/lon (30% missing) | Forward geocode via Nominatim | Free |
+| Address (48% missing) | Reverse geocode via Nominatim | Free |
+| Categories (691 "other") | Keyword re-mapping from business name | Free (local) |
+| New businesses | Outscraper monthly resets (500/mo) | Free |
+| Apify | One-time $5 credit (~600-700 records) | $5 one-time |
 
-### Phase 4 — PKP Synthesis (Ready)
+### Phase 4 — PKP Synthesis (Complete)
 
-Run Agent 3 `--action synthesize` to populate 7 PKP graph fields on all records.
+Agent 3 `--action synthesize` run on all 2,884 records. 7 PKP graph fields populated:
+- **1,690 asset** / **702 platform** / **492 infrastructure** nodes
 
 See [howto.md](./howto.md) for the full step-by-step guide and monthly cadence.
 

@@ -257,12 +257,12 @@ The master CSV has significant gaps in existing records. Enrichment backfills th
 
 | Gap | Strategy | API Cost |
 |-----|----------|----------|
-| Lat/lon missing (58%) | Forward geocode address → coordinates | Free (Nominatim) |
-| Address missing (63%) | Reverse geocode coordinates → address | Free (Nominatim) |
-| Postcode missing | Infer from coordinates (nearest centroid) | Free (local) |
-| Neighborhood missing | Infer from coordinates (boundary rules) | Free (local) |
-| Category = "other" (774) | Re-map using business name keywords | Free (local) |
-| Ratings missing (94%) | SerpApi enrichment pass | 5,000/month (Developer) |
+| Lat/lon missing (30%) | Forward geocode address → coordinates | Free (Nominatim) |
+| Address missing (48%) | Reverse geocode coordinates → address | Free (Nominatim) |
+| Postcode missing (30%) | Infer from coordinates (nearest centroid) | Free (local) |
+| Neighborhood missing (3%) | Infer from coordinates (boundary rules) | Free (local) |
+| Category = "other" (691) | Re-map using business name keywords | Free (local) |
+| Ratings missing (12%) | SerpApi enrichment pass | 5,000/month (Developer) |
 
 ### Run enrichment
 
@@ -289,7 +289,7 @@ python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_bu
 python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv
 ```
 
-SerpApi Developer plan (5,000/month) can enrich all ~1,570 records missing ratings in a single pass (~26 minutes at 1 req/sec). On the free tier (100/month), it would take ~16 months.
+SerpApi Developer plan (5,000/month) enriched 1,446 of 1,568 records missing ratings in a single 26-minute pass (92.2% match rate). On the free tier (100/month), this would have taken ~16 months.
 
 ### Geocoding rate limits
 
@@ -380,14 +380,14 @@ python "scripts/0. orchestrator.py" --sources osm
 
 | Month | Source | Raw Collected | Net New (after dedup) | Running Total |
 |-------|--------|:-------------:|----------------------:|--------------:|
-| Current | Baseline | — | — | 1,665 |
-| 1 (Feb) | OSM + Outscraper (x3) + SerpApi | 562 + 1,304 + enrichment | TBD after Agent 2 dedup | TBD |
-| 2 | Outscraper (x3) + Apify + SerpApi | ~1,300 + ~700 | +800-1,000 | ~3,500 |
-| 3 | Outscraper (x3) + SerpApi | ~1,300 | +300-400 | ~3,900 |
-| 4 | Outscraper (x3) + OSM re-run | ~1,300 + ~200 | +200-300 | ~4,200 |
-| 5 | Outscraper (final sweep) | ~1,000 | +100-200 | **~4,400** |
+| Baseline | Phase 1 (CGCC + OSM + non-chamber) | — | — | 1,665 |
+| 1 (Feb) | OSM + Outscraper (x3) + SerpApi | 562 + 1,304 + 1,446 enrichment | **+1,219** | **2,884** |
+| 2 (Mar) | Outscraper (x3) + Apify + SerpApi | ~1,300 + ~700 | +600-800 | ~3,500-3,700 |
+| 3 (Apr) | Outscraper (x3) + SerpApi | ~1,300 | +300-400 | ~3,900 |
+| 4 (May) | Outscraper (x3) + OSM re-run | ~1,300 + ~200 | +200-300 | ~4,200 |
+| 5 (Jun) | Outscraper (final sweep) | ~1,000 | +100-200 | **~4,400** |
 
-> **Note:** Actual yields from first run — OSM: 562 raw, Outscraper: 380 (food) + 491 (professional) + 433 (services) = 1,304 raw. SerpApi enriches existing records (ratings backfill) rather than adding new rows. Net new after Agent 2 dedup is typically 30-50% of raw count.
+> **Actual yields from Month 1 run (Feb 18-19, 2026):** OSM: 562 raw. Outscraper: 380 (food) + 491 (professional) + 433 (services) = 1,304 raw. SerpApi: 1,568 queried, 1,446 matched (92.2% match rate) — enriches existing records with ratings/reviews. Agent 2 merge: 3,384 staging records → 1,219 net new + 2,165 existing records enriched. Net new after dedup was 36% of raw count.
 
 ---
 
@@ -509,7 +509,7 @@ Then restart the dev server or hard-refresh the browser.
                            ▼
          ┌─────────────────────────────────────────┐
          │     data/master_all_businesses.csv       │
-         │        (1,665+ canonical records)        │
+         │        (2,884 canonical records)         │
          └─────────────────┬───────────────────────┘
                            │
                            ▼
