@@ -154,6 +154,8 @@ Premium expansion driven by affluent clientele investing in medical aesthetics a
 
 ## Data Pipeline: `data/master_all_businesses.csv`
 
+The master CSV is the single source of truth. Legacy intermediate files (v1, v2, non-chamber scrapes, 10-chunk OSM) have been merged in and deleted. Raw source CSVs from each Agent 1 pipeline run are preserved in `staging/archived/`.
+
 | Step | Action | Sources | Status |
 |------|--------|---------|--------|
 | 1 | Population baseline | CGCC directory + OSM Overpass (10 chunks) | Done (1,665) |

@@ -19,14 +19,8 @@ A structured OSINT database and agent-based pipeline for collecting, validating,
 ```
 Terminal/
 |
-|-- data/                          # CSV datasets (raw + processed)
+|-- data/                          # CSV datasets
 |   |-- master_all_businesses.csv  # <-- MASTER: 2,884 deduped businesses
-|   |-- 1. cgcc-osint-v1.csv       # CGCC enriched v1 (858 rows)
-|   |-- 2. cgcc-osint-v2.csv       # CGCC + OSM merged v2 (1,475 rows)
-|   |-- 3. final-osint.csv         # Cleaned final run (1,128 rows)
-|   |-- 4. non-cgcc-biz-run1.csv   # Non-chamber businesses run 1 (63)
-|   |-- 5. non-cgcc-biz-run2.csv   # Non-chamber businesses run 2 (67)
-|   |-- 6. ten-chunk-business.csv  # 10-chunk OSM pipeline (1,366 rows)
 |
 |-- scripts/                       # Python agent scripts
 |   |-- _shared.py                 # Shared constants + utilities (schema, geo, normalize)
@@ -36,6 +30,7 @@ Terminal/
 |   |-- 3. agent3-synthesizer.py   # Agent 3: PKP Synthesis / Export
 |
 |-- staging/                       # Agent 1 output → Agent 2 input
+|   |-- archived/                  # Source CSVs after merge (OSM, Outscraper, SerpApi runs)
 |
 |-- dashboard/                     # React/Vite frontend (visualization)
 |   |-- src/pages/                 # 15+ specialized views
@@ -56,7 +51,7 @@ Terminal/
 
 ## Master CSV — `data/master_all_businesses.csv`
 
-**2,884 unique businesses** consolidated from multiple source files, deduplicated by normalized business name with fuzzy matching.
+**2,884 unique businesses** consolidated from multiple source runs, deduplicated by normalized business name with fuzzy matching. This is the single source of truth — all legacy intermediate CSVs (v1, v2, non-chamber scrapes, 10-chunk OSM) have been merged in and deleted. Raw source CSVs from each pipeline run are preserved in `staging/archived/`.
 
 ### Coverage Breakdown
 
