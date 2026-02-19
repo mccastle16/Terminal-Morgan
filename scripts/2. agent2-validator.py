@@ -98,15 +98,21 @@ def normalize_key(name: str) -> str:
 
 
 def normalize_phone(phone: str) -> str:
-    """Normalize phone to (XXX) XXX-XXXX format."""
+    """Normalize phone to (XXX) XXX-XXXX format. Rejects non-phone values."""
     if not phone or not isinstance(phone, str):
         return ""
-    digits = re.sub(r"[^\d]", "", phone)
+    # Reject if it looks like a URL, business name, or address (no digits in first 5 chars)
+    stripped = phone.strip()
+    if "." in stripped and not any(c.isdigit() for c in stripped[:5]):
+        return ""  # It's a URL or name, not a phone
+    if re.search(r"\d{5}", stripped) and ("FL" in stripped or "Coral" in stripped):
+        return ""  # It's an address, not a phone
+    digits = re.sub(r"[^\d]", "", stripped)
     if len(digits) == 10:
         return f"({digits[:3]}) {digits[3:6]}-{digits[6:]}"
     if len(digits) == 11 and digits[0] == "1":
         return f"({digits[1:4]}) {digits[4:7]}-{digits[7:]}"
-    return phone.strip()
+    return stripped
 
 
 def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -414,6 +420,158 @@ def validate_record(record: Dict[str, str]) -> Tuple[str, float, List[str]]:
         tier = "Low"
 
     return (tier, round(score, 2), issues)
+
+
+# ── Canonical category values ─────────────────────────────────────
+VALID_CATEGORIES = {
+    "food_beverage", "legal", "healthcare", "real_estate", "banking",
+    "financial_services", "insurance", "retail", "education",
+    "hospitality", "nonprofit", "personal_services", "wellness",
+    "professional_services", "consulting", "marketing", "construction",
+    "auto_dealer", "arts_culture", "technology", "accounting", "other",
+}
+
+# Map non-standard category values to canonical ones
+CATEGORY_NORMALIZE = {
+    "venues": "hospitality",
+    "landscaping": "construction",
+    "plumbing": "construction",
+    "veterinary": "healthcare",
+    "hotel": "hospitality",
+    "law firm": "legal",
+    "restaurant": "food_beverage",
+    "restaurant/retail": "food_beverage",
+    "retail/boutique": "retail",
+    "retail/shopping": "retail",
+    "salon": "personal_services",
+    "fitness": "wellness",
+    "digital marketing": "marketing",
+    "seo & digital": "marketing",
+    "telecommunications": "technology",
+    "urgent care": "healthcare",
+    "tutoring k-12": "education",
+    "dealership service": "auto_dealer",
+    "luxury athletic resort": "wellness",
+    "automotive": "auto_dealer",
+}
+
+# Names that are clearly category headers, not real businesses
+JUNK_BUSINESS_NAMES = {
+    "accounting", "banking", "construction", "education", "fitness",
+    "advertising", "automotive", "computer repair & it",
+    "creative & publicity", "affordable gym", "healthcare",
+    "marketing", "plumbing", "web",
+}
+
+
+def sanitize_master(df: pd.DataFrame) -> Tuple[pd.DataFrame, Dict[str, int]]:
+    """
+    Post-load / post-merge sanitization pass on the master DataFrame.
+    Fixes column misalignment, casing, out-of-bounds coords, and junk rows.
+    Returns (cleaned_df, stats).
+    """
+    stats: Dict[str, int] = {
+        "junk_removed": 0,
+        "coords_cleared": 0,
+        "category_fixed": 0,
+        "source_normalized": 0,
+        "phone_fixed": 0,
+        "rating_value_fixed": 0,
+        "review_count_fixed": 0,
+        "website_fixed": 0,
+    }
+
+    # 1. Remove junk rows (category headers masquerading as businesses)
+    junk_mask = df["business_name"].str.lower().str.strip().isin(JUNK_BUSINESS_NAMES)
+    stats["junk_removed"] = int(junk_mask.sum())
+    df = df[~junk_mask].copy()
+
+    # 2. Clear out-of-bounds coordinates (must be near Coral Gables: lat ~25.7)
+    for idx, row in df.iterrows():
+        lat_str = str(row.get("lat", ""))
+        if lat_str:
+            try:
+                lat = float(lat_str)
+                if lat < 24.0 or lat > 27.0:
+                    df.loc[idx, "lat"] = ""
+                    df.loc[idx, "lon"] = ""
+                    stats["coords_cleared"] += 1
+            except (ValueError, TypeError):
+                df.loc[idx, "lat"] = ""
+                df.loc[idx, "lon"] = ""
+                stats["coords_cleared"] += 1
+
+    # 3. Normalize category_primary to canonical lowercase values
+    for idx, row in df.iterrows():
+        cat = str(row.get("category_primary", "")).strip()
+        cat_lower = cat.lower()
+        if cat_lower in CATEGORY_NORMALIZE:
+            df.loc[idx, "category_primary"] = CATEGORY_NORMALIZE[cat_lower]
+            stats["category_fixed"] += 1
+        elif cat_lower not in VALID_CATEGORIES:
+            # Unknown category — check if it contains an address
+            if re.search(r"\d{5}", cat) or "FL" in cat:
+                df.loc[idx, "category_primary"] = "other"
+                stats["category_fixed"] += 1
+            elif cat != cat_lower:
+                # Fix casing only
+                df.loc[idx, "category_primary"] = cat_lower
+                stats["category_fixed"] += 1
+        elif cat != cat_lower:
+            df.loc[idx, "category_primary"] = cat_lower
+            stats["category_fixed"] += 1
+
+    # Fill empty categories
+    empty_cat = df["category_primary"].fillna("") == ""
+    df.loc[empty_cat, "category_primary"] = "other"
+
+    # 4. Normalize source_file casing
+    source_map = {"OSM": "osm", "TA": "ta", "CGCC": "cgcc"}
+    for idx, row in df.iterrows():
+        sf = str(row.get("source_file", ""))
+        if sf in source_map:
+            df.loc[idx, "source_file"] = source_map[sf]
+            stats["source_normalized"] += 1
+        # Fix concatenated sources (OSM+OSM → osm)
+        if "+" in sf:
+            df.loc[idx, "source_file"] = sf.split("+")[0].lower()
+            stats["source_normalized"] += 1
+
+    # 5. Fix phone values that are URLs or addresses
+    for idx, row in df.iterrows():
+        ph = str(row.get("phone", ""))
+        if ph and "." in ph and not any(c.isdigit() for c in ph[:5]):
+            if not row.get("website"):
+                df.loc[idx, "website"] = ph
+            df.loc[idx, "phone"] = ""
+            stats["phone_fixed"] += 1
+
+    # 6. Clear non-numeric rating_primary_value
+    for idx, row in df.iterrows():
+        rv = str(row.get("rating_primary_value", ""))
+        if rv:
+            try:
+                float(rv)
+            except ValueError:
+                df.loc[idx, "rating_primary_value"] = ""
+                stats["rating_value_fixed"] += 1
+
+    # 7. Clear non-numeric rating_primary_review_count
+    for idx, row in df.iterrows():
+        rrc = str(row.get("rating_primary_review_count", ""))
+        if rrc and not rrc.replace(".", "").replace("-", "").isdigit():
+            df.loc[idx, "rating_primary_review_count"] = ""
+            stats["review_count_fixed"] += 1
+
+    # 8. Clear invalid website values
+    for idx, row in df.iterrows():
+        ws = str(row.get("website", ""))
+        if ws in ("Web", "No website", ""):
+            if ws:
+                df.loc[idx, "website"] = ""
+                stats["website_fixed"] += 1
+
+    return df, stats
 
 
 # ── Dedup & Merge ─────────────────────────────────────────────────
@@ -872,6 +1030,16 @@ Examples:
         print(f"  Master: {args.master}")
         print(f"  Mode: {'DRY RUN' if args.dry_run else 'LIVE'}")
         print(f"{'='*60}")
+
+        # Sanitize before enrichment
+        if not args.dry_run:
+            df_pre = load_master(args.master)
+            df_pre, san_stats = sanitize_master(df_pre)
+            san_total = sum(san_stats.values())
+            if san_total > 0:
+                df_pre.to_csv(args.master, index=False)
+                print(f"\n  Pre-enrichment sanitization ({san_total} fixes applied)")
+
         enrich_master(args.master, args.dry_run)
         print(f"\n  Done.\n")
         return
@@ -887,6 +1055,16 @@ Examples:
     # 1. Load master
     master_df = load_master(args.master)
     print(f"  Master: {len(master_df)} existing records")
+
+    # 1b. Sanitize master on load (fix column misalignment, casing, etc.)
+    master_df, sanitize_stats = sanitize_master(master_df)
+    sanitize_total = sum(sanitize_stats.values())
+    if sanitize_total > 0:
+        print(f"  Sanitized master ({sanitize_total} fixes):")
+        for k, v in sanitize_stats.items():
+            if v > 0:
+                print(f"    {k}: {v}")
+        print(f"  Master after sanitization: {len(master_df)} records")
 
     # 2. Load staging
     raw_records = load_staging(args.staging)
@@ -935,7 +1113,16 @@ Examples:
     print(f"    Merged:  {merge_stats['merged']}")
     print(f"    Skipped: {merge_stats['skipped']}")
 
-    # 5. Write
+    # 5. Post-merge sanitization
+    master_df, post_sanitize = sanitize_master(master_df)
+    post_total = sum(post_sanitize.values())
+    if post_total > 0:
+        print(f"\n  Post-merge sanitization ({post_total} fixes):")
+        for k, v in post_sanitize.items():
+            if v > 0:
+                print(f"    {k}: {v}")
+
+    # 6. Write
     if not args.dry_run:
         # Sort by business name
         master_df = master_df.sort_values("business_name", key=lambda x: x.str.lower())
