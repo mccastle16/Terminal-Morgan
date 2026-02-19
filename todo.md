@@ -16,7 +16,7 @@
 - [x] Delete dead scripts 4 (chunkedscraper) and 5 (ten-chunk-script) — ~1,000 lines removed
 - [x] Extract shared constants + utilities into `scripts/_shared.py` (CANONICAL_FIELDS, geo, normalize_key/phone, haversine, etc.)
 - [x] Pre-compute key→index dict in `merge_into_master()` — O(1) lookups instead of O(n) `.apply()` scans
-- [x] Vectorize `sanitize_master()` — replace 7 `iterrows` loops with pandas vectorized ops
+- [x] Vectorize `sanitize_master()` — replace iterrows loops with pandas vectorized ops (now 11 steps: +bare-domain URL fix, +person-name clearing, +price_tier normalization)
 - [x] Switch `fuzzy_match()` to `process.extractOne()` with `score_cutoff` for faster dedup
 - [x] Convert Agent 0 from subprocess.run to direct function imports (importlib + ThreadPoolExecutor)
 

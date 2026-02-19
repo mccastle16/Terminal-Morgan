@@ -84,7 +84,7 @@ You need **zero keys** to start — OSM Overpass is unlimited and free. The paid
 
 ### 2c. SerpApi (100 free searches/month)
 
-**What it does:** Queries Google Maps search results via a clean JSON API. Best for **enrichment** (adding ratings/reviews to records that already have a name).
+**What it does:** Queries Google Maps search results via a clean JSON API. Best for **enrichment** — backfilling website, address, ratings, reviews, and price data on records that already have a name. Supports field-targeted queries via `--target`.
 
 **Sign up:**
 
@@ -98,7 +98,7 @@ You need **zero keys** to start — OSM Overpass is unlimited and free. The paid
 - Free tier: 100 searches/month (no credit card)
 - Developer plan ($75/mo): 5,000 searches/month
 - Each search returns 1 enrichment record (we search by business name)
-- Best used for backfilling ratings on records that lack them
+- Supports `--target` flag to choose which gap to fill: `missing-rating`, `missing-website`, `missing-address`, `missing-reviews`, or `any-gap`
 - Resets monthly
 - Rate limit: 1 request/second (Agent 1 handles this)
 
@@ -235,8 +235,10 @@ python "scripts/1. agent1-osint.py" --source outscraper --run 3  # hospitality &
 # Apify — single run, all categories
 python "scripts/1. agent1-osint.py" --source apify
 
-# SerpApi — enrichment pass (needs existing master, default limit: 5000)
-python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
+# SerpApi — field-targeted enrichment (needs existing master, default limit: 5000)
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv                              # default: missing-rating
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --target missing-website      # 1,359 rows need websites
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --target any-gap --limit 500  # any missing field
 
 # OSM Overpass — 10-chunk geographic sweep
 python "scripts/1. agent1-osint.py" --source osm
@@ -277,17 +279,28 @@ python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv 
 python "scripts/0. orchestrator.py" --enrich
 ```
 
-### Enrichment for ratings (SerpApi)
+### Field-targeted enrichment (SerpApi)
 
-Ratings enrichment goes through Agent 1 → Agent 2 (staging merge fills blanks):
+SerpApi enrichment goes through Agent 1 → Agent 2 (staging merge fills blanks on existing rows without overwriting):
 
 ```bash
-# Collect ratings for businesses missing them (default limit: 5000)
-python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
+# Target a specific gap (default: missing-rating)
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --target missing-website
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --target any-gap --limit 500
 
-# Merge the enrichment data into master
+# Merge the enrichment data into master (blanks-only fill)
 python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv
 ```
+
+Available `--target` values:
+
+| Target | Records | What it fills |
+|--------|--------:|---------------|
+| `missing-rating` | 356 | rating, reviews, price, website, address |
+| `missing-website` | 1,359 | website, phone, address, rating |
+| `missing-address` | 1,368 | address, phone, website, rating |
+| `missing-reviews` | 2,601 | review_count, rating, website |
+| `any-gap` | 2,751 | OR of all above — any record with any gap |
 
 SerpApi Developer plan (5,000/month) enriched 1,446 of 1,568 records missing ratings in a single 26-minute pass (92.2% match rate). On the free tier (100/month), this would have taken ~16 months.
 

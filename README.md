@@ -74,8 +74,10 @@ Terminal/
 | rating_primary_value | 88% | Via SerpApi enrichment |
 | lat / lon | 70% | |
 | postcode | 70% | Inferred from coordinates |
-| website | 53% | |
+| website | 53% | 856 bare-domain URLs fixed with `https://` prefix |
 | address | 52% | |
+
+**Data quality (Feb 19):** 422 person-name contaminations cleared from `category_secondary` (CGCC column misalignment), 17 star-rating values removed from `price_tier` (already captured in `rating_primary_value`).
 
 ### Schema
 
@@ -124,11 +126,11 @@ python "scripts/0. orchestrator.py" --merge-only
 | **OSM Overpass** | OpenStreetMap queries | Unlimited, free | 562 raw records |
 | **Outscraper** | Google Maps API | 500 free/month | 380 + 491 + 433 = 1,304 raw |
 | **Apify** | Google Places actor | $5 free credit | ~600-700 expected |
-| **SerpApi** | Google Maps local results | 5,000/month (Developer) | 1,446 matched (ratings backfill) |
+| **SerpApi** | Google Maps local results | 5,000/month (Developer) | 1,446 matched — field-targeted via `--target` |
 
 ### Agent 2 — Validator & Merger (`scripts/2. agent2-validator.py`)
 
-**Role:** Normalizes raw staging CSVs to canonical schema, deduplicates against master, validates fields, and writes updated master. Also runs enrichment passes on existing data. Sanitization is fully vectorized (pandas ops); merge uses pre-computed key→index dicts for O(1) lookups; fuzzy matching uses `process.extractOne()`.
+**Role:** Normalizes raw staging CSVs to canonical schema, deduplicates against master, validates fields, and writes updated master. Also runs enrichment passes on existing data. Sanitization is fully vectorized (pandas ops, 11 steps: junk removal, coordinate bounds, category normalization, source casing, phone→website rescue, rating/review validation, bare-domain URL fix, person-name clearing, price_tier normalization). Merge uses pre-computed key→index dicts for O(1) lookups with blanks-only fill on existing records. Fuzzy matching uses `process.extractOne()`.
 
 **Status: Production-ready.** Two modes:
 

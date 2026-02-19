@@ -69,6 +69,8 @@
 | Category = "other" | 691 | 24% |
 | Red Flags | 10 | — |
 
+**Data quality fixes applied (Feb 19):** 856 bare-domain URLs fixed with `https://` prefix, 422 CGCC person-name contaminations cleared from `category_secondary`, 17 `price_tier` star-rating/unknown values normalized.
+
 ### Validation Tiers
 
 | Tier | Count |
@@ -103,7 +105,8 @@ python "scripts/0. orchestrator.py" --all
 python "scripts/1. agent1-osint.py" --source osm
 python "scripts/1. agent1-osint.py" --source outscraper --run 1
 python "scripts/1. agent1-osint.py" --source apify
-python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv                              # default: missing-rating
+python "scripts/1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --target any-gap --limit 500  # any missing field
 
 # Validate and merge staging into master
 python "scripts/2. agent2-validator.py" --master data/master_all_businesses.csv

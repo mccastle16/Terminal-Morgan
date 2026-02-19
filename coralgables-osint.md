@@ -49,7 +49,7 @@ Runs the full pipeline end-to-end. Imports Agents 1-3 directly via `importlib` (
 
 ### Agent 1 — Scraper (Entity Resolution)
 
-Ingests data from OSM Overpass, Outscraper (Google Maps), Apify (Google Places), and SerpApi (enrichment).
+Ingests data from OSM Overpass, Outscraper (Google Maps), Apify (Google Places), and SerpApi (field-targeted enrichment via `--target`: `missing-rating`, `missing-website`, `missing-address`, `missing-reviews`, `any-gap`).
 
 | Field | Mechanism |
 |-------|-----------|
@@ -61,9 +61,9 @@ Ingests data from OSM Overpass, Outscraper (Google Maps), Apify (Google Places),
 
 ### Agent 2 — Validator (Confidence & Integrity)
 
-Normalizes, deduplicates, validates, and merges staging records into master. Fully vectorized sanitization (pandas ops, no iterrows). Pre-computed key→index dicts for O(1) merge lookups. Fuzzy dedup via `process.extractOne()` (fuzzywuzzy, threshold=85).
+Normalizes, deduplicates, validates, and merges staging records into master. Fully vectorized sanitization (11 steps including bare-domain URL fix, person-name clearing, price_tier normalization). Pre-computed key→index dicts for O(1) merge lookups with blanks-only fill on existing records. Fuzzy dedup via `process.extractOne()` (fuzzywuzzy, threshold=85).
 
-- **Merge mode:** Ingest staging → normalize → fuzzy dedup → validate → merge
+- **Merge mode:** Ingest staging → normalize → fuzzy dedup → validate → blanks-only merge
 - **Enrich mode:** Forward/reverse geocoding via Nominatim, zip/neighborhood inference, category re-mapping
 - Output: `validation_tier` (Low / Moderate / High) and `osint_confidence` (0.0–1.0)
 
