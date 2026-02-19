@@ -196,31 +196,50 @@ def scrape_outscraper(run_num: int = 1) -> List[Dict[str, str]]:
         print(f"  No queries defined for run {run_num}")
         return []
 
+    # Fields to request from Outscraper (v1 returns all by default,
+    # but being explicit avoids surprises if the API changes).
+    outscraper_fields = [
+        "name", "phone", "site", "full_address",
+        "latitude", "longitude", "postal_code",
+        "rating", "reviews", "type", "range",
+    ]
+
+    # Outscraper returns Python None for missing values;
+    # coerce to empty string so downstream doesn't get "None".
+    def _val(v):
+        return "" if v is None else str(v).strip()
+
     records: List[Dict[str, str]] = []
     for query in queries:
         print(f"    Outscraper: {query}")
         try:
-            results = client.google_maps_search(
-                [query], limit=25, language="en", region="US"
+            # Use google_maps_search_v1 — the v3 speed-optimized endpoint
+            # omits key fields (site, full_address, reviews, range).
+            results = client.google_maps_search_v1(
+                [query], limit=25, language="en", region="US",
+                fields=outscraper_fields,
             )
             for batch in results:
+                if isinstance(batch, dict):
+                    batch = [batch]
                 for place in batch:
                     name = place.get("name", "")
                     if not name:
                         continue
+
                     records.append(
                         _raw(
                             name=name,
-                            phone=place.get("phone", ""),
-                            website=place.get("site", ""),
-                            address=place.get("full_address", ""),
-                            lat=place.get("latitude", ""),
-                            lon=place.get("longitude", ""),
-                            postcode=place.get("postal_code", ""),
-                            rating=place.get("rating", ""),
-                            review_count=place.get("reviews", ""),
-                            category_raw=place.get("type", ""),
-                            price=place.get("range", ""),
+                            phone=_val(place.get("phone")),
+                            website=_val(place.get("site")),
+                            address=_val(place.get("full_address")),
+                            lat=_val(place.get("latitude")),
+                            lon=_val(place.get("longitude")),
+                            postcode=_val(place.get("postal_code")),
+                            rating=_val(place.get("rating")),
+                            review_count=_val(place.get("reviews")),
+                            category_raw=_val(place.get("type")),
+                            price=_val(place.get("range")),
                             source="outscraper",
                         )
                     )
@@ -380,12 +399,16 @@ def scrape_serpapi(
 
             if local:
                 top = local[0]
+                # SerpApi nests coordinates under gps_coordinates
+                gps = top.get("gps_coordinates", {}) or {}
                 records.append(
                     _raw(
                         name=name,
                         phone=top.get("phone", ""),
                         website=top.get("website", ""),
                         address=top.get("address", ""),
+                        lat=gps.get("latitude", ""),
+                        lon=gps.get("longitude", ""),
                         rating=top.get("rating", ""),
                         review_count=top.get("reviews", top.get("reviews_original", "")),
                         category_raw=top.get("type", ""),
