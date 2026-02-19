@@ -38,18 +38,15 @@ from typing import Any, Dict, List, Optional
 
 import requests
 
+from _shared import CORAL_GABLES_ZIPS, OSM_BBOX, OVERPASS_URL
+
 # ── Config ────────────────────────────────────────────────────────
 OUTSCRAPER_KEY = os.environ.get("OUTSCRAPER_KEY", "")
 APIFY_TOKEN = os.environ.get("APIFY_TOKEN", "")
 SERPAPI_KEY = os.environ.get("SERPAPI_KEY", "")
 
-CORAL_GABLES_ZIPS = ["33134", "33146", "33133", "33143"]
-
-STAGING_DIR = Path("staging")
+STAGING_DIR = Path(__file__).resolve().parent.parent / "staging"
 STAGING_DIR.mkdir(exist_ok=True)
-
-OVERPASS_URL = "https://overpass-api.de/api/interpreter"
-OSM_BBOX = "25.690,-80.310,25.770,-80.230"
 
 # Outscraper query sets — designed to stay within 500/month free tier
 OUTSCRAPER_CHUNKS: Dict[int, List[str]] = {

@@ -29,39 +29,10 @@ from typing import Any, Dict, List
 
 import pandas as pd
 
-# ── Canonical schema (must match Agent 2) ─────────────────────────
-CANONICAL_FIELDS = [
-    "business_id",
-    "business_name",
-    "contact_name",
-    "phone",
-    "website",
-    "address",
-    "lat",
-    "lon",
-    "postcode",
-    "neighborhood_area",
-    "category_primary",
-    "category_secondary",
-    "price_tier",
-    "rating_primary_value",
-    "rating_primary_source",
-    "rating_primary_review_count",
-    "top_delights",
-    "top_pain_points",
-    "osint_confidence",
-    "validation_tier",
-    "red_flag_present",
-    "red_flag_severity",
-    "red_flag_notes",
-    "chamber_member",
-    "source_file",
-    "batch_id",
-    "last_reviewed_date",
-]
+from _shared import CANONICAL_FIELDS
 
 # Dashboard export includes all fields
-DASHBOARD_DIR = Path("dashboard/public/data")
+DASHBOARD_DIR = Path(__file__).resolve().parent.parent / "dashboard" / "public" / "data"
 DASHBOARD_FILENAME = "union_all_businesses.csv"
 
 

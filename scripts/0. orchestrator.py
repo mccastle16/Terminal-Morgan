@@ -3,8 +3,10 @@
 Agent 0 — Concurrent Orchestrator
 ====================================
 Runs the full Agent 1 → Agent 2 → Agent 3 pipeline with concurrent
-source collection.  Agent 1 adapters run in parallel (one process per
-source), then Agent 2 merges all staging CSVs, then Agent 3 exports.
+source collection via direct function calls (no subprocess overhead).
+
+Agent 1 adapters run in parallel threads (I/O-bound API calls),
+then Agent 2 merges all staging CSVs, then Agent 3 exports.
 
 Usage:
   # Run all free sources concurrently, then validate + export
@@ -31,40 +33,62 @@ Requirements:
 """
 
 import argparse
+import importlib.util
 import os
-import subprocess
 import sys
 import time
-from concurrent.futures import ProcessPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 
-SCRIPTS_DIR = Path(__file__).parent
-MASTER_CSV = Path(__file__).parent.parent / "data" / "master_all_businesses.csv"
-STAGING_DIR = Path(__file__).parent.parent / "staging"
+SCRIPTS_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPTS_DIR.parent
+MASTER_CSV = PROJECT_ROOT / "data" / "master_all_businesses.csv"
+STAGING_DIR = PROJECT_ROOT / "staging"
 
-# Source definitions: name → (requires_key, env_var, extra_args)
+# Add scripts dir to sys.path so _shared.py is importable
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+
+# ── Module loaders (handles filenames with spaces) ───────────────
+def _load_module(name: str, filename: str):
+    """Load a Python module from scripts/ by filename (supports spaces)."""
+    path = SCRIPTS_DIR / filename
+    spec = importlib.util.spec_from_file_location(name, path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+# Lazy-load agent modules (loaded once on first use)
+_agent_modules = {}
+
+
+def _get_agent1():
+    if "agent1" not in _agent_modules:
+        _agent_modules["agent1"] = _load_module("agent1", "1. agent1-osint.py")
+    return _agent_modules["agent1"]
+
+
+def _get_agent2():
+    if "agent2" not in _agent_modules:
+        _agent_modules["agent2"] = _load_module("agent2", "2. agent2-validator.py")
+    return _agent_modules["agent2"]
+
+
+def _get_agent3():
+    if "agent3" not in _agent_modules:
+        _agent_modules["agent3"] = _load_module("agent3", "3. agent3-synthesizer.py")
+    return _agent_modules["agent3"]
+
+
+# ── Source definitions ───────────────────────────────────────────
 SOURCES = {
-    "osm": {
-        "requires_key": False,
-        "env_var": None,
-        "args": ["--source", "osm"],
-    },
-    "outscraper": {
-        "requires_key": True,
-        "env_var": "OUTSCRAPER_KEY",
-        "args": ["--source", "outscraper", "--run", "{run}"],
-    },
-    "apify": {
-        "requires_key": True,
-        "env_var": "APIFY_TOKEN",
-        "args": ["--source", "apify"],
-    },
-    "serpapi": {
-        "requires_key": True,
-        "env_var": "SERPAPI_KEY",
-        "args": ["--source", "serpapi", "--master", str(MASTER_CSV)],
-    },
+    "osm": {"requires_key": False, "env_var": None},
+    "outscraper": {"requires_key": True, "env_var": "OUTSCRAPER_KEY"},
+    "apify": {"requires_key": True, "env_var": "APIFY_TOKEN"},
+    "serpapi": {"requires_key": True, "env_var": "SERPAPI_KEY"},
 }
 
 
@@ -85,123 +109,170 @@ def check_keys(sources: list) -> list:
     return runnable
 
 
-def run_agent1(source: str, run_num: int = 1) -> dict:
-    """Run Agent 1 for a single source. Returns result dict."""
-    agent1 = SCRIPTS_DIR / "1. agent1-osint.py"
-    cfg = SOURCES[source]
-    args = [a.replace("{run}", str(run_num)) for a in cfg["args"]]
-
-    cmd = [sys.executable, str(agent1)] + args
+# ── Agent 1: Direct function calls ──────────────────────────────
+def run_agent1(source: str, run_num: int = 1, master: str = "") -> dict:
+    """Run Agent 1 scraper for a single source directly. Returns result dict."""
     start = time.time()
-
     try:
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=600,  # 10 min timeout per source
-            cwd=str(SCRIPTS_DIR.parent),
-        )
-        elapsed = time.time() - start
+        agent1 = _get_agent1()
+
+        if source == "outscraper":
+            records = agent1.scrape_outscraper(run_num)
+        elif source == "apify":
+            records = agent1.scrape_apify()
+        elif source == "serpapi":
+            records = agent1.scrape_serpapi(master or str(MASTER_CSV))
+        elif source == "osm":
+            records = agent1.scrape_osm()
+        else:
+            return {
+                "source": source, "run": run_num, "records": 0,
+                "elapsed": 0, "success": False, "error": f"Unknown source: {source}",
+            }
+
+        staging_path = agent1.write_staging(records, source, run_num)
+        elapsed = round(time.time() - start, 1)
+
         return {
-            "source": source,
-            "run": run_num,
-            "returncode": result.returncode,
-            "stdout": result.stdout,
-            "stderr": result.stderr,
-            "elapsed": round(elapsed, 1),
-            "success": result.returncode == 0,
-        }
-    except subprocess.TimeoutExpired:
-        return {
-            "source": source,
-            "run": run_num,
-            "returncode": -1,
-            "stdout": "",
-            "stderr": "Timeout (600s)",
-            "elapsed": 600,
-            "success": False,
+            "source": source, "run": run_num, "records": len(records),
+            "staging_path": staging_path, "elapsed": elapsed, "success": True,
+            "error": "",
         }
     except Exception as e:
         return {
-            "source": source,
-            "run": run_num,
-            "returncode": -1,
-            "stdout": "",
-            "stderr": str(e),
-            "elapsed": time.time() - start,
-            "success": False,
+            "source": source, "run": run_num, "records": 0,
+            "elapsed": round(time.time() - start, 1), "success": False,
+            "error": str(e),
         }
 
 
-def run_agent2(master: str, dry_run: bool = False) -> dict:
-    """Run Agent 2 to validate and merge staging into master."""
-    agent2 = SCRIPTS_DIR / "2. agent2-validator.py"
-    cmd = [sys.executable, str(agent2), "--master", master]
-    if dry_run:
-        cmd.append("--dry-run")
-
+# ── Agent 2: Direct function calls ──────────────────────────────
+def run_agent2_merge(master: str, staging: str = "", dry_run: bool = False) -> dict:
+    """Run Agent 2 validate+merge directly. Returns result dict."""
     start = time.time()
-    result = subprocess.run(
-        cmd, capture_output=True, text=True, timeout=300,
-        cwd=str(SCRIPTS_DIR.parent),
-    )
-    return {
-        "action": "validate+merge",
-        "returncode": result.returncode,
-        "stdout": result.stdout,
-        "stderr": result.stderr,
-        "elapsed": round(time.time() - start, 1),
-        "success": result.returncode == 0,
-    }
+    try:
+        agent2 = _get_agent2()
+        staging = staging or str(STAGING_DIR)
+
+        # Load & sanitize master
+        master_df = agent2.load_master(master)
+        master_df, san_stats = agent2.sanitize_master(master_df)
+        san_total = sum(san_stats.values())
+        if san_total > 0:
+            print(f"  Sanitized master ({san_total} fixes)")
+
+        print(f"  Master: {len(master_df)} existing records")
+
+        # Load staging
+        raw_records = agent2.load_staging(staging)
+        print(f"  Staging: {len(raw_records)} raw records to process")
+
+        if not raw_records:
+            print("  No staging records found. Nothing to do.")
+            return {"action": "merge", "elapsed": round(time.time() - start, 1),
+                    "success": True, "new": 0, "merged": 0}
+
+        # Normalize + validate
+        normalized = []
+        validation_summary = {"High": 0, "Moderate": 0, "Low": 0}
+        for raw in raw_records:
+            record = agent2.normalize_record(raw, raw.get("_staging_file", ""))
+            if not record:
+                continue
+            tier, confidence, issues = agent2.validate_record(record)
+            record["validation_tier"] = tier
+            record["osint_confidence"] = str(confidence)
+            if issues:
+                record["red_flag_notes"] = "; ".join(issues)
+            validation_summary[tier] += 1
+            normalized.append(record)
+
+        print(f"  Normalized: {len(normalized)} records")
+        print(f"  Validation: High={validation_summary['High']}, "
+              f"Moderate={validation_summary['Moderate']}, "
+              f"Low={validation_summary['Low']}")
+
+        # Merge
+        master_df, merge_stats = agent2.merge_into_master(master_df, normalized, dry_run)
+        print(f"  Merge: {merge_stats['new']} new, {merge_stats['merged']} merged, "
+              f"{merge_stats['skipped']} skipped")
+
+        # Post-merge sanitization
+        master_df, post_san = agent2.sanitize_master(master_df)
+        post_total = sum(post_san.values())
+        if post_total > 0:
+            print(f"  Post-merge sanitization ({post_total} fixes)")
+
+        # Write
+        if not dry_run:
+            master_df = master_df.sort_values("business_name", key=lambda x: x.str.lower())
+            master_df.to_csv(master, index=False)
+            print(f"  Master updated: {len(master_df)} total records -> {master}")
+            agent2.archive_staging(staging)
+        else:
+            print(f"  DRY RUN: master would have {len(master_df)} records (not written)")
+
+        return {"action": "merge", "elapsed": round(time.time() - start, 1),
+                "success": True, **merge_stats}
+
+    except Exception as e:
+        return {"action": "merge", "elapsed": round(time.time() - start, 1),
+                "success": False, "error": str(e)}
 
 
-def run_agent2_enrich(master: str) -> dict:
-    """Run Agent 2 in enrichment mode to backfill existing master rows."""
-    agent2 = SCRIPTS_DIR / "2. agent2-validator.py"
-    cmd = [sys.executable, str(agent2), "--master", master, "--enrich"]
-
+def run_agent2_enrich(master: str, dry_run: bool = False) -> dict:
+    """Run Agent 2 enrichment mode directly."""
     start = time.time()
-    result = subprocess.run(
-        cmd, capture_output=True, text=True, timeout=600,
-        cwd=str(SCRIPTS_DIR.parent),
-    )
-    return {
-        "action": "enrich",
-        "returncode": result.returncode,
-        "stdout": result.stdout,
-        "stderr": result.stderr,
-        "elapsed": round(time.time() - start, 1),
-        "success": result.returncode == 0,
-    }
+    try:
+        agent2 = _get_agent2()
+
+        # Sanitize before enrichment
+        if not dry_run:
+            df_pre = agent2.load_master(master)
+            df_pre, san_stats = agent2.sanitize_master(df_pre)
+            san_total = sum(san_stats.values())
+            if san_total > 0:
+                df_pre.to_csv(master, index=False)
+                print(f"  Pre-enrichment sanitization ({san_total} fixes)")
+
+        agent2.enrich_master(master, dry_run)
+
+        return {"action": "enrich", "elapsed": round(time.time() - start, 1),
+                "success": True}
+    except Exception as e:
+        return {"action": "enrich", "elapsed": round(time.time() - start, 1),
+                "success": False, "error": str(e)}
 
 
+# ── Agent 3: Direct function calls ──────────────────────────────
 def run_agent3(master: str, action: str = "export") -> dict:
-    """Run Agent 3 to export/stats/synthesize."""
-    agent3 = SCRIPTS_DIR / "3. agent3-synthesizer.py"
-    cmd = [sys.executable, str(agent3), "--master", master, "--action", action]
-
+    """Run Agent 3 action directly."""
     start = time.time()
-    result = subprocess.run(
-        cmd, capture_output=True, text=True, timeout=300,
-        cwd=str(SCRIPTS_DIR.parent),
-    )
-    return {
-        "action": action,
-        "returncode": result.returncode,
-        "stdout": result.stdout,
-        "stderr": result.stderr,
-        "elapsed": round(time.time() - start, 1),
-        "success": result.returncode == 0,
-    }
+    try:
+        agent3 = _get_agent3()
+
+        if action == "export":
+            agent3.action_export(master)
+        elif action == "stats":
+            agent3.action_stats(master)
+        elif action == "schema":
+            agent3.action_schema(master)
+        elif action == "synthesize":
+            agent3.action_synthesize(master)
+
+        return {"action": action, "elapsed": round(time.time() - start, 1),
+                "success": True}
+    except Exception as e:
+        return {"action": action, "elapsed": round(time.time() - start, 1),
+                "success": False, "error": str(e)}
 
 
+# ── Job builder ──────────────────────────────────────────────────
 def build_collection_jobs(sources: list) -> list:
     """Build list of (source, run_num) tuples for parallel execution."""
     jobs = []
     for src in sources:
         if src == "outscraper":
-            # Run all 3 Outscraper chunks concurrently
             for run_num in [1, 2, 3]:
                 jobs.append((src, run_num))
         else:
@@ -209,6 +280,7 @@ def build_collection_jobs(sources: list) -> list:
     return jobs
 
 
+# ── Main ─────────────────────────────────────────────────────────
 def main():
     parser = argparse.ArgumentParser(
         description="Agent 0 — Concurrent Pipeline Orchestrator",
@@ -236,7 +308,7 @@ Examples:
 
     start_time = datetime.now()
     print(f"\n{'='*60}")
-    print(f"  AGENT 0 — CONCURRENT PIPELINE ORCHESTRATOR")
+    print(f"  AGENT 0 — PIPELINE ORCHESTRATOR")
     print(f"  Started: {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"  Master:  {args.master}")
     print(f"  Mode:    {'DRY RUN' if args.dry_run else 'LIVE'}")
@@ -245,17 +317,14 @@ Examples:
     # ── Enrichment-only mode ─────────────────────────────────────
     if args.enrich:
         print("  Phase: ENRICHMENT (backfill existing master rows)\n")
-        result = run_agent2_enrich(args.master)
-        print(result["stdout"])
-        if result["stderr"]:
-            print(result["stderr"])
+        result = run_agent2_enrich(args.master, args.dry_run)
 
         if result["success"]:
             print("\n  Phase: EXPORT\n")
-            export = run_agent3(args.master, "export")
-            print(export["stdout"])
-            stats = run_agent3(args.master, "stats")
-            print(stats["stdout"])
+            run_agent3(args.master, "export")
+            run_agent3(args.master, "stats")
+        else:
+            print(f"  Enrichment failed: {result.get('error', 'unknown')}")
 
         elapsed = (datetime.now() - start_time).total_seconds()
         print(f"\n  Total time: {elapsed:.0f}s")
@@ -264,15 +333,11 @@ Examples:
     # ── Merge-only mode ──────────────────────────────────────────
     if args.merge_only:
         print("  Phase: MERGE (Agent 2 on existing staging)\n")
-        result = run_agent2(args.master, args.dry_run)
-        print(result["stdout"])
-        if result["stderr"]:
-            print(result["stderr"])
+        result = run_agent2_merge(args.master, dry_run=args.dry_run)
 
         if result["success"] and not args.dry_run:
             print("\n  Phase: EXPORT\n")
-            export = run_agent3(args.master, "export")
-            print(export["stdout"])
+            run_agent3(args.master, "export")
 
         elapsed = (datetime.now() - start_time).total_seconds()
         print(f"\n  Total time: {elapsed:.0f}s")
@@ -300,11 +365,11 @@ Examples:
     jobs = build_collection_jobs(runnable)
     print(f"\n  Phase 2: COLLECTION ({len(jobs)} jobs, {args.workers} workers)\n")
 
-    # Run Agent 1 concurrently
+    # Run Agent 1 scrapers concurrently (ThreadPool — these are I/O-bound)
     results = []
-    with ProcessPoolExecutor(max_workers=args.workers) as executor:
+    with ThreadPoolExecutor(max_workers=args.workers) as executor:
         futures = {
-            executor.submit(run_agent1, src, run): (src, run)
+            executor.submit(run_agent1, src, run, args.master): (src, run)
             for src, run in jobs
         }
         for future in as_completed(futures):
@@ -313,50 +378,34 @@ Examples:
                 result = future.result()
                 results.append(result)
                 status = "OK" if result["success"] else "FAIL"
-                print(f"    [{status}] {src} run={run} ({result['elapsed']}s)")
-                if not result["success"] and result["stderr"]:
-                    for line in result["stderr"].strip().split("\n")[:3]:
-                        print(f"           {line}")
+                detail = f"{result['records']} records" if result["success"] else result.get("error", "")
+                print(f"    [{status}] {src} run={run} ({result['elapsed']}s) {detail}")
             except Exception as e:
                 print(f"    [ERR] {src} run={run}: {e}")
 
     # Summary
     ok = sum(1 for r in results if r["success"])
+    total_records = sum(r.get("records", 0) for r in results)
     fail = len(results) - ok
-    print(f"\n  Collection: {ok} succeeded, {fail} failed")
-
-    # Print Agent 1 output
-    for r in results:
-        if r["stdout"]:
-            print(f"\n  --- {r['source']} (run {r['run']}) ---")
-            # Show last 5 lines of output (the summary)
-            lines = r["stdout"].strip().split("\n")
-            for line in lines[-5:]:
-                print(f"  {line}")
+    print(f"\n  Collection: {ok} succeeded, {fail} failed, {total_records} total records")
 
     # ── Agent 2: Validate & Merge ────────────────────────────────
     if ok > 0:
         print(f"\n  Phase 3: VALIDATE & MERGE (Agent 2)\n")
-        merge_result = run_agent2(args.master, args.dry_run)
-        print(merge_result["stdout"])
-        if merge_result["stderr"]:
-            print(merge_result["stderr"])
+        merge_result = run_agent2_merge(args.master, dry_run=args.dry_run)
 
         # ── Agent 3: Export ──────────────────────────────────────
         if merge_result["success"] and not args.dry_run:
             print(f"\n  Phase 4: EXPORT (Agent 3)\n")
-            export = run_agent3(args.master, "export")
-            print(export["stdout"])
+            run_agent3(args.master, "export")
 
             if args.synthesize:
                 print(f"\n  Phase 5: SYNTHESIZE (Agent 3)\n")
-                synth = run_agent3(args.master, "synthesize")
-                print(synth["stdout"])
+                run_agent3(args.master, "synthesize")
 
             # Final stats
             print(f"\n  Phase FINAL: STATS\n")
-            stats = run_agent3(args.master, "stats")
-            print(stats["stdout"])
+            run_agent3(args.master, "stats")
 
     elapsed = (datetime.now() - start_time).total_seconds()
     print(f"\n{'='*60}")
