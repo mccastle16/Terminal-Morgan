@@ -1,0 +1,406 @@
+business_name,phone,website,address,lat,lon,postcode,rating,review_count,category_raw,price,source
+CRAFT Coral Gables,(786) 772-6932,https://www.craftmiami.us/,"127 Giralda Ave, Coral Gables, FL 33134",25.7515153,-80.2574189,33134,4.9,5789,Restaurant,$20–30,apify
+Bistro Café,(305) 530-8193,https://instagram.com/bistrocaferest,"4155 Laguna St, Coral Gables, FL 33146",25.7333663,-80.2610329,33146,5,11602,Brunch restaurant,$20–30,apify
+Bulla Gastrobar Coral Gables,(786) 810-6215,https://bullagastrobar.com/locations/coral-gables/,"2500 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7485084,-80.2589087,33134,4.9,13465,Spanish restaurant,$30–50,apify
+Pura Vida Miami,(305) 535-4142,https://www.puravidamiami.com/,"244 Miracle Mile, Coral Gables, FL 33134",25.7491723,-80.2596398,33134,4.8,2052,Coffee shop,$20–30,apify
+La Rosa Gastrobar,(786) 870-5466,https://www.larosagastrobar.com/?y_source=1_MjAxNTc0NDk5Mi03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"382 Miracle Mile, Coral Gables, FL 33134",25.7490594,-80.2622985,33134,5,1063,Restaurant,None,apify
+Beauty & The Butcher,(305) 665-9661,https://www.beautyandthebutchermiami.com/,"6915 Southwest 57th Avenue, S Red Rd, Coral Gables, FL 33143",25.7050306,-80.2851878,33143,4.9,2348,American restaurant,$100+,apify
+Doc B's Restaurant,(786) 864-1220,https://docbsrestaurant.com/locations/coral-gables,"301 Miracle Mile, Coral Gables, FL 33134",25.7496233,-80.2608567,33134,4.7,1947,American restaurant,$20–30,apify
+Eating House Miami,(786) 580-3745,http://www.eatinghousemiami.com/,"128 Giralda Ave, Coral Gables, FL 33134",25.7512111,-80.2574181,33134,4.5,889,Restaurant,$50–100,apify
+"Le Parc-Bonjour, Café Bistro",(305) 722-8785,https://leparccafe.com/,"997 N Greenway Dr, Coral Gables, FL 33134",25.7530792,-80.2747236,33134,4.7,428,Restaurant,$10–20,apify
+Naked Farmer,(305) 487-7327,https://www.eatnakedfarmer.com/,"137 Giralda Ave, Coral Gables, FL 33134",25.7515208,-80.2576472,33134,4.9,1192,New American restaurant,$10–20,apify
+Karma by Levant Restaurant,(786) 762-2905,https://www.levantmiami.com/,"2415 Ponce de Leon Blvd, Coral Gables, FL 33134",25.748993,-80.2583331,33134,4.6,407,Restaurant,$50–100,apify
+Luca Osteria,(305) 381-5097,http://www.lucamiami.com/,"116 Giralda Ave, Coral Gables, FL 33134",25.7512048,-80.2572007,33134,4.5,700,Italian restaurant,$50–100,apify
+Seasons 52,(305) 442-8552,https://www.seasons52.com/locations/fl/coral-gables/coral-gables/4509?cmpid=br:s52_ag:ie_ch:loc_ca:S52GMB_sn:gmb_gt:coral-gables-fl-4509_pl:locurl_rd:1008,"321 Miracle Mile, Coral Gables, FL 33134",25.74963,-80.2614,33134,4.6,2214,New American restaurant,$30–50,apify
+Zucca,(786) 580-3731,https://zuccamiami.com/,"162 Alcazar Ave, Coral Gables, FL 33134",25.7528951,-80.2585804,33134,4.6,1517,Italian restaurant,$50–100,apify
+CVI.CHE 105 - Coral Gables,(786) 527-3939,https://www.ceviche105.com/,"111 Palermo Ave #108, Coral Gables, FL 33134",25.7458695,-80.2571171,33134,4.9,5441,Peruvian restaurant,$50–100,apify
+Motek Coral Gables,(305) 396-8547,http://www.motekcafe.com/,"45 Miracle Mile, Miami, FL 33134",25.7500425,-80.2558088,33134,4.9,7407,Restaurant,$50–100,apify
+Salumeria 104 - Coral Gables,(786) 947-5342,https://www.salumeria104.com/,"117 Miracle Mile, Coral Gables, FL 33134",25.7498307,-80.2572384,33134,4.8,2116,Italian restaurant,$30–50,apify
+Babette Miami,(786) 533-3523,https://www.babettemiami.com/,"301 Alcazar Ave, Coral Gables, FL 33134",25.7530852,-80.2610117,33134,4.8,137,Restaurant,$100+,apify
+La Pata Gorda,(786) 963-8171,https://lapatagorda.com/,"232 Miracle Mile, Coral Gables, FL 33134",25.7493483,-80.2594363,33134,4.8,2644,Seafood restaurant,$$,apify
+CHANDLERS PLACE,(305) 444-1121,,"166 Alhambra Cir, Coral Gables, FL 33134",25.7518708,-80.2583432,33134,4.7,136,Restaurant,$10–20,apify
+Yard House,(210) 691-0033,https://www.yardhouse.com/locations/tx/san-antonio/san-antonio-the-shops-at-la-cantera/8324?cmpid=br:yh_ag:ie_ch:loc_ca:YHGMB_sn:gmb_gt:san-antonio-tx-8324_pl:locurl_rd:1022,"15900 La Cantera Pkwy, San Antonio, TX 78256",29.592878,-98.610673,78256,4.5,3528,New American restaurant,$$,apify
+Morton's Grille,(832) 585-0794,https://www.mortonsgrille.com/location/mortons-grille/,"25 Waterway Ave, The Woodlands, TX 77380",30.160914,-95.459242,77380,4.6,1477,Restaurant,$$$$,apify
+Vila Brazil - Garland,(214) 774-9441,https://www.vilabrazil.com/,"4881 Bass Pro Dr, Garland, TX 75043",32.864899,-96.5376038,75043,4.8,735,Brazilian restaurant,None,apify
+Perry’s Steakhouse & Grille,(214) 494-4645,http://www.perryssteakhouse.com/,"2440 Parkwood Blvd, Frisco, TX 75034",33.099256,-96.8158828,75034,4.5,3209,Steak house,$$$,apify
+Bigz Burger Joint,(210) 408-2029,http://bigz-burgerjoint.com/,"2303 N Loop 1604 W, San Antonio, TX 78258",29.6068947,-98.5290653,78258,4.4,2168,Hamburger restaurant,$$,apify
+El Nuevo Laredo Mexican Restaurant,(210) 923-4733,https://www.facebook.com/share/17TkJpMAGv/?mibextid=wwXIfr,"1126 New Laredo Hwy, San Antonio, TX 78211",29.3606977,-98.5553764,78211,4.1,145,Mexican restaurant,$,apify
+Morton's The Steakhouse,(210) 228-0700,https://www.mortons.com/location/mortons-the-steakhouse-san-antonio-tx/,"300 E Crockett St, San Antonio, TX 78205",29.424646,-98.484935,78205,4.3,1068,Restaurant,$$$$,apify
+Morton's The Steakhouse,(713) 629-1946,https://www.mortons.com/location/mortons-the-steakhouse-houston-tx-galleria/,"5000 Westheimer Rd Suite 190, Houston, TX 77056",29.74204,-95.46252,77056,4.5,1115,Restaurant,$$$$,apify
+Morton's The Steakhouse,(713) 659-3700,https://www.mortons.com/location/mortons-the-steakhouse-houston-tx-downtown/,"1001 McKinney St Suite A4, Houston, TX 77002",29.756916,-95.364314,77002,4.5,1291,Restaurant,$$$$,apify
+Doctor's Medical Center,(305) 685-5688 ext. 2269,,"5535 SW 8th St, Coral Gables, FL 33134",25.763921,-80.28448,33134,4,8,Pediatrician,None,apify
+"Dr. Fernanda Mercade, MD",(786) 442-2100,https://drmercade.com/,"747 Ponce de Leon Blvd # 405, Coral Gables, FL 33134",25.7649186,-80.2583387,33134,4.8,399,Internist,None,apify
+Digestive Medicine Associates,(305) 822-4107,http://www.digestivemed.com/,"3133 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7432007,-80.2580886,33134,4.1,285,Medical clinic,None,apify
+"Reytor Medical Center: Francisco Reytor, MD PA",(305) 264-5154,https://www.reytormedicalcenter.com/,"4800 SW 8th St, Coral Gables, FL 33134",25.7639078,-80.2734596,33134,4.9,454,General practitioner,None,apify
+Mount Sinai Primary & Specialty Care Coral Gables,(305) 441-0910,https://www.msmc.com/location/coral-gables/,"836 Ponce de Leon Blvd #200, Coral Gables, FL 33134",25.7634487,-80.2593688,33134,3.6,114,Medical Center,None,apify
+"Ivo Alonso M.D., P.A.",(305) 448-7499,http://www.ivoalonsomd.com/,"3934 SW 8th St #207, Coral Gables, FL 33134",25.7643318,-80.260157,33134,4.6,85,Family practice physician,None,apify
+"Dr. Rheinchard Reyes, MD",(305) 445-3372,https://www.rreyesmd.com/,"4659 W Flagler St, Coral Gables, FL 33134",25.771594,-80.271294,33134,4.7,58,Family practice physician,None,apify
+Family Medical Group - Coral Gables,(305) 306-0233,https://thefamilymedgroup.com/locations/coral-gables/,"1330 SW 22nd St Suite 401, Miami, FL 33145",25.7507572,-80.2170063,33145,4.9,473,Medical clinic,None,apify
+Dr. Michael Gutierrez,(305) 585-4564,https://jacksonhealth.org/find-a-doctor/michael-gutierrez/,"3737 SW 8th St Suite B, Coral Gables, FL 33134",25.7647826,-80.2569511,33134,4.8,37,Family practice physician,None,apify
+Gables Medical,(305) 872-0008,http://www.gablesmed.com/,"401 S Le Jeune Rd STE 300, Miami, FL 33134",25.768204,-80.263184,33134,4.9,39,Medical office,None,apify
+Baptist Health Primary Care | Coral Gables (Belmont Village),(786) 595-1200,https://baptisthealth.net/locations/primary-care/coral-gables-primary-care?y_source=1_MTAzMDcyNjAwNC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"4101 Salzedo St, Coral Gables, FL 33146",25.7338886,-80.2600722,33146,4.9,184,Internist,None,apify
+"Jenny C. Montes De Oca Pineda, MD - PrimeCare of Coral Gables",(305) 443-3001,http://www.primecare1.com/,"370 Minorca Ave, Coral Gables, FL 33134",25.7532983,-80.2623846,33134,4.6,32,Family practice physician,None,apify
+"Dr. Ivan G. Carrasquilla-Escoto, MD",(305) 443-3001,http://www.primecare1.com/,"370 Minorca Ave, Coral Gables, FL 33134",25.7532747,-80.26241,33134,4.8,25,Family practice physician,None,apify
+Primecare of Coral Gables,(305) 443-3001,http://www.primecarecg.com/,"370 Minorca Ave, Coral Gables, FL 33134",25.7532713,-80.2623776,33134,4.2,105,Doctor,None,apify
+"Dr. Jeffrey B. Rosen, MD",(305) 443-3001,http://www.primecare1.com/,"370 Minorca Ave, Coral Gables, FL 33134",25.7533894,-80.2623505,33134,5,5,Family practice physician,None,apify
+Selem Medical Center Corporation,(305) 448-7848,,"4800 W Flagler St # 106, Coral Gables, FL 33134",25.7711289,-80.274079,33134,4.2,10,Medical clinic,None,apify
+Doctors Independent Medical,(305) 444-1155,http://dimeimmigration.com/,"3798 W Flagler St, Coral Gables, FL 33134",25.7716577,-80.2568896,33134,3.3,57,Doctor,None,apify
+Robert H. Thomas M.D. FACP,(305) 446-9940,https://www.cgepmd.com/?utm_source=google&utm_medium=gbp&utm_campaign=local,"800 Douglas Rd Ste 125, Miami, FL 33134",25.7640422,-80.2555048,33134,5,182,Internist,None,apify
+"Dr. Natalie Sanchez, MD",(305) 362-2686,http://elencantomedicalcenters.com/,"3181 Coral Wy #302, Miami, FL 33145",25.7503933,-80.2451504,33145,4.4,14,Internist,None,apify
+"Jennifer Miranda, MD",(786) 227-6811,https://www.purehealthmiami.com/,"4100 Salzedo St STE 4, Coral Gables, FL 33146",25.7335389,-80.2604277,33146,4.9,125,Internist,None,apify
+Vanguard Medical Group,(201) 431-7200,https://vanguardmedgroup.com/contact/jersey-city-nj/,"127 Montgomery St, Jersey City, NJ 07302",40.7167803,-74.0399473,07302,4.7,901,Medical clinic,None,apify
+Dufief Mill Rd & Coral Gables Dr,,,"North Potomac, MD 20878",39.090899,-77.234676,None,,,Bus stop,None,apify
+Online Psychiatrists: Dr. Zlatin Ivanov MD,(646) 713-0000,https://www.onlinepsychiatrists.com/,"405 Lexington Ave #2601, New York, NY 10174",40.751759,-73.9755328,10174,4.5,75,Psychiatrist,None,apify
+Medical Group of NJ-Speedwell Medical (previously known as FastER Urgent Care),(862) 242-8053,http://www.fasteruc.com/,"130 Speedwell Ave, Morris Plains, NJ 07950",40.818661,-74.4824844,07950,3.8,160,Doctor,None,apify
+RUHE Fertility + Prenatal Acupuncture,(203) 816-0806,https://ruhefertilityprenatal.com/,"6515 Main St Unit 14, Trumbull, CT 06611",41.2775266,-73.2282133,06611,5,54,Acupuncture clinic,None,apify
+HolaDoctor Insurance Services - Perth Amboy,(855) 336-0001,https://go.holadoctor.com/google,"199A Smith St, Perth Amboy, NJ 08861",40.5094775,-74.271408,08861,5,11,Health insurance agency,None,apify
+Dr. Hector Marcano,(304) 242-0590,,"40 Medical Park Rd #200, Wheeling, WV 26003",40.0591773,-80.6839067,26003,,,Plastic surgeon,None,apify
+"Sarah Musleh, MD",(800) 295-1672,https://anzarahealth.com/,None,25.782414,-80.2253934,,5,4,Endocrinologist,None,apify
+Healing Elaine,(917) 985-1221,https://healingelaine.com/,None,36.1866404,-86.785147,,4.7,20,Alternative medicine practitioner,None,apify
+Dental Arts Group - Manahawkin,(609) 739-8975,https://dagsmiles.com/manahawkin/,"1322 NJ-72 Suite 1, Manahawkin, NJ 08050",39.7245917,-74.289022,08050,4.9,1423,Dentist,None,apify
+Dr. Belisa Guzman,(305) 446-9940,https://www.cgepmd.com/,"800 Douglas Rd Ste 125, Coral Gables, FL 33134",25.7640422,-80.2555048,33134,5,5,Doctor,None,apify
+"Leunam J. Rodriguez, MD, LLC",(305) 663-0088,https://baptisthealth.net/doctors/primary-care/leunam-jesys-rodriguez/869929,"5000 University Dr #1100, Coral Gables, FL 33146",25.7242591,-80.2741844,33146,4.3,15,Internist,None,apify
+Internal Medicine - University of Miami,(305) 284-3333,http://uhealthsystem.com/locations/uhealth-daystar,"5555 Ponce de Leon Blvd, Coral Gables, FL 33146",25.7134602,-80.2799012,33146,5,3,Medical clinic,None,apify
+PURE Executive Health & Wellness,(786) 227-6811,https://www.purehealthmiami.com/,"4100 Salzedo St STE 4, Coral Gables, FL 33146",25.7339613,-80.2605549,33146,4.9,189,Medical clinic,None,apify
+Sanitas Medical Center,(844) 665-4827,https://www.mysanitas.com/en/fl/sanitas-south-miami,"1430 S Dixie Hwy Suites 101 - 102, Coral Gables, FL 33146",25.7102979,-80.281608,33146,4.5,35,Medical Center,None,apify
+"Manuel Garcia-Frangie, M.D., P.A. Family Doctor",(305) 326-3343,,"135 San Lorenzo Ave Suite 560-B, Coral Gables, FL 33146",25.7318349,-80.2575068,33146,3.9,25,Family practice physician,None,apify
+"Antonio J Suarez, MD",(305) 243-7429,https://doctors.umiamihealth.org/provider/Antonio+J+Suarez/525895,"5555 Ponce de Leon Blvd, Coral Gables, FL 33146",25.7134099,-80.2801291,33146,5,1,Family practice physician,None,apify
+"E. Robert Schwartz, MD",(305) 243-7429,https://doctors.umiamihealth.org/provider/E.+Robert+Schwartz/525505,"5555 Ponce de Leon Blvd, Coral Gables, FL 33146",25.7134099,-80.2801291,33146,5,1,Family practice physician,None,apify
+Miami Comprehensive Medicine Group,(305) 749-9888,https://miamedicine.com/,"345 Palermo Ave, Coral Gables, FL 33134",25.74555,-80.2614698,33134,4.6,9,Medical clinic,None,apify
+Berkshire Hathaway HomeServices EWM Realty,(305) 960-2500,http://www.ewm.com/,"550 S Dixie Hwy, Coral Gables, FL 33146",25.7235122,-80.2649313,33146,4.6,22,Real estate agency,$$,apify
+Carmen Siman - Siman Real Estate,(305) 986-9004,https://carmensiman.keyes.com/,"2423 S Le Jeune Rd, Coral Gables, FL 33134",25.7485232,-80.2625406,33134,5,31,Real estate agent,None,apify
+prio.realestate,(305) 912-7746,https://prio.realestate/,"550 S Dixie Hwy, Coral Gables, FL 33146",25.7235122,-80.2649313,33146,,,Real estate agent,None,apify
+Erin Huyler - Miami Real Estate,(607) 351-4818,https://erinhuyler.ewm.com/,"550 S Dixie Hwy, Coral Gables, FL 33146",25.7235122,-80.2649313,33146,5,6,Real estate consultant,None,apify
+Devin James Herrera Real Estate,(305) 775-6750,http://shcgroup.ewm.com/,"550 S Dixie Hwy, Coral Gables, FL 33146",25.7235122,-80.2649313,33146,5,24,Real estate agent,None,apify
+Jennifer Price | Miami's Luxury Real Estate Ambassador,(305) 389-1977,https://jenniferpricegroup.com/?utm_source=gbp&utm_medium=organic,"550 S Dixie Hwy, Coral Gables, FL 33146",25.7235122,-80.2649313,33146,5,30,Real estate agent,None,apify
+Gravity Real Estate | Top Miami Realtors,(305) 726-2100,http://www.gravityrealestate.com/,"1390 S Dixie Hwy Suite 2218, Coral Gables, FL 33146",25.7113982,-80.279476,33146,5,40,Real estate agency,None,apify
+The Lani Group at Lowell International Realty,(305) 520-5420,https://thelanigroup.com/,"4601 Ponce de Leon Blvd Suite 102, Coral Gables, FL 33146",25.7271203,-80.262759,33146,5,15,Real estate agency,None,apify
+Coldwell Banker Realty: Oliver Ruiz,(305) 984-4875,https://oliversellsmiami.com/?utm_source=gbp&utm_medium=organic,"4000 Ponce de Leon Blvd Suite 700, Coral Gables, FL 33146",25.7340183,-80.2589635,33146,4.9,61,Real estate agent,None,apify
+"Justin Trujillo, Realtor - Berkshire Hathaway HomeServices EWM Realty",(305) 978-8470,http://www.justintrujillogroup.com/,"550 S Dixie Hwy Unit 202, Coral Gables, FL 33146",25.7235122,-80.2649313,33146,5,65,Real estate agent,None,apify
+"ReMax 360 Real Estate, Cynthia Lamaa",(305) 778-8944,https://cynthialamaa.remax.com/,"4217 Ponce de Leon Blvd Ste 2nd, Coral Gables, FL 33146",25.7325076,-80.2581589,33146,5,26,Real estate agent,None,apify
+Floridian First Realty,(305) 667-5235,http://www.floridianfirstrealty.com/,"710 S Dixie Hwy #100, Coral Gables, FL 33146",25.7221821,-80.2670791,33146,4.9,33,Real estate agency,None,apify
+REMAX 360 Real Estate,(305) 602-0360,http://www.miamicre360.com/,"4217 Ponce de Leon Blvd Ste 2nd, Coral Gables, FL 33146",25.7325154,-80.2582041,33146,3.3,14,Real estate agency,None,apify
+Mike Lombard Real Estate,(781) 686-7099,https://mikelombardrealestate.com/,"4000 Ponce de Leon Blvd Suite 700, Miami, FL 33146",25.7340275,-80.2590105,33146,5,29,Real estate agent,None,apify
+"Korina Ravelo-Pomares, RE/MAX 360 Real Estate",(786) 972-7789,http://korinaravelo.com/,"4217 Ponce de Leon Blvd Ste 2nd, Coral Gables, FL 33146",25.7325076,-80.2581589,33146,5,10,Real estate agent,None,apify
+"Lila Lopez Miami Realtor, RE/MAX 360 Real Estate",(305) 772-2521,http://lilalopez.remax.com/,"4217 Ponce de Leon Blvd Ste 2nd, Coral Gables, FL 33146",25.7325076,-80.2581589,33146,5,15,Real estate agent,None,apify
+"Serrano & Associates Real Estate LLC - Estela Serrano, Broker.",(305) 521-3290,http://www.serranoandassociates.com/,"1450 SW 22nd St suite 106, Coral Gables, FL 33145",25.7508057,-80.2191355,33145,4.9,63,Real estate agent,None,apify
+One Sotheby's International Realty,(305) 666-0562,https://www.onesothebysrealty.com/,"1507 Sunset Dr, Coral Gables, FL 33143",25.7048517,-80.282594,33143,4.2,5,Real estate agency,None,apify
+William Gartin Real Estate,(305) 842-6097,https://www.williamgartinrealestate.com/,None,25.9552664,-80.4482804,,5,103,Real estate agent,None,apify
+Aaron Casariego Real Estate,(888) 808-6155,https://www.homesnap.com/Aaron-Casariego/gmb2,"1430 S Dixie Hwy, Coral Gables, FL 33146",25.7096451,-80.2820015,33146,5,4,Real estate agent,None,apify
+Bank of America Financial Center,(305) 669-6694,https://locators.bankofamerica.com/fl/coralgables/financial-centers-coral-gables-10339.html?utm_source=GMBlisting&utm_medium=organic,"1500 S Dixie Hwy, Coral Gables, FL 33146",25.709241,-80.282841,33146,3,41,Bank,None,apify
+Chase Bank,(305) 740-0618,https://www.chase.com/locator/banking/us/fl/coral-gables/1570-s-dixie-hwy?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MjAzOTEzNi03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"1570 S Dixie Hwy, Coral Gables, FL 33146",25.707785,-80.284474,33146,3.4,55,Bank,None,apify
+Citi,(786) 245-4854,https://www.citi.com/?utm_source=gmb&utm_medium=yext&y_source=1_Mjg5MTY3MzAtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"1190 S Dixie Hwy, Coral Gables, FL 33146",25.7149728,-80.2757894,33146,2.8,33,Bank,None,apify
+Chase Bank,(305) 443-3969,https://www.chase.com/locator/banking/us/fl/coral-gables/4101-ponce-de-leon-blvd?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MjY3MDIyNy03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"4101 Ponce de Leon Blvd, Coral Gables, FL 33146",25.7338,-80.2583,33146,2.8,19,Bank,None,apify
+Grove Bank & Trust,(305) 444-6665,http://www.grovebankandtrust.com/,"2151 S Le Jeune Rd #100, Coral Gables, FL 33134",25.752613,-80.262675,33134,5,10,Bank,None,apify
+Seacoast Bank,(305) 666-8488,https://www.seacoastbank.com/locations/coral-gables-south-miami,"1518 San Ignacio Ave, Coral Gables, FL 33146",25.705713,-80.28255,33146,4.4,7,Bank,None,apify
+Ocean Bank,(305) 446-1919,https://www.oceanbank.com/,"2655 S Le Jeune Rd, Coral Gables, FL 33134",25.7474406,-80.2619868,33134,4.9,41,Bank,None,apify
+Ocean Bank,(305) 665-8041,https://www.oceanbank.com/,"6939 SW 57th Ave, Coral Gables, FL 33143",25.7047192,-80.2852481,33143,4.8,19,Bank,None,apify
+Sunstate Bank,(305) 567-0600,https://www.sunstatefl.com/,"2901 S Le Jeune Rd, Coral Gables, FL 33134",25.7451492,-80.2622941,33134,4.1,10,Bank,None,apify
+Gallup FCU,(402) 938-6800,http://www.gallupfcu.com/,"1001 Gallup Dr, Omaha, NE 68102",41.2696151,-95.9223529,68102,3.9,9,Bank,None,apify
+FNBO,(402) 602-3021,https://www.fnbo.com/,"1601 Capitol Ave, Omaha, NE 68102",41.26053,-95.93732,68102,3.1,13,Bank,None,apify
+Flagstar Bank,(305) 774-0049,https://www.flagstar.com/coral-gables-flagstar-bank-florida-2240.html,"2701 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7469444,-80.2582255,33134,4.2,16,Bank,None,apify
+Pinnacle Bank,(402) 346-9180,https://www.pinnbank.com/,"1016 Douglas St, Omaha, NE 68102",41.2588178,-95.9299265,68102,3.4,23,Bank,None,apify
+FNBO - First National Bank of Omaha,(402) 602-3021,https://www.fnbo.com/,"1601 Dodge St, Omaha, NE 68102",41.2591366,-95.9378337,68102,2.4,137,Bank,None,apify
+Regions Bank,(305) 774-5671,https://www.regions.com/locator/fl/coral-gables/full-service-branch-2800-ponce-de-leon-blvd?cid=localListing_google,"2800 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7458884,-80.2592725,33134,4.3,48,Bank,None,apify
+Citizens,(305) 341-2465,https://locations.citizensbank.com/fl/coral-gables/2222-ponce-de-leon-boulevard.html,"2222 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7514926,-80.2590082,33134,3.2,19,Bank,None,apify
+Wells Fargo Bank,(305) 663-6106,https://www.wellsfargo.com/locator/bank/1541__SUNSET__DR_CORAL__GABLES_FL_33143/?utm_campaign=Local_Listings&utm_source=Google&group=Community_Bank&loc=AC16729,"1541 Sunset Dr, Coral Gables, FL 33143",25.7046835,-80.2838297,33143,3.5,30,Bank,None,apify
+SouthState Bank,(786) 362-8560,https://www.southstatebank.com/global/location-detail/665/2-Alhambra-Plaza?utm_source=listings&utm_medium=local&utm_campaign=yext,"2 Alhambra Plz Suite 100B, Coral Gables, FL 33134",25.752126,-80.255234,33134,3.4,11,Bank,None,apify
+Regions Bank,(305) 280-0380,https://www.regions.com/locator/fl/coral-gables/full-service-branch-1569-sunset-dr?cid=localListing_google,"1569 Sunset Dr, Coral Gables, FL 33143",25.7046655,-80.284959,33143,5,14,Bank,None,apify
+Chase Bank,(305) 442-0089,https://www.chase.com/locator/banking/us/fl/coral-gables/355-alhambra-cir?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MjAzOTExMi03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"355 Alhambra Cir Ste 100, Coral Gables, FL 33134",25.7521609,-80.2617334,33134,3.5,31,Bank,None,apify
+"The Law Office of Scott A. Ferris, P.A.",(305) 670-3330,http://ferrislawfirm.com/,"2100 Ponce de Leon Blvd #1290, Coral Gables, FL 33134",25.7533226,-80.2590953,33134,5,35,Criminal justice attorney,None,apify
+"Law Office Manuel Gonzalez, Jr & Gabriel Gonzalez",(305) 444-1400,https://mannygonzalezlaw.com/,"121 Alhambra Plz #1500, Coral Gables, FL 33134",25.7526307,-80.257165,33134,5,29,Attorney,None,apify
+"Rosales|Lopez, Attorneys at Law",(786) 505-1024,https://www.dtmiamilaw.com/,"150 Alhambra Cir Suite 900, Coral Gables, FL 33134",25.7518796,-80.25805,33134,4.9,51,Legal services,None,apify
+Law Offices of Nicole Alvarez P.A.,(305) 440-0736,http://nicolealvarezpa.com/,"1600 Ponce de Leon Blvd 10th floor, Coral Gables, FL 33134",25.7570339,-80.2591846,33134,4.9,97,Family law attorney,None,apify
+Dohan Law,(305) 536-3400,http://www.dohanlaw.com/,"2020 Ponce de Leon Blvd #1006, Coral Gables, FL 33134",25.753973,-80.259171,33134,4.9,72,Attorney,None,apify
+Traffic Law Firm,(305) 442-0243,,"122 Minorca Ave, Coral Gables, FL 33134",25.7536878,-80.2574518,33134,4.9,72,Attorney,None,apify
+Cohen Law,(305) 967-7550,http://www.cohenlawpa.com/,"2332 Galiano St 2nd floor, Coral Gables, FL 33134",25.7503404,-80.2570322,33134,4.8,31,Trial attorney,None,apify
+"South Florida Law, PLLC",(954) 900-8885,http://www.southfloridalawpllc.com/,"2600 Douglas Rd #1007, Coral Gables, FL 33134",25.7476969,-80.2547889,33134,5,46,Law firm,None,apify
+Law Office of Aburto P.A.,(305) 694-9690,http://www.aburtolaw.co/,"717 Ponce de Leon Blvd STE 225, Coral Gables, FL 33134",25.7653633,-80.2578323,33134,4.9,297,Attorney,None,apify
+Ferrer Law PA,(844) 220-5612,https://www.ferrerlawpa.com/?npcmp=dir:local:5346373:33166,"1600 Ponce de Leon Blvd STE 804, Coral Gables, FL 33134",25.7570745,-80.2591482,33134,4.9,121,Personal injury attorney,None,apify
+Law Offices of Diego Traibel,(305) 791-6775,,"2100 Ponce de Leon Blvd #1290, Coral Gables, FL 33134",25.7533353,-80.2590755,33134,5,34,Trial attorney,None,apify
+J Muir & Associates - Miami Business Law Firm,(907) 770-0909,https://jmuirandassociates.com/?utm_source=GMB&utm_medium=Organic&utm_campaign=Coral+Gables,"121 Alhambra Plz #1500, Coral Gables, FL 33134",25.7526307,-80.257165,33134,5,80,Business attorney,None,apify
+The McGill Law Firm,(786) 375-5621,https://www.mcgilllegal.com/,"2655 S Le Jeune Rd 5th Floor, Coral Gables, FL 33134",25.7474653,-80.2617577,33134,5,70,Law firm,None,apify
+"Alfredo A. Izaguirre, P.A.",(305) 442-0425,https://www.izaguirrelaw.com/?utm_campaign=gmb,"338 Minorca Ave, Coral Gables, FL 33134",25.7534929,-80.2616142,33134,5,96,Criminal justice attorney,None,apify
+"The Law Offices of Walter A. Reynoso, P.A.",(305) 441-8881,https://lawreynoso.com/,"2030 Douglas Rd STE 214, Coral Gables, FL 33134",25.7536847,-80.2552493,33134,4.8,49,Trial attorney,None,apify
+Law Offices of M J Louis,(305) 377-9646,http://mjlouislaw.com/,"75 Valencia Ave #400, Coral Gables, FL 33134",25.748271,-80.256048,33134,5,97,Law firm,None,apify
+Law Office of Diaz & Nunez Elorza,(305) 831-3002,http://www.diazelorza.com/,"2100 Ponce de Leon Blvd STE 1170, Coral Gables, FL 33134",25.7532363,-80.2590345,33134,4.9,86,Attorney,None,apify
+The Farber Law Firm,(305) 774-0134,https://thefarberlawfirm.com/,"2199 Ponce de Leon Blvd #301, Coral Gables, FL 33134",25.7524957,-80.2584705,33134,5,129,Personal injury attorney,None,apify
+"Jonathan B. Blecher, P.A.",(305) 449-9069,https://www.duilawdefense.com/coral-gables-criminal-defense/,"2525 Ponce de Leon Blvd Ste 300, Coral Gables, FL 33134",25.7484948,-80.2581245,33134,4.9,188,Criminal justice attorney,None,apify
+"Patino & Associates, P.A.",(305) 443-6163,https://www.patinolaw.com/,"113 Almeria Ave, Coral Gables, FL 33134",25.7474212,-80.2569989,33134,4.6,39,General practice attorney,None,apify
+ATM,,,"729 N 14th St, Omaha, NE 68102",41.2665467,-95.9341535,68102,,,ATM,None,apify
+BMO Bank N.A Branches,(402) 918-5250,https://usbranches.bmo.com/ne/omaha/bmo416/,"1921 Harney St, Omaha, NE 68102",41.2562996,-95.9417815,68102,2.7,19,Bank,None,apify
+ATM,(877) 271-2627,,"1420 Cuming St, Omaha, NE 68102",41.2683072,-95.9354877,68102,3,1,ATM,None,apify
+Cobalt Credit Union,(402) 341-2121,https://www.creightonfederal.org/,"2575 Dodge St, Omaha, NE 68131",41.259528,-95.950493,68131,4.2,26,ATM,None,apify
+First National Capital Markets,(402) 633-7463,https://www.fncapitalmarkets.com/,"1620 Dodge St # 1104, Omaha, NE 68102",41.2598651,-95.9380566,68102,5,2,Bank,None,apify
+Federal Reserve Bank,(402) 221-5500,,"2201 Farnam St, Omaha, NE 68102",41.257033,-95.9452644,68102,2.6,5,Central bank,None,apify
+Union Pacific Streamliner Federal Credit Union,(402) 544-2500,http://www.upcu.org/,"1400 Douglas St, Omaha, NE 68179",41.2591559,-95.9347394,68179,3.7,6,ATM,None,apify
+Security National Bank - Farnam,(402) 661-3170,https://branches.securitynational.bank/ne/omaha/3500-farnam-street,"3500 Farnam St, Omaha, NE 68131",41.257975,-95.9648565,68131,3.8,19,Bank,None,apify
+ATM Mutual Of Omaha Bank,(800) 627-3999,,"220 S 31st Ave, Omaha, NE 68131",41.2579729,-95.960137,68131,4.3,3,Bank,None,apify
+Lauritzen Investments Inc,,,"1601 Dodge St, Omaha, NE 68102",41.259182,-95.937831,68102,,,Bank,None,apify
+Romanow Law Group,(412) 642-9100,https://romanowlawgroup.com/,"4930 McKnight Rd, Pittsburgh, PA 15237",40.532056,-80.0101796,15237,4.9,169,Personal injury attorney,None,apify
+KONARE PLLC,(240) 651-5937,,"3 W Church St #3rd, Frederick, MD 21701",39.4154691,-77.4111704,21701,4.2,5,Law firm,None,apify
+DC Student Defense,(855) 796-2193,http://dcstudentdefense.com/,"1300 Pennsylvania Ave NW STE 700, Washington, DC 20004",38.8943764,-77.0305726,20004,5,17,Criminal justice attorney,None,apify
+Citrin Cooperman,(212) 697-1000,https://www.citrincooperman.com/,"50 Rockefeller Plaza, New York, NY 10020",40.7594485,-73.9784253,10020,2.6,5,Accountant,None,apify
+WE Family Offices,(212) 218-5100,http://www.wefamilyoffices.com/,"1270 6th Ave 7th Floor, New York, NY 10020",40.7602192,-73.9798518,10020,,,Financial institution,None,apify
+"American Stock Transfer & Trust Company, LLC",(800) 937-5449,https://www.astfinancial.com/,"6201 15th Ave, Brooklyn, NY 11219",40.624528,-73.9952329,11219,1.5,100,Holding company,None,apify
+"Douglas Elliman Real Estate Office in Midtown in New York, NY",(212) 350-8500,https://www.elliman.com/newyorkcity/office/527-b-551-551/east-side?utm_source=GMB&utm_medium=Organic_search&utm_campaign=GMB_575_Madison_New_York_NY,"575 Madison Ave 3rd floor, New York, NY 10022",40.7618064,-73.9723342,10022,2.3,21,Real estate agency,None,apify
+Thesis Hotel Miami Coral Gables,(305) 667-5611,https://www.hilton.com/en/hotels/mialtqq-thesis-hotel-miami-coral-gables/?SEO_id=GMB-AMER-QQ-MIALTQQ&y_source=1_MTA4NTM5NDg2Ny03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"1350 S Dixie Hwy, Coral Gables, FL 33146",25.7127169,-80.278579,33146,4.2,763,Hotel,$249,apify
+Rodeway Inn South Miami - Coral Gables,(786) 408-9221,https://www.choicehotels.com/florida/south-miami/rodeway-inn-hotels/fl645?mc=llgoxxpx,"5959 SW 71st St, South Miami, FL 33143",25.7054159,-80.2910523,33143,2.7,2122,Hotel,$75,apify
+Gables Inn,(305) 661-7999,https://www.thegablesinn.net/,"730 S Dixie Hwy, Coral Gables, FL 33146",25.7217254,-80.2675765,33146,3.5,423,Hotel,$82,apify
+Four Points by Sheraton Coral Gables,(305) 567-0534,https://www.marriott.com/en-us/hotels/fllfp-four-points-coral-gables/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0,"3861 SW 40th St, Coral Gables, FL 33146",25.7352462,-80.2576016,33146,4.2,806,Hotel,$207,apify
+Courtyard by Marriott Miami Coral Gables,(305) 443-2301,https://www.marriott.com/en-us/hotels/miagb-courtyard-miami-coral-gables/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0,"2051 S Le Jeune Rd, Coral Gables, FL 33134",25.7538239,-80.2624606,33134,4.1,1310,Hotel,$188,apify
+Biltmore Hotel Miami Coral Gables,(855) 969-3080,https://www.biltmorehotel.com/,"1200 Anastasia Ave, Coral Gables, FL 33134",25.7407941,-80.2786796,33134,4.4,2478,Hotel,$556,apify
+The Avenue Hotel Coral Gables,(786) 545-2204,,"351 San Lorenzo Ave, Coral Gables, FL 33146",25.732385,-80.261367,33146,5,2,Hotel,$850,apify
+Hyatt Regency Coral Gables,(305) 441-1234,https://www.hyatt.com/hyatt-regency/en-US/coral-hyatt-regency-coral-gables?src=corp_lclb_google_seo_coral&utm_source=google&utm_medium=organic&utm_campaign=lmr,"50 Alhambra Plz, Coral Gables, FL 33134",25.7518784,-80.2558201,33134,4.5,1850,Hotel,$349,apify
+Aloft Coral Gables,(305) 442-0372,https://www.marriott.com/en-us/hotels/miacl-aloft-coral-gables/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0,"2524 S Le Jeune Rd, Coral Gables, FL 33134",25.747643,-80.2631022,33134,4,791,Hotel,$267,apify
+Hampton Inn Miami-Coconut Grove/Coral Gables,(305) 448-2800,https://www.hilton.com/en/hotels/miacghx-hampton-miami-coconut-grove-coral-gables/?SEO_id=GMB-AMER-HX-MIACGHX&y_source=1_MjA4MzQ0OC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"2800 SW 28th Terrace, Coconut Grove, FL 33133",25.738502,-80.2393448,33133,4.3,1258,Hotel,$194,apify
+Ponce de Leon Hotel,(305) 444-9934,http://www.hotelponcedeleon.com/,"1721 Ponce de Leon Blvd, Coral Gables, FL 33134",25.756195,-80.258564,33134,4,465,Hotel,$135,apify
+Mayfair House Hotel & Garden,(305) 441-0000,https://www.mayfairhousemiami.com/?utm_source=google-gbp&utm_medium=organic&utm_campaign=gbp,"3000 Florida Ave, Miami, FL 33133",25.7289547,-80.2413687,33133,4.6,1617,Hotel,$359,apify
+Sunset Inn South Miami,(786) 545-2204,https://www.sunsetinnmiami.com/south-miami,"5852 Sunset Dr, South Miami, FL 33143",25.7041838,-80.2885066,33143,3.2,33,Inn,$268,apify
+ChateauBleau Hotel,(305) 448-2634,http://hotelchateaubleau.com/,"1111 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7607816,-80.2586978,33134,2.9,997,Hotel,$148,apify
+Loews Coral Gables Hotel,(786) 772-7600,https://www.loewshotels.com/coral-gables,"2950 Coconut Grove Dr, Coral Gables, FL 33134",25.7447406,-80.2574254,33134,4.6,659,Hotel,$389,apify
+Gables Cove Hotel,(213) 594-7549,https://www.oyorooms.com/us/103476/?utm_source=GMB&utm_medium=Organic&utm_campaign=US_MAI004,"4700 SW 8th St, Coral Gables, FL 33134",25.7640344,-80.2716173,33134,3.8,56,Hotel,$143,apify
+"Arya Hotel and Suites Coconut Grove, WorldHotels Distinctive",(305) 529-2828,https://www.aryahotel.us/,"2889 McFarlane Rd, Miami, FL 33133",25.7271588,-80.2408869,33133,4.1,1617,Hotel,$269,apify
+Best Western Plus Miami Intl Airport Hotel & Suites Coral Gables,(305) 774-6100,https://www.bestwestern.com/en_US/book/hotel-rooms.10384.html?iata=00171880&ssob=BLBWI0004G&cid=BLBWI0004G:google:gmb:10384,"4100 W Flagler St, Miami, FL 33134",25.771277,-80.262816,33134,4,2840,Hotel,$145,apify
+The Mutiny Hotel by Provident Hotels & Resorts,(866) 610-1814,https://www.providentresorts.com/the-mutiny-hotel-coconut-grove-miami?utm_source=local&utm_campaign=gmb&utm_medium=organic,"2951 S Bayshore Dr, Miami, FL 33133",25.727172,-80.239808,33133,4.3,839,Hotel,$238,apify
+Hotel St. Michel,(800) 848-4683,http://www.hotelstmichel.com/index.html,"162 Alcazar Ave, Coral Gables, FL 33134",25.752909,-80.258479,33134,4.4,403,Hotel,$216,apify
+The Allegro Royal Sonesta Hotel Chicago Loop,(312) 236-0123,https://www.sonesta.com/royal-sonesta/il/chicago/allegro-royal-sonesta-hotel-chicago-loop?utm_source=google&utm_medium=organic&utm_campaign=gmb,"171 W Randolph St, Chicago, IL 60601",41.8843938,-87.6334083,60601,4.2,2982,Hotel,$135,apify
+DoubleTree Suites by Hilton Hotel Dayton - Miamisburg,(937) 436-2400,https://www.hilton.com/en/hotels/dayssdt-doubletree-suites-dayton-miamisburg/?SEO_id=GMB-AMER-DT-DAYSSDT&y_source=1_MTM3MjU4MC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"300 Prestige Pl, Miamisburg, OH 45342",39.6324318,-84.2282858,45342,3.4,1291,Hotel,$86,apify
+The Delafield Hotel,(262) 646-1600,https://www.thedelafieldhotel.com/,"415 Genesee Street, Delafield, WI 53018",43.0584816,-88.4063816,53018,4.7,578,Hotel,$129,apify
+The Hotel Saugatuck,(269) 416-0731,https://www.thehotelsaugatuck.com/?utm_source=google&utm_medium=GMB,"900 Lake St, Saugatuck, MI 49453",42.6506043,-86.1954796,49453,4.8,384,Hotel,$231,apify
+Avant-Garde Salon & Spa,(305) 442-8136,https://avantgardesalonandspa.com/,"155 Miracle Mile, Miami, FL 33134",25.7499675,-80.2578541,33134,4.9,1442,Beauty salon,None,apify
+Emiliano Breit Salon & Spa,(786) 899-0923,https://www.emilianobreitsalon.com/,"2603 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7477958,-80.2584063,33134,4.9,339,Hair salon,None,apify
+Conde Hair Salon,(786) 789-2232,https://condehairsalon.com/,"2600 Douglas Rd #104, Coral Gables, FL 33134",25.747722,-80.2547399,33134,4.9,854,Hair salon,None,apify
+Cosa bella beauty salon and spa,(305) 444-0063,,"928 S Le Jeune Rd, Coral Gables, FL 33134",25.7631463,-80.2634833,33134,4.9,135,Beauty salon,None,apify
+Highlight Salon and Spa,(305) 448-0707,http://highlightcoralgables.com/,"2100 Ponce de Leon Blvd STE 111, Coral Gables, FL 33134",25.753575,-80.259006,33134,5,587,Beauty salon,None,apify
+La Bella Salon,(305) 444-1412,https://www.labellasalons.com/,"1 Andalusia Ave, Coral Gables, FL 33134",25.7490929,-80.2553932,33134,4.8,239,Beauty salon,None,apify
+Sol & Style Hair and Beauty Salon,(786) 767-1324,http://www.solandstyle.com/,"1731 Ponce de Leon Blvd, Coral Gables, FL 33134",25.756158,-80.2586124,33134,4.8,190,Hair salon,None,apify
+Portfolio Salon,(305) 443-0101,https://portfolio-salon.wheree.com/,"281 Miracle Mile, Coral Gables, FL 33134",25.7497813,-80.2603616,33134,4.8,212,Beauty salon,None,apify
+Bliss Beautique,(786) 254-7844,https://blissbeautique.com/?y_source=1_MTA2NTQxMDY1NC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"2255 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7515681,-80.2584608,33134,4.9,224,Beauty salon,None,apify
+Avalon Salon,(305) 445-2631,http://avalonmiami.com/,"2431 Galiano St, Coral Gables, FL 33134",25.7489563,-80.2564954,33134,4.9,317,Beauty salon,None,apify
+Cachet Beauty Salon by Ana Vigil,(786) 237-9149,http://cachetbeautysalon.com/,"4237 W Flagler st Coral Gables, Miami, FL 33134",25.7717755,-80.2644043,33134,4.9,100,Beauty salon,None,apify
+MG Hair Studios in Coral Gables. Best Hair Color Salon,(305) 774-7151,https://mghair.miami/,"506 Biltmore Way, Coral Gables, FL 33134",25.748055,-80.265025,33134,5,307,Beauty salon,None,apify
+Quuant Hair Salon,(305) 460-0097,,"2712 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7468151,-80.2587796,33134,4.9,78,Hair salon,None,apify
+Salons by JC Coral Gables on Miracle Mile,(305) 209-9384,https://salonsbyjc.com/location/florida-coral-gables/,"2 Aragon Ave, Coral Gables, FL 33134",25.750482,-80.2557972,33134,4.9,70,Beauty salon,None,apify
+Evolution Salon & Spa,(305) 448-8222,https://monchomoreno.us/,"87 Merrick Wy, Coral Gables, FL 33134",25.7512654,-80.256112,33134,4.8,47,Hair salon,None,apify
+Madison Reed Hair Color Bar Coral Gables,(305) 487-8812,https://www.madison-reed.com/colorbar/locations/coralgables,"320 San Lorenzo Ave Space 1235, Coral Gables, FL 33146",25.7319284,-80.2595853,33146,4.7,273,Hair salon,None,apify
+Henrrystylesalon,(305) 447-8628,https://www.henrrystyles.com/,"5552 SW 8th St, Coral Gables, FL 33134",25.7632191,-80.2848817,33134,4.8,99,Hair salon,None,apify
+Artisan Beauty Studio and Art Gallery,(305) 444-0988,http://artisangallery.us/,"1607 Ponce de Leon Blvd STE 111, Coral Gables, FL 33134",25.7567902,-80.2586777,33134,4.9,58,Beauty salon,None,apify
+Joncoiffure Hair Studio,(305) 607-8942,,"2518 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7481912,-80.258845,33134,4.6,149,Hair salon,None,apify
+Muse In the Gables,(305) 446-9696,,"1420 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7584661,-80.2592975,33134,4.8,52,Beauty salon,None,apify
+Extended Stay America Premier Suites- Miami - Coral Gables,(305) 443-7444,https://www.extendedstayamerica.com/hotels/fl/miami/coral-gables?channel=gmb-listing&utm_source=google&utm_medium=organic&utm_campaign=gmb_listing,"3640 SW 22nd St, Miami, FL 33145",25.7496551,-80.2532464,33145,3.9,765,Extended stay hotel,$190,apify
+"Hotel Colonnade Coral Gables, Autograph Collection",(305) 441-2600,https://www.marriott.com/en-us/hotels/miaao-hotel-colonnade-coral-gables-autograph-collection/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0,"180 Aragon Ave, Coral Gables, FL 33134",25.7503838,-80.2582532,33134,4.5,1424,Hotel,$267,apify
+Miami Princess Hotel,(305) 441-1862,http://www.miamiprincess.com/,"4251 NW 11th St, Miami, FL 33126",25.7828566,-80.2649886,33126,3.5,851,Hotel,$85,apify
+Extended Stay America Suites- Miami - Airport - Blue Lagoon,(305) 260-0085,https://www.extendedstayamerica.com/hotels/fl/miami/airport-blue-lagoon?channel=gmb-listing&utm_source=google&utm_medium=organic&utm_campaign=gmb_listing,"6605 NW 7th St, Miami, FL 33126",25.778164,-80.3035815,33126,3.7,1526,Extended stay hotel,$111,apify
+Hilton Miami Airport Blue Lagoon,(305) 262-1000,https://www.hilton.com/en/hotels/miaahhh-hilton-miami-airport-blue-lagoon/?SEO_id=GMB-AMER-HH-MIAAHHH&y_source=1_MTIyMDkyMC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"5101 Waterford District Dr, Miami, FL 33126",25.7819729,-80.2786043,33126,3.9,6992,Hotel,$184,apify
+Bellami Beauty Bar,(646) 809-9751,http://www.bellamihair.com/,"410 W 14th St, New York, NY 10014",40.7410004,-74.0062106,10014,4.6,218,Beauty salon,None,apify
+Allure Lash Lounge,(513) 497-0489,http://www.allurelashlounge.com/,"2643 Erie Ave #C, Cincinnati, OH 45208",39.1393962,-84.4437851,45208,4.9,30,Beauty salon,None,apify
+Great Clips,(517) 333-8440,https://salons.greatclips.com/us/mi/east-lansing/2843-e-grand-river-ave?utm_source=google&utm_medium=organic&utm_campaign=gmb,"2843 E Grand River Ave Ste 195, East Lansing, MI 48823",42.7271287,-84.4564867,48823,4.2,226,Beauty salon,None,apify
+Life Time,(703) 666-2900,https://www.lifetime.life/locations/va/clarendon.html?utm_source=google&utm_medium=local&utm_campaign=google-local-club,"1440 N Edgewood St, Arlington, VA 22201",38.8889201,-77.091852,22201,3.6,118,Hair salon,None,apify
+GLOSSLAB,(315) 666-1883,https://www.glosslab.com/location/noho,"68 Bleecker St, New York, NY 10012",40.7261992,-73.9955619,10012,3.4,121,Nail salon,None,apify
+GLOSSLAB,(917) 920-4907,https://www.glosslab.com/location/west-village,"1 Jane St, New York, NY 10014",40.7382536,-74.002335,10014,4,101,Nail salon,None,apify
+Cucina Povera,(786) 319-4729,https://www.cucinapoveramiami.com/,"3060 SW 37th Ave Suite 105, Miami, FL 33146",25.7339882,-80.2555066,33146,4.7,59,Italian restaurant,$30–50,apify
+The Halal Shack,,https://www.thehalalshack.com/,"1350 Miller Dr, Coral Gables, FL 33146",25.71976,-80.2780359,33146,4.9,191,Halal restaurant,$10–20,apify
+GROU Coffee + Cowork,(305) 639-8218,https://groucommunity.com/,"4100 Salzedo St STE 5, Coral Gables, FL 33146",25.7335264,-80.2604422,33146,4.8,853,Coffee shop,$10–20,apify
+Ventanas Restaurant Bar & Lounge,(786) 353-9460,,"3861 SW 40th St, Miami, FL 33146",25.7351729,-80.2575623,33146,4.9,12,Bar & grill,None,apify
+Americana Kitchen,(786) 772-7600,https://www.americanakitchen.com/,"2950 Coconut Grove Dr, Coral Gables, FL 33134",25.7447406,-80.2574254,33134,4.4,120,Restaurant,None,apify
+Ró Steakhouse,(786) 778-4158,http://www.rosteakhouse.com/,"121 Alhambra Plz, Coral Gables, FL 33134",25.7525203,-80.2571148,33134,4.9,1101,Restaurant,$100+,apify
+Half Moon Empanadas,(786) 888-2292,http://www.halfmoonempanadas.com/,"5100 Brunson Dr, Coral Gables, FL 33146",25.7225716,-80.2758975,33146,5,23,Takeout Restaurant,$10–20,apify
+Crema Gourmet,(786) 891-4235,https://www.cremagourmet.com/,"1350 S Dixie Hwy, Coral Gables, FL 33146",25.7127423,-80.2785407,33146,4.8,29,Breakfast restaurant,$$,apify
+Mamey Miami,(305) 266-2639,http://mameymiami.com/,"1350 S Dixie Hwy, Coral Gables, FL 33146",25.7121987,-80.2782746,33146,4.3,721,Restaurant,$50–100,apify
+107 Taste Asian Restaurant Coral Gables,(786) 409-6951,http://107taste.com/,"357 Alcazar Ave, Coral Gables, FL 33134",25.7528829,-80.2619428,33134,4.9,1977,Asian restaurant,$20–30,apify
+Loews Arlington Hotel & Convention Center,(682) 318-2810,https://www.loewshotels.com/arlington-hotel,"888 Nolan Ryan Expy, Arlington, TX 76011",32.7504067,-97.084981,76011,4.5,1228,Hotel,$169,apify
+Peach Tree Inn & Suites,(830) 997-2117,https://www.thepeachtreeinn.com/,"401 S Washington St, Fredericksburg, TX 78624",30.2680294,-98.8702225,78624,4.6,1269,Hotel,$88,apify
+ADRIFT MARE,(305) 503-6529,,"1395 Brickell Avenue, Miami, FL 33131",25.760399,-80.19152,,4.2,131,Restaurant,None,apify
+Belly Fish,(786) 550-6267,https://www.eatbellyfish.com/,"3060 SW 37th Ave, Miami, FL 33133",25.7340546,-80.2553488,33133,4.8,1192,Sushi restaurant,None,apify
+450Gradi Miami 🇺🇸,(786) 391-1276,https://450-gradi.com/,"130 Miracle Mile, Coral Gables, FL 33134",25.749444,-80.257405,33134,4.8,1543,Italian restaurant,$$,apify
+Off The Mile Restaurant,(305) 529-6600,,"245 University Dr, Coral Gables, FL 33134",25.7438993,-80.2598444,33134,4.3,108,Restaurant,None,apify
+Tina in the Gables,(305) 666-0103,http://www.tinainthegables.com/,"4700 S Le Jeune Rd, Coral Gables, FL 33146",25.7286955,-80.2620681,33146,4.1,169,Brunch restaurant,None,apify
+Taipa Peruvian Restaurant- (Coral Gables-57 Ave),(305) 661-1462,http://www.taiparestaurants.com/,"5751 Bird Rd, Miami, FL 33155",25.7348653,-80.2877886,33155,4.8,619,Peruvian restaurant,$$,apify
+Rice Mediterranean Kitchen,(305) 200-5282,https://order.ricekitchen.com/,"164 Giralda Ave, Coral Gables, FL 33134",25.751197,-80.2580546,33134,4.7,1362,Mediterranean restaurant,$$,apify
+Bazille at Nordstrom,(786) 999-7119,https://www.nordstrom.com/store-details/nordstrom-shops-at-merrick-park?utm_source=google&utm_medium=organic&utm_campaign=food&utm_content=22763&utm_channel=low_nd_seo_local&sp_source=google&sp_campaign=food,"4310 Ponce de Leon Blvd, Coral Gables, FL 33146",25.732026,-80.258907,33146,4,249,American restaurant,$$,apify
+Bachour,(305) 203-0552,https://antoniobachour.com/?utm_source=google,"2020 Salzedo St, Coral Gables, FL 33134",25.7538809,-80.261012,33134,4.6,2522,Restaurant,$$,apify
+Casa Terra | Coral Gables,(786) 502-8595,https://eatcasaterra.com/,"2526 Ponce de Leon Blvd, Coral Gables, FL 33134",25.748073,-80.2589429,33134,4.8,58,Brunch restaurant,None,apify
+Sweet Paris Creperie & Cafe,(786) 360-3519,http://www.sweetparis.com/,"3005 Ponce de Leon Blvd Suite 142, Coral Gables, FL 33134",25.7446874,-80.2580271,33134,4.7,306,Restaurant,$$,apify
+Cucina Fresca,(305) 284-2715,https://dineoncampus.com/miami/locations/cucina-fresca,"1350 Miller Rd, Coral Gables, FL 33146",25.7196746,-80.2782124,33146,,,Italian restaurant,None,apify
+Yard House,(305) 447-9273,https://www.yardhouse.com/locations/fl/coral-gables/coral-gables-merrick-park/8323?cmpid=br:yh_ag:ie_ch:loc_ca:YHGMB_sn:gmb_gt:coral-gables-fl-8323_pl:locurl_rd:1021,"320 San Lorenzo Ave Space 1320, Coral Gables, FL 33146",25.73234,-80.25983,33146,4.4,2998,New American restaurant,$$,apify
+MIAM CAFE - CORAL GABLES,(305) 200-3190,http://www.miamcafe.com/,"2300 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7510977,-80.258915,33134,4.7,3197,Restaurant,$$,apify
+Coyo Taco,(786) 434-9332,https://www.coyo-taco.com/restaurants/south-miami,"1514 S Dixie Hwy, Coral Gables, FL 33146",25.7091506,-80.2831934,33146,4.5,481,Mexican restaurant,$$,apify
+Pura Vida Miami,(305) 535-4142,https://www.puravidamiami.com/,"1100 Stanford Dr, Coral Gables, FL 33146",25.7174315,-80.2746604,33146,4.9,962,Coffee shop,$$,apify
+4000 Ponce Cafe,(305) 446-3310,,"4000 Ponce de Leon Blvd STE 120, Coral Gables, FL 33146",25.7335909,-80.2593015,33146,4.6,14,Restaurant,$,apify
+Daybreak,(305) 284-4577,https://dineoncampus.com/miami,"1211 Wm E Walsh Ave, Coral Gables, FL 33146",25.7170346,-80.2766935,33146,5,1,Restaurant,None,apify
+Kojin,(786) 747-1404,https://www.kojin2.com/,"804 Ponce de Leon Blvd, Coral Gables, FL 33134",25.764203,-80.2594733,33134,4.6,143,Japanese restaurant,None,apify
+MIKA Coral Gables,(305) 404-2200,http://mikacoralgables.com/,"3007 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7443133,-80.2581085,33134,4.7,348,Restaurant,None,apify
+"South Gables Dental, PA",(305) 665-1263,http://southgablesdental.com/,"4950 S Le Jeune Rd suite c, Coral Gables, FL 33146",25.7248563,-80.2618844,33146,4.9,162,Dentist,None,apify
+Merrick Dental Coral Gables,(305) 677-9062,http://www.merrickdentalcoralgables.com/,"301 Altara Ave Suite 107, Coral Gables, FL 33146",25.7336441,-80.2617956,33146,5,93,Dentist,None,apify
+Coral Gables Dentistry,(305) 567-1992,https://www.coralgablesdentistry.com/,"3326 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7406474,-80.2585882,33134,5,352,Dentist,None,apify
+Gables Smile Studio,(305) 665-1655,http://gablessmilestudio.com/,"4689 Ponce de Leon Blvd #100, Coral Gables, FL 33146",25.7257159,-80.264435,33146,5,336,Dentist,None,apify
+The Dental Studio Miami,(305) 666-0006,https://thedentalstudiomiami.com/,"4100 Salzedo St STE 20, Coral Gables, FL 33146",25.7338376,-80.2605786,33146,4.8,76,Dentist,None,apify
+Gables Family Dental of Coral Gables,(305) 529-9595,https://gablesfamily.com/,"401 Coral Wy STE 109, Coral Gables, FL 33134",25.7500789,-80.2628914,33134,4.9,327,Dentist,None,apify
+Gables Exceptional Dentistry,(305) 614-2438,https://www.gablesexceptionaldentistry.com//?utm_source=google&utm_medium=organic&utm_campaign=gbp,"357 Almeria Ave STE 105, Coral Gables, FL 33134",25.7470238,-80.2620569,33134,4.9,548,Dentist,None,apify
+Charming Smiles Dental Center,(786) 360-6812,,"401 Coral Wy #305, Coral Gables, FL 33134",25.7501023,-80.262928,33134,4.8,18,Dentist,None,apify
+Advanced Smile Dental Clinic,(786) 391-0588,https://www.advancedsmileclinic.com/,"3934 SW 8th St #306, Coral Gables, FL 33134",25.7643531,-80.2601624,33134,4.9,231,Dentist,None,apify
+Benitez Dental Center,(786) 442-2122,https://benitezdentalcenter.com/,"401 Coral Wy Suite 300, Coral Gables, FL 33134",25.7497766,-80.2631113,33134,4.9,69,Dentist,None,apify
+Gables Dental Clinic,(305) 444-9951,,"5450 SW 8th St #201, Coral Gables, FL 33134",25.763584,-80.2835378,33134,4.5,33,Dental clinic,None,apify
+Miami Smile Institute,(786) 703-9430,https://www.miamismileinstitute.com/,"1805 Ponce de Leon Blvd STE 301, Coral Gables, FL 33134",25.7557534,-80.2586538,33134,4.7,74,Dental clinic,None,apify
+Gables Dental Care,(305) 443-7501,http://dafd.miami/,"3815 SW 8th St, Coral Gables, FL 33134",25.7650359,-80.2576228,33134,4.9,75,Dentist,None,apify
+Coral Gables Dental Arts,(305) 661-5360,https://coralgablesdentalarts.net/,"2645 SW 37th Ave suite #303, Miami, FL 33133",25.7422211,-80.2541056,33133,4.7,15,Dentist,None,apify
+Vida Dental Coral Gables,(305) 496-1618,https://www.vidadentalcoralgables.com/,"336 Sevilla Ave, Coral Gables, FL 33134",25.746049,-80.2613778,33134,4.8,396,Dentist,None,apify
+Dental Smiles (Dr. Manuel Jimenez DMD),(305) 667-5539,https://www.floridadentalsmiles.com/,"4950 S Le Jeune Rd STE B, Coral Gables, FL 33146",25.724807,-80.2619284,33146,5,68,Dentist,None,apify
+Sage Dental of Coral Gables,(786) 686-0190,https://mysagedental.com/coral-gables/?utm_source=Google&utm_medium=Business_Listing,"1 Alhambra Plz Suite 25, Coral Gables, FL 33134",25.7527184,-80.2553169,33134,3.9,348,Dentist,None,apify
+Northland Dental,(305) 448-1172,http://www.northlanddentalcenter.com/,"2825 Coral Wy, Coral Gables, FL 33145",25.750437,-80.240024,33145,4.8,28,Dentist,None,apify
+MIA Dental - Coral Gables,(305) 444-8591,https://miadental.net/,"747 Ponce de Leon Blvd STE 401, Coral Gables, FL 33134",25.7648747,-80.2583119,33134,4.7,261,Dentist,None,apify
+Dentists of Coral Gables,(305) 239-8806,https://www.dentistsofcoralgables.com/?sc_cid=GBP%3AO%3AGP%3A984%3AOrganic_Search%3AGeneral%3Ana&_vsrefdom=organic_gbp&y_source=1_MTA5OTAzMzctNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"290 Alhambra Cir, Coral Gables, FL 33134",25.751598,-80.260606,33134,4.5,282,Dentist,None,apify
+Miami Dental Heaven,(305) 446-1067,https://www.miamidentalheaven.com/,"4830 SW 8th St, Coral Gables, FL 33134",25.763969,-80.273852,33134,5,38,Dentist,None,apify
+Miro Dental Centers of Coral Gables,(305) 203-5114,https://mirodentalcenter.com/coral-gables-fl/,"564 SW 42nd Ave 2nd floor, Coral Gables, FL 33134",25.7661899,-80.263593,33134,4.7,428,Dentist,None,apify
+Dental Leaders,(305) 442-1177,http://www.dentalleaders.com/,"336 Alhambra Cir, Miami, FL 33134",25.7516767,-80.2615508,33134,4.9,264,Dentist,None,apify
+Companioni Dental Smile,(786) 304-2447,https://companionidentalsmile.com/,"475 Biltmore Way #110, Coral Gables, FL 33134",25.7486795,-80.2646576,33134,5,107,Dentist,None,apify
+Gables Perfect Smile,(305) 443-8225,https://www.gablesperfectsmile.com/locations/coral-gables-office/,"1805 Ponce de Leon Blvd STE 401, Coral Gables, FL 33134",25.7557611,-80.2586565,33134,4.9,339,Dentist,None,apify
+Infinity Dental Associates,(305) 998-2970,https://infinityda.com/,"2600 Douglas Rd #906, Coral Gables, FL 33134",25.7477885,-80.2547145,33134,4.9,169,Dentist,None,apify
+Univista Insurance,(305) 707-0146,https://www.univistainsurance.com/location/univista-insurance-coralgables-fl-33146-1/,"430 S Dixie Hwy Suite 201, Coral Gables, FL 33146",25.7254411,-80.2626449,33146,5,82,Auto insurance agency,None,apify
+GreatFlorida Insurance: Mike Carcas,(305) 461-3232,https://coralgables.greatflorida.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp-listing&utm_content=20,"717 Ponce de Leon Blvd STE 211, Coral Gables, FL 33134",25.7653633,-80.2578323,33134,5,144,Insurance agency,None,apify
+Gables Elite Insurance Inc,(305) 448-2887,http://www.gableseliteinsurance.com/,"124 Madeira Ave, Coral Gables, FL 33134",25.755836,-80.2573984,33134,5,78,Home insurance agency,None,apify
+GreatFlorida Insurance: Ana Patricia Arguello,(786) 409-2211,https://miami.greatflorida.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp-listing&utm_content=139,"1390 S Dixie Hwy Suite 2202, Coral Gables, FL 33146",25.7113982,-80.279535,33146,5,36,Insurance agency,None,apify
+"Sunstate Insurance Group, Inc.",(305) 446-2112,,"3075 SW 38th Ct suite a, Coral Gables, FL 33146",25.7336197,-80.2567465,33146,5,6,Insurance agency,None,apify
+We Insure Coral Gables - Rick Leal,(305) 921-4057,https://weinsuregroup.com/agent/coral-gables-rick-leal,"2600 Douglas Rd #905, Coral Gables, FL 33134",25.747899,-80.254725,33134,4.7,23,Insurance agency,None,apify
+Sunset Insurance Corporation,(305) 661-2377,https://www.sunsetins.net/,"106 Madeira Ave, Coral Gables, FL 33134",25.7558146,-80.2570265,33134,5,5,Insurance agency,None,apify
+Leticia Insurance Agency,(305) 631-2094,,"5538 SW 8th St, Coral Gables, FL 33134",25.7634208,-80.2846463,33134,4.8,50,Insurance broker,None,apify
+Alex Blanco: Allstate Insurance,(305) 895-2333,https://agents.allstate.com/alex-blanco-coral-gables-fl.html?utm_source=GMB&utm_medium=Website,"708 S Dixie Hwy, Coral Gables, FL 33146",25.7221745,-80.2670078,33146,4.8,31,Insurance agency,None,apify
+We Insure Miami - Randy Marzullo,(786) 801-3514,http://weinsuregroupmiami.com/,"1550 Madruga Ave #330, Coral Gables, FL 33146",25.7077085,-80.2832772,33146,4.6,34,Insurance agency,None,apify
+DFI INSURANCE COMPANY,(305) 665-1903,http://getmydfi.com/,"1430 S Dixie Hwy STE 307, Coral Gables, FL 33146",25.7097105,-80.2819801,33146,4.8,365,Home insurance agency,None,apify
+Carlos Martinez - State Farm Insurance Agent,(305) 663-4921,https://www.carmartinez.com/?cmpid=JRLE_blm_0001,"1430 S Dixie Hwy Ste 316a, Coral Gables, FL 33146",25.7098795,-80.2814663,33146,5,80,Insurance agency,None,apify
+RRJ Insurance Services of Florida,(305) 614-0055,https://www.rrj-insurance.com/,"2355 Salzedo St Suite 306, Coral Gables, FL 33134",25.7498081,-80.2605636,33134,,,Insurance agency,None,apify
+"Brightway Insurance, The Debs Agency",(305) 668-7070,https://www.brightway.com/agencies/FL/Coral-Gables/0044,"6915 Red Rd #209, Coral Gables, FL 33143",25.7049382,-80.2852062,33143,4.9,12,Insurance agency,None,apify
+golden gables insurance,(305) 442-2187,https://www.goldengablesinsuranceagency.com/,"7171 Coral Wy #104, Miami, FL 33155",25.748296,-80.3106066,33155,,,Insurance agency,None,apify
+Sirianni Insurance Corp.,(305) 510-4510,https://www.sirianniinsurance.com/,"199 Giralda Ave suite PH, Coral Gables, FL 33134",25.7513633,-80.2585353,33134,4.9,49,Auto insurance agency,None,apify
+wyn insurance,(305) 521-9082,https://wyninsurance.com/,"2332 Galiano St 2nd floor, Coral Gables, FL 33134",25.7503404,-80.2570322,33134,4.7,12,Insurance agency,None,apify
+Del Toro Insurance,(305) 698-0899,https://www.deltoroinsurance.com/florida-insurance-agency-coral-gables/,"1418 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7585234,-80.2592042,33134,4.6,34,Insurance agency,None,apify
+Complete Insurance Agency,(305) 667-7717,https://www.completeinsagency.com/,"717 Ponce de Leon Blvd STE 327, Coral Gables, FL 33134",25.7655856,-80.2578432,33134,5,8,Insurance agency,None,apify
+Blue Marlin Insurance,(855) 721-7283,http://bluemarlinins.com/,"3150 SW 38th Ave Suite: 1309, Miami, FL 33146",25.7323074,-80.2559617,33146,5,6,Insurance agency,None,apify
+Pagola Insurance Group,(305) 257-9171,https://alexanderpagola.wixsite.com/pagolainsurancegroup,"2525 Ponce de Leon Blvd Suit 300, Coral Gables, FL 33134",25.7484691,-80.2581627,33134,5,108,Insurance agency,None,apify
+EME INSURANCE GROUP,(305) 300-6187,http://emeinsurancegroup.com/,"1600 Ponce de Leon Blvd Suite 1012, Coral Gables, FL 33134",25.7570464,-80.2591768,33134,5,49,Insurance agency,None,apify
+WeDo Insurance & Taxes,(305) 432-3966,https://www.wedoinsuranceandtaxes.com/,"801 Madrid St # 201, Coral Gables, FL 33134",25.7635841,-80.282013,33134,4.9,242,Insurance agency,None,apify
+Univista Insurance,(305) 508-9848,https://www.univistainsurance.com/location/univista-insurance-miami-fl-33134-1,"4081 SW 2nd Terrace, Miami, FL 33134",25.769634,-80.2631675,33134,4.9,1193,Insurance agency,None,apify
+Continental Insurance Brokers,(305) 262-5600,,"5596 W Flagler St, Coral Gables, FL 33134",25.7706563,-80.2859306,33134,4.6,35,Insurance agency,None,apify
+"A Group Services, Inc",(305) 774-1112,https://agroupservices.com/?utm_source=google&utm_medium=local&utm_campaign=google-local-72420,"1 Alhambra Plz PH floor, Coral Gables, FL 33134",25.7529118,-80.2550875,33134,4.9,27,Home insurance agency,None,apify
+Estrella Insurance,(305) 262-7800,https://agents.estrellainsurance.com/en-us/fl/miami/327.html?utm_source=google&utm_medium=cpc,"3701 SW 8th St, Miami, FL 33134",25.7648547,-80.2553714,33134,4.9,153,Auto insurance agency,None,apify
+PN Insurance,(855) 725-1580,https://pn-insurance.com/,"333 University Dr #231, Coral Gables, FL 33134",25.7428612,-80.2619096,33134,5,1,Insurance agency,None,apify
+quintana insurance agency,(305) 446-5063,,"5200 SW 8th St #250, Coral Gables, FL 33134",25.7636888,-80.2804324,33134,,,Insurance agency,None,apify
+"One Insurance Services, LLC.",(305) 445-3535,http://www.oneinsuranceservices.com/,"365 Palermo Ave, Coral Gables, FL 33134",25.7455547,-80.2618206,33134,3,10,Insurance agency,None,apify
+Insurance Office of America,(800) 243-6899,https://ioausa.com/,"220 Miracle Mile Suite B206, Coral Gables, FL 33134",25.7492579,-80.2592799,33134,1,1,Insurance broker,None,apify
+"Robert N. Pelier, P. A.",(305) 529-9199,http://www.pelierlaw.com/,"4649 Ponce de Leon Blvd Suite 301, Coral Gables, FL 33146",25.726529,-80.263444,33146,4.9,84,Attorney,None,apify
+Sardina Law Corporate/Immigration Lawyers,(305) 468-9262,https://www.sardinalawoffices.com/,"135 San Lorenzo Ave STE 680, Coral Gables, FL 33146",25.7318905,-80.256965,33146,4.9,74,Immigration attorney,None,apify
+Martha Mendez of Feinstein & Mendez,(786) 404-1024,https://fmpalawfirm.com/?utm_source=organic&utm_medium=gbp&utm_campaign=nsa-seo,"2600 Douglas Rd Suite 506, Coral Gables, FL 33134",25.7477553,-80.2547272,33134,5,179,Estate planning attorney,None,apify
+"CAVA Law, LLC",(786) 675-6830,https://www.cava.law/?utm_source=google&utm_medium=organic&utm_campaign=gbp,"1390 S Dixie Hwy Suite 1110, Coral Gables, FL 33146",25.7113982,-80.279476,33146,4.9,56,Bankruptcy attorney,None,apify
+Law Offices of Andre A. Rouviere,(305) 774-7000,https://rouvierelawfirm.com/,"4070 Laguna St, Coral Gables, FL 33146",25.733913,-80.261437,33146,4.8,84,Attorney,None,apify
+Ansbacher Law,(305) 400-8009,https://www.ansbacher.net/,"1430 S Dixie Hwy STE 322, Coral Gables, FL 33146",25.7096364,-80.2820192,33146,5,24,Attorney,None,apify
+The Law Office of Matthew E. Ladd,(305) 665-3978,https://www.mllawmiami.com/,"4649 Ponce de Leon Blvd Suite 301, Coral Gables, FL 33146",25.7265248,-80.2634506,33146,5,123,Criminal justice attorney,None,apify
+G&R Law,(305) 461-4880,http://www.grpllaw.com/,"1550 Madruga Ave # 110, Coral Gables, FL 33146",25.7077232,-80.2832859,33146,5,4,Attorney,None,apify
+Harry C. Palmer III,(305) 445-2424,http://www.hcpalmerlaw.com/,"3150 SW 38th Ave Suite #1304, Coral Gables, FL 33146",25.7325047,-80.256129,33146,5,13,Attorney,None,apify
+HADEED LEGAL,(954) 738-9757,https://www.hadeedlegal.com/,"4000 Ponce de Leon Blvd #470, Coral Gables, FL 33146",25.7340018,-80.2590085,33146,5,64,Estate planning attorney,None,apify
+"Veliz & Associates P.A., an Estate & Legacy Planning Firm",(786) 839-3840,https://velizlaw.com/?utm_source=GBP&utm_medium=GBP&utm_campaign=GBP_Coral%20Gables&utm_id=GBP_Coral%20Gables,"2600 Douglas Rd Suite 710, Coral Gables, FL 33134",25.7477571,-80.2552625,33134,5,86,Estate planning attorney,None,apify
+"Thomas-McDonald Law Firm, P.A.",(305) 928-6999,http://thomasmcdonaldlaw.com/,"1430 S Dixie Hwy STE 322, Coral Gables, FL 33146",25.7096364,-80.2820192,33146,5,40,Family law attorney,None,apify
+Shirazi & D'Escoubet Law Group,(786) 518-3668,https://shirazidescoubet.com/,"999 Ponce de Leon Blvd #515, Coral Gables, FL 33134",25.7624935,-80.2587034,33134,5,150,Personal injury attorney,None,apify
+MPM Law,(305) 330-5445,https://southfldefense.com/,"4000 Ponce de Leon Blvd #470, Coral Gables, FL 33146",25.747722,-80.2547399,33146,5,16,Criminal justice attorney,None,apify
+"Law Offices of Nicholas Felzen, P.A.",(786) 787-7650,https://miamisecuritydepositattorney.com/,"1360 S Dixie Hwy #340, Coral Gables, FL 33146",25.712138,-80.2791447,33146,4.9,74,Real estate attorney,None,apify
+"Werner, Hoffman, Greig & Garcia",(305) 518-1619,https://wernerhoffman.com/coral-gables-injury/?utm_source=GBP&utm_medium=GBP&utm_campaign=GBP_Coral_Gables&utm_id=GBP_Coral_Gables,"133 Grand Ave B, Coral Gables, FL 33133",25.7277907,-80.256989,33133,5,52,Personal injury attorney,None,apify
+"Elite Lawyer, LLC",(833) 403-5483,https://www.elitelawyer.com/,"5239 Thatcher Rd, Downers Grove, IL 60515",41.790548,-88.0544056,60515,5,4,Attorney,None,apify
+Goostree Law Group - Kane County,(630) 584-4800,https://www.familydivorcelaw.com/?utm_source=google&utm_medium=St_Charles_gmb&utm_campaign=gmb_website_button,"555 S Randall Rd STE 200, St. Charles, IL 60174",41.9048851,-88.3403568,60174,4.7,99,Divorce lawyer,None,apify
+Cherry Bekaert,(804) 673-5700,https://www.cbh.com/locations/accounting-tax-advisory-services-in-richmond-va/?utm_source=google&utm_medium=organic&utm_campaign=gmb-richmond-va&utm_content=website-button,"200 S 10th St Ste 900, Richmond, VA 23219",37.5359313,-77.4378594,23219,1,1,Accountant,None,apify
+Coral Gables,(269) 857-2162,https://coralgablessaugatuck.com/,"220 Water St, Saugatuck, MI 49453",42.655943,-86.205533,49453,4,988,Restaurant,$$,apify
+Kerdyk Real Estate,(305) 446-2586,http://www.kerdyk.com/,"2631 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7473031,-80.2584085,33134,5,80,Real estate agency,None,apify
+RE/MAX United Realty,(305) 575-2727,http://www.yourmiamiproperties.com/,"1607 Ponce de Leon Blvd STE 204, Coral Gables, FL 33134",25.7570666,-80.2587209,33134,4.2,5,Real estate agency,None,apify
+Dream Life Realty,,https://dreamliferlty.com/,"1701 Ponce de Leon Blvd #206, Coral Gables, FL 33134",25.7564426,-80.258545,33134,4.4,36,Real estate agency,None,apify
+"Beatriz Navarro Goudie, Antilles Realty",(786) 338-0245,https://makecoralgableshome.com/,"2655 S Le Jeune Rd, Coral Gables, FL 33134",25.7474891,-80.2614908,33134,5,42,Real estate agency,None,apify
+Mega Luxe Homes,(305) 204-2462,https://www.megaluxehomes.com/contact/,"550 Biltmore Way, Coral Gables, FL 33134",25.7479489,-80.2659548,33134,5,83,Real estate agency,None,apify
+Keller Williams Realty: Grace Izquierdo,(305) 244-1459,http://thegracegroupkw.com/,"550 Biltmore Way PH2, Coral Gables, FL 33134",25.7479489,-80.2659548,33134,5,23,Real estate agent,None,apify
+Oscar Arellano - Coral Gables Realtor,(305) 525-7324,https://realestatebulldog.com/,"4000 Ponce de Leon Blvd Suite 700, Coral Gables, FL 33146",25.7340183,-80.2589635,33146,4.9,61,Real estate agency,None,apify
+LUXE Properties,(305) 438-7764,http://liveluxehomes.com/,"55 Merrick Wy #402, Coral Gables, FL 33134",25.7509551,-80.2555253,33134,4.6,150,Real estate agency,None,apify
+"Wesley Ulloa, Luxury Real Estate Advisor, South Florida",(786) 442-1962,https://luxeknows.com/agent/wesley-ulloa/,None,46.423669,-129.9427086,,4.9,50,Real estate agent,None,apify
+Camila Maz Real Estate,(305) 300-8880,http://www.camilamaz.keyes.com/,"2423 S Le Jeune Rd, Coral Gables, FL 33134",25.7485232,-80.2625406,33134,5,33,Real estate agent,None,apify
+Gables Neighbors Realty,(786) 663-5208,http://www.gablesneighbors.com/,"2222 Ponce de Leon Blvd suit 300, Coral Gables, FL 33134",25.7513418,-80.2590994,33134,5,71,Real estate agency,None,apify
+Coldwell Banker Realty,(305) 667-4815,https://www.coldwellbankerhomes.com/fl/coral-gables/office/coral-gables/oid_820/?utm_source=google&utm_medium=organic&utm_campaign=gmb&utm_content=FL_Coral_Gables,"4000 Ponce de Leon Blvd Suite 700, Coral Gables, FL 33146",25.7340018,-80.2590085,33146,4.6,22,Real estate agency,None,apify
+Julian Acosta - Coral Gables Realtor at Compass,(786) 473-2565,https://julianmiamirealtor.com/coral-gables,"1515 Sunset Dr Suite 40, Coral Gables, FL 33143",25.7048724,-80.2830882,33143,5,71,Real estate agent,None,apify
+17 Real Estate Brokers,(786) 693-3910,,"1701 Ponce de Leon Blvd #206, Coral Gables, FL 33134",25.7564331,-80.2585733,33134,4.3,11,Real estate agency,None,apify
+Alberto Baca Real Estate Miami,(305) 218-2504,http://albertobaca.keyes.com/,"2423 S Le Jeune Rd, Coral Gables, FL 33134",25.7485232,-80.2625406,33134,5,15,Real estate agent,None,apify
+Kennedy Realty Miami - Luxury Coral Gables Agents,(786) 882-2532,http://www.kennedyrealtymiami.com/,None,25.735606,-80.254069,,4.8,20,Real estate agency,None,apify
+RZone Fitness Coral Gables,(305) 461-1090,https://www.rzonefitness.com/,"112 Valencia Ave, Coral Gables, FL 33134",25.7478217,-80.2569252,33134,4.9,327,Gym,None,apify
+Method X Fitness Coral Gables,(305) 299-9666,https://methodxfitness.com/,"475 Biltmore Way #106, Coral Gables, FL 33134",25.748646,-80.2644087,33134,4.8,172,Gym,None,apify
+SWEAT440 Fitness Gables,(888) 507-9328,https://sweat440.com/gyms/florida/coral-gables-33146/?utm_source=GMB&utm_medium=organic&utm_campaign=coral+gables,"301 Altara Ave Ste 111, Coral Gables, FL 33146",25.7336441,-80.2617956,33146,4.9,297,Gym,None,apify
+BÜNDA Coral Gables,(305) 200-3117,https://www.trainbunda.com/,"25 Merrick Wy, Coral Gables, FL 33134",25.7505706,-80.255271,33134,4.5,115,Gym,None,apify
+AIRLAB Fitness Coral Gables,(305) 396-8548,https://www.airlabfitness.com/,"35 Alhambra Plz, Coral Gables, FL 33134",25.7526427,-80.2553133,33134,5,13,Fitness center,None,apify
+Ghost Gym Miami,(786) 922-0006,http://ghostgymmiami.com/,"3020 SW 22nd St, Miami, FL 33145",25.7499398,-80.2426156,33145,4.9,180,Gym,None,apify
+Iron Bodyfit Coral Gables,(786) 983-9889,https://ironbodyfit.us/locations/iron-bodyfit-coral-gables/,"1410 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7586607,-80.2592042,33134,5,90,Gym,None,apify
+TruFusion Coral Gables,(305) 851-5252,https://trufusion.com/coral-gables/,"301 Giralda Ave #5, Coral Gables, FL 33134",25.7513094,-80.2611423,33134,4.6,230,Yoga studio,None,apify
+LEGACY,(305) 240-1096,https://legacyfit.com/,"22 Merrick Wy, Coral Gables, FL 33134",25.7504584,-80.2555241,33134,4.7,76,Gym,None,apify
+Life Time,(786) 437-4400,https://www.lifetime.life/locations/fl/coral-gables.html?utm_source=google&utm_medium=local&utm_campaign=google-local-club,"237 S Dixie Hwy, Coral Gables, FL 33133",25.7283022,-80.260038,33133,3.8,232,Gym,None,apify
+LA Fitness,(305) 445-7140,https://www.lafitness.com/Pages/clubhome.aspx?clubid=712&utm_source=google&utm_medium=googlemaps&utm_campaign=maps,"3301 Coral Wy, Miami, FL 33145",25.750451,-80.2497308,33145,2.7,1137,Gym,None,apify
+54D Coral Gables,(786) 817-7008,https://cg.54d.com/,"4210 Ponce de Leon Blvd, Coral Gables, FL 33146",25.7327988,-80.2587469,33146,4.6,72,Gym,None,apify
+Push PTS - GYM & Fitness Center,(786) 286-5648,http://www.pushpts.com/,"2274 Coral Wy, Coral Gables, FL 33145",25.7503192,-80.231706,33145,4.9,50,Fitness center,None,apify
+clubX fitness - Coral Gables,(305) 667-3539,http://www.clubxmiami.com/,"1236 S Dixie Hwy, Coral Gables, FL 33146",25.7139184,-80.2765288,33146,4.6,28,Fitness center,None,apify
+Orangetheory Fitness,(305) 460-6006,https://www.orangetheory.com/en-us/locations/coral-gables-florida-0077?utm_medium=seo&utm_source=gg&utm_term=corporate&utm_campaign=soci,"2300 Salzedo St, Coral Gables, FL 33134",25.7508029,-80.2609818,33134,4.8,230,Gym,None,apify
+[solidcore] Coral Gables,(786) 305-6513,https://www.solidcore.co/fl/florida/coral-gables/?utm_source=google&utm_medium=search&utm_content=local-listing&utm_campaign=gmb-listing,"111 Palermo Ave Suite 210, Coral Gables, FL 33134",25.7458695,-80.2571171,33134,3.4,23,Gym,None,apify
+Mat & Maternity,(786) 309-5784,https://www.matandmaternity.com/google,"401 Coral Wy suite 407, Coral Gables, FL 33134",25.7499395,-80.2630013,33134,5,1,Pilates studio,None,apify
+TREMBLE,(833) 873-6253,http://makeittremble.com/,"4203 Ponce de Leon Blvd Suite 100, Coral Gables, FL 33146",25.7330383,-80.2582243,33146,4.8,90,Pilates studio,None,apify
+Break Free Movement,(305) 456-8234,http://thebreakfreemovement.com/,"4203 Ponce de Leon Blvd Suite 200, Coral Gables, FL 33146",25.7330383,-80.2582243,33146,4.8,306,Yoga studio,None,apify
+Club Pilates,(305) 209-5679,https://www.clubpilates.com/coralgables/?utm_source=google.com&utm_medium=referral&utm_campaign=yext,"77 Miracle Mile, Coral Gables, FL 33134",25.7499914,-80.2563607,33134,3.9,46,Pilates studio,None,apify
+Equinox Coral Gables,(786) 497-8200,https://www.equinox.com/clubs/florida/coralgables?cid=gmb,"370 San Lorenzo Ave, Coral Gables, FL 33146",25.7318154,-80.2607785,33146,3.6,104,Gym,None,apify
+54D STEEL Coral Gables,(786) 817-7008,https://54d.com/,"4212 Ponce de Leon Blvd, Coral Gables, FL 33146",25.7326917,-80.2588558,33146,5,27,Gym,None,apify
+Anatomy,(786) 275-4477,https://anatomyfitness.com/locations/,"3363 Pan American Dr, Miami, FL 33133",25.7296783,-80.2357982,33133,4.6,176,Fitness center,None,apify
+The Biltmore Hotel Fitness Center,(305) 913-3102,https://biltmorehotel.com/wellness/miami-spa-fitness/?utm_source=google&utm_medium=organic&utm_campaign=gmb-listing,"1200 Anastasia Ave Suite E, Coral Gables, FL 33134",25.7408186,-80.2784533,33134,4.3,7,Fitness center,None,apify
+Rumble Boxing,(786) 863-5461,http://www.rumbleboxinggym.com/coralgables,"111 Palermo Ave Suite 208, Coral Gables, FL 33134",25.7458529,-80.2571158,33134,4.7,43,Boxing gym,None,apify
+Ignite Fit Training,(786) 873-6007,https://ignitefittraining.com/,"3009 Salzedo St, Coral Gables, FL 33134",25.744425,-80.2603406,33134,5,74,Personal trainer,None,apify
+Old Bull Athletics: 1 on 1 Personal Training and Physical Therapy at Coral Gables,(786) 615-3583,https://www.oldbullathletics.com/,"169 Majorca Ave, Coral Gables, FL 33134",25.7553799,-80.2582581,33134,5,148,Gym,None,apify
+Glow Pilates Reformer,(305) 934-1154,https://glowpilatesreformer.com/,"349 Aragon Ave, Coral Gables, FL 33134",25.7504234,-80.2615907,33134,4.8,97,Pilates studio,None,apify
+Coral Gables Golf & Country Club Athletic Club,(305) 722-8779,https://www.coralgablescountryclub.com/athletic-club,"990 Alhambra Cir, Coral Gables, FL 33134",25.753105,-80.2740098,33134,4.3,7,Country club,None,apify
+Fitness1 Midtown,,,"3211 Ponce de Leon Blvd STE 201, Coral Gables, FL 33134",25.7422652,-80.257993,33134,,,Fitness center,None,apify
+Tracy Anderson Method - Coral Gables,(786) 542-5099,https://tracyanderson.com/studio-locations/coral-gables/?srsltid=AfmBOooIG0M7pzGr9o743HpqdZz5qHMW55x1BYgBU7_mnqWhJtkj3rXY,"1430 S Dixie Hwy STE 108-111 Floor 1, Coral Gables, FL 33146",25.7097617,-80.2819759,33146,5,1,Fitness center,None,apify
+Beat The Gym,,https://www.beatthegym.com/,None,25.786746,-80.1699639,,5,94,Boot camp,None,apify
+JETSET Pilates - Merrick Park,(305) 882-9727,https://www.jetsetpilates.com/fl/merrick-park,"4102A Ponce de Leon Blvd, Coral Gables, FL 33146",25.7336307,-80.2588011,33146,5,227,Pilates studio,None,apify
+Patti and Allan Herbert Wellness Center,(305) 284-8500,http://wellness.studentaffairs.miami.edu/index.html,"1241 Theo Dickinson Dr, Coral Gables, FL 33146",25.7159941,-80.2811306,33146,4.6,87,Gym,None,apify
+F45 Training Coral Gables,(786) 464-9919,http://www.f45training.com/coralgables,"5958 S Dixie Hwy 2nd floor, South Miami, FL 33143",25.7029976,-80.2907376,33143,4.9,140,Fitness center,None,apify
+SoulCycle,(305) 740-3600,https://www.soul-cycle.com/studios/coga/1021/,"San Lorenzo Ave, Coral Gables, FL 33146",25.731993,-80.2609359,33146,3.9,56,Gym,None,apify
+Body & Soul Miami,(305) 441-2348,http://www.bodyandsoulmiami.com/,"3183 SW 38th Ct, Coconut Grove, FL 33146",25.7323113,-80.2567936,33146,4.5,66,Gym,None,apify
+Pure Barre,(305) 529-0036,https://www.purebarre.com/location/miami-coral-gables-fl,"205 Altara Ave, Miami, FL 33146",25.7332972,-80.258838,33146,4.5,69,Gym,None,apify
+Equinox San Ramon,(925) 299-9801,https://www.equinox.com/clubs/northern-california/sanramon?cid=gmb,"6000 Bollinger Canyon Rd, San Ramon, CA 94583",37.7633613,-121.9599329,94583,3.8,70,Gym,None,apify
+Equinox Berkeley,(510) 982-5076,https://www.equinox.com/clubs/northern-california/berkeley?cid=gmb,"2600 Shattuck Ave., Berkeley, CA 94704",37.8614544,-122.2675523,94704,3.9,213,Gym,None,apify
+Equinox San Mateo,(650) 403-7000,https://www.equinox.com/clubs/northern-california/sanmateo?cid=gmb,"4 E 4th Ave, San Mateo, CA 94401",37.5622045,-122.3246826,94401,3.4,105,Gym,None,apify
+TD Bank,(212) 579-2010,https://locations.td.com/us/2400-broadway-88th-broadway?y_source=1_MzE0NzM0OC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"2400 Broadway, New York, NY 10024",40.7896422,-73.9751012,10024,3.1,27,Bank,None,apify
+Citi,(646) 259-3293,https://www.citi.com/?utm_source=gmb&utm_medium=yext&y_source=1_Mjg5MTY4NjEtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"170 W 72nd St, New York, NY 10023",40.7782301,-73.9813863,10023,3.4,27,Bank,None,apify
+Apple Bank,(212) 877-7195,https://www.applebank.com/about/get-in-touch/atm-branch-locations/manhattan/manhattan-west-side/2100-broadway-(new-york)?utm_source=G&utm_medium=local&utm_campaign=G-local,"2100 Broadway, New York, NY 10023",40.779576,-73.981434,10023,3.4,21,Bank,None,apify
+Capital One Bank,(212) 712-2259,https://locations.capitalone.com/location/branch_46761/?external_id=ENTSOC_YX_YextRetail_Profile_0101,"175 W 72nd St, New York, NY 10023",40.7786038,-73.981122,10023,2.7,50,Bank,None,apify
+Chase Bank,(212) 570-4600,https://www.chase.com/locator/banking/us/ny/new-york/1025-madison-ave?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MjAzODQyMC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"1025 Madison Ave, New York, NY 10075",40.7760133,-73.96195,10075,3.1,18,Bank,None,apify
+TD Bank,(646) 505-1118,https://locations.td.com/us/2109-broadway-74th-broadway?y_source=1_MzE0NzAzNy03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"2109 Broadway, New York, NY 10023",40.7802977,-73.9819524,10023,2.9,42,Bank,None,apify
+Flagstar Private Bank,(646) 822-7511,https://www.flagstar.com/private-bank.html,"1020 Madison Ave 4th & 5th Floor, New York, NY 10075",40.7761103,-73.9626322,10075,3.5,4,Financial consultant,None,apify
+TD Bank,(212) 744-2031,https://locations.td.com/us/1133-madison-avenue-85th-madison?y_source=1_MzE0ODE0NS03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"1133 Madison Ave, New York, NY 10028",40.7798905,-73.9591885,10028,4,12,Bank,None,apify
+Chase Bank,(212) 580-5451,https://www.chase.com/locator/banking/us/ny/new-york/2099-broadway?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MjAzODQyMy03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"2099 Broadway, New York, NY 10023",40.779531,-73.982056,10023,3.8,34,Bank,None,apify
+Popular Bank,(212) 865-8812,https://www.popularbank.com/,"730 Columbus Ave, New York, NY 10025",40.7927409,-73.9679887,10025,3.2,29,Bank,None,apify
+Chase Bank,(212) 769-4779,https://www.chase.com/locator/banking/us/ny/new-york/2219-broadway?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MjAzODQ1OS03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"2219 Broadway, New York, NY 10024",40.783799,-73.980455,10024,2.8,23,Bank,None,apify
+Chase Bank,(212) 769-0400,https://www.chase.com/locator/banking/us/ny/new-york/260-columbus-ave?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MjAzODQ1Ny03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"260 Columbus Ave, New York, NY 10023",40.7777273,-73.9788638,10023,3.1,23,Bank,None,apify
+TD Bank,(917) 493-5682,https://locations.td.com/us/2521-broadway-94th-broadway?y_source=1_MzE0NzE1NC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"2521 Broadway, New York, NY 10025",40.7936464,-73.9728476,10025,3.2,52,Bank,None,apify
+Chase Bank,(212) 535-9755,https://www.chase.com/locator/banking/us/ny/new-york/12-e-86th-st?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MjAzODQxNC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"12 East 86th St, New York, NY 10028",40.780798,-73.959105,10028,2.3,15,Bank,None,apify
+Chase Bank,(212) 873-3020,https://www.chase.com/locator/banking/us/ny/new-york/2438-broadway?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MjAzODQ3NC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"2438 Broadway, New York, NY 10024",40.7906032,-73.9743915,10024,2.5,31,Bank,None,apify
+Chase Bank,(305) 442-8127,https://www.chase.com/locator/banking/us/fl/coral-gables/1300-ponce-de-leon-blvd?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MjAzOTExMy03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"1300 Ponce de Leon Blvd, Coral Gables, FL 33134",25.759244,-80.259204,33134,3.8,53,Bank,None,apify
+Wells Fargo Bank,(212) 287-0106,https://www.wellsfargo.com/locator/bank/2415__BROADWAY_NEW__YORK_NY_10024/?utm_campaign=Local_Listings&utm_source=Google&group=Community_Bank&loc=AC13007,"2415 Broadway, New York, NY 10024",40.7901901,-73.9754507,10024,3.5,52,Bank,None,apify
+Citi ATM,(800) 627-3999,https://www.citi.com/?utm_source=gmb&utm_medium=yext&y_source=1_NDE4NzE5NzAtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"441 Columbus Ave, New York, NY 10024",40.7833273,-73.9741426,10024,3,4,ATM,None,apify
+Synovus Bank,(888) 796-6887,https://www.synovus.com/locations/usa/fl/coral-gables/121-alhambra-plaza/,"121 Alhambra Plz, Coral Gables, FL 33134",25.7525528,-80.2570524,33134,5,3,Bank,None,apify
+THE MANE GROUP SALON,(305) 284-1095,http://www.tmgsalons.com/,"1430 S Dixie Hwy STE 106, Coral Gables, FL 33146",25.7096289,-80.2817499,33146,4.9,134,Beauty salon,None,apify
+88 Salon,(786) 547-3784,,"1430 Madruga Ave suite 8, Coral Gables, FL 33146",25.7092556,-80.2816531,33146,4.8,25,Beauty salon,None,apify
+Glim Beauty Studio,(833) 298-2598,http://www.glimbeautystudio.com/,"1340 S Dixie Hwy Building 150 - Suite #303, Coral Gables, FL 33146",25.7128702,-80.2783641,33146,5,15,Eyelash salon,None,apify
+Hair House,(305) 607-4385,,"2105 S Le Jeune Rd, Coral Gables, FL 33134",25.7533166,-80.2627156,33134,4.9,171,Hair salon,None,apify
+Hi Tech Hair Salon,(305) 448-2909,,"1430 Madruga Ave unit 37, Coral Gables, FL 33146",25.7092556,-80.2816531,33146,5,10,Beauty salon,None,apify
+Bossa Hair Salon,(786) 609-6836,http://www.bossahairsalon.com/,"6929 Red Rd, Coral Gables, FL 33143",25.7047459,-80.2852239,33143,4.9,535,Beauty salon,None,apify
+Sola Salon Studios Merrick Park,(786) 858-5764,https://www.solasalonstudios.com/locations/merrick-park?utm_source=gmb&utm_medium=organic,"358 San Lorenzo Ave Unit 3225, Coral Gables, FL 33146",25.7314728,-80.2594438,33146,4.6,30,Beauty salon,None,apify
+Chase Bank,(212) 666-6110,https://www.chase.com/locator/banking/us/ny/new-york/2540-broadway?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MjAzODQzNy03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"2540 Broadway, New York, NY 10025",40.794,-73.9717,10025,3.5,34,Bank,None,apify
+Citizens,(212) 453-9921,https://locations.citizensbank.com/ny/new-york/721-amsterdam-ave.html,"721 Amsterdam Ave, New York, NY 10025",40.7936831,-73.9702957,10025,3.1,20,Bank,None,apify
+Wells Fargo Bank,(212) 271-0961,https://www.wellsfargo.com/locator/bank/2101__BROADWAY_NEW__YORK_NY_10023/?utm_campaign=Local_Listings&utm_source=Google&group=Community_Bank&loc=AC26961,"2101 Broadway, New York, NY 10023",40.7797857,-73.9819536,10023,5,3,Bank,None,apify
+Chase Bank,(212) 293-0922,https://www.chase.com/locator/banking/us/ny/new-york/1295-madison-ave?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MTAyNjUwNjY1NS03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"1295 Madison Ave, New York, NY 10128",40.7848,-73.9556,10128,4.3,6,Bank,None,apify
+Chase ATM,(800) 935-9935,https://chase.com/locator/?jp_cmp=rb%2FLocalListings%2Faff%2Fatm%2Fna&y_source=1_Mjc3MDEzNTAtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"535 Columbus Ave, New York, NY 10024",40.7862471,-73.9720879,10024,2.6,8,ATM,None,apify
+Bank of America ATM,(844) 401-8500,https://locators.bankofamerica.com/ny/newyork/financial-centers-new-york-16704.html?utm_source=GMBlisting&utm_medium=organic,"2260 Broadway, New York, NY 10024",40.7851859,-73.9786478,10024,1,2,ATM,None,apify
+Capital One ATM,(800) 262-5689,https://locations.capitalone.com/location/atm_E681?external_id=ENTSOC_YX_YextRetail_Profile_0101,"175 W 72nd St, New York, NY 10023",40.7786912,-73.9812483,10023,1,10,ATM,None,apify
+Santander Bank ATM,(877) 768-2265,https://locations.santanderbank.com/ny/newyork/2228-broadway-ny-0154.html?utm_medium=local&utm_source=google&utm_campaign=google,"2228 Broadway, New York, NY 10024",40.7841418,-73.9792183,10024,1,2,ATM,None,apify
+Bank of America ATM,(844) 401-8500,https://locators.bankofamerica.com/ny/newyork/financial-centers-new-york-16667.html?utm_source=GMBlisting&utm_medium=organic,"2077 Broadway, New York, NY 10023",40.7786818,-73.9823889,10023,3,2,ATM,None,apify
+Bank of America ATM,(844) 401-8500,https://locators.bankofamerica.com/ny/newyork/atm-new-york-101168.html?utm_source=GMBlisting&utm_medium=organic,"192 Columbus Ave, New York, NY 10023",40.7753505,-73.9805869,10023,3,6,ATM,None,apify
+Chase Private Client,(212) 535-0481,https://www.chase.com/,"12 East 86th St, New York, NY 10028",40.7808977,-73.9593311,10028,5,1,ATM,None,apify
+Therapy Hair Studio,(713) 355-4247,https://www.therapyhairstudio.com/,"2727 Saint St, Houston, TX 77027",29.739808,-95.435007,77027,4.5,118,Beauty salon,None,apify
+BELLAMI BEAUTY BAR,(832) 982-1902,https://bellami.zenoti.com/webstoreNew/269218d1-2488-41a6-a90d-eeed96f0dc17,"1700 Post Oak Blvd Suite 2-160, Houston, TX 77056",29.7485456,-95.4620377,77056,4.6,305,Beauty salon,None,apify
