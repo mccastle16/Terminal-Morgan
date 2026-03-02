@@ -1,6 +1,6 @@
 """
 Shared constants and utilities for the OSINT pipeline.
-Imported by Agents 1, 2, and 3 to avoid duplication.
+Imported by Agents 1, 2, 3, and 4 to avoid duplication.
 """
 
 import re

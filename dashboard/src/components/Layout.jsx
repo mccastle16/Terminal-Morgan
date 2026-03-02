@@ -36,6 +36,7 @@ const modes = [
     subNav: [
       { name: 'Scorecard', href: '/my-business', icon: Star },
       { name: 'Action Plan', href: '/my-business/actions', icon: Zap },
+      { name: 'Go-To Actions', href: '/my-business/go-to-actions', icon: Target },
       { name: 'My Ecosystem', href: '/my-business/ecosystem', icon: Users },
     ],
   },

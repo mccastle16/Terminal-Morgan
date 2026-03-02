@@ -83,6 +83,12 @@ def _get_agent3():
     return _agent_modules["agent3"]
 
 
+def _get_agent4():
+    if "agent4" not in _agent_modules:
+        _agent_modules["agent4"] = _load_module("agent4", "4. agent4-actions.py")
+    return _agent_modules["agent4"]
+
+
 # ── Source definitions ───────────────────────────────────────────
 SOURCES = {
     "osm": {"requires_key": False, "env_var": None},
@@ -267,6 +273,23 @@ def run_agent3(master: str, action: str = "export") -> dict:
                 "success": False, "error": str(e)}
 
 
+# ── Agent 4: Direct function calls ──────────────────────────────
+def run_agent4(master: str, top_n: int = 0, category: str = "", dry_run: bool = False, use_llm: bool = True) -> dict:
+    """Run Agent 4 action generation directly. Returns result dict."""
+    start = time.time()
+    try:
+        agent4 = _get_agent4()
+        result = agent4.generate_all_actions(master, top_n, category, use_llm=use_llm)
+        agent4.print_summary(result)
+        agent4.write_playbook(result, dry_run)
+        return {"action": "actions", "elapsed": round(time.time() - start, 1),
+                "success": True, "total_actions": result["stats"]["total_actions"],
+                "llm_powered": result["stats"].get("llm_powered", False)}
+    except Exception as e:
+        return {"action": "actions", "elapsed": round(time.time() - start, 1),
+                "success": False, "error": str(e)}
+
+
 # ── Job builder ──────────────────────────────────────────────────
 def build_collection_jobs(sources: list) -> list:
     """Build list of (source, run_num) tuples for parallel execution."""
@@ -292,6 +315,8 @@ Examples:
   python "0. orchestrator.py" --sources osm --dry-run
   python "0. orchestrator.py" --merge-only
   python "0. orchestrator.py" --enrich
+  python "0. orchestrator.py" --actions
+  python "0. orchestrator.py" --all --act
         """,
     )
     group = parser.add_mutually_exclusive_group(required=True)
@@ -299,11 +324,14 @@ Examples:
     group.add_argument("--sources", type=str, help="Comma-separated sources: osm,outscraper,apify,serpapi")
     group.add_argument("--merge-only", action="store_true", help="Skip collection, run Agent 2 + 3 on existing staging")
     group.add_argument("--enrich", action="store_true", help="Run enrichment pass on existing master (geocode, ratings)")
+    group.add_argument("--actions", action="store_true", help="Run Agent 4 action generation only")
 
     parser.add_argument("--master", type=str, default=str(MASTER_CSV), help="Path to master CSV")
     parser.add_argument("--dry-run", action="store_true", help="Collect data but don't modify master CSV")
     parser.add_argument("--workers", type=int, default=4, help="Max parallel workers (default: 4)")
     parser.add_argument("--synthesize", action="store_true", help="Also run PKP synthesis after export")
+    parser.add_argument("--act", action="store_true", help="Also run Agent 4 action generation after pipeline")
+    parser.add_argument("--no-llm", action="store_true", help="Disable LLM strategist in Agent 4, use rule-based only")
     args = parser.parse_args()
 
     start_time = datetime.now()
@@ -313,6 +341,18 @@ Examples:
     print(f"  Master:  {args.master}")
     print(f"  Mode:    {'DRY RUN' if args.dry_run else 'LIVE'}")
     print(f"{'='*60}\n")
+
+    # ── Actions-only mode ────────────────────────────────────────
+    if args.actions:
+        print("  Phase: ACTION GENERATION (Agent 4)\n")
+        result = run_agent4(args.master, dry_run=args.dry_run, use_llm=not args.no_llm)
+        if result["success"]:
+            print(f"  Actions generated in {result['elapsed']}s")
+        else:
+            print(f"  Action generation failed: {result.get('error', 'unknown')}")
+        elapsed = (datetime.now() - start_time).total_seconds()
+        print(f"\n  Total time: {elapsed:.0f}s")
+        return
 
     # ── Enrichment-only mode ─────────────────────────────────────
     if args.enrich:
@@ -402,6 +442,11 @@ Examples:
             if args.synthesize:
                 print(f"\n  Phase 5: SYNTHESIZE (Agent 3)\n")
                 run_agent3(args.master, "synthesize")
+
+            # Agent 4: Actions
+            if args.act:
+                print(f"\n  Phase 6: ACTIONS (Agent 4)\n")
+                run_agent4(args.master, dry_run=args.dry_run, use_llm=not args.no_llm)
 
             # Final stats
             print(f"\n  Phase FINAL: STATS\n")

@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage'
 // Mode 1: My Business
 import MyBusinessPage from './pages/MyBusinessPage'
 import ActionPlanPage from './pages/ActionPlanPage'
+import GoToActionsPage from './pages/GoToActionsPage'
 import EcosystemPage from './pages/EcosystemPage'
 
 // Mode 2: Market Intel
@@ -56,6 +57,7 @@ export default function App() {
         {/* Mode 1: My Business */}
         <Route path="my-business" element={<MyBusinessPage />} />
         <Route path="my-business/actions" element={<ActionPlanPage />} />
+        <Route path="my-business/go-to-actions" element={<GoToActionsPage />} />
         <Route path="my-business/ecosystem" element={<EcosystemPage />} />
 
         {/* Mode 2: Market Intel */}
