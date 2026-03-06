@@ -31,6 +31,7 @@ import {
   ShieldCheck,
   ShieldAlert,
   Users,
+  Layers,
 } from 'lucide-react'
 
 const COLORS = ['#c9a227', '#1e3a5f', '#e8856c', '#87a878', '#2d3436', '#6b7280']
@@ -379,15 +380,22 @@ export default function MarketIntelPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-cgcc-navy text-sm truncate">{business.business_name}</p>
-                    <div className="flex items-center gap-2 text-xs">
+                    <div className="flex items-center gap-2 text-xs flex-wrap">
                       {business.hasRedFlag && (
-                        <span className="text-cgcc-coral">Red flag</span>
+                        <span className={business.red_flag_severity === 'Critical' ? 'text-red-600 font-semibold' : 'text-cgcc-coral'}>
+                          {business.red_flag_severity || 'Red flag'}
+                        </span>
                       )}
                       {business.osintConfidence < 0.6 && (
                         <span className="text-amber-600">Low confidence</span>
                       )}
                       {business.rating < 3.0 && (
                         <span className="text-gray-500">Rating: {business.rating.toFixed(1)}</span>
+                      )}
+                      {business.corroborationCount >= 2 && (
+                        <span className="inline-flex items-center gap-0.5 text-purple-600">
+                          <Layers size={10} /> {business.corroborationCount} sources
+                        </span>
                       )}
                     </div>
                   </div>
