@@ -24,6 +24,7 @@ import {
   Zap,
   Calendar,
   User,
+  Layers,
 } from 'lucide-react'
 import clsx from 'clsx'
 
@@ -199,6 +200,24 @@ export default function BusinessDetailPage() {
                   Chamber Member
                 </span>
               )}
+
+              {business.corroborationCount >= 2 && (
+                <span className="px-3 py-1.5 rounded-full text-sm font-medium bg-purple-100 text-purple-700 flex items-center gap-1.5">
+                  <Layers size={14} />
+                  Verified by {business.corroborationCount} sources
+                </span>
+              )}
+
+              {business.sunbizStatus && (
+                <span className={clsx(
+                  'px-3 py-1.5 rounded-full text-sm font-medium flex items-center gap-1.5',
+                  business.sunbizStatus === 'Active' ? 'bg-emerald-100 text-emerald-700' :
+                  business.sunbizStatus === 'Inactive' ? 'bg-gray-200 text-gray-600' : 'bg-orange-100 text-orange-700'
+                )}>
+                  <Shield size={14} />
+                  Sunbiz: {business.sunbizStatus}
+                </span>
+              )}
             </div>
           </div>
         </div>
@@ -304,7 +323,10 @@ export default function BusinessDetailPage() {
                 {business.red_flag_severity && (
                   <div className="flex justify-between items-center">
                     <span className="text-gray-500">Severity</span>
-                    <span className="font-medium text-gray-900">{business.red_flag_severity}</span>
+                    <span className={clsx(
+                      'font-medium',
+                      business.red_flag_severity === 'Critical' ? 'text-red-600' : 'text-orange-600'
+                    )}>{business.red_flag_severity}</span>
                   </div>
                 )}
                 {business.red_flag_category && (
@@ -317,6 +339,59 @@ export default function BusinessDetailPage() {
                   <div className="pt-3 border-t border-gray-100">
                     <p className="text-sm text-gray-600">{business.red_flag_notes}</p>
                   </div>
+                )}
+              </div>
+            </div>
+
+            {/* Corroboration & Sunbiz */}
+            <div className="card">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <Layers size={18} className="text-purple-600" />
+                </div>
+                <h3 className="font-semibold text-gray-900">Source Verification</h3>
+              </div>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-500">Sources Confirmed</span>
+                  <span className={clsx(
+                    'font-semibold',
+                    business.corroborationCount >= 3 ? 'text-green-600' :
+                    business.corroborationCount >= 2 ? 'text-purple-600' : 'text-gray-500'
+                  )}>
+                    {business.corroborationCount || 1}
+                  </span>
+                </div>
+                {business.corroborationSources && (
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-500">Source Families</span>
+                    <div className="flex flex-wrap gap-1 justify-end">
+                      {business.corroborationSources.split(';').map((src, i) => (
+                        <span key={i} className="px-2 py-0.5 bg-purple-50 text-purple-700 rounded text-xs font-medium">
+                          {src.trim()}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {business.sunbizStatus && (
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-500">FL Sunbiz Status</span>
+                    <span className={clsx(
+                      'font-medium',
+                      business.sunbizStatus === 'Active' ? 'text-green-600' :
+                      business.sunbizStatus === 'Inactive' ? 'text-gray-500' : 'text-orange-600'
+                    )}>{business.sunbizStatus}</span>
+                  </div>
+                )}
+                {business.sunbizName && (
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-500">Registered Name</span>
+                    <span className="font-medium text-gray-900 text-sm">{business.sunbizName}</span>
+                  </div>
+                )}
+                {!business.corroborationSources && !business.sunbizStatus && (
+                  <p className="text-sm text-gray-400">Single-source record — not yet corroborated</p>
                 )}
               </div>
             </div>

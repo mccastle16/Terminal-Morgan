@@ -12,6 +12,7 @@ import {
   Target,
   Lightbulb,
   ExternalLink,
+  Layers,
 } from 'lucide-react'
 import {
   PieChart,
@@ -156,7 +157,7 @@ export default function DashboardPage() {
               <p className="text-sm text-gray-500 font-medium">Risk Alerts</p>
               <p className="text-3xl font-bold text-gray-900 mt-1">{stats?.redFlagCount || 0}</p>
               <p className="text-xs text-gray-400 mt-2">
-                {stats?.highRiskCount || 0} high severity
+                {stats?.criticalCount || 0} critical · {stats?.operationalCount || 0} operational
               </p>
             </div>
             <div className="w-12 h-12 bg-cgcc-coral/10 rounded-xl flex items-center justify-center group-hover:bg-cgcc-coral transition-colors">
@@ -238,6 +239,37 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
+
+      {/* Corroboration summary card */}
+      {stats?.corroboratedCount > 0 && (
+        <div className="card bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
+              <Layers size={22} className="text-purple-600" />
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900">Cross-Source Verification</h2>
+              <p className="text-sm text-gray-500">{stats.corroboratedCount} businesses confirmed by multiple independent sources</p>
+            </div>
+          </div>
+          <div className="flex gap-6 mt-2">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-purple-700">{stats.corroboratedCount}</p>
+              <p className="text-xs text-gray-500">Multi-source verified</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-purple-700">
+                {businesses.filter(b => b.corroborationCount >= 3).length}
+              </p>
+              <p className="text-xs text-gray-500">3+ sources</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-gray-400">{businesses.filter(b => b.corroborationCount < 2).length}</p>
+              <p className="text-xs text-gray-500">Single-source</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Bottom section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
