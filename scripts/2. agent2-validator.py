@@ -13,16 +13,21 @@ Pipeline:
   4. Deduplicate via fuzzy name matching (ratio >= 85)
   5. Validate: geo bounds, required fields, category mapping
   6. Merge: fill blanks on existing records, append truly new ones
-  7. Write updated master CSV
-  8. Archive processed staging files
+  7. Cross-source reconciliation: tag corroboration across source families
+  8. (Optional) Sunbiz legal existence lookup for FL-registered entities
+  9. Populate red_flag_present / red_flag_severity from validation issues
+  10. Write updated master CSV
+  11. Archive processed staging files
 
 Usage:
   python "2. agent2-validator.py" --master data/master_all_businesses.csv
   python "2. agent2-validator.py" --master data/master_all_businesses.csv --staging staging/
   python "2. agent2-validator.py" --master data/master_all_businesses.csv --dry-run
+  python "2. agent2-validator.py" --master data/master_all_businesses.csv --reconcile
+  python "2. agent2-validator.py" --master data/master_all_businesses.csv --reconcile --sunbiz --sunbiz-limit 100
 
 Requirements:
-  pip install pandas fuzzywuzzy python-Levenshtein
+  pip install pandas fuzzywuzzy python-Levenshtein requests
 """
 
 import argparse
@@ -30,11 +35,14 @@ import csv
 import os
 import re
 import shutil
+import time
+from collections import Counter, defaultdict
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 import pandas as pd
+from fuzzywuzzy import fuzz
 
 from _shared import (
     CANONICAL_FIELDS,
@@ -144,6 +152,49 @@ CATEGORY_RULES = [
     ("computer", "technology"),
     ("it_service", "technology"),
 ]
+
+# ── Cross-Source Reconciliation Constants ─────────────────────────
+# Map raw source_file values → independent source families.
+# Google sub-sources (Outscraper, Apify, SerpApi) collapse to 1 family.
+SOURCE_TO_FAMILY = {
+    "outscraper": "google",
+    "apify": "google",
+    "serpapi": "google",
+    "osm": "osm",
+    "osint-cgcc-v1": "cgcc",
+    "cgcc": "cgcc",
+    "ta": "tripadvisor",
+    "non-cgcc-run1": "manual",
+    "non-cgcc-run2": "manual",
+    "agent1-scraper": "agent1",
+}
+
+COORD_PROXIMITY_M = 100        # meters — two records within 100m are "same location"
+NAME_FUZZY_THRESHOLD = 80      # fuzz.token_sort_ratio minimum for coord-assisted match
+NAME_FUZZY_STRONG = 88         # strong name match (can relax coord requirement)
+
+# Noise words stripped before name comparison to prevent false matches
+# e.g. "Coral Gables X" matching "Coral Gables Y"
+NOISE_WORDS = {
+    "coral", "gables", "miami", "fl", "florida", "south", "north",
+    "the", "of", "and", "at", "in", "by", "for", "a", "an",
+    "inc", "llc", "corp", "ltd", "pa", "pllc", "llp",
+    "restaurant", "bar", "grill", "cafe", "salon", "spa", "hotel",
+    "shop", "store", "center", "centre",
+}
+
+# Sunbiz status code normalization
+SUNBIZ_STATUS_MAP = {
+    "ACT": "Active",
+    "INACT": "Inactive",
+    "INACTIVE": "Inactive",
+    "INACT/UA": "Inactive",
+    "ADMIN DISSOLVED": "Admin Dissolved",
+    "VOLUNTARILY DISSOLVED": "Dissolved",
+    "VOL DISSOLVED": "Dissolved",
+    "REVOKED": "Revoked",
+    "WITHDRAWN": "Withdrawn",
+}
 
 
 def map_category(raw_category: str) -> Tuple[str, str]:
@@ -900,6 +951,467 @@ def enrich_master(master_path: str, dry_run: bool = False) -> None:
     print(f"    Categories re-mapped:    {stats['recategorized']}")
 
 
+# ══════════════════════════════════════════════════════════════════
+#  CROSS-SOURCE RECONCILIATION
+# ══════════════════════════════════════════════════════════════════
+
+def _infer_family(source_file: str) -> str:
+    """Map a source_file value to an independent source family."""
+    sf = str(source_file).lower().strip()
+    for prefix, family in SOURCE_TO_FAMILY.items():
+        if prefix in sf:
+            return family
+    return sf or "unknown"
+
+
+def _strip_noise(name: str) -> str:
+    """Remove noise words from a business name for comparison."""
+    words = re.sub(r"[^a-z0-9\s]", "", name.lower()).split()
+    significant = [w for w in words if w not in NOISE_WORDS and len(w) > 1]
+    return " ".join(significant)
+
+
+def _names_match(name_a: str, name_b: str, threshold: int) -> bool:
+    """Check if two business names match after noise-word filtering."""
+    clean_a = _strip_noise(name_a)
+    clean_b = _strip_noise(name_b)
+    if not clean_a or not clean_b:
+        return False
+    # Must share at least 1 significant token
+    tokens_a = set(clean_a.split())
+    tokens_b = set(clean_b.split())
+    if not tokens_a & tokens_b:
+        return False
+    return fuzz.token_sort_ratio(clean_a, clean_b) >= threshold
+
+
+def reconcile_sources(df: pd.DataFrame, dry_run: bool = False) -> pd.DataFrame:
+    """
+    Cross-source reconciliation: find hidden corroboration in master by matching
+    businesses across source families using coordinates + fuzzy name.
+
+    3-pass algorithm:
+      A) Exact normalized key match across different families
+      B) Coordinate proximity (100m) + fuzzy name (≥80) with noise-word filter
+      C) Strong fuzzy name (≥88) without coords (catches CGCC records)
+
+    TAGS records only — NEVER removes or filters. Adds:
+      - corroboration_sources: comma-separated family list (e.g. "cgcc,google,osm")
+      - corroboration_count: number of independent families (e.g. "3")
+    """
+    total = len(df)
+    print(f"\n  Reconciling {total} records across source families...")
+
+    # Add temporary family column
+    df["_family"] = df["source_file"].fillna("").apply(_infer_family)
+
+    # Build record list for matching
+    records = []
+    for idx, row in df.iterrows():
+        name = str(row.get("business_name", "")).strip()
+        key = normalize_key(name) if name else ""
+        lat_str = str(row.get("lat", "")).strip()
+        lon_str = str(row.get("lon", "")).strip()
+        lat = float(lat_str) if lat_str else None
+        lon = float(lon_str) if lon_str else None
+        try:
+            lat = float(lat_str) if lat_str else None
+            lon = float(lon_str) if lon_str else None
+        except ValueError:
+            lat, lon = None, None
+        records.append({
+            "idx": idx, "name": name, "key": key,
+            "lat": lat, "lon": lon, "family": row["_family"],
+        })
+
+    # Union-Find for grouping corroborated records
+    groups: Dict[int, Set[int]] = {}  # group_id → set of idx
+    record_to_group: Dict[int, int] = {}  # idx → group_id
+    next_group_id = 0
+
+    def merge_groups(idx_a: int, idx_b: int):
+        nonlocal next_group_id
+        ga = record_to_group.get(idx_a)
+        gb = record_to_group.get(idx_b)
+        if ga is not None and gb is not None:
+            if ga == gb:
+                return
+            # Merge smaller into larger
+            if len(groups[ga]) < len(groups[gb]):
+                ga, gb = gb, ga
+            for member in groups[gb]:
+                record_to_group[member] = ga
+            groups[ga] |= groups[gb]
+            del groups[gb]
+        elif ga is not None:
+            groups[ga].add(idx_b)
+            record_to_group[idx_b] = ga
+        elif gb is not None:
+            groups[gb].add(idx_a)
+            record_to_group[idx_a] = gb
+        else:
+            gid = next_group_id
+            next_group_id += 1
+            groups[gid] = {idx_a, idx_b}
+            record_to_group[idx_a] = gid
+            record_to_group[idx_b] = gid
+
+    # ── Pass A: Exact normalized key ────────────────────────────
+    print("  Pass A: Exact normalized key matching...")
+    key_to_records: Dict[str, List[Dict]] = defaultdict(list)
+    for r in records:
+        if r["key"]:
+            key_to_records[r["key"]].append(r)
+
+    pass_a_matches = 0
+    for key, recs in key_to_records.items():
+        if len(recs) < 2:
+            continue
+        families = set(r["family"] for r in recs)
+        if len(families) < 2:
+            continue
+        for i in range(len(recs)):
+            for j in range(i + 1, len(recs)):
+                if recs[i]["family"] != recs[j]["family"]:
+                    merge_groups(recs[i]["idx"], recs[j]["idx"])
+                    pass_a_matches += 1
+
+    print(f"    Pass A: {pass_a_matches} cross-family matches via exact key")
+
+    # ── Pass B: Coord proximity + fuzzy name ────────────────────
+    print("  Pass B: Coordinate proximity + fuzzy name matching...")
+    records_with_coords = [r for r in records if r["lat"] is not None and r["lon"] is not None]
+
+    # Spatial grid index (0.001° ≈ 111m)
+    GRID_SIZE = 0.001
+    grid: Dict[Tuple[int, int], List[Dict]] = defaultdict(list)
+    for r in records_with_coords:
+        gx = int(r["lat"] / GRID_SIZE)
+        gy = int(r["lon"] / GRID_SIZE)
+        grid[(gx, gy)].append(r)
+
+    pass_b_matches = 0
+    pass_b_checked = 0
+    for (gx, gy), cell_records in grid.items():
+        # Check this cell + 8 neighbors
+        neighborhood = []
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                neighborhood.extend(grid.get((gx + dx, gy + dy), []))
+
+        for i, r1 in enumerate(cell_records):
+            for r2 in neighborhood:
+                if r2["idx"] <= r1["idx"]:
+                    continue
+                if r1["family"] == r2["family"]:
+                    continue
+                if (record_to_group.get(r1["idx"]) is not None
+                        and record_to_group.get(r1["idx"]) == record_to_group.get(r2["idx"])):
+                    continue
+
+                dist = haversine(r1["lat"], r1["lon"], r2["lat"], r2["lon"])
+                pass_b_checked += 1
+                if dist > COORD_PROXIMITY_M:
+                    continue
+                if not _names_match(r1["name"], r2["name"], NAME_FUZZY_THRESHOLD):
+                    continue
+
+                merge_groups(r1["idx"], r2["idx"])
+                pass_b_matches += 1
+
+    print(f"    Pass B: {pass_b_matches} cross-family matches ({pass_b_checked} pairs checked)")
+
+    # ── Pass C: Strong fuzzy name (no coords needed) ────────────
+    # Catches CGCC records that have no lat/lon
+    print("  Pass C: Strong fuzzy name matching (no coords needed)...")
+    no_coord_records = [r for r in records if r["lat"] is None or r["lon"] is None]
+
+    # Block by first 4 chars of normalized key
+    nc_blocks: Dict[str, List[Dict]] = defaultdict(list)
+    for r in no_coord_records:
+        if r["key"] and len(r["key"]) >= 4:
+            nc_blocks[r["key"][:4]].append(r)
+
+    hc_blocks: Dict[str, List[Dict]] = defaultdict(list)
+    for r in records_with_coords:
+        if r["key"] and len(r["key"]) >= 4:
+            hc_blocks[r["key"][:4]].append(r)
+
+    pass_c_matches = 0
+    for prefix in nc_blocks:
+        if prefix not in hc_blocks:
+            continue
+        for r_nc in nc_blocks[prefix]:
+            for r_hc in hc_blocks[prefix]:
+                if r_nc["family"] == r_hc["family"]:
+                    continue
+                if (record_to_group.get(r_nc["idx"]) is not None
+                        and record_to_group.get(r_nc["idx"]) == record_to_group.get(r_hc["idx"])):
+                    continue
+                if not _names_match(r_nc["name"], r_hc["name"], NAME_FUZZY_STRONG):
+                    continue
+                merge_groups(r_nc["idx"], r_hc["idx"])
+                pass_c_matches += 1
+
+    print(f"    Pass C: {pass_c_matches} cross-family matches via strong name similarity")
+
+    # ── Compute corroboration columns ───────────────────────────
+    print("\n  Computing corroboration scores...")
+    idx_to_record = {r["idx"]: r for r in records}
+
+    corr_sources_col = [""] * total
+    corr_count_col = ["0"] * total
+
+    # Use positional indexing since idx values are from df.iterrows()
+    pos_map = {idx: pos for pos, idx in enumerate(df.index)}
+
+    for gid, members in groups.items():
+        families_in_group = set()
+        for idx in members:
+            families_in_group.add(idx_to_record[idx]["family"])
+        corr_str = ",".join(sorted(families_in_group))
+        count_str = str(len(families_in_group))
+        for idx in members:
+            corr_sources_col[pos_map[idx]] = corr_str
+            corr_count_col[pos_map[idx]] = count_str
+
+    for r in records:
+        if r["idx"] not in record_to_group:
+            corr_sources_col[pos_map[r["idx"]]] = r["family"]
+            corr_count_col[pos_map[r["idx"]]] = "1"
+
+    df["corroboration_sources"] = corr_sources_col
+    df["corroboration_count"] = corr_count_col
+
+    # ── Report ──────────────────────────────────────────────────
+    count_dist = Counter(corr_count_col)
+    print(f"\n  Corroboration Distribution:")
+    for n in sorted(count_dist.keys()):
+        print(f"    {n} source(s): {count_dist[n]:>5} records")
+
+    multi_groups = {gid: members for gid, members in groups.items()
+                    if len(set(idx_to_record[idx]["family"] for idx in members)) >= 2}
+    print(f"\n  Multi-source groups: {len(multi_groups)}")
+
+    shown = 0
+    for gid, members in sorted(multi_groups.items(), key=lambda x: -len(x[1]))[:15]:
+        families = set()
+        names = []
+        for idx in members:
+            r = idx_to_record[idx]
+            families.add(r["family"])
+            names.append(f'{r["name"]} [{r["family"]}]')
+        if shown < 15:
+            print(f"\n    Group {gid} ({len(families)} families, {len(members)} records):")
+            for n in names[:4]:
+                print(f"      {n}")
+            if len(names) > 4:
+                print(f"      ... and {len(names) - 4} more")
+            shown += 1
+
+    # Cleanup temp column
+    df.drop(columns=["_family"], inplace=True)
+    return df
+
+
+# ══════════════════════════════════════════════════════════════════
+#  SUNBIZ LEGAL EXISTENCE LOOKUP
+# ══════════════════════════════════════════════════════════════════
+
+def search_sunbiz(business_name: str) -> Dict[str, str]:
+    """
+    Search Florida Sunbiz (Division of Corporations) for a business name.
+    Returns dict with keys: status, sunbiz_name, sunbiz_filing_number, sunbiz_match_score.
+
+    Uses a session-based approach:
+      1. GET the form page to establish cookies
+      2. POST the search form to get results
+      3. Parse the results table
+
+    Rate-limited to 1 req/2 sec.
+    """
+    import requests
+
+    result = {"status": "Not Found", "sunbiz_name": "", "sunbiz_filing_number": "", "sunbiz_match_score": ""}
+
+    # Clean name for search: remove suffixes, punctuation
+    clean = re.sub(r"\b(llc|inc|corp|ltd|pa|pllc|llp)\b", "", business_name.lower())
+    clean = re.sub(r"[^a-z0-9\s]", "", clean).strip()
+    words = clean.split()[:4]
+    query = " ".join(words).upper()
+
+    if not query or len(query) < 3:
+        result["status"] = "Skipped (name too short)"
+        return result
+
+    try:
+        session = requests.Session()
+        session.headers.update({
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                          "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        })
+
+        # Step 1: GET form page (establishes cookies / Cloudflare token)
+        session.get("https://search.sunbiz.org/Inquiry/CorporationSearch/ByName", timeout=15)
+
+        # Step 2: POST form to trigger search
+        data = {
+            "SearchTerm": query,
+            "InquiryType": "EntityName",
+            "SearchNameOrder": query,
+        }
+        resp = session.post(
+            "https://search.sunbiz.org/Inquiry/CorporationSearch/ByName",
+            data=data, timeout=15, allow_redirects=True,
+        )
+
+        if resp.status_code != 200 or "error occurred" in resp.text.lower():
+            result["status"] = f"HTTP {resp.status_code}" if resp.status_code != 200 else "Search Error"
+            return result
+
+        html = resp.text
+
+        # Step 3: Parse the results table
+        row_pattern = re.compile(
+            r'<td\s+class="large-width">\s*<a[^>]*>([^<]+)</a>\s*</td>\s*'
+            r'<td\s+class="medium-width">([^<]*)</td>\s*'
+            r'<td\s+class="small-width">([^<]*)</td>',
+            re.DOTALL | re.IGNORECASE,
+        )
+
+        matches = row_pattern.findall(html)
+        if not matches:
+            return result
+
+        # Score each match against our business name
+        best_match = None
+        best_score = 0
+
+        for match_name, filing_num, status_raw in matches:
+            match_name_clean = match_name.strip()
+            status_clean = SUNBIZ_STATUS_MAP.get(status_raw.strip().upper(), status_raw.strip())
+
+            score = fuzz.token_sort_ratio(business_name.lower(), match_name_clean.lower())
+            effective_score = score + (2 if "Active" in status_clean else 0)
+
+            if effective_score > best_score:
+                best_score = effective_score
+                best_match = (match_name_clean, filing_num.strip(), status_clean, score)
+
+        if best_match and best_match[3] >= 50:
+            result["status"] = best_match[2]
+            result["sunbiz_name"] = best_match[0]
+            result["sunbiz_filing_number"] = best_match[1]
+            result["sunbiz_match_score"] = str(best_match[3])
+        else:
+            result["status"] = "Not Found"
+
+    except Exception as e:
+        result["status"] = f"Error: {str(e)[:50]}"
+
+    return result
+
+
+def sunbiz_lookup(df: pd.DataFrame, limit: int = 50, dry_run: bool = False) -> pd.DataFrame:
+    """
+    Look up businesses on Florida Sunbiz to verify legal existence.
+    Adds/updates: sunbiz_status, sunbiz_name, sunbiz_filing_number columns.
+
+    Priority: checks businesses with lowest corroboration first.
+    Does NOT remove any records.
+    """
+    print(f"\n  Sunbiz Lookup — checking up to {limit} businesses...\n")
+
+    # Initialize columns if needed
+    for col in ("sunbiz_status", "sunbiz_name", "sunbiz_filing_number"):
+        if col not in df.columns:
+            df[col] = ""
+
+    # Prioritize: single-source records first
+    if "corroboration_count" in df.columns:
+        priority = df.sort_values("corroboration_count", ascending=True)
+    else:
+        priority = df.copy()
+
+    # Skip already-checked
+    unchecked = priority[priority["sunbiz_status"].fillna("") == ""]
+    to_check = unchecked.head(limit)
+    print(f"  Checking {len(to_check)} businesses (of {len(unchecked)} unchecked)...")
+
+    stats = Counter()
+    for i, (idx, row) in enumerate(to_check.iterrows(), 1):
+        name = str(row.get("business_name", "")).strip()
+        if not name or len(name) < 3:
+            stats["Skipped"] += 1
+            continue
+
+        result = search_sunbiz(name)
+        status = result["status"]
+        stats[status] += 1
+
+        if not dry_run:
+            df.loc[idx, "sunbiz_status"] = status
+            df.loc[idx, "sunbiz_name"] = result.get("sunbiz_name", "")
+            df.loc[idx, "sunbiz_filing_number"] = result.get("sunbiz_filing_number", "")
+
+        if i % 10 == 0 or i == len(to_check):
+            print(f"    [{i}/{len(to_check)}] {name[:40]} -> {status}")
+
+        time.sleep(2.0)  # Rate limit
+
+    print(f"\n  Sunbiz Results:")
+    for status, count in stats.most_common():
+        print(f"    {status:<25} {count:>5}")
+
+    return df
+
+
+# ══════════════════════════════════════════════════════════════════
+#  RED FLAG POPULATION (BUG FIX)
+# ══════════════════════════════════════════════════════════════════
+
+def populate_red_flags(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Derive red_flag_present and red_flag_severity from validation data.
+    Previously these columns were always empty (bug).
+
+    Logic:
+      - red_flag_present = "Y" if any issues exist, "N" if clean
+      - red_flag_severity:
+          "Critical"    — geo-bounds fail, confidence < 0.30
+          "Operational" — minor issues (missing contact, name quirks, etc.)
+    """
+    notes_col = df["red_flag_notes"].fillna("").str.strip()
+    tier_col = df["validation_tier"].fillna("").str.strip()
+    conf_col = pd.to_numeric(df["osint_confidence"].fillna(""), errors="coerce")
+
+    has_notes = notes_col != ""
+    is_low = tier_col == "Low"
+
+    # Determine presence
+    df["red_flag_present"] = "N"
+    df.loc[has_notes | is_low, "red_flag_present"] = "Y"
+
+    # Determine severity
+    critical_keywords = ["outside coral gables", "invalid coordinates", "missing business_name"]
+    is_critical = notes_col.str.lower().str.contains("|".join(critical_keywords), regex=True, na=False)
+    very_low_conf = conf_col.notna() & (conf_col < 0.30)
+
+    df["red_flag_severity"] = ""
+    df.loc[has_notes & ~is_critical & ~very_low_conf, "red_flag_severity"] = "Operational"
+    df.loc[is_critical | very_low_conf | is_low, "red_flag_severity"] = "Critical"
+
+    flagged = (df["red_flag_present"] == "Y").sum()
+    critical = (df["red_flag_severity"] == "Critical").sum()
+    operational = (df["red_flag_severity"] == "Operational").sum()
+    print(f"\n  Red flags populated:")
+    print(f"    Flagged (Y): {flagged}  (Critical: {critical}, Operational: {operational})")
+    print(f"    Clean (N):   {(df['red_flag_present'] == 'N').sum()}")
+
+    return df
+
+
 # ── CLI ───────────────────────────────────────────────────────────
 def main():
     parser = argparse.ArgumentParser(
@@ -912,6 +1424,8 @@ Examples:
   python "2. agent2-validator.py" --master data/master_all_businesses.csv --staging staging/
   python "2. agent2-validator.py" --master data/master_all_businesses.csv --enrich
   python "2. agent2-validator.py" --master data/master_all_businesses.csv --enrich --dry-run
+  python "2. agent2-validator.py" --master data/master_all_businesses.csv --reconcile
+  python "2. agent2-validator.py" --master data/master_all_businesses.csv --reconcile --sunbiz --sunbiz-limit 100
         """,
     )
     parser.add_argument(
@@ -940,6 +1454,22 @@ Examples:
         action="store_true",
         help="Enrichment mode: backfill geocoding, addresses, categories on existing master",
     )
+    parser.add_argument(
+        "--reconcile",
+        action="store_true",
+        help="Run cross-source reconciliation to tag corroboration across source families",
+    )
+    parser.add_argument(
+        "--sunbiz",
+        action="store_true",
+        help="Run Sunbiz legal existence lookup (requires --reconcile or standalone)",
+    )
+    parser.add_argument(
+        "--sunbiz-limit",
+        type=int,
+        default=50,
+        help="Max businesses to check on Sunbiz (default: 50)",
+    )
     args = parser.parse_args()
 
     # ── Enrichment mode ──────────────────────────────────────────
@@ -960,6 +1490,44 @@ Examples:
                 print(f"\n  Pre-enrichment sanitization ({san_total} fixes applied)")
 
         enrich_master(args.master, args.dry_run)
+        print(f"\n  Done.\n")
+        return
+
+    # ── Check if staging has CSV files ───────────────────────────
+    staging_dir = args.staging
+    has_staging_csvs = False
+    if os.path.isdir(staging_dir):
+        has_staging_csvs = any(
+            f.endswith(".csv") for f in os.listdir(staging_dir)
+            if os.path.isfile(os.path.join(staging_dir, f))
+        )
+
+    # ── Reconcile-only mode (no staging to merge) ────────────────
+    if (args.reconcile or args.sunbiz) and not has_staging_csvs:
+        print(f"\n{'='*60}")
+        print(f"  AGENT 2 — RECONCILIATION MODE")
+        print(f"  Master: {args.master}")
+        print(f"  Mode: {'DRY RUN' if args.dry_run else 'LIVE'}")
+        print(f"{'='*60}")
+
+        master_df = load_master(args.master)
+        print(f"  Master: {len(master_df)} existing records")
+
+        master_df = reconcile_sources(master_df, args.dry_run)
+
+        if args.sunbiz:
+            master_df = sunbiz_lookup(master_df, limit=args.sunbiz_limit, dry_run=args.dry_run)
+
+        # Always populate red flags
+        master_df = populate_red_flags(master_df)
+
+        if not args.dry_run:
+            master_df = master_df.sort_values("business_name", key=lambda x: x.str.lower())
+            master_df.to_csv(args.master, index=False)
+            print(f"\n  Master updated: {len(master_df)} total records -> {args.master}")
+        else:
+            print(f"\n  DRY RUN — no changes written")
+
         print(f"\n  Done.\n")
         return
 
@@ -1019,7 +1587,6 @@ Examples:
           f"Low={validation_summary['Low']}")
 
     if all_issues:
-        from collections import Counter
         issue_counts = Counter(all_issues).most_common(10)
         print(f"\n  Top issues:")
         for issue, count in issue_counts:
@@ -1041,14 +1608,23 @@ Examples:
             if v > 0:
                 print(f"    {k}: {v}")
 
-    # 6. Write
+    # 6. Cross-source reconciliation (always runs post-merge)
+    master_df = reconcile_sources(master_df, args.dry_run)
+
+    # 7. Sunbiz lookup (optional)
+    if args.sunbiz:
+        master_df = sunbiz_lookup(master_df, limit=args.sunbiz_limit, dry_run=args.dry_run)
+
+    # 8. Populate red flags (bug fix: was always empty before)
+    master_df = populate_red_flags(master_df)
+
+    # 9. Write
     if not args.dry_run:
-        # Sort by business name
         master_df = master_df.sort_values("business_name", key=lambda x: x.str.lower())
         master_df.to_csv(args.master, index=False)
         print(f"\n  Master updated: {len(master_df)} total records -> {args.master}")
 
-        # 6. Archive staging
+        # Archive staging
         archive_staging(args.staging)
     else:
         print(f"\n  DRY RUN: master would have {len(master_df)} records (not written)")
