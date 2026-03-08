@@ -22,6 +22,7 @@ import {
   Star,
   AlertTriangle,
   Zap,
+  Share2,
 } from 'lucide-react'
 
 // Three main modes with their sub-navigation
@@ -63,6 +64,7 @@ const modes = [
     subNav: [
       { name: 'Best Of', href: '/discover', icon: Star },
       { name: 'Browse All', href: '/discover/browse', icon: Building2 },
+      { name: 'Knowledge Graph', href: '/discover/graph', icon: Share2 },
     ],
   },
 ]

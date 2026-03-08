@@ -17,6 +17,7 @@ import RiskRadarPage from './pages/RiskRadarPage'
 // Mode 3: Discover
 import DiscoverPage from './pages/DiscoverPage'
 import BrowsePage from './pages/BrowsePage'
+import GraphExplorerPage from './pages/GraphExplorerPage'
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated, loading } = useAuth()
@@ -68,6 +69,7 @@ export default function App() {
         {/* Mode 3: Discover */}
         <Route path="discover" element={<DiscoverPage />} />
         <Route path="discover/browse" element={<BrowsePage />} />
+        <Route path="discover/graph" element={<GraphExplorerPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
