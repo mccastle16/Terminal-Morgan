@@ -9,3 +9,4 @@ dist/
 venv/
 .venv/
 systems/data/coral_gables_bi_database_validated.json
+.DS_Store
