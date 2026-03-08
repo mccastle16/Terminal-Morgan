@@ -13,6 +13,7 @@ import EcosystemPage from './pages/EcosystemPage'
 import MarketIntelPage from './pages/MarketIntelPage'
 import ComparePage from './pages/ComparePage'
 import RiskRadarPage from './pages/RiskRadarPage'
+import ExperimentLabPage from './pages/ExperimentLabPage'
 
 // Mode 3: Discover
 import DiscoverPage from './pages/DiscoverPage'
@@ -65,6 +66,7 @@ export default function App() {
         <Route path="market-intel" element={<MarketIntelPage />} />
         <Route path="market-intel/compare" element={<ComparePage />} />
         <Route path="market-intel/risks" element={<RiskRadarPage />} />
+        <Route path="market-intel/experiments" element={<ExperimentLabPage />} />
 
         {/* Mode 3: Discover */}
         <Route path="discover" element={<DiscoverPage />} />
