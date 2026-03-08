@@ -22,6 +22,7 @@ import {
   Star,
   AlertTriangle,
   Zap,
+  FlaskConical,
 } from 'lucide-react'
 
 // Three main modes with their sub-navigation
@@ -51,6 +52,7 @@ const modes = [
       { name: 'Overview', href: '/market-intel', icon: BarChart3 },
       { name: 'Compare', href: '/market-intel/compare', icon: TrendingUp },
       { name: 'Risk Radar', href: '/market-intel/risks', icon: AlertTriangle },
+      { name: 'Experiment Lab', href: '/market-intel/experiments', icon: FlaskConical },
     ],
   },
   {
