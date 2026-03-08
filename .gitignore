@@ -10,3 +10,6 @@ venv/
 .venv/
 systems/data/coral_gables_bi_database_validated.json
 .DS_Store
+data/etl/neo4j-dump/
+.pr_body
+scripts/_audit_data.py
