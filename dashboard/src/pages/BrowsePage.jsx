@@ -22,6 +22,7 @@ import {
   Sparkles,
   CheckCircle,
   XCircle,
+  Layers,
 } from 'lucide-react'
 
 export default function BrowsePage() {
@@ -311,8 +312,17 @@ export default function BrowsePage() {
                     </span>
                   )}
                   {business.hasRedFlag && (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-cgcc-coral/10 text-cgcc-coral text-xs font-medium rounded-full">
-                      <AlertTriangle size={10} /> Alert
+                    <span className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-full ${
+                      business.red_flag_severity === 'Critical'
+                        ? 'bg-red-100 text-red-700'
+                        : 'bg-cgcc-coral/10 text-cgcc-coral'
+                    }`}>
+                      <AlertTriangle size={10} /> {business.red_flag_severity || 'Alert'}
+                    </span>
+                  )}
+                  {business.corroborationCount >= 2 && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-purple-100 text-purple-700 text-xs font-medium rounded-full">
+                      <Layers size={10} /> {business.corroborationCount} sources
                     </span>
                   )}
                 </div>
@@ -351,7 +361,8 @@ export default function BrowsePage() {
                 <div className="flex items-center gap-2">
                   {business.isChamberMember && <Award size={16} className="text-cgcc-gold" />}
                   {business.osintConfidence >= 0.8 && <Shield size={16} className="text-cgcc-sage" />}
-                  {business.hasRedFlag && <AlertTriangle size={16} className="text-cgcc-coral" />}
+                  {business.hasRedFlag && <AlertTriangle size={16} className={business.red_flag_severity === 'Critical' ? 'text-red-600' : 'text-cgcc-coral'} />}
+                  {business.corroborationCount >= 2 && <Layers size={16} className="text-purple-600" />}
                 </div>
                 <button
                   onClick={(e) => {
@@ -530,12 +541,54 @@ export default function BrowsePage() {
                     </span>
                   )}
                   {selectedBusiness.hasRedFlag && (
-                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-cgcc-coral/10 text-cgcc-coral text-sm font-medium rounded-full">
-                      <AlertTriangle size={14} /> Risk Alert
+                    <span className={`inline-flex items-center gap-1 px-3 py-1 text-sm font-medium rounded-full ${
+                      selectedBusiness.red_flag_severity === 'Critical'
+                        ? 'bg-red-100 text-red-700'
+                        : 'bg-cgcc-coral/10 text-cgcc-coral'
+                    }`}>
+                      <AlertTriangle size={14} /> {selectedBusiness.red_flag_severity || 'Risk Alert'}
+                    </span>
+                  )}
+                  {selectedBusiness.corroborationCount >= 2 && (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-full">
+                      <Layers size={14} /> Verified by {selectedBusiness.corroborationCount} sources
                     </span>
                   )}
                 </div>
               </div>
+
+              {/* Source Verification */}
+              {(selectedBusiness.corroborationCount >= 2 || selectedBusiness.sunbizStatus) && (
+                <div className="bg-purple-50 rounded-xl p-4">
+                  <h3 className="font-semibold text-cgcc-navy mb-3 flex items-center gap-2">
+                    <Layers size={18} className="text-purple-600" />
+                    Source Verification
+                  </h3>
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-500">Confirmed by</span>
+                      <span className="font-medium text-purple-700">{selectedBusiness.corroborationCount} source{selectedBusiness.corroborationCount > 1 ? 's' : ''}</span>
+                    </div>
+                    {selectedBusiness.corroborationSources && (
+                      <div className="flex flex-wrap gap-1">
+                        {selectedBusiness.corroborationSources.split(';').map((src, i) => (
+                          <span key={i} className="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-medium">
+                            {src.trim()}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    {selectedBusiness.sunbizStatus && (
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-500">FL Sunbiz</span>
+                        <span className={`font-medium ${
+                          selectedBusiness.sunbizStatus === 'Active' ? 'text-green-600' : 'text-gray-500'
+                        }`}>{selectedBusiness.sunbizStatus}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
 
               {/* Contact Info */}
               <div className="space-y-2">

@@ -70,6 +70,10 @@ export function DataProvider({ children }) {
         validationConfidence: parseFloat(row.validation_confidence) || 0,
         hasRedFlag: row.red_flag_present?.toUpperCase() === 'Y',
         isChamberMember: row.chamber_member?.toUpperCase() === 'Y',
+        corroborationCount: parseInt(row.corroboration_count) || 0,
+        corroborationSources: row.corroboration_sources || '',
+        sunbizStatus: row.sunbiz_status || '',
+        sunbizName: row.sunbiz_name || '',
       }))
 
       setBusinesses(processedData)
@@ -91,7 +95,9 @@ export function DataProvider({ children }) {
     const avgRating = businesses.reduce((acc, b) => acc + b.rating, 0) / businesses.length
     const avgConfidence = businesses.reduce((acc, b) => acc + b.osintConfidence, 0) / businesses.length
     const redFlagCount = businesses.filter(b => b.hasRedFlag).length
-    const highRiskCount = businesses.filter(b => b.red_flag_severity === 'high').length
+    const criticalCount = businesses.filter(b => b.red_flag_severity === 'Critical').length
+    const operationalCount = businesses.filter(b => b.red_flag_severity === 'Operational').length
+    const corroboratedCount = businesses.filter(b => b.corroborationCount >= 2).length
 
     const categoryBreakdown = categories.map(cat => ({
       name: cat,
@@ -121,7 +127,9 @@ export function DataProvider({ children }) {
       avgRating: avgRating.toFixed(2),
       avgConfidence: (avgConfidence * 100).toFixed(0),
       redFlagCount,
-      highRiskCount,
+      criticalCount,
+      operationalCount,
+      corroboratedCount,
       ratingDistribution,
       confidenceLevels,
       chamberMembers: businesses.filter(b => b.isChamberMember).length,

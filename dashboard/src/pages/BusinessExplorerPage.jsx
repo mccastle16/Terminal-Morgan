@@ -17,6 +17,7 @@ import {
   ChevronDown,
   X,
   SlidersHorizontal,
+  Layers,
 } from 'lucide-react'
 import clsx from 'clsx'
 
@@ -353,12 +354,20 @@ function BusinessCard({ business, onBookmark, isBookmarked }) {
 
         {/* Footer */}
         <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-          {business.hasRedFlag && (
-            <span className="badge-danger flex items-center gap-1">
-              <AlertTriangle size={12} />
-              Risk Alert
-            </span>
-          )}
+          <div className="flex items-center gap-2">
+            {business.hasRedFlag && (
+              <span className="badge-danger flex items-center gap-1">
+                <AlertTriangle size={12} />
+                {business.red_flag_severity === 'Critical' ? 'Critical' : 'Risk'}
+              </span>
+            )}
+            {business.corroborationCount >= 2 && (
+              <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700 flex items-center gap-1">
+                <Layers size={10} />
+                {business.corroborationCount} sources
+              </span>
+            )}
+          </div>
           <span className="text-xs text-cgcc-gold group-hover:text-cgcc-navy font-medium ml-auto flex items-center gap-1">
             View Details <ExternalLink size={12} />
           </span>
@@ -393,7 +402,13 @@ function BusinessListItem({ business, onBookmark, isBookmarked }) {
             {business.hasRedFlag && (
               <span className="badge-danger flex items-center gap-1">
                 <AlertTriangle size={10} />
-                Risk
+                {business.red_flag_severity === 'Critical' ? 'Critical' : 'Risk'}
+              </span>
+            )}
+            {business.corroborationCount >= 2 && (
+              <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700 flex items-center gap-1">
+                <Layers size={10} />
+                {business.corroborationCount} sources
               </span>
             )}
           </div>

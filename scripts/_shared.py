@@ -1,6 +1,6 @@
 """
 Shared constants and utilities for the OSINT pipeline.
-Imported by Agents 1, 2, and 3 to avoid duplication.
+Imported by Agents 1, 2, 3, and 4 to avoid duplication.
 """
 
 import re
@@ -36,6 +36,11 @@ CANONICAL_FIELDS = [
     "source_file",
     "batch_id",
     "last_reviewed_date",
+    "corroboration_sources",
+    "corroboration_count",
+    "sunbiz_status",
+    "sunbiz_name",
+    "sunbiz_filing_number",
 ]
 
 # ── Geographic constants ─────────────────────────────────────────

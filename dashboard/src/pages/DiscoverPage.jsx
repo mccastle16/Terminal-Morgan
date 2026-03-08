@@ -15,6 +15,7 @@ import {
   Phone,
   Globe,
   ExternalLink,
+  Layers,
 } from 'lucide-react'
 
 export default function DiscoverPage() {
@@ -146,6 +147,11 @@ export default function DiscoverPage() {
             {business.osintConfidence >= 0.8 && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-cgcc-sage/10 text-cgcc-sage text-xs font-medium rounded-full">
                 <Shield size={10} /> Verified
+              </span>
+            )}
+            {business.corroborationCount >= 2 && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-purple-100 text-purple-700 text-xs font-medium rounded-full">
+                <Layers size={10} /> {business.corroborationCount} sources
               </span>
             )}
           </div>

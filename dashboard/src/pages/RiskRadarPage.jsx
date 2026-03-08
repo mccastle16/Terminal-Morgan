@@ -14,6 +14,7 @@ import {
   AlertCircle,
   Activity,
   Target,
+  Layers,
 } from 'lucide-react'
 import {
   BarChart,
@@ -63,9 +64,14 @@ export default function RiskRadarPage() {
       }
     }).filter(c => c.total > 0).sort((a, b) => b.atRisk - a.atRisk) || []
 
-    // Severity distribution
+    // Severity distribution — uses actual red_flag_severity from Agent 2
+    const criticalCount = redFlagBusinesses.filter(b => b.red_flag_severity === 'Critical').length
+    const operationalCount = redFlagBusinesses.filter(b => b.red_flag_severity === 'Operational').length
+    const corroboratedCount = filtered.filter(b => b.corroborationCount >= 2).length
+
     const severityDistribution = [
-      { name: 'Critical (Red Flag)', value: redFlagBusinesses.length, color: '#e8856c' },
+      { name: 'Critical', value: criticalCount, color: '#dc2626' },
+      { name: 'Operational', value: operationalCount, color: '#e8856c' },
       { name: 'Warning (Low Confidence)', value: lowConfidenceBusinesses.length, color: '#c9a227' },
       { name: 'Monitor (Low Rating)', value: lowRatingBusinesses.length, color: '#6b7280' },
       { name: 'Healthy', value: healthyBusinesses.length, color: '#87a878' },
@@ -79,6 +85,9 @@ export default function RiskRadarPage() {
       healthy: healthyBusinesses,
       riskByCategory,
       severityDistribution,
+      criticalCount,
+      operationalCount,
+      corroboratedCount,
       overallRiskScore: filtered.length > 0
         ? Math.round(((redFlagBusinesses.length * 3 + lowConfidenceBusinesses.length * 2 + lowRatingBusinesses.length) / (filtered.length * 3)) * 100)
         : 0,
@@ -168,7 +177,9 @@ export default function RiskRadarPage() {
             <AlertTriangle size={18} className="text-cgcc-coral" />
           </div>
           <p className="text-3xl font-bold text-cgcc-coral">{riskAnalysis.redFlag.length}</p>
-          <p className="text-xs text-gray-500 mt-1">Critical issues identified</p>
+          <p className="text-xs text-gray-500 mt-1">
+            {riskAnalysis.criticalCount} critical · {riskAnalysis.operationalCount} operational
+          </p>
         </div>
 
         <div className="bg-cgcc-gold/5 rounded-xl p-5 border border-cgcc-gold/20">
@@ -306,11 +317,20 @@ export default function RiskRadarPage() {
 
                 {/* Business info */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
                     <h4 className="font-medium text-cgcc-navy truncate">{business.business_name}</h4>
                     {business.hasRedFlag && (
-                      <span className="px-2 py-0.5 bg-cgcc-coral/10 text-cgcc-coral text-xs font-medium rounded-full">
-                        Red Flag
+                      <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${
+                        business.red_flag_severity === 'Critical'
+                          ? 'bg-red-100 text-red-700'
+                          : 'bg-cgcc-coral/10 text-cgcc-coral'
+                      }`}>
+                        {business.red_flag_severity || 'Red Flag'}
+                      </span>
+                    )}
+                    {business.corroborationCount >= 2 && (
+                      <span className="px-2 py-0.5 bg-purple-100 text-purple-700 text-xs font-medium rounded-full flex items-center gap-1">
+                        <Layers size={10} /> {business.corroborationCount} sources
                       </span>
                     )}
                   </div>
@@ -375,7 +395,10 @@ export default function RiskRadarPage() {
             <h3 className="font-semibold text-lg mb-2">Risk Insights</h3>
             <div className="space-y-2 text-white/80 text-sm">
               {riskAnalysis.redFlag.length > 0 && (
-                <p>• {riskAnalysis.redFlag.length} business{riskAnalysis.redFlag.length > 1 ? 'es have' : ' has'} critical red flags requiring immediate attention</p>
+                <p>• {riskAnalysis.redFlag.length} business{riskAnalysis.redFlag.length > 1 ? 'es have' : ' has'} red flags ({riskAnalysis.criticalCount} critical, {riskAnalysis.operationalCount} operational)</p>
+              )}
+              {riskAnalysis.corroboratedCount > 0 && (
+                <p>• {riskAnalysis.corroboratedCount} business{riskAnalysis.corroboratedCount > 1 ? 'es are' : ' is'} verified by multiple independent data sources</p>
               )}
               {riskAnalysis.lowConfidence.length > 0 && (
                 <p>• {riskAnalysis.lowConfidence.length} business{riskAnalysis.lowConfidence.length > 1 ? 'es need' : ' needs'} data verification to improve confidence scores</p>
