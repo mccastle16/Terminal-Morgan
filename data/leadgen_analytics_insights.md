@@ -1,13 +1,28 @@
 # LeadGen Enrichment Analytics — Key Insights Report
 **Date:** 2026-03-09
 **Dataset:** 1,457 enriched leads | 35 data fields per lead
+**Source comparison:** `data/original-leadgen.csv` (raw GHL export) → `data/leadgen.csv` (enriched)
 **Prepared by:** Co_ Analytics Engine (PKP Framework)
 
 ---
 
 ## Executive Summary
 
-From a raw input of **name + email only**, the enrichment pipeline produced a fully scored, segmented, and outreach-ready dataset with 35 fields across contact, company, business intelligence, and behavioral scoring dimensions.
+From a raw GoHighLevel export of **1,934 contacts with 19 columns** (6 completely empty), the enrichment pipeline cleaned, validated, and enriched the data into **1,457 qualified leads with 35 fields** — a fully scored, segmented, and outreach-ready intelligence asset.
+
+**The transformation at a glance:**
+
+| Metric | Original (GHL Export) | Enriched | Change |
+|--------|----------------------|----------|--------|
+| Total contacts | 1,934 | 1,457 | -477 (removed bounced/cancelled/complained) |
+| Columns | 19 (13 usable) | 35 | +22 new fields |
+| Phone numbers | 55 (2.8%) | 1,021 (70.1%) | **+966 phones discovered** |
+| Company names | 709 (36.7%) | 1,457 (100%) | +748 companies identified |
+| Real job titles | ~344 (many were category labels) | 1,377 real titles | Separated titles from categories |
+| Business ratings | 0 | 643 (44.1%) | **Net new intelligence** |
+| Business addresses | 0 | 787 (54.0%) | **Net new intelligence** |
+| Outreach scripts | 0 | 949 (65.1%) | **Net new — ready-to-use** |
+| Lead scores | 0 | 1,457 (100%) | **Net new — full prioritization** |
 
 **Key headline numbers:**
 - **546 leads (37.5%)** are Grade A — call-ready with full outreach packages
@@ -15,6 +30,66 @@ From a raw input of **name + email only**, the enrichment pipeline produced a fu
 - **383 senior decision-makers** identified (CEOs, VPs, Presidents, Owners)
 - **643 leads** now have verified business ratings from Google/SerpApi
 - **949 leads (65%)** have personalized outreach scripts + talking points generated
+
+---
+
+## 0. Original vs. Enriched — Full Comparison
+
+### What the Client's GHL Export Looked Like
+
+The original file (`data/original-leadgen.csv`) contained **1,934 rows** and **19 columns**:
+
+| Original Column | Fill Rate | Notes |
+|----------------|-----------|-------|
+| first_name | 94.6% (1,829) | Many incomplete or non-person names |
+| email | 99.9% (1,933) | Some malformed (trailing commas, junk) |
+| created_at | 100% (1,934) | GHL timestamp |
+| status | 100% (1,934) | Includes 239 bounced, 232 cancelled, 6 complained |
+| tags | 94.8% (1,833) | Messy — import timestamps, typos ("VEDNOR", "HEATHCARE") |
+| city | 51.6% (997) | Partial geo data |
+| state | 54.7% (1,058) | Partial geo data |
+| country | 61.0% (1,179) | Partial geo data |
+| **referrer** | **0.1% (1)** | **Effectively empty** |
+| **utm_source** | **0.0% (0)** | **Completely empty** |
+| **utm_medium** | **0.0% (0)** | **Completely empty** |
+| **utm_campaign** | **0.0% (0)** | **Completely empty** |
+| **utm_term** | **0.0% (0)** | **Completely empty** |
+| **utm_content** | **0.0% (0)** | **Completely empty** |
+| Company Name | 36.7% (709) | Partial — many contacts had no company |
+| Job Title | 85.1% (1,646) | **Misleading** — 602 were just "GENERAL", 104 "VENDOR", etc. |
+| Last Name | 89.8% (1,736) | Decent coverage |
+| NOTES | 0.2% (4) | Nearly empty |
+| Phone Number | **2.8% (55)** | **Almost no phone data** |
+
+**Critical issues in the original:**
+- **6 columns completely empty** (all UTM fields + referrer) — dead weight
+- **477 contacts unusable** (bounced: 239, cancelled: 232, complained: 6)
+- **Only 55 phone numbers** in the entire 1,934-row file (2.8%)
+- **Job Title field was polluted** — top "titles" were category labels: GENERAL (602), VENDOR (104), BUSINESS (97), HEALTHCARE (86), CRUISE (68)
+- **Tags contained timestamp garbage** like "Imported February 25th, 2026 at 10:53 AM"
+- **Company Name only 36.7% filled** — no way to prioritize or segment
+
+### The Enrichment Pipeline (Agents 6-10)
+
+**Agent 6 — Cleaner:** Removed 477 unusable contacts, dropped 6 empty columns, fixed emails, normalized phones, extracted categories from fake job titles, cleaned tags, extracted company websites from email domains.
+
+**Agents 7-8 — Enrichers:** Matched 832 contacts to real businesses via SerpApi web search (727), domain lookup (88), and name matching (16). Added business addresses, ratings, review counts, enriched categories, chamber membership status, OSINT confidence scores.
+
+**Agents 9-10 — Scorer & Playbook:** Computed lead scores (0-100) with 6 weighted components, assigned letter grades (A-F), generated personalized outreach scripts, talking points, and follow-up strategies for 949 leads.
+
+### The Data Multiplier
+
+| Stage | Columns | Rows | Usable Data Points |
+|-------|---------|------|-------------------|
+| Raw GHL export | 19 (13 usable) | 1,934 | ~13,000 |
+| After cleaning (Agent 6) | 17 | 1,457 | ~15,000 |
+| After enrichment (Agents 7-8) | 27 | 1,457 | ~27,000 |
+| After scoring (Agents 9-10) | 35 | 1,457 | ~51,000 |
+| **Net data multiplier** | | | **~3.9x more usable data** |
+
+### The Phone Number Breakthrough
+
+The single most impactful enrichment: **phone numbers went from 55 → 1,021** (an 18.6x increase). This alone transformed the list from an email-only asset into a multi-channel outreach engine. Without phone numbers, the 546 Grade A "CALL NOW" leads would have been impossible.
 
 ---
 
@@ -100,27 +175,36 @@ From a raw input of **name + email only**, the enrichment pipeline produced a fu
 
 ## 4. Enrichment Coverage (What Was Added)
 
-The client provided: **name + email** (2 fields).
-The enrichment added up to **33 additional fields**:
+The client's GHL export had **19 columns (13 usable)** with critical gaps: only 2.8% phone coverage, 36.7% company names, 0% business intelligence.
+The enrichment pipeline added **22 net new fields** and dramatically improved existing field coverage:
 
-| Enriched Field | Coverage | Value |
-|---------------|----------|-------|
-| Phone number | 70.1% (1,021) | Enables call outreach |
-| Company website | 57.9% (844) | Company verification |
-| Matched business | 57.1% (832) | OSINT business match |
-| Business address | 54.0% (787) | Physical location data |
-| Business rating | 44.1% (643) | Reputation intelligence |
-| Enriched category | 52.2% (761) | Industry classification |
-| City/State | 57-58% | Geographic targeting |
-| Outreach script | 65.1% (949) | Ready-to-use call/email scripts |
-| Talking points | 65.1% (949) | Personalized conversation starters |
-| Follow-up strategy | 65.1% (949) | Multi-touch cadence plans |
-| Lead score + grade | 100% (1,457) | Prioritization framework |
+| Field | Original Coverage | Enriched Coverage | Improvement |
+|-------|------------------|-------------------|-------------|
+| Phone number | **2.8% (55)** | **70.1% (1,021)** | **+966 (18.6x)** |
+| Company name | 36.7% (709) | 100% (1,457) | +748 |
+| Company website | 0% | 57.9% (844) | **Net new** |
+| Matched business | 0% | 57.1% (832) | **Net new** |
+| Business address | 0% | 54.0% (787) | **Net new** |
+| Business rating | 0% | 44.1% (643) | **Net new** |
+| Business review count | 0% | 44.1% (643) | **Net new** |
+| Enriched category | 0% | 52.2% (761) | **Net new** |
+| Chamber membership | 0% | 6.2% (91) | **Net new** |
+| OSINT confidence | 0% | 57.1% (832) | **Net new** |
+| Lead score + grade | 0% | 100% (1,457) | **Net new** |
+| Outreach script | 0% | 65.1% (949) | **Net new** |
+| Talking points | 0% | 65.1% (949) | **Net new** |
+| Follow-up strategy | 0% | 65.1% (949) | **Net new** |
 
 ### Match Methods
 - **web_serpapi:** 727 matches (87.5% of all matches) — web search + business API
 - **domain:** 88 matches — company domain lookup
 - **name_exact/fuzzy:** 16 matches — name-based matching
+
+### Data Cleaning Impact
+- **477 unusable contacts removed:** 239 bounced, 232 cancelled, 6 complained
+- **602 fake "GENERAL" job titles** reclassified as category labels
+- **Tag cleanup:** Removed import timestamp garbage, fixed typos (VEDNOR→Vendor, HEATHCARE→Healthcare)
+- **6 dead columns dropped:** All UTM fields + referrer (0% fill rate)
 
 ---
 
@@ -263,7 +347,7 @@ Stage 4: ENRICH — DATA GAPS (508 leads)
 ## 10. Key Strategic Insights
 
 ### Insight #1: The enrichment multiplier
-The client gave you names and emails. You returned **scored, segmented, outreach-ready intelligence**. The jump from 2 fields to 35 fields is a **17.5x data multiplier**. This transformed 37.5% of the list into call-ready leads.
+The client's GHL export had 19 columns but only 13 were usable (6 were completely empty). The enrichment pipeline added 22 net new fields, producing 35 columns — a **2.7x column multiplier**. But the real story is coverage: phone numbers went from 2.8% to 70.1% (18.6x), company data from 36.7% to 100%, and business intelligence from 0% to 44-57%. Total usable data points increased ~3.9x. This transformed 37.5% of the list into call-ready leads.
 
 ### Insight #2: Vertical concentration is a strength
 Hospitality/Travel (215 leads) and Developers (76 leads) have the highest A-grade conversion rates. These verticals should be the primary focus of outreach campaigns.

@@ -3,27 +3,44 @@
 
 ---
 
-## The Story: From Names to Intelligence
+## The Story: From a Raw Export to Intelligence
 
 ### What You Gave Us
-You handed us a list. Names. Emails. That's it — **2 data points per contact**.
+You exported a list from GoHighLevel. **1,934 contacts. 19 columns.**
 
-A list of 1,457 people. No phone numbers. No companies. No titles. No way to know who to call first, who to email, or who to ignore.
+Here's what that actually looked like:
 
-In your GoHighLevel CRM, these were just rows. Dead weight without context.
+| What was in your export | Reality |
+|------------------------|---------|
+| 19 columns | **6 were completely empty** (UTM fields, referrer — 0% fill rate) |
+| 1,934 contacts | **477 were dead** — bounced (239), cancelled (232), complained (6) |
+| Phone numbers | **Only 55 had one.** That's 2.8% of your list. |
+| Company names | Only 36.7% filled — 1,225 contacts had no company at all |
+| Job titles | 602 said "GENERAL." 104 said "VENDOR." Those aren't titles — those are categories mislabeled as titles. |
+| Tags | Full of import timestamps like "Imported February 25th, 2026 at 10:53 AM" and typos like "VEDNOR" and "HEATHCARE" |
+| Notes | 4 entries out of 1,934. Effectively empty. |
+| Business intelligence | Zero. No ratings, no addresses, no reviews, no industry classification. |
+
+**In your GoHighLevel CRM, this was a list you couldn't act on.** You couldn't call (no phones). You couldn't segment (no categories). You couldn't prioritize (no scores). You couldn't personalize (no business context).
 
 ### What We Gave Back
-We returned **35 data points per contact**. Every lead now has:
+We returned **1,457 qualified leads with 35 data fields each**:
 
-- **Phone numbers** for 1,021 contacts (70% of the list)
-- **Company identification** and website verification for 844 contacts
-- **Business intelligence** — ratings, review counts, physical addresses — for 643 contacts
-- **Lead scoring** (0-100) with letter grades (A through F) for every single contact
-- **Personalized outreach scripts** for 949 contacts — ready to copy-paste into your GHL sequences
-- **Talking points** tailored to each lead's business situation
-- **Follow-up strategies** mapped out for multi-touch cadences
+| Metric | Your Export | After Enrichment | What Changed |
+|--------|-----------|-----------------|--------------|
+| Contacts | 1,934 | 1,457 | Removed 477 dead contacts (bounced/cancelled/complained) |
+| Columns | 19 (13 usable) | 35 | +22 new intelligence fields |
+| Phone numbers | **55 (2.8%)** | **1,021 (70.1%)** | **+966 phone numbers discovered** |
+| Company names | 709 (36.7%) | 1,457 (100%) | +748 companies identified |
+| Real job titles | ~344 (rest were category labels) | 1,377 real titles | Cleaned and separated |
+| Business ratings | 0 | 643 | Google/SerpApi verified ratings |
+| Business addresses | 0 | 787 | Physical location intelligence |
+| Outreach scripts | 0 | 949 | Personalized, ready-to-use |
+| Lead scores | 0 | 1,457 | Every lead scored 0-100, graded A-F |
 
-**That's a 17.5x data multiplier.** You gave us a flat file. We gave you an intelligence asset.
+**You gave us a messy GHL export. We gave you a scored, segmented, outreach-ready intelligence asset.**
+
+The single biggest transformation: **phone numbers went from 55 to 1,021 — an 18.6x increase.** That alone turned an email-only list into a multi-channel outreach engine.
 
 ---
 
@@ -74,13 +91,15 @@ We identified **383 senior decision-makers** across the list:
 
 ## How This Transforms Your GoHighLevel
 
-### Before Enrichment
+### Before Enrichment (your raw GHL export)
 ```
-Your GHL pipeline: 1,457 contacts → no segmentation → no scoring →
-mass email blast → low open rates → no conversions → "the list doesn't work"
+Your GHL pipeline: 1,934 contacts (477 bounced/cancelled) →
+19 columns (6 empty) → only 55 phone numbers → 602 "GENERAL" job titles →
+no scoring → no segmentation → mass email blast →
+low open rates → no conversions → "the list doesn't work"
 ```
 
-### After Enrichment
+### After Enrichment (what we delivered)
 ```
 Your GHL pipeline:
 ├── Pipeline 1: CALL NOW (546 leads)
@@ -195,7 +214,7 @@ Use the enrichment data to create trigger-based workflows:
 
 ## The Value Proposition — What You're Presenting to the Client
 
-> "You gave us 1,457 names and emails. We turned them into a scored, segmented, outreach-ready intelligence asset with 35 data points per contact. 546 leads are ready for phone calls today — with scripts written and talking points prepared. We identified 383 decision-makers, mapped 14 industry verticals, and created actionable segments that plug directly into your GoHighLevel CRM."
+> "You exported 1,934 contacts from GoHighLevel — 19 columns, 6 of them empty, only 55 phone numbers, and 602 job titles that just said 'GENERAL.' We cleaned out 477 dead contacts, discovered 966 new phone numbers, matched 832 leads to real businesses with ratings and addresses, scored every lead from 0-100, and wrote personalized outreach scripts for 949 of them. 546 leads are ready for phone calls today — with scripts written, talking points prepared, and follow-up cadences mapped."
 
 > "But this isn't a one-time data dump. This is a repeatable enrichment engine. Every new contact that enters your CRM can be run through the same pipeline — scored, categorized, matched to a business, and packaged with outreach intelligence. Your list doesn't degrade over time; it compounds."
 
