@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "domain": "policy",
+    "created_at": "2025-08-19T08:51:48.519876",
+    "author": "synapse",
+    "confidence": 0.66
+  },
+  "node": {
+    "id": "eu_ai_act",
+    "name": "EU AI Act",
+    "type": "policy",
+    "layer": "regulatory",
+    "thesis": "Risk-tiered compliance regime impacting AI vendors and deployers",
+    "time_horizon": "12-36m"
+  },
+  "context": {
+    "picks_shovels": [
+      {
+        "id": "iso_42001",
+        "name": "ISO/IEC 42001",
+        "role": "management_system",
+        "edge_type": "enables",
+        "weight": 0.6
+      }
+    ],
+    "edges": [],
+    "undercurrents": [
+      {
+        "name": "privacy_push",
+        "direction": "tightening"
+      }
+    ]
+  },
+  "signals": {
+    "metrics": [
+      {
+        "name": "compliance_coverage",
+        "unit": "%",
+        "current": 35,
+        "thresholds": {
+          "bull": ">=80"
+        }
+      }
+    ],
+    "events": [
+      {
+        "date": "2025-06-14",
+        "type": "delegated_act",
+        "impact": "+",
+        "source": "europa.eu"
+      }
+    ]
+  },
+  "news": [],
+  "risks": [
+    {
+      "name": "non_compliance_fines",
+      "likelihood": "med",
+      "severity": "high"
+    }
+  ],
+  "actions": [
+    {
+      "type": "task",
+      "what": "gap_assessment",
+      "rule": "quarterly",
+      "notify": "email:compliance@synapse"
+    }
+  ],
+  "valuation": {},
+  "sources": [
+    {
+      "name": "EU",
+      "url": "https://europa.eu"
+    }
+  ],
+  "custom": {}
+}

@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "domain": "security",
+    "created_at": "2025-08-19T08:51:48.519850",
+    "author": "synapse",
+    "confidence": 0.72
+  },
+  "node": {
+    "id": "acme_sso",
+    "name": "ACME SSO",
+    "type": "product",
+    "layer": "platform",
+    "thesis": "Reduce auth risk via centralized SSO",
+    "time_horizon": "0-12m"
+  },
+  "context": {
+    "picks_shovels": [
+      {
+        "id": "okta",
+        "name": "Okta",
+        "role": "idp",
+        "edge_type": "enables",
+        "weight": 0.8
+      }
+    ],
+    "edges": [],
+    "undercurrents": [
+      {
+        "name": "reg_change",
+        "direction": "tightening",
+        "rationale": "MFA mandates"
+      }
+    ]
+  },
+  "signals": {
+    "metrics": [
+      {
+        "name": "failed_logins",
+        "unit": "count/day",
+        "current": 120,
+        "thresholds": {
+          "bull": "<50",
+          "bear": ">200"
+        }
+      }
+    ],
+    "events": [
+      {
+        "date": "2025-08-19",
+        "type": "sev2_incident",
+        "impact": "-",
+        "source": "pagerduty"
+      }
+    ]
+  },
+  "news": [],
+  "risks": [
+    {
+      "name": "phishing",
+      "likelihood": "med",
+      "severity": "high",
+      "leading_indicators": [
+        "spike in OTP prompts"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "alert",
+      "what": "failed_logins>200",
+      "rule": "cron:5m",
+      "notify": "slack:#sec-ops"
+    }
+  ],
+  "valuation": {},
+  "sources": [
+    {
+      "name": "pd",
+      "url": "pagerduty://incidents"
+    }
+  ],
+  "custom": {}
+}

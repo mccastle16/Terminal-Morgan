@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "domain": "",
+    "created_at": "",
+    "author": "",
+    "confidence": 0.0
+  },
+  "node": {
+    "id": "",
+    "name": "",
+    "type": "",
+    "layer": "",
+    "thesis": "",
+    "time_horizon": ""
+  },
+  "context": {
+    "picks_shovels": [],
+    "edges": [],
+    "undercurrents": []
+  },
+  "signals": {
+    "metrics": [],
+    "events": []
+  },
+  "news": [],
+  "risks": [],
+  "actions": [],
+  "valuation": {},
+  "sources": [],
+  "custom": {}
+}

@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "domain": "sales_ops",
+    "created_at": "2025-08-19T08:51:48.519885",
+    "author": "synapse",
+    "confidence": 0.7
+  },
+  "node": {
+    "id": "acme_pipeline",
+    "name": "ACME Q4 Pipeline",
+    "type": "dataset",
+    "layer": "application",
+    "thesis": "Raise win-rate and cut cycle time; focus on ICP Stage 3+",
+    "time_horizon": "this_quarter"
+  },
+  "context": {
+    "picks_shovels": [
+      {
+        "id": "salesforce",
+        "name": "Salesforce",
+        "role": "crm",
+        "edge_type": "enables",
+        "weight": 0.8
+      }
+    ],
+    "edges": [],
+    "undercurrents": [
+      {
+        "name": "budget_freezes",
+        "direction": "neutral"
+      }
+    ]
+  },
+  "signals": {
+    "metrics": [
+      {
+        "name": "win_rate",
+        "unit": "%",
+        "current": 23,
+        "thresholds": {
+          "bull": ">=30",
+          "bear": "<15"
+        }
+      }
+    ],
+    "events": [
+      {
+        "date": "2025-08-10",
+        "type": "big_deal_entered_stage3",
+        "impact": "+",
+        "source": "crm"
+      }
+    ]
+  },
+  "news": [],
+  "risks": [
+    {
+      "name": "slipped_deals",
+      "likelihood": "med",
+      "severity": "med"
+    }
+  ],
+  "actions": [
+    {
+      "type": "alert",
+      "what": "win_rate<15%",
+      "rule": "cron:daily",
+      "notify": "slack:#revops"
+    }
+  ],
+  "valuation": {},
+  "sources": [
+    {
+      "name": "crm",
+      "url": "sf://opportunities"
+    }
+  ],
+  "custom": {}
+}

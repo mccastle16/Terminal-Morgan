@@ -1,0 +1,32 @@
+{
+  "picks_shovels_catalog": [
+    {
+      "id": "AWS",
+      "name": "Amazon Web Services",
+      "roles": [
+        "cloud_infra"
+      ]
+    },
+    {
+      "id": "Azure",
+      "name": "Microsoft Azure",
+      "roles": [
+        "cloud_infra"
+      ]
+    },
+    {
+      "id": "VRT",
+      "name": "Vertiv",
+      "roles": [
+        "power_cooling"
+      ]
+    },
+    {
+      "id": "EQIX",
+      "name": "Equinix",
+      "roles": [
+        "colocation"
+      ]
+    }
+  ]
+}

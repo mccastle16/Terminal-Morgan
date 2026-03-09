@@ -1,0 +1,329 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PKP Schema v1",
+  "type": "object",
+  "required": [
+    "meta",
+    "node",
+    "context",
+    "signals",
+    "news",
+    "risks",
+    "actions",
+    "valuation",
+    "sources",
+    "custom"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "domain",
+        "created_at",
+        "author",
+        "confidence"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "node": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "type",
+        "layer",
+        "thesis",
+        "time_horizon"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "layer": {
+          "type": "string"
+        },
+        "thesis": {
+          "type": "string"
+        },
+        "time_horizon": {
+          "type": "string"
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "required": [
+        "picks_shovels",
+        "edges",
+        "undercurrents"
+      ],
+      "properties": {
+        "picks_shovels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "name",
+              "role",
+              "edge_type",
+              "weight"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string"
+              },
+              "edge_type": {
+                "type": "string"
+              },
+              "weight": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "from",
+              "to",
+              "type",
+              "weight"
+            ],
+            "properties": {
+              "from": {
+                "type": "string"
+              },
+              "to": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "weight": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "undercurrents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "direction"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "direction": {
+                "type": "string"
+              },
+              "rationale": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "signals": {
+      "type": "object",
+      "required": [
+        "metrics",
+        "events"
+      ],
+      "properties": {
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "unit",
+              "current"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "unit": {
+                "type": "string"
+              },
+              "current": {},
+              "thresholds": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "date",
+              "type",
+              "impact"
+            ],
+            "properties": {
+              "date": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "impact": {
+                "type": "string"
+              },
+              "source": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "news": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "date",
+          "headline",
+          "sentiment"
+        ],
+        "properties": {
+          "date": {
+            "type": "string"
+          },
+          "headline": {
+            "type": "string"
+          },
+          "sentiment": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "likelihood",
+          "severity"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "likelihood": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string"
+          },
+          "leading_indicators": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "what",
+          "rule"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "what": {
+            "type": "string"
+          },
+          "rule": {
+            "type": "string"
+          },
+          "notify": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "valuation": {
+      "type": "object"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "custom": {}
+  }
+}

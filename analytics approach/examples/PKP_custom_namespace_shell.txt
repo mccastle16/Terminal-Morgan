@@ -1,0 +1,1 @@
+custom.* namespace: attach domain-specific fields without changing core. Promote when common.
