@@ -33,4 +33,3 @@ Future research will focus on building a live CAM Engine with real-time input ca
 7. Conclusion
 CAM 2025 introduces a bold proposition: that behavior can be modeled, anticipated, and ethically nudged—not just through context or feedback, but through precise emotional and contextual calculus. It offers not only a predictive lens but a design tool for influence. As the boundary between behavior, design, and intelligence blurs, CAM may offer the bridge.
 We propose it as the next frontier in behavioral science—toward a world not of control, but of conscious influence.
-<img width="468" height="646" alt="image" src="https://github.com/user-attachments/assets/b57af79f-d937-4237-827d-f0eb8040f0e8" />
