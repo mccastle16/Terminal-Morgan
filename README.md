@@ -21,6 +21,7 @@ Terminal/
 |
 |-- data/                          # CSV datasets
 |   |-- master_all_businesses.csv  # <-- MASTER: 2,884 deduped businesses
+|   |-- leadgen.csv                # <-- LEADGEN: 1,457 enriched + scored sales leads
 |
 |-- scripts/                       # Python agent scripts
 |   |-- _shared.py                 # Shared constants + utilities (schema, geo, normalize)
@@ -28,6 +29,11 @@ Terminal/
 |   |-- 1. agent1-osint.py         # Agent 1: Discovery / Scraper
 |   |-- 2. agent2-validator.py     # Agent 2: Normalization / Validation / Enrichment
 |   |-- 3. agent3-synthesizer.py   # Agent 3: PKP Synthesis / Export
+|   |-- 6. agent6-leadgen-cleaner.py   # Agent 6: Lead Gen Cleaner
+|   |-- 7. agent7-lead-enricher.py     # Agent 7: Master DB Enricher
+|   |-- 8. agent8-web-enricher.py      # Agent 8: Web API Enricher (SerpApi/Outscraper)
+|   |-- 9. agent9-lead-scorer.py       # Agent 9: Lead Scorer (0-100 + A-F grades)
+|   |-- 10. agent10-playbook.py        # Agent 10: Action Playbook Generator
 |
 |-- staging/                       # Agent 1 output → Agent 2 input
 |   |-- archived/                  # Source CSVs after merge (OSM, Outscraper, SerpApi runs)
@@ -93,7 +99,65 @@ See [final-output-schema.md](./final-output-schema.md) for the full 27-field + 7
 
 ---
 
-## Four-Agent Pipeline
+## Lead Generation Pipeline — `data/leadgen.csv`
+
+A 5-agent pipeline (Agents 6-10) that takes raw marketing platform contact CSVs and transforms them into scored, enriched, sales-ready leads with personalized outreach playbooks.
+
+### Pipeline Flow
+
+```
+Raw CSV (1,934 messy contacts)
+  → Agent 6: Clean & qualify (drop dead leads, fix emails, categorize)
+  → Agent 7: Match against master DB (domain + fuzzy company matching)
+  → Agent 8: Web enrichment via SerpApi/Outscraper (phone, address, rating)
+  → Agent 9: Score 0-100 + grade A-F (contact quality, business signals, fit)
+  → Agent 10: Playbook generation (outreach scripts, talking points, follow-up)
+  → 1,457 enriched leads with full playbooks
+```
+
+### Results
+
+| Metric | Raw CSV | Final | Fill Rate |
+|--------|---------|-------|-----------|
+| **Total leads** | 1,934 | 1,457 | (477 dead removed) |
+| **Job title** | 479 (25%) | 1,457 | **100%** |
+| **Company** | 573 (30%) | 1,341 | **92%** |
+| **Phone** | 45 (2%) | 1,021 | **70%** |
+| **Business rating** | 0 | 643 | 44% |
+| **Business address** | 0 | 787 | 54% |
+
+### Lead Grade Distribution
+
+| Grade | Count | % | Action |
+|-------|-------|---|--------|
+| **A** | 546 | 37.5% | CALL — sales-ready with full contact info |
+| **B** | 263 | 18.1% | EMAIL — solid lead, initiate contact |
+| **C** | 140 | 9.6% | NURTURE — drip campaign |
+| **D** | 392 | 26.9% | LOW PRIORITY — monitor |
+| **F** | 116 | 8.0% | SKIP — insufficient data |
+
+### Enrichment Sources Used
+
+- **SerpApi** (~2,800 searches): Google Maps + Google Search + LinkedIn people search
+- **Apify** (~900 searches): Google Search Scraper for LinkedIn profiles + phone numbers
+- **Claude Haiku** (~25 calls): Job title inference from company + category
+- **Master DB**: Domain matching + fuzzy company name matching (fuzzywuzzy)
+- **Direct website scraping**: Phone extraction from company homepages
+
+### Usage
+
+```bash
+# Full pipeline (run in order)
+python "scripts/6. agent6-leadgen-cleaner.py" --input data/leadgen.csv --output data/leadgen.csv
+python "scripts/7. agent7-lead-enricher.py" --leads data/leadgen.csv --master data/master_all_businesses.csv
+python "scripts/8. agent8-web-enricher.py" --leads data/leadgen.csv --source serpapi
+python "scripts/9. agent9-lead-scorer.py" --leads data/leadgen.csv
+python "scripts/10. agent10-playbook.py" --leads data/leadgen.csv
+```
+
+---
+
+## OSINT Pipeline (Agents 0-5)
 
 ### Agent 0 — Orchestrator (`scripts/0. orchestrator.py`)
 
@@ -280,6 +344,8 @@ pip install requests pandas fuzzywuzzy python-Levenshtein
 pip install outscraper             # for Outscraper (v6+)
 pip install apify-client           # for Apify
 pip install google-search-results  # for SerpApi
+pip install anthropic              # for Claude API (Agent 10 playbooks, title inference)
+pip install openai                 # for OpenAI (Agent 4 actions, optional)
 ```
 
 ### Set up API keys
