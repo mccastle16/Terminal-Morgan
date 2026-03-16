@@ -258,6 +258,101 @@ def clean_phone(phone: str) -> str:
     return normalize_phone(phone)
 
 
+# ── Column mapping ─────────────────────────────────────────────────
+# Maps common alternate column names to the internal names used by the pipeline.
+# Keys are lowercase; values are the internal column name.
+
+COLUMN_ALIASES = {
+    # first_name
+    "first name": "first_name",
+    "firstname": "first_name",
+    "first": "first_name",
+    "fname": "first_name",
+    "first_name": "first_name",
+    # last_name  (internal: Last Name for legacy compat)
+    "last name": "Last Name",
+    "lastname": "Last Name",
+    "last": "Last Name",
+    "lname": "Last Name",
+    "last_name": "Last Name",
+    # email
+    "email": "email",
+    "email address": "email",
+    "emailaddress": "email",
+    "e-mail": "email",
+    # phone
+    "phone": "Phone Number",
+    "phone number": "Phone Number",
+    "phone_number": "Phone Number",
+    "phonenumber": "Phone Number",
+    "telephone": "Phone Number",
+    "mobile": "Phone Number",
+    "cell": "Phone Number",
+    # status
+    "status": "status",
+    # job title
+    "job title": "Job Title",
+    "job_title": "Job Title",
+    "jobtitle": "Job Title",
+    "title": "Job Title",
+    # company
+    "company name": "Company Name",
+    "company_name": "Company Name",
+    "companyname": "Company Name",
+    "company": "Company Name",
+    "organization": "Company Name",
+    "employer": "Company Name",
+    # tags
+    "tags": "tags",
+    "tag": "tags",
+    # city / state / country
+    "city": "city",
+    "state": "state",
+    "province": "state",
+    "country": "country",
+    # created_at
+    "created_at": "created_at",
+    "created at": "created_at",
+    "createdat": "created_at",
+    "patient created date": "created_at",
+    "date created": "created_at",
+    "date_created": "created_at",
+    "signup date": "created_at",
+    # notes
+    "notes": "NOTES",
+    "note": "NOTES",
+    "comment": "NOTES",
+    "comments": "NOTES",
+    # DOB (patient lists)
+    "dob": "dob",
+    "date of birth": "dob",
+    "birthdate": "dob",
+    "birth_date": "dob",
+    "birthday": "dob",
+}
+
+
+def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """Map incoming column names to internal names using COLUMN_ALIASES."""
+    rename_map = {}
+    for col in df.columns:
+        key = col.strip().lower()
+        if key in COLUMN_ALIASES:
+            internal = COLUMN_ALIASES[key]
+            if internal not in rename_map.values():  # avoid double-mapping
+                rename_map[col] = internal
+    df = df.rename(columns=rename_map)
+
+    # Ensure all expected internal columns exist (fill missing with "")
+    for internal_col in ["first_name", "Last Name", "email", "Phone Number",
+                         "status", "Job Title", "Company Name", "tags",
+                         "city", "state", "country", "created_at", "NOTES"]:
+        if internal_col not in df.columns:
+            df[internal_col] = ""
+
+    return df
+
+
 # ── Main pipeline ───────────────────────────────────────────────────
 
 def run_cleaner(input_path: str, output_path: str, dry_run: bool = False):
@@ -274,18 +369,33 @@ def run_cleaner(input_path: str, output_path: str, dry_run: bool = False):
     print(f"Loaded {total_raw} rows from {input_path}")
     print(f"Columns: {list(df.columns)}\n")
 
+    # ── Step 0: Normalize column names ──────────────────────────
+    original_cols = list(df.columns)
+    df = normalize_columns(df)
+    new_cols = list(df.columns)
+    renamed = {o: n for o, n in zip(original_cols, new_cols) if o != n}
+    if renamed:
+        print(f"[0] Column mapping: {renamed}")
+    else:
+        print(f"[0] Columns already match expected schema")
+
     # ── Step 1: Drop dead columns ───────────────────────────────
     dead_found = [c for c in DEAD_COLUMNS if c in df.columns]
     df = df.drop(columns=dead_found, errors="ignore")
     print(f"[1] Dropped {len(dead_found)} dead columns: {dead_found}")
 
     # ── Step 2: Remove unusable contacts ────────────────────────
-    mask_usable = ~df["status"].str.strip().str.lower().isin(UNUSABLE_STATUSES)
-    removed_count = (~mask_usable).sum()
-    status_breakdown = df[~mask_usable]["status"].value_counts().to_dict()
-    df = df[mask_usable].copy()
-    print(f"[2] Removed {removed_count} unusable contacts: {status_breakdown}")
-    print(f"    Remaining: {len(df)} active contacts")
+    has_status = (df["status"].str.strip() != "").any()
+    if has_status:
+        mask_usable = ~df["status"].str.strip().str.lower().isin(UNUSABLE_STATUSES)
+        removed_count = (~mask_usable).sum()
+        status_breakdown = df[~mask_usable]["status"].value_counts().to_dict()
+        df = df[mask_usable].copy()
+        print(f"[2] Removed {removed_count} unusable contacts: {status_breakdown}")
+        print(f"    Remaining: {len(df)} active contacts")
+    else:
+        removed_count = 0
+        print(f"[2] No status column with data — skipping unusable-contact filter")
 
     # ── Step 3: Fix emails ──────────────────────────────────────
     df["email"] = df["email"].apply(fix_email)
@@ -316,38 +426,51 @@ def run_cleaner(input_path: str, output_path: str, dry_run: bool = False):
     df["full_name"] = (df["first_name"].str.strip() + " " + df["Last Name"].str.strip()).str.strip()
 
     # ── Step 7: Extract category from fake job titles ───────────
-    results = df["Job Title"].apply(extract_category_from_title)
-    df["category"] = results.apply(lambda x: x[0])
-    df["job_title_clean"] = results.apply(lambda x: x[1])
+    has_titles = (df["Job Title"].str.strip() != "").any()
+    if has_titles:
+        results = df["Job Title"].apply(extract_category_from_title)
+        df["category"] = results.apply(lambda x: x[0])
+        df["job_title_clean"] = results.apply(lambda x: x[1])
 
-    fake_titles = (df["category"] != "").sum()
-    real_titles = (df["job_title_clean"] != "").sum()
-    print(f"[7] Job titles: {fake_titles} were category labels (moved), {real_titles} are real titles")
+        fake_titles = (df["category"] != "").sum()
+        real_titles = (df["job_title_clean"] != "").sum()
+        print(f"[7] Job titles: {fake_titles} were category labels (moved), {real_titles} are real titles")
+    else:
+        df["category"] = ""
+        df["job_title_clean"] = ""
+        print(f"[7] No job title data — skipping")
 
     # ── Step 8: Clean tags ──────────────────────────────────────
-    df["tags_clean"] = df["tags"].apply(clean_tags)
+    has_tags = (df["tags"].str.strip() != "").any()
+    if has_tags:
+        df["tags_clean"] = df["tags"].apply(clean_tags)
 
-    # Fill category from tags if job title didn't provide one
-    def infer_category_from_tags(row):
-        if row["category"]:
-            return row["category"]
-        tags = row["tags_clean"].lower()
-        for label, cat in [
-            ("cruise", "Cruise"), ("hotel", "Hotel"),
-            ("healthcare", "Healthcare"), ("vendor", "Vendor"),
-            ("business services", "Business Services"),
-            ("academic", "Academic"), ("retail", "Retail"),
-            ("travel", "Travel"), ("media", "Media"),
-            ("law", "Law"), ("developer", "Developers"),
-            ("hospitality", "Hospitality"), ("government", "Government"),
-        ]:
-            if label in tags:
-                return cat
-        return "General"
+        # Fill category from tags if job title didn't provide one
+        def infer_category_from_tags(row):
+            if row["category"]:
+                return row["category"]
+            tags = row["tags_clean"].lower()
+            for label, cat in [
+                ("cruise", "Cruise"), ("hotel", "Hotel"),
+                ("healthcare", "Healthcare"), ("vendor", "Vendor"),
+                ("business services", "Business Services"),
+                ("academic", "Academic"), ("retail", "Retail"),
+                ("travel", "Travel"), ("media", "Media"),
+                ("law", "Law"), ("developer", "Developers"),
+                ("hospitality", "Hospitality"), ("government", "Government"),
+            ]:
+                if label in tags:
+                    return cat
+            return "General"
 
-    df["category"] = df.apply(infer_category_from_tags, axis=1)
-    cat_dist = df["category"].value_counts().to_dict()
-    print(f"[8] Tags cleaned. Category distribution: {cat_dist}")
+        df["category"] = df.apply(infer_category_from_tags, axis=1)
+        cat_dist = df["category"].value_counts().to_dict()
+        print(f"[8] Tags cleaned. Category distribution: {cat_dist}")
+    else:
+        df["tags_clean"] = ""
+        # Default category to General if no tags or titles
+        df["category"] = df["category"].replace("", "General")
+        print(f"[8] No tags data — skipping. Default category: General")
 
     # ── Step 9: Extract company website from email domain ───────
     df["company_website"] = df["email"].apply(extract_domain_website)
@@ -379,6 +502,11 @@ def run_cleaner(input_path: str, output_path: str, dry_run: bool = False):
     out["name_flag"] = df["name_flag"]
     out["notes"] = df["NOTES"].str.strip()
 
+    # Include DOB if present in the original data
+    if "dob" in df.columns and (df["dob"].str.strip() != "").any():
+        out["dob"] = df["dob"].str.strip()
+        print(f"[11] Preserved DOB field: {(out['dob'] != '').sum()}/{len(out)} have DOB")
+
     # ── Summary ─────────────────────────────────────────────────
     print(f"\n{'='*60}")
     print(f"  CLEANING SUMMARY")
@@ -396,6 +524,8 @@ def run_cleaner(input_path: str, output_path: str, dry_run: bool = False):
     print(f"  Has city:            {(out['city'] != '').sum()}/{len(out)} ({round((out['city'] != '').sum()/len(out)*100,1)}%)")
     print(f"  Has full name:       {(out['full_name'].str.strip() != '').sum()}/{len(out)}")
     print(f"  Name flags:          {flagged}")
+    if "dob" in out.columns:
+        print(f"  Has DOB:             {(out['dob'] != '').sum()}/{len(out)} ({round((out['dob'] != '').sum()/len(out)*100,1)}%)")
     print(f"{'='*60}")
 
     # ── Write ───────────────────────────────────────────────────
