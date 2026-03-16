@@ -310,8 +310,14 @@ def run_scorer(leads_path: str, dry_run: bool = False):
     total = len(leads)
     print(f"Loaded {total} leads\n")
 
-    # Ensure score columns exist
-    for col in ["lead_score", "lead_grade", "score_breakdown", "priority_action"]:
+    # Ensure all expected columns exist (handles raw patient lists etc.)
+    for col in ["lead_score", "lead_grade", "score_breakdown", "priority_action",
+                "company", "company_website", "phone", "first_name", "last_name",
+                "full_name", "email", "job_title", "category", "city", "state",
+                "name_flag", "match_type", "matched_business", "business_address",
+                "business_rating", "business_review_count", "rating_source",
+                "enriched_category", "chamber_member", "osint_confidence",
+                "validation_tier"]:
         if col not in leads.columns:
             leads[col] = ""
 

@@ -49,6 +49,60 @@ except ImportError:
 from _shared import normalize_key, normalize_phone
 
 
+# ── Column mapping (shared with Agent 6) ───────────────────────────
+# Maps common alternate column names to the internal names used by the
+# enrichment pipeline.  Keys are lowercase.
+
+LEAD_COLUMN_ALIASES = {
+    "first name": "first_name", "firstname": "first_name",
+    "first": "first_name", "fname": "first_name", "first_name": "first_name",
+    "last name": "last_name", "lastname": "last_name",
+    "last": "last_name", "lname": "last_name", "last_name": "last_name",
+    "email": "email", "email address": "email", "e-mail": "email",
+    "phone": "phone", "phone number": "phone", "phone_number": "phone",
+    "phonenumber": "phone", "telephone": "phone", "mobile": "phone",
+    "company": "company", "company name": "company",
+    "company_name": "company", "organization": "company",
+    "employer": "company",
+    "full_name": "full_name", "full name": "full_name",
+    "company_website": "company_website", "company website": "company_website",
+    "first_name": "first_name", "last_name": "last_name",
+    "name_flag": "name_flag",
+    "job_title": "job_title", "job title": "job_title",
+    "category": "category",
+    "city": "city", "state": "state", "country": "country",
+    "tags": "tags", "status": "status",
+    "created_at": "created_at", "patient created date": "created_at",
+    "date created": "created_at",
+    "dob": "dob", "date of birth": "dob",
+}
+
+
+def normalize_lead_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """Map incoming column names to internal names expected by the enricher."""
+    rename_map = {}
+    for col in df.columns:
+        key = col.strip().lower()
+        if key in LEAD_COLUMN_ALIASES:
+            internal = LEAD_COLUMN_ALIASES[key]
+            if internal not in rename_map.values():
+                rename_map[col] = internal
+    df = df.rename(columns=rename_map)
+
+    # Ensure all columns the enricher reads/writes exist
+    for col in ["first_name", "last_name", "full_name", "email", "phone",
+                "company", "company_website", "job_title", "category",
+                "city", "state", "country", "tags", "status", "name_flag"]:
+        if col not in df.columns:
+            df[col] = ""
+
+    # Build full_name if missing
+    if (df["full_name"].str.strip() == "").all():
+        df["full_name"] = (df["first_name"].str.strip() + " " + df["last_name"].str.strip()).str.strip()
+
+    return df
+
+
 # ── Helpers ─────────────────────────────────────────────────────────
 
 def extract_domain(url: str) -> str:
@@ -256,7 +310,15 @@ def run_enricher(leads_path: str, master_path: str, dry_run: bool = False):
     # ── Load data ───────────────────────────────────────────────
     leads = pd.read_csv(leads_path, dtype=str).fillna("")
     master = pd.read_csv(master_path, dtype=str).fillna("")
-    print(f"Loaded {len(leads)} leads, {len(master)} master businesses\n")
+    print(f"Loaded {len(leads)} leads, {len(master)} master businesses")
+
+    # ── Normalize lead columns ───────────────────────────────────
+    original_cols = list(leads.columns)
+    leads = normalize_lead_columns(leads)
+    renamed = {o: n for o, n in zip(original_cols, list(leads.columns)[:len(original_cols)]) if o != n}
+    if renamed:
+        print(f"Column mapping applied: {renamed}")
+    print()
 
     # ── Build indices ───────────────────────────────────────────
     print("[1] Building master indices...")

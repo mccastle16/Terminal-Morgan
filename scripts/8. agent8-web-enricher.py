@@ -248,11 +248,13 @@ def run_web_enricher(leads_path: str, source: str = "serpapi",
     total = len(leads)
     print(f"Loaded {total} leads")
 
-    # Ensure enrichment columns exist
+    # Ensure all expected lead columns exist (handles raw patient lists etc.)
     for col in ["match_type", "matched_business", "business_address",
                 "business_rating", "business_review_count", "rating_source",
                 "enriched_category", "chamber_member", "osint_confidence",
-                "validation_tier"]:
+                "validation_tier", "company", "company_website", "phone",
+                "first_name", "last_name", "full_name", "email",
+                "job_title", "category", "city", "state", "name_flag"]:
         if col not in leads.columns:
             leads[col] = ""
 
