@@ -14,7 +14,7 @@ Sources supported:
 
 Usage:
   python "1. agent1-osint.py" --source outscraper --run 1
-  python "1. agent1-osint.py" --source apify
+  python "1. agent1-osint.py" --source apifyadmin@cgcc.org
   python "1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
   python "1. agent1-osint.py" --source osm
 

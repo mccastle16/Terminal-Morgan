@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
 import Layout from './components/Layout'
 import LoginPage from './pages/LoginPage'
+import TerminalRoutes from './terminal/TerminalRoutes'
 
 // Mode 1: My Business
 import MyBusinessPage from './pages/MyBusinessPage'
@@ -73,6 +74,10 @@ export default function App() {
         <Route path="discover/browse" element={<BrowsePage />} />
         <Route path="discover/graph" element={<GraphExplorerPage />} />
       </Route>
+
+      {/* Terminal Module */}
+      <Route path="/terminal/*" element={<TerminalRoutes />} />
+
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

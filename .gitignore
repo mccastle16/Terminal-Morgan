@@ -13,3 +13,4 @@ systems/data/coral_gables_bi_database_validated.json
 data/etl/neo4j-dump/
 .pr_body
 scripts/_audit_data.py
+dashboard/.netlify/

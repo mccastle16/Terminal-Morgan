@@ -161,11 +161,66 @@
   animation: shimmer 1.5s infinite;
 }
 
-/* Recharts customizations */
+/* Recharts customizations — light theme (legacy dashboard) */
 .recharts-default-tooltip {
   @apply !bg-white !border !border-gray-200 !rounded-lg !shadow-lg;
 }
 
 .recharts-tooltip-label {
   @apply !font-semibold !text-cgcc-navy;
+}
+
+/* Recharts customizations — dark theme (terminal module) */
+.terminal-charts .recharts-default-tooltip {
+  background-color: #0f172a !important;
+  border: 1px solid #1e293b !important;
+  border-radius: 10px !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
+}
+.terminal-charts .recharts-tooltip-label {
+  color: #94a3b8 !important;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+}
+.terminal-charts .recharts-tooltip-item {
+  color: #e2e8f0 !important;
+  font-size: 11px !important;
+}
+.terminal-charts .recharts-tooltip-item-name {
+  color: #94a3b8 !important;
+}
+.terminal-charts .recharts-tooltip-item-value {
+  color: #f1f5f9 !important;
+  font-weight: 600 !important;
+}
+
+/* Terminal module — dark scrollbar */
+.scrollbar-dark::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-dark::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-dark::-webkit-scrollbar-thumb {
+  background-color: #1e293b;
+  border-radius: 9999px;
+}
+.scrollbar-dark::-webkit-scrollbar-thumb:hover {
+  background-color: #334155;
+}
+
+/* Terminal module — stagger fade-in for card grids */
+.terminal-charts .grid > * {
+  animation: termFadeUp 0.4s ease-out both;
+}
+.terminal-charts .grid > *:nth-child(1) { animation-delay: 0ms; }
+.terminal-charts .grid > *:nth-child(2) { animation-delay: 60ms; }
+.terminal-charts .grid > *:nth-child(3) { animation-delay: 120ms; }
+.terminal-charts .grid > *:nth-child(4) { animation-delay: 180ms; }
+.terminal-charts .grid > *:nth-child(5) { animation-delay: 240ms; }
+
+@keyframes termFadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
