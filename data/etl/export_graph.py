@@ -9,7 +9,7 @@ import json, argparse, sys
 from pathlib import Path
 from neo4j import GraphDatabase
 
-NEO4J_URI = "bolt://localhost:7687"
+NEO4J_URI = "bolt://localhost:7688"
 NEO4J_USER = "neo4j"
 NEO4J_PASS = "cgcc2024graph"
 
@@ -206,7 +206,7 @@ def export_graph(limit: int = 0):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Export graph summary for dashboard")
-    parser.add_argument("--limit", type=int, default=300, help="Max businesses to export (0=all, default=300)")
+    parser.add_argument("--limit", type=int, default=0, help="Max businesses to export (0=all)")
     args = parser.parse_args()
     print(f"\n  Exporting graph data (limit={args.limit or 'ALL'})...")
     export_graph(limit=args.limit)
