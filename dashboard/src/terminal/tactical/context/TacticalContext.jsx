@@ -8,7 +8,7 @@ import { buildChartsFromInstructions } from '../engine/chartBuilder'
 const TacticalContext = createContext(null)
 
 export function TacticalProvider({ children }) {
-  const { stats, rawBusinesses, marketAnalytics } = useTerminalData()
+  const { stats, rawBusinesses, marketAnalytics, sentimentData, centralityData, predictionData } = useTerminalData()
   const [messages, setMessages] = useState([])
   const [pinnedCharts, setPinnedCharts] = useState([])
   const [experiments, setExperiments] = useState([])
@@ -43,7 +43,7 @@ export function TacticalProvider({ children }) {
 
     let llmText = null
     if (useLLM) {
-      const dataContext = buildDataContext(stats, localResponse.entities, rawBusinesses, marketAnalytics)
+      const dataContext = buildDataContext(stats, localResponse.entities, rawBusinesses, marketAnalytics, sentimentData, centralityData, predictionData)
       // Build conversation history for the LLM (last 10 messages to keep tokens low)
       const historyForLLM = [...messages.slice(-10), userMsg]
       const result = await callOpenAI(historyForLLM, dataContext)
@@ -78,7 +78,7 @@ export function TacticalProvider({ children }) {
 
     setMessages(prev => [...prev, advisorMsg])
     setIsProcessing(false)
-  }, [stats, rawBusinesses, messages, isProcessing, beliefState, delta, aiMode, apiStatus])
+  }, [stats, rawBusinesses, messages, isProcessing, beliefState, delta, aiMode, apiStatus, marketAnalytics, sentimentData, centralityData, predictionData])
 
   // Pin a chart from a response to the dynamic graph area
   const pinChart = useCallback((chartSpec) => {

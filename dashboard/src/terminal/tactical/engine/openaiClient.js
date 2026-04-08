@@ -5,8 +5,8 @@
  * Build a lightweight data context blob for the system prompt.
  * Keeps token count low by sending only aggregates, not raw rows.
  */
-export function buildDataContext(stats, entities, rawBusinesses, marketAnalytics) {
-  const ctx = { stats: null, entitySummary: '', marketAnalytics: null }
+export function buildDataContext(stats, entities, rawBusinesses, marketAnalytics, sentimentData, centralityData, predictionData) {
+  const ctx = { stats: null, entitySummary: '', marketAnalytics: null, sentiment: null, network: null, predictions: null }
 
   if (stats) {
     ctx.stats = {
@@ -73,6 +73,42 @@ export function buildDataContext(stats, entities, rawBusinesses, marketAnalytics
       categoryHealth: marketAnalytics.categoryHealth?.slice(0, 10),
       neighborhoodHealth: marketAnalytics.neighborhoodHealth?.slice(0, 10),
       topOpportunities: marketAnalytics.topOpportunities?.slice(0, 5),
+      priceTierDist: marketAnalytics.priceTierDist,
+      priceCoverage: marketAnalytics.priceCoverage,
+    }
+  }
+
+  // Sentiment summary (keep token count low)
+  if (sentimentData) {
+    const dist = sentimentData.sentiment_distribution || {}
+    const total = Object.values(dist).reduce((s, v) => s + v, 0) || 1
+    ctx.sentiment = {
+      positive_pct: Math.round(((dist.very_positive || 0) + (dist.positive || 0)) / total * 100),
+      negative_pct: Math.round((dist.negative || 0) / total * 100),
+      delight_themes: sentimentData.delight_themes || {},
+      pain_themes: sentimentData.pain_themes || {},
+    }
+  }
+
+  // Network centrality summary
+  if (centralityData) {
+    ctx.network = {
+      num_communities: centralityData.community_sizes?.length || 0,
+      top_influencers: centralityData.top_influencers?.slice(0, 3),
+      bridge_nodes: centralityData.bridge_nodes?.slice(0, 3),
+    }
+  }
+
+  // Prediction summary
+  if (predictionData) {
+    ctx.predictions = {
+      avg_membership_probability: predictionData.avg_membership_probability,
+      avg_growth_trajectory: predictionData.avg_growth_trajectory,
+      churn_risk_high: predictionData.churn_risk_high,
+      churn_risk_medium: predictionData.churn_risk_medium,
+      members_count: predictionData.members_count,
+      high_potential_recruits: predictionData.high_potential_recruits,
+      category_predictions: predictionData.category_predictions?.slice(0, 5),
     }
   }
 

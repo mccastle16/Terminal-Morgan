@@ -18,6 +18,7 @@ import GoToActionsPage from './pages/GoToActionsPage'
 import ExperimentLabPage from './pages/ExperimentLabPage'
 import GraphExplorerPage from './pages/GraphExplorerPage'
 import ContentStudioPage from './pages/ContentStudioPage'
+import IntelligencePage from './pages/IntelligencePage'
 
 function TerminalProtected({ children }) {
   const { user, loading } = useTerminalAuth()
@@ -62,6 +63,7 @@ export default function TerminalRoutes() {
             <Route path="experiments" element={<ExperimentLabPage />} />
             <Route path="graph" element={<GraphExplorerPage />} />
             <Route path="content" element={<ContentStudioPage />} />
+            <Route path="intelligence" element={<IntelligencePage />} />
           </Route>
           <Route path="*" element={<Navigate to="/overview" replace />} />
         </Routes>

@@ -40,6 +40,34 @@ DEEP MARKET ANALYTICS:
 - Top 5 healthiest categories (CHI): ${m.categoryHealth?.slice(0,5).map(c => `${c.category}(${c.chi})`).join(', ')}
 - Top 5 expansion neighborhoods (NOS): ${m.neighborhoodHealth?.slice(0,5).map(n => `${n.neighborhood}(NOS:${n.nos})`).join(', ')}
 - Top 3 growth opportunities: ${m.topOpportunities?.slice(0,3).map(o => `${o.neighborhood}×${o.category}(${o.nonMembers} non-members)`).join(', ')}
+- Price tier coverage: ${m.priceCoverage || 100}% | Distribution: ${m.priceTierDist?.map(t => `${t.tier}:${t.count}`).join(', ') || 'N/A'}
+` : ''
+
+  const p = dataContext?.predictions
+  const predictionBlock = p ? `
+PREDICTIVE INTELLIGENCE:
+- Average membership probability: ${p.avg_membership_probability}%
+- Growth trajectory: ${p.avg_growth_trajectory > 0 ? '+' : ''}${p.avg_growth_trajectory} avg
+- Churn risk: ${p.churn_risk_high} high / ${p.churn_risk_medium} medium (of ${p.members_count} members)
+- High-potential recruits: ${p.high_potential_recruits}
+- Top growth categories: ${p.category_predictions?.slice(0,3).map(c => `${c.category}(GT:${c.avg_growth_trajectory > 0 ? '+' : ''}${c.avg_growth_trajectory})`).join(', ')}
+- Declining categories: ${p.category_predictions?.slice(-2).map(c => `${c.category}(GT:${c.avg_growth_trajectory})`).join(', ')}
+` : ''
+
+  const sent = dataContext?.sentiment
+  const sentimentBlock = sent ? `
+SENTIMENT INTELLIGENCE:
+- Market sentiment: ${sent.positive_pct || 0}% positive, ${sent.negative_pct || 0}% negative
+- Top delight themes: ${Object.keys(sent.delight_themes || {}).slice(0,3).join(', ') || 'N/A'}
+- Top pain themes: ${Object.keys(sent.pain_themes || {}).slice(0,3).join(', ') || 'N/A'}
+` : ''
+
+  const net = dataContext?.network
+  const networkBlock = net ? `
+NETWORK INTELLIGENCE:
+- Communities: ${net.num_communities} detected clusters
+- Top influencer: ${net.top_influencers?.[0]?.name || 'N/A'} (score: ${net.top_influencers?.[0]?.influence_score || 0})
+- Key bridge node: ${net.bridge_nodes?.[0]?.name || 'N/A'} (betweenness: ${net.bridge_nodes?.[0]?.betweenness || 0})
 ` : ''
 
   const entityBlock = dataContext?.entitySummary || ''
@@ -63,7 +91,7 @@ INTELLIGENCE FRAMEWORK:
 - Information Gain: Rare findings (low P) are more valuable than common ones. Prioritize surprising insights.
 - Bayesian Updating: Your confidence in assessments should evolve as the conversation provides new evidence.
 - Decision Function: D = Base Knowledge + δ × Exploratory Knowledge. Balance confirmed insights with uncertain-but-valuable exploration.
-${statsBlock}${analyticsBlock}${entityBlock}
+${statsBlock}${analyticsBlock}${predictionBlock}${sentimentBlock}${networkBlock}${entityBlock}
 Always tie your advice back to actionable next steps. You serve the chamber's mission: grow membership, support local businesses, and strengthen the Coral Gables economy.`
 }
 
@@ -86,7 +114,7 @@ const CHART_TOOL = {
             properties: {
               type:    { type: 'string', enum: ['pie', 'bar', 'box'], description: 'Chart type: pie for proportions, bar for comparisons/rankings, box for distributions' },
               title:   { type: 'string', description: 'Short descriptive chart title' },
-              metric:  { type: 'string', enum: ['membership', 'category', 'neighborhood', 'rating', 'data_quality', 'red_flags', 'recruit_score', 'reviews', 'validation', 'category_health', 'saturation', 'opportunity'], description: 'What to measure. category_health = CHI composite index, saturation = competitive density, opportunity = expansion cross-tab' },
+              metric:  { type: 'string', enum: ['membership', 'category', 'neighborhood', 'rating', 'data_quality', 'red_flags', 'recruit_score', 'reviews', 'validation', 'category_health', 'saturation', 'opportunity', 'sentiment', 'predictions', 'network_influence', 'price_tier'], description: 'What to measure. category_health = CHI composite index, saturation = competitive density, opportunity = expansion cross-tab, sentiment = composite sentiment scores, predictions = membership probability / growth trajectory, network_influence = PageRank / centrality, price_tier = pricing distribution' },
               groupBy: { type: 'string', enum: ['membership_status', 'category', 'neighborhood', 'rating_bucket', 'validation_tier', 'recruit_band'], description: 'How to group the data' },
               filter:  {
                 type: 'object',

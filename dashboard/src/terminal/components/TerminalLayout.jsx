@@ -6,7 +6,7 @@ import ModuleSwitcher from './ModuleSwitcher'
 import {
   LayoutDashboard, Search, Building2, BarChart3, GitCompare, ShieldAlert,
   UserPlus, TrendingUp, LogOut, ChevronLeft, ChevronRight, Terminal,
-  User, Shield, Database, Crosshair, Zap, Users, Share2, FlaskConical, FileText,
+  User, Shield, Database, Crosshair, Zap, Users, Share2, FlaskConical, FileText, Brain,
 } from 'lucide-react'
 
 const STRATEGIC_NAV = [
@@ -22,10 +22,11 @@ const STRATEGIC_NAV = [
 ]
 
 const TACTICAL_NAV = [
-  { to: '/tactical',    icon: Crosshair,       label: 'AI Advisor',     permission: null },
-  { to: '/graph',       icon: Share2,          label: 'Graph Analytics', permission: 'view_analytics' },
-  { to: '/experiments', icon: FlaskConical,    label: 'Experiments',    permission: 'view_analytics' },
-  { to: '/content',     icon: FileText,        label: 'Content Studio', permission: null },
+  { to: '/tactical',      icon: Crosshair,       label: 'AI Advisor',     permission: null },
+  { to: '/intelligence',  icon: Brain,           label: 'Intelligence',   permission: 'view_analytics' },
+  { to: '/graph',         icon: Share2,          label: 'Graph Analytics', permission: 'view_analytics' },
+  { to: '/experiments',   icon: FlaskConical,    label: 'Experiments',    permission: 'view_analytics' },
+  { to: '/content',       icon: FileText,        label: 'Content Studio', permission: null },
 ]
 
 export default function TerminalLayout() {
@@ -35,6 +36,7 @@ export default function TerminalLayout() {
   const [collapsed, setCollapsed] = useState(false)
 
   const isTactical = location.pathname.startsWith('/tactical') ||
+    location.pathname.startsWith('/intelligence') ||
     location.pathname.startsWith('/graph') ||
     location.pathname.startsWith('/experiments') ||
     location.pathname.startsWith('/content')

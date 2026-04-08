@@ -1,0 +1,472 @@
+{
+  "generated_at": "2026-04-08T17:58:14.618750",
+  "total_businesses": 2868,
+  "with_sentiment_text": 47,
+  "sentiment_distribution": {
+    "very_positive": 1724,
+    "negative": 60,
+    "positive": 577,
+    "unrated": 356,
+    "neutral": 151
+  },
+  "delight_themes": {
+    "service_quality": 7,
+    "ambiance_design": 6,
+    "innovation_tech": 2,
+    "food_quality": 2,
+    "growth_momentum": 1
+  },
+  "pain_themes": {
+    "innovation_tech": 6,
+    "service_quality": 5,
+    "growth_momentum": 4,
+    "location_access": 3,
+    "food_quality": 2,
+    "ambiance_design": 2,
+    "value_pricing": 2,
+    "reliability": 1
+  },
+  "category_sentiment": [
+    {
+      "category": "legal",
+      "avg_rating": 4.66,
+      "avg_css": 45,
+      "dominant_sentiment": "very_positive",
+      "count": 138,
+      "positive_pct": 84,
+      "negative_pct": 1
+    },
+    {
+      "category": "insurance",
+      "avg_rating": 4.61,
+      "avg_css": 40,
+      "dominant_sentiment": "very_positive",
+      "count": 55,
+      "positive_pct": 80,
+      "negative_pct": 4
+    },
+    {
+      "category": "personal_services",
+      "avg_rating": 4.64,
+      "avg_css": 40,
+      "dominant_sentiment": "very_positive",
+      "count": 107,
+      "positive_pct": 93,
+      "negative_pct": 2
+    },
+    {
+      "category": "accounting",
+      "avg_rating": 4.57,
+      "avg_css": 39,
+      "dominant_sentiment": "very_positive",
+      "count": 112,
+      "positive_pct": 75,
+      "negative_pct": 2
+    },
+    {
+      "category": "construction",
+      "avg_rating": 4.62,
+      "avg_css": 38,
+      "dominant_sentiment": "very_positive",
+      "count": 89,
+      "positive_pct": 90,
+      "negative_pct": 2
+    },
+    {
+      "category": "food_beverage",
+      "avg_rating": 4.48,
+      "avg_css": 38,
+      "dominant_sentiment": "very_positive",
+      "count": 436,
+      "positive_pct": 93,
+      "negative_pct": 1
+    },
+    {
+      "category": "marketing",
+      "avg_rating": 4.85,
+      "avg_css": 38,
+      "dominant_sentiment": "very_positive",
+      "count": 58,
+      "positive_pct": 83,
+      "negative_pct": 0
+    },
+    {
+      "category": "other",
+      "avg_rating": 4.48,
+      "avg_css": 38,
+      "dominant_sentiment": "very_positive",
+      "count": 354,
+      "positive_pct": 80,
+      "negative_pct": 3
+    },
+    {
+      "category": "consulting",
+      "avg_rating": 4.81,
+      "avg_css": 37,
+      "dominant_sentiment": "very_positive",
+      "count": 30,
+      "positive_pct": 67,
+      "negative_pct": 0
+    },
+    {
+      "category": "financial_services",
+      "avg_rating": 4.63,
+      "avg_css": 37,
+      "dominant_sentiment": "very_positive",
+      "count": 56,
+      "positive_pct": 59,
+      "negative_pct": 2
+    },
+    {
+      "category": "healthcare",
+      "avg_rating": 4.6,
+      "avg_css": 37,
+      "dominant_sentiment": "very_positive",
+      "count": 266,
+      "positive_pct": 88,
+      "negative_pct": 3
+    },
+    {
+      "category": "nonprofit",
+      "avg_rating": 4.64,
+      "avg_css": 37,
+      "dominant_sentiment": "very_positive",
+      "count": 93,
+      "positive_pct": 88,
+      "negative_pct": 3
+    },
+    {
+      "category": "wellness",
+      "avg_rating": 4.56,
+      "avg_css": 36,
+      "dominant_sentiment": "very_positive",
+      "count": 103,
+      "positive_pct": 89,
+      "negative_pct": 1
+    },
+    {
+      "category": "arts_culture",
+      "avg_rating": 4.68,
+      "avg_css": 35,
+      "dominant_sentiment": "very_positive",
+      "count": 56,
+      "positive_pct": 91,
+      "negative_pct": 0
+    },
+    {
+      "category": "professional_services",
+      "avg_rating": 4.57,
+      "avg_css": 35,
+      "dominant_sentiment": "very_positive",
+      "count": 101,
+      "positive_pct": 78,
+      "negative_pct": 3
+    },
+    {
+      "category": "technology",
+      "avg_rating": 4.55,
+      "avg_css": 35,
+      "dominant_sentiment": "very_positive",
+      "count": 34,
+      "positive_pct": 79,
+      "negative_pct": 0
+    },
+    {
+      "category": "banking",
+      "avg_rating": 3.77,
+      "avg_css": 34,
+      "dominant_sentiment": "positive",
+      "count": 58,
+      "positive_pct": 52,
+      "negative_pct": 12
+    },
+    {
+      "category": "real_estate",
+      "avg_rating": 4.55,
+      "avg_css": 34,
+      "dominant_sentiment": "very_positive",
+      "count": 60,
+      "positive_pct": 78,
+      "negative_pct": 3
+    },
+    {
+      "category": "auto_dealer",
+      "avg_rating": 4.36,
+      "avg_css": 32,
+      "dominant_sentiment": "very_positive",
+      "count": 57,
+      "positive_pct": 81,
+      "negative_pct": 5
+    },
+    {
+      "category": "retail",
+      "avg_rating": 4.51,
+      "avg_css": 32,
+      "dominant_sentiment": "very_positive",
+      "count": 313,
+      "positive_pct": 92,
+      "negative_pct": 1
+    },
+    {
+      "category": "hospitality",
+      "avg_rating": 4.34,
+      "avg_css": 29,
+      "dominant_sentiment": "very_positive",
+      "count": 90,
+      "positive_pct": 82,
+      "negative_pct": 2
+    },
+    {
+      "category": "education",
+      "avg_rating": 4.55,
+      "avg_css": 16,
+      "dominant_sentiment": "unrated",
+      "count": 202,
+      "positive_pct": 18,
+      "negative_pct": 0
+    }
+  ],
+  "top_positive": [],
+  "top_negative": [
+    {
+      "business_id": "924_bird_rd_coral_gable",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "academy_for_community_education",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "academy_of_arts_and_minds_school",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "avis",
+      "sentiment": "negative",
+      "css": 0,
+      "rating": 1.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "bardos_caffe",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "big_diamond_1982",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "brito_miami_private_school",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "coral_villa_christian_academy",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "cucina_fresca",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "davinci_institute",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "el_pinero",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "enterprise",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "floridalanguageinstitute",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "freedom_christian_academy",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "gables_academy_of_miami",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "gulliversouthmiamicampus",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "gusman_concert_hall",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "hurricane_food_court",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "lakeside_expo_center",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    },
+    {
+      "business_id": "learningworkshop",
+      "sentiment": "unrated",
+      "css": 0,
+      "rating": 0.0,
+      "review_count": 0,
+      "delight_themes": [],
+      "pain_themes": [],
+      "delights": [],
+      "pains": [],
+      "has_sentiment_text": false
+    }
+  ]
+}

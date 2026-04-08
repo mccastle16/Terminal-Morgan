@@ -358,21 +358,167 @@ function buildOpportunityChart(instruction, businesses) {
   return { type: 'bar', title: instruction.title || 'Top Expansion Opportunities', data }
 }
 
+// ── Intelligence Builders ────────────────────────────────────────────────────
+
+function buildSentimentChart(instruction, businesses) {
+  const filtered = applyFilters(businesses, instruction.filter)
+
+  if (instruction.type === 'pie') {
+    // Sentiment distribution from ratings
+    const bands = { 'Very Positive': 0, 'Positive': 0, 'Neutral': 0, 'Negative': 0, 'Unrated': 0 }
+    filtered.forEach(b => {
+      if (!b._rating || b._rating === 0) bands['Unrated']++
+      else if (b._rating >= 4.5) bands['Very Positive']++
+      else if (b._rating >= 3.8) bands['Positive']++
+      else if (b._rating >= 3.0) bands['Neutral']++
+      else bands['Negative']++
+    })
+    const colors = { 'Very Positive': '#22c55e', 'Positive': '#84cc16', 'Neutral': '#eab308', 'Negative': '#ef4444', 'Unrated': '#475569' }
+    return {
+      type: 'pie', title: instruction.title,
+      data: Object.entries(bands).filter(([, v]) => v > 0).map(([name, value]) => ({ name, value, color: colors[name] })),
+    }
+  }
+
+  // Bar: average sentiment (rating proxy) by category or neighborhood
+  const groupBy = instruction.groupBy || 'category'
+  const groups = {}
+  filtered.forEach(b => {
+    const key = groupBy === 'neighborhood' ? (b.neighborhood_area || 'Unknown') : (b.category_primary?.replace(/_/g, ' ') || 'Unknown')
+    if (!groups[key]) groups[key] = { sum: 0, count: 0 }
+    if (b._rating > 0) { groups[key].sum += b._rating; groups[key].count++ }
+  })
+  const data = Object.entries(groups)
+    .filter(([, v]) => v.count >= 3)
+    .map(([name, v]) => ({ name: name.slice(0, 18), value: +(v.sum / v.count).toFixed(2) }))
+    .sort((a, b) => b.value - a.value)
+    .slice(0, instruction.limit || 12)
+
+  return { type: 'bar', title: instruction.title || 'Average Sentiment by Group', data }
+}
+
+function buildPredictionsChart(instruction, businesses) {
+  const filtered = applyFilters(businesses, instruction.filter)
+
+  if (instruction.type === 'pie') {
+    // Membership probability distribution
+    const bands = { 'High (≥60)': 0, 'Medium (30-59)': 0, 'Low (<30)': 0 }
+    filtered.forEach(b => {
+      const mp = b._recruitScore || 0
+      if (mp >= 60) bands['High (≥60)']++
+      else if (mp >= 30) bands['Medium (30-59)']++
+      else bands['Low (<30)']++
+    })
+    return {
+      type: 'pie', title: instruction.title,
+      data: [
+        { name: 'High (≥60)', value: bands['High (≥60)'], color: '#22c55e' },
+        { name: 'Medium (30-59)', value: bands['Medium (30-59)'], color: '#eab308' },
+        { name: 'Low (<30)', value: bands['Low (<30)'], color: '#ef4444' },
+      ].filter(d => d.value > 0),
+    }
+  }
+
+  // Bar: recruit score by category
+  const groupBy = instruction.groupBy || 'category'
+  const groups = {}
+  filtered.forEach(b => {
+    const key = groupBy === 'neighborhood' ? (b.neighborhood_area || 'Unknown') : (b.category_primary?.replace(/_/g, ' ') || 'Unknown')
+    if (!groups[key]) groups[key] = { sum: 0, count: 0 }
+    if (b._recruitScore > 0) { groups[key].sum += b._recruitScore; groups[key].count++ }
+  })
+  const data = Object.entries(groups)
+    .filter(([, v]) => v.count >= 2)
+    .map(([name, v]) => ({ name: name.slice(0, 18), value: +(v.sum / v.count).toFixed(1) }))
+    .sort((a, b) => b.value - a.value)
+    .slice(0, instruction.limit || 12)
+
+  return { type: 'bar', title: instruction.title || 'Avg Recruit Probability by Group', data }
+}
+
+function buildNetworkInfluenceChart(instruction, businesses) {
+  // Network influence uses review count as a proxy for influence in the chart builder
+  // (real centrality data flows through the system prompt, not the CSV)
+  const filtered = applyFilters(businesses, instruction.filter).filter(b => b._reviewCount > 0)
+
+  if (instruction.type === 'pie') {
+    const bands = { 'High Visibility (100+)': 0, 'Medium (20-99)': 0, 'Low (<20)': 0 }
+    filtered.forEach(b => {
+      if (b._reviewCount >= 100) bands['High Visibility (100+)']++
+      else if (b._reviewCount >= 20) bands['Medium (20-99)']++
+      else bands['Low (<20)']++
+    })
+    return {
+      type: 'pie', title: instruction.title,
+      data: [
+        { name: 'High Visibility (100+)', value: bands['High Visibility (100+)'], color: '#f59e0b' },
+        { name: 'Medium (20-99)', value: bands['Medium (20-99)'], color: '#3b82f6' },
+        { name: 'Low (<20)', value: bands['Low (<20)'], color: '#475569' },
+      ].filter(d => d.value > 0),
+    }
+  }
+
+  // Top businesses by review count (network proxy)
+  const sorted = [...filtered].sort((a, b) => b._reviewCount - a._reviewCount).slice(0, instruction.limit || 10)
+  const data = sorted.map(b => ({
+    name: (b.business_name || 'Unknown').slice(0, 16),
+    value: b._reviewCount,
+    fill: b._memberStatus === 'member' ? '#f59e0b' : '#3b82f6',
+  }))
+
+  return { type: 'bar', title: instruction.title || 'Top Network Influencers', data }
+}
+
+function buildPriceTierChart(instruction, businesses) {
+  const filtered = applyFilters(businesses, instruction.filter)
+  const tiers = ['$', '$$', '$$$', '$$$$']
+
+  if (instruction.type === 'pie') {
+    const counts = {}
+    filtered.forEach(b => {
+      const tier = b.price_tier || 'Unknown'
+      counts[tier] = (counts[tier] || 0) + 1
+    })
+    const colors = { '$': '#22c55e', '$$': '#3b82f6', '$$$': '#f59e0b', '$$$$': '#ef4444', 'Unknown': '#475569' }
+    return {
+      type: 'pie', title: instruction.title,
+      data: Object.entries(counts).filter(([, v]) => v > 0).map(([name, value]) => ({ name, value, color: colors[name] || '#475569' })),
+    }
+  }
+
+  // Bar: tier breakdown with membership split
+  const data = tiers.map(tier => {
+    const bizs = filtered.filter(b => b.price_tier === tier)
+    return {
+      name: tier,
+      Members: bizs.filter(b => b._memberStatus === 'member').length,
+      'Non-members': bizs.filter(b => b._memberStatus === 'non-member').length,
+      Unknown: bizs.filter(b => b._memberStatus === 'unknown').length,
+    }
+  }).filter(d => d.Members + d['Non-members'] + d.Unknown > 0)
+
+  return { type: 'bar', title: instruction.title || 'Price Tier Distribution', data }
+}
+
 // ── Main builder ─────────────────────────────────────────────────────────────
 
 const METRIC_BUILDERS = {
-  membership:      buildMembershipChart,
-  category:        buildCategoryChart,
-  neighborhood:    buildNeighborhoodChart,
-  rating:          buildRatingChart,
-  data_quality:    buildDataQualityChart,
-  red_flags:       buildRedFlagChart,
-  recruit_score:   buildRecruitScoreChart,
-  reviews:         buildReviewsChart,
-  validation:      buildValidationChart,
-  category_health: buildCategoryHealthChart,
-  saturation:      buildSaturationChart,
-  opportunity:     buildOpportunityChart,
+  membership:        buildMembershipChart,
+  category:          buildCategoryChart,
+  neighborhood:      buildNeighborhoodChart,
+  rating:            buildRatingChart,
+  data_quality:      buildDataQualityChart,
+  red_flags:         buildRedFlagChart,
+  recruit_score:     buildRecruitScoreChart,
+  reviews:           buildReviewsChart,
+  validation:        buildValidationChart,
+  category_health:   buildCategoryHealthChart,
+  saturation:        buildSaturationChart,
+  opportunity:       buildOpportunityChart,
+  sentiment:         buildSentimentChart,
+  predictions:       buildPredictionsChart,
+  network_influence: buildNetworkInfluenceChart,
+  price_tier:        buildPriceTierChart,
 }
 
 /**

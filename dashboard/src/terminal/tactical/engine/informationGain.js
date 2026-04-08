@@ -106,6 +106,37 @@ const DIMENSION_CHECKS = [
     label: b => `High-confidence data (${b._corroboration} sources)`,
     severity: 'info',
   },
+  // ── Intelligence dimensions ──
+  {
+    dimension: 'negative_sentiment',
+    condition: b => b._rating > 0 && b._rating < 3.0,
+    label: b => `Negative sentiment (${b._rating?.toFixed(1)}★) — may need intervention`,
+    severity: 'high',
+  },
+  {
+    dimension: 'premium_pricing',
+    condition: b => b.price_tier === '$$$$',
+    label: () => 'Premium pricing tier ($$$$) — niche positioning',
+    severity: 'info',
+  },
+  {
+    dimension: 'budget_pricing',
+    condition: b => b.price_tier === '$',
+    label: () => 'Budget pricing tier ($) — high-volume potential',
+    severity: 'info',
+  },
+  {
+    dimension: 'member_low_rating',
+    condition: b => b._memberStatus === 'member' && b._rating > 0 && b._rating < 3.5,
+    label: b => `Member with low rating (${b._rating?.toFixed(1)}) — churn risk`,
+    severity: 'high',
+  },
+  {
+    dimension: 'high_potential_non_member',
+    condition: b => b._memberStatus === 'non-member' && b._rating >= 4.0 && b._hasWebsite,
+    label: b => `High-quality non-member (${b._rating?.toFixed(1)}★ + website) — recruit target`,
+    severity: 'info',
+  },
 ]
 
 /**

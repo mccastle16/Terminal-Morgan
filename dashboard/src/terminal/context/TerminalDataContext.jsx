@@ -176,6 +176,19 @@ export function TerminalDataProvider({ children }) {
       }
     }).sort((a, b) => b.total - a.total)
 
+    // Price tier distribution
+    const priceTiers = ['$', '$$', '$$$', '$$$$']
+    const priceTierDist = priceTiers.map(tier => ({
+      tier,
+      count: all.filter(b => b.price_tier === tier).length,
+      members: all.filter(b => b.price_tier === tier && b._memberStatus === 'member').length,
+      avgRating: (() => {
+        const rated = all.filter(b => b.price_tier === tier && b._rating > 0)
+        return rated.length > 0 ? rated.reduce((s, b) => s + b._rating, 0) / rated.length : 0
+      })(),
+    }))
+    const priceCoverage = all.filter(b => priceTiers.includes(b.price_tier)).length
+
     return {
       total: all.length,
       members: members.length,
@@ -184,6 +197,8 @@ export function TerminalDataProvider({ children }) {
       membershipKnownRate: ((members.length + nonMembers.length) / all.length * 100),
       categories, neighborhoods,
       categoryPenetration, neighborhoodPenetration,
+      priceTierDist,
+      priceCoverage: parseFloat((priceCoverage / all.length * 100).toFixed(1)),
       avgRating: avgRatedRating,
       avgRatedRating: avgRatedRating,
       redFlagCount, criticalFlags,
@@ -365,14 +380,24 @@ export function TerminalDataProvider({ children }) {
   const [deltaData, setDeltaData] = useState(null)
   const [deltaHistory, setDeltaHistory] = useState([])
 
+  // ── Enrichment Data (sentiment, centrality, predictions) ───────────────────
+  const [sentimentData, setSentimentData] = useState(null)
+  const [centralityData, setCentralityData] = useState(null)
+  const [predictionData, setPredictionData] = useState(null)
+
   useEffect(() => {
-    // Load latest delta + history for temporal analysis
     Promise.all([
       fetch('/data/latest_delta.json').then(r => r.ok ? r.json() : null).catch(() => null),
       fetch('/data/delta_history.json').then(r => r.ok ? r.json() : []).catch(() => []),
-    ]).then(([delta, history]) => {
+      fetch('/data/sentiment_themes.json').then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch('/data/network_centrality.json').then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch('/data/prediction_summary.json').then(r => r.ok ? r.json() : null).catch(() => null),
+    ]).then(([delta, history, sentiment, centrality, predictions]) => {
       setDeltaData(delta)
       setDeltaHistory(history)
+      setSentimentData(sentiment)
+      setCentralityData(centrality)
+      setPredictionData(predictions)
     })
   }, [])
 
@@ -425,6 +450,7 @@ export function TerminalDataProvider({ children }) {
     <TerminalDataContext.Provider value={{
       businesses, filteredBusinesses: businesses, rawBusinesses, loading, error,
       stats, recruitQueue, marketAnalytics, deltaData, deltaHistory,
+      sentimentData, centralityData, predictionData,
       filters, setFilters,
       getBusinessById, getPeers, getNearby,
       bookmarks, toggleBookmark, isBookmarked,
