@@ -76,7 +76,7 @@ export default function OverviewPage() {
                 </h3>
                 <p className="text-[11px] text-slate-500 mt-0.5">Members vs non-members vs unknowns per sector</p>
               </div>
-              <button onClick={() => navigate('/terminal/analytics')}
+              <button onClick={() => navigate('/analytics')}
                 className="text-[11px] text-amber-400 hover:text-amber-300 flex items-center gap-1 px-2 py-1 rounded-md hover:bg-amber-500/10 transition-colors">
                 Full analytics <ArrowRight size={12} />
               </button>
@@ -144,7 +144,7 @@ export default function OverviewPage() {
                 </h3>
                 <p className="text-[11px] text-slate-500 mt-0.5">Highest-scored non-member prospects</p>
               </div>
-              <button onClick={() => navigate('/terminal/recruit')}
+              <button onClick={() => navigate('/recruit')}
                 className="text-[11px] text-amber-400 hover:text-amber-300 flex items-center gap-1 px-2 py-1 rounded-md hover:bg-amber-500/10 transition-colors">
                 Full queue <ArrowRight size={12} />
               </button>
@@ -152,7 +152,7 @@ export default function OverviewPage() {
             <div className="space-y-1.5">
               {topRecruits.map((biz, i) => (
                 <div key={biz._id}
-                  onClick={() => navigate(`/terminal/explorer/${biz._id}`)}
+                  onClick={() => navigate(`/explorer/${biz._id}`)}
                   className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800/50 cursor-pointer transition-colors group">
                   <span className="text-[10px] font-mono text-slate-600 w-4">{i + 1}</span>
                   <div className="flex-1 min-w-0">
@@ -188,7 +188,7 @@ export default function OverviewPage() {
                 <MapPin size={14} className="text-violet-400" />
                 Penetration by Neighborhood
               </h3>
-              <button onClick={() => navigate('/terminal/analytics')}
+              <button onClick={() => navigate('/analytics')}
                 className="text-[11px] text-amber-400 hover:text-amber-300 flex items-center gap-1 px-2 py-1 rounded-md hover:bg-amber-500/10 transition-colors">
                 Detail <ArrowRight size={12} />
               </button>

@@ -4,7 +4,21 @@ import {
   Send, Trash2, Stethoscope, BookOpen, Target, Activity,
   FileText, BarChart3, FlaskConical, Pin, ChevronDown, ChevronRight,
   AlertTriangle, CheckCircle2, Info, ArrowRight, Loader2,
+  Wifi, WifiOff, Cpu, Zap,
 } from 'lucide-react'
+
+// ── Simple markdown-to-html for LLM responses ──────────────────
+function formatLLMText(text) {
+  return text
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/^### (.+)$/gm, '<h4 class="text-xs font-semibold text-amber-400 mt-2 mb-1">$1</h4>')
+    .replace(/^## (.+)$/gm, '<h3 class="text-xs font-semibold text-amber-400 mt-3 mb-1">$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong class="text-slate-100 font-semibold">$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^- (.+)$/gm, '<div class="flex gap-1.5 ml-1"><span class="text-amber-500">•</span><span>$1</span></div>')
+    .replace(/^(\d+)\. (.+)$/gm, '<div class="flex gap-1.5 ml-1"><span class="text-amber-500 font-semibold">$1.</span><span>$2</span></div>')
+    .replace(/\n\n/g, '<br/><br/>')
+}
 
 // ── Severity badge ──────────────────────────────────────────────
 function SeverityBadge({ severity }) {
@@ -22,6 +36,54 @@ function SeverityBadge({ severity }) {
   )
 }
 
+// ── Module routing badge ────────────────────────────────────────
+function ModuleBadge({ module }) {
+  const styles = {
+    cyan:    'bg-cyan-500/15 text-cyan-400 border-cyan-500/20',
+    red:     'bg-red-500/15 text-red-400 border-red-500/20',
+    amber:   'bg-amber-500/15 text-amber-400 border-amber-500/20',
+    emerald: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/20',
+  }
+  return (
+    <span className={`text-[8px] font-semibold uppercase px-1.5 py-0.5 rounded border ${styles[module.color] || styles.amber}`}>
+      {module.label}
+    </span>
+  )
+}
+
+// ── IG Insights card (Information Analysis) ─────────────────────
+function IGInsightsCard({ insights }) {
+  if (!insights?.length) return null
+  const top = insights.slice(0, 5)
+  const maxIG = Math.max(...top.map(i => i.ig), 1)
+
+  return (
+    <div className="space-y-1.5 pt-2 border-t border-slate-800/30">
+      <h4 className="text-[10px] font-semibold text-cyan-400/80 uppercase tracking-wider flex items-center gap-1.5">
+        <Activity size={10} /> Information Analysis
+      </h4>
+      <div className="bg-slate-800/30 rounded-lg p-2.5 border border-cyan-500/10 space-y-1">
+        {top.map((ins, i) => (
+          <div key={i} className="flex items-center gap-2 text-[10px]">
+            <span className="text-slate-500 w-3 text-right">{i + 1}.</span>
+            <span className="text-slate-300 flex-1 truncate">{ins.label}</span>
+            <div className="flex items-center gap-1.5">
+              <div className="w-16 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-cyan-500/40 to-cyan-400/70 rounded-full transition-all"
+                  style={{ width: `${Math.min(100, (ins.ig / maxIG) * 100)}%` }}
+                />
+              </div>
+              <span className="text-cyan-400/60 font-mono w-8 text-right">{ins.ig.toFixed(1)}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="text-[9px] text-slate-600 italic">IG = -log₂(P) — higher = more unusual finding → more informative</p>
+    </div>
+  )
+}
+
 // ── Section renderers ───────────────────────────────────────────
 
 function DiagnosisSection({ section }) {
@@ -32,6 +94,12 @@ function DiagnosisSection({ section }) {
         <div key={i} className="bg-slate-800/50 rounded-lg p-3 border border-slate-700/50 space-y-1.5">
           <div className="flex items-center gap-2">
             <SeverityBadge severity={item.severity} />
+            {item.ig != null && (
+              <span className="text-[9px] font-mono text-cyan-400/70 bg-cyan-500/10 border border-cyan-500/20 px-1 py-0.5 rounded"
+                    title={`Information Gain: ${item.ig.toFixed(2)} bits — ${item.ig > 3 ? 'rare finding' : item.ig > 1.5 ? 'moderate' : 'common'}`}>
+                IG:{item.ig.toFixed(1)}
+              </span>
+            )}
             <span className="text-xs font-medium text-slate-200">{item.issue}</span>
           </div>
           <p className="text-[11px] text-slate-400 leading-relaxed">{item.detail}</p>
@@ -82,7 +150,14 @@ function RecommendationsSection({ section }) {
             {item.priority === 'high' ? <AlertTriangle size={12} /> : item.priority === 'medium' ? <Target size={12} /> : <Info size={12} />}
           </div>
           <div>
-            <p className="text-xs font-medium text-slate-200">{item.tip}</p>
+            <div className="flex items-center gap-1.5">
+              <p className="text-xs font-medium text-slate-200">{item.tip}</p>
+              {item.ig != null && (
+                <span className="text-[9px] font-mono text-cyan-400/70 bg-cyan-500/10 px-1 py-0.5 rounded shrink-0">
+                  IG:{item.ig.toFixed(1)}
+                </span>
+              )}
+            </div>
             <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">{item.detail}</p>
           </div>
         </div>
@@ -287,14 +362,26 @@ function ChatMessage({ msg, onPinChart }) {
             <Stethoscope size={12} className="text-amber-400" />
           </div>
           <span className="text-[10px] text-slate-500 font-medium">Business Advisor</span>
+          {response.module && <ModuleBadge module={response.module} />}
           <span className="text-[9px] text-slate-600">{new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
         </div>
+
+        {/* LLM natural language response */}
+        {msg.text && (
+          <div className="bg-slate-900/70 rounded-xl rounded-tl-sm border border-cyan-500/15 p-3.5">
+            <div className="text-[11px] text-slate-200 leading-relaxed whitespace-pre-wrap prose-headings:text-amber-400 prose-headings:font-semibold prose-headings:text-xs"
+                 dangerouslySetInnerHTML={{ __html: formatLLMText(msg.text) }} />
+          </div>
+        )}
 
         {/* Response sections */}
         <div className="bg-slate-900/50 rounded-xl rounded-tl-sm border border-slate-800/50 p-3.5 space-y-3">
           {response.sections.map((section, i) => (
             <ResponseSection key={i} section={section} />
           ))}
+
+          {/* Information Gain analysis card */}
+          {response.igInsights?.length > 0 && <IGInsightsCard insights={response.igInsights} />}
 
           {/* Chart pin buttons */}
           {response.chartSpec?.length > 0 && (
@@ -332,7 +419,7 @@ const QUICK_PROMPTS = [
 // ── Main Chat Component ─────────────────────────────────────────
 
 export default function AdvisorChat() {
-  const { messages, sendMessage, clearChat, isProcessing, pinChart } = useTactical()
+  const { messages, sendMessage, clearChat, isProcessing, pinChart, delta, setDelta, beliefState, aiMode, setAiMode, apiStatus } = useTactical()
   const [input, setInput] = useState('')
   const scrollRef = useRef(null)
 
@@ -365,7 +452,11 @@ export default function AdvisorChat() {
           </div>
           <div>
             <p className="text-xs font-semibold text-slate-200">AI Business Advisor</p>
-            <p className="text-[10px] text-slate-500">Diagnose · Explain · Recommend · Experiment</p>
+            <p className="text-[10px] text-slate-500">
+              {beliefState.sessionIG > 0
+                ? <>{beliefState.sessionIG.toFixed(1)} bits gained · {Object.keys(beliefState.beliefs).length} entities tracked</>
+                : 'Diagnose · Explain · Recommend · Experiment'}
+            </p>
           </div>
         </div>
         {messages.length > 0 && (
@@ -373,6 +464,34 @@ export default function AdvisorChat() {
             <Trash2 size={10} /> Clear
           </button>
         )}
+      </div>
+
+      {/* AI Mode toggle */}
+      <div className="flex items-center justify-between px-4 py-1.5 border-b border-slate-800/40 bg-slate-900/15">
+        <div className="flex items-center gap-1.5">
+          {['auto', 'llm', 'local'].map(mode => {
+            const active = aiMode === mode
+            const icons = { auto: Zap, llm: Wifi, local: Cpu }
+            const Icon = icons[mode]
+            return (
+              <button key={mode} onClick={() => setAiMode(mode)}
+                className={`flex items-center gap-1 px-2 py-0.5 rounded text-[9px] font-medium transition-all ${
+                  active
+                    ? 'bg-amber-500/15 text-amber-400 border border-amber-500/30'
+                    : 'text-slate-600 hover:text-slate-400 border border-transparent'}`}>
+                <Icon size={9} />
+                {mode === 'auto' ? 'Auto' : mode === 'llm' ? 'OpenAI' : 'Local'}
+              </button>
+            )
+          })}
+        </div>
+        <div className="flex items-center gap-1.5 text-[9px]">
+          {apiStatus.checked && (
+            apiStatus.available
+              ? <span className="flex items-center gap-1 text-emerald-500"><Wifi size={8} /> {apiStatus.model || 'connected'}</span>
+              : <span className="flex items-center gap-1 text-slate-600"><WifiOff size={8} /> API offline</span>
+          )}
+        </div>
       </div>
 
       {/* Messages */}
@@ -408,6 +527,18 @@ export default function AdvisorChat() {
             <span className="text-[11px]">Analyzing...</span>
           </div>
         )}
+      </div>
+
+      {/* Delta slider — exploration vs exploitation */}
+      <div className="flex items-center gap-2 px-3 py-1.5 border-t border-slate-800/40 bg-slate-900/20">
+        <span className="text-[9px] text-slate-600 whitespace-nowrap">Conservative</span>
+        <input
+          type="range" min="0" max="100" value={Math.round(delta * 100)}
+          onChange={(e) => setDelta(parseInt(e.target.value) / 100)}
+          className="flex-1 h-1 accent-amber-500 cursor-pointer"
+        />
+        <span className="text-[9px] text-slate-600 whitespace-nowrap">Exploratory</span>
+        <span className="text-[9px] text-amber-400/60 font-mono w-10 text-right">δ={delta.toFixed(1)}</span>
       </div>
 
       {/* Input */}

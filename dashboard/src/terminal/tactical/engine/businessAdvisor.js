@@ -1,9 +1,17 @@
+import { scoreBusinessInsights, rankInsights, initBusinessBelief, scoreMarketInsights, computeBusinessHealthScore } from './informationGain'
+import { routeToModule } from './advisorRouter'
+
 // ─── Business Advisor AI Engine ───────────────────────────────────────────────
 // Mirrors a clinical assistant pattern applied to business intelligence:
 //   Health topics       → Business topics (explain concepts, break down step-by-step)
 //   Track symptoms      → Diagnose business issues (ask probing questions, organize findings)
 //   General guidance    → Actionable business tips (quick wins, when to escalate)
 //   Organize health info → Compile intel summary for decision-makers
+//
+// Enhanced with Information Gain Theory & Bayesian Intelligence:
+//   IG(x) = -log₂(P(x))         — rarer issues surface first
+//   P(H|E) ∝ P(H) × P(E|H)     — beliefs update with conversation
+//   D = Pb + δ × Pe              — exploration vs exploitation
 //
 // The engine analyzes the business data context, the user's role, and the
 // conversation history to produce structured responses with optional chart specs.
@@ -600,9 +608,10 @@ function generateGeneral(message, entities, stats) {
 
 // ── Main advisor function ─────────────────────────────────────────────────────
 
-export function getAdvisorResponse(message, { stats, rawBusinesses, conversationHistory = [] }) {
+export function getAdvisorResponse(message, { stats, rawBusinesses, conversationHistory = [], beliefState, delta = 0.3, marketAnalytics }) {
   const intent = classifyIntent(message)
   const entities = extractEntities(message, stats, rawBusinesses)
+  const module = routeToModule(intent)
 
   let response
   switch (intent) {
@@ -617,10 +626,112 @@ export function getAdvisorResponse(message, { stats, rawBusinesses, conversation
     default:           response = generateGeneral(message, entities, stats); break
   }
 
+  // ── Information Gain enrichment ──────────────────────────────────
+  let igInsights = null
+  let beliefUpdate = null
+  let marketInsights = null
+  let businessHealth = null
+
+  if (entities.businesses.length > 0 && rawBusinesses?.length > 0) {
+    const biz = entities.businesses[0]
+    const bizKey = biz.business_name || biz._id
+    const insights = scoreBusinessInsights(biz, rawBusinesses)
+    igInsights = rankInsights(insights, beliefState, bizKey, delta)
+
+    // Compute contextual health score for this business
+    businessHealth = computeBusinessHealthScore(biz, rawBusinesses, marketAnalytics)
+
+    // Add health score card to the response
+    if (businessHealth && (intent === 'diagnose' || intent === 'summarize')) {
+      const catHealth = marketAnalytics?.categoryHealth?.find(c => c.category === biz.category_primary)
+      response.sections = response.sections || []
+      response.sections.push({
+        title: `Health Score: ${biz.business_name}`,
+        type: 'health_score',
+        score: businessHealth.total,
+        breakdown: businessHealth.breakdown,
+        context: {
+          ...businessHealth.context,
+          categoryCHI: catHealth?.chi ?? null,
+        },
+      })
+    }
+
+    if (beliefState && !beliefState.beliefs?.[bizKey]) {
+      beliefUpdate = initBusinessBelief(beliefState, bizKey, insights)
+    }
+
+    const DIMENSION_PATTERNS = {
+      low_rating: /rating/i,
+      no_website: /website/i,
+      no_phone: /phone/i,
+      red_flag: /flag/i,
+      low_validation: /validation/i,
+      unknown_status: /membership/i,
+      low_reviews: /review/i,
+      high_value_prospect: /prospect/i,
+      category_other: /uncategor|limit/i,
+      no_digital_presence: /digital|footprint/i,
+      elite_rating: /elite/i,
+      high_review_volume: /visibility/i,
+      multi_source_confirmed: /confidence|source/i,
+    }
+
+    response.sections?.forEach(section => {
+      if ((section.type === 'diagnosis' || section.type === 'recommendations') && section.items) {
+        section.items.forEach(item => {
+          const text = (item.issue || item.tip || '').toLowerCase()
+          const match = igInsights.find(ig => {
+            const pattern = DIMENSION_PATTERNS[ig.dimension]
+            return pattern && pattern.test(text)
+          })
+          if (match) {
+            item.ig = match.ig
+            item.igScore = match.score
+          }
+        })
+        section.items.sort((a, b) => (b.igScore || 0) - (a.igScore || 0))
+      }
+    })
+  }
+
+  // ── Market-level insights (when no specific business is mentioned) ──
+  if (entities.businesses.length === 0 && marketAnalytics && (intent === 'diagnose' || intent === 'summarize' || intent === 'general')) {
+    marketInsights = scoreMarketInsights(marketAnalytics, stats)
+    if (marketInsights.length > 0) {
+      response.sections = response.sections || []
+      response.sections.push({
+        title: 'Market Intelligence Signals',
+        type: 'market_insights',
+        items: marketInsights.slice(0, 5),
+        marketHealthScore: marketAnalytics.marketHealthScore,
+      })
+
+      // Add top opportunities chart
+      if (marketAnalytics.topOpportunities?.length > 0) {
+        response.chartSpec = response.chartSpec || []
+        response.chartSpec.push({
+          type: 'bar',
+          title: 'Top Growth Opportunities',
+          data: marketAnalytics.topOpportunities.slice(0, 8).map(o => ({
+            name: `${o.neighborhood} × ${o.category.replace(/_/g, ' ')}`,
+            value: o.nonMembers,
+            fill: o.penetration < 15 ? '#ef4444' : o.penetration < 30 ? '#eab308' : '#3b82f6',
+          })),
+        })
+      }
+    }
+  }
+
   return {
     ...response,
     intent,
     entities,
+    module,
+    igInsights,
+    beliefUpdate,
+    businessHealth,
+    marketInsights,
     timestamp: new Date().toISOString(),
   }
 }

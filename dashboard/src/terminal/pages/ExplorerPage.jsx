@@ -54,7 +54,7 @@ export default function ExplorerPage() {
       <div className="flex flex-col items-center justify-center h-64 gap-3">
         <XCircle size={32} className="text-slate-600" />
         <p className="text-sm text-slate-500">Business not found</p>
-        <button onClick={() => navigate('/terminal/browse')}
+        <button onClick={() => navigate('/browse')}
           className="text-xs text-amber-400 hover:text-amber-300">← Back to directory</button>
       </div>
     )
@@ -232,7 +232,7 @@ export default function ExplorerPage() {
               <div className="space-y-1">
                 {peers.slice(0, 8).map(peer => (
                   <div key={peer._id}
-                    onClick={() => navigate(`/terminal/explorer/${peer._id}`)}
+                    onClick={() => navigate(`/explorer/${peer._id}`)}
                     className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-800/50 cursor-pointer transition-colors group">
                     <div className="flex-1 min-w-0">
                       <p className="text-[11px] text-slate-300 truncate group-hover:text-amber-400 transition-colors">

@@ -240,7 +240,7 @@ export default function RecruitQueuePage() {
                   </div>
 
                   {/* Actions */}
-                  <button onClick={e => { e.stopPropagation(); navigate(`/terminal/explorer/${biz._id}`) }}
+                  <button onClick={e => { e.stopPropagation(); navigate(`/explorer/${biz._id}`) }}
                     className="w-8 text-center text-slate-600 hover:text-amber-400 transition-colors" title="View profile">
                     <Eye size={14} />
                   </button>

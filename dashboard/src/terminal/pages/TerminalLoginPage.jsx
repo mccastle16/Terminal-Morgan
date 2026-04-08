@@ -20,7 +20,7 @@ export default function TerminalLoginPage() {
     setLoading(true)
     try {
       await login(email, password)
-      navigate('/terminal')
+      navigate('/')
     } catch (err) {
       setError(err.message)
     } finally {
@@ -36,7 +36,7 @@ export default function TerminalLoginPage() {
     setLoading(true)
     try {
       await login(email, user.password)
-      navigate('/terminal')
+      navigate('/')
     } catch (err) {
       setError(err.message)
     } finally {

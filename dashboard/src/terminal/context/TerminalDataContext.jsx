@@ -14,6 +14,14 @@ export function TerminalDataProvider({ children }) {
     search: '', category: '', neighborhood: '', memberStatus: '',
     validationTier: '', riskLevel: '', minRating: '', hasWebsite: null,
   })
+  const [bookmarks, setBookmarks] = useState(() => {
+    const saved = localStorage.getItem('terminal_bookmarks')
+    return saved ? JSON.parse(saved) : []
+  })
+
+  useEffect(() => {
+    localStorage.setItem('terminal_bookmarks', JSON.stringify(bookmarks))
+  }, [bookmarks])
 
   useEffect(() => { loadData() }, [tenant])
 
@@ -64,6 +72,14 @@ export function TerminalDataProvider({ children }) {
           biz._recruitBand = getRecruitabilityBand(biz._recruitScore)
           biz._recruitReasons = getRecruitReasons(row)
         }
+
+        // Legacy-compatible aliases for ported pages
+        biz.id = biz._id
+        biz.rating = biz._rating
+        biz.reviewCount = biz._reviewCount
+        biz.osintConfidence = biz._confidence
+        biz.isChamberMember = memberStatus === 'member'
+        biz.hasRedFlag = biz._hasRedFlag
 
         return biz
       })
@@ -182,6 +198,184 @@ export function TerminalDataProvider({ children }) {
     }
   }, [rawBusinesses, tenant])
 
+  // ── Deep Market Analytics ───────────────────────────────────────────────────
+  const marketAnalytics = useMemo(() => {
+    const all = rawBusinesses
+    if (all.length === 0) return null
+
+    // 1. Competitive Saturation Index — businesses per category per neighborhood
+    const saturationGrid = {}
+    all.forEach(b => {
+      const cat = b.category_primary || 'other'
+      const hood = b.neighborhood_area || 'Unknown'
+      const key = `${cat}|${hood}`
+      if (!saturationGrid[key]) saturationGrid[key] = { category: cat, neighborhood: hood, total: 0, members: 0, avgRating: 0, ratings: [] }
+      saturationGrid[key].total++
+      if (b._memberStatus === 'member') saturationGrid[key].members++
+      if (b._rating > 0) saturationGrid[key].ratings.push(b._rating)
+    })
+
+    const saturation = Object.values(saturationGrid).map(s => ({
+      ...s,
+      avgRating: s.ratings.length > 0 ? s.ratings.reduce((a, b) => a + b, 0) / s.ratings.length : 0,
+      penetration: s.total > 0 ? (s.members / s.total * 100) : 0,
+      density: s.total, // raw count = density signal
+    }))
+
+    // 2. Category Health Index (CHI) — composite score per category
+    const categories = [...new Set(all.map(b => b.category_primary).filter(Boolean))]
+    const categoryHealth = categories.map(cat => {
+      const bizs = all.filter(b => b.category_primary === cat)
+      const rated = bizs.filter(b => b._rating > 0)
+      const members = bizs.filter(b => b._memberStatus === 'member')
+      const withWeb = bizs.filter(b => b._hasWebsite)
+      const withPhone = bizs.filter(b => b._hasPhone)
+      const highVal = bizs.filter(b => b._validationTier >= 3)
+      const flagged = bizs.filter(b => b._hasRedFlag)
+
+      const avgRating = rated.length > 0 ? rated.reduce((s, b) => s + b._rating, 0) / rated.length : 0
+      const avgReviews = rated.length > 0 ? rated.reduce((s, b) => s + b._reviewCount, 0) / rated.length : 0
+      const penetration = bizs.length > 0 ? (members.length / bizs.length * 100) : 0
+      const webCoverage = bizs.length > 0 ? (withWeb.length / bizs.length * 100) : 0
+      const phoneCoverage = bizs.length > 0 ? (withPhone.length / bizs.length * 100) : 0
+      const validationRate = bizs.length > 0 ? (highVal.length / bizs.length * 100) : 0
+      const riskRate = bizs.length > 0 ? (flagged.length / bizs.length * 100) : 0
+
+      // CHI = weighted composite (0-100)
+      const chi = Math.round(
+        (avgRating / 5 * 25) +            // rating quality (25%)
+        (Math.min(avgReviews, 100) / 100 * 15) + // review volume (15%)
+        (penetration / 100 * 20) +         // membership penetration (20%)
+        (webCoverage / 100 * 15) +         // digital presence (15%)
+        (validationRate / 100 * 15) +      // data confidence (15%)
+        ((100 - riskRate) / 100 * 10)      // risk safety (10%)
+      )
+
+      return {
+        category: cat,
+        count: bizs.length,
+        members: members.length,
+        penetration: Math.round(penetration * 10) / 10,
+        avgRating: Math.round(avgRating * 100) / 100,
+        avgReviews: Math.round(avgReviews),
+        webCoverage: Math.round(webCoverage * 10) / 10,
+        phoneCoverage: Math.round(phoneCoverage * 10) / 10,
+        validationRate: Math.round(validationRate * 10) / 10,
+        riskRate: Math.round(riskRate * 10) / 10,
+        chi,
+      }
+    }).sort((a, b) => b.chi - a.chi)
+
+    // 3. Neighborhood Opportunity Score (NOS) — where to focus expansion
+    const neighborhoods = [...new Set(all.map(b => b.neighborhood_area).filter(Boolean))]
+    const neighborhoodHealth = neighborhoods.map(hood => {
+      const bizs = all.filter(b => b.neighborhood_area === hood)
+      const members = bizs.filter(b => b._memberStatus === 'member')
+      const nonMembers = bizs.filter(b => b._memberStatus === 'non-member')
+      const rated = bizs.filter(b => b._rating > 0)
+      const avgRating = rated.length > 0 ? rated.reduce((s, b) => s + b._rating, 0) / rated.length : 0
+      const penetration = bizs.length > 0 ? (members.length / bizs.length * 100) : 0
+      const catDiversity = new Set(bizs.map(b => b.category_primary).filter(Boolean)).size
+
+      // NOS: High score = great opportunity for chamber growth
+      // Factors: large pool, low penetration, good business quality, diverse categories
+      const nos = Math.round(
+        (Math.min(nonMembers.length, 50) / 50 * 30) +  // non-member pool size (30%)
+        ((100 - penetration) / 100 * 25) +               // room to grow (25%)
+        (avgRating / 5 * 20) +                            // business quality (20%)
+        (Math.min(catDiversity, 15) / 15 * 15) +         // category diversity (15%)
+        (Math.min(bizs.length, 100) / 100 * 10)          // total market size (10%)
+      )
+
+      return {
+        neighborhood: hood,
+        total: bizs.length,
+        members: members.length,
+        nonMembers: nonMembers.length,
+        penetration: Math.round(penetration * 10) / 10,
+        avgRating: Math.round(avgRating * 100) / 100,
+        categoryDiversity: catDiversity,
+        nos,
+      }
+    }).sort((a, b) => b.nos - a.nos)
+
+    // 4. Concentration / Herfindahl Index — market dominance by category
+    const totalBiz = all.length
+    const hhi = categories.reduce((sum, cat) => {
+      const share = all.filter(b => b.category_primary === cat).length / totalBiz
+      return sum + share * share
+    }, 0)
+
+    // 5. Rating distribution percentiles
+    const allRatings = all.filter(b => b._rating > 0).map(b => b._rating).sort((a, b) => a - b)
+    const p = (arr, pct) => arr[Math.floor(arr.length * pct / 100)] || 0
+    const ratingPercentiles = {
+      p10: p(allRatings, 10),
+      p25: p(allRatings, 25),
+      p50: p(allRatings, 50),
+      p75: p(allRatings, 75),
+      p90: p(allRatings, 90),
+      mean: allRatings.length ? allRatings.reduce((a, b) => a + b, 0) / allRatings.length : 0,
+      stdDev: (() => {
+        if (allRatings.length < 2) return 0
+        const mean = allRatings.reduce((a, b) => a + b, 0) / allRatings.length
+        const variance = allRatings.reduce((s, r) => s + (r - mean) ** 2, 0) / allRatings.length
+        return Math.sqrt(variance)
+      })(),
+    }
+
+    // 6. Cross-tabulation: top opportunities (high NOS neighborhoods × high CHI categories)
+    const topOpportunities = []
+    const topHoods = neighborhoodHealth.slice(0, 8)
+    const topCats = categoryHealth.filter(c => c.chi >= 40).slice(0, 8)
+    topHoods.forEach(hood => {
+      topCats.forEach(cat => {
+        const cell = saturation.find(s => s.category === cat.category && s.neighborhood === hood.neighborhood)
+        if (cell && cell.total > 0 && cell.penetration < 50) {
+          topOpportunities.push({
+            neighborhood: hood.neighborhood,
+            category: cat.category,
+            bizCount: cell.total,
+            members: cell.members,
+            penetration: Math.round(cell.penetration),
+            hoodNOS: hood.nos,
+            catCHI: cat.chi,
+            score: Math.round((hood.nos + cat.chi) / 2),
+          })
+        }
+      })
+    })
+    topOpportunities.sort((a, b) => b.score - a.score)
+
+    return {
+      saturation,
+      categoryHealth,
+      neighborhoodHealth,
+      hhi: Math.round(hhi * 10000) / 10000,
+      hhiNormalized: Math.round(hhi * 10000), // 0-10000 scale
+      ratingPercentiles,
+      topOpportunities: topOpportunities.slice(0, 20),
+      marketHealthScore: Math.round(
+        categoryHealth.reduce((s, c) => s + c.chi, 0) / (categoryHealth.length || 1)
+      ),
+    }
+  }, [rawBusinesses])
+
+  // ── Temporal Data (delta from snapshot archiver) ────────────────────────────
+  const [deltaData, setDeltaData] = useState(null)
+  const [deltaHistory, setDeltaHistory] = useState([])
+
+  useEffect(() => {
+    // Load latest delta + history for temporal analysis
+    Promise.all([
+      fetch('/data/latest_delta.json').then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch('/data/delta_history.json').then(r => r.ok ? r.json() : []).catch(() => []),
+    ]).then(([delta, history]) => {
+      setDeltaData(delta)
+      setDeltaHistory(history)
+    })
+  }, [])
+
   // Recruit queue — pre-sorted by score
   const recruitQueue = useMemo(() => {
     return rawBusinesses
@@ -190,6 +384,16 @@ export function TerminalDataProvider({ children }) {
   }, [rawBusinesses])
 
   const getBusinessById = (id) => rawBusinesses.find(b => b._id === id)
+
+  const toggleBookmark = (businessId) => {
+    setBookmarks(prev =>
+      prev.includes(businessId)
+        ? prev.filter(id => id !== businessId)
+        : [...prev, businessId]
+    )
+  }
+
+  const isBookmarked = (businessId) => bookmarks.includes(businessId)
 
   const getPeers = (business) => {
     if (!business) return []
@@ -220,9 +424,10 @@ export function TerminalDataProvider({ children }) {
   return (
     <TerminalDataContext.Provider value={{
       businesses, filteredBusinesses: businesses, rawBusinesses, loading, error,
-      stats, recruitQueue,
+      stats, recruitQueue, marketAnalytics, deltaData, deltaHistory,
       filters, setFilters,
       getBusinessById, getPeers, getNearby,
+      bookmarks, toggleBookmark, isBookmarked,
     }}>
       {children}
     </TerminalDataContext.Provider>

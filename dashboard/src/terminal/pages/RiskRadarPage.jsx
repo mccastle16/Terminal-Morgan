@@ -76,7 +76,7 @@ export default function RiskRadarPage() {
         <div className="bg-gradient-to-br from-slate-900 to-slate-900/80 border border-slate-800/80 rounded-xl divide-y divide-slate-800/40 hover:border-slate-700/60 transition-colors">
           {filtered.slice(0, 50).map(biz => (
             <div key={biz._id}
-              onClick={() => navigate(`/terminal/explorer/${biz._id}`)}
+              onClick={() => navigate(`/explorer/${biz._id}`)}
               className="flex items-start gap-3 px-4 py-3 hover:bg-slate-800/30 cursor-pointer transition-colors group">
               <div className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${biz._isCritical ? 'bg-red-500' : 'bg-amber-500'}`} />
               <div className="flex-1 min-w-0">

@@ -6,17 +6,26 @@ import ModuleSwitcher from './ModuleSwitcher'
 import {
   LayoutDashboard, Search, Building2, BarChart3, GitCompare, ShieldAlert,
   UserPlus, TrendingUp, LogOut, ChevronLeft, ChevronRight, Terminal,
-  User, Shield, Database, Crosshair,
+  User, Shield, Database, Crosshair, Zap, Users, Share2, FlaskConical, FileText,
 } from 'lucide-react'
 
-const NAV_ITEMS = [
-  { to: '/terminal/overview',    icon: LayoutDashboard, label: 'Overview',       permission: null },
-  { to: '/terminal/browse',     icon: Search,          label: 'Browse',         permission: 'view_all_businesses' },
-  { to: '/terminal/analytics',  icon: BarChart3,       label: 'Analytics',      permission: 'view_analytics' },
-  { to: '/terminal/compare',    icon: GitCompare,      label: 'Compare',        permission: 'view_compare' },
-  { to: '/terminal/risks',      icon: ShieldAlert,     label: 'Risk Radar',     permission: 'view_risk_flags' },
-  { to: '/terminal/recruit',    icon: UserPlus,        label: 'Recruit Queue',  permission: 'view_recruit_queue' },
-  { to: '/terminal/market',     icon: TrendingUp,      label: 'Market Intel',   permission: 'view_market_intel' },
+const STRATEGIC_NAV = [
+  { to: '/overview',    icon: LayoutDashboard, label: 'Overview',       permission: null },
+  { to: '/my-business', icon: Building2,       label: 'My Business',    permission: null },
+  { to: '/browse',      icon: Search,          label: 'Browse',         permission: 'view_all_businesses' },
+  { to: '/analytics',   icon: BarChart3,       label: 'Analytics',      permission: 'view_analytics' },
+  { to: '/compare',     icon: GitCompare,      label: 'Compare',        permission: 'view_compare' },
+  { to: '/risks',       icon: ShieldAlert,     label: 'Risk Radar',     permission: 'view_risk_flags' },
+  { to: '/recruit',     icon: UserPlus,        label: 'Recruit Queue',  permission: 'view_recruit_queue' },
+  { to: '/playbook',    icon: Zap,             label: 'Playbook',       permission: 'view_analytics' },
+  { to: '/ecosystem',   icon: Users,           label: 'Ecosystem',      permission: null },
+]
+
+const TACTICAL_NAV = [
+  { to: '/tactical',    icon: Crosshair,       label: 'AI Advisor',     permission: null },
+  { to: '/graph',       icon: Share2,          label: 'Graph Analytics', permission: 'view_analytics' },
+  { to: '/experiments', icon: FlaskConical,    label: 'Experiments',    permission: 'view_analytics' },
+  { to: '/content',     icon: FileText,        label: 'Content Studio', permission: null },
 ]
 
 export default function TerminalLayout() {
@@ -25,14 +34,18 @@ export default function TerminalLayout() {
   const location = useLocation()
   const [collapsed, setCollapsed] = useState(false)
 
-  const isTactical = location.pathname.startsWith('/terminal/tactical')
+  const isTactical = location.pathname.startsWith('/tactical') ||
+    location.pathname.startsWith('/graph') ||
+    location.pathname.startsWith('/experiments') ||
+    location.pathname.startsWith('/content')
 
   const handleLogout = () => {
     logout()
-    navigate('/terminal/login')
+    navigate('/login')
   }
 
-  const visibleNav = NAV_ITEMS.filter(item => !item.permission || can(item.permission))
+  const navItems = isTactical ? TACTICAL_NAV : STRATEGIC_NAV
+  const visibleNav = navItems.filter(item => !item.permission || can(item.permission))
 
   return (
     <div className="h-screen flex bg-slate-950 text-slate-200 overflow-hidden terminal-charts">
@@ -56,9 +69,11 @@ export default function TerminalLayout() {
 
         {/* Navigation */}
         <nav className="flex-1 py-2 space-y-0.5 overflow-y-auto px-2">
-          {isTactical ? (
+          {visibleNav.map(item => (
             <NavLink
-              to="/terminal/tactical"
+              key={item.to}
+              to={item.to}
+              end={item.to === '/overview'}
               className={({ isActive }) =>
                 `flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm transition-all duration-200 group
                 ${isActive
@@ -66,27 +81,10 @@ export default function TerminalLayout() {
                   : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/70 border border-transparent'}`
               }
             >
-              <Crosshair size={18} className="flex-shrink-0" />
-              {!collapsed && <span className="truncate">AI Advisor</span>}
+              <item.icon size={18} className="flex-shrink-0" />
+              {!collapsed && <span className="truncate">{item.label}</span>}
             </NavLink>
-          ) : (
-            visibleNav.map(item => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                end={item.to === '/terminal'}
-                className={({ isActive }) =>
-                  `flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm transition-all duration-200 group
-                  ${isActive
-                    ? 'bg-amber-500/10 text-amber-400 font-medium shadow-sm shadow-amber-500/5 border border-amber-500/10'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/70 border border-transparent'}`
-                }
-              >
-                <item.icon size={18} className="flex-shrink-0" />
-                {!collapsed && <span className="truncate">{item.label}</span>}
-              </NavLink>
-            ))
-          )}
+          ))}
         </nav>
 
         {/* Footer */}

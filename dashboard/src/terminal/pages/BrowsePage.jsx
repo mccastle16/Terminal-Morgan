@@ -119,7 +119,7 @@ export default function BrowsePage() {
         <div className="divide-y divide-slate-800/50">
           {paginated.map(biz => (
             <div key={biz._id}
-              onClick={() => navigate(`/terminal/explorer/${biz._id}`)}
+              onClick={() => navigate(`/explorer/${biz._id}`)}
               className="flex items-center gap-2 px-3 py-2 hover:bg-slate-800/40 cursor-pointer transition-colors group">
 
               {/* Business name */}
