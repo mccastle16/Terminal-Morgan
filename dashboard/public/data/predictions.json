@@ -146,7 +146,7 @@
   },
   {
     "business_id": "305_drive_inc_limousine_service",
-    "membership_probability": 37,
+    "membership_probability": 38,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -158,7 +158,7 @@
   },
   {
     "business_id": "305_hive_media",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -257,11 +257,10 @@
     "business_id": "450gradimiami",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 21,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "bridge_position"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -328,7 +327,7 @@
   },
   {
     "business_id": "924_bird_rd_coral_gable",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -404,7 +403,7 @@
   },
   {
     "business_id": "aaa_insurance",
-    "membership_probability": 34,
+    "membership_probability": 35,
     "mp_band": "low",
     "growth_trajectory": 4,
     "gt_band": "stable",
@@ -476,7 +475,7 @@
   },
   {
     "business_id": "abco_mortgage",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -510,7 +509,7 @@
   },
   {
     "business_id": "academy_for_community_education",
-    "membership_probability": 17,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -524,7 +523,7 @@
   },
   {
     "business_id": "academy_of_arts_and_minds_school",
-    "membership_probability": 17,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -573,7 +572,7 @@
   },
   {
     "business_id": "acentria",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -609,7 +608,7 @@
   },
   {
     "business_id": "actors_playhouse_at_the_miracle_theatre",
-    "membership_probability": 38,
+    "membership_probability": 37,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -1006,7 +1005,7 @@
   },
   {
     "business_id": "alice_bravo_assoc_llc",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -1078,7 +1077,7 @@
   },
   {
     "business_id": "alliantinsuranceservices",
-    "membership_probability": 27,
+    "membership_probability": 29,
     "mp_band": "low",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -1102,7 +1101,7 @@
   },
   {
     "business_id": "alliednorthamericainsurancebrokerageoffl",
-    "membership_probability": 12,
+    "membership_probability": 13,
     "mp_band": "low",
     "growth_trajectory": -15,
     "gt_band": "declining",
@@ -1174,7 +1173,7 @@
   },
   {
     "business_id": "alpha_claims_consultants",
-    "membership_probability": 10,
+    "membership_probability": 11,
     "mp_band": "low",
     "growth_trajectory": 7,
     "gt_band": "stable",
@@ -1222,7 +1221,7 @@
   },
   {
     "business_id": "aman_barber_shop",
-    "membership_probability": 4,
+    "membership_probability": 5,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -1256,7 +1255,7 @@
   },
   {
     "business_id": "amerant_bank",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -1348,7 +1347,7 @@
   },
   {
     "business_id": "american_transportation_limo",
-    "membership_probability": 37,
+    "membership_probability": 38,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -1424,7 +1423,7 @@
   },
   {
     "business_id": "amscot",
-    "membership_probability": 25,
+    "membership_probability": 26,
     "mp_band": "low",
     "growth_trajectory": -5,
     "gt_band": "stable",
@@ -1548,11 +1547,10 @@
     "business_id": "antonioperezc",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 21,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "bridge_position"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -1610,7 +1608,7 @@
   },
   {
     "business_id": "ara_gallery_cultural_center",
-    "membership_probability": 41,
+    "membership_probability": 43,
     "mp_band": "medium",
     "growth_trajectory": 11,
     "gt_band": "growing",
@@ -1680,7 +1678,7 @@
   },
   {
     "business_id": "arcoagentinsurance",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -1965,7 +1963,7 @@
   },
   {
     "business_id": "ascendant_insurance_solutions_llc",
-    "membership_probability": 24,
+    "membership_probability": 26,
     "mp_band": "low",
     "growth_trajectory": -15,
     "gt_band": "declining",
@@ -2087,11 +2085,9 @@
     "business_id": "atkinsengineers",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 11,
-    "gt_band": "growing",
-    "gt_signals": [
-      "bridge_position"
-    ],
+    "growth_trajectory": 6,
+    "gt_band": "stable",
+    "gt_signals": [],
     "churn_risk": null,
     "is_member": false
   },
@@ -2192,7 +2188,7 @@
   },
   {
     "business_id": "aurora_academy",
-    "membership_probability": 53,
+    "membership_probability": 55,
     "mp_band": "medium",
     "growth_trajectory": -6,
     "gt_band": "declining",
@@ -2277,7 +2273,7 @@
   },
   {
     "business_id": "avante_insurance_group_llc",
-    "membership_probability": 30,
+    "membership_probability": 32,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -2522,7 +2518,7 @@
   },
   {
     "business_id": "banesco_usa",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -2545,7 +2541,7 @@
   },
   {
     "business_id": "bank_of_america",
-    "membership_probability": 17,
+    "membership_probability": 18,
     "mp_band": "low",
     "growth_trajectory": -15,
     "gt_band": "declining",
@@ -2585,7 +2581,7 @@
   },
   {
     "business_id": "bankmiami",
-    "membership_probability": 17,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -15,
     "gt_band": "declining",
@@ -2599,7 +2595,7 @@
   },
   {
     "business_id": "bankunited",
-    "membership_probability": 25,
+    "membership_probability": 27,
     "mp_band": "low",
     "growth_trajectory": -15,
     "gt_band": "declining",
@@ -2758,7 +2754,7 @@
   },
   {
     "business_id": "baptist_rehabilitation_hospital",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -2800,12 +2796,10 @@
     "business_id": "barberstudiomi",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 24,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "bridge_position",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -2838,20 +2832,19 @@
     "business_id": "bardos_caffe",
     "membership_probability": 19,
     "mp_band": "low",
-    "growth_trajectory": -13,
+    "growth_trajectory": -16,
     "gt_band": "declining",
     "gt_signals": [
       "no_digital",
       "red_flag",
-      "negative_sentiment",
-      "high_influence"
+      "negative_sentiment"
     ],
     "churn_risk": null,
     "is_member": false
   },
   {
     "business_id": "barnes__noble",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -2875,7 +2868,7 @@
   },
   {
     "business_id": "barrington_academy",
-    "membership_probability": 18,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": 7,
     "gt_band": "stable",
@@ -2913,7 +2906,7 @@
   },
   {
     "business_id": "batteries__bulbs",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 7,
     "gt_band": "stable",
@@ -3140,7 +3133,7 @@
   },
   {
     "business_id": "bellezza",
-    "membership_probability": 4,
+    "membership_probability": 5,
     "mp_band": "low",
     "growth_trajectory": -2,
     "gt_band": "stable",
@@ -3166,7 +3159,7 @@
   },
   {
     "business_id": "belmont_bank_trust",
-    "membership_probability": 24,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -3310,7 +3303,7 @@
   },
   {
     "business_id": "best_buy",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -3428,7 +3421,7 @@
   },
   {
     "business_id": "bgi_capital",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -3440,7 +3433,7 @@
   },
   {
     "business_id": "bid_daddys_wine__liquors",
-    "membership_probability": 13,
+    "membership_probability": 14,
     "mp_band": "low",
     "growth_trajectory": -2,
     "gt_band": "stable",
@@ -3466,7 +3459,7 @@
   },
   {
     "business_id": "big_diamond_1982",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -3646,7 +3639,7 @@
   },
   {
     "business_id": "blackmoreconsulting",
-    "membership_probability": 2,
+    "membership_probability": 3,
     "mp_band": "low",
     "growth_trajectory": 4,
     "gt_band": "stable",
@@ -3695,7 +3688,7 @@
   },
   {
     "business_id": "blaremedia",
-    "membership_probability": 21,
+    "membership_probability": 22,
     "mp_band": "low",
     "growth_trajectory": -4,
     "gt_band": "stable",
@@ -3757,11 +3750,10 @@
     "business_id": "blondebarberbarbershopcoralgables",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -3839,7 +3831,7 @@
   },
   {
     "business_id": "blueprint_it_consulting_llc",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -3851,7 +3843,7 @@
   },
   {
     "business_id": "bmsinsuranceagencyofflorida",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -3863,7 +3855,7 @@
   },
   {
     "business_id": "bndengineers",
-    "membership_probability": 10,
+    "membership_probability": 9,
     "mp_band": "low",
     "growth_trajectory": -4,
     "gt_band": "stable",
@@ -3875,7 +3867,7 @@
   },
   {
     "business_id": "bobs_watches",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -4041,7 +4033,7 @@
   },
   {
     "business_id": "borbollainsuranceagencies",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -4053,7 +4045,7 @@
   },
   {
     "business_id": "borbollainsuranceagenciesallstateinsurance",
-    "membership_probability": 5,
+    "membership_probability": 6,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -4089,7 +4081,7 @@
   },
   {
     "business_id": "bosss_hair_salon",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -4228,7 +4220,7 @@
   },
   {
     "business_id": "baccountingservices",
-    "membership_probability": 5,
+    "membership_probability": 6,
     "mp_band": "low",
     "growth_trajectory": 8,
     "gt_band": "stable",
@@ -4293,7 +4285,7 @@
   },
   {
     "business_id": "brasfield_gorrie_llc",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -4352,7 +4344,7 @@
   },
   {
     "business_id": "brilliantearth",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -4429,7 +4421,7 @@
   },
   {
     "business_id": "brown_brown_insurance_services_inc",
-    "membership_probability": 30,
+    "membership_probability": 32,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -4441,7 +4433,7 @@
   },
   {
     "business_id": "brownbrownrsinsuranceservices",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -4567,11 +4559,10 @@
     "business_id": "burtonhersharchitects",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 21,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "bridge_position"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -4790,11 +4781,10 @@
     "business_id": "calista__greek_seafood_taverna",
     "membership_probability": 1,
     "mp_band": "low",
-    "growth_trajectory": 22,
+    "growth_trajectory": 19,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -4825,7 +4815,7 @@
   },
   {
     "business_id": "calle_ocho",
-    "membership_probability": 4,
+    "membership_probability": 5,
     "mp_band": "low",
     "growth_trajectory": 11,
     "gt_band": "growing",
@@ -4865,7 +4855,7 @@
   },
   {
     "business_id": "calvarychurchofthenazarene",
-    "membership_probability": 4,
+    "membership_probability": 5,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -4942,11 +4932,10 @@
     "business_id": "canawine",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -5362,17 +5351,15 @@
     "business_id": "cebadarooftop",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 12,
-    "gt_band": "growing",
-    "gt_signals": [
-      "high_influence"
-    ],
+    "growth_trajectory": 9,
+    "gt_band": "stable",
+    "gt_signals": [],
     "churn_risk": null,
     "is_member": false
   },
   {
     "business_id": "cecile",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -5385,7 +5372,7 @@
   },
   {
     "business_id": "centennial_bank",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -5409,7 +5396,7 @@
   },
   {
     "business_id": "central_christian_church",
-    "membership_probability": 8,
+    "membership_probability": 9,
     "mp_band": "low",
     "growth_trajectory": 20,
     "gt_band": "growing",
@@ -5433,7 +5420,7 @@
   },
   {
     "business_id": "centralchristianchurchfooddistributioncenter",
-    "membership_probability": 3,
+    "membership_probability": 4,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -5483,7 +5470,7 @@
   },
   {
     "business_id": "cernudaarte",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -5590,7 +5577,7 @@
   },
   {
     "business_id": "chase",
-    "membership_probability": 20,
+    "membership_probability": 21,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -5661,7 +5648,7 @@
   },
   {
     "business_id": "cheilteam_uno",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -5807,7 +5794,7 @@
   },
   {
     "business_id": "choicemd",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -6025,7 +6012,7 @@
   },
   {
     "business_id": "citynationalbank",
-    "membership_probability": 10,
+    "membership_probability": 11,
     "mp_band": "low",
     "growth_trajectory": -3,
     "gt_band": "stable",
@@ -6037,7 +6024,7 @@
   },
   {
     "business_id": "city_national_bank_of_florida",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 10,
     "gt_band": "growing",
@@ -6095,7 +6082,7 @@
   },
   {
     "business_id": "claim_check_consultants",
-    "membership_probability": 33,
+    "membership_probability": 35,
     "mp_band": "low",
     "growth_trajectory": 1,
     "gt_band": "stable",
@@ -6157,11 +6144,10 @@
     "business_id": "clementineswinegourmet",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -6220,7 +6206,7 @@
   },
   {
     "business_id": "counderscore",
-    "membership_probability": 21,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -6233,7 +6219,7 @@
   },
   {
     "business_id": "coach_ron_fraser",
-    "membership_probability": 51,
+    "membership_probability": 53,
     "mp_band": "medium",
     "growth_trajectory": -6,
     "gt_band": "declining",
@@ -6387,7 +6373,7 @@
   },
   {
     "business_id": "cocowalk",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -6470,7 +6456,7 @@
   },
   {
     "business_id": "coldwell_banker_realty",
-    "membership_probability": 24,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -6482,7 +6468,7 @@
   },
   {
     "business_id": "college_of_arts_and_sciences",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -6494,7 +6480,7 @@
   },
   {
     "business_id": "college_of_engineering",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -6645,7 +6631,7 @@
   },
   {
     "business_id": "comssrealestatecoralgables",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": -12,
     "gt_band": "declining",
@@ -6669,7 +6655,7 @@
   },
   {
     "business_id": "completeinsuranceagency",
-    "membership_probability": 5,
+    "membership_probability": 6,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -6786,7 +6772,7 @@
   },
   {
     "business_id": "consulate_general_of_paraguay",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -6798,7 +6784,7 @@
   },
   {
     "business_id": "consulate_general_of_peru",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -6850,7 +6836,7 @@
   },
   {
     "business_id": "continental_academy",
-    "membership_probability": 53,
+    "membership_probability": 55,
     "mp_band": "medium",
     "growth_trajectory": -6,
     "gt_band": "declining",
@@ -6863,7 +6849,7 @@
   },
   {
     "business_id": "continentalinsurancebrokers",
-    "membership_probability": 10,
+    "membership_probability": 11,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -6919,7 +6905,7 @@
   },
   {
     "business_id": "copy_express",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 7,
     "gt_band": "stable",
@@ -7057,7 +7043,7 @@
   },
   {
     "business_id": "coral_gables_car_accident_lawyer_group",
-    "membership_probability": 19,
+    "membership_probability": 20,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -7604,7 +7590,7 @@
   },
   {
     "business_id": "cordo_claims_group_llc",
-    "membership_probability": 30,
+    "membership_probability": 32,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -7716,7 +7702,7 @@
   },
   {
     "business_id": "cosford_cinema",
-    "membership_probability": 35,
+    "membership_probability": 36,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -7821,7 +7807,7 @@
   },
   {
     "business_id": "coutler_discount",
-    "membership_probability": 4,
+    "membership_probability": 5,
     "mp_band": "low",
     "growth_trajectory": 4,
     "gt_band": "stable",
@@ -7845,7 +7831,7 @@
   },
   {
     "business_id": "cmiami",
-    "membership_probability": 7,
+    "membership_probability": 8,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -8054,19 +8040,18 @@
     "business_id": "cuban_museum",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 28,
+    "growth_trajectory": 23,
     "gt_band": "growing",
     "gt_signals": [
       "high_rating",
-      "high_visibility",
-      "bridge_position"
+      "high_visibility"
     ],
     "churn_risk": null,
     "is_member": false
   },
   {
     "business_id": "cucina_fresca",
-    "membership_probability": 17,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -8239,7 +8224,7 @@
   },
   {
     "business_id": "dade_county_federal_credit_union",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -8333,7 +8318,7 @@
   },
   {
     "business_id": "dancesway",
-    "membership_probability": 28,
+    "membership_probability": 30,
     "mp_band": "low",
     "growth_trajectory": -5,
     "gt_band": "stable",
@@ -8448,7 +8433,7 @@
   },
   {
     "business_id": "davinci_institute",
-    "membership_probability": 17,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -8464,11 +8449,10 @@
     "business_id": "dawsonassociatesc",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -8512,7 +8496,7 @@
   },
   {
     "business_id": "delahozperezbarbeitop",
-    "membership_probability": 21,
+    "membership_probability": 22,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -8563,7 +8547,7 @@
   },
   {
     "business_id": "debowsky_design_group",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -8619,7 +8603,7 @@
   },
   {
     "business_id": "dedicated_wealth_partners_of_raymond_james",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -9292,7 +9276,7 @@
   },
   {
     "business_id": "dopazo_associates_insurance_services",
-    "membership_probability": 30,
+    "membership_probability": 32,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -9587,7 +9571,7 @@
   },
   {
     "business_id": "drwilliammoyaldcccspcoralwaychiropracticcenter",
-    "membership_probability": 0,
+    "membership_probability": 1,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -9706,7 +9690,7 @@
   },
   {
     "business_id": "durbansegninigallery",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -9720,18 +9704,17 @@
     "business_id": "dynamicaarchitecture",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
   },
   {
     "business_id": "egomezc",
-    "membership_probability": 21,
+    "membership_probability": 22,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -9763,7 +9746,7 @@
   },
   {
     "business_id": "east_coast_properties_commercial_real_estate",
-    "membership_probability": 20,
+    "membership_probability": 21,
     "mp_band": "low",
     "growth_trajectory": -4,
     "gt_band": "stable",
@@ -9816,11 +9799,10 @@
     "business_id": "eatinghousemiami",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 20,
+    "growth_trajectory": 17,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -9879,7 +9861,7 @@
   },
   {
     "business_id": "ecrengineering",
-    "membership_probability": 10,
+    "membership_probability": 9,
     "mp_band": "low",
     "growth_trajectory": -4,
     "gt_band": "stable",
@@ -9915,7 +9897,7 @@
   },
   {
     "business_id": "edward_bernier",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -9927,7 +9909,7 @@
   },
   {
     "business_id": "edward_jones",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -10248,7 +10230,7 @@
   },
   {
     "business_id": "emergent_global_investments_llc",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -10320,7 +10302,7 @@
   },
   {
     "business_id": "enterprise",
-    "membership_probability": 18,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -26,
     "gt_band": "declining",
@@ -10369,7 +10351,7 @@
   },
   {
     "business_id": "epic_smiles_miami",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -10396,7 +10378,7 @@
   },
   {
     "business_id": "episcopal_church_center",
-    "membership_probability": 34,
+    "membership_probability": 35,
     "mp_band": "low",
     "growth_trajectory": 11,
     "gt_band": "growing",
@@ -10541,7 +10523,7 @@
   },
   {
     "business_id": "equitable_advisors",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -10658,7 +10640,7 @@
   },
   {
     "business_id": "esthetics_by_salima",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -10684,7 +10666,7 @@
   },
   {
     "business_id": "estrella_insurance",
-    "membership_probability": 33,
+    "membership_probability": 35,
     "mp_band": "low",
     "growth_trajectory": -5,
     "gt_band": "stable",
@@ -10711,20 +10693,19 @@
   },
   {
     "business_id": "eutelsat_americas_miami",
-    "membership_probability": 37,
+    "membership_probability": 36,
     "mp_band": "low",
-    "growth_trajectory": -1,
+    "growth_trajectory": -4,
     "gt_band": "stable",
     "gt_signals": [
-      "negative_sentiment",
-      "high_influence"
+      "negative_sentiment"
     ],
     "churn_risk": null,
     "is_member": false
   },
   {
     "business_id": "evangelism_for_christ_church",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -10764,7 +10745,7 @@
   },
   {
     "business_id": "everbank",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -10882,7 +10863,7 @@
   },
   {
     "business_id": "extra_space_storage",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -10991,7 +10972,7 @@
   },
   {
     "business_id": "faculty_club",
-    "membership_probability": 36,
+    "membership_probability": 38,
     "mp_band": "low",
     "growth_trajectory": -4,
     "gt_band": "stable",
@@ -11053,7 +11034,7 @@
   },
   {
     "business_id": "fantasy_1958",
-    "membership_probability": 41,
+    "membership_probability": 43,
     "mp_band": "medium",
     "growth_trajectory": -9,
     "gt_band": "declining",
@@ -11198,7 +11179,7 @@
   },
   {
     "business_id": "fintech_espresso",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -11224,7 +11205,7 @@
   },
   {
     "business_id": "firstamericanbank",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -11248,7 +11229,7 @@
   },
   {
     "business_id": "first_citizens_bank",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -11258,7 +11239,7 @@
   },
   {
     "business_id": "first_horizon_bank",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -11268,7 +11249,7 @@
   },
   {
     "business_id": "first_solution_insurance",
-    "membership_probability": 33,
+    "membership_probability": 35,
     "mp_band": "low",
     "growth_trajectory": 1,
     "gt_band": "stable",
@@ -11281,7 +11262,7 @@
   },
   {
     "business_id": "first_umc_coral_gables_church",
-    "membership_probability": 30,
+    "membership_probability": 32,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -11305,7 +11286,7 @@
   },
   {
     "business_id": "first_united_methodist_church_of_miami",
-    "membership_probability": 30,
+    "membership_probability": 32,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -11317,7 +11298,7 @@
   },
   {
     "business_id": "firstbank_florida",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 10,
     "gt_band": "growing",
@@ -11327,7 +11308,7 @@
   },
   {
     "business_id": "firstbankfloridacoralgables",
-    "membership_probability": 3,
+    "membership_probability": 4,
     "mp_band": "low",
     "growth_trajectory": 7,
     "gt_band": "stable",
@@ -11424,7 +11405,7 @@
   },
   {
     "business_id": "flagstar",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -11434,7 +11415,7 @@
   },
   {
     "business_id": "flagstarbank",
-    "membership_probability": 3,
+    "membership_probability": 4,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -11470,7 +11451,7 @@
   },
   {
     "business_id": "fleites_law_pa",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -11599,7 +11580,7 @@
   },
   {
     "business_id": "floridalanguageinstitute",
-    "membership_probability": 18,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -26,
     "gt_band": "declining",
@@ -11773,7 +11754,7 @@
   },
   {
     "business_id": "fluidmarketplaces",
-    "membership_probability": 35,
+    "membership_probability": 37,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -11834,7 +11815,7 @@
   },
   {
     "business_id": "fohhn_audio_americas_llc",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -11955,7 +11936,7 @@
   },
   {
     "business_id": "fortuninsurance",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -11965,7 +11946,7 @@
   },
   {
     "business_id": "foundationoftheamericas",
-    "membership_probability": 10,
+    "membership_probability": 11,
     "mp_band": "low",
     "growth_trajectory": -4,
     "gt_band": "stable",
@@ -11977,7 +11958,7 @@
   },
   {
     "business_id": "four_leaf_marketing_consulting",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -12138,11 +12119,10 @@
     "business_id": "frenchies_dinner",
     "membership_probability": 1,
     "mp_band": "low",
-    "growth_trajectory": 22,
+    "growth_trajectory": 19,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -12235,7 +12215,7 @@
   },
   {
     "business_id": "frost_school_of_music",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -12247,7 +12227,7 @@
   },
   {
     "business_id": "frost_science_museum",
-    "membership_probability": 35,
+    "membership_probability": 36,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -12520,7 +12500,7 @@
   },
   {
     "business_id": "gables_engineering",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -12649,7 +12629,7 @@
   },
   {
     "business_id": "gables_laundry_and_dry_cleaners",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 7,
     "gt_band": "stable",
@@ -12823,7 +12803,7 @@
   },
   {
     "business_id": "galleryplaza",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -12835,7 +12815,7 @@
   },
   {
     "business_id": "gamechangers_consulting_llc",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -13141,7 +13121,7 @@
   },
   {
     "business_id": "gibsonbethel_community_center",
-    "membership_probability": 7,
+    "membership_probability": 8,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -13168,11 +13148,9 @@
     "business_id": "giraldacleaners",
     "membership_probability": 1,
     "mp_band": "low",
-    "growth_trajectory": 11,
-    "gt_band": "growing",
-    "gt_signals": [
-      "bridge_position"
-    ],
+    "growth_trajectory": 6,
+    "gt_band": "stable",
+    "gt_signals": [],
     "churn_risk": null,
     "is_member": false
   },
@@ -13441,7 +13419,7 @@
   },
   {
     "business_id": "golden_touch_barbershop__salon",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -13463,7 +13441,7 @@
   },
   {
     "business_id": "goldman_sachs_10000_small_businesses_at_miami_dade_college",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": -12,
     "gt_band": "declining",
@@ -13573,7 +13551,7 @@
   },
   {
     "business_id": "gooseheadinsuranceagency",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -13620,7 +13598,7 @@
   },
   {
     "business_id": "graduate_school",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -13713,12 +13691,11 @@
     "business_id": "grazianos_market",
     "membership_probability": 1,
     "mp_band": "low",
-    "growth_trajectory": 17,
+    "growth_trajectory": 14,
     "gt_band": "growing",
     "gt_signals": [
       "high_rating",
-      "red_flag",
-      "high_influence"
+      "red_flag"
     ],
     "churn_risk": null,
     "is_member": false
@@ -13794,7 +13771,7 @@
   },
   {
     "business_id": "greatfloridainsuranceanatriciaarguello",
-    "membership_probability": 5,
+    "membership_probability": 6,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -13806,7 +13783,7 @@
   },
   {
     "business_id": "greatfloridainsurancemikecarcas",
-    "membership_probability": 5,
+    "membership_probability": 6,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -13926,7 +13903,7 @@
   },
   {
     "business_id": "grove_bank_trust",
-    "membership_probability": 22,
+    "membership_probability": 24,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -13972,7 +13949,7 @@
   },
   {
     "business_id": "grove_liquors",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -13992,7 +13969,7 @@
   },
   {
     "business_id": "groverwinstoninsurancegroup",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -14096,7 +14073,7 @@
   },
   {
     "business_id": "gulliversouthmiamicampus",
-    "membership_probability": 18,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -26,
     "gt_band": "declining",
@@ -14122,7 +14099,7 @@
   },
   {
     "business_id": "gusman_concert_hall",
-    "membership_probability": 17,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -14173,7 +14150,7 @@
   },
   {
     "business_id": "h_benitez_fine_art_gallery_inc",
-    "membership_probability": 35,
+    "membership_probability": 36,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -14239,11 +14216,10 @@
     "business_id": "haircolorbyrosa",
     "membership_probability": 1,
     "mp_band": "low",
-    "growth_trajectory": 21,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "bridge_position"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -14314,7 +14290,7 @@
   },
   {
     "business_id": "hampton",
-    "membership_probability": 26,
+    "membership_probability": 27,
     "mp_band": "low",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -14413,7 +14389,7 @@
   },
   {
     "business_id": "happy_wine_in_the_grove",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -14579,7 +14555,7 @@
   },
   {
     "business_id": "henley_partners_usa_inc",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -14617,7 +14593,7 @@
   },
   {
     "business_id": "herbert_wellness_center",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -14856,7 +14832,7 @@
   },
   {
     "business_id": "hok",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -15022,7 +14998,7 @@
   },
   {
     "business_id": "hurricane_food_court",
-    "membership_probability": 17,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -15049,7 +15025,7 @@
   },
   {
     "business_id": "hydrology_wellness",
-    "membership_probability": 37,
+    "membership_probability": 38,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -15061,7 +15037,7 @@
   },
   {
     "business_id": "i_shine_365",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -15076,11 +15052,10 @@
     "business_id": "ibisstudiodigitalmarketingagency",
     "membership_probability": 1,
     "mp_band": "low",
-    "growth_trajectory": 21,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "bridge_position"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -15159,7 +15134,7 @@
   },
   {
     "business_id": "ifsoboutique",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -15184,7 +15159,7 @@
   },
   {
     "business_id": "iglesia_victoria",
-    "membership_probability": 15,
+    "membership_probability": 16,
     "mp_band": "low",
     "growth_trajectory": 8,
     "gt_band": "stable",
@@ -15354,7 +15329,7 @@
   },
   {
     "business_id": "instamarket",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -15428,7 +15403,7 @@
   },
   {
     "business_id": "international_finance_bank",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -15803,19 +15778,17 @@
     "business_id": "jcmoratec",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 24,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "bridge_position",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
   },
   {
     "business_id": "jcpenney",
-    "membership_probability": 44,
+    "membership_probability": 46,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -15851,7 +15824,7 @@
   },
   {
     "business_id": "jenny_craig",
-    "membership_probability": 33,
+    "membership_probability": 35,
     "mp_band": "low",
     "growth_trajectory": 11,
     "gt_band": "growing",
@@ -15876,7 +15849,7 @@
   },
   {
     "business_id": "jerry_herman_ring_theatre",
-    "membership_probability": 35,
+    "membership_probability": 36,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -16228,11 +16201,9 @@
     "business_id": "junior_achievement_of_greater_miami",
     "membership_probability": 1,
     "mp_band": "low",
-    "growth_trajectory": 17,
+    "growth_trajectory": 12,
     "gt_band": "growing",
-    "gt_signals": [
-      "bridge_position"
-    ],
+    "gt_signals": [],
     "churn_risk": "low",
     "is_member": true
   },
@@ -16497,7 +16468,7 @@
   },
   {
     "business_id": "kesk_global_group_llc",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -16625,11 +16596,10 @@
     "business_id": "kimleyhorn",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -16682,7 +16652,7 @@
   },
   {
     "business_id": "knight_center_for_music_innovation",
-    "membership_probability": 41,
+    "membership_probability": 43,
     "mp_band": "medium",
     "growth_trajectory": 11,
     "gt_band": "growing",
@@ -16886,7 +16856,7 @@
   },
   {
     "business_id": "lamour_boutique",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -16899,7 +16869,7 @@
   },
   {
     "business_id": "lartisane",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -17231,7 +17201,7 @@
   },
   {
     "business_id": "lannasiancafe",
-    "membership_probability": 44,
+    "membership_probability": 46,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -17256,7 +17226,7 @@
   },
   {
     "business_id": "landmark_at_merrick_park",
-    "membership_probability": 34,
+    "membership_probability": 35,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -17280,7 +17250,7 @@
   },
   {
     "business_id": "lanes",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 7,
     "gt_band": "stable",
@@ -17620,7 +17590,7 @@
   },
   {
     "business_id": "learningworkshop",
-    "membership_probability": 18,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -26,
     "gt_band": "declining",
@@ -17757,7 +17727,7 @@
   },
   {
     "business_id": "leticiainsuranceagency",
-    "membership_probability": 5,
+    "membership_probability": 6,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -17887,7 +17857,7 @@
   },
   {
     "business_id": "lighthouse_internet_media",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -18297,7 +18267,7 @@
   },
   {
     "business_id": "lowe_art_gallery",
-    "membership_probability": 41,
+    "membership_probability": 43,
     "mp_band": "medium",
     "growth_trajectory": 11,
     "gt_band": "growing",
@@ -18310,7 +18280,7 @@
   },
   {
     "business_id": "lowe_art_museum",
-    "membership_probability": 35,
+    "membership_probability": 36,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -18346,7 +18316,7 @@
   },
   {
     "business_id": "luca_osteria",
-    "membership_probability": 2,
+    "membership_probability": 3,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -18409,7 +18379,7 @@
   },
   {
     "business_id": "ludlam_insurance",
-    "membership_probability": 12,
+    "membership_probability": 13,
     "mp_band": "low",
     "growth_trajectory": -8,
     "gt_band": "declining",
@@ -18423,7 +18393,7 @@
   },
   {
     "business_id": "ludos",
-    "membership_probability": 36,
+    "membership_probability": 38,
     "mp_band": "low",
     "growth_trajectory": -4,
     "gt_band": "stable",
@@ -18581,7 +18551,7 @@
   },
   {
     "business_id": "mack_cycle_and_fitness",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -18878,12 +18848,10 @@
     "business_id": "marengineers",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 24,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "bridge_position",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -19007,7 +18975,7 @@
   },
   {
     "business_id": "market_nxt",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -19126,7 +19094,7 @@
   },
   {
     "business_id": "massage_envy",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -19140,12 +19108,10 @@
     "business_id": "masterpiecebarbersbarbershop",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 24,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "bridge_position",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -19177,7 +19143,7 @@
   },
   {
     "business_id": "mathnasium",
-    "membership_probability": 18,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -26,
     "gt_band": "declining",
@@ -19191,7 +19157,7 @@
   },
   {
     "business_id": "matsoncharltonsuretygroup",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -19215,7 +19181,7 @@
   },
   {
     "business_id": "mattress_firm",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -19253,11 +19219,10 @@
     "business_id": "maxwellengineers",
     "membership_probability": 9,
     "mp_band": "low",
-    "growth_trajectory": 1,
+    "growth_trajectory": -4,
     "gt_band": "stable",
     "gt_signals": [
-      "negative_sentiment",
-      "bridge_position"
+      "negative_sentiment"
     ],
     "churn_risk": null,
     "is_member": false
@@ -19343,7 +19308,7 @@
   },
   {
     "business_id": "mcguire_woods",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -19762,11 +19727,10 @@
     "business_id": "miamcafecoralgables",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -19907,7 +19871,7 @@
   },
   {
     "business_id": "miami_dade_college_kendall_campus",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -19917,7 +19881,7 @@
   },
   {
     "business_id": "miami_dade_college_koubek_center",
-    "membership_probability": 5,
+    "membership_probability": 6,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -19929,7 +19893,7 @@
   },
   {
     "business_id": "miami_dade_college_padrn_campus",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -19988,7 +19952,7 @@
   },
   {
     "business_id": "miamienvironmentalcivilengineering",
-    "membership_probability": 9,
+    "membership_probability": 10,
     "mp_band": "low",
     "growth_trajectory": -4,
     "gt_band": "stable",
@@ -20025,7 +19989,7 @@
   },
   {
     "business_id": "miami_friends_meeting_of_the_religious_society_of_friends",
-    "membership_probability": 51,
+    "membership_probability": 53,
     "mp_band": "medium",
     "growth_trajectory": -5,
     "gt_band": "stable",
@@ -20162,11 +20126,10 @@
     "business_id": "miamioldschoolbarbershopcoralgables",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -20187,7 +20150,7 @@
   },
   {
     "business_id": "miami_private_school",
-    "membership_probability": 53,
+    "membership_probability": 55,
     "mp_band": "medium",
     "growth_trajectory": -6,
     "gt_band": "declining",
@@ -20212,7 +20175,7 @@
   },
   {
     "business_id": "miamiseniorhighschool",
-    "membership_probability": 29,
+    "membership_probability": 30,
     "mp_band": "low",
     "growth_trajectory": -19,
     "gt_band": "declining",
@@ -20249,7 +20212,7 @@
   },
   {
     "business_id": "miami_spine__posture_clinic",
-    "membership_probability": 44,
+    "membership_probability": 46,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -20345,7 +20308,7 @@
   },
   {
     "business_id": "miamidade_county_fair_exposition_inc",
-    "membership_probability": 34,
+    "membership_probability": 35,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -20618,12 +20581,11 @@
     "business_id": "miss_saigon",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 0,
+    "growth_trajectory": -3,
     "gt_band": "stable",
     "gt_signals": [
       "no_digital",
-      "red_flag",
-      "high_influence"
+      "red_flag"
     ],
     "churn_risk": null,
     "is_member": false
@@ -20646,12 +20608,10 @@
     "business_id": "miyaresgroup",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 24,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "bridge_position",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -20720,7 +20680,7 @@
   },
   {
     "business_id": "moi_homemade_peruvian_bakery",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -20758,11 +20718,10 @@
     "business_id": "monahanmijaresc",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -20817,7 +20776,7 @@
   },
   {
     "business_id": "montessori_childrens_house",
-    "membership_probability": 18,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -20830,7 +20789,7 @@
   },
   {
     "business_id": "montessori_international_school",
-    "membership_probability": 18,
+    "membership_probability": 20,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -21078,8 +21037,8 @@
   },
   {
     "business_id": "myxcellnetwork",
-    "membership_probability": 38,
-    "mp_band": "low",
+    "membership_probability": 40,
+    "mp_band": "medium",
     "growth_trajectory": -16,
     "gt_band": "declining",
     "gt_signals": [
@@ -21091,7 +21050,7 @@
   },
   {
     "business_id": "mycitysocial",
-    "membership_probability": 35,
+    "membership_probability": 37,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -21240,7 +21199,7 @@
   },
   {
     "business_id": "national_stem_cell_clinic",
-    "membership_probability": 44,
+    "membership_probability": 45,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -21265,7 +21224,7 @@
   },
   {
     "business_id": "navarro_discount_pharmacy",
-    "membership_probability": 7,
+    "membership_probability": 6,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -21459,7 +21418,7 @@
   },
   {
     "business_id": "nexusconsultancy",
-    "membership_probability": 17,
+    "membership_probability": 18,
     "mp_band": "low",
     "growth_trajectory": -19,
     "gt_band": "declining",
@@ -21474,11 +21433,10 @@
     "business_id": "nicestbarbersbarbershop",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -21542,7 +21500,7 @@
   },
   {
     "business_id": "noble_insurance_group",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -21600,7 +21558,7 @@
   },
   {
     "business_id": "northern_trust",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -21701,7 +21659,7 @@
   },
   {
     "business_id": "osole_boutique",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -21726,7 +21684,7 @@
   },
   {
     "business_id": "oak_harbors_laundry",
-    "membership_probability": 4,
+    "membership_probability": 5,
     "mp_band": "low",
     "growth_trajectory": -2,
     "gt_band": "stable",
@@ -21790,7 +21748,7 @@
   },
   {
     "business_id": "ocean_bank",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -21850,7 +21808,7 @@
   },
   {
     "business_id": "office_depot",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -21896,7 +21854,7 @@
   },
   {
     "business_id": "office_of_the_university_registrar",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -21906,7 +21864,7 @@
   },
   {
     "business_id": "office_of_undergraduate_admission",
-    "membership_probability": 27,
+    "membership_probability": 29,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -21942,7 +21900,7 @@
   },
   {
     "business_id": "ohmboutique",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -21964,7 +21922,7 @@
   },
   {
     "business_id": "oneinsuranceservices",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -22343,7 +22301,7 @@
   },
   {
     "business_id": "our_lady_of_fatima_academy",
-    "membership_probability": 17,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -22357,7 +22315,7 @@
   },
   {
     "business_id": "our_lady_of_lourdes_academy",
-    "membership_probability": 17,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -22436,11 +22394,10 @@
     "business_id": "oxionebeautyextensions",
     "membership_probability": 2,
     "mp_band": "low",
-    "growth_trajectory": 22,
+    "growth_trajectory": 19,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -22519,7 +22476,7 @@
   },
   {
     "business_id": "pacific_national_bank",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -22591,7 +22548,7 @@
   },
   {
     "business_id": "pan_american_institute",
-    "membership_probability": 18,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": 7,
     "gt_band": "stable",
@@ -22652,7 +22609,7 @@
   },
   {
     "business_id": "ngaeaexploration",
-    "membership_probability": 20,
+    "membership_probability": 21,
     "mp_band": "low",
     "growth_trajectory": -4,
     "gt_band": "stable",
@@ -22767,7 +22724,7 @@
   },
   {
     "business_id": "party_city",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -22779,11 +22736,10 @@
     "business_id": "pascals_on_ponce",
     "membership_probability": 1,
     "mp_band": "low",
-    "growth_trajectory": 10,
-    "gt_band": "growing",
+    "growth_trajectory": 7,
+    "gt_band": "stable",
     "gt_signals": [
-      "red_flag",
-      "high_influence"
+      "red_flag"
     ],
     "churn_risk": null,
     "is_member": false
@@ -22807,11 +22763,10 @@
     "business_id": "siondelcielocoffee",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -22980,7 +22935,7 @@
   },
   {
     "business_id": "peiwei",
-    "membership_probability": 28,
+    "membership_probability": 29,
     "mp_band": "low",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -23144,7 +23099,7 @@
   },
   {
     "business_id": "pet_supermarket",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -23164,7 +23119,7 @@
   },
   {
     "business_id": "petco",
-    "membership_probability": 8,
+    "membership_probability": 9,
     "mp_band": "low",
     "growth_trajectory": -9,
     "gt_band": "declining",
@@ -23203,7 +23158,7 @@
   },
   {
     "business_id": "petsmart",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -23264,7 +23219,7 @@
   },
   {
     "business_id": "phoenix_pro_connect",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -23339,7 +23294,7 @@
   },
   {
     "business_id": "pibank_usa",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -23375,7 +23330,7 @@
   },
   {
     "business_id": "pil_creative_group",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -23545,13 +23500,12 @@
   },
   {
     "business_id": "plazaassociates",
-    "membership_probability": 10,
+    "membership_probability": 9,
     "mp_band": "low",
-    "growth_trajectory": -1,
+    "growth_trajectory": -4,
     "gt_band": "stable",
     "gt_signals": [
-      "negative_sentiment",
-      "high_influence"
+      "negative_sentiment"
     ],
     "churn_risk": null,
     "is_member": false
@@ -23613,19 +23567,20 @@
     "business_id": "plymouthpreschoolofplymouthcongregationalchurch",
     "membership_probability": 6,
     "mp_band": "low",
-    "growth_trajectory": -16,
+    "growth_trajectory": -11,
     "gt_band": "declining",
     "gt_signals": [
       "no_digital",
       "red_flag",
-      "negative_sentiment"
+      "negative_sentiment",
+      "bridge_position"
     ],
     "churn_risk": null,
     "is_member": false
   },
   {
     "business_id": "pnc_bank",
-    "membership_probability": 24,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -23836,7 +23791,7 @@
   },
   {
     "business_id": "potterybarn",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -23846,7 +23801,7 @@
   },
   {
     "business_id": "power_financial_credit_union",
-    "membership_probability": 22,
+    "membership_probability": 24,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -23933,11 +23888,10 @@
     "business_id": "prestigiousimagebarbershonds",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -24234,7 +24188,7 @@
   },
   {
     "business_id": "publix",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -24349,7 +24303,7 @@
   },
   {
     "business_id": "pureprojecthome",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -24450,7 +24404,7 @@
   },
   {
     "business_id": "quito",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -24488,7 +24442,7 @@
   },
   {
     "business_id": "rabrandonco",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -24502,11 +24456,10 @@
     "business_id": "rahalarchitects",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 21,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "bridge_position"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -24601,7 +24554,7 @@
   },
   {
     "business_id": "razzledazzle_barbershop",
-    "membership_probability": 12,
+    "membership_probability": 11,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -24635,7 +24588,7 @@
   },
   {
     "business_id": "rdzfineart",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -24659,7 +24612,7 @@
   },
   {
     "business_id": "rebecamelendezpsychotherapyandassessments",
-    "membership_probability": 5,
+    "membership_probability": 6,
     "mp_band": "low",
     "growth_trajectory": 8,
     "gt_band": "stable",
@@ -24684,7 +24637,7 @@
   },
   {
     "business_id": "recycling",
-    "membership_probability": 36,
+    "membership_probability": 38,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -24697,7 +24650,7 @@
   },
   {
     "business_id": "red_bird_animal_clinic",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -24760,7 +24713,7 @@
   },
   {
     "business_id": "regions_bank",
-    "membership_probability": 17,
+    "membership_probability": 18,
     "mp_band": "low",
     "growth_trajectory": -12,
     "gt_band": "declining",
@@ -24922,7 +24875,7 @@
   },
   {
     "business_id": "rickburkestatefarminsuranceagent",
-    "membership_probability": 5,
+    "membership_probability": 6,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -24966,7 +24919,7 @@
   },
   {
     "business_id": "ring_theater",
-    "membership_probability": 41,
+    "membership_probability": 43,
     "mp_band": "medium",
     "growth_trajectory": 11,
     "gt_band": "growing",
@@ -25161,7 +25114,7 @@
   },
   {
     "business_id": "roberto_garcia_new_york_life",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -25187,7 +25140,7 @@
   },
   {
     "business_id": "rochebobois",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -25213,11 +25166,10 @@
     "business_id": "rodriguezarchitects",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -25248,7 +25200,7 @@
   },
   {
     "business_id": "ronald_jakubisin_associates",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -25434,7 +25386,7 @@
   },
   {
     "business_id": "rumble_boxing_coral_gables",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 20,
     "gt_band": "growing",
@@ -25493,11 +25445,10 @@
     "business_id": "rsteakhouse",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -25567,7 +25518,7 @@
   },
   {
     "business_id": "safelite_autoglass",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -25619,7 +25570,7 @@
   },
   {
     "business_id": "saint_athanasios_greek_orthodox_church",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -25646,7 +25597,7 @@
   },
   {
     "business_id": "saint_basil_catholic_church_byzantine_rite",
-    "membership_probability": 24,
+    "membership_probability": 26,
     "mp_band": "low",
     "growth_trajectory": 4,
     "gt_band": "stable",
@@ -25658,7 +25609,7 @@
   },
   {
     "business_id": "saintbrendanhighschool",
-    "membership_probability": 18,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -26,
     "gt_band": "declining",
@@ -25700,7 +25651,7 @@
   },
   {
     "business_id": "saint_james_church",
-    "membership_probability": 15,
+    "membership_probability": 16,
     "mp_band": "low",
     "growth_trajectory": 8,
     "gt_band": "stable",
@@ -25727,7 +25678,7 @@
   },
   {
     "business_id": "saint_marks_lutheran_church",
-    "membership_probability": 28,
+    "membership_probability": 29,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -25809,7 +25760,7 @@
   },
   {
     "business_id": "saint_thomas_episcopal_church",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": 4,
     "gt_band": "stable",
@@ -25849,18 +25800,17 @@
     "business_id": "salonsbyjccoralgablesonmiraclemile",
     "membership_probability": 1,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
   },
   {
     "business_id": "salty_donut",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -25926,11 +25876,10 @@
     "business_id": "samicutz",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -25984,7 +25933,7 @@
   },
   {
     "business_id": "sands_investments",
-    "membership_probability": 20,
+    "membership_probability": 21,
     "mp_band": "low",
     "growth_trajectory": -4,
     "gt_band": "stable",
@@ -26058,7 +26007,7 @@
   },
   {
     "business_id": "school_of_architecture",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -26070,7 +26019,7 @@
   },
   {
     "business_id": "school_of_communications",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -26080,7 +26029,7 @@
   },
   {
     "business_id": "school_of_education_and_human_development",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -26092,7 +26041,7 @@
   },
   {
     "business_id": "school_of_nursing_and_health_studies",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -26102,7 +26051,7 @@
   },
   {
     "business_id": "school_of_rock",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -26143,7 +26092,7 @@
   },
   {
     "business_id": "seacoast_bank",
-    "membership_probability": 24,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -26203,7 +26152,7 @@
   },
   {
     "business_id": "secured_debt_investments",
-    "membership_probability": 20,
+    "membership_probability": 21,
     "mp_band": "low",
     "growth_trajectory": -4,
     "gt_band": "stable",
@@ -26225,7 +26174,7 @@
   },
   {
     "business_id": "seedsofhopebehavioralhealth",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 8,
     "gt_band": "stable",
@@ -26260,7 +26209,7 @@
   },
   {
     "business_id": "semillitas",
-    "membership_probability": 41,
+    "membership_probability": 43,
     "mp_band": "medium",
     "growth_trajectory": -9,
     "gt_band": "declining",
@@ -26286,7 +26235,7 @@
   },
   {
     "business_id": "semper",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -26372,7 +26321,7 @@
   },
   {
     "business_id": "serpguru",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -26531,7 +26480,7 @@
   },
   {
     "business_id": "shell_lumber_and_hardware",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -26649,7 +26598,7 @@
   },
   {
     "business_id": "sierrafurniture",
-    "membership_probability": 1,
+    "membership_probability": 2,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -27039,7 +26988,7 @@
   },
   {
     "business_id": "snapper_creek",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -27173,7 +27122,7 @@
   },
   {
     "business_id": "solefly",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -27183,7 +27132,7 @@
   },
   {
     "business_id": "soles_inc",
-    "membership_probability": 4,
+    "membership_probability": 5,
     "mp_band": "low",
     "growth_trajectory": 11,
     "gt_band": "growing",
@@ -27236,7 +27185,7 @@
   },
   {
     "business_id": "somi_bike",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 7,
     "gt_band": "stable",
@@ -27258,7 +27207,7 @@
   },
   {
     "business_id": "south_dade_christian_church",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -27271,7 +27220,7 @@
   },
   {
     "business_id": "south_dixie_ace_hardware",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -27305,7 +27254,7 @@
   },
   {
     "business_id": "southfloridainsurancebrokersmedicarespecialists",
-    "membership_probability": 5,
+    "membership_probability": 6,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -27521,7 +27470,7 @@
   },
   {
     "business_id": "southstate_bank",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -27568,7 +27517,7 @@
   },
   {
     "business_id": "space_coast_credit_union",
-    "membership_probability": 17,
+    "membership_probability": 18,
     "mp_band": "low",
     "growth_trajectory": -12,
     "gt_band": "declining",
@@ -27581,7 +27530,7 @@
   },
   {
     "business_id": "snishchurchofgod",
-    "membership_probability": 7,
+    "membership_probability": 8,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -27683,19 +27632,18 @@
     "business_id": "spritz",
     "membership_probability": 1,
     "mp_band": "low",
-    "growth_trajectory": 17,
+    "growth_trajectory": 14,
     "gt_band": "growing",
     "gt_signals": [
       "high_rating",
-      "red_flag",
-      "high_influence"
+      "red_flag"
     ],
     "churn_risk": null,
     "is_member": false
   },
   {
     "business_id": "sprouts_farmers_market",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -27863,7 +27811,7 @@
   },
   {
     "business_id": "state_farm",
-    "membership_probability": 28,
+    "membership_probability": 29,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -27938,7 +27886,7 @@
   },
   {
     "business_id": "stellarsynergy",
-    "membership_probability": 34,
+    "membership_probability": 36,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -27963,7 +27911,7 @@
   },
   {
     "business_id": "stephan_baker_md_facs",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -28123,7 +28071,7 @@
   },
   {
     "business_id": "sunflowers_academy",
-    "membership_probability": 17,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -28137,7 +28085,7 @@
   },
   {
     "business_id": "suniland_academy",
-    "membership_probability": 53,
+    "membership_probability": 55,
     "mp_band": "medium",
     "growth_trajectory": -6,
     "gt_band": "declining",
@@ -28201,7 +28149,7 @@
   },
   {
     "business_id": "sunset_preparatory_school",
-    "membership_probability": 17,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -28229,7 +28177,7 @@
   },
   {
     "business_id": "sunstate_bank",
-    "membership_probability": 20,
+    "membership_probability": 22,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -28251,7 +28199,7 @@
   },
   {
     "business_id": "super_insurance_group",
-    "membership_probability": 33,
+    "membership_probability": 35,
     "mp_band": "low",
     "growth_trajectory": -5,
     "gt_band": "stable",
@@ -28265,7 +28213,7 @@
   },
   {
     "business_id": "supercuts",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -28358,12 +28306,11 @@
     "business_id": "suvayoga",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 23,
+    "growth_trajectory": 20,
     "gt_band": "growing",
     "gt_signals": [
       "high_rating",
-      "high_visibility",
-      "high_influence"
+      "high_visibility"
     ],
     "churn_risk": null,
     "is_member": false
@@ -28583,7 +28530,7 @@
   },
   {
     "business_id": "tamiami_baptist_church",
-    "membership_probability": 15,
+    "membership_probability": 16,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -28608,7 +28555,7 @@
   },
   {
     "business_id": "target",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -28691,7 +28638,7 @@
   },
   {
     "business_id": "td_bank",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -28701,7 +28648,7 @@
   },
   {
     "business_id": "tdbankcoralgablesmiraclemile",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -28747,7 +28694,7 @@
   },
   {
     "business_id": "teatro_trail",
-    "membership_probability": 32,
+    "membership_probability": 34,
     "mp_band": "low",
     "growth_trajectory": 8,
     "gt_band": "stable",
@@ -28773,7 +28720,7 @@
   },
   {
     "business_id": "temple_judea",
-    "membership_probability": 7,
+    "membership_probability": 8,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -28800,7 +28747,7 @@
   },
   {
     "business_id": "terracivilengineering",
-    "membership_probability": 17,
+    "membership_probability": 18,
     "mp_band": "low",
     "growth_trajectory": -4,
     "gt_band": "stable",
@@ -28812,7 +28759,7 @@
   },
   {
     "business_id": "terrabank",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -28932,7 +28879,7 @@
   },
   {
     "business_id": "theamericascollectionartgalleryframeshop",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -28973,11 +28920,10 @@
     "business_id": "the_bar",
     "membership_probability": 1,
     "mp_band": "low",
-    "growth_trajectory": 10,
-    "gt_band": "growing",
+    "growth_trajectory": 7,
+    "gt_band": "stable",
     "gt_signals": [
-      "red_flag",
-      "high_influence"
+      "red_flag"
     ],
     "churn_risk": null,
     "is_member": false
@@ -29054,7 +29000,7 @@
   },
   {
     "business_id": "the_blow_and_glow_bar_by_mlo",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -29139,7 +29085,7 @@
   },
   {
     "business_id": "the_cheesecake_factory",
-    "membership_probability": 21,
+    "membership_probability": 22,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -29183,8 +29129,8 @@
   },
   {
     "business_id": "the_collection",
-    "membership_probability": 39,
-    "mp_band": "low",
+    "membership_probability": 41,
+    "mp_band": "medium",
     "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
@@ -29330,7 +29276,7 @@
   },
   {
     "business_id": "the_drip_bar",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -29393,7 +29339,7 @@
   },
   {
     "business_id": "the_everglades_foundation",
-    "membership_probability": 3,
+    "membership_probability": 4,
     "mp_band": "low",
     "growth_trajectory": -22,
     "gt_band": "declining",
@@ -29468,7 +29414,7 @@
   },
   {
     "business_id": "the_franchise_tailor",
-    "membership_probability": 46,
+    "membership_probability": 48,
     "mp_band": "medium",
     "growth_trajectory": -1,
     "gt_band": "stable",
@@ -29615,7 +29561,7 @@
   },
   {
     "business_id": "the_home_depot",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -29751,7 +29697,7 @@
   },
   {
     "business_id": "the_market",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -29764,7 +29710,7 @@
   },
   {
     "business_id": "the_market_at_village",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -29813,11 +29759,10 @@
     "business_id": "themensroombarbershop",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -30016,7 +29961,7 @@
   },
   {
     "business_id": "the_palace_coral_gables",
-    "membership_probability": 37,
+    "membership_probability": 38,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -30261,11 +30206,10 @@
     "business_id": "thespotbarbershopponce",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 19,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "high_influence"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -30300,7 +30244,7 @@
   },
   {
     "business_id": "the_village_at_coral_gables",
-    "membership_probability": 35,
+    "membership_probability": 36,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -30312,7 +30256,7 @@
   },
   {
     "business_id": "the_vitamin_shoppe",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -30519,7 +30463,7 @@
   },
   {
     "business_id": "tintin",
-    "membership_probability": 21,
+    "membership_probability": 22,
     "mp_band": "low",
     "growth_trajectory": -4,
     "gt_band": "stable",
@@ -30561,7 +30505,7 @@
   },
   {
     "business_id": "tire_kingdom",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -30693,7 +30637,7 @@
   },
   {
     "business_id": "tornapradofineartcollect",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -30731,7 +30675,7 @@
   },
   {
     "business_id": "total_wine",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 20,
     "gt_band": "growing",
@@ -31017,7 +30961,7 @@
   },
   {
     "business_id": "truist",
-    "membership_probability": 24,
+    "membership_probability": 25,
     "mp_band": "low",
     "growth_trajectory": -15,
     "gt_band": "declining",
@@ -31068,11 +31012,10 @@
     "business_id": "tullio",
     "membership_probability": 0,
     "mp_band": "low",
-    "growth_trajectory": 21,
+    "growth_trajectory": 16,
     "gt_band": "growing",
     "gt_signals": [
-      "high_rating",
-      "bridge_position"
+      "high_rating"
     ],
     "churn_risk": null,
     "is_member": false
@@ -31122,7 +31065,7 @@
   },
   {
     "business_id": "uhaul",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -31135,7 +31078,7 @@
   },
   {
     "business_id": "us_century_bank",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -31247,7 +31190,7 @@
   },
   {
     "business_id": "united_banking_community",
-    "membership_probability": 32,
+    "membership_probability": 33,
     "mp_band": "low",
     "growth_trajectory": 17,
     "gt_band": "growing",
@@ -31259,7 +31202,7 @@
   },
   {
     "business_id": "united_community_bank",
-    "membership_probability": 22,
+    "membership_probability": 24,
     "mp_band": "low",
     "growth_trajectory": 17,
     "gt_band": "growing",
@@ -31323,7 +31266,7 @@
   },
   {
     "business_id": "university_baptist_church",
-    "membership_probability": 23,
+    "membership_probability": 25,
     "mp_band": "low",
     "growth_trajectory": 8,
     "gt_band": "stable",
@@ -31377,7 +31320,7 @@
   },
   {
     "business_id": "university_credit_union",
-    "membership_probability": 22,
+    "membership_probability": 24,
     "mp_band": "low",
     "growth_trajectory": 9,
     "gt_band": "stable",
@@ -31399,7 +31342,7 @@
   },
   {
     "business_id": "university_of_miami",
-    "membership_probability": 37,
+    "membership_probability": 38,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -31421,7 +31364,7 @@
   },
   {
     "business_id": "university_of_miami_campus_store",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -31433,7 +31376,7 @@
   },
   {
     "business_id": "university_of_miami_canterbury_child_care_center",
-    "membership_probability": 18,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -31494,7 +31437,7 @@
   },
   {
     "business_id": "univista_insurance",
-    "membership_probability": 33,
+    "membership_probability": 35,
     "mp_band": "low",
     "growth_trajectory": 1,
     "gt_band": "stable",
@@ -31616,7 +31559,7 @@
   },
   {
     "business_id": "usi_insurance_services",
-    "membership_probability": 30,
+    "membership_probability": 32,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -31665,7 +31608,7 @@
   },
   {
     "business_id": "v__v_jewelry",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -31703,7 +31646,7 @@
   },
   {
     "business_id": "valley_national_bank",
-    "membership_probability": 22,
+    "membership_probability": 23,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -31779,7 +31722,7 @@
   },
   {
     "business_id": "vantagecommunications",
-    "membership_probability": 35,
+    "membership_probability": 37,
     "mp_band": "low",
     "growth_trajectory": -16,
     "gt_band": "declining",
@@ -31793,7 +31736,7 @@
   },
   {
     "business_id": "vapor_shark",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 7,
     "gt_band": "stable",
@@ -31937,7 +31880,7 @@
   },
   {
     "business_id": "verizon",
-    "membership_probability": 13,
+    "membership_probability": 14,
     "mp_band": "low",
     "growth_trajectory": -9,
     "gt_band": "declining",
@@ -32008,7 +31951,7 @@
   },
   {
     "business_id": "vicky_cafe",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -32021,7 +31964,7 @@
   },
   {
     "business_id": "victor_e_clarke_recital_hall",
-    "membership_probability": 41,
+    "membership_probability": 43,
     "mp_band": "medium",
     "growth_trajectory": 11,
     "gt_band": "growing",
@@ -32081,7 +32024,7 @@
   },
   {
     "business_id": "vinacomnycs",
-    "membership_probability": 5,
+    "membership_probability": 6,
     "mp_band": "low",
     "growth_trajectory": 8,
     "gt_band": "stable",
@@ -32165,7 +32108,7 @@
   },
   {
     "business_id": "virginiamillergalleries",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -32249,7 +32192,7 @@
   },
   {
     "business_id": "vivify",
-    "membership_probability": 6,
+    "membership_probability": 7,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -32310,7 +32253,7 @@
   },
   {
     "business_id": "volvo_bomnin",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -32334,7 +32277,7 @@
   },
   {
     "business_id": "wagner_montessori_school",
-    "membership_probability": 18,
+    "membership_probability": 19,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -32347,7 +32290,7 @@
   },
   {
     "business_id": "wahlstrominsuranceassociates",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -32359,7 +32302,7 @@
   },
   {
     "business_id": "walgreens",
-    "membership_probability": 3,
+    "membership_probability": 4,
     "mp_band": "low",
     "growth_trajectory": -12,
     "gt_band": "declining",
@@ -32420,7 +32363,7 @@
   },
   {
     "business_id": "watches_world_llc",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -32479,7 +32422,7 @@
   },
   {
     "business_id": "weinsurerandymarzullo",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -32503,7 +32446,7 @@
   },
   {
     "business_id": "wedoinsurancetaxes",
-    "membership_probability": 5,
+    "membership_probability": 6,
     "mp_band": "low",
     "growth_trajectory": 13,
     "gt_band": "growing",
@@ -32527,7 +32470,7 @@
   },
   {
     "business_id": "wells_fargo",
-    "membership_probability": 20,
+    "membership_probability": 22,
     "mp_band": "low",
     "growth_trajectory": 6,
     "gt_band": "stable",
@@ -32559,7 +32502,7 @@
   },
   {
     "business_id": "westelm",
-    "membership_probability": 2,
+    "membership_probability": 3,
     "mp_band": "low",
     "growth_trajectory": -12,
     "gt_band": "declining",
@@ -32691,7 +32634,7 @@
   },
   {
     "business_id": "whole_foods_market",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -32703,7 +32646,7 @@
   },
   {
     "business_id": "wild_fork_foods",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",
@@ -32775,7 +32718,7 @@
   },
   {
     "business_id": "winndixie",
-    "membership_probability": 11,
+    "membership_probability": 12,
     "mp_band": "low",
     "growth_trajectory": 12,
     "gt_band": "growing",
@@ -32785,7 +32728,7 @@
   },
   {
     "business_id": "winstongablesinsurance",
-    "membership_probability": 16,
+    "membership_probability": 17,
     "mp_band": "low",
     "growth_trajectory": 16,
     "gt_band": "growing",
@@ -33108,7 +33051,7 @@
   },
   {
     "business_id": "yuly_barbershop_and_mens_grooming",
-    "membership_probability": 4,
+    "membership_probability": 5,
     "mp_band": "low",
     "growth_trajectory": 19,
     "gt_band": "growing",
@@ -33270,7 +33213,7 @@
   },
   {
     "business_id": "zweck",
-    "membership_probability": 14,
+    "membership_probability": 15,
     "mp_band": "low",
     "growth_trajectory": 14,
     "gt_band": "growing",

@@ -29,13 +29,13 @@ canes_central,'Canes Central,(305) 284-4247,https://canescentral.miami.edu/,1307
 924_bird_rd_coral_gable,924 bird rd coral gable,,,"Coral Gables, FL 33146",Bird Road Corridor,real_estate,,N
 aautotech,A Auto Tech Inc,(305) 448-4100,,,Bird Road Corridor,auto_dealer,4.8,N
 agcfirmcoralgablesfl,"A&G - CPA Firm Coral Gables, FL",(786) 838-7062,,,Coral Gables,food_beverage,4.9,N
-agcfirm,A&G CPA Firm,(786) 838-7062,http://www.agcpafirm.com/,,,accounting,4.9,N
-a1undergroundplumbingservices,A1 Underground & Plumbing Services,(954) 872-0018,https://undergroundplumbers.com,,,construction,4.8,N
+agcfirm,A&G CPA Firm,(786) 838-7062,http://www.agcpafirm.com/,,Coral Gables,accounting,4.9,N
+a1undergroundplumbingservices,A1 Underground & Plumbing Services,(954) 872-0018,https://undergroundplumbers.com,,Coral Gables,construction,4.8,N
 a4_graphic_design,A4 Graphic Design,(786) 397-8359,http://www.a4graphic.com/,"3362 Coral Wy, Miami, FL 33145",Coral Gables,construction,4.9,N
 aaa_insurance,AAA Insurance,(305) 270-6450,https://locator.acg.aaa.com/fl/miami/aaa-kendall,6643 South Dixie Highway,Sunset / South Gables,insurance,4.2,N
 aaa_million_auto_parts,AAA Million Auto Parts,(305) 642-5821,https://www.aaamillion.com/,311 Southwest 22nd Avenue,Coral Gables,retail,4.5,N
 aapmiami,AAP Miami,(305) 902-1651,,,Miracle Mile,retail,5.0,N
-abadindental,Abadin Dental,(305) 783-3750,https://abadindental.com,,,healthcare,5.0,N
+abadindental,Abadin Dental,(305) 783-3750,https://abadindental.com,,Coral Gables,healthcare,5.0,N
 abadindentalinvisalignveneersimplants,Abadin Dental - Invisalign Veneers Implants,(305) 783-3750,,,Coral Gables,healthcare,5.0,N
 abascalgroupresidentialcommercialconstruction,"Abascal Group, Inc. Residential + Commercial Construction",(305) 498-5035,,,Bird Road Corridor,construction,5.0,N
 abco_mortgage,ABCO Mortgage,(305) 784-7000,https://abcomortgage.com,,Coral Gables,real_estate,,Y
@@ -88,9 +88,9 @@ all_my_sons_moving_storage_of_miami_llc,"All My Sons Moving & Storage of Miami, 
 allcanes,allCanes,(305) 661-9011,https://www.allcanes.com,5831 Ponce de Leon Boulevard,Coral Gables,retail,4.7,N
 allen_dyer_doppelt_gilchrist_pa,"Allen Dyer Doppelt + Gilchrist, P.A",(305) 374-8303,https://allendyer.com,"121 Alhambra Plz Suite 1250, Coral Gables, FL 33134",Coral Gables,legal,1,Y
 allen_morris_company,Allen Morris Company,(305) 443-1000,http://www.allenmorris.com/,"121 Alhambra Plz #1600, Coral Gables, FL 33134",Coral Gables,real_estate,5,N
-alliantinsuranceservices,Alliant Insurance Services Inc,(212) 344-2444,https://alliant.com/,"800 S Douglas, Coral Gables, FL",,insurance,,N
+alliantinsuranceservices,Alliant Insurance Services Inc,(212) 344-2444,https://alliant.com/,"800 S Douglas, Coral Gables, FL",Coral Gables,insurance,,N
 allianztrade,AllianzTrade,(305) 753-2196,https://allianztrade.com,"10451 NW 117th Ave #101, Miami, FL 33178",Coral Gables,insurance,5,Y
-alliednorthamericainsurancebrokerageoffl,Allied North America Insurance Brokerage Of FL LLC,(305) 629-3027,https://nsigroup.org/contact/coral-gables-fl-insurance/,"550 Biltmore Way, Penthouse 2, Coral Gables, FL",,insurance,2.6,N
+alliednorthamericainsurancebrokerageoffl,Allied North America Insurance Brokerage Of FL LLC,(305) 629-3027,https://nsigroup.org/contact/coral-gables-fl-insurance/,"550 Biltmore Way, Penthouse 2, Coral Gables, FL",Coral Gables,insurance,2.6,N
 almaadvertisingagency,Alma Advertising Agency,(305) 428-0094,,,Bird Road Corridor,marketing,5.0,N
 almabellayoga,Alma Bella Yoga,(305) 282-5345,,,Coral Gables,wellness,5.0,N
 alo,ALO,(305) 351-4771,,,Bird Road Corridor,retail,3.8,N
@@ -138,7 +138,7 @@ arbys,Arby's,(305) 265-2011,https://www.arbys.com/locations/us/fl/miami/6760-sw-
 arcano_sabores_de_esencia_hispana,Arcano  Sabores de Esencia Hispana,(305) 530-8332,https://arcanomiami.com,"259 Giralda Ave, Coral Gables, FL 33134",Coral Gables,wellness,4.8,Y
 architectural_design_collaborative_inc,Architectural Design Collaborative Inc.,(305) 442-1188,https://adcinternational.net,"235 Alcazar Ave, Coral Gables, FL 33134",Coral Gables,professional_services,5.0,Y
 archivist_cafe,Archivist Cafe,(305) 284-2715,https://dineoncampus.com/miami,"1300 Memorial Dr, Coral Gables, FL 33146",University of Miami Area,food_beverage,5,N
-arcoagentinsurance,Arco Agent Insurance Inc,(305) 582-2845,http://www.arcoagent.com/,"2000 Ponce de Leon Blvd Ste 515, Coral Gables, FL 33134",,insurance,3,N
+arcoagentinsurance,Arco Agent Insurance Inc,(305) 582-2845,http://www.arcoagent.com/,"2000 Ponce de Leon Blvd Ste 515, Coral Gables, FL 33134",Coral Gables,insurance,3,N
 area_stage_company,Area Stage Company,(305) 666-2078,https://areastage.org,"5701 Sunset Dr Suite 286, South Miami, FL 33143",Coral Gables,arts_culture,4.9,Y
 arhaus,Arhaus,(786) 228-7067,,,Bird Road Corridor,retail,3.8,N
 arias__abbass_your_attorneys,Arias & Abbass Your Attorneys,(786) 530-4357,https://talktomyattorneys.com,4531 Ponce de Leon Blvd,Coral Gables,legal,5,N
@@ -255,7 +255,7 @@ beautyatelier,Beauty Atelier,(786) 620-8055,,,Coral Gables,personal_services,5.0
 beckercoralgablesfl,"Becker, Coral Gables, FL",(305) 262-4433,,,Miracle Mile,legal,4.7,N
 beehive_juice_bar,Beehive Juice Bar,(305) 663-1300,https://www.beehivejuicebarandcafe.getsauce.com/,6490 Bird Road,Bird Road Corridor,food_beverage,4.6,N
 beharfontrtnersrobertbeharjavierfont,"Behar Font & Partners, P.A. - Robert Behar & Javier Font",(305) 740-5442,,,Coral Gables,professional_services,5.0,N
-bellrosquetereyesestebanp,Bell Rosquete Reyes Esteban PLLC,(305) 570-1610,http://brresq.com/,,,legal,5,N
+bellrosquetereyesestebanp,Bell Rosquete Reyes Esteban PLLC,(305) 570-1610,http://brresq.com/,,Coral Gables,legal,5,N
 bellefleur,Belle Fleur,(305) 444-0883,,,Alhambra Circle,retail,4.6,N
 belleza_femenina,Belleza Femenina,(305) 269-1969,https://bfshapewear.com,6224 Southwest 8th Street,Coral Gables,retail,4.6,N
 bellezza,Bellezza,(305) 648-1936,,"801 Santiago St, Coral Gables, FL 33134",Sunset / South Gables,retail,3.9,N
@@ -303,7 +303,7 @@ blackmoreconsulting,Blackmore Consulting,786-417-9868,https://blackmoreconsultin
 blanca_fragrance_factory,Blanca Fragrance Factory,(401) 954-7670,https://blancafragrancefactory.com,"262 Giralda Ave, Coral Gables, FL 33134, United States",Coral Gables,personal_services,5,Y
 blanco_law_firm_pllc,"Blanco Law Firm, PLLC",(305) 962-0944,https://blancointl.com,,Coral Gables,legal,,Y
 blankdesignarchitecture,blank design + architecture,(305) 482-1996,,,Ponce de Leon Corridor,professional_services,4.9,N
-blaremedia,Blare Media,,https://blaremedia.net,,,marketing,,N
+blaremedia,Blare Media,,https://blaremedia.net,,Coral Gables,marketing,,N
 blinkingowleyecare,Blinking Owl Eyecare,(786) 526-5054,,,Bird Road Corridor,healthcare,4.8,N
 bliss_beautique,Bliss Beautique,(786) 679-3057,https://blissbeautique.com,"2255 Ponce de Leon Blvd, Coral Gables, FL 33134",Coral Gables,personal_services,4.9,Y
 bliss_imprints_gifts,Bliss Imprints & Gifts,(305) 661-2030,https://blissimprints.com,"293 Miracle Mile, Miami, FL 33134",Coral Gables,retail,4.9,Y
@@ -316,7 +316,7 @@ blue_missions,BLUE Missions,(888) 702-2583,https://bluemissions.org,"7350 SW 48t
 blueserenityboutique,Blue Serenity Boutique,(786) 564-2674,,,Miracle Mile,retail,4.8,N
 blue_sky_food_by_the_pound,Blue Sky Food by the Pound,(786) 803-8568,,5751 Southwest 40th Street,Bird Road Corridor,food_beverage,4.1,N
 blueprint_it_consulting_llc,"Blueprint IT Consulting, LLC",(703) 485-5786,https://blueprintitconsult.com,"3663 SW 8th St #204, Miami, FL 33135",Coral Gables,consulting,,Y
-bmsinsuranceagencyofflorida,BMS Insurance Agency of Florida LLC,(305) 667-7717,https://agroupservices.com/?utm_source=google&utm_medium=local&utm_campaign=google-local-72420,"299 Alhambra Cir Ste 212, Coral Gables, FL 33134",,insurance,4.9,N
+bmsinsuranceagencyofflorida,BMS Insurance Agency of Florida LLC,(305) 667-7717,https://agroupservices.com/?utm_source=google&utm_medium=local&utm_campaign=google-local-72420,"299 Alhambra Cir Ste 212, Coral Gables, FL 33134",Coral Gables,insurance,4.9,N
 bndengineers,"BND Engineers, Inc.",(305) 599-8495,,,Ponce de Leon Corridor,professional_services,,N
 bobs_watches,Bob's Watches,+1-305-517-1361; +1-800-494-3708,https://www.bobswatches.com/rolex/miami,2980 McFarlane Road,Douglas Road Corridor,retail,3,N
 bobsdiscountfurnitureandmattressstore,Bob’s Discount Furniture and Mattress Store,(646) 400-6180,,,Coral Gables,retail,4.8,N
@@ -332,9 +332,9 @@ boo_zamek,Boo Zamek,(305) 984-1143,https://compass.com/agents/provincezamek,"550
 bookhorizons,Book Horizons,(305) 665-6161,,,University of Miami,retail,4.8,N
 booksbookscafe,Books & Books Cafe,305-442-4408,https://booksandbooks.com,,Coral Gables,food_beverage,4.3,N
 books_books_inc,"Books & Books, Inc.",(305) 442-4408,https://booksandbooks.com,,Coral Gables,retail,4.3,Y
-borbollainsuranceagencies,Borbolla Insurance Agencies Inc,(305) 203-0333,https://agents.allstate.com/borbolla-insurance-agencies-inc-coral-gables-fl.html?utm_source=GMB&utm_medium=Website,"320 Sevilla Ave, Ste 202, Coral Gables, FL 33134",,insurance,4.7,N
+borbollainsuranceagencies,Borbolla Insurance Agencies Inc,(305) 203-0333,https://agents.allstate.com/borbolla-insurance-agencies-inc-coral-gables-fl.html?utm_source=GMB&utm_medium=Website,"320 Sevilla Ave, Ste 202, Coral Gables, FL 33134",Coral Gables,insurance,4.7,N
 borbollainsuranceagenciesallstateinsurance,Borbolla Insurance Agencies Inc: Allstate Insurance,(877) 217-7445,,,Coral Gables,insurance,4.7,N
-borgognonilawpl,Borgognoni Law PL,(305) 981-6707,,,,legal,,N
+borgognonilawpl,Borgognoni Law PL,(305) 981-6707,,,Coral Gables,legal,,N
 borkat_plumbing_services_llc,"Borkat Plumbing Services, LLC",(305) 244-6023,https://borkatplumbing.com,"7193 N Waterway Dr, Miami, FL 33155",Coral Gables,construction,5,Y
 bosss_hair_salon,Bosss Hair Salon,(786) 609-6836,http://www.bossahairsalon.com/,"6929 Red Rd, Coral Gables, FL 33143",Sunset / South Gables,retail,4.9,N
 boston_market,Boston Market,(305) 444-0209,https://www.bostonmarket.com/location/fl/miami/3600-sw-22nd-street?utm_source=Yext&utm_medium=click&utm_campaign=listings&utm_content=1067,"3600 SW 22nd St, Miami, FL 33145",Coral Gables,food_beverage,3.8,N
@@ -355,7 +355,7 @@ brandis,BRANDI'S,,,,Bird Road Corridor,food_beverage,2.3,N
 brasfield_gorrie_llc,"Brasfield & Gorrie, LLC",(305) 938-9800,https://brasfieldgorrie.com,,Coral Gables,professional_services,,Y
 breakfreemovement,Break Free Movement,(305) 456-8234,,,Bird Road Corridor,wellness,4.8,N
 breakthrough_t1d,Breakthrough T1D,(786) 741-9223,https://breakthrought1d.org,,Coral Gables,other,,Y
-brightviewlandscape,BrightView Landscape,(305) 258-8011,https://brightview.com,,,construction,4.5,N
+brightviewlandscape,BrightView Landscape,(305) 258-8011,https://brightview.com,,Coral Gables,construction,4.5,N
 brijbagbernharddo,Brijbag Bernhard DO,(305) 663-0088,,,University of Miami,other,4.1,N
 brilliantearth,Brilliant Earth,(786) 751-9243,,,Douglas Road Corridor,retail,4.4,N
 britomarketingadvertisingagencyagenciadepublicidad,Brito Marketing | Advertising Agency | Agencia de Publicidad,(305) 384-1141,,,Coral Gables,marketing,4.9,N
@@ -364,7 +364,7 @@ brito_pllc,"Brito, PLLC",(305) 614-4071,https://britopllc.com,"2121 Ponce de Leo
 brooklyngiftsandcollectibles,Brooklyn Gifts and Collectibles,(929) 344-1958,,,Coral Gables,retail,5.0,N
 brote_sprout,Brote (Sprout),(561) 765-2216,https://www.sprouts.com/store/fl/coconut-grove/miami-27th-ave/,"2750 SW 27th Terrace #102, Miami, FL 33133",University of Miami Area,hospitality,4.3,N
 brown_brown_insurance_services_inc,Brown & Brown Insurance Services Inc.,(305) 714-4400,https://bbrown.com,"8825 NW 21st Terrace, Doral, FL 33172",Coral Gables,insurance,5,Y
-brownbrownrsinsuranceservices,Brown & Brown RS Insurance Services LLC,(305) 377-8749,http://bbrown.com/,"2 Alhambra Plz, Coral Gables, FL",,insurance,3.7,N
+brownbrownrsinsuranceservices,Brown & Brown RS Insurance Services LLC,(305) 377-8749,http://bbrown.com/,"2 Alhambra Plz, Coral Gables, FL",Coral Gables,insurance,3.7,N
 brown_law_group_pa,"Brown Law Group, P.A.",(305) 667-3244,,6739 Southwest 40th Street,Bird Road Corridor,legal,4.7,N
 brownforman_beverages,BrownForman Beverages,(954) 218-5040,https://bf.com,,Coral Gables,food_beverage,,Y
 brownstone_law,Brownstone Law,(786) 753-5721,https://brownstonelaw.com/appellate-lawyer/florida-appeals/appellate-attorneys-in-miami-florida/,2520 Southwest 22nd Street,Douglas Road Corridor,legal,5,N
@@ -500,7 +500,7 @@ city_of_south_miami_city_hall,City of South Miami City Hall,(305) 250-5300,https
 city_permit,City Permit,(305) 908-1142,https://citypermit.us,"405 Biltmore Way, Coral Gables, FL 33134",Coral Gables,technology,2.5,Y
 city_year_miami,City Year Miami,(786) 406-7900,https://cityyear.org/miami,"2121 Ponce de Leon Blvd SUITE 350, Coral Gables, FL 33134",Coral Gables,other,5.0,Y
 claim_check_consultants,Claim Check Consultants,(866) 463-4009,https://claimcheckconsultants.com/,6555 Bird Road,Bird Road Corridor,insurance,5,N
-classiccollisioncoralgables,Classic Collision Coral Gables,(305) 262-6990,https://classiccollision.com,"2675 SW 69th Court, Miami, FL 33155",,auto_dealer,3.4,N
+classiccollisioncoralgables,Classic Collision Coral Gables,(305) 262-6990,https://classiccollision.com,"2675 SW 69th Court, Miami, FL 33155",Coral Gables,auto_dealer,3.4,N
 classicvantageswellness,Classic Vantage Spa & Wellness,(786) 953-6491,,,Ponce de Leon Corridor,wellness,4.9,N
 claudie_restaurant,CLAUDIE RESTAURANT,(305) 990-1101,https://claudierestaurant.com,"1101 Brickell Ave S-113, Miami, FL 33131",Coral Gables,food_beverage,4.8,Y
 clear_channel_outdoor,Clear Channel Outdoor,(305) 803-9191,https://clearchanneloutdoor.com,"5800 NW 77th Ct, Doral, FL 33166",Coral Gables,marketing,3.8,Y
@@ -528,14 +528,14 @@ coellocomny,Coello & Company,(305) 778-0280,,,Coral Gables,consulting,5.0,N
 coffee_for_the_soul,Coffee for the Soul,(786) 953-6594,https://cfscoffee.com,"256 Giralda Ave, Coral Gables, FL 33134",Coral Gables,food_beverage,4.8,Y
 cohenlaw,Cohen Law,(305) 967-7550,,,Miracle Mile,legal,4.8,N
 coin_laundry_of_america_6,Coin Laundry of America 6,,,6557 Bird Road,Bird Road Corridor,retail,2.8,N
-coldwellbankercoralgables,Coldwell Banker Coral Gables,(305) 667-4815,https://coldwellbanker.com,,,real_estate,4.6,N
+coldwellbankercoralgables,Coldwell Banker Coral Gables,(305) 667-4815,https://coldwellbanker.com,,Coral Gables,real_estate,4.6,N
 coldwell_banker_realty,Coldwell Banker Realty,(305) 773-6343,https://klockparkergroup.com,"4000 Ponce de Leon Blvd Suite 700, Coral Gables, FL 33146",Coral Gables,banking,4.6,Y
 college_of_arts_and_sciences,College of Arts and Sciences,(305) 284-4117,https://www.as.miami.edu/,1252 Memorial Drive,University of Miami Area,education,4.6,N
 college_of_engineering,College of Engineering,(305) 284-2404,https://www.coe.miami.edu/,1251 Memorial Drive,University of Miami Area,education,4.1,N
 colliers_international,Colliers International,(305) 455-7615,https://colliers.com,,Coral Gables,other,,Y
 colmarconstruction,Colmar Construction Corp,(786) 686-8639,,,Coral Gables,construction,5.0,N
 color_me_mine,Color Me Mine,(305) 665-0646,http://southmiami.colormemine.com/,"The Shops At Sunset Place, 5701 Sunset Dr #223, South Miami, FL 33143",Sunset / South Gables,construction,4.4,N
-comberhall,Comber Hall,(855) 969-3080,https://comberhall.com,,,hospitality,4.5,N
+comberhall,Comber Hall,(855) 969-3080,https://comberhall.com,,Coral Gables,hospitality,4.5,N
 comcast_advertising,Comcast Advertising,(954) 261-9267,https://comcastadvertising.com,"2901 SW 149th Ave, Miramar, FL 33027",Coral Gables,marketing,5,Y
 comic_kids,Comic Kids,(305) 300-2213,https://comickids.org,"6650 Bird Rd, Miami, FL 33155",Coral Gables,retail,4.5,Y
 commodore_inn_the_grove,Commodore Inn the Grove,(786) 671-8884,http://www.commodoreinnthegrove.com/,3162 Commodore Plaza,Douglas Road Corridor,hospitality,4.5,N
@@ -543,7 +543,7 @@ communitycoalition,Community Coalition Inc,(305) 854-2882,,,Coral Gables,nonprof
 community_of_christ,Community of Christ,(305) 448-7421,http://www.gablesucc.org/,"3010 De Soto Blvd, Coral Gables, FL 33134",Coral Gables,nonprofit,4.8,N
 comnionidentalsmile,Companioni Dental Smile,(786) 304-2447,,,Coral Gables,healthcare,5.0,N
 compass_real_estate,Compass Real Estate,(786) 234-5780,https://teamcitronmiami.com,"4699 Ponce de Leon Blvd, Coral Gables, FL 33146",Coral Gables,real_estate,2.1,Y
-comssrealestatecoralgables,Compass Real Estate Coral Gables,(305) 851-2820,https://compass.com,,,real_estate,2.1,N
+comssrealestatecoralgables,Compass Real Estate Coral Gables,(305) 851-2820,https://compass.com,,Coral Gables,real_estate,2.1,N
 comssmsp,CompassMSP,(833) 444-2677,,,Coral Gables,technology,4.3,N
 completeinsuranceagency,Complete Insurance Agency,(305) 667-7717,,,Coral Gables,insurance,5.0,N
 conciergemedicalservices,Concierge Medical Services,(305) 778-0273,,,Ponce de Leon Corridor,healthcare,5.0,N
@@ -590,7 +590,7 @@ coralgablesdentistry,Coral Gables Dentistry,(305) 567-1992,https://coralgablesde
 coralgablesdermatologyaesthetics,Coral Gables Dermatology & Aesthetics,(305) 443-2983,,,Coral Gables,healthcare,5.0,N
 coral_gables_development_services,Coral Gables Development Services,(305) 460-5235,http://www.coralgables.com/,427 Biltmore Way,Coral Gables,professional_services,2.5,N
 coralgableselementaryschool,Coral Gables Elementary School,,,,Ponce de Leon Corridor,education,,N
-coralgablesexecutivephysicians,Coral Gables Executive Physicians,(305) 446-9940,https://cgepmd.com,"800 Douglas Rd, Suite 125, Coral Gables, FL 33134",,healthcare,5,N
+coralgablesexecutivephysicians,Coral Gables Executive Physicians,(305) 446-9940,https://cgepmd.com,"800 Douglas Rd, Suite 125, Coral Gables, FL 33134",Coral Gables,healthcare,5,N
 coral_gables_eye_care,Coral Gables Eye Care,(305) 444-8331,https://coralgableseyecare.com,"58 Miracle Mile, Coral Gables, FL 33134",Coral Gables,healthcare,4.7,Y
 coralgablesgraphics,Coral Gables Graphics,305-351-3210,https://coralgablesgraphics.com,,Coral Gables,retail,5,Y
 coral_gables_high_school,Coral Gables High School,(305) 443-4871,https://cghs.dade.k12.fl.us,"450 Bird Rd., Coral Gables, FL 33146",Coral Gables,accounting,,Y
@@ -628,7 +628,7 @@ corkandbarrelwineandspirits,Cork and Barrel Wine and Spirits,(212) 222-3700,,,Co
 cornishhernandezgonzalezp,"Cornish Hernandez Gonzalez, PLLC",(305) 745-7035,,,Miracle Mile,legal,5.0,N
 oschemapilatesrehab,CorpoSchema Pilates & Rehab,(305) 428-2790,,,Ponce de Leon Corridor,healthcare,5.0,N
 cortadito_coffee_house,Cortadito Coffee House,(786) 410-0175,https://cortaditocoffeehouse.com,200 Miracle Mile,Miracle Mile,food_beverage,4.6,Y
-cortaditocoffeehousecoralgables,Cortadito Coffee House Coral Gables,(786) 410-0175,https://cortaditocoffeehouse.com/,"200 Miracle Mile, Coral Gables, FL",,food_beverage,4.6,N
+cortaditocoffeehousecoralgables,Cortadito Coffee House Coral Gables,(786) 410-0175,https://cortaditocoffeehouse.com/,"200 Miracle Mile, Coral Gables, FL",Coral Gables,food_beverage,4.6,N
 corwilarchitects,Corwil Architects Inc,(305) 448-7383,,,Bird Road Corridor,professional_services,5.0,N
 cosabellabeautysalonands,Cosa bella beauty salon and spa,(305) 444-0063,,,Coral Gables,personal_services,4.9,N
 cosford_cinema,Cosford Cinema,(305) 284-4627,https://cosfordcinema.com,"5030 Brunson Dr, Coral Gables, FL 33146",University of Miami Area,arts_culture,4.5,N
@@ -689,7 +689,7 @@ datapro,"Datapro, Inc.",(305) 374-0606,,,Coral Gables,technology,4.5,N
 davidfairchildelementaryschool,David Fairchild Elementary School,,,,Bird Road Corridor,education,,N
 davidhernandezc,"David Hernandez, C.P.A., P.A.",(305) 982-8069,,,Ponce de Leon Corridor,accounting,5.0,N
 davidplummerassociates,David Plummer & Associates Inc,(305) 447-0900,,,Ponce de Leon Corridor,professional_services,5.0,N
-davidswilligchartered,David S. Willig Chartered,(305) 990-0562,,"Miami, FL - Serving Coral Gables",,legal,4.6,N
+davidswilligchartered,David S. Willig Chartered,(305) 990-0562,,"Miami, FL - Serving Coral Gables",Coral Gables,legal,4.6,N
 david_william_hotel_condo_association,David William Hotel Condo Association,(305) 903-1867,,700 Biltmore Way,Coral Gables,hospitality,4.6,N
 davinci_institute,DaVinci Institute,,,,Douglas Road Corridor,education,,N
 dawsonassociatesc,"Dawson & Associates, CPA",(305) 443-1500,,,Ponce de Leon Corridor,food_beverage,5.0,N
@@ -742,7 +742,7 @@ dlelawyersabogadosdeaccidentesmiami,DLE Lawyers | Abogados De Accidentes Miami,(
 dmg_corporation,DMG Corporation,(305) 887-1431,https://giovannymadridfr.com,,Coral Gables,financial_services,1,Y
 docbsfreshkitchen,Doc B's Fresh Kitchen,,,,Coral Gables,food_beverage,4.6,N
 doc_bs_restaurant__bar,Doc B's Restaurant + Bar,(786) 864-1220,https://docbsrestaurant.com/locations/coral-gables,301 Miracle Mile,Miracle Mile,food_beverage,4.7,N
-docdigitalsem,Doc Digital SEM,(954) 737-3031,https://docdigitalsem.com,,,marketing,5,N
+docdigitalsem,Doc Digital SEM,(954) 737-3031,https://docdigitalsem.com,,Coral Gables,marketing,5,N
 doctorsmedicalcenter,Doctor's Medical Center,(305) 685-5688,,,Coral Gables,healthcare,4.0,N
 doctors_hospital,Doctors Hospital,(786) 308-3000,https://baptisthealth.net/en/facilities/doctors-hospital/,5000 University Drive,University of Miami Area,healthcare,4.8,N
 doctorshospitalsportsmedicinetherapy,Doctors Hospital Sports Medicine Therapy,,,,University of Miami,healthcare,4.5,N
@@ -917,7 +917,7 @@ fine_line_furniture_and_accessories,Fine Line Furniture and Accessories,(305) 66
 fingerprinttechnologies,Fingerprint Technologies,(305) 443-9148,,,Coral Gables,personal_services,2.6,N
 fintech_espresso,Fintech Espresso,(305) 639-8218,https://fintechespresso.com/,"4100 Salzedo St STE 5, Coral Gables, FL 33146",Coral Gables,professional_services,4.8,N
 fiola_miami,Fiola Miami,,,1500 San Ignacio Avenue,Sunset / South Gables,food_beverage,4.2,N
-firstamericanbank,First American Bank,(305) 500-9501,https://firstambank.com,"540 Biltmore Way, Coral Gables, FL 33134",,banking,4.3,N
+firstamericanbank,First American Bank,(305) 500-9501,https://firstambank.com,"540 Biltmore Way, Coral Gables, FL 33134",Coral Gables,banking,4.3,N
 first_baptist_church_of_south_miami,First Baptist Church of South Miami,(305) 559-0241,http://coralpark.org/,"8755 SW 16th St, Miami, FL 33165",Coral Gables,nonprofit,4.8,N
 first_citizens_bank,First Citizens Bank,(305) 639-7200,https://firstcitizens.com,"250 Palermo Ave, Coral Gables, FL 33134",Coral Gables,banking,3.8,Y
 first_horizon_bank,First Horizon Bank,(305) 442-9991,https://firsthorizon.com,"2109 Ponce de Leon Blvd, Coral Gables, FL 33134",Coral Gables,banking,4.2,Y
@@ -963,7 +963,7 @@ flowerdreammiami,Flower Dream Miami,(714) 732-2273,,,Ponce de Leon Corridor,reta
 flowers__services,Flowers & Services,(305) 444-0883,http://www.bfleur.com/,6600 Southwest 24th Street,Coral Gables,retail,4.6,N
 flowersatthegables,Flowers at the Gables,(305) 713-5669,,,Bird Road Corridor,retail,4.6,N
 fluentica,Fluentica,(347) 620-0102,https://fluenticanyc.com,,Coral Gables,other,,Y
-fluidmarketplaces,Fluid Marketplaces,,,,,marketing,,N
+fluidmarketplaces,Fluid Marketplaces,,,,Coral Gables,marketing,,N
 flyingwithairyogadance,Flying with Air - Yoga & Dance,(917) 674-5684,,,Ponce de Leon Corridor,wellness,5.0,N
 focaccia_bistro,Focaccia Bistro,(305) 476-8292,http://www.focacciabistro.com,3111 Grand Avenue,Douglas Road Corridor,food_beverage,3.8,N
 fogodechobraziliansteakhouse,Fogo de Chao Brazilian Steakhouse,(786) 297-8788,https://fogodechao.com/location/coral-gables/,2801 Ponce de Leon Blvd,Coral Gables,food_beverage,4.8,N
@@ -978,7 +978,7 @@ foreyes,For Eyes,(305) 441-1717,,,Coral Gables,healthcare,4.7,N
 forma_dental,Forma Dental,(786) 762-2465,https://formadental.co/,69 Merrick Way,Ponce de Leon Corridor,healthcare,5.0,N
 formulamiami,Formula Miami,(305) 443-1515,,,Bird Road Corridor,auto_dealer,4.8,N
 formula_one_sports_cars,Formula One Sports Cars,(305) 443-1515,https://formula-1-sport-cars.ebizautos.com/,3800 Southwest 40th Street,Bird Road Corridor,retail,4.8,N
-fortuninsurance,Fortun Insurance,(844) 660-2820,http://www.oneinsuranceservices.com/,"365 Palermo Ave, Coral Gables, FL 33134",,insurance,3,N
+fortuninsurance,Fortun Insurance,(844) 660-2820,http://www.oneinsuranceservices.com/,"365 Palermo Ave, Coral Gables, FL 33134",Coral Gables,insurance,3,N
 foundationoftheamericas,Foundation of the Americas,(305) 300-8881,,,Coral Gables,nonprofit,,N
 four_leaf_marketing_consulting,Four Leaf Marketing & Consulting,(305) 619-9865,https://fourleafmc.com,Coconut Grove,Coral Gables,consulting,,Y
 four_points_by_sheraton_coral_gables,Four Points by Sheraton Coral Gables,(305) 429-0000,https://marriott.com/fllfp,"3861 SW 40th St, Coral Gables, FL 33146",Bird Road Corridor,other,4.2,Y
@@ -1003,7 +1003,7 @@ fritz__franz_bierhaus,Fritz & Franz Bierhaus,(305) 774-1883,https://www.bierhaus
 fritzandfranzbierhaus,Fritz and Franz Bierhaus,,,,Coral Gables,food_beverage,4.3,N
 frost_school_of_music,Frost School of Music,(305) 284-2241,https://music.miami.edu,5501 San Amaro Drive,University of Miami,education,4.7,Y
 frost_science_museum,Frost Science Museum,(305) 434-9592,https://frostscience.org,"1101 Biscayne Blvd, Miami, FL 33132",Coral Gables,arts_culture,4.4,Y
-fullserviceconstructioncomnyoharalandscapeandmaintenance,Full-service construction company O'Hara Landscape and Maintenance Inc,(561) 328-8240,https://oharalandscape.com,,,construction,4.1,N
+fullserviceconstructioncomnyoharalandscapeandmaintenance,Full-service construction company O'Hara Landscape and Maintenance Inc,(561) 328-8240,https://oharalandscape.com,,Coral Gables,construction,4.1,N
 fundacionmanosdelsur,Fundacion Manos del Sur,(305) 860-6529,,,Coral Gables,nonprofit,,N
 fusion_md_cosmetic_surgery,Fusion MD Cosmetic Surgery,(305) 686-1122,https://www.fusionmdcosmeticsurgery.com,550 Biltmore Way,Coral Gables,healthcare,4.8,N
 futura_optical,Futura Optical,(305) 643-1010,https://futuraeyedoctors.com,"1846 SW 8th St, Miami, FL 33135",Coral Gables,retail,4.7,Y
@@ -1059,7 +1059,7 @@ gdconstruction,GD Construction LLC,(305) 200-5596,,,Coral Gables,construction,5.
 geeksonsite,Geeks on Site,(888) 360-4335,,,Miracle Mile,technology,4.4,N
 gema_menendez_keyes_co,Gema Menendez  Keyes Co.,(305) 586-2121,https://gemamenendez.keyes.com,"2423 S Le Jeune Rd, Coral Gables, FL 33134",Coral Gables,other,5,Y
 gemrt_co_llp,"GEMRT & Co., LLP",(305) 529-5440,https://gemrtcpa.com,"2600 Douglas Rd suite 800, Coral Gables, FL 33134",Coral Gables,accounting,4,Y
-gemrtcs,GEMRT CPAs,(305) 529-5440,https://gemrtcpa.com,,,accounting,4,N
+gemrtcs,GEMRT CPAs,(305) 529-5440,https://gemrtcpa.com,,Coral Gables,accounting,4,N
 general_dry_cleaners,General Dry Cleaners,(305) 662-6161,,6705 Southwest 40th Street,Bird Road Corridor,retail,5,N
 generationchurch,Generation Church,,,,University of Miami,nonprofit,5.0,N
 genesis,Genesis,(786) 574-3093,https://www.bramanmiamigenesis.com/?utm_source=gmb&utm_medium=organic&utm_campaign=honest_gmb&utm_content=website_link,"1930 NE 2nd Ave, Miami, FL 33137",University of Miami Area,hospitality,4.4,N
@@ -1085,7 +1085,7 @@ girl_scouts_of_tropical_florida,Girl Scouts of Tropical Florida,(305) 253-4841,h
 gisela_cacciamani_berkshire_hathaway_homeservices_ewm_realty,Gisela Cacciamani @ Berkshire Hathaway HomeServices EWM Realty,(305) 733-0795,https://giselacacciamani.com,"550 S Dixie Hwy, Coral Gables, FL 33146",Coral Gables,real_estate,5,Y
 gladeviewbaptistkindergarten,Gladeview Baptist Kindergarten,,,,Coral Gables,education,,N
 gladiium_technology_partners,GLADiiUM Technology Partners,(305) 901-2360,https://gladiium.ua/,95 Merrick Way,Ponce de Leon Corridor,professional_services,5,N
-glasshousecafe,Glasshouse Cafe,(305) 667-1651,http://www.fairchildgarden.org/visit/shopping-dining/the-glasshouse-cafe,"10901 Old Cutler Rd, Coral Gables, FL",,food_beverage,4.4,N
+glasshousecafe,Glasshouse Cafe,(305) 667-1651,http://www.fairchildgarden.org/visit/shopping-dining/the-glasshouse-cafe,"10901 Old Cutler Rd, Coral Gables, FL",Coral Gables,food_beverage,4.4,N
 glennnealschool,Glenn Neal School,,,,Coral Gables,education,,N
 global_business_brokers_kw_business,Global Business Brokers  KW Business,(305) 510-2430,https://globalbusinessbroker.com,,Coral Gables,real_estate,,Y
 globalfoundationfordemocracyanddevelopment,Global Foundation for Democracy and Development,(786) 233-9877,,,Miracle Mile,nonprofit,5.0,N
@@ -1111,7 +1111,7 @@ goodvetscoconutgrove,GoodVets Coconut Grove,(305) 463-1201,,,Douglas Road Corrid
 goodvetscoralgables,GoodVets Coral Gables,(305) 522-6100,,,Miracle Mile,healthcare,4.8,N
 goodwill,Goodwill,(305) 325-9114,https://www.goodwillsouthflorida.org/,6842 Southwest 40th Street,Bird Road Corridor,retail,4.6,N
 goodyearautoservice,Goodyear Auto Service,(305) 446-8101,,,Bird Road Corridor,retail,4.1,N
-gooseheadinsuranceagency,"Goosehead Insurance Agency, LLC",(305) 704-8133,https://www.goosehead.com/agents/fl/miami/the-pinto-agency?utm_source=google&utm_medium=organic_search&utm_campaign=yext,"2222 Ponce de Leon Blvd Ste 300, Coral Gables, FL 33134",,insurance,4.2,N
+gooseheadinsuranceagency,"Goosehead Insurance Agency, LLC",(305) 704-8133,https://www.goosehead.com/agents/fl/miami/the-pinto-agency?utm_source=google&utm_medium=organic_search&utm_campaign=yext,"2222 Ponce de Leon Blvd Ste 300, Coral Gables, FL 33134",Coral Gables,insurance,4.2,N
 gowanuswinestudiotastingtable,Gowanus Wine Studio & Tasting Table,(917) 687-6058,,,Coral Gables,food_beverage,4.9,N
 graceland_memorial_park,Graceland Memorial Park,(786) 232-0846,https://www.memorialplan.net/locations/graceland-memorial-park-north,"4420 SW 8th St, Miami, FL 33134",Coral Gables,other,3.9,N
 gradepowerlearningcoralgables,GradePower Learning Coral Gables,(305) 680-0164,,,Ponce de Leon Corridor,education,5,N
@@ -1146,7 +1146,7 @@ grovecleaners,Grove Cleaners,(305) 567-9007,,,Ponce de Leon Corridor,personal_se
 grove_gallery_interiors,Grove Gallery & Interiors,(305) 445-7401,https://grovegalleryinteriors.com,"2884 Bird Ave, Miami, FL 33133",Coral Gables,marketing,4.7,Y
 grove_liquors,Grove Liquors,(305) 455-3403,https://www.milamsmarkets.com/locations/,2991 Southwest 32nd Avenue,Douglas Road Corridor,retail,4.3,N
 grove_networks_inc,Grove Networks Inc.,(305) 448-6126,https://grovenetworks.com,"2103 Coral Wy Suite 700, Miami, FL 33145",Coral Gables,other,4.3,Y
-groverwinstoninsurancegroup,"Grover Winston Insurance Group, LLC",(786) 778-3154,https://wyninsurance.com/,"2655 LeJune Rd, Ste 533, Coral Gables, FL 33134",,insurance,4.7,N
+groverwinstoninsurancegroup,"Grover Winston Insurance Group, LLC",(786) 778-3154,https://wyninsurance.com/,"2655 LeJune Rd, Ste 533, Coral Gables, FL 33134",Coral Gables,insurance,4.7,N
 growinghouseschool,Growing House School,,,,Sunset / South Gables,education,,N
 guasnaturals,Guapas Natural Spa,(786) 516-1883,,,Ponce de Leon Corridor,wellness,5.0,N
 gudeliamoreirafamilydaycarecenter,Gudelia Moreira Family Day Care Center,,,,Coral Gables,education,,N
@@ -1162,7 +1162,7 @@ gustavo_fernandez_photography,Gustavo Fernandez Photography,(925) 457-0042,https
 gustocaserobymdqsweets,Gusto Casero By MDQ Sweets,(305) 200-3713,,,Ponce de Leon Corridor,food_beverage,4.9,N
 h_benitez_fine_art_gallery_inc,H Benitez Fine Art Gallery Inc.,(786) 877-1045,https://humbertobenitez.com,"233 Aragon Ave, Coral Gables, FL 33134",Coral Gables,arts_culture,4.4,Y
 hcocoralgables,H&CO | Coral Gables,(305) 444-8800,,,Miracle Mile,food_beverage,4.1,N
-hlagency,H/L Agency,(800) 257-5661,https://www.hlrealestategroup.com/,,,marketing,5,N
+hlagency,H/L Agency,(800) 257-5661,https://www.hlrealestategroup.com/,,Coral Gables,marketing,5,N
 haber_law,Haber Law,(305) 379-2400,https://haber.law,"251 NW 23rd St, Miami, FL 33127",Coral Gables,legal,3.6,Y
 habitat_for_humanity_of_greater_miami,Habitat for Humanity of Greater Miami,(305) 634-3628,https://miamihabitat.org,"3800 NW 22nd Ave, Miami, FL 33142",Coral Gables,nonprofit,4,Y
 hadeedlegal,HADEED LEGAL,(954) 738-9757,,,Bird Road Corridor,legal,5.0,N
@@ -1207,7 +1207,7 @@ hidalgoconstruction,Hidalgo Construction,(305) 569-0060,,,Ponce de Leon Corridor
 hidyhomesteamkellerwilliamsmiamikathyhidy,Hidy Homes Team - Keller Williams Miami - Kathy Hidy,(305) 606-6652,,,Coral Gables,real_estate,5.0,N
 higgs_hub,HIGGS HUB,(305) 450-6116,https://rosellapapale.com,,Coral Gables,other,5,Y
 highlightsalonands,Highlight Salon and Spa,(305) 448-0707,,,Ponce de Leon Corridor,personal_services,5.0,N
-highlightsaloncoralgables,Highlight Salon Coral Gables,(305) 448-0707,https://highlightcoralgables.com,"2100 Ponce De Leon Blvd Suite 111, Coral Gables, FL 33134",,personal_services,5,N
+highlightsaloncoralgables,Highlight Salon Coral Gables,(305) 448-0707,https://highlightcoralgables.com,"2100 Ponce De Leon Blvd Suite 111, Coral Gables, FL 33134",Coral Gables,personal_services,5,N
 hillstone_restaurant,Hillstone Restaurant,(305) 529-0141,https://hillstonerestaurant.com/,201 Miracle Mile,Miracle Mile,food_beverage,4.1,N
 hiltongomesmd,Hilton Gomes MD,(305) 749-9888,,,Coral Gables,hospitality,5.0,N
 hiltonmiamiairportbluelagoon,Hilton Miami Airport Blue Lagoon,(305) 262-1000,,,Coral Gables,hospitality,3.9,N
@@ -1240,7 +1240,7 @@ icarechiropractic,"iCare Chiropractic, P.A.",(786) 391-3868,,,Coral Gables,healt
 ichimi,Ichimi,,,,Coral Gables,food_beverage,4.3,N
 iconnailss,Icon Nails Spa,(305) 364-5628,,,Miracle Mile,personal_services,4.2,N
 icr_advisors,ICR Advisors,(786) 473-9894,https://miamiliferealestate.net,,Coral Gables,professional_services,,Y
-icscreativeagency,ICS Creative Agency,(305) 799-9936,https://icscreativeagency.com,,,marketing,4.2,N
+icscreativeagency,ICS Creative Agency,(305) 799-9936,https://icscreativeagency.com,,Coral Gables,marketing,4.2,N
 ifsoboutique,If So Boutique,(786) 942-2626,,,Ponce de Leon Corridor,retail,4.7,N
 iglesia_bautista_de_westchester,Iglesia Bautista de Westchester,(786) 208-5757,,"2750 SW 112th Ave, Miami, FL 33165",Coral Gables,nonprofit,4.8,N
 iglesia_victoria,Iglesia Victoria,(305) 636-5311,,"4150 NW 7th Ave, Miami, FL 33127",Douglas Road Corridor,nonprofit,4.6,N
@@ -1281,12 +1281,12 @@ ivette_odoski_consulting,Ivette ODoski Consulting,(305) 632-6452,https://velizla
 ivoalonsomd,"Ivo Alonso M.D., P.A.",(305) 448-7499,,,Coral Gables,healthcare,4.6,N
 izakaya,Izakaya,,,,Coral Gables,food_beverage,4.3,N
 jcautoservices,J C Auto Services,(305) 403-0097,,,Coral Gables,auto_dealer,5.0,N
-jnathairstudio,J Nat Hair Studio,(786) 315-8809,http://jnathairstudio.booksy.com/,"1340 S. Dixie Highway, suite 150, #202, Coral Gables, FL 33146",,personal_services,5,N
+jnathairstudio,J Nat Hair Studio,(786) 315-8809,http://jnathairstudio.booksy.com/,"1340 S. Dixie Highway, suite 150, #202, Coral Gables, FL 33146",Coral Gables,personal_services,5,N
 j_muir_associates_pa,"J. Muir & Associates, P.A.",(786) 533-1100,https://miamibusiness.law,"121 Alhambra Plz #1500, Coral Gables, FL 33134",Coral Gables,legal,5,Y
 j_wilcox_consulting,J. Wilcox Consulting,(305) 962-9313,https://jwilcoxconsulting.com,"359 Alcazar Ave Suite 200, Coral Gables, FL 33134",Coral Gables,consulting,5,Y
 jackson_health_foundation,Jackson Health Foundation,(305) 588-8167,https://jacksonhealthfoundation.org,"Executive Offices - River Landing Miami, 1400 NW N River Dr, Miami, FL 33125",Coral Gables,nonprofit,4.8,Y
 jackson_health_system,Jackson Health System,(305) 585-1111,https://jhsmiami.org,"3737 SW 8th St, Coral Gables, FL 33134",Coral Gables,healthcare,4.8,Y
-jacksonmedicalgroupcoralgables,Jackson Medical Group - Coral Gables,(305) 575-1620,https://jacksonhealth.org,"3737 S.W. 8 St., suite B, Coral Gables, FL 33134",,healthcare,3.3,N
+jacksonmedicalgroupcoralgables,Jackson Medical Group - Coral Gables,(305) 575-1620,https://jacksonhealth.org,"3737 S.W. 8 St., suite B, Coral Gables, FL 33134",Coral Gables,healthcare,3.3,N
 jacqueline_salcines_pa,"Jacqueline Salcines, P.A.",(305) 669-5280,https://salcineslaw.com,"706 S Dixie Hwy Second Floor, Coral Gables, FL 33146",Coral Gables,legal,4.4,Y
 jaes_jewelers,Jae's Jewelers,(305) 443-7724,https://jaesjewelers.com,"237 Miracle Mile, Coral Gables, FL 33134",Coral Gables,retail,4.9,Y
 jaguarcoralgables,Jaguar Coral Gables,(305) 476-4000,,,Bird Road Corridor,automotive,4.8,N
@@ -1309,7 +1309,7 @@ jivesmedia,Jives Media,(650) 420-7455,,,Coral Gables,marketing,5.0,N
 joan_reitsma,Joan Reitsma,(305) 527-3204,https://gablesfoundation.org/,"288 Aragon Ave Suite D, Coral Gables, FL 33134",Coral Gables,other,5,Y
 joannas_place,Joanna's Place,(305) 661-5777,https://joannasmarketplace.com/?utm_source=GMBlisting&utm_medium=organic,"8247 S Dixie Hwy, Miami, FL 33143",Sunset / South Gables,food_beverage,4.5,N
 johnmartinsirishpubrestaurant,John Martin's Irish Pub & Restaurant,(305) 209-0609,,,Coral Gables,food_beverage,3.9,N
-johntrickmuscalaw,John Patrick Musca Law,(305) 203-0333,https://www.muscalaw.com/locations/miami,,,legal,,N
+johntrickmuscalaw,John Patrick Musca Law,(305) 203-0333,https://www.muscalaw.com/locations/miami,,Coral Gables,legal,,N
 johnwilliamuribemd,"John William Uribe, MD",(786) 268-6200,,,University of Miami,healthcare,4.8,N
 johnmartins,JohnMartin's,305-209-0609,https://johnmartinsmiami.com,,miracle mile,food_beverage,4.0,Y
 johnnywas,Johnny Was,(305) 351-4037,,,Bird Road Corridor,retail,4.3,N
@@ -1376,7 +1376,7 @@ kristi_house,Kristi House,(305) 547-6800,https://kristihouse.org,"1265 NW 12th A
 ksdt_cpa,"KSDT, CPA",(305) 670-3370,https://ksdtcpa.com,,Coral Gables,accounting,,Y
 kuan,Kuan,(786) 408-4636,,"1450 Madruga Ave STE 302, Miami, FL 33146",University of Miami Area,hospitality,4.9,N
 kukicadvertising,Kukic Advertising,(305) 677-1621,,,Ponce de Leon Corridor,marketing,5.0,N
-kurzbankurzbantetzelipratt,Kurzban Kurzban Tetzeli & Pratt PA,(305) 744-5888,https://www.kktplaw.com/?npcmp=dir:local:1575323:33134,,,legal,4.7,N
+kurzbankurzbantetzelipratt,Kurzban Kurzban Tetzeli & Pratt PA,(305) 744-5888,https://www.kktplaw.com/?npcmp=dir:local:1575323:33134,,Coral Gables,legal,4.7,N
 kurzban_kurzban_tetzeli_and_pratt,Kurzban Kurzban Tetzeli and Pratt,(305) 444-0060,https://kktplaw.com,"131 Madeira Ave, Coral Gables, FL 33134",Coral Gables,legal,4.7,Y
 kurzbankurzbanweingertetzeli_and_pratt,"Kurzban,Kurzban,Weinger,Tetzeli and Pratt",(305) 744-5888,https://www.kkwtlaw.com/,2650 Southwest 27th Avenue,Douglas Road Corridor,legal,4.7,N
 kydeco,KyDeco,(201) 502-0358,,,Coral Gables,retail,4.9,N
@@ -1425,17 +1425,17 @@ latin_press_media__events,Latin Press Media & Events,(305) 285-3133,https://www.
 laura_l_russo_esq_llc,"Laura L. Russo, Esq. LLC",(305) 476-8300,http://www.rexrussolaw.com/contact.html,"1550 Madruga Ave, Coral Gables, FL 33146",Coral Gables,legal,,Y
 laurensfacetheday,Lauren's Face the Day,(305) 448-9400,,,Alhambra Circle,wellness,5.0,N
 lavender_greenberg_estate_planning_probate_law,Lavender Greenberg Estate Planning & Probate Law,(786) 832-4694,https://lglawmiami.com,"2525 Ponce de Leon Blvd Suit 300, Coral Gables, FL 33134, United States",Coral Gables,legal,5,Y
-lawofficeofdiaznunezelorza,Law Office of Diaz & Nunez Elorza PA,(305) 521-3299,http://www.diazelorza.com/,,,legal,4.9,N
+lawofficeofdiaznunezelorza,Law Office of Diaz & Nunez Elorza PA,(305) 521-3299,http://www.diazelorza.com/,,Coral Gables,legal,4.9,N
 law_office_of_ferdie_and_lones_chartered,Law Office of Ferdie and Lones Chartered,(305) 445-3557,https://ferdieandlones.com/,717 Ponce de Leon Boulevard,Coral Gables,legal,5,N
 law_office_of_francisco_a_marty,Law Office of Francisco A. Marty,(305) 545-5282,https://criminaldefenseattorneys.miami,"6790 Coral Wy 3rd floor, Miami, FL 33155",Coral Gables,legal,5,Y
 law_office_of_francisco_cieza_pa,"Law Office of Francisco Cieza, P.A.",(786) 423-8144,https://ciezalawfirm.com,"2525 Ponce de Leon Blvd Suit 300, Miami, FL 33134",Coral Gables,legal,5,Y
 law_office_of_vanessa_d_torres_pa,Law Office of Vanessa D. Torres P.A.,(786) 801-0271,https://vdtlaw.com,"999 Ponce de Leon Blvd # 500, Coral Gables, FL 33134",Coral Gables,legal,4.9,Y
 lawofficesofandrearouviere,Law Offices of Andre A. Rouviere,(305) 774-7000,,,Bird Road Corridor,legal,4.8,N
 lawofficesofdiegotraibel,Law Offices of Diego Traibel,(305) 791-6775,,,Ponce de Leon Corridor,legal,5.0,N
-lawofficesoflawrenceskatz,Law Offices of Lawrence S. Katz PA,(305) 670-8656,https://www.katzfamilylaw.com/?npcmp=dir:local:2113713:33156,"Miami, FL - Serving Coral Gables",,legal,4.7,N
+lawofficesoflawrenceskatz,Law Offices of Lawrence S. Katz PA,(305) 670-8656,https://www.katzfamilylaw.com/?npcmp=dir:local:2113713:33156,"Miami, FL - Serving Coral Gables",Coral Gables,legal,4.7,N
 lawofficesofmjlouis,Law Offices of M J Louis,(305) 377-9646,,,Miracle Mile,legal,5.0,N
 lawofficesofmartinjrivas,Law Offices of Martin J Rivas PA,(305) 441-2221,,,Coral Gables,legal,4.8,N
-lawofficesofrodrigosdasilva,Law Offices of Rodrigo S. Da Silva PA,(305) 615-1434,http://rdasilvalaw.com/,"Miami, FL - Serving Coral Gables",,legal,5,N
+lawofficesofrodrigosdasilva,Law Offices of Rodrigo S. Da Silva PA,(305) 615-1434,http://rdasilvalaw.com/,"Miami, FL - Serving Coral Gables",Coral Gables,legal,5,N
 le_parc_caf,Le Parc Cafe,(305) 772-8785,https://www.coralgablescountryclub.com/leparc-caf%C3%A9,997 North Greenway Drive,Coral Gables,food_beverage,4.7,N
 lercbonjourcafbistro,"Le Parc-Bonjour, Café Bistro",(305) 722-8785,,,Coral Gables,food_beverage,4.7,N
 le_paris_cake_design_bakery,Le Paris Cake Design Bakery,(305) 269-7000,http://www.lepariscakedesign.com/home.html,6180 Southwest 8th Street,Coral Gables,retail,4.3,N
@@ -1462,7 +1462,7 @@ life_imaging_fla,Life Imaging FLA,(772) 773-6675,https://lifeimagingfla.com,"234
 lifescoralgables,Life Spa Coral Gables,(786) 437-4424,,,Coral Gables,wellness,4.8,N
 life_theory_inc,Life Theory Inc.,(786) 676-2592,https://lifetheorymia.com,"2525 Ponce de Leon Blvd STE 302, Coral Gables, FL 33134",Coral Gables,healthcare,5,Y
 life_time,Life Time,(786) 437-4467,https://lifetime.life,237 South Dixie Highway,Coral Gables,other,3.8,Y
-lifetimecoralgables,Life Time Coral Gables,(786) 437-4407,https://lifetime.life,,,wellness,3.8,N
+lifetimecoralgables,Life Time Coral Gables,(786) 437-4407,https://lifetime.life,,Coral Gables,wellness,3.8,N
 lifeclinicchiropracticrehabilitationcoralgablesfl,"LifeClinic Chiropractic & Rehabilitation - Coral Gables, FL",(786) 437-4458,,,Coral Gables,healthcare,4.9,N
 lighthouse_internet_media,Lighthouse Internet Media,(305) 987-2506,https://lighthousemedia.com,,Coral Gables,marketing,,Y
 lightrailyoga,Lightrail Yoga,(786) 294-1264,,,Ponce de Leon Corridor,wellness,5.0,N
@@ -1485,7 +1485,7 @@ littleshavernumber1josemartischool,Little Shaver Number 1 Jose Marti School,,,,D
 live_like_bella_childhood_cancer_foundation,Live Like Bella(R) Childhood Cancer Foundation,(786) 505-3914,https://livelikebella.org,"2199 Ponce de Leon Blvd #303, Coral Gables, FL 33134",Coral Gables,nonprofit,5.0,Y
 llakhdar_coaching,Llakhdar Coaching,(850) 322-8109,https://lakhdarcoaching.com,,Coral Gables,consulting,,Y
 loews_coral_gables_hotel,Loews Coral Gables Hotel,(786) 772-7676,https://loewshotels.com/coralgables,2950 Coconut Grove Drive,downtown coral gables,hospitality,4.6,Y
-loewscoralgableshotel,Loews Coral Gables Hotel,(786) 772-7600,https://loewshotels.com,,,hospitality,4.6,N
+loewscoralgableshotel,Loews Coral Gables Hotel,(786) 772-7600,https://loewshotels.com,,Coral Gables,hospitality,4.6,N
 lokal_burgers_and_beer,Lokal Burgers and Beer,(305) 442-3377,https://www.lokalmiami.com/,3190 Commodore Plaza,Coral Gables,food_beverage,4.5,N
 lolysmiami,Loly Spa Miami,(786) 659-7859,,,Ponce de Leon Corridor,wellness,5.0,N
 lolysoptical,Loly's Optical,(305) 446-8220,,,Coral Gables,healthcare,4.0,N
@@ -1539,7 +1539,7 @@ maman,maman,(305) 603-9206,https://mamannyc.com,"136 Miracle Mile, Coral Gables,
 maman_coffee_bakery_kitchen,Maman Coffee Bakery Kitchen,(305) 967-8260,https://mamannyc.com/locations/coral-gables,136 Miracle Mile,Miracle Mile,food_beverage,4.7,N
 mamey_miami,Mamey Miami,(305) 266-2639,https://mameymiami.com,"1350 S Dixie Hwy, Coral Gables, FL 33146",Coral Gables,other,4.3,Y
 mancaveformentheplazacoralgables,ManCave for Men - The Plaza Coral Gables,(786) 977-1977,,,Ponce de Leon Corridor,food_beverage,4.9,N
-mandellawgroup,Mandel Law Group PA,(786) 785-2579,https://www.mandellawgroup.com/,Throughout Florida,,legal,3,N
+mandellawgroup,Mandel Law Group PA,(786) 785-2579,https://www.mandellawgroup.com/,Throughout Florida,Coral Gables,legal,3,N
 mandlerphysicaltherapy,Mandler Physical Therapy,(786) 362-5618,,,Sunset / South Gables,healthcare,5.0,N
 manipediboutique,MANIPEDI Boutique,(786) 290-1813,,,Coral Gables,personal_services,5.0,N
 mankindgroomingservices,ManKind Grooming & Services,(305) 446-2500,,,Miracle Mile,food_beverage,4.7,N
@@ -1568,9 +1568,9 @@ masmedrehab,MasMed Rehab,(305) 781-7121,,,Coral Gables,healthcare,5.0,N
 massage_envy,Massage Envy,(305) 662-2622,https://locations.massageenvy.com/florida/coral-gables/6927-red-road.html,6927 Southwest 57th Avenue,Sunset / South Gables,retail,4.5,N
 masterpiecebarbersbarbershop,Masterpiece Barbers Barbershop,(786) 760-1876,,,Ponce de Leon Corridor,food_beverage,5.0,N
 matmaternity,Mat & Maternity,(786) 309-5784,,,Miracle Mile,wellness,5.0,N
-mathreadingfocusgablestutoring,Math & reading focus Gables Tutoring,(786) 972-1602,https://gablestutoring.com,,,education,4.9,N
+mathreadingfocusgablestutoring,Math & reading focus Gables Tutoring,(786) 972-1602,https://gablestutoring.com,,Coral Gables,education,4.9,N
 mathnasium,Mathnasium,,,,Sunset / South Gables,education,,N
-matsoncharltonsuretygroup,Matson-Charlton Surety Group,(305) 662-3852,https://www.mcsurety.com/,"700 S Dixie Hwy # 100, Coral Gables, FL 33146",,insurance,5,N
+matsoncharltonsuretygroup,Matson-Charlton Surety Group,(305) 662-3852,https://www.mcsurety.com/,"700 S Dixie Hwy # 100, Coral Gables, FL 33146",Coral Gables,insurance,5,N
 matsuri,Matsuri,(305) 663-1615,http://www.matsurimiami.com/,"5759 Bird Rd, Miami, FL 33155",Bird Road Corridor,food_beverage,4.4,N
 mattress_firm,Mattress Firm,(786) 237-2983,https://www.mattressfirm.com/en-us/stores/fl/coral-gables/052100/,1204 South Dixie Highway,University of Miami Area,retail,4.9,N
 mauricio_j_barba_re_brokerassociate,"Mauricio J. Barba, RE Broker/Associate",(305) 439-8311,https://miamisignaturehomes.com,"1515 Sunset Dr Suite 40, Coral Gables, FL 33143",Coral Gables,food_beverage,4.8,Y
@@ -1586,7 +1586,7 @@ mcdonalds,McDonald's,(305) 667-3551,https://www.mcdonalds.com/us/en-us/location/
 mcguire_woods,McGuire Woods,(850) 322-8786,https://mcguirewoods.com,,Coral Gables,consulting,,Y
 mckellar_poursine_pllc,McKellar Poursine PLLC,(305) 721-2954,https://mckellarpoursine.com,"Upon Request, 175 SW 7th St STE 1611, Miami, FL 33130, United States",Coral Gables,legal,5,Y
 md_now_urgent_care,MD Now Urgent Care,(305) 569-9942,https://www.mymdnow.com/locations/dade/coral-way?utm_campaign=corp_listings_mgmt&utm_source=google&utm_medium=business_listing,6605 South Dixie Highway,Sunset / South Gables,healthcare,4.5,N
-mdnowurgentcarecoralway,MD Now Urgent Care - Coral Way,(305) 569-9942,https://mymdnow.com,"2750 Coral Way, Coral Gables, FL 33145",,healthcare,4.5,N
+mdnowurgentcarecoralway,MD Now Urgent Care - Coral Way,(305) 569-9942,https://mymdnow.com,"2750 Coral Way, Coral Gables, FL 33145",Coral Gables,healthcare,4.5,N
 md_senior_placement,MD Senior Placement,(786) 326-3933,https://mdseniorplacement.org,,Coral Gables,accounting,5,Y
 mdcps_office_of_community_engagement,MDCPS Office of Community Engagement,(305) 995-2594,https://engagemiamidade.net,"Dooly Memorial Classroom Building, 1111 Memorial Dr, Coral Gables, FL 33146",Coral Gables,accounting,,Y
 mean_average,Mean Average,,,"2901 Coconut Grove Dr, Coral Gables, FL 33134",Ponce de Leon Corridor,hospitality,5,N
@@ -1611,7 +1611,7 @@ metro_by_tmobile,Metro by T-Mobile,(305) 261-2005,https://www.metrobyt-mobile.co
 metro_fund_inc,Metro Fund Inc.,(786) 369-8412,https://metrofundgroup.com,"12002 SW 128th Ct #206, Miami, FL 33186",Coral Gables,financial_services,5,Y
 metro_mommy_agency,Metro Mommy Agency,(786) 553-3122,https://metromommyagency.com,,Coral Gables,other,4.6,Y
 mg_developer,MG Developer,(305) 718-4575,https://mgdevelopermiami.com,"301 Almeria Ave #330, Coral Gables, FL 33134",Coral Gables,technology,4.4,Y
-mghairstudio,MG Hair Studio,(305) 774-7151,https://mghair.miami,,,personal_services,5,N
+mghairstudio,MG Hair Studio,(305) 774-7151,https://mghair.miami,,Coral Gables,personal_services,5,N
 mghairstudiosoralgablesbesthaircolorsalon,MG Hair Studios in Coral Gables. Best Hair Color Salon,(305) 774-7151,,,Coral Gables,personal_services,5.0,N
 mgearchitects,Mge Architects,(305) 444-0413,,,Coral Gables,professional_services,5.0,N
 minailbarcoralgables,Mi Nail Bar Coral Gables,(786) 953-6365,,,Miracle Mile,personal_services,4.2,N
@@ -1656,7 +1656,7 @@ miami_private_school,Miami Private School,(305) 448-1463,https://www.britomiamip
 miamiroyalballetdanceschool,Miami Royal Ballet Dance School,(305) 396-8839,,,Bird Road Corridor,education,4.9,N
 miamiseniorhighschool,Miami Senior High School,,https://www.miamiseniorhigh.org,"2450 Southwest 1st Street, Miami, FL 33135",Douglas Road Corridor,education,,N
 miami_skin__vein,Miami Skin & Vein,(786) 618-5039,https://www.miamiskinandvein.com,6705 Southwest 57th Avenue,Sunset / South Gables,healthcare,4.8,N
-miamismileinstitute,Miami Smile Institute,(786) 703-9430,https://miamismileinstitute.com,,,healthcare,4.7,N
+miamismileinstitute,Miami Smile Institute,(786) 703-9430,https://miamismileinstitute.com,,Coral Gables,healthcare,4.7,N
 miami_spine__posture_clinic,Miami Spine & Posture Clinic,(305) 448-2600,https://www.miamiposture.com/,3850 Bird Rd.,Bird Road Corridor,healthcare,,N
 miami_twice,Miami Twice,(305) 666-0127,https://miamitwice.com/,6562 Southwest 40th Street,Bird Road Corridor,retail,4.7,N
 miamis_best_pizza,Miami's Best Pizza,(305) 666-5931,https://www.miamisbestpizza.com,5833 Ponce de Leon Boulevard,Coral Gables,food_beverage,4.4,N
@@ -1691,14 +1691,14 @@ mishas_cupcakes,Misha's Cupcakes,(786) 200-6153,https://mishascupcakes.com,"1586
 miss_saigon,Miss Saigon,,,148 Giralda Avenue,Ponce de Leon Corridor,food_beverage,4.3,N
 mistersrky,Mister Sparky,(305) 203-0964,,,Sunset / South Gables,construction,4.7,N
 miyaresgroup,Miyares Group,(305) 640-8521,,,Ponce de Leon Corridor,food_beverage,4.9,N
-mktdirector,MKTDIRECTOR,(786) 623-4041,https://mktdirector.com/,,,marketing,5,N
+mktdirector,MKTDIRECTOR,(786) 623-4041,https://mktdirector.com/,,Coral Gables,marketing,5,N
 mobil,Mobil,(305) 666-6396,https://www.exxon.com/en/find-station/200316004,"375 S Dixie Hwy, Coral Gables, FL 33133",Coral Gables,auto_dealer,4.3,N
 modelsdreams,Models Dream Spa,(786) 930-2023,,,Ponce de Leon Corridor,wellness,5.0,N
 modernhomes,Modern Homes,(786) 322-0471,,,Coral Gables,healthcare,,N
 modofurniture,Modo Furniture,(305) 567-2970,,,Bird Road Corridor,retail,4.9,N
 moi_homemade_peruvian_bakery,Moi Homemade Peruvian Bakery,(305) 456-7485,https://www.moihomemade.com/,7388 Southwest 57th Avenue,Sunset / South Gables,retail,4.8,N
 moisesgross,Moises|Gross,(305) 306-3055,,,Coral Gables,legal,4.8,N
-monsatroyalvet,Mon-Sat Royal Vet,(305) 667-5821,https://royalvet.com,"4569 Ponce de Leon, Coral Gables, FL 33146",,healthcare,4.7,N
+monsatroyalvet,Mon-Sat Royal Vet,(305) 667-5821,https://royalvet.com,"4569 Ponce de Leon, Coral Gables, FL 33146",Coral Gables,healthcare,4.7,N
 monahanmijaresc,Monahan Mijares CPA,(305) 407-1440,,,Ponce de Leon Corridor,food_beverage,5.0,N
 monalisa_pizzeria_italian_restaurant,Monalisa Pizzeria Italian Restaurant,(305) 445-7500,https://monalisapizzeria.menufy.com,"4751 SW 8th St, Coral Gables, FL 33134",Coral Gables,food_beverage,4.1,N
 monkeyfurniturestore,Monkey Furniture Store,(305) 849-3668,,,Coral Gables,retail,4.2,N
@@ -1718,7 +1718,7 @@ morgan_stanley_wealth_management,Morgan Stanley Wealth Management,(786) 848-3054
 mortons_the_steakhouse,Morton's The Steakhouse,(305) 442-1662,https://mortons.com/,2333 Ponce de Leon Boulevard,Miracle Mile,food_beverage,3.9,N
 motek_coral_gables,Motek Coral Gables,(305) 396-8547,https://motekcafe.com,"45 Miracle Mile, Miami, FL 33134",Coral Gables,other,4.9,Y
 mountnebocommunitydaycarecenter,Mount Nebo Community Day Care Center,,,,Coral Gables,education,,N
-mountsinaiprimaryspecialtycare,Mount Sinai Primary & Specialty Care,(305) 441-0910,https://msmc.com,"836 Ponce de Leon Boulevard, Suite 200, Coral Gables, FL 33134",,healthcare,3.6,N
+mountsinaiprimaryspecialtycare,Mount Sinai Primary & Specialty Care,(305) 441-0910,https://msmc.com,"836 Ponce de Leon Boulevard, Suite 200, Coral Gables, FL 33134",Coral Gables,healthcare,3.6,N
 mount_sinai_primary_specialty_care_coral_gables,Mount Sinai Primary & Specialty Care Coral Gables,(305) 390-0596,https://msmc.com,"836 Ponce de Leon Boulevard, Suite 200, Coral Gables, FL 33134",Coral Gables,technology,3.6,Y
 mrjeffcleaners,Mr Jeff Cleaners,(786) 505-0201,,,Sunset / South Gables,personal_services,4.4,N
 mr_c_miami__coconut_grove,Mr. C Miami - Coconut Grove,(305) 800-6672,http://www.mrccoconutgrove.com/,2988 McFarlane Road,Douglas Road Corridor,hospitality,4.6,N
@@ -1727,7 +1727,7 @@ music_for_your_eyes,Music for your Eyes,(305) 441-1717,https://locations.foreyes
 mutual_of_omaha,Mutual of Omaha,(786) 655-0163,https://agents.mutualofomaha.com/alfonsobonilla,"2600 Douglas Rd Ste 1109, Coral Gables, FL 33134",Coral Gables,financial_services,4.4,Y
 mytimenailbar,My Time Nail Bar,(305) 332-7305,,,Coral Gables,personal_services,4.2,N
 myxcellnetwork,My Xcell Network,305-704-0521,https://myxcell.net,,Coral Gables,technology,,Y
-mycitysocial,MyCity Social,,,,,marketing,,N
+mycitysocial,MyCity Social,,,,Coral Gables,marketing,,N
 myfloridamsp,MyFloridaMSP LLC,(888) 852-2408,,,Ponce de Leon Corridor,technology,4.9,N
 mystic_healing,Mystic Healing,(786) 228-7098,https://mystichealing.com,"57 Miracle Mile #7862287098, Miami, FL 33134",Coral Gables,retail,5,Y
 nailspearlss,Nails & Pearls Spa,(786) 501-0283,,,Ponce de Leon Corridor,personal_services,4.9,N
@@ -1800,8 +1800,8 @@ ogletree_deakins,Ogletree Deakins,(305) 374-0506,https://ogletree.com,,Coral Gab
 ohmarynails,Oh Mary Nails,(786) 982-4755,,,Coral Gables,personal_services,5.0,N
 ohmboutique,Ohm Boutique,(305) 284-8455,,,Sunset / South Gables,retail,4.3,N
 olasbeautyroom,Ola’s Beauty Room,(786) 839-7849,,,Sunset / South Gables,personal_services,5.0,N
-oneinsuranceservices,One Insurance Services LLC,(305) 445-3535,http://www.oneinsuranceservices.com/,"365 Palermo Ave, Coral Gables, FL",,insurance,3,N
-onesothebyscoralgables,One Sotheby's Coral Gables,(305) 666-0562,https://onesothebysrealty.com,"1507 Sunset Drive, Coral Gables, FL 33143",,real_estate,4.2,N
+oneinsuranceservices,One Insurance Services LLC,(305) 445-3535,http://www.oneinsuranceservices.com/,"365 Palermo Ave, Coral Gables, FL",Coral Gables,insurance,3,N
+onesothebyscoralgables,One Sotheby's Coral Gables,(305) 666-0562,https://onesothebysrealty.com,"1507 Sunset Drive, Coral Gables, FL 33143",Coral Gables,real_estate,4.2,N
 one_sothebys_international_realty,One Sotheby's International Realty,(786) 443-0040,https://onesothebysrealty.com,"1507 Sunset Dr, Coral Gables, FL 33143",Coral Gables,real_estate,4.2,Y
 onestopconstruction,One Stop Construction,(305) 442-2799,,,Coral Gables,construction,4.6,N
 onestopdrycleaning,One Stop Dry Cleaning,(305) 860-1444,,,Coral Gables,personal_services,4.2,N
@@ -1825,7 +1825,7 @@ orion_merchant_solutions_petro_solutions,Orion Merchant Solutions / Petro Soluti
 orlando_optical,Orlando Optical,(305) 266-2717,,"603 SW 57th Ave, Miami, FL 33144",Coral Gables,retail,3,N
 orno_miami,Orno Miami,(305) 667-6766,https://ornomiami.com/,1350 South Dixie Highway,Coral Gables,food_beverage,4.6,N
 oroboro,Oroboro,(917) 409-1499,,,Coral Gables,retail,4.2,N
-orrplumbing,Orr Plumbing,(305) 240-6731,https://orrplumbing.com,,,construction,4.6,N
+orrplumbing,Orr Plumbing,(305) 240-6731,https://orrplumbing.com,,Coral Gables,construction,4.6,N
 oscararellanocoralgablesrealtor,Oscar Arellano - Coral Gables Realtor,(305) 525-7324,,,Bird Road Corridor,real_estate,4.9,N
 oscardetoffolijrc,"Oscar De Toffoli, Jr., CPA, PA",(305) 898-4008,,,Ponce de Leon Corridor,food_beverage,5.0,N
 ossobucococonutgrove,Ossobuco Coconut Grove,(305) 339-5593,,,Douglas Road Corridor,food_beverage,4.9,N
@@ -1850,7 +1850,7 @@ gechiropracticlifecenter,Page Chiropractic Life Center,(305) 662-6433,,,Sunset /
 golainsurancegroup,Pagola Insurance Group,(305) 257-9171,,,Miracle Mile,insurance,5.0,N
 palme_dor,Palme d'Or,(305) 445-8066,https://www.biltmorehotel.com/dining/palme_dor/?utm_source=local&utm_medium=organic&utm_campaign=gmb,"1200 Anastasia Ave, Coral Gables, FL 33134",Coral Gables,other,4.5,Y
 lmettopresbyterianpreschool,Palmetto Presbyterian Preschool,,,,Coral Gables,education,,N
-melaiperry,Pamela I. Perry PA,(305) 202-3545,,,,legal,,N
+melaiperry,Pamela I. Perry PA,(305) 202-3545,,,Coral Gables,legal,,N
 pan_american_institute,Pan American Institute,(305) 874-6000,https://www.panamacademy.com/,Southwest 29th Avenue,Douglas Road Corridor,education,4.4,N
 pancitas_pregnancy_and_ultrasound,Pancitas Pregnancy and Ultrasound,(786) 728-9368,https://www.littlebelliesspa.com/en/home/miami,Southwest 39th Street,Bird Road Corridor,healthcare,5,N
 panda_express,Panda Express,(305) 907-6126,https://www.pandaexpress.com/locations/fl/miami/3350,1306 Stanford Drive,University of Miami Area,food_beverage,3.4,N
@@ -1880,7 +1880,7 @@ paycom,Paycom,(619) 609-3731,https://paycomonline.com,"1221 Brickell Ave STE 800
 pazos_robaina,Pazos & Robaina,(305) 720-2535,https://prmiami.com,"145 Madeira Ave Suite 313, Coral Gables, FL 33134",Coral Gables,other,2.3,Y
 peacockfoundation,Peacock Foundation Inc,(305) 373-1386,,,Bird Road Corridor,nonprofit,5.0,N
 peacock_garden,Peacock Garden,,https://peacockgardenrestobar.com/,"2889 McFarlane Rd, Miami, FL 33133, United States",Douglas Road Corridor,food_beverage,4.4,N
-peaklegal,Peak Legal,(305) 697-1375,https://www.peaklegalfirm.com/?npcmp=dir:local:5336361:33127,"Miami, FL - Serving Coral Gables",,legal,4.9,N
+peaklegal,Peak Legal,(305) 697-1375,https://www.peaklegalfirm.com/?npcmp=dir:local:5336361:33127,"Miami, FL - Serving Coral Gables",Coral Gables,legal,4.9,N
 pecansdays,Pecan's Day Spa,(305) 284-8636,,,Coral Gables,wellness,4.9,N
 peets_coffee,Peet's Coffee,,https://www.peets.com/,"Near D51, D Gates, 2100 NW 42nd Ave, Miami, FL 33122",University of Miami Area,food_beverage,2.7,N
 peiwei,Pei Wei,(305) 444-1370,https://www.peiwei.com/florida/240-coral-gables/,"2283 Southwest 37th Avenue, Miami, FL 33145",Coral Gables,food_beverage,,N
@@ -1900,7 +1900,7 @@ personal_conciergmed,Personal ConciergMed,(305) 845-8817,https://pcmmd.com,"60 A
 pet_supermarket,Pet Supermarket,(305) 529-1800,https://www.petsupermarket.com/storelocator/?storeId=136,2720 South Dixie Highway,Douglas Road Corridor,retail,4.4,N
 petal_cartel,Petal Cartel,(305) 794-4712,https://petalcartel.com,"13280 SW 131st St #117, Miami, FL 33186",Coral Gables,retail,4.4,Y
 petco,Petco,(305) 665-7335,https://stores.petco.com/fl/southmiami/pet-supplies-southmiami-fl-1794.html,6200 South Dixie Highway,Sunset / South Gables,retail,4.4,N
-petertmavricklaw,Peter T. Mavrick Law,(305) 570-4042,https://www.mavricklaw.com/?utm_source=google&utm_medium=local,,,legal,5,N
+petertmavricklaw,Peter T. Mavrick Law,(305) 570-4042,https://www.mavricklaw.com/?utm_source=google&utm_medium=local,,Coral Gables,legal,5,N
 petronaspotofamilydaycarecenter,Petrona Spoto Family Day Care Center,,,,Coral Gables,education,,N
 petsmart,PetSmart,(305) 714-8948,https://www.petsmart.com/stores/us/fl/miami-store2440.html,8302 South Dixie Highway,Sunset / South Gables,retail,4.3,N
 petsmartveterinaryservicescoralgables,PetSmart Veterinary Services - Coral Gables,(786) 981-7155,,,Coral Gables,healthcare,5.0,N
@@ -1975,7 +1975,7 @@ privateoasisatarya,Private Oasis at Arya,(305) 798-8811,,,Douglas Road Corridor,
 private_wealth_management_of_coral_gables,Private Wealth Management of Coral Gables,(305) 548-2247,https://pwmcg.com,"141 Miracle Mile, Coral Gables, FL 33134",Coral Gables,financial_services,5.0,Y
 privecarerx,PriveCareRx,(352) 284-4390,https://privecarerx.com,"2020 Ponce de Leon Blvd #105, Coral Gables, FL 33134",Coral Gables,automotive,5.0,Y
 profitnessrehab,Pro Fitness & Rehab,(305) 445-4224,,,Coral Gables,healthcare,5.0,N
-professionalbuildingsolutions,Professional Building Solutions,(954) 473-0025,https://probuildingsvcs.com/,"2332 Galiano St, Coral Gables, FL 33134",,construction,4.5,N
+professionalbuildingsolutions,Professional Building Solutions,(954) 473-0025,https://probuildingsvcs.com/,"2332 Galiano St, Coral Gables, FL 33134",Coral Gables,construction,4.5,N
 professional_health_diagnostics,Professional Health Diagnostics,(305) 441-2262,http://www.phdmiami.com/,6527 Southwest 24th Street,Coral Gables,healthcare,3.8,N
 promexico_mexicos_trade_investment_commmiami,PROMEXICO / Mexico's Trade & Investment Comm.Miami,(305) 415-9360,https://gob.mx,"999 Ponce de Leon Blvd, Coral Gables, FL 33134",Coral Gables,accounting,5,Y
 prominentfinancialconsultants,Prominent Financial Consultants,(305) 396-2000,,,Ponce de Leon Corridor,financial_services,4.7,N
@@ -1993,7 +1993,7 @@ publixpharmacyatrivieraplaza,Publix Pharmacy at Riviera Plaza,(305) 929-7068,,,S
 publixsupermarketatdouglasgrand,Publix Super Market at Douglas Grand,(305) 445-3221,,,Ponce de Leon Corridor,food_beverage,4.5,N
 publixsupermarketonmonzaave,Publix Super Market on Monza Ave,(305) 667-1681,,,Sunset / South Gables,food_beverage,4.4,N
 publixsupermarketonslejeunerd,Publix Super Market on S Le Jeune Rd,(305) 445-2641,,,Miracle Mile,food_beverage,4.4,N
-pulverc,Pulver CPA,(305) 790-5604,https://pulvercpa.com,,,accounting,4.6,N
+pulverc,Pulver CPA,(305) 790-5604,https://pulvercpa.com,,Coral Gables,accounting,4.6,N
 pummarola_coral_gable,Pummarola Coral Gable,(786) 409-6866,https://www.pummarola.us,141 Aragon Avenue,Miracle Mile,food_beverage,4.5,N
 puntocriollo,Punto Criollo,,,,Coral Gables,food_beverage,4.5,N
 pura_vida_miami,Pura Vida Miami,(305) 204-0602,https://puravidamiami.com,"244 Miracle Mile, Coral Gables, FL 33134",Coral Gables,other,4.8,Y
@@ -2008,14 +2008,14 @@ quintana_law_pa,"Quintana Law, P.A.",(305) 376-0821,https://quintanalawpa.com,"1
 quito,Quito,,,,Coral Gables,hospitality,,N
 quiznos,Quiznos,(305) 661-2890,https://quiznosbirdroadmiami.com/,"7100 Bird Rd, Miami, FL 33155",Bird Road Corridor,food_beverage,4.3,N
 quuanthairsalon,Quuant Hair Salon,(305) 460-0097,,,Ponce de Leon Corridor,personal_services,4.9,N
-rabrandonco,R A Brandon & Co Inc,(305) 442-2340,https://rabrandoninsurance.com/,"217 Aragon Ave, Coral Gables, FL",,insurance,5,N
+rabrandonco,R A Brandon & Co Inc,(305) 442-2340,https://rabrandoninsurance.com/,"217 Aragon Ave, Coral Gables, FL",Coral Gables,insurance,5,N
 rahalarchitects,Rahal Architects LLC,(305) 906-0851,,,Miracle Mile,professional_services,5.0,N
 rainbow_pharmacy,Rainbow Pharmacy,(305) 749-7000,https://rainbowpharmacyrx.com,"257 Giralda Ave, Coral Gables, FL 33134",Coral Gables,healthcare,5.0,Y
 ramhofer_garcia,Ramhofer Garcia,(305) 481-9733,https://ramhofergarcia.com,"133 Grand Ave B, Coral Gables, FL 33133",Coral Gables,other,5,Y
 ransomevergladesschool,Ransom Everglades School,,,,Douglas Road Corridor,education,,N
 ransonevergladeschildrenscenter,Ranson Everglades Children's Center,,,,Douglas Road Corridor,education,,N
 rathskeller,Rathskeller,(305) 284-6310,,1330 Miller Road,University of Miami Area,food_beverage,4,N
-rausabuilders,Rausa Builders Corp,(305) 554-5711,https://rausabuilders.com/?utm_source=GMBlisting&utm_medium=organic,,,construction,4.4,N
+rausabuilders,Rausa Builders Corp,(305) 554-5711,https://rausabuilders.com/?utm_source=GMBlisting&utm_medium=organic,,Coral Gables,construction,4.4,N
 raymourflaniganfurnitureandmattressstore,Raymour & Flanigan Furniture and Mattress Store,(201) 809-1353,,,Coral Gables,retail,4.6,N
 razzledazzle_barbershop,RazzleDazzle BarberShop,(305) 774-0074,https://www.razzledazzlebarbershop.com/,241 Miracle Mile,Miracle Mile,retail,4.3,N
 rc_cafe,RC Cafe,(305) 889-8684,https://rccafe.miami,"276 Alhambra Cir, Coral Gables, FL 33134",Coral Gables,food_beverage,4.8,Y
@@ -2027,7 +2027,7 @@ recapturing_the_vision_international_inc,Recapturing the Vision International In
 recycling,Recycling,(305) 986-6107,https://wm.com,"7333 Coral Wy Ste 108, Miami, FL 33155",Coral Gables,real_estate,,Y
 red_bird_animal_clinic,Red Bird Animal Clinic,(305) 661-6466,http://www.redbirdanimalclinic.com/,5753 Southwest 40th Street,Bird Road Corridor,healthcare,4.8,N
 red_carpet_italian_restaurant,Red Carpet Italian Restaurant,(305) 529-4220,https://www.redcarpetrestaurant.com/locations,3438 Southwest 8th Street,Coral Gables,food_beverage,4.7,N
-redforalgables,Redfin Coral Gables,(877) 973-3346,https://redfin.com,,,real_estate,3.1,N
+redforalgables,Redfin Coral Gables,(877) 973-3346,https://redfin.com,,Coral Gables,real_estate,3.1,N
 refugeeassistancealliance,Refugee Assistance Alliance,,,,Ponce de Leon Corridor,nonprofit,5.0,N
 regencymiamiairportbysonesta,Regency Miami Airport by Sonesta,(305) 441-1600,,,Coral Gables,hospitality,3.6,N
 regions_bank,Regions Bank,(305) 774-5219,https://regions.com,6990 Southwest 8th Street,Coral Gables,banking,4.3,Y
@@ -2079,7 +2079,7 @@ rosettabakery,Rosetta Bakery,(305) 763-8215,,,Coral Gables,food_beverage,4.5,N
 ross,Ross,(305) 446-8440,https://www.rossstores.com/,2 Miracle Mile,Coral Gables,retail,4.4,N
 rossenlawfirm,Rossen Law Firm,(786) 936-1633,,,Coral Gables,legal,5.0,N
 rothstar_construction_inc,Rothstar Construction Inc.,(305) 442-4462,https://rothstar.com,"250 Catalonia Ave Ste 300, Coral Gables, FL 33134",Coral Gables,construction,5.0,Y
-rotorooter,Roto-Rooter,(305) 461-5521,https://rotorooter.com,,,construction,4.7,N
+rotorooter,Roto-Rooter,(305) 461-5521,https://rotorooter.com,,Coral Gables,construction,4.7,N
 roy_b_gonas_attorney,"Roy B. Gonas, Attorney",(786) 420-5598,https://rgonasarbitration.com,,Coral Gables,legal,,Y
 royal_ballet_miami_corporation,Royal Ballet Miami Corporation,(305) 728-9587,https://miamiroyalballet.com,"300 Altara Ave #1415, Coral Gables, FL 33146",Coral Gables,arts_culture,4.9,Y
 rrjinsuranceservicesofflorida,RRJ Insurance Services of Florida,(305) 614-0055,,,Miracle Mile,insurance,,N
@@ -2191,10 +2191,10 @@ silverbluffanimalclinic,Silver Bluff Animal Clinic,(305) 859-7979,,,Douglas Road
 silverbluffschool,Silver Bluff School,,,,Douglas Road Corridor,education,,N
 silverdragonstore,Silver Dragon Store,(786) 307-5575,,,Ponce de Leon Corridor,retail,4.7,N
 silver_mirror_facial_bar,Silver Mirror Facial Bar,(786) 899-0600,https://silvermirror.com/locations/coralgables,"2955 Ponce de Leon Blvd Suite 222, Coral Gables, FL 33134",Coral Gables,food_beverage,4.9,Y
-se1973licensedinsuredlandscapingbygeorge,"Since 1973, licensed & insured Landscaping by George",(786) 801-2971,https://landscapingbygeorge-fl.com,,,construction,4.5,N
-se198135yearsexperiencelandscapingbysteveblaum,"Since 1981, 35+ years experience Landscaping by Steve Blaum",(305) 662-7045,https://blaumlandscaping.com,,,construction,4.5,N
-se200430yearsexperienceoceansideconstructionremodeling,"Since 2004, 30+ years experience Oceanside Construction & Remodeling",,,"161 Madeira Ave Suite 106, Coral Gables, FL 33134",,construction,,N
-se2012nocontracticscreativeagency,"Since 2012, no contract ICS Creative Agency",(305) 799-9936,https://icscreativeagency.com,,,marketing,4.2,N
+se1973licensedinsuredlandscapingbygeorge,"Since 1973, licensed & insured Landscaping by George",(786) 801-2971,https://landscapingbygeorge-fl.com,,Coral Gables,construction,4.5,N
+se198135yearsexperiencelandscapingbysteveblaum,"Since 1981, 35+ years experience Landscaping by Steve Blaum",(305) 662-7045,https://blaumlandscaping.com,,Coral Gables,construction,4.5,N
+se200430yearsexperienceoceansideconstructionremodeling,"Since 2004, 30+ years experience Oceanside Construction & Remodeling",,,"161 Madeira Ave Suite 106, Coral Gables, FL 33134",Coral Gables,construction,,N
+se2012nocontracticscreativeagency,"Since 2012, no contract ICS Creative Agency",(305) 799-9936,https://icscreativeagency.com,,Coral Gables,marketing,4.2,N
 sipsip_rum_bar,Sipsip Rum Bar,(305) 441-0000,https://www.mayfairhousemiami.com/dining/sipsip/,3000 Florida Avenue,Douglas Road Corridor,food_beverage,3.9,N
 sir_speedy,Sir Speedy,(305) 446-7628,https://sirspeedy.com,"3150 Ponce de Leon Blvd, Coral Gables, FL 33134",Coral Gables,other,4.3,Y
 siren_in_the_clouds_ca_1965,"Siren in the Clouds, ca. 1965",(786) 760-2569,https://inthecloudsspa.net/,"145 Madeira Ave #101, Coral Gables, FL 33134",University of Miami Area,hospitality,5,N
@@ -2258,7 +2258,7 @@ southmiamisportsmedicine,South Miami Sports Medicine,(305) 666-7116,,,Sunset / S
 southstate_bank,SouthState Bank,(786) 362-8560,https://southstatebank.com,"2 Alhambra Plz Suite 100B, Coral Gables, FL 33134",Coral Gables,banking,3.4,Y
 soy_delicious_inc,Soy Delicious Inc.,(305) 484-9525,https://soydelicious.com,"12379 SW 130th St, Miami, FL 33186",Coral Gables,food_beverage,4.9,Y
 sbarmiami,Spa Bar Miami,(305) 812-3881,,,Coral Gables,wellness,4.9,N
-scagnaitalianhairdesign,Spacagna Italian Hair Design,(305) 444-2374,https://spacagna.com,"Miracle Mile, Coral Gables, FL",,personal_services,4.9,N
+scagnaitalianhairdesign,Spacagna Italian Hair Design,(305) 444-2374,https://spacagna.com,"Miracle Mile, Coral Gables, FL",Coral Gables,personal_services,4.9,N
 space_coast_credit_union,Space Coast Credit Union,(786) 932-2419,https://sccu.com,5785 Southwest 40th Street,Bird Road Corridor,banking,4.2,Y
 snishchurchofgod,Spanish Church of God Inc,(305) 443-6381,,,Coral Gables,nonprofit,4.8,N
 specificgravity,Specific Gravity,(347) 291-1766,,,Coral Gables,retail,4.6,N
@@ -2324,7 +2324,7 @@ sushi_kong,Sushi KONG,(305) 800-5664,https://www.sushikong.com/,3000 Coral Way,D
 sushi_maki,Sushi Maki,(305) 443-1884,https://sushimaki.com,2334 Ponce de Leon Boulevard,Miracle Mile,food_beverage,4.4,Y
 sushi_sake,Sushi Sake,(786) 636-8125,https://www.sushisakemiami.com/,202 Miracle Mile,Miracle Mile,food_beverage,4.4,N
 suvayoga,Suvayoga,(305) 338-7038,,,Ponce de Leon Corridor,wellness,5.0,N
-sweat440coralgables,SWEAT440 Coral Gables,(888) 507-9328,https://sweat440.com,"Coral Gables, FL 33146",,wellness,4.9,N
+sweat440coralgables,SWEAT440 Coral Gables,(888) 507-9328,https://sweat440.com,"Coral Gables, FL 33146",Coral Gables,wellness,4.9,N
 sweat440fitnessgables,SWEAT440 Fitness Gables,(888) 507-9328,,,Bird Road Corridor,wellness,4.9,N
 sweet_art_by_lucila_bird_road,"Sweet Art by Lucila, Bird Road",(305) 668-0060,https://www.lucilacakesmiami.com/,7120 Bird Road,Bird Road Corridor,retail,4.1,N
 sweet_dogs,Sweet Dogs,(305) 448-4900,http://www.sweetdogs.net,4749 Southwest 8th Street,Coral Gables,food_beverage,4.7,N
@@ -2352,7 +2352,7 @@ taylordaycarecenter,Taylor Day Care Center,,,,Coral Gables,education,,N
 tb_media_group,TB Media Group,(786) 350-8395,https://tbmediagroup.com,,Coral Gables,accounting,5,Y
 tcby,TCBY,(205) 349-4661,https://www.tcby.com/find-a-store/,2720 South Dixie Highway,Douglas Road Corridor,food_beverage,4.3,N
 td_bank,TD Bank,(305) 441-5630,https://tdbank.com,6601 South Dixie Highway,Miracle Mile,banking,3.7,Y
-tdbankcoralgablesmiraclemile,TD Bank Coral Gables Miracle Mile,(305) 448-8995,https://td.com,"2401 Ponce de Leon Boulevard, Coral Gables, FL",,banking,3.7,N
+tdbankcoralgablesmiraclemile,TD Bank Coral Gables Miracle Mile,(305) 448-8995,https://td.com,"2401 Ponce de Leon Boulevard, Coral Gables, FL",Coral Gables,banking,3.7,N
 tdwealth,TD Wealth,(866) 235-1248,,,Ponce de Leon Corridor,financial_services,5.0,N
 teamlogicit,TeamLogic IT,(786) 558-0048,,,Sunset / South Gables,technology,5.0,N
 teamlogic_it_west_miami,TeamLogic IT West Miami,(305) 363-4655,https://teamlogicit.com,"1700 SW 57th Ave unit #222, Miami, FL 33155",Coral Gables,food_beverage,5,Y
@@ -2411,7 +2411,7 @@ theemnadassouthmiami,The Empanada's South Miami,(305) 699-0663,,,Sunset / South 
 the_english_center,The English Center,(305) 445-7731,https://tecmiami.com,"3501 SW 28th St, Miami, FL 33133",Coral Gables,other,4.5,Y
 the_everglades_foundation,The Everglades Foundation,(914) 659-5906,https://evergladesfoundation.org,"18001 Old Cutler Rd #625, Palmetto Bay, FL 33157",Coral Gables,nonprofit,1,Y
 theeyeproject,The Eye Project,(305) 910-6892,,,Ponce de Leon Corridor,healthcare,5.0,N
-thefamilymedicalgroupcoralgables,The Family Medical Group Coral Gables,(305) 306-0233,https://thefamilymedgroup.com,"1330 SW 22nd Street Suite 401, Miami, FL 33145",,healthcare,4.9,N
+thefamilymedicalgroupcoralgables,The Family Medical Group Coral Gables,(305) 306-0233,https://thefamilymedgroup.com,"1330 SW 22nd Street Suite 401, Miami, FL 33145",Coral Gables,healthcare,4.9,N
 thefarberlawfirm,The Farber Law Firm,(305) 774-0134,,,Ponce de Leon Corridor,legal,5.0,N
 the_flanagan_law_firm_pa,"The Flanagan Law Firm, P.A.",(305) 444-1500,,,Coral Gables,legal,,Y
 thefloridadivorcecriminaldefenselawyerscoralgables,The Florida Divorce & Criminal Defense Lawyers - Coral Gables,(786) 901-7960,,,Coral Gables,legal,4.7,N
@@ -2604,7 +2604,7 @@ vanderbiltavenuewinemerchants,Vanderbilt Avenue Wine Merchants,(718) 398-1800,,,
 vanguardschool,Vanguard School,,,,Coral Gables,education,,N
 vanguardschoolofcoconutgrove,Vanguard School of Coconut Grove,,,,Coral Gables,education,,N
 vanity_point_wellness_llc,"Vanity Point & Wellness, LLC",(305) 799-4576,https://vanitypointwellness.com,"1553 San Ignacio Ave Suite B, Coral Gables, FL 33146",Coral Gables,accounting,5,Y
-vantagecommunications,Vantage Communications,,,,,marketing,,N
+vantagecommunications,Vantage Communications,,,,Coral Gables,marketing,,N
 vapor_shark,Vapor Shark,(305) 808-3045,https://vaporsharkdoral.com/,6550 Southwest 40th Street,Bird Road Corridor,retail,4.4,N
 vca_animal_hospital,VCA Animal Hospital,(305) 261-2374,https://vcahospitals.com/cabrera,6390 Southwest 8th Street,Coral Gables,healthcare,4.8,N
 velizassociatesanestatelegacyplanningfirm,"Veliz & Associates P.A., an Estate & Legacy Planning Firm",(786) 839-3840,,,Ponce de Leon Corridor,legal,5.0,N
@@ -2614,7 +2614,7 @@ venezuelanamerican_chamber_of_commerce,VenezuelanAmerican Chamber of Commerce,(3
 ventanasrestaurantbarlounge,Ventanas Restaurant Bar & Lounge,(786) 353-9460,,,Bird Road Corridor,food_beverage,4.9,N
 venusopticalboutique,Venus Optical Boutique,(305) 961-1060,,,Ponce de Leon Corridor,auto_dealer,5.0,N
 vera_jewelry,Vera Jewelry,(888) 305-8372,https://verajewelry.com/?utm_campaign=location40&utm_content=listing&utm_medium=organic&utm_source=gmb,6505 Southwest 40th Street,Bird Road Corridor,retail,4.9,N
-verdejaalvarez,"Verdeja & Alvarez, LLP",(305) 446-3177,https://va-cpa.com,"Coral Gables, FL 33134",,accounting,5,N
+verdejaalvarez,"Verdeja & Alvarez, LLP",(305) 446-3177,https://va-cpa.com,"Coral Gables, FL 33134",Coral Gables,accounting,5,N
 veridian,Veridian,(305) 928-6822,https://hancockaskew.com,,Coral Gables,accounting,,Y
 veritran,Veritran,,https://veritran.com,,Coral Gables,other,,Y
 verizon,Verizon,(305) 446-1946,https://www.verizon.com/stores/details/florida/coral-gables/coral-gables-201100/?CMP=seo_b_x_vz_gbp_ot_2022_08_website,2720 South Dixie Highway,Douglas Road Corridor,retail,3.9,N
@@ -2651,7 +2651,7 @@ volkswagen,Volkswagen,(305) 448-3335,http://www.deelvolkswagen.com/,"3601 Bird R
 volvo_bomnin,Volvo Bomnin,(305) 677-0641,https://www.bomninvolvocarsdadeland.com/?utm_source=google&utm_medium=organic&utm_campaign=google_my_business,8105 Southwest 70th Avenue,Sunset / South Gables,retail,4.9,N
 vortex_roofing_construction_services,Vortex Roofing & Construction Services,(305) 216-3247,https://vortexroof.com,"2332 Galiano St, Coral Gables, FL 33134",Coral Gables,construction,5,Y
 wagner_montessori_school,Wagner Montessori School,(305) 567-1900,https://gablesmontessori.com/,"990 S Le Jeune Rd, Coral Gables, FL 33134",Bird Road Corridor,education,4.9,N
-wahlstrominsuranceassociates,Wahlstrom Insurance Associates,(305) 447-8718,https://wahlstrominsuranceassociates.godaddysites.com/,"1107 Genoa St, Coral Gables, FL 33134",,insurance,5,N
+wahlstrominsuranceassociates,Wahlstrom Insurance Associates,(305) 447-8718,https://wahlstrominsuranceassociates.godaddysites.com/,"1107 Genoa St, Coral Gables, FL 33134",Coral Gables,insurance,5,N
 walgreens,Walgreens,(305) 444-2544,https://www.walgreens.com/locator/walgreens-3655+s+dixie+hwy-miami-fl-33133/id=3784,5731 Southwest 40th Street,Bird Road Corridor,healthcare,2.7,N
 walgreenspharmacy,Walgreens Pharmacy,(305) 444-8427,,,Coral Gables,healthcare,3.6,N
 walls_old_fashioned_ice_cream,Wall's Old Fashioned Ice Cream,(305) 740-9830,http://www.wallsicecreamfl.com/,8075 Southwest 67th Avenue,Sunset / South Gables,food_beverage,4.5,N
@@ -2662,7 +2662,7 @@ wawa,Wawa,(786) 471-0804,https://www.wawa.com/locations/5260?utm_source=gmblisti
 waxxedsportscards,Waxxed Sports Cards,(786) 542-9454,,,Ponce de Leon Corridor,retail,5.0,N
 waymo,Waymo,(650) 346-0856,https://waymo.com,"650 Coral Wy, Coral Gables, FL 33134",Coral Gables,accounting,3.4,Y
 we_are_major_llc,"We Are Major, LLC",(305) 697-7271,https://wearemajor.com,"99 NW 183rd St Suite 100B, Miami, FL 33169",Coral Gables,other,5,Y
-weinsurerandymarzullo,We Insure - Randy Marzullo,(844) 472-2011,http://weinsuregroupmiami.com/,"1550 Madruga Ave Ste 330, Coral Gables, FL 33146",,insurance,4.6,N
+weinsurerandymarzullo,We Insure - Randy Marzullo,(844) 472-2011,http://weinsuregroupmiami.com/,"1550 Madruga Ave Ste 330, Coral Gables, FL 33146",Coral Gables,insurance,4.6,N
 wealth_enhancement_group,Wealth Enhancement Group,(305) 877-8070,https://wealthenhancement.com,"2665 S Bayshore Dr STE 230, Miami, FL 33133",Coral Gables,financial_services,5,Y
 wedoinsurancetaxes,WeDo Insurance & Taxes,(305) 432-3966,,,Coral Gables,insurance,4.9,N
 wellnessproteam,Wellness Pro Team,(305) 774-0104,,,Douglas Road Corridor,healthcare,4.8,N
@@ -2687,9 +2687,9 @@ williamson_automotive_group,Williamson Automotive Group,(305) 670-7100,https://w
 wine_41,Wine 41,(786) 429-3957,https://wine41.com,"12401 SW 134th Ct #4, Miami, FL 33186",Coral Gables,accounting,4.4,Y
 wingstop,Wingstop,(786) 701-9977,https://www.wingstop.com/location/wingstop-1972-miami-fl-33155/menu?y_source=1_NTUyMDgxNzctNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,6714 Bird Road,Bird Road Corridor,food_beverage,3.4,N
 winndixie,Winn-Dixie,(305) 666-5241,https://www.winndixie.com/storedetails/miami/fl?search=249,5850 Southwest 73rd Street,Sunset / South Gables,retail,4.3,N
-winstongablesinsurance,Winston Gables Insurance Corp,(305) 777-1322,http://www.gableseliteinsurance.com/,"90 Almeria Ave Ste 203, Coral Gables, FL 33134",,insurance,5,N
+winstongablesinsurance,Winston Gables Insurance Corp,(305) 777-1322,http://www.gableseliteinsurance.com/,"90 Almeria Ave Ste 203, Coral Gables, FL 33134",Coral Gables,insurance,5,N
 wlrn_radio_and_television,WLRN Radio and Television,(305) 505-6686,https://wlrn.org,"172 NE 15th St, Miami, FL 33132",Coral Gables,healthcare,4.8,Y
-wolfelawmiami,Wolfe Law Miami,(888) 655-4709,https://www.wolfelawmiami.com/?npcmp=dir:local:3201075:33130,"Miami, FL - Serving Coral Gables",,legal,4,N
+wolfelawmiami,Wolfe Law Miami,(888) 655-4709,https://www.wolfelawmiami.com/?npcmp=dir:local:3201075:33130,"Miami, FL - Serving Coral Gables",Coral Gables,legal,4,N
 wolfeswineshoppe,Wolfe's WINE Shoppe,(305) 445-4567,,,Miracle Mile,food_beverage,4.4,N
 women_for_success_inc,Women for Success Inc.,(305) 721-2917,https://giveforsuccess.org,"1600 NW 3rd Ave #111, Miami, FL 33136",Coral Gables,other,4.1,Y
 woodlawn_park_cemetery,Woodlawn Park Cemetery,,https://www.dignitymemorial.com/,"Miami, FL 33135",Coral Gables,legal,4.3,N
@@ -2703,7 +2703,7 @@ wrk_lab,WRK LAB,(305) 801-2356,https://wrklab.com,"3605 NW 115th Ave, Doral, FL 
 wvumfm,WVUM-FM,(786) 309-8861,http://wvum.org/,1306 Stanford Drive,University of Miami Area,arts_culture,4,N
 xandra_marketing,Xandra Marketing,(954) 802-1398,https://xandramarketing.com,"8112 Wiles Rd, Coral Springs, FL 33067",Coral Gables,marketing,5,Y
 xmartpowerelectric,Xmart Power Electric,(800) 741-5257,,,Sunset / South Gables,construction,5.0,N
-yablenvaliente,Yablen Valiente,(305) 476-5444,https://www.yablenvaliente.com/?npcmp=dir:local:3910627:33134,,,legal,4.8,N
+yablenvaliente,Yablen Valiente,(305) 476-5444,https://www.yablenvaliente.com/?npcmp=dir:local:3910627:33134,,Coral Gables,legal,4.8,N
 yardhouse,Yard House,(305) 447-9273,,,Bird Road Corridor,food_beverage,4.4,N
 yard_house_coral_gables,Yard House Coral Gables,(305) 447-9273,https://yardhouse.com,"320 San Lorenzo Ave Space 1320, Coral Gables, FL 33146",Coral Gables,wellness,4.4,Y
 yaritzafloresod,"Yaritza Flores, OD",(305) 443-7070,,,Coral Gables,healthcare,4.9,N

@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-04-08T19:00:55.546065",
+  "generated_at": "2026-04-08T19:57:51.671064",
   "total_businesses": 2730,
   "membership_distribution": {
-    "low": 2591,
-    "medium": 139
+    "low": 2589,
+    "medium": 141
   },
   "growth_distribution": {
     "declining": 311,
-    "growing": 1705,
-    "stable": 714
+    "growing": 1700,
+    "stable": 719
   },
   "avg_membership_probability": 8,
-  "avg_growth_trajectory": 9.4,
+  "avg_growth_trajectory": 9.3,
   "members_count": 843,
   "churn_risk_high": 37,
   "churn_risk_medium": 19,
@@ -49,15 +49,15 @@
       "avg_growth_trajectory": 13.7
     },
     {
-      "category": "personal_services",
-      "count": 90,
-      "avg_membership_prob": 2,
-      "avg_growth_trajectory": 13.4
-    },
-    {
       "category": "auto_dealer",
       "count": 55,
       "avg_membership_prob": 1,
+      "avg_growth_trajectory": 13.2
+    },
+    {
+      "category": "personal_services",
+      "count": 90,
+      "avg_membership_prob": 2,
       "avg_growth_trajectory": 13.2
     },
     {
@@ -69,7 +69,7 @@
     {
       "category": "nonprofit",
       "count": 102,
-      "avg_membership_prob": 7,
+      "avg_membership_prob": 8,
       "avg_growth_trajectory": 11.9
     },
     {
@@ -106,7 +106,7 @@
       "category": "food_beverage",
       "count": 420,
       "avg_membership_prob": 2,
-      "avg_growth_trajectory": 10.6
+      "avg_growth_trajectory": 10.3
     },
     {
       "category": "technology",
@@ -127,16 +127,16 @@
       "avg_growth_trajectory": 9.3
     },
     {
+      "category": "insurance",
+      "count": 55,
+      "avg_membership_prob": 18,
+      "avg_growth_trajectory": 9.0
+    },
+    {
       "category": "professional_services",
       "count": 108,
       "avg_membership_prob": 6,
-      "avg_growth_trajectory": 9.2
-    },
-    {
-      "category": "insurance",
-      "count": 55,
-      "avg_membership_prob": 17,
-      "avg_growth_trajectory": 9.0
+      "avg_growth_trajectory": 8.8
     },
     {
       "category": "accounting",
@@ -153,19 +153,19 @@
     {
       "category": "consulting",
       "count": 29,
-      "avg_membership_prob": 17,
+      "avg_membership_prob": 18,
       "avg_growth_trajectory": 7.8
     },
     {
       "category": "arts_culture",
       "count": 62,
-      "avg_membership_prob": 23,
+      "avg_membership_prob": 24,
       "avg_growth_trajectory": 7.7
     },
     {
       "category": "banking",
       "count": 52,
-      "avg_membership_prob": 19,
+      "avg_membership_prob": 20,
       "avg_growth_trajectory": 4.2
     },
     {
