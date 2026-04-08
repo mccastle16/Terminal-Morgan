@@ -1,202 +1,213 @@
 {
-  "generated_at": "2026-04-08T18:02:18.518822",
-  "total_businesses": 2868,
+  "generated_at": "2026-04-08T18:38:34.922192",
+  "total_businesses": 2730,
   "membership_distribution": {
-    "medium": 544,
-    "high": 2131,
-    "low": 193
+    "low": 2578,
+    "medium": 152
   },
   "growth_distribution": {
-    "declining": 816,
-    "stable": 837,
-    "growing": 1215
+    "declining": 401,
+    "growing": 1460,
+    "stable": 869
   },
-  "avg_membership_probability": 69,
-  "avg_growth_trajectory": 3.6,
+  "avg_membership_probability": 8,
+  "avg_growth_trajectory": 7.2,
   "members_count": 843,
-  "churn_risk_high": 30,
-  "churn_risk_medium": 73,
-  "churn_risk_low": 740,
-  "high_potential_recruits": 1624,
+  "churn_risk_high": 21,
+  "churn_risk_medium": 55,
+  "churn_risk_low": 767,
+  "high_potential_recruits": 0,
   "category_predictions": [
     {
+      "category": "wellness",
+      "count": 97,
+      "avg_membership_prob": 0,
+      "avg_growth_trajectory": 14.0
+    },
+    {
       "category": "legal",
-      "count": 138,
-      "avg_membership_prob": 53,
-      "avg_growth_trajectory": 11.7
+      "count": 126,
+      "avg_membership_prob": 6,
+      "avg_growth_trajectory": 13.6
+    },
+    {
+      "category": "media_entertainment",
+      "count": 6,
+      "avg_membership_prob": 4,
+      "avg_growth_trajectory": 12.8
+    },
+    {
+      "category": "automotive",
+      "count": 14,
+      "avg_membership_prob": 1,
+      "avg_growth_trajectory": 11.9
     },
     {
       "category": "personal_services",
-      "count": 107,
-      "avg_membership_prob": 80,
-      "avg_growth_trajectory": 8.0
+      "count": 89,
+      "avg_membership_prob": 2,
+      "avg_growth_trajectory": 11.6
     },
     {
-      "category": "accounting",
-      "count": 112,
-      "avg_membership_prob": 75,
-      "avg_growth_trajectory": 7.4
+      "category": "other",
+      "count": 250,
+      "avg_membership_prob": 7,
+      "avg_growth_trajectory": 10.0
+    },
+    {
+      "category": "construction",
+      "count": 76,
+      "avg_membership_prob": 4,
+      "avg_growth_trajectory": 9.8
+    },
+    {
+      "category": "marketing",
+      "count": 55,
+      "avg_membership_prob": 9,
+      "avg_growth_trajectory": 9.7
+    },
+    {
+      "category": "healthcare",
+      "count": 277,
+      "avg_membership_prob": 3,
+      "avg_growth_trajectory": 9.3
+    },
+    {
+      "category": "auto_dealer",
+      "count": 55,
+      "avg_membership_prob": 1,
+      "avg_growth_trajectory": 9.1
+    },
+    {
+      "category": "food_beverage",
+      "count": 416,
+      "avg_membership_prob": 2,
+      "avg_growth_trajectory": 8.7
+    },
+    {
+      "category": "financial_services",
+      "count": 58,
+      "avg_membership_prob": 11,
+      "avg_growth_trajectory": 8.3
     },
     {
       "category": "insurance",
       "count": 55,
-      "avg_membership_prob": 77,
-      "avg_growth_trajectory": 7.1
+      "avg_membership_prob": 17,
+      "avg_growth_trajectory": 8.3
     },
     {
-      "category": "marketing",
-      "count": 58,
-      "avg_membership_prob": 76,
-      "avg_growth_trajectory": 6.7
-    },
-    {
-      "category": "other",
-      "count": 354,
-      "avg_membership_prob": 70,
-      "avg_growth_trajectory": 6.4
-    },
-    {
-      "category": "construction",
-      "count": 89,
-      "avg_membership_prob": 77,
-      "avg_growth_trajectory": 6.1
-    },
-    {
-      "category": "healthcare",
-      "count": 266,
-      "avg_membership_prob": 67,
-      "avg_growth_trajectory": 5.6
-    },
-    {
-      "category": "nonprofit",
-      "count": 93,
-      "avg_membership_prob": 47,
-      "avg_growth_trajectory": 5.6
-    },
-    {
-      "category": "financial_services",
-      "count": 56,
-      "avg_membership_prob": 79,
-      "avg_growth_trajectory": 5.2
-    },
-    {
-      "category": "food_beverage",
-      "count": 436,
-      "avg_membership_prob": 66,
-      "avg_growth_trajectory": 5.0
-    },
-    {
-      "category": "consulting",
-      "count": 30,
-      "avg_membership_prob": 75,
-      "avg_growth_trajectory": 4.9
+      "category": "accounting",
+      "count": 112,
+      "avg_membership_prob": 33,
+      "avg_growth_trajectory": 8.2
     },
     {
       "category": "real_estate",
-      "count": 60,
-      "avg_membership_prob": 75,
-      "avg_growth_trajectory": 3.6
-    },
-    {
-      "category": "wellness",
-      "count": 103,
-      "avg_membership_prob": 75,
-      "avg_growth_trajectory": 3.6
-    },
-    {
-      "category": "professional_services",
-      "count": 101,
-      "avg_membership_prob": 72,
-      "avg_growth_trajectory": 3.4
+      "count": 69,
+      "avg_membership_prob": 6,
+      "avg_growth_trajectory": 8.2
     },
     {
       "category": "technology",
-      "count": 34,
-      "avg_membership_prob": 77,
-      "avg_growth_trajectory": 3.2
+      "count": 44,
+      "avg_membership_prob": 4,
+      "avg_growth_trajectory": 8.0
+    },
+    {
+      "category": "consulting",
+      "count": 29,
+      "avg_membership_prob": 17,
+      "avg_growth_trajectory": 7.4
+    },
+    {
+      "category": "nonprofit",
+      "count": 98,
+      "avg_membership_prob": 8,
+      "avg_growth_trajectory": 7.2
+    },
+    {
+      "category": "professional_services",
+      "count": 102,
+      "avg_membership_prob": 4,
+      "avg_growth_trajectory": 7.2
+    },
+    {
+      "category": "hospitality",
+      "count": 89,
+      "avg_membership_prob": 3,
+      "avg_growth_trajectory": 6.2
+    },
+    {
+      "category": "retail",
+      "count": 304,
+      "avg_membership_prob": 9,
+      "avg_growth_trajectory": 4.9
     },
     {
       "category": "arts_culture",
       "count": 56,
-      "avg_membership_prob": 72,
-      "avg_growth_trajectory": 3.0
+      "avg_membership_prob": 25,
+      "avg_growth_trajectory": 4.0
     },
     {
       "category": "banking",
-      "count": 58,
-      "avg_membership_prob": 76,
-      "avg_growth_trajectory": 1.9
-    },
-    {
-      "category": "auto_dealer",
-      "count": 57,
-      "avg_membership_prob": 72,
-      "avg_growth_trajectory": 0.8
-    },
-    {
-      "category": "retail",
-      "count": 313,
-      "avg_membership_prob": 70,
-      "avg_growth_trajectory": 0.4
-    },
-    {
-      "category": "hospitality",
-      "count": 90,
-      "avg_membership_prob": 62,
-      "avg_growth_trajectory": -4.0
+      "count": 52,
+      "avg_membership_prob": 19,
+      "avg_growth_trajectory": 3.2
     },
     {
       "category": "education",
-      "count": 202,
-      "avg_membership_prob": 72,
-      "avg_growth_trajectory": -11.9
+      "count": 201,
+      "avg_membership_prob": 12,
+      "avg_growth_trajectory": -10.7
     }
   ],
   "feature_weights": {
     "rating": {
       "member_mean": 3.835,
-      "non_member_mean": 4.111,
-      "direction": -0.162
+      "non_member_mean": 4.001,
+      "direction": -0.097
     },
     "reviews": {
-      "member_mean": 9.163,
-      "non_member_mean": 20.803,
-      "direction": -0.216
+      "member_mean": 59.758,
+      "non_member_mean": 71.798,
+      "direction": -0.176
     },
     "confidence": {
       "member_mean": 0.597,
-      "non_member_mean": 0.648,
-      "direction": -0.507
+      "non_member_mean": 0.797,
+      "direction": -1.995
     },
     "has_website": {
       "member_mean": 0.977,
-      "non_member_mean": 0.839,
-      "direction": 0.935
+      "non_member_mean": 0.363,
+      "direction": 4.14
     },
     "has_phone": {
       "member_mean": 0.996,
-      "non_member_mean": 0.888,
-      "direction": 1.081
+      "non_member_mean": 0.871,
+      "direction": 1.257
     },
     "corroboration": {
       "member_mean": 1.036,
-      "non_member_mean": 1.036,
-      "direction": -0.002
+      "non_member_mean": 1.037,
+      "direction": -0.005
     },
     "red_flag": {
       "member_mean": -0.423,
-      "non_member_mean": -0.641,
-      "direction": 0.441
+      "non_member_mean": -0.57,
+      "direction": 0.296
     },
     "validation": {
       "member_mean": 2.012,
-      "non_member_mean": 1.658,
-      "direction": 2.022
+      "non_member_mean": 2.348,
+      "direction": -1.916
     },
     "price_tier": {
       "member_mean": 2.117,
-      "non_member_mean": 2.269,
-      "direction": -0.433
+      "non_member_mean": 2.221,
+      "direction": -0.296
     }
   }
 }
