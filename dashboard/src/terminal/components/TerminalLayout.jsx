@@ -6,7 +6,7 @@ import ModuleSwitcher from './ModuleSwitcher'
 import {
   LayoutDashboard, Search, Building2, BarChart3, GitCompare, ShieldAlert,
   UserPlus, TrendingUp, LogOut, ChevronLeft, ChevronRight, Terminal,
-  User, Shield, Database, Crosshair, Zap, Users, Share2, FlaskConical, FileText, Brain,
+  User, Shield, Database, Crosshair, Zap, Users, Share2, FlaskConical, FileText, Brain, Lightbulb,
 } from 'lucide-react'
 
 const STRATEGIC_NAV = [
@@ -27,6 +27,7 @@ const TACTICAL_NAV = [
   { to: '/graph',         icon: Share2,          label: 'Graph Analytics', permission: 'view_analytics' },
   { to: '/experiments',   icon: FlaskConical,    label: 'Experiments',    permission: 'view_analytics' },
   { to: '/content',       icon: FileText,        label: 'Content Studio', permission: null },
+  { to: '/opportunities', icon: Lightbulb,       label: 'Opportunities',  permission: 'view_analytics' },
 ]
 
 export default function TerminalLayout() {

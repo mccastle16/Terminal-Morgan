@@ -1,6 +1,6 @@
 {
   "total_businesses": 2730,
-  "total_edges": 53864,
+  "total_edges": 54094,
   "pkp_distribution": {
     "asset": 1581,
     "platform": 675,
@@ -45,6 +45,6 @@
     "University of Miami Area": 25,
     "Merrick Park": 5
   },
-  "exported_nodes": 2765,
-  "exported_links": 19586
+  "exported_nodes": 2807,
+  "exported_links": 19816
 }
