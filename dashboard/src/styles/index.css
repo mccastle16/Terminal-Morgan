@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,124 +7,60 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
 
   body {
-    @apply bg-gray-50 text-cgcc-charcoal antialiased;
+    @apply bg-[#020617] text-slate-200 antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
 
   ::selection {
-    @apply bg-cgcc-gold/30;
+    @apply bg-amber-500/20 text-white;
   }
 }
 
 @layer components {
+  /* Shared panel style — flat, minimal, no gradients */
+  .panel {
+    @apply bg-slate-900/50 border border-slate-800 rounded-lg;
+  }
+
+  .panel-hover {
+    @apply panel hover:border-slate-700 transition-colors duration-150;
+  }
+
   .btn-primary {
-    @apply px-6 py-3 bg-cgcc-navy text-white font-medium rounded-lg
-           hover:bg-cgcc-navy/90 active:scale-[0.98] transition-all duration-200
-           focus:outline-none focus:ring-2 focus:ring-cgcc-gold focus:ring-offset-2;
+    @apply px-4 py-2 bg-white text-slate-900 text-sm font-medium rounded-md
+           hover:bg-slate-200 active:bg-slate-300 transition-colors duration-150
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 bg-white text-cgcc-navy font-medium rounded-lg border-2 border-cgcc-navy
-           hover:bg-cgcc-navy hover:text-white active:scale-[0.98] transition-all duration-200
-           focus:outline-none focus:ring-2 focus:ring-cgcc-gold focus:ring-offset-2;
-  }
-
-  .btn-gold {
-    @apply px-6 py-3 bg-cgcc-gold text-cgcc-charcoal font-semibold rounded-lg
-           hover:bg-cgcc-gold/90 active:scale-[0.98] transition-all duration-200
-           shadow-md hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-cgcc-navy focus:ring-offset-2;
-  }
-
-  .card {
-    @apply bg-white rounded-xl shadow-card p-6 transition-all duration-300
-           hover:shadow-card-hover border border-gray-100;
-  }
-
-  .card-interactive {
-    @apply card cursor-pointer hover:-translate-y-1 hover:border-cgcc-gold/30;
+    @apply px-4 py-2 bg-slate-800 text-slate-200 text-sm font-medium rounded-md border border-slate-700
+           hover:bg-slate-700 transition-colors duration-150
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-500;
   }
 
   .input-field {
-    @apply w-full px-4 py-3 border border-gray-200 rounded-lg
-           focus:outline-none focus:ring-2 focus:ring-cgcc-gold focus:border-transparent
-           placeholder:text-gray-400 transition-all duration-200;
+    @apply w-full px-3 py-2 bg-slate-900 border border-slate-800 rounded-md text-sm text-slate-200
+           placeholder:text-slate-600 transition-colors duration-150
+           focus:outline-none focus:border-slate-600;
   }
 
   .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium;
   }
 
-  .badge-success {
-    @apply badge bg-green-100 text-green-800;
-  }
-
-  .badge-warning {
-    @apply badge bg-yellow-100 text-yellow-800;
-  }
-
-  .badge-danger {
-    @apply badge bg-red-100 text-red-800;
-  }
-
-  .badge-info {
-    @apply badge bg-blue-100 text-blue-800;
-  }
-
-  .stat-card {
-    @apply bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 border border-gray-100
-           shadow-sm hover:shadow-md transition-all duration-300;
-  }
-
-  .nav-link {
-    @apply px-4 py-2 text-gray-600 hover:text-cgcc-navy hover:bg-gray-100
-           rounded-lg transition-all duration-200 font-medium;
-  }
-
-  .nav-link-active {
-    @apply nav-link bg-cgcc-navy/10 text-cgcc-navy;
-  }
-
-  .insight-tag {
-    @apply inline-flex items-center gap-1 px-3 py-1 bg-cgcc-cream text-cgcc-charcoal
-           text-sm rounded-full border border-cgcc-gold/20;
-  }
-
-  .risk-indicator {
-    @apply w-3 h-3 rounded-full animate-pulse-slow;
-  }
-
-  .gradient-text {
-    @apply bg-gradient-to-r from-cgcc-navy to-cgcc-gold bg-clip-text text-transparent;
-  }
-
-  .glass-effect {
-    @apply bg-white/80 backdrop-blur-md border border-white/20;
-  }
+  .badge-success { @apply badge bg-emerald-500/10 text-emerald-400; }
+  .badge-warning { @apply badge bg-amber-500/10 text-amber-400; }
+  .badge-danger  { @apply badge bg-red-500/10 text-red-400; }
+  .badge-info    { @apply badge bg-blue-500/10 text-blue-400; }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-
-  .scrollbar-thin {
-    scrollbar-width: thin;
-    scrollbar-color: theme('colors.cgcc.gold') transparent;
-  }
-
-  .scrollbar-thin::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .scrollbar-thin::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .scrollbar-thin::-webkit-scrollbar-thumb {
-    background-color: theme('colors.cgcc.gold');
-    border-radius: 3px;
   }
 
   .line-clamp-2 {
@@ -140,87 +78,50 @@
   }
 }
 
-/* Custom animations */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
+/* Scrollbar — thin & subtle */
+.scrollbar-dark::-webkit-scrollbar { width: 6px; }
+.scrollbar-dark::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-dark::-webkit-scrollbar-thumb { background-color: #1e293b; border-radius: 9999px; }
+.scrollbar-dark::-webkit-scrollbar-thumb:hover { background-color: #334155; }
 
-.shimmer {
-  background: linear-gradient(
-    90deg,
-    theme('colors.gray.100') 25%,
-    theme('colors.gray.200') 50%,
-    theme('colors.gray.100') 75%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-/* Recharts customizations — light theme (legacy dashboard) */
+/* Recharts tooltip — hidden since we use custom JSX tooltips */
 .recharts-default-tooltip {
-  @apply !bg-white !border !border-gray-200 !rounded-lg !shadow-lg;
+  background-color: rgba(15, 23, 42, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(51, 65, 85, 0.5) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  padding: 10px 14px !important;
 }
-
 .recharts-tooltip-label {
-  @apply !font-semibold !text-cgcc-navy;
-}
-
-/* Recharts customizations — dark theme (terminal module) */
-.terminal-charts .recharts-default-tooltip {
-  background-color: #0f172a !important;
-  border: 1px solid #1e293b !important;
-  border-radius: 10px !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6) !important;
-  backdrop-filter: blur(8px) !important;
-}
-.terminal-charts .recharts-tooltip-label {
   color: #94a3b8 !important;
   font-weight: 500 !important;
   font-size: 11px !important;
+  margin-bottom: 6px !important;
+  padding-bottom: 6px !important;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.4) !important;
 }
-.terminal-charts .recharts-tooltip-item {
+.recharts-tooltip-item {
   color: #e2e8f0 !important;
-  font-size: 11px !important;
+  font-size: 12px !important;
+  padding: 2px 0 !important;
 }
-.terminal-charts .recharts-tooltip-item-name {
-  color: #94a3b8 !important;
-}
-.terminal-charts .recharts-tooltip-item-value {
-  color: #f1f5f9 !important;
-  font-weight: 600 !important;
-}
+.recharts-tooltip-item-name { color: #94a3b8 !important; }
+.recharts-tooltip-item-value { color: #f8fafc !important; font-weight: 600 !important; }
 
-/* Terminal module — dark scrollbar */
-.scrollbar-dark::-webkit-scrollbar {
-  width: 6px;
-}
-.scrollbar-dark::-webkit-scrollbar-track {
-  background: transparent;
-}
-.scrollbar-dark::-webkit-scrollbar-thumb {
-  background-color: #1e293b;
-  border-radius: 9999px;
-}
-.scrollbar-dark::-webkit-scrollbar-thumb:hover {
-  background-color: #334155;
-}
+/* Recharts polish */
+.recharts-cartesian-grid-horizontal line { stroke: #1e293b; }
+.recharts-cartesian-grid-vertical line { stroke: transparent; }
+.recharts-legend-wrapper { font-family: 'Inter', sans-serif !important; }
+.recharts-pie-sector { transition: opacity 0.2s ease; }
+.recharts-pie-sector:hover { opacity: 0.85; filter: brightness(1.1); }
+.recharts-bar-rectangle { transition: filter 0.15s ease; }
+.recharts-bar-rectangle:hover { filter: brightness(1.12); }
 
-/* Terminal module — stagger fade-in for card grids */
-.terminal-charts .grid > * {
-  animation: termFadeUp 0.4s ease-out both;
-}
-.terminal-charts .grid > *:nth-child(1) { animation-delay: 0ms; }
-.terminal-charts .grid > *:nth-child(2) { animation-delay: 60ms; }
-.terminal-charts .grid > *:nth-child(3) { animation-delay: 120ms; }
-.terminal-charts .grid > *:nth-child(4) { animation-delay: 180ms; }
-.terminal-charts .grid > *:nth-child(5) { animation-delay: 240ms; }
-
-@keyframes termFadeUp {
-  from { opacity: 0; transform: translateY(8px); }
+/* Fade-in for page content */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.animate-fade-in { animation: fadeIn 0.3s ease-out; }

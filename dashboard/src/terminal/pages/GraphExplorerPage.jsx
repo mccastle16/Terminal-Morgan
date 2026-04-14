@@ -96,7 +96,12 @@ export default function GraphExplorerPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-white">Graph Analytics</h1>
+        <h1 className="text-2xl font-semibold text-white flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center">
+            <Share2 size={16} className="text-cyan-400" />
+          </div>
+          Graph Analytics
+        </h1>
         <p className="text-slate-400">{queries.length} pre-built queries across {categories.length} categories</p>
       </div>
 
@@ -107,7 +112,7 @@ export default function GraphExplorerPage() {
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
             <input type="text" placeholder="Search queries..." value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-slate-800/60 border border-slate-700/50 rounded-lg text-sm text-slate-200 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20" />
+              className="w-full pl-9 pr-4 py-2 bg-slate-800/60 border border-slate-800 rounded-lg text-sm text-slate-200 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20" />
           </div>
 
           <div className="space-y-2 max-h-[60vh] overflow-y-auto pr-1">
@@ -136,13 +141,13 @@ export default function GraphExplorerPage() {
         {/* Main Panel */}
         <div className="lg:col-span-3">
           {selectedQuery ? (
-            <div className="bg-slate-800/60 rounded-xl border border-slate-700/50 overflow-hidden">
+            <div className="bg-slate-800/60 rounded-lg border border-slate-800 overflow-hidden">
               <div className="p-4 border-b border-slate-700/30 flex items-center justify-between">
                 <div>
                   <h2 className="font-semibold text-white">{selectedQuery.title}</h2>
                   <p className="text-xs text-slate-500 mt-0.5">{selectedQuery.description}</p>
                 </div>
-                <div className="flex items-center bg-slate-900/60 rounded-lg p-0.5 border border-slate-700/50">
+                <div className="flex items-center bg-slate-900/60 rounded-lg p-0.5 border border-slate-800">
                   <button onClick={() => setViewMode('graph')}
                     className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all flex items-center gap-1.5 ${
                       viewMode === 'graph' ? 'bg-amber-500/20 text-amber-400' : 'text-slate-400 hover:text-slate-200'
@@ -223,7 +228,7 @@ export default function GraphExplorerPage() {
               )}
             </div>
           ) : (
-            <div className="flex items-center justify-center h-64 bg-slate-800/30 rounded-xl border border-slate-700/50">
+            <div className="flex items-center justify-center h-64 bg-slate-800/30 rounded-lg border border-slate-800">
               <div className="text-center">
                 <Share2 size={32} className="text-slate-600 mx-auto mb-3" />
                 <p className="text-slate-500">Select a query to explore</p>

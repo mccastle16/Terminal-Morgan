@@ -3,9 +3,9 @@ import { useTerminalData } from '../context/TerminalDataContext'
 import RoleGate from '../components/RoleGate'
 import KPICard from '../components/KPICard'
 import {
-  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell,
+  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, CartesianGrid,
 } from 'recharts'
-import DarkTooltip from '../components/DarkTooltip'
+import { HGRADIENTS, ChartTooltip, axisTick, axisTickLabel, barCursor } from '../components/ChartTheme'
 import {
   Lightbulb, TrendingUp, Target, MapPin, Tag, ShieldCheck, Users,
 } from 'lucide-react'
@@ -70,8 +70,11 @@ export default function MarketIntelPage() {
     <RoleGate permission="view_analytics" blur>
       <div className="space-y-5 animate-fade-in">
         <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2 tracking-tight">
-            <Lightbulb size={20} className="text-amber-500" /> Market Intelligence
+          <h1 className="text-lg font-semibold text-white flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-blue-500/15 border border-blue-500/25 flex items-center justify-center">
+              <Lightbulb size={16} className="text-blue-400" />
+            </div>
+            Market Intelligence
           </h1>
           <p className="text-sm text-slate-500 mt-0.5">Growth opportunities and whitespace analysis</p>
         </div>
@@ -89,19 +92,26 @@ export default function MarketIntelPage() {
         </div>
 
         {/* Whitespace by Category */}
-        <div className="bg-gradient-to-br from-slate-900 to-slate-900/80 border border-slate-800/80 rounded-xl p-5 hover:border-slate-700/60 transition-colors">
-          <h3 className="text-sm font-semibold text-white mb-1 flex items-center gap-2"><Tag size={14} className="text-emerald-400" /> Category Whitespace</h3>
+        <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
+          <h3 className="text-sm font-semibold text-white mb-1 flex items-center gap-2.5">
+            <div className="w-6 h-6 rounded-md bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+              <Tag size={12} className="text-emerald-400" />
+            </div>
+            Category Whitespace
+          </h3>
           <p className="text-[11px] text-slate-500 mb-4">Non-members + unknowns per category — biggest recruitment pools</p>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={whitespace.slice(0, 12)} layout="vertical" margin={{ left: 0, right: 10 }}>
-                <XAxis type="number" tick={{ fontSize: 10, fill: '#64748b' }} axisLine={false} tickLine={false} />
-                <YAxis type="category" dataKey="category" width={110} tick={{ fontSize: 10, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
-                <Tooltip content={<DarkTooltip />} cursor={{ fill: 'rgba(245, 158, 11, 0.06)' }}
+                <defs>{HGRADIENTS}</defs>
+                <CartesianGrid strokeDasharray="3 6" stroke="#1e293b" horizontal={false} vertical={true} />
+                <XAxis type="number" tick={axisTick} axisLine={false} tickLine={false} />
+                <YAxis type="category" dataKey="category" width={110} tick={axisTickLabel} axisLine={false} tickLine={false} />
+                <Tooltip content={<ChartTooltip />} cursor={barCursor}
                   formatter={(val, name) => [val, name]} />
                 <Bar dataKey="opportunity" name="Non-member + Unknown" radius={[0, 4, 4, 0]}>
                   {whitespace.slice(0, 12).map((_, i) => (
-                    <Cell key={i} fill={i < 3 ? '#22c55e' : i < 6 ? '#3b82f6' : '#475569'} />
+                    <Cell key={i} fill={i < 3 ? '#22c55e' : i < 6 ? '#3b82f6' : '#334155'} />
                   ))}
                 </Bar>
               </BarChart>
@@ -112,8 +122,13 @@ export default function MarketIntelPage() {
         {/* Two-col: Neighborhood opportunity + Recruit density */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Neighborhood opportunity */}
-          <div className="bg-gradient-to-br from-slate-900 to-slate-900/80 border border-slate-800/80 rounded-xl p-5 hover:border-slate-700/60 transition-colors">
-            <h3 className="text-sm font-semibold text-white mb-1 flex items-center gap-2"><MapPin size={14} className="text-violet-400" /> Neighborhood Opportunity</h3>
+          <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
+            <h3 className="text-sm font-semibold text-white mb-1 flex items-center gap-2.5">
+              <div className="w-6 h-6 rounded-md bg-violet-500/10 border border-violet-500/20 flex items-center justify-center">
+                <MapPin size={12} className="text-violet-400" />
+              </div>
+              Neighborhood Opportunity
+            </h3>
             <p className="text-[11px] text-slate-500 mb-3">Neighborhoods sorted by untapped potential</p>
             <div className="space-y-2.5">
               {hoodOpportunity.map(h => (
@@ -122,8 +137,8 @@ export default function MarketIntelPage() {
                     <span className="text-[11px] text-slate-300">{h.neighborhood}</span>
                     <div className="flex items-center gap-3 text-[10px]">
                       <span className="text-slate-500">{h.total} total</span>
-                      <span className="text-amber-400 font-bold">{h.opportunity} untapped</span>
-                      <span className={`font-mono ${h.penetration > 50 ? 'text-green-400' : h.penetration > 25 ? 'text-yellow-400' : 'text-red-400'}`}>
+                      <span className="text-amber-400 font-semibold">{h.opportunity} untapped</span>
+                      <span className={`${h.penetration > 50 ? 'text-green-400' : h.penetration > 25 ? 'text-yellow-400' : 'text-red-400'}`}>
                         {h.penetration.toFixed(0)}%
                       </span>
                     </div>
@@ -141,16 +156,23 @@ export default function MarketIntelPage() {
           </div>
 
           {/* Recruit density by category */}
-          <div className="bg-gradient-to-br from-slate-900 to-slate-900/80 border border-slate-800/80 rounded-xl p-5 hover:border-slate-700/60 transition-colors">
-            <h3 className="text-sm font-semibold text-white mb-1 flex items-center gap-2"><Target size={14} className="text-amber-400" /> Recruit Density by Category</h3>
+          <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-5 hover:border-slate-700 transition-colors">
+            <h3 className="text-sm font-semibold text-white mb-1 flex items-center gap-2.5">
+              <div className="w-6 h-6 rounded-md bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+                <Target size={12} className="text-amber-400" />
+              </div>
+              Recruit Density by Category
+            </h3>
             <p className="text-[11px] text-slate-500 mb-3">Categories with most recruitable non-members</p>
             <div className="h-56">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={recruitByCat} layout="vertical" margin={{ left: 0, right: 10 }}>
-                  <XAxis type="number" tick={{ fontSize: 10, fill: '#64748b' }} axisLine={false} tickLine={false} />
-                  <YAxis type="category" dataKey="category" width={110} tick={{ fontSize: 10, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
-                  <Tooltip content={<DarkTooltip />} cursor={{ fill: 'rgba(245, 158, 11, 0.06)' }} />
-                  <Bar dataKey="count" name="Prospects" fill="#f59e0b" radius={[0, 4, 4, 0]} />
+                  <defs>{HGRADIENTS}</defs>
+                  <CartesianGrid strokeDasharray="3 6" stroke="#1e293b" horizontal={false} vertical={true} />
+                  <XAxis type="number" tick={axisTick} axisLine={false} tickLine={false} />
+                  <YAxis type="category" dataKey="category" width={110} tick={axisTickLabel} axisLine={false} tickLine={false} />
+                  <Tooltip content={<ChartTooltip />} cursor={barCursor} />
+                  <Bar dataKey="count" name="Prospects" fill="url(#gAmberH)" radius={[0, 4, 4, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

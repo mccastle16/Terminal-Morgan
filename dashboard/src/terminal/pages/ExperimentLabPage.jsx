@@ -5,9 +5,9 @@ import {
 } from 'lucide-react'
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
-  AreaChart, Area, Cell,
+  AreaChart, Area, Cell, CartesianGrid,
 } from 'recharts'
-import DarkTooltip from '../components/DarkTooltip'
+import { VGRADIENTS, HGRADIENTS, ChartTooltip, axisTick, axisTickLabel, barCursor } from '../components/ChartTheme'
 
 const COMPONENT_COLORS = {
   rating: '#f59e0b',
@@ -72,8 +72,13 @@ export default function ExperimentLabPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-white">Experiment Lab</h1>
-        <p className="text-slate-400">
+        <h1 className="text-lg font-semibold text-white flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-violet-500/15 border border-violet-500/25 flex items-center justify-center">
+            <FlaskConical size={16} className="text-violet-400" />
+          </div>
+          Experiment Lab
+        </h1>
+        <p className="text-sm text-slate-500 mt-0.5">
           Monte Carlo simulation — {config.n_paths.toLocaleString()} paths, {config.horizon_months}-month horizon
         </p>
       </div>
@@ -87,23 +92,26 @@ export default function ExperimentLabPage() {
           { label: 'Median', value: bhs.p50.toFixed(1), color: 'text-amber-400' },
           { label: 'P90', value: bhs.p90.toFixed(1), color: 'text-emerald-400' },
         ].map(s => (
-          <div key={s.label} className="bg-slate-800/60 rounded-xl border border-slate-700/50 p-4">
+          <div key={s.label} className="bg-slate-800/60 rounded-lg border border-slate-800 p-4">
             <p className="text-xs text-slate-500 mb-1">{s.label}</p>
-            <p className={`text-xl font-bold ${s.color}`}>{s.value}</p>
+            <p className={`text-xl font-semibold ${s.color}`}>{s.value}</p>
           </div>
         ))}
       </div>
 
       {/* Treatment Effects */}
       <div>
-        <h2 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-          <Activity size={18} className="text-slate-400" /> Treatment Effects
+        <h2 className="text-lg font-semibold text-white mb-3 flex items-center gap-2.5">
+          <div className="w-7 h-7 rounded-md bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+            <Activity size={14} className="text-blue-400" />
+          </div>
+          Treatment Effects
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {treatments.map(t => (
             <button key={t.key} onClick={() => setSelectedTreatment(selectedTreatment === t.key ? null : t.key)}
-              className={`text-left bg-slate-800/60 rounded-xl border p-4 transition-all ${
-                selectedTreatment === t.key ? 'border-amber-500/50 bg-amber-500/5' : 'border-slate-700/50 hover:border-slate-600'
+              className={`text-left bg-slate-800/60 rounded-lg border p-4 transition-all ${
+                selectedTreatment === t.key ? 'border-amber-500/50 bg-amber-500/5' : 'border-slate-800 hover:border-slate-600'
               }`}>
               <div className="flex items-start justify-between mb-2">
                 <h3 className="font-medium text-slate-200 text-sm">{t.action_name}</h3>
@@ -116,17 +124,17 @@ export default function ExperimentLabPage() {
               <p className="text-xs text-slate-500 mb-3 line-clamp-2">{t.description}</p>
               <div className="grid grid-cols-3 gap-2 text-center">
                 <div>
-                  <p className={`text-sm font-bold ${t.mu_delta > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                  <p className={`text-sm font-semibold ${t.mu_delta > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                     {t.mu_delta > 0 ? '+' : ''}{t.mu_delta.toFixed(1)}
                   </p>
                   <p className="text-[10px] text-slate-600">Δ BHS</p>
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-slate-300">{(t.success_rate * 100).toFixed(0)}%</p>
+                  <p className="text-sm font-semibold text-slate-300">{(t.success_rate * 100).toFixed(0)}%</p>
                   <p className="text-[10px] text-slate-600">Success</p>
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-slate-300">{t.n_treated.toLocaleString()}</p>
+                  <p className="text-sm font-semibold text-slate-300">{t.n_treated.toLocaleString()}</p>
                   <p className="text-[10px] text-slate-600">Treated</p>
                 </div>
               </div>
@@ -147,16 +155,18 @@ export default function ExperimentLabPage() {
           { name: 'Treated', value: t.mu_delta, fill: t.mu_delta > 0 ? '#10b981' : '#ef4444' },
         ]
         return (
-          <div className="bg-slate-800/60 rounded-xl border border-slate-700/50 p-5">
+          <div className="bg-slate-800/60 rounded-lg border border-slate-800 p-5">
             <h3 className="font-semibold text-white mb-1">{t.action_name}</h3>
             <p className="text-sm text-slate-400 mb-4">{t.description}</p>
             <div className="h-40">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={chartData} layout="vertical">
-                  <XAxis type="number" stroke="#475569" tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                  <YAxis type="category" dataKey="name" stroke="#475569" tick={{ fill: '#94a3b8', fontSize: 12 }} width={70} />
-                  <Tooltip content={<DarkTooltip />} />
-                  <Bar dataKey="value" radius={[0, 6, 6, 0]}>
+                  <defs>{HGRADIENTS}</defs>
+                  <CartesianGrid strokeDasharray="3 6" stroke="#1e293b" horizontal={false} vertical={true} />
+                  <XAxis type="number" tick={axisTick} axisLine={false} tickLine={false} />
+                  <YAxis type="category" dataKey="name" tick={axisTickLabel} width={70} axisLine={false} tickLine={false} />
+                  <Tooltip content={<ChartTooltip />} cursor={barCursor} />
+                  <Bar dataKey="value" radius={[0, 4, 4, 0]}>
                     {chartData.map((e, i) => <Cell key={i} fill={e.fill} />)}
                   </Bar>
                 </BarChart>
@@ -173,14 +183,17 @@ export default function ExperimentLabPage() {
 
       {/* Business Simulator */}
       <div>
-        <h2 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-          <Target size={18} className="text-slate-400" /> Business Paths ({data.businesses.length})
+        <h2 className="text-lg font-semibold text-white mb-3 flex items-center gap-2.5">
+          <div className="w-7 h-7 rounded-md bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+            <Target size={14} className="text-amber-400" />
+          </div>
+          Business Paths ({data.businesses.length})
         </h2>
         <div className="relative mb-3 max-w-md">
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
           <input type="text" placeholder="Search businesses..." value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 bg-slate-800/60 border border-slate-700/50 rounded-lg text-sm text-slate-200 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20" />
+            className="w-full pl-9 pr-4 py-2 bg-slate-800/60 border border-slate-800 rounded-lg text-sm text-slate-200 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -188,15 +201,15 @@ export default function ExperimentLabPage() {
             const isSelected = selectedBiz === b.business_id
             return (
               <button key={b.business_id} onClick={() => setSelectedBiz(isSelected ? null : b.business_id)}
-                className={`text-left rounded-xl border p-4 transition-all ${
-                  isSelected ? 'bg-amber-500/5 border-amber-500/40' : 'bg-slate-800/60 border-slate-700/50 hover:border-slate-600'
+                className={`text-left rounded-lg border p-4 transition-all ${
+                  isSelected ? 'bg-amber-500/5 border-amber-500/40' : 'bg-slate-800/60 border-slate-800 hover:border-slate-600'
                 }`}>
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-medium text-slate-200 text-sm truncate flex-1">{b.business_name}</h3>
                   <ChevronDown size={14} className={`text-slate-500 transition-transform ${isSelected ? 'rotate-180' : ''}`} />
                 </div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className={`text-lg font-bold ${b.bhs >= 60 ? 'text-emerald-400' : b.bhs >= 40 ? 'text-amber-400' : 'text-red-400'}`}>
+                  <span className={`text-lg font-semibold ${b.bhs >= 60 ? 'text-emerald-400' : b.bhs >= 40 ? 'text-amber-400' : 'text-red-400'}`}>
                     {b.bhs.toFixed(1)}
                   </span>
                   <span className="text-xs text-slate-500">BHS</span>
@@ -226,7 +239,7 @@ export default function ExperimentLabPage() {
 
       {/* Selected Business Trajectory */}
       {bizDetail && (
-        <div className="bg-slate-800/60 rounded-xl border border-slate-700/50 p-5">
+        <div className="bg-slate-800/60 rounded-lg border border-slate-800 p-5">
           <h3 className="font-semibold text-white mb-1">{bizDetail.business_name}</h3>
           <p className="text-sm text-slate-400 mb-4">
             {bizDetail.category} · {bizDetail.neighborhood || 'Coral Gables'} · BHS {bizDetail.bhs.toFixed(1)}
@@ -245,9 +258,10 @@ export default function ExperimentLabPage() {
                         <stop offset="100%" stopColor="#f59e0b" stopOpacity={0} />
                       </linearGradient>
                     </defs>
-                    <XAxis dataKey="month" stroke="#475569" tick={{ fill: '#64748b', fontSize: 11 }} tickFormatter={m => `M${m}`} />
-                    <YAxis stroke="#475569" tick={{ fill: '#64748b', fontSize: 11 }} domain={['dataMin - 5', 'dataMax + 5']} />
-                    <Tooltip content={<DarkTooltip />} />
+                    <CartesianGrid strokeDasharray="3 6" stroke="#1e293b" vertical={false} />
+                    <XAxis dataKey="month" stroke="#475569" tick={axisTick} tickFormatter={m => `M${m}`} />
+                    <YAxis stroke="#475569" tick={axisTick} domain={['dataMin - 5', 'dataMax + 5']} />
+                    <Tooltip content={<ChartTooltip />} />
                     <Area type="monotone" dataKey="p10" stroke="none" fill="#475569" fillOpacity={0.2} />
                     <Area type="monotone" dataKey="p90" stroke="none" fill="#475569" fillOpacity={0.2} />
                     <Area type="monotone" dataKey="p50" stroke="#f59e0b" fill="url(#bhsGrad)" strokeWidth={2} />
@@ -264,7 +278,7 @@ export default function ExperimentLabPage() {
               <div className="space-y-2">
                 {bizDetail.paths.slice(0, 5).map((path, i) => (
                   <div key={i} className="flex items-center gap-3 p-3 bg-slate-900/60 rounded-lg border border-slate-700/30">
-                    <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
+                    <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold ${
                       i === 0 ? 'bg-amber-500/20 text-amber-400' : 'bg-slate-700/50 text-slate-500'
                     }`}>{i + 1}</span>
                     <div className="flex-1 min-w-0">
@@ -274,7 +288,7 @@ export default function ExperimentLabPage() {
                       {path.description && <p className="text-xs text-slate-500 truncate">{path.description}</p>}
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className={`text-sm font-bold ${(path.empirical_delta || path.delta || 0) > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                      <p className={`text-sm font-semibold ${(path.empirical_delta || path.delta || 0) > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                         {(path.empirical_delta || path.delta || 0) > 0 ? '+' : ''}{(path.empirical_delta || path.delta || 0).toFixed(1)}
                       </p>
                       <p className="text-[10px] text-slate-600">Δ BHS</p>

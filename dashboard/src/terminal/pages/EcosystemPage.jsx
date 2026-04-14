@@ -75,8 +75,11 @@ export default function EcosystemPage() {
     <div className="space-y-6 animate-fade-in">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2 tracking-tight">
-            <Users size={20} className="text-amber-500" /> Chamber Ecosystem
+          <h1 className="text-xl font-semibold text-white flex items-center gap-3 tracking-tight">
+            <div className="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/25 flex items-center justify-center">
+              <Users size={16} className="text-amber-400" />
+            </div>
+            Chamber Ecosystem
           </h1>
           <p className="text-sm text-slate-500 mt-0.5">
             {totalMembers} chamber members across {serviceCategories.length}+ categories — find partners, discover services
@@ -90,7 +93,7 @@ export default function EcosystemPage() {
 
       {/* Recommended Partners (only if user has claimed a business) */}
       {myBusiness && recommendedPartners.length > 0 && (
-        <div className="bg-gradient-to-br from-amber-500/10 to-amber-500/5 rounded-xl p-5 border border-amber-500/20">
+        <div className="bg-gradient-to-br from-amber-500/10 to-amber-500/5 rounded-lg p-5 border border-amber-500/20">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-9 h-9 bg-amber-500/20 rounded-lg flex items-center justify-center">
               <Sparkles size={18} className="text-amber-400" />
@@ -128,14 +131,17 @@ export default function EcosystemPage() {
 
       {/* Service finder search */}
       <div className="flex items-center gap-3">
-        <h2 className="text-sm font-semibold text-white flex items-center gap-2">
-          <Briefcase size={14} className="text-slate-400" /> Find a Service
+        <h2 className="text-sm font-semibold text-white flex items-center gap-2.5">
+          <div className="w-6 h-6 rounded-md bg-slate-800 border border-slate-700/60 flex items-center justify-center">
+            <Briefcase size={12} className="text-slate-400" />
+          </div>
+          Find a Service
         </h2>
         <div className="relative flex-1 max-w-xs">
           <Search size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-500" />
           <input type="text" placeholder="Search categories..." value={serviceSearch}
             onChange={(e) => setServiceSearch(e.target.value)}
-            className="w-full pl-8 pr-3 py-1.5 bg-slate-900/60 border border-slate-800/60 rounded-lg text-xs text-slate-200 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20" />
+            className="w-full pl-8 pr-3 py-1.5 bg-slate-900/60 border border-slate-800 rounded-lg text-xs text-slate-200 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20" />
         </div>
       </div>
 
@@ -144,12 +150,12 @@ export default function EcosystemPage() {
         {serviceCategories.map((cat) => {
           const Icon = categoryIcons[cat.id] || Building2
           return (
-            <div key={cat.id} className="bg-gradient-to-br from-slate-900 to-slate-900/80 border border-slate-800/60 rounded-xl overflow-hidden hover:border-slate-700/60 transition-all">
+            <div key={cat.id} className="bg-slate-900/50 border border-slate-800 rounded-lg overflow-hidden hover:border-slate-700 transition-all">
               <div className="p-4 border-b border-slate-800/40">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 bg-slate-800/60 rounded-lg flex items-center justify-center">
-                      <Icon size={16} className="text-slate-400" />
+                    <div className="w-8 h-8 bg-amber-500/10 border border-amber-500/20 rounded-lg flex items-center justify-center">
+                      <Icon size={16} className="text-amber-400" />
                     </div>
                     <div>
                       <h3 className="text-xs font-semibold text-white">{cat.name}</h3>
@@ -163,7 +169,7 @@ export default function EcosystemPage() {
                   cat.topRated.map((business, i) => (
                     <div key={business._id} onClick={() => navigate(`/explorer/${business._id}`)}
                       className="flex items-center gap-2.5 px-2 py-1.5 rounded-lg hover:bg-slate-800/50 cursor-pointer transition-colors">
-                      <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
+                      <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-semibold ${
                         i === 0 ? 'bg-amber-500/20 text-amber-400' : 'bg-slate-800/60 text-slate-500'
                       }`}>{i + 1}</span>
                       <div className="flex-1 min-w-0">
@@ -185,7 +191,7 @@ export default function EcosystemPage() {
       </div>
 
       {serviceCategories.length === 0 && (
-        <div className="text-center py-12 bg-slate-900/50 rounded-xl border border-slate-800/60">
+        <div className="text-center py-12 bg-slate-900/50 rounded-lg border border-slate-800">
           <Search size={32} className="text-slate-600 mx-auto mb-3" />
           <p className="text-sm text-slate-400">No categories match "{serviceSearch}"</p>
         </div>

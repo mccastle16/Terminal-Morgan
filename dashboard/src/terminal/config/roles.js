@@ -31,6 +31,7 @@ export const ROLES = {
       'view_all_businesses',
       'view_member_status',
       'view_non_member_details',
+      'view_risk_flags',
       'view_recruit_queue',
       'view_analytics',
       'view_compare',

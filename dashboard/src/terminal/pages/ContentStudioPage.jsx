@@ -108,7 +108,12 @@ export default function ContentStudioPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-white">Content Studio</h1>
+        <h1 className="text-2xl font-semibold text-white flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/25 flex items-center justify-center">
+            <FileText size={16} className="text-amber-400" />
+          </div>
+          Content Studio
+        </h1>
         <p className="text-slate-400">Generate marketing content for any business</p>
       </div>
 
@@ -124,10 +129,10 @@ export default function ContentStudioPage() {
                 value={selectedBiz ? selectedBiz.business_name : searchQuery}
                 onChange={e => { setSearchQuery(e.target.value); setSelectedBizId('') }}
                 onFocus={() => { if (selectedBiz) { setSearchQuery(selectedBiz.business_name); setSelectedBizId('') } }}
-                className="w-full pl-9 pr-4 py-2 bg-slate-800/60 border border-slate-700/50 rounded-lg text-sm text-slate-200 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20" />
+                className="w-full pl-9 pr-4 py-2 bg-slate-800/60 border border-slate-800 rounded-lg text-sm text-slate-200 focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20" />
             </div>
             {filteredBiz.length > 0 && !selectedBizId && (
-              <div className="mt-1 bg-slate-800 border border-slate-700/50 rounded-lg overflow-hidden max-h-48 overflow-y-auto">
+              <div className="mt-1 bg-slate-800 border border-slate-800 rounded-lg overflow-hidden max-h-48 overflow-y-auto">
                 {filteredBiz.map(b => (
                   <button key={b._id} onClick={() => { setSelectedBizId(b._id); setSearchQuery('') }}
                     className="w-full text-left px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/50 transition-colors">
@@ -150,7 +155,7 @@ export default function ContentStudioPage() {
                     className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm border transition-all ${
                       contentType === ct.id
                         ? 'bg-amber-500/10 border-amber-500/30 text-amber-400'
-                        : 'bg-slate-800/60 border-slate-700/50 text-slate-400 hover:border-slate-600'
+                        : 'bg-slate-800/60 border-slate-800 text-slate-400 hover:border-slate-600'
                     }`}>
                     <Icon size={14} /> {ct.label}
                   </button>
@@ -168,7 +173,7 @@ export default function ContentStudioPage() {
                   className={`px-3 py-1.5 rounded-lg text-xs capitalize border transition-all ${
                     tone === t
                       ? 'bg-amber-500/10 border-amber-500/30 text-amber-400'
-                      : 'bg-slate-800/60 border-slate-700/50 text-slate-400 hover:border-slate-600'
+                      : 'bg-slate-800/60 border-slate-800 text-slate-400 hover:border-slate-600'
                   }`}>
                   {t}
                 </button>
@@ -185,7 +190,7 @@ export default function ContentStudioPage() {
 
         {/* Output */}
         <div className="lg:col-span-2">
-          <div className="bg-slate-800/60 rounded-xl border border-slate-700/50 h-full flex flex-col">
+          <div className="bg-slate-800/60 rounded-lg border border-slate-800 h-full flex flex-col">
             <div className="flex items-center justify-between px-4 py-3 border-b border-slate-700/30">
               <div className="flex items-center gap-2">
                 <FileText size={16} className="text-slate-500" />
@@ -209,7 +214,7 @@ export default function ContentStudioPage() {
             </div>
             <div className="flex-1 p-4 min-h-[300px]">
               {output ? (
-                <pre className="whitespace-pre-wrap text-sm text-slate-300 font-mono leading-relaxed">{output}
+                <pre className="whitespace-pre-wrap text-sm text-slate-300 leading-relaxed">{output}
                   {typing && <span className="inline-block w-1.5 h-4 bg-amber-400 ml-0.5 animate-pulse" />}
                 </pre>
               ) : (

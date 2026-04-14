@@ -1,10 +1,10 @@
 import { useState, useMemo } from 'react'
 import { useTerminalData } from '../context/TerminalDataContext'
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  PieChart, Pie, Cell, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
-  ScatterChart, Scatter, ZAxis, LineChart, Line, Legend, AreaChart, Area,
+  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
+  PieChart, Pie, Cell, Legend, CartesianGrid,
 } from 'recharts'
+import { VGRADIENTS, HGRADIENTS, ChartTooltip, ChartLegend, PieLabel, DonutCenter, axisTick, axisTickLabel, barCursor } from '../components/ChartTheme'
 import {
   Brain, TrendingUp, TrendingDown, AlertTriangle, Users, Network,
   Heart, DollarSign, Shield, Target, Zap, BarChart3,
@@ -18,15 +18,17 @@ const SENTIMENT_COLORS = {
 const GROWTH_COLORS = { growing: '#10b981', stable: '#f59e0b', declining: '#ef4444' }
 
 function StatCard({ icon: Icon, label, value, sub, color = 'amber' }) {
-  const borderColors = { amber: 'border-amber-500/30', red: 'border-red-500/30', green: 'border-green-500/30', blue: 'border-blue-500/30', purple: 'border-purple-500/30' }
   const textColors = { amber: 'text-amber-400', red: 'text-red-400', green: 'text-green-400', blue: 'text-blue-400', purple: 'text-purple-400' }
+  const bgColors = { amber: 'bg-amber-500/10 border-amber-500/20', red: 'bg-red-500/10 border-red-500/20', green: 'bg-green-500/10 border-green-500/20', blue: 'bg-blue-500/10 border-blue-500/20', purple: 'bg-purple-500/10 border-purple-500/20' }
   return (
-    <div className={`bg-slate-900/50 rounded-lg border ${borderColors[color]} p-4`}>
-      <div className="flex items-center gap-2 mb-1">
-        <Icon className={`w-4 h-4 ${textColors[color]}`} />
-        <span className="text-xs text-slate-400 uppercase tracking-wider">{label}</span>
+    <div className="bg-slate-900/50 rounded-lg border border-slate-800 p-4">
+      <div className="flex items-center gap-2.5 mb-1">
+        <div className={`w-7 h-7 rounded-lg border flex items-center justify-center ${bgColors[color] || bgColors.amber}`}>
+          <Icon className={`w-3.5 h-3.5 ${textColors[color] || textColors.amber}`} />
+        </div>
+        <span className="text-xs text-slate-500 uppercase tracking-wider">{label}</span>
       </div>
-      <div className="text-2xl font-bold text-white">{value}</div>
+      <div className="text-2xl font-semibold text-white">{value}</div>
       {sub && <div className="text-xs text-slate-500 mt-1">{sub}</div>}
     </div>
   )
@@ -34,14 +36,14 @@ function StatCard({ icon: Icon, label, value, sub, color = 'amber' }) {
 
 function SectionHeader({ icon: Icon, title, subtitle }) {
   return (
-    <div className="flex items-center gap-3 mb-4">
-      <div className="p-2 bg-amber-500/10 rounded-lg">
-        <Icon className="w-5 h-5 text-amber-400" />
-      </div>
-      <div>
-        <h3 className="text-lg font-semibold text-white">{title}</h3>
-        {subtitle && <p className="text-xs text-slate-400">{subtitle}</p>}
-      </div>
+    <div className="mb-4">
+      <h3 className="text-sm font-medium text-white flex items-center gap-2.5">
+        <div className="w-6 h-6 rounded-md bg-slate-800 border border-slate-700/60 flex items-center justify-center">
+          <Icon className="w-3 h-3 text-slate-400" />
+        </div>
+        {title}
+      </h3>
+      {subtitle && <p className="text-xs text-slate-500 mt-0.5 ml-[34px]">{subtitle}</p>}
     </div>
   )
 }
@@ -126,12 +128,14 @@ export default function IntelligencePage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white flex items-center gap-3">
-            <Brain className="w-7 h-7 text-amber-400" />
-            Market Intelligence
+          <h1 className="text-lg font-semibold text-white flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-violet-500/15 border border-violet-500/25 flex items-center justify-center">
+              <Brain size={16} className="text-violet-400" />
+            </div>
+            Intelligence
           </h1>
-          <p className="text-sm text-slate-400 mt-1">
-            Sentiment analysis, predictive modeling, network centrality & pricing intelligence
+          <p className="text-sm text-slate-500 mt-0.5">
+            Sentiment analysis, predictive modeling, network centrality & pricing
           </p>
         </div>
       </div>
@@ -156,15 +160,15 @@ export default function IntelligencePage() {
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex gap-1 bg-slate-900/50 rounded-lg p-1 border border-slate-700/50">
+      <div className="flex bg-slate-900 border border-slate-800 rounded-md p-0.5">
         {tabs.map(tab => (
           <button key={tab.id} onClick={() => setActiveTab(tab.id)}
-            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            className={`flex-1 flex items-center justify-center gap-2 px-3 py-1.5 rounded text-xs font-medium transition-colors ${
               activeTab === tab.id
-                ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
-                : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                ? 'bg-slate-800 text-white'
+                : 'text-slate-500 hover:text-slate-300'
             }`}>
-            <tab.icon className="w-4 h-4" />
+            <tab.icon className="w-3.5 h-3.5" />
             {tab.label}
           </button>
         ))}
@@ -175,40 +179,39 @@ export default function IntelligencePage() {
         <div className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Sentiment Distribution Pie */}
-            <div className="bg-slate-900/50 rounded-lg border border-slate-700/50 p-5">
+            <div className="bg-slate-900/50 rounded-lg border border-slate-800 p-5">
               <SectionHeader icon={Heart} title="Sentiment Distribution"
                 subtitle={`${sentimentData?.total_businesses || 0} businesses analyzed`} />
               {sentimentCharts?.pieData ? (
                 <ResponsiveContainer width="100%" height={280}>
                   <PieChart>
-                    <Pie data={sentimentCharts.pieData} cx="50%" cy="50%" innerRadius={60} outerRadius={100}
-                      paddingAngle={2} dataKey="value" label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}>
+                    <Pie data={sentimentCharts.pieData} cx="50%" cy="50%" innerRadius={50} outerRadius={80}
+                      paddingAngle={3} dataKey="value" label={PieLabel} labelLine={false} strokeWidth={0}>
                       {sentimentCharts.pieData.map((entry, i) => (
                         <Cell key={i} fill={entry.fill} />
                       ))}
                     </Pie>
-                    <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px' }}
-                      itemStyle={{ color: '#e2e8f0' }} />
+                    <Tooltip content={<ChartTooltip />} />
                   </PieChart>
                 </ResponsiveContainer>
               ) : <div className="text-slate-500 text-center py-20">No sentiment data available</div>}
             </div>
 
             {/* Category Sentiment Bars */}
-            <div className="bg-slate-900/50 rounded-lg border border-slate-700/50 p-5">
+            <div className="bg-slate-900/50 rounded-lg border border-slate-800 p-5">
               <SectionHeader icon={BarChart3} title="Sentiment by Category"
                 subtitle="Composite Sentiment Score (CSS)" />
               {sentimentCharts?.catSentiment?.length > 0 ? (
                 <ResponsiveContainer width="100%" height={280}>
                   <BarChart data={sentimentCharts.catSentiment} layout="vertical"
-                    margin={{ left: 100, right: 20, top: 5, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                    <XAxis type="number" domain={[0, 100]} tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                    <YAxis type="category" dataKey="category" tick={{ fill: '#94a3b8', fontSize: 11 }}
-                      tickFormatter={v => v.replace(/_/g, ' ')} width={95} />
-                    <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px' }}
-                      itemStyle={{ color: '#e2e8f0' }} />
-                    <Bar dataKey="avg_css" fill="#f59e0b" radius={[0, 4, 4, 0]} name="CSS Score" />
+                    margin={{ left: 0, right: 10 }}>
+                    <defs>{HGRADIENTS}</defs>
+                    <CartesianGrid strokeDasharray="3 6" stroke="#1e293b" horizontal={false} vertical={true} />
+                    <XAxis type="number" domain={[0, 100]} tick={axisTick} axisLine={false} tickLine={false} />
+                    <YAxis type="category" dataKey="category" tick={axisTickLabel}
+                      tickFormatter={v => v.replace(/_/g, ' ')} width={95} axisLine={false} tickLine={false} />
+                    <Tooltip content={<ChartTooltip />} cursor={barCursor} />
+                    <Bar dataKey="avg_css" fill="url(#gAmberH)" radius={[0, 4, 4, 0]} name="CSS Score" />
                   </BarChart>
                 </ResponsiveContainer>
               ) : <div className="text-slate-500 text-center py-20">Loading...</div>}
@@ -266,42 +269,40 @@ export default function IntelligencePage() {
         <div className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Membership Probability Distribution */}
-            <div className="bg-slate-900/50 rounded-lg border border-slate-700/50 p-5">
+            <div className="bg-slate-900/50 rounded-lg border border-slate-800 p-5">
               <SectionHeader icon={Users} title="Membership Probability"
                 subtitle="Likelihood to join/retain chamber membership" />
               {predictionCharts?.mpData ? (
                 <ResponsiveContainer width="100%" height={280}>
                   <PieChart>
-                    <Pie data={predictionCharts.mpData} cx="50%" cy="50%" innerRadius={60} outerRadius={100}
-                      paddingAngle={2} dataKey="value"
-                      label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}>
+                    <Pie data={predictionCharts.mpData} cx="50%" cy="50%" innerRadius={50} outerRadius={80}
+                      paddingAngle={3} dataKey="value" strokeWidth={0}
+                      label={PieLabel} labelLine={false}>
                       {predictionCharts.mpData.map((entry, i) => (
                         <Cell key={i} fill={entry.fill} />
                       ))}
                     </Pie>
-                    <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px' }}
-                      itemStyle={{ color: '#e2e8f0' }} />
+                    <Tooltip content={<ChartTooltip />} />
                   </PieChart>
                 </ResponsiveContainer>
               ) : <div className="text-slate-500 text-center py-20">No prediction data</div>}
             </div>
 
             {/* Growth Trajectory Distribution */}
-            <div className="bg-slate-900/50 rounded-lg border border-slate-700/50 p-5">
+            <div className="bg-slate-900/50 rounded-lg border border-slate-800 p-5">
               <SectionHeader icon={TrendingUp} title="Growth Trajectory"
                 subtitle="Momentum signals across the market" />
               {predictionCharts?.gtData ? (
                 <ResponsiveContainer width="100%" height={280}>
                   <PieChart>
-                    <Pie data={predictionCharts.gtData} cx="50%" cy="50%" innerRadius={60} outerRadius={100}
-                      paddingAngle={2} dataKey="value"
-                      label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}>
+                    <Pie data={predictionCharts.gtData} cx="50%" cy="50%" innerRadius={50} outerRadius={80}
+                      paddingAngle={3} dataKey="value" strokeWidth={0}
+                      label={PieLabel} labelLine={false}>
                       {predictionCharts.gtData.map((entry, i) => (
                         <Cell key={i} fill={entry.fill} />
                       ))}
                     </Pie>
-                    <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px' }}
-                      itemStyle={{ color: '#e2e8f0' }} />
+                    <Tooltip content={<ChartTooltip />} />
                   </PieChart>
                 </ResponsiveContainer>
               ) : <div className="text-slate-500 text-center py-20">Loading...</div>}
@@ -310,20 +311,20 @@ export default function IntelligencePage() {
 
           {/* Category Growth Chart */}
           {predictionCharts?.catPred?.length > 0 && (
-            <div className="bg-slate-900/50 rounded-lg border border-slate-700/50 p-5">
+            <div className="bg-slate-900/50 rounded-lg border border-slate-800 p-5">
               <SectionHeader icon={Target} title="Category Predictions"
                 subtitle="Average membership probability and growth trajectory by category" />
               <ResponsiveContainer width="100%" height={350}>
                 <BarChart data={predictionCharts.catPred} margin={{ left: 10, right: 30, bottom: 50 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                  <XAxis dataKey="category" tick={{ fill: '#94a3b8', fontSize: 10 }} angle={-35} textAnchor="end"
-                    tickFormatter={v => v.replace(/_/g, ' ')} />
-                  <YAxis tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                  <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px' }}
-                    itemStyle={{ color: '#e2e8f0' }} />
-                  <Legend wrapperStyle={{ fontSize: 12, color: '#94a3b8' }} />
-                  <Bar dataKey="avg_membership_prob" fill="#3b82f6" name="Membership Prob %" radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="avg_growth_trajectory" fill="#10b981" name="Growth Trajectory" radius={[4, 4, 0, 0]} />
+                  <defs>{VGRADIENTS}</defs>
+                  <CartesianGrid strokeDasharray="3 6" stroke="#1e293b" vertical={false} />
+                  <XAxis dataKey="category" tick={{ ...axisTickLabel, fontSize: 10 }} angle={-35} textAnchor="end"
+                    tickFormatter={v => v.replace(/_/g, ' ')} axisLine={false} tickLine={false} />
+                  <YAxis tick={axisTick} axisLine={false} tickLine={false} />
+                  <Tooltip content={<ChartTooltip />} cursor={barCursor} />
+                  <Legend content={ChartLegend} />
+                  <Bar dataKey="avg_membership_prob" fill="url(#gBlue)" name="Membership Prob %" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="avg_growth_trajectory" fill="url(#gGreen)" name="Growth Trajectory" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -334,17 +335,17 @@ export default function IntelligencePage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               <div className="bg-slate-900/50 rounded-lg border border-red-500/20 p-5">
                 <div className="text-xs text-red-400 uppercase tracking-wider mb-2">High Churn Risk</div>
-                <div className="text-3xl font-bold text-red-400">{predictionData.churn_risk_high}</div>
+                <div className="text-3xl font-semibold text-red-400">{predictionData.churn_risk_high}</div>
                 <p className="text-xs text-slate-500 mt-1">Members with declining trajectory ≤ -10</p>
               </div>
               <div className="bg-slate-900/50 rounded-lg border border-amber-500/20 p-5">
                 <div className="text-xs text-amber-400 uppercase tracking-wider mb-2">Medium Churn Risk</div>
-                <div className="text-3xl font-bold text-amber-400">{predictionData.churn_risk_medium}</div>
+                <div className="text-3xl font-semibold text-amber-400">{predictionData.churn_risk_medium}</div>
                 <p className="text-xs text-slate-500 mt-1">Members showing early warning signs</p>
               </div>
               <div className="bg-slate-900/50 rounded-lg border border-green-500/20 p-5">
                 <div className="text-xs text-green-400 uppercase tracking-wider mb-2">Healthy Members</div>
-                <div className="text-3xl font-bold text-green-400">{predictionData.churn_risk_low}</div>
+                <div className="text-3xl font-semibold text-green-400">{predictionData.churn_risk_low}</div>
                 <p className="text-xs text-slate-500 mt-1">Stable or growing trajectory</p>
               </div>
             </div>
@@ -352,7 +353,7 @@ export default function IntelligencePage() {
 
           {/* Feature Weights */}
           {predictionData?.feature_weights && (
-            <div className="bg-slate-900/50 rounded-lg border border-slate-700/50 p-5">
+            <div className="bg-slate-900/50 rounded-lg border border-slate-800 p-5">
               <SectionHeader icon={Zap} title="Prediction Feature Weights"
                 subtitle="Learned from member vs non-member distributions" />
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -383,36 +384,36 @@ export default function IntelligencePage() {
         <div className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Top Influencers */}
-            <div className="bg-slate-900/50 rounded-lg border border-slate-700/50 p-5">
+            <div className="bg-slate-900/50 rounded-lg border border-slate-800 p-5">
               <SectionHeader icon={Zap} title="Top Influencers"
                 subtitle="Highest composite influence score (PageRank + Betweenness + Degree)" />
               {networkCharts?.influencers?.length > 0 ? (
                 <ResponsiveContainer width="100%" height={340}>
                   <BarChart data={networkCharts.influencers} layout="vertical"
-                    margin={{ left: 130, right: 20, top: 5, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                    <XAxis type="number" tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                    <YAxis type="category" dataKey="name" tick={{ fill: '#94a3b8', fontSize: 10 }} width={125} />
-                    <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px' }}
-                      itemStyle={{ color: '#e2e8f0' }} />
-                    <Bar dataKey="influence_score" fill="#f59e0b" radius={[0, 4, 4, 0]} name="Influence" />
+                    margin={{ left: 0, right: 10 }}>
+                    <defs>{HGRADIENTS}</defs>
+                    <CartesianGrid strokeDasharray="3 6" stroke="#1e293b" horizontal={false} vertical={true} />
+                    <XAxis type="number" tick={axisTick} axisLine={false} tickLine={false} />
+                    <YAxis type="category" dataKey="name" tick={{ ...axisTickLabel, fontSize: 10 }} width={125} axisLine={false} tickLine={false} />
+                    <Tooltip content={<ChartTooltip />} cursor={barCursor} />
+                    <Bar dataKey="influence_score" fill="url(#gAmberH)" radius={[0, 4, 4, 0]} name="Influence" />
                   </BarChart>
                 </ResponsiveContainer>
               ) : <div className="text-slate-500 text-center py-20">No network data</div>}
             </div>
 
             {/* Community Sizes */}
-            <div className="bg-slate-900/50 rounded-lg border border-slate-700/50 p-5">
+            <div className="bg-slate-900/50 rounded-lg border border-slate-800 p-5">
               <SectionHeader icon={Users} title="Community Clusters"
                 subtitle={`${centralityData?.num_communities || 0} communities detected via label propagation`} />
               {networkCharts?.comData?.length > 0 ? (
                 <ResponsiveContainer width="100%" height={340}>
-                  <BarChart data={networkCharts.comData} margin={{ left: 10, right: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                    <XAxis dataKey="name" tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                    <YAxis tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                    <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px' }}
-                      itemStyle={{ color: '#e2e8f0' }} />
+                  <BarChart data={networkCharts.comData} margin={{ left: 10, right: 10 }}>
+                    <defs>{VGRADIENTS}</defs>
+                    <CartesianGrid strokeDasharray="3 6" stroke="#1e293b" vertical={false} />
+                    <XAxis dataKey="name" tick={axisTickLabel} axisLine={false} tickLine={false} />
+                    <YAxis tick={axisTick} axisLine={false} tickLine={false} />
+                    <Tooltip content={<ChartTooltip />} cursor={barCursor} />
                     <Bar dataKey="value" name="Nodes" radius={[4, 4, 0, 0]}>
                       {networkCharts.comData.map((_, i) => (
                         <Cell key={i} fill={COLORS[i % COLORS.length]} />
@@ -426,13 +427,13 @@ export default function IntelligencePage() {
 
           {/* Bridge Nodes Table */}
           {networkCharts?.bridges?.length > 0 && (
-            <div className="bg-slate-900/50 rounded-lg border border-slate-700/50 p-5">
+            <div className="bg-slate-900/50 rounded-lg border border-slate-800 p-5">
               <SectionHeader icon={Shield} title="Bridge Nodes"
                 subtitle="Businesses connecting different network communities — high strategic value" />
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-slate-700/50">
+                    <tr className="border-b border-slate-800">
                       <th className="text-left px-3 py-2 text-slate-400 font-medium">Business</th>
                       <th className="text-right px-3 py-2 text-slate-400 font-medium">Betweenness</th>
                       <th className="text-right px-3 py-2 text-slate-400 font-medium">PageRank</th>
@@ -469,27 +470,27 @@ export default function IntelligencePage() {
         <div className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Price Tier Overview */}
-            <div className="bg-slate-900/50 rounded-lg border border-slate-700/50 p-5">
+            <div className="bg-slate-900/50 rounded-lg border border-slate-800 p-5">
               <SectionHeader icon={DollarSign} title="Price Tier Distribution"
                 subtitle={`${stats?.priceCoverage || 0}% coverage`} />
               {pricingCharts?.tierData ? (
                 <ResponsiveContainer width="100%" height={280}>
-                  <BarChart data={pricingCharts.tierData} margin={{ left: 10, right: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                    <XAxis dataKey="name" tick={{ fill: '#94a3b8', fontSize: 13 }} />
-                    <YAxis tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                    <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px' }}
-                      itemStyle={{ color: '#e2e8f0' }} />
-                    <Legend wrapperStyle={{ fontSize: 12, color: '#94a3b8' }} />
-                    <Bar dataKey="businesses" fill="#3b82f6" name="Total" radius={[4, 4, 0, 0]} />
-                    <Bar dataKey="members" fill="#f59e0b" name="Members" radius={[4, 4, 0, 0]} />
+                  <BarChart data={pricingCharts.tierData} margin={{ left: 10, right: 10 }}>
+                    <defs>{VGRADIENTS}</defs>
+                    <CartesianGrid strokeDasharray="3 6" stroke="#1e293b" vertical={false} />
+                    <XAxis dataKey="name" tick={{ ...axisTickLabel, fontSize: 13 }} axisLine={false} tickLine={false} />
+                    <YAxis tick={axisTick} axisLine={false} tickLine={false} />
+                    <Tooltip content={<ChartTooltip />} cursor={barCursor} />
+                    <Legend content={ChartLegend} />
+                    <Bar dataKey="businesses" fill="url(#gBlue)" name="Total" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="members" fill="url(#gAmber)" name="Members" radius={[4, 4, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               ) : <div className="text-slate-500 text-center py-20">No pricing data</div>}
             </div>
 
             {/* Price Tier Metrics */}
-            <div className="bg-slate-900/50 rounded-lg border border-slate-700/50 p-5">
+            <div className="bg-slate-900/50 rounded-lg border border-slate-800 p-5">
               <SectionHeader icon={Target} title="Tier Performance"
                 subtitle="Rating and penetration by price tier" />
               {pricingCharts?.tierData ? (
@@ -497,7 +498,7 @@ export default function IntelligencePage() {
                   {pricingCharts.tierData.map(t => (
                     <div key={t.name} className="bg-slate-800/50 rounded-lg p-4">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-lg font-bold text-amber-400">{t.name}</span>
+                        <span className="text-lg font-semibold text-amber-400">{t.name}</span>
                         <span className="text-sm text-slate-400">{t.businesses} businesses</span>
                       </div>
                       <div className="grid grid-cols-3 gap-3 text-center">
@@ -523,21 +524,21 @@ export default function IntelligencePage() {
 
           {/* Category × Price Tier Stacked */}
           {pricingCharts?.catPriceData?.length > 0 && (
-            <div className="bg-slate-900/50 rounded-lg border border-slate-700/50 p-5">
+            <div className="bg-slate-900/50 rounded-lg border border-slate-800 p-5">
               <SectionHeader icon={BarChart3} title="Category × Price Tier"
                 subtitle="Distribution of price tiers across top categories" />
               <ResponsiveContainer width="100%" height={350}>
-                <BarChart data={pricingCharts.catPriceData} margin={{ left: 10, right: 20, bottom: 50 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                  <XAxis dataKey="category" tick={{ fill: '#94a3b8', fontSize: 10 }} angle={-35} textAnchor="end" />
-                  <YAxis tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                  <Tooltip contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '8px' }}
-                    itemStyle={{ color: '#e2e8f0' }} />
-                  <Legend wrapperStyle={{ fontSize: 12, color: '#94a3b8' }} />
-                  <Bar dataKey="$" stackId="a" fill="#10b981" name="$" />
-                  <Bar dataKey="$$" stackId="a" fill="#3b82f6" name="$$" />
-                  <Bar dataKey="$$$" stackId="a" fill="#f59e0b" name="$$$" />
-                  <Bar dataKey="$$$$" stackId="a" fill="#8b5cf6" name="$$$$" />
+                <BarChart data={pricingCharts.catPriceData} margin={{ left: 10, right: 10, bottom: 50 }}>
+                  <defs>{VGRADIENTS}</defs>
+                  <CartesianGrid strokeDasharray="3 6" stroke="#1e293b" vertical={false} />
+                  <XAxis dataKey="category" tick={{ ...axisTickLabel, fontSize: 10 }} angle={-35} textAnchor="end" axisLine={false} tickLine={false} />
+                  <YAxis tick={axisTick} axisLine={false} tickLine={false} />
+                  <Tooltip content={<ChartTooltip />} cursor={barCursor} />
+                  <Legend content={ChartLegend} />
+                  <Bar dataKey="$" stackId="a" fill="url(#gGreen)" name="$" />
+                  <Bar dataKey="$$" stackId="a" fill="url(#gBlue)" name="$$" />
+                  <Bar dataKey="$$$" stackId="a" fill="url(#gAmber)" name="$$$" />
+                  <Bar dataKey="$$$$" stackId="a" fill="url(#gPurple)" name="$$$$" />
                 </BarChart>
               </ResponsiveContainer>
             </div>

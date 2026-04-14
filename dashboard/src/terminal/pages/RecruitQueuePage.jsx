@@ -104,8 +104,11 @@ export default function RecruitQueuePage() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-bold text-white flex items-center gap-2 tracking-tight">
-              <Target size={20} className="text-amber-500" /> Recruit Queue
+            <h1 className="text-xl font-semibold text-white flex items-center gap-3 tracking-tight">
+              <div className="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/25 flex items-center justify-center">
+                <Target size={16} className="text-amber-400" />
+              </div>
+              Recruit Queue
             </h1>
             <p className="text-sm text-slate-500">
               {recruitQueue.length.toLocaleString()} non-member prospects ranked by recruitability
@@ -130,7 +133,7 @@ export default function RecruitQueuePage() {
 
         {/* Filters */}
         <div className="flex items-center gap-3 flex-wrap">
-          <div className="flex items-center gap-1 bg-gradient-to-r from-slate-900 to-slate-900/80 border border-slate-800/80 rounded-lg p-1">
+          <div className="flex items-center gap-1 bg-gradient-to-r from-slate-900 to-slate-900/80 border border-slate-800 rounded-lg p-1">
             {BAND_FILTERS.map(bf => (
               <button key={bf.key} onClick={() => { setBandFilter(bf.key); setPage(0) }}
                 className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors ${
@@ -160,9 +163,9 @@ export default function RecruitQueuePage() {
         </div>
 
         {/* Table */}
-        <div className="bg-gradient-to-br from-slate-900 to-slate-900/80 border border-slate-800/80 rounded-xl overflow-hidden hover:border-slate-700/60 transition-colors">
+        <div className="bg-slate-900/50 border border-slate-800 rounded-lg overflow-hidden hover:border-slate-700 transition-colors">
           {/* Header */}
-          <div className="flex items-center gap-2 px-3 py-2.5 border-b border-slate-800/60 bg-slate-800/20">
+          <div className="flex items-center gap-2 px-3 py-2.5 border-b border-slate-800 bg-slate-800/20">
             <span className="w-8 text-[10px] text-slate-600 font-semibold">#</span>
             {[
               { key: 'business_name', label: 'Business', w: 'flex-1 min-w-[160px]' },
@@ -189,7 +192,7 @@ export default function RecruitQueuePage() {
               <div key={biz._id}>
                 <div className="flex items-center gap-2 px-3 py-2 hover:bg-slate-800/30 cursor-pointer transition-colors group"
                   onClick={() => setExpandedId(expandedId === biz._id ? null : biz._id)}>
-                  <span className="w-8 text-[10px] font-mono text-slate-600">
+                  <span className="w-8 text-[10px] text-slate-600">
                     {page * PAGE_SIZE + idx + 1}
                   </span>
 
@@ -226,14 +229,14 @@ export default function RecruitQueuePage() {
 
                   {/* Score */}
                   <div className="w-14 text-right">
-                    <span className="text-sm font-bold font-mono" style={{ color: biz._recruitBand?.color }}>
+                    <span className="text-sm font-semibold font-mono" style={{ color: biz._recruitBand?.color }}>
                       {biz._recruitScore}
                     </span>
                   </div>
 
                   {/* Band */}
                   <div className="w-16 text-center">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-bold"
+                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold"
                       style={{ color: biz._recruitBand?.color, backgroundColor: biz._recruitBand?.color + '15' }}>
                       {biz._recruitBand?.label}
                     </span>
@@ -294,7 +297,7 @@ export default function RecruitQueuePage() {
                   if (p >= totalPages) return null
                   return (
                     <button key={p} onClick={() => setPage(p)}
-                      className={`px-2 py-0.5 rounded text-[11px] font-mono ${p === page ? 'bg-amber-500/20 text-amber-400' : 'text-slate-500 hover:bg-slate-800'} transition-colors`}>
+                      className={`px-2 py-0.5 rounded text-[11px] ${p === page ? 'bg-amber-500/20 text-amber-400' : 'text-slate-500 hover:bg-slate-800'} transition-colors`}>
                       {p + 1}
                     </button>
                   )

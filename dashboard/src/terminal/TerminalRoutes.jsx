@@ -20,6 +20,15 @@ import GraphExplorerPage from './pages/GraphExplorerPage'
 import ContentStudioPage from './pages/ContentStudioPage'
 import IntelligencePage from './pages/IntelligencePage'
 import OpportunitiesPage from './pages/OpportunitiesPage'
+import ExportsPage from './pages/ExportsPage'
+import AlertsPage from './pages/AlertsPage'
+import MapPage from './pages/MapPage'
+import MembershipResolutionPage from './pages/MembershipResolutionPage'
+import CorrectionPage from './pages/CorrectionPage'
+import DataRefreshPage from './pages/DataRefreshPage'
+import OnboardingPage from './pages/OnboardingPage'
+import SponsorPage from './pages/SponsorPage'
+import UpgradePage from './pages/UpgradePage'
 
 function TerminalProtected({ children }) {
   const { user, loading } = useTerminalAuth()
@@ -66,6 +75,15 @@ export default function TerminalRoutes() {
             <Route path="content" element={<ContentStudioPage />} />
             <Route path="intelligence" element={<IntelligencePage />} />
             <Route path="opportunities" element={<OpportunitiesPage />} />
+            <Route path="exports" element={<ExportsPage />} />
+            <Route path="alerts" element={<AlertsPage />} />
+            <Route path="map" element={<MapPage />} />
+            <Route path="resolve" element={<MembershipResolutionPage />} />
+            <Route path="corrections" element={<CorrectionPage />} />
+            <Route path="data-refresh" element={<DataRefreshPage />} />
+            <Route path="onboarding" element={<OnboardingPage />} />
+            <Route path="sponsor" element={<SponsorPage />} />
+            <Route path="upgrade" element={<UpgradePage />} />
           </Route>
           <Route path="*" element={<Navigate to="/overview" replace />} />
         </Routes>

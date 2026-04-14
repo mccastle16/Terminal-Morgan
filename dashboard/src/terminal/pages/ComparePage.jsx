@@ -10,7 +10,7 @@ import {
 function Slot({ label, biz, onRemove, onSearch }) {
   if (!biz) {
     return (
-      <div className="bg-slate-900/50 border border-slate-800/80 border-dashed rounded-xl p-6 flex flex-col items-center justify-center gap-2 hover:border-slate-700/60 transition-colors">
+      <div className="bg-slate-900/50 border border-slate-800 border-dashed rounded-lg p-6 flex flex-col items-center justify-center gap-2 hover:border-slate-700 transition-colors">
         <Columns2 size={24} className="text-slate-700" />
         <p className="text-xs text-slate-600">{label}</p>
         <div className="relative w-full max-w-xs mt-2">
@@ -28,7 +28,7 @@ function Slot({ label, biz, onRemove, onSearch }) {
   const flags = [biz.red_flag_1, biz.red_flag_2].filter(Boolean)
 
   return (
-    <div className="bg-gradient-to-br from-slate-900 to-slate-900/80 border border-slate-800/80 rounded-xl p-4 relative hover:border-slate-700/60 transition-colors">
+    <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4 relative hover:border-slate-700 transition-colors">
       <button onClick={onRemove}
         className="absolute top-2 right-2 text-slate-600 hover:text-red-400 transition-colors">
         <X size={14} />
@@ -39,7 +39,7 @@ function Slot({ label, biz, onRemove, onSearch }) {
         <TrustBadge confidence={biz._confidence} validationTier={biz._validationTier} />
       </div>
 
-      <h3 className="text-sm font-bold text-white truncate">{biz.business_name}</h3>
+      <h3 className="text-sm font-semibold text-white truncate">{biz.business_name}</h3>
       <p className="text-[11px] text-slate-500 truncate mt-0.5">{biz.category_primary?.replace(/_/g, ' ')}</p>
 
       <div className="mt-3 space-y-2">
@@ -47,7 +47,7 @@ function Slot({ label, biz, onRemove, onSearch }) {
         <div className="flex items-center justify-between">
           <span className="text-[10px] text-slate-500 uppercase">Rating</span>
           {biz._rating > 0 ? (
-            <span className="flex items-center gap-1 text-sm font-bold text-white">
+            <span className="flex items-center gap-1 text-sm font-semibold text-white">
               <Star size={12} className="text-amber-500" /> {biz._rating.toFixed(1)}
               <span className="text-[10px] text-slate-500 font-normal">({biz._reviewCount})</span>
             </span>
@@ -67,7 +67,7 @@ function Slot({ label, biz, onRemove, onSearch }) {
         {/* Validation */}
         <div className="flex items-center justify-between">
           <span className="text-[10px] text-slate-500 uppercase">Validation</span>
-          <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${
+          <span className={`text-[10px] px-1.5 py-0.5 rounded ${
             biz._validationTier >= 3 ? 'text-green-400 bg-green-950/40' :
             biz._validationTier >= 2 ? 'text-yellow-400 bg-yellow-950/40' : 'text-red-400 bg-red-950/40'
           }`}>T{biz._validationTier} · {biz._confidence}%</span>
@@ -77,7 +77,7 @@ function Slot({ label, biz, onRemove, onSearch }) {
         {biz._memberStatus !== 'member' && (
           <div className="flex items-center justify-between">
             <span className="text-[10px] text-slate-500 uppercase">Recruit Score</span>
-            <span className="text-sm font-bold font-mono" style={{ color: biz._recruitBand?.color }}>
+            <span className="text-sm font-semibold font-mono" style={{ color: biz._recruitBand?.color }}>
               {biz._recruitScore}
             </span>
           </div>
@@ -147,8 +147,11 @@ export default function ComparePage() {
     <RoleGate permission="view_compare" blur>
       <div className="space-y-5 animate-fade-in">
         <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2">
-            <Columns2 size={20} className="text-amber-500" /> Compare Businesses
+          <h1 className="text-xl font-semibold text-white flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/25 flex items-center justify-center">
+              <Columns2 size={16} className="text-amber-400" />
+            </div>
+            Compare Businesses
           </h1>
           <p className="text-sm text-slate-500">Side-by-side business intelligence comparison</p>
         </div>
