@@ -173,6 +173,40 @@ export function getSimilar(b: Business, limit = 6): Connection[] {
     .slice(0, limit);
 }
 
+/** Deterministic rich sample for the owner-dashboard preview: rated with real
+ *  reviews, contactable, exactly geocoded (so connections render). */
+export function pickDemoBusiness(): Business {
+  return (
+    businesses.find(
+      (b) =>
+        b.rating != null &&
+        b.review_count != null &&
+        b.website != null &&
+        b.phone != null &&
+        b.location_precision === "exact" &&
+        getNearby(b, 200, 1).length > 0
+    ) ?? businesses[0]
+  );
+}
+
+/** Rating distribution across a category — powers the benchmark view.
+ *  Buckets are half-star bands from 3.0 up (below-3 collapsed). */
+export function getRatingDistribution(categorySlug: string) {
+  const bands = [
+    { label: "4.5 – 5.0", min: 4.5, max: 5.01, count: 0 },
+    { label: "4.0 – 4.4", min: 4.0, max: 4.5, count: 0 },
+    { label: "3.5 – 3.9", min: 3.5, max: 4.0, count: 0 },
+    { label: "3.0 – 3.4", min: 3.0, max: 3.5, count: 0 },
+    { label: "Below 3.0", min: 0, max: 3.0, count: 0 },
+  ];
+  for (const b of businesses) {
+    if (b.category_slug !== categorySlug || b.rating == null) continue;
+    const band = bands.find((x) => b.rating! >= x.min && b.rating! < x.max);
+    if (band) band.count += 1;
+  }
+  return bands;
+}
+
 // ── Benchmarks (constructive framing only — D10) ────────────────────────────
 
 export function getBenchmark(b: Business): Benchmark {

@@ -23,12 +23,18 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/claim/new"
-            className="rounded-full px-3 py-1.5 text-label font-medium text-obsidian transition-colors duration-200 hover:bg-whisper"
+            className="hidden rounded-full px-3 py-1.5 text-label font-medium text-obsidian transition-colors duration-200 hover:bg-whisper sm:block"
           >
             Add a business
           </Link>
           <Link
-            href="/directory"
+            href="/login"
+            className="rounded-full px-3 py-1.5 text-label font-medium text-obsidian transition-colors duration-200 hover:bg-whisper"
+          >
+            Log in
+          </Link>
+          <Link
+            href="/signup"
             className="ml-3 rounded-full bg-obsidian px-5 py-2 text-label font-medium text-paper transition-opacity duration-200 hover:opacity-80"
           >
             Claim your business
