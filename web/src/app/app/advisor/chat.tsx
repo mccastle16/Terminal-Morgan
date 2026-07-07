@@ -8,7 +8,7 @@
 
 import { Suspense, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Search, Send } from "lucide-react";
+import { ArrowUp, Search } from "lucide-react";
 import { Card, ghostBtnCls, inputCls, MonoTag } from "@/components/terminal/ui";
 import { respond, type AdvisorCard, type AdvisorDataset } from "./engine";
 
@@ -343,6 +343,45 @@ function ChatInner({ dataset }: { dataset: AdvisorDataset }) {
     }
   }
 
+  // ChatGPT-style pill composer: everything lives inside one rounded
+  // container, send is a circular arrow button on the right. Auto-grows.
+  const composer = (
+    <div className="mx-auto w-full max-w-3xl">
+      <div className="flex items-end gap-2 rounded-[26px] border border-white/[0.08] bg-white/[0.03] py-2 pl-5 pr-2 transition-colors duration-150 focus-within:border-white/20">
+        <textarea
+          rows={1}
+          value={input}
+          onChange={(e) => {
+            setInput(e.target.value);
+            e.target.style.height = "auto";
+            e.target.style.height = Math.min(e.target.scrollHeight, 160) + "px";
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              send(input);
+              (e.target as HTMLTextAreaElement).style.height = "auto";
+            }
+          }}
+          placeholder="Ask anything about the Coral Gables market"
+          aria-label="Message the adviser"
+          className="max-h-40 min-w-0 flex-1 resize-none bg-transparent py-1.5 text-[15px] leading-6 text-mist outline-none placeholder:text-fog"
+        />
+        <button
+          onClick={() => send(input)}
+          disabled={!input.trim()}
+          aria-label="Send"
+          className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-paper text-void transition-opacity duration-150 hover:opacity-85 disabled:cursor-default disabled:bg-white/[0.08] disabled:text-fog"
+        >
+          <ArrowUp size={16} strokeWidth={2} aria-hidden />
+        </button>
+      </div>
+      <p className="mt-2 text-center text-label text-ash">
+        Local rule-based adviser — answers computed from the live snapshot, saved in this browser.
+      </p>
+    </div>
+  );
+
   return (
     <div className="flex h-[calc(100vh-150px)] min-h-[420px] flex-col">
       {searchOpen ? (
@@ -352,40 +391,32 @@ function ChatInner({ dataset }: { dataset: AdvisorDataset }) {
             onClose={() => router.push(chatId ? `/app/advisor?chat=${chatId}` : "/app/advisor")}
           />
         </div>
+      ) : messages.length === 0 ? (
+        // Empty state — ChatGPT pattern: heading + composer centered mid-screen
+        <div className="flex flex-1 flex-col items-center justify-center pb-16">
+          <h1 className="text-heading-sm font-w510 text-paper">Where should we begin?</h1>
+          <div className="mt-7 w-full">{composer}</div>
+          <div className="mt-5 flex flex-wrap justify-center gap-2">
+            {STARTERS.map((s) => (
+              <button
+                key={s}
+                onClick={() => send(s)}
+                className="inline-flex cursor-pointer items-center rounded-pills border border-graphite px-3.5 py-1.5 text-caption text-fog transition-colors duration-150 hover:border-smoke hover:text-mist"
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+        </div>
       ) : (
-        <div className="flex-1 overflow-y-auto [scrollbar-width:thin]">
-          <div className="mx-auto w-full max-w-3xl">
-            {messages.length === 0 ? (
-              <div className="flex h-full flex-col items-center justify-center pt-24 text-center">
-                <p className="text-label font-w510 uppercase tracking-wide text-ash">
-                  AI Adviser
-                </p>
-                <h1 className="mt-2 text-subheading font-w510 text-paper">
-                  Ask the directory anything
-                </h1>
-                <p className="mt-2 max-w-md text-caption text-fog">
-                  Answers are computed locally from the current snapshot — counts,
-                  comparisons, rankings, and category benchmarks. Nothing invented,
-                  no external calls.
-                </p>
-                <div className="mt-6 flex flex-wrap justify-center gap-2">
-                  {STARTERS.map((s) => (
-                    <button
-                      key={s}
-                      onClick={() => send(s)}
-                      className="inline-flex cursor-pointer items-center rounded-pills bg-white/5 px-3 py-1 text-caption text-mist transition-colors duration-150 hover:bg-white/[0.08] hover:text-paper"
-                    >
-                      {s}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ) : (
+        <>
+          <div className="flex-1 overflow-y-auto [scrollbar-width:thin]">
+            <div className="mx-auto w-full max-w-3xl">
               <div className="space-y-6 py-4">
                 {messages.map((m, i) =>
                   m.role === "user" ? (
                     <div key={i} className="flex justify-end">
-                      <div className="max-w-[75%] rounded-cards bg-white/[0.04] px-4 py-3 text-body-sm text-mist">
+                      <div className="max-w-[75%] rounded-[20px] bg-white/[0.06] px-4 py-2.5 text-body-sm text-mist">
                         {m.text}
                       </div>
                     </div>
@@ -398,40 +429,11 @@ function ChatInner({ dataset }: { dataset: AdvisorDataset }) {
                 )}
                 <div ref={endRef} />
               </div>
-            )}
+            </div>
           </div>
-        </div>
+          <div className="pt-3">{composer}</div>
+        </>
       )}
-
-      {/* Composer — bottom-pinned */}
-      <div className="mx-auto w-full max-w-3xl pt-3">
-        <div className="flex items-end gap-2">
-          <textarea
-            rows={2}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                send(input);
-              }
-            }}
-            placeholder="Ask about any business, category, or neighborhood…"
-            className={inputCls() + " resize-none"}
-          />
-          <button
-            onClick={() => send(input)}
-            disabled={!input.trim()}
-            className="inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-pills bg-paper px-4 py-1.5 text-caption font-w510 text-void transition-opacity duration-150 hover:opacity-85 disabled:cursor-default disabled:opacity-40"
-          >
-            <Send size={13} aria-hidden />
-            Send
-          </button>
-        </div>
-        <p className="mt-1.5 text-label text-ash">
-          Enter to send · Shift+Enter for a new line · local rule-based adviser, saved in this browser
-        </p>
-      </div>
     </div>
   );
 }

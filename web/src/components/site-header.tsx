@@ -11,28 +11,42 @@ export function SiteHeader() {
           CO_ Network
           <span className="ml-2 text-caption font-normal text-fog">Coral Gables</span>
         </Link>
-        <nav className="flex items-center gap-1">
-          <Link
-            href="/directory"
-            className="rounded-buttons px-3 py-2 text-caption font-normal text-mist transition-colors duration-150 hover:bg-white/[0.03]"
-          >
-            Directory
-          </Link>
-          <Link
-            href="/claim/new"
-            className="hidden rounded-buttons px-3 py-2 text-caption font-normal text-mist transition-colors duration-150 hover:bg-white/[0.03] sm:block"
-          >
-            Add a business
-          </Link>
+        <nav className="flex items-center gap-0.5">
+          {/* Content nav — linear.app pattern: quiet typographic links */}
+          {[
+            { href: "/directory", label: "Directory" },
+            { href: "/#how-it-works", label: "How it works", hide: "md" },
+            { href: "/#features", label: "For owners", hide: "md" },
+            { href: "/claim/new", label: "Add a business", hide: "sm" },
+            { href: "/app/preview?role=member", label: "Preview", hide: "sm" },
+          ].map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={`rounded-buttons px-3 py-2 text-caption font-normal text-mist transition-colors duration-150 hover:bg-white/[0.03] hover:text-paper ${
+                item.hide === "md"
+                  ? "hidden md:block"
+                  : item.hide === "sm"
+                    ? "hidden sm:block"
+                    : ""
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          {/* Divider — clear separation between content nav and auth */}
+          <span aria-hidden className="mx-3 h-4 w-px bg-smoke" />
+
           <Link
             href="/login"
-            className="rounded-buttons px-3 py-2 text-caption font-normal text-mist transition-colors duration-150 hover:bg-white/[0.03]"
+            className="rounded-buttons px-3 py-2 text-caption font-normal text-mist transition-colors duration-150 hover:bg-white/[0.03] hover:text-paper"
           >
             Log in
           </Link>
           <Link
             href="/signup"
-            className="ml-3 rounded-pills bg-paper px-4 py-2 text-caption font-w510 text-void transition-opacity duration-150 hover:opacity-85"
+            className="ml-2 rounded-pills bg-paper px-4 py-2 text-caption font-w510 text-void transition-opacity duration-150 hover:opacity-85"
           >
             Sign up
           </Link>

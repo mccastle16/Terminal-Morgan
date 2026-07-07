@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { HeroTerminal } from "@/components/hero-terminal";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
-import { getCategories, getCategoryLabel, getStats, searchBusinesses } from "@/lib/data";
+import { getCategories, getStats } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "CO_ Network — Every business in Coral Gables, mapped",
@@ -30,7 +31,6 @@ const HOW_IT_WORKS = [
 export default function Home() {
   const stats = getStats();
   const topCategories = getCategories().slice(0, 6);
-  const preview = searchBusinesses({ perPage: 5 }).items;
 
   return (
     <div className="flex min-h-screen flex-col bg-void">
@@ -73,52 +73,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Product screenshot card on the hero gradient floor */}
-          <div className="relative mt-16">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-x-10 -bottom-6 h-48 opacity-[0.14] blur-3xl"
-              style={{
-                background:
-                  "linear-gradient(to bottom, rgb(8, 9, 10) 10%, rgb(208, 214, 224) 100%)",
-              }}
-            />
-            <div className="relative rounded-cards bg-carbon p-6 shadow-subtle">
-              <div className="flex items-baseline justify-between">
-                <p className="text-label font-w510 uppercase tracking-wide text-ash">
-                  Directory · Coral Gables
-                </p>
-                <p className="text-label text-ash">
-                  {stats.total.toLocaleString()} indexed
-                </p>
-              </div>
-              <ul className="mt-4 divide-y divide-graphite">
-                {preview.map((b) => (
-                  <li key={b.id} className="flex items-baseline justify-between gap-4 py-3">
-                    <div className="min-w-0">
-                      <p className="truncate text-body-sm font-w510 text-mist">{b.name}</p>
-                      <p className="mt-0.5 text-caption font-normal text-fog">
-                        {getCategoryLabel(b.category_slug)}
-                        {b.neighborhood_label && <> · {b.neighborhood_label}</>}
-                      </p>
-                    </div>
-                    <p className="shrink-0 text-caption text-mist">
-                      {b.rating != null ? (
-                        <>
-                          <span className="font-w510">{b.rating.toFixed(1)}</span>
-                          {b.review_count != null && (
-                            <span className="font-normal text-fog"> ({b.review_count})</span>
-                          )}
-                        </>
-                      ) : (
-                        <span className="text-ash">No rating yet</span>
-                      )}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          {/* The hero IS the app — live-data terminal replica on the gradient bleed */}
+          <HeroTerminal />
 
           {/* Stats strip — quiet text */}
           <p className="mt-10 text-caption font-normal text-fog">
@@ -131,7 +87,7 @@ export default function Home() {
         </section>
 
         {/* ── How it works — heading left, steps right ── */}
-        <section className="mx-auto w-full max-w-[1200px] px-6 py-24">
+        <section id="how-it-works" className="mx-auto w-full max-w-[1200px] scroll-mt-16 px-6 py-24">
           <div className="grid grid-cols-1 gap-x-16 gap-y-10 md:grid-cols-[1fr_1.5fr]">
             <div>
               <p className="text-label font-w510 uppercase tracking-wide text-ash">
@@ -160,7 +116,7 @@ export default function Home() {
         </section>
 
         {/* ── What you get — heading left, copy right ── */}
-        <section className="mx-auto w-full max-w-[1200px] px-6 py-24">
+        <section id="features" className="mx-auto w-full max-w-[1200px] scroll-mt-16 px-6 py-24">
           <div className="grid grid-cols-1 gap-x-16 gap-y-12 md:grid-cols-2">
             <div>
               <p className="text-label font-w510 uppercase tracking-wide text-ash">
