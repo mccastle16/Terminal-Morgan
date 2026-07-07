@@ -5,8 +5,12 @@ CO_ Network — one-time migration: master CSV -> Supabase (Week 1, REBUILD-PLAN
 Reads data/master_all_businesses.csv (2,730 rows, 40 cols) and loads the new
 relational schema (supabase/migrations/0001-0003), applying four data repairs:
 
-  1. lat/lon duplication  — coalesce(latitude, lat) / coalesce(longitude, lon)
-                            (cols 38-39 have 2,650 filled vs 1,832 in cols 7-8)
+  1. lat/lon duplication  — `lat`/`lon` (cols 7-8) are the REAL per-business
+                            geocodes (1,695 distinct points); `latitude`/
+                            `longitude` (cols 38-39) are centroid backfill
+                            (only 28 distinct points for 2,650 rows). We prefer
+                            lat/lon as 'exact' and fall back to the centroids
+                            as 'approximate' (location_precision column).
   2. taxonomy divergence  — canonical category + neighborhood mapping
                             (auto_dealer->automotive, case-duplicate neighborhoods)
   3. chamber tri-state    — the CSV flattened ~1,081 unknown memberships into 'N'
@@ -130,6 +134,17 @@ def slugify(name: str) -> str:
     return s[:60] or "business"
 
 
+def prettify_secondary(val):
+    """'food_beverage/pub' -> 'Pub'; keeps human-written values untouched."""
+    if not val:
+        return None
+    if "/" in val:
+        val = val.rsplit("/", 1)[1]
+    if "_" in val or val.islower():
+        val = val.replace("_", " ").strip().title()
+    return val or None
+
+
 def clean(v):
     v = (v or "").strip()
     return v if v else None
@@ -203,10 +218,15 @@ def build_payloads(rows, old_membership):
                 nb = "Coral Gables"
             nbhs[nb] = NEIGHBORHOODS[nb]
 
-        # lat/lon repair: prefer the fuller latitude/longitude columns
-        lat = clean(r.get("latitude")) or clean(r.get("lat"))
-        lon = clean(r.get("longitude")) or clean(r.get("lon"))
+        # lat/lon repair: lat/lon are real geocodes; latitude/longitude are
+        # centroid backfill (28 distinct points). Prefer exact, flag fallback.
+        lat, lon = clean(r.get("lat")), clean(r.get("lon"))
+        precision = "exact" if lat and lon else None
+        if not (lat and lon):
+            lat, lon = clean(r.get("latitude")), clean(r.get("longitude"))
+            precision = "approximate" if lat and lon else None
         location = f"SRID=4326;POINT({lon} {lat})" if lat and lon else None
+        stats[f"geo_{precision or 'none'}"] += 1
 
         member = tri_state_membership(r, old_membership)
         stats["member_true" if member is True else
@@ -217,7 +237,11 @@ def build_payloads(rows, old_membership):
         slugs_seen.add(slug)
 
         rating = clean(r.get("rating_primary_value"))
-        reviews = clean(r.get("rating_primary_review_count"))
+        # 2,104 of 2,730 review counts are inferred category medians
+        # (review_count_source='inferred') — fabricated data stays out of the
+        # canonical column; provenance rows retain it flagged.
+        reviews_inferred = (r.get("review_count_source") or "").strip() == "inferred"
+        reviews = None if reviews_inferred else clean(r.get("rating_primary_review_count"))
         conf = clean(r.get("osint_confidence"))
 
         businesses.append({
@@ -226,11 +250,12 @@ def build_payloads(rows, old_membership):
             "name": (r.get("business_name") or "").strip() or bid,
             "slug": slug,
             "category_slug": cat,            # resolved to category_id at load time
-            "category_secondary": clean(r.get("category_secondary")),
+            "category_secondary": prettify_secondary(clean(r.get("category_secondary"))),
             "neighborhood_label": nb,        # resolved to neighborhood_id at load time
             "address": clean(r.get("address")),
             "postcode": clean(r.get("postcode")),
             "location": location,
+            "location_precision": precision,
             "phone": clean(r.get("phone")),
             "website": clean(r.get("website")),
             "price_tier": clean(r.get("price_tier")),

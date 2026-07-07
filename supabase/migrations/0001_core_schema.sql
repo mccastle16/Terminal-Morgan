@@ -73,6 +73,11 @@ create table public.businesses (
   address              text,
   postcode             text,
   location             extensions.geography(point, 4326),
+  -- 'exact' = per-business geocode (CSV lat/lon cols 7-8, 1,695 distinct pts);
+  -- 'approximate' = postcode/neighborhood centroid backfill (CSV latitude/
+  -- longitude cols 38-39 — only 28 distinct points for 2,650 rows!).
+  -- Distance-based edges (0003) MUST require 'exact' on both endpoints.
+  location_precision   text check (location_precision in ('exact','approximate')),
   phone                text,
   website              text,
   price_tier           text check (price_tier in ('$','$$','$$$','$$$$')),

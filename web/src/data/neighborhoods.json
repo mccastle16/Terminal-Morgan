@@ -1,0 +1,42 @@
+[
+ {
+  "label": "Alhambra Circle",
+  "is_catchall": false
+ },
+ {
+  "label": "Bird Road Corridor",
+  "is_catchall": false
+ },
+ {
+  "label": "Coral Gables",
+  "is_catchall": true
+ },
+ {
+  "label": "Douglas Road Corridor",
+  "is_catchall": false
+ },
+ {
+  "label": "Giralda Plaza",
+  "is_catchall": false
+ },
+ {
+  "label": "Merrick Park",
+  "is_catchall": false
+ },
+ {
+  "label": "Miracle Mile",
+  "is_catchall": false
+ },
+ {
+  "label": "Ponce de Leon Corridor",
+  "is_catchall": false
+ },
+ {
+  "label": "Sunset / South Gables",
+  "is_catchall": false
+ },
+ {
+  "label": "University of Miami Area",
+  "is_catchall": false
+ }
+]

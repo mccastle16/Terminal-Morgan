@@ -43,6 +43,9 @@ begin
       on b1.id < b2.id
      and st_dwithin(b1.location, b2.location, 200)
     where b1.location is not null and b2.location is not null
+      -- centroid-backfilled coords stack 800+ businesses on one point;
+      -- distance edges are only meaningful between exact geocodes
+      and b1.location_precision = 'exact' and b2.location_precision = 'exact'
       and b1.status <> 'closed' and b2.status <> 'closed'
     on conflict (src_business_id, dst_business_id, type) do nothing
     returning 1
@@ -72,6 +75,7 @@ begin
     where b1.status <> 'closed' and b2.status <> 'closed'
       and (
         (b1.location is not null and b2.location is not null
+         and b1.location_precision = 'exact' and b2.location_precision = 'exact'
          and st_dwithin(b1.location, b2.location, 1000))
         or
         (b1.neighborhood_id is not null

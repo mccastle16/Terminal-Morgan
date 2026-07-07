@@ -24,6 +24,15 @@
 - SunBiz columns are empty in the current data (that enrichment never ran) — SAME_OWNER edges use shared-phone signal (170 phones across 369 businesses) until SunBiz lands.
 - New `morgan` branch on remote (1 commit off main: an Agent 1 OSM scrape run, not pivot work).
 
+**Feature work started early (Week 2 material, same day):** public product pages built in `web/` against a **local data provider** (`web/src/lib/data/`) reading a public-safe snapshot (`scripts/emit_local_snapshot.py`) — same UUIDs/slugs as the Supabase migration, so URLs survive cutover and pages swap providers without change. Shipped: `/` landing, `/directory` (search + category/neighborhood filters + pagination), `/b/[slug]` profile pages (identity, constructive market position + headroom, Neighbors ≤200m, Similar nearby, claim CTA, provenance disclosure), `/claim/[slug]` verification-flow entry, `/claim/new` add-a-business. Visually QA'd via Playwright; zero console errors.
+
+**⚠️ AUDIT CORRECTIONS found during visual QA (these supersede earlier audit notes):**
+1. **The lat/lon coalesce direction in the original audit was WRONG.** `lat`/`lon` (cols 7-8; 1,832 filled, 1,695 distinct) are the REAL geocodes; `latitude`/`longitude` (cols 38-39; 2,650 filled, only **28 distinct points**, max stack 835 businesses) are postcode/area centroid backfill. Schema now carries `location_precision` ('exact'/'approximate'); distance-based edges require exact on both endpoints. Split: 1,832 exact / 818 approximate / 80 none.
+2. **77% of review counts are fabricated** — `review_count_source='inferred'` on 2,104 of 2,730 rows (category medians, e.g. "(87)" repeated across dozens of businesses). Canonical `review_count` is now NULL for inferred rows; only 277 original + 349 blank remain trustworthy.
+3. `chamber_member` flattening was worse than audited: current CSV has 0 blanks (all unknowns → 'N' at commit `385d93d`); restore from `726798f` is implemented and verified (843/806/1,081).
+4. `category_secondary` contains slug junk ("food_beverage/pub") on 735 rows — prettified at migration/snapshot time.
+5. Visible-but-unfixed: some miscategorization survives in source data (e.g. a CPA firm labeled food_beverage) — pipeline reclassification item, not a UI bug.
+
 ---
 
 # PHASE 1 — Verified Current-State Model
