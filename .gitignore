@@ -14,3 +14,12 @@ data/etl/neo4j-dump/
 .pr_body
 scripts/_audit_data.py
 dashboard/.netlify/
+
+# Client PII — relocated out of this repo (REBUILD-PLAN.md D8 #1).
+# These live in CO_'s private client storage; never re-add them here.
+data/lt-patient-list*.csv
+data/patient-list*.csv
+data/leadgen.csv
+data/original-leadgen.csv
+data/leadgen-excel.xlsx
+data/~$*.xlsx
