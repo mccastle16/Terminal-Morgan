@@ -1,8 +1,20 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { HeroTerminal } from "@/components/hero-terminal";
+import {
+  AskTheMarket,
+  ClosingCta,
+  CornerOfNetwork,
+  IntroBand,
+  KnowWhereYouStand,
+  NetworkLog,
+  OwnYourRecord,
+  SourceStrip,
+  StatementBand,
+  WholeMarket,
+} from "@/components/landing-sections";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
-import { getCategories, getStats } from "@/lib/data";
+import { getStats } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "CO_ Network — Every business in Coral Gables, mapped",
@@ -30,7 +42,7 @@ const HOW_IT_WORKS = [
 
 export default function Home() {
   const stats = getStats();
-  const topCategories = getCategories().slice(0, 6);
+
 
   return (
     <div className="flex min-h-screen flex-col bg-void">
@@ -75,16 +87,11 @@ export default function Home() {
 
           {/* The hero IS the app — live-data terminal replica on the gradient bleed */}
           <HeroTerminal />
-
-          {/* Stats strip — quiet text */}
-          <p className="mt-10 text-caption font-normal text-fog">
-            {stats.total.toLocaleString()} businesses
-            <span className="mx-2 text-ash">·</span>
-            {stats.categories} categories
-            <span className="mx-2 text-ash">·</span>
-            {stats.neighborhoods} neighborhoods
-          </p>
         </section>
+
+        {/* ── Source strip (logo-strip analog) + intro statement ── */}
+        <SourceStrip />
+        <IntroBand />
 
         {/* ── How it works — heading left, steps right ── */}
         <section id="how-it-works" className="mx-auto w-full max-w-[1200px] scroll-mt-16 px-6 py-24">
@@ -115,95 +122,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── What you get — heading left, copy right ── */}
-        <section id="features" className="mx-auto w-full max-w-[1200px] scroll-mt-16 px-6 py-24">
-          <div className="grid grid-cols-1 gap-x-16 gap-y-12 md:grid-cols-2">
-            <div>
-              <p className="text-label font-w510 uppercase tracking-wide text-ash">
-                What you get
-              </p>
-              <h2 className="mt-2 text-heading-sm font-w510 text-paper">
-                Your data, on your terms
-              </h2>
-              <p className="mt-4 max-w-md text-body font-normal text-mist">
-                Every field on your profile shows where it came from. Fix anything that’s out of
-                date — owner corrections take priority over every other source, permanently. No
-                more chasing stale listings around the internet.
-              </p>
-            </div>
-            <div className="flex flex-col divide-y divide-graphite">
-              <div className="pb-8">
-                <h3 className="text-body-lg font-w510 text-paper">
-                  Benchmarks against real local peers
-                </h3>
-                <p className="mt-2 max-w-md text-body-sm font-normal text-fog">
-                  Rating standing, review volume, and digital presence measured against the
-                  businesses actually around you — framed as headroom, not judgment.
-                </p>
-              </div>
-              <div className="py-8">
-                <h3 className="text-body-lg font-w510 text-paper">
-                  Connections that explain themselves
-                </h3>
-                <p className="mt-2 max-w-md text-body-sm font-normal text-fog">
-                  Neighbors, peers, and complementary businesses — every suggestion says why it
-                  was made, and you decide what sticks.
-                </p>
-              </div>
-              <div className="pt-8">
-                <h3 className="text-body-lg font-w510 text-paper">
-                  A public page that works for you
-                </h3>
-                <p className="mt-2 max-w-md text-body-sm font-normal text-fog">
-                  Your verified profile is a clean, findable page in the Coral Gables directory —
-                  with your corrections, your confirmed connections, and your standing.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* ── Product showcases — linear.app anatomy, real product fragments ── */}
+        <OwnYourRecord />
+        <KnowWhereYouStand />
+        <CornerOfNetwork />
+        <AskTheMarket />
+        <WholeMarket />
 
-        {/* ── Explore — category chips ── */}
-        <section className="mx-auto w-full max-w-[1200px] px-6 py-24">
-          <p className="text-label font-w510 uppercase tracking-wide text-ash">
-            Explore the directory
-          </p>
-          <div className="mt-4 flex flex-wrap items-center gap-2">
-            {topCategories.map((c) => (
-              <Link
-                key={c.slug}
-                href={`/directory?category=${c.slug}`}
-                className="inline-flex cursor-pointer items-center rounded-pills bg-white/5 px-3 py-1 text-caption text-mist transition-colors duration-150 hover:bg-white/10"
-              >
-                {c.label}
-              </Link>
-            ))}
-            <Link
-              href="/directory"
-              className="cursor-pointer rounded-buttons px-3 py-1.5 text-caption font-normal text-fog transition-colors duration-150 hover:bg-white/[0.03] hover:text-mist"
-            >
-              All {stats.categories} categories →
-            </Link>
-          </div>
-        </section>
-
-        {/* ── Closing CTA — white pill; the acid-lime already spent on the hero ── */}
-        <section className="mx-auto w-full max-w-[1200px] px-6 pb-24">
-          <div className="rounded-cards bg-carbon p-10 shadow-subtle sm:p-14">
-            <h2 className="max-w-xl text-heading-sm font-w510 text-paper">
-              {stats.total.toLocaleString()} businesses are already mapped. Yours is one of them.
-            </h2>
-            <p className="mt-3 max-w-md text-body-sm font-normal text-fog">
-              Claiming takes two minutes and costs nothing.
-            </p>
-            <Link
-              href="/signup"
-              className="mt-7 inline-flex cursor-pointer items-center rounded-pills bg-paper px-4 py-2 text-caption font-w510 text-void transition-opacity duration-150 hover:opacity-85"
-            >
-              Claim your business
-            </Link>
-          </div>
-        </section>
+        {/* ── Network log + statement band + closing ── */}
+        <NetworkLog />
+        <StatementBand />
+        <ClosingCta />
       </main>
 
       <SiteFooter />
