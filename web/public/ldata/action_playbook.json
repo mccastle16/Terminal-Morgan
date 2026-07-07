@@ -1,0 +1,654 @@
+{
+  "generated_at": "2026-03-02T01:23:20.846875",
+  "master_source": "../data/master_all_businesses.csv",
+  "stats": {
+    "total_businesses": 2868,
+    "businesses_with_actions": 10,
+    "total_actions": 30,
+    "by_category": {
+      "reputation": 10,
+      "growth": 9,
+      "risk": 3,
+      "visibility": 6,
+      "data_quality": 2
+    },
+    "by_priority": {
+      "urgent": 10,
+      "high": 16,
+      "medium": 4,
+      "low": 0
+    },
+    "llm_powered": true,
+    "llm_model": "gpt-4o-mini",
+    "llm_calls": 2,
+    "llm_tokens_in": 3709,
+    "llm_tokens_out": 4957
+  },
+  "playbook": [
+    {
+      "business_id": "myxcellnetwork",
+      "business_name": "My Xcell Network",
+      "category_primary": "technology",
+      "neighborhood_area": "Coral Gables",
+      "rating": 0.0,
+      "review_count": 0,
+      "chamber_member": true,
+      "osint_confidence": 0.0,
+      "priority_score": 0.73,
+      "actions": [
+        {
+          "action_type": "claim_profile",
+          "category": "reputation",
+          "title": "Claim and Optimize Business Profile",
+          "description": "Claiming and optimizing your business profile is essential to combat the negative association with job scams. By ensuring accurate information and engaging content, you can begin to rebuild trust in the community.",
+          "steps": [
+            "Visit Google My Business and claim your profile.",
+            "Update business information including services and contact details.",
+            "Add photos and respond to any existing reviews."
+          ],
+          "timeframe": "Today",
+          "cost_estimate": "$0",
+          "expected_impact": "+0.3 rating, improved visibility in local searches",
+          "priority": "urgent"
+        },
+        {
+          "action_type": "address_feedback",
+          "category": "reputation",
+          "title": "Address Customer Concerns Publicly",
+          "description": "Directly address the concerns related to job scams by posting a public message on your website and social media explaining your mission and the steps taken to ensure trust. Transparency can help mitigate fears.",
+          "steps": [
+            "Draft a clear and honest statement regarding your business practices.",
+            "Post this statement on your website and social media platforms.",
+            "Encourage customers to share their positive experiences."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0",
+          "expected_impact": "Increased customer engagement and trust, leading to potential +0.2 rating",
+          "priority": "high"
+        },
+        {
+          "action_type": "cluster_collaboration",
+          "category": "growth",
+          "title": "Collaborate with Local Tech Businesses",
+          "description": "Join forces with other technology businesses in Coral Gables to create a local tech initiative that promotes ethical job opportunities. This collaboration can enhance your reputation and build a support network.",
+          "steps": [
+            "Reach out to local tech businesses to propose a meeting.",
+            "Plan a joint community event focusing on tech and job opportunities.",
+            "Promote the initiative across all channels."
+          ],
+          "timeframe": "This month",
+          "cost_estimate": "$100-$300 for event materials",
+          "expected_impact": "Increased local visibility, potential for +10% inquiries",
+          "priority": "medium"
+        }
+      ],
+      "action_count": 3,
+      "top_action": "Claim and Optimize Business Profile",
+      "action_source": "llm",
+      "generated_at": "2026-03-02T01:23:20.846640"
+    },
+    {
+      "business_id": "cherrybekaert",
+      "business_name": "Cherry Bekaert",
+      "category_primary": "accounting",
+      "neighborhood_area": "Coral Gables",
+      "rating": 4.0,
+      "review_count": 0,
+      "chamber_member": false,
+      "osint_confidence": 0.0,
+      "priority_score": 0.72,
+      "actions": [
+        {
+          "action_type": "resolve_flag",
+          "category": "risk",
+          "title": "Conduct Internal Culture Assessment",
+          "description": "Address the workplace toxicity by conducting an anonymous internal culture assessment. Understanding employee sentiments will help identify specific issues that need resolution.",
+          "steps": [
+            "Create a confidential survey to gauge employee satisfaction.",
+            "Analyze results and identify key areas for improvement.",
+            "Develop an action plan based on feedback."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0",
+          "expected_impact": "Improved employee morale and retention, potential for +0.5 rating",
+          "priority": "urgent"
+        },
+        {
+          "action_type": "address_feedback",
+          "category": "reputation",
+          "title": "Publicly Acknowledge Workplace Improvements",
+          "description": "Communicate publicly about the steps being taken to improve workplace culture. Transparency can help mitigate negative perceptions and attract talent.",
+          "steps": [
+            "Draft a statement outlining the commitment to cultural improvement.",
+            "Share this message on the company website and social media.",
+            "Encourage current employees to share their positive experiences."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0",
+          "expected_impact": "Enhanced reputation leading to potential +0.3 rating",
+          "priority": "high"
+        },
+        {
+          "action_type": "chamber_prospect",
+          "category": "growth",
+          "title": "Engage with Chamber for Networking Opportunities",
+          "description": "Leverage your Chamber membership to network with other businesses and share best practices for workplace culture. This can help position your firm as a leader in the community.",
+          "steps": [
+            "Attend upcoming Chamber events to network with local business leaders.",
+            "Participate in workshops focused on workplace culture.",
+            "Establish a collaborative project with another Chamber member."
+          ],
+          "timeframe": "This month",
+          "cost_estimate": "$0",
+          "expected_impact": "Increased local visibility, potential for +15% client inquiries",
+          "priority": "medium"
+        }
+      ],
+      "action_count": 3,
+      "top_action": "Conduct Internal Culture Assessment",
+      "action_source": "llm",
+      "generated_at": "2026-03-02T01:23:20.846700"
+    },
+    {
+      "business_id": "stretchzone",
+      "business_name": "Stretch Zone",
+      "category_primary": "wellness",
+      "neighborhood_area": "Coral Gables",
+      "rating": 4.1,
+      "review_count": 0,
+      "chamber_member": false,
+      "osint_confidence": 0.0,
+      "priority_score": 0.72,
+      "actions": [
+        {
+          "action_type": "resolve_flag",
+          "category": "risk",
+          "title": "Reassess Auto-Renewal Practices",
+          "description": "To mitigate trust issues stemming from auto-renewal complaints, reassess your auto-renewal policies and ensure they are customer-friendly. Transparent practices can build trust.",
+          "steps": [
+            "Review current auto-renewal terms and conditions.",
+            "Make necessary revisions to ensure clarity and fairness.",
+            "Communicate the changes to existing customers."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0",
+          "expected_impact": "Improved customer trust, potential for +0.4 rating",
+          "priority": "urgent"
+        },
+        {
+          "action_type": "address_feedback",
+          "category": "reputation",
+          "title": "Create a Customer Feedback Loop",
+          "description": "Establish a system for customers to provide feedback on their experiences. This will allow you to address concerns promptly and demonstrate commitment to customer care.",
+          "steps": [
+            "Set up a feedback form on your website.",
+            "Promote the feedback form through email and social media.",
+            "Respond to feedback and implement changes as necessary."
+          ],
+          "timeframe": "This month",
+          "cost_estimate": "$0",
+          "expected_impact": "Increased customer engagement, potential for +0.3 rating",
+          "priority": "high"
+        },
+        {
+          "action_type": "cluster_collaboration",
+          "category": "growth",
+          "title": "Partner with Local Wellness Influencers",
+          "description": "Collaborate with local wellness influencers to promote positive experiences at Stretch Zone. Influencer endorsement can enhance credibility and attract new clients.",
+          "steps": [
+            "Identify and reach out to local wellness influencers.",
+            "Arrange for them to experience your services.",
+            "Encourage them to share their experiences on social media."
+          ],
+          "timeframe": "This month",
+          "cost_estimate": "$100-$500 depending on influencer fees",
+          "expected_impact": "Increased foot traffic by +15%, potential for +0.5 rating",
+          "priority": "medium"
+        }
+      ],
+      "action_count": 3,
+      "top_action": "Reassess Auto-Renewal Practices",
+      "action_source": "llm",
+      "generated_at": "2026-03-02T01:23:20.846733"
+    },
+    {
+      "business_id": "cviche105",
+      "business_name": "CVI.CHE 105",
+      "category_primary": "food_beverage",
+      "neighborhood_area": "Coral Gables",
+      "rating": 4.5,
+      "review_count": 0,
+      "chamber_member": true,
+      "osint_confidence": 0.0,
+      "priority_score": 0.7,
+      "actions": [
+        {
+          "action_type": "resolve_flag",
+          "category": "risk",
+          "title": "Implement Review Verification Process",
+          "description": "To address the issue of review manipulation, implement a verification process for reviews to ensure authenticity and integrity in feedback.",
+          "steps": [
+            "Develop a policy for reviewing and verifying customer feedback.",
+            "Train staff on how to encourage genuine reviews.",
+            "Regularly audit reviews to ensure compliance with the new policy."
+          ],
+          "timeframe": "This month",
+          "cost_estimate": "$0",
+          "expected_impact": "Restored customer trust, potential for +0.5 rating",
+          "priority": "urgent"
+        },
+        {
+          "action_type": "address_feedback",
+          "category": "reputation",
+          "title": "Launch Customer Experience Improvement Initiative",
+          "description": "Actively seek customer feedback on their dining experience and implement changes based on their suggestions. This shows commitment to quality and can help improve your reputation.",
+          "steps": [
+            "Create a feedback form for customers to complete after their meal.",
+            "Analyze the feedback regularly to identify areas for improvement.",
+            "Communicate changes made based on customer feedback."
+          ],
+          "timeframe": "This month",
+          "cost_estimate": "$0",
+          "expected_impact": "Enhanced customer satisfaction, potential for +0.4 rating",
+          "priority": "high"
+        },
+        {
+          "action_type": "cluster_collaboration",
+          "category": "growth",
+          "title": "Join Local Food Events for Visibility",
+          "description": "Participate in local food events to enhance visibility and showcase your unique offerings. This can help position CVI.CHE 105 as a leader in the local dining scene.",
+          "steps": [
+            "Research upcoming local food events in Coral Gables.",
+            "Apply to participate and prepare marketing materials.",
+            "Promote your participation on social media channels."
+          ],
+          "timeframe": "This month",
+          "cost_estimate": "$100-$300 for event costs",
+          "expected_impact": "Increased foot traffic by +20%, potential for +0.5 rating",
+          "priority": "medium"
+        }
+      ],
+      "action_count": 3,
+      "top_action": "Implement Review Verification Process",
+      "action_source": "llm",
+      "generated_at": "2026-03-02T01:23:20.846762"
+    },
+    {
+      "business_id": "son",
+      "business_name": "& son",
+      "category_primary": "other",
+      "neighborhood_area": "Coral Gables",
+      "rating": 5.0,
+      "review_count": 0,
+      "chamber_member": false,
+      "osint_confidence": 0.55,
+      "priority_score": 0.67,
+      "actions": [
+        {
+          "action_type": "create_website",
+          "category": "visibility",
+          "title": "Build a Business Website",
+          "description": "Creating a website is crucial for increasing visibility and attracting new customers. Without an online presence, you're missing out on potential clientele.",
+          "steps": [
+            "Choose a website builder or hire a freelance developer.",
+            "Outline key information to include: services, contact details, and location.",
+            "Launch the website and promote it via social media."
+          ],
+          "timeframe": "This month",
+          "cost_estimate": "$500-$1000 for basic website setup",
+          "expected_impact": "Increased online visibility, potential for +10% inquiries",
+          "priority": "urgent"
+        },
+        {
+          "action_type": "contact_info",
+          "category": "data_quality",
+          "title": "Update Contact Information Across Platforms",
+          "description": "Ensure that your business contact information is consistent across all platforms. This will improve customer reach and enhance overall trust.",
+          "steps": [
+            "Compile a list of all online platforms where your business is listed.",
+            "Update all listings with correct contact information.",
+            "Verify accuracy periodically."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0",
+          "expected_impact": "Improved customer reach, potential for +5% inquiries",
+          "priority": "high"
+        },
+        {
+          "action_type": "geocode",
+          "category": "data_quality",
+          "title": "Ensure Accurate Geolocation for Business",
+          "description": "Correct geolocation on maps is essential for attracting foot traffic. Ensure that your business is accurately mapped to avoid losing potential customers.",
+          "steps": [
+            "Check your business location on Google Maps.",
+            "Request any necessary corrections to the location.",
+            "Verify the accuracy after changes are made."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0",
+          "expected_impact": "Increased foot traffic, potential for +5% inquiries",
+          "priority": "high"
+        }
+      ],
+      "action_count": 3,
+      "top_action": "Build a Business Website",
+      "action_source": "llm",
+      "generated_at": "2026-03-02T01:23:20.846782"
+    },
+    {
+      "business_id": "gablesconstructiongroup",
+      "business_name": "Gables Construction Group",
+      "category_primary": "construction",
+      "neighborhood_area": "Coral Gables",
+      "rating": 5.0,
+      "review_count": 0,
+      "chamber_member": false,
+      "osint_confidence": 1.0,
+      "priority_score": 0.67,
+      "actions": [
+        {
+          "action_type": "create_website",
+          "category": "visibility",
+          "title": "Launch a Professional Website",
+          "description": "Gables Construction Group currently lacks a website, which is critical in today's digital landscape. Competitors in Coral Gables have an average rating of 4.6, but a strong online presence can significantly enhance credibility and attract clients.",
+          "steps": [
+            "Choose a website builder (e.g., Wix, Squarespace).",
+            "Select a template that aligns with construction services.",
+            "Add essential content (services, contact info, portfolio).",
+            "Publish the website and promote it on social media."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0 - $100 (depending on the platform selected)",
+          "expected_impact": "+0.5 rating, increase inquiries by 20%",
+          "priority": "urgent"
+        },
+        {
+          "action_type": "chamber_prospect",
+          "category": "growth",
+          "title": "Join Coral Gables Chamber of Commerce",
+          "description": "As a member of the Chamber, Gables Construction Group can leverage local networking opportunities. Currently, only 799 out of 1542 local businesses are members, which could enhance visibility and partnerships.",
+          "steps": [
+            "Visit the Chamber's website to understand membership benefits.",
+            "Fill out the membership application.",
+            "Attend an introductory Chamber meeting or event."
+          ],
+          "timeframe": "This month",
+          "cost_estimate": "$300 - $500 annually",
+          "expected_impact": "Increase partnerships by 15%, access to local contracts.",
+          "priority": "high"
+        },
+        {
+          "action_type": "review_volume",
+          "category": "reputation",
+          "title": "Encourage Customer Reviews",
+          "description": "Gables Construction Group has a 5.0 rating but no reviews. Soliciting reviews from satisfied clients can help build credibility and improve visibility in search results, outpacing the average of 4.6 in the area.",
+          "steps": [
+            "Create a follow-up email template requesting feedback post-project.",
+            "Offer incentives for clients who leave reviews (e.g., discount on future service).",
+            "Share links to Google and Yelp review pages."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0",
+          "expected_impact": "2x review volume within 3 months.",
+          "priority": "high"
+        }
+      ],
+      "action_count": 3,
+      "top_action": "Launch a Professional Website",
+      "action_source": "llm",
+      "generated_at": "2026-03-02T01:23:20.846805"
+    },
+    {
+      "business_id": "skinnylouie",
+      "business_name": "Skinny Louie",
+      "category_primary": "food_beverage",
+      "neighborhood_area": "Sunset / South Gables",
+      "rating": 4.9,
+      "review_count": 0,
+      "chamber_member": false,
+      "osint_confidence": 1.0,
+      "priority_score": 0.67,
+      "actions": [
+        {
+          "action_type": "create_website",
+          "category": "visibility",
+          "title": "Develop a Comprehensive Website",
+          "description": "Skinny Louie currently lacks a website, which is essential in attracting customers in the competitive food and beverage sector. With an average rating of 4.4 in Sunset / South Gables, a professional website can help establish brand credibility.",
+          "steps": [
+            "Select a website builder suitable for restaurants.",
+            "Incorporate menus, location, and contact information.",
+            "Include a reservation or order online feature.",
+            "Publish and promote via social media."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0 - $100",
+          "expected_impact": "Increase foot traffic by 15%, +0.3 rating.",
+          "priority": "urgent"
+        },
+        {
+          "action_type": "chamber_prospect",
+          "category": "growth",
+          "title": "Become a Chamber of Commerce Member",
+          "description": "Joining the Chamber would connect Skinny Louie to local business networks and marketing resources. Currently, only 4 out of 37 similar businesses are Chamber members, indicating potential for growth.",
+          "steps": [
+            "Research membership benefits on the Chamber's website.",
+            "Complete the membership application.",
+            "Engage with other members through events."
+          ],
+          "timeframe": "This month",
+          "cost_estimate": "$300 - $500 annually",
+          "expected_impact": "Boost customer base by 10% through networking.",
+          "priority": "high"
+        },
+        {
+          "action_type": "review_volume",
+          "category": "reputation",
+          "title": "Increase Customer Review Engagement",
+          "description": "Skinny Louie has a high rating but no reviews. Encouraging customer feedback can enhance visibility and trust, helping to surpass the area average of 4.4.",
+          "steps": [
+            "Create a feedback request template for after dining.",
+            "Incentivize reviews with discounts or freebies.",
+            "Post links to review sites on social media."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0",
+          "expected_impact": "Double review count in 3 months.",
+          "priority": "high"
+        }
+      ],
+      "action_count": 3,
+      "top_action": "Develop a Comprehensive Website",
+      "action_source": "llm",
+      "generated_at": "2026-03-02T01:23:20.846822"
+    },
+    {
+      "business_id": "sirianniinsurance",
+      "business_name": "Sirianni Insurance Corp.",
+      "category_primary": "insurance",
+      "neighborhood_area": "Ponce de Leon Corridor",
+      "rating": 4.9,
+      "review_count": 0,
+      "chamber_member": false,
+      "osint_confidence": 1.0,
+      "priority_score": 0.67,
+      "actions": [
+        {
+          "action_type": "create_website",
+          "category": "visibility",
+          "title": "Establish a Professional Website",
+          "description": "Sirianni Insurance Corp. currently does not have a website, which limits visibility and potential client engagement. With an average rating of 4.8 in the Ponce de Leon Corridor, a strong online presence can improve client trust and reach.",
+          "steps": [
+            "Choose a user-friendly website builder.",
+            "Add services, contact information, and client testimonials.",
+            "Ensure mobile responsiveness and SEO optimization.",
+            "Launch and promote on social media."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0 - $100",
+          "expected_impact": "Increase inquiries by 20%, +0.3 rating.",
+          "priority": "urgent"
+        },
+        {
+          "action_type": "chamber_prospect",
+          "category": "growth",
+          "title": "Join the Local Chamber of Commerce",
+          "description": "As a Chamber member, Sirianni Insurance Corp. can enhance its visibility and networking opportunities. Only 4 out of 7 insurance businesses in the area are members, presenting a chance to stand out.",
+          "steps": [
+            "Review Chamber membership benefits online.",
+            "Submit the application for membership.",
+            "Attend introductory Chamber meetings."
+          ],
+          "timeframe": "This month",
+          "cost_estimate": "$300 - $500 annually",
+          "expected_impact": "Increase client base by 15% through connections.",
+          "priority": "high"
+        },
+        {
+          "action_type": "review_volume",
+          "category": "reputation",
+          "title": "Boost Customer Review Collection Efforts",
+          "description": "Sirianni Insurance Corp. has a strong rating but no reviews. Actively seeking customer feedback can improve visibility and establish credibility, helping to maintain a competitive edge over the average rating of 4.8.",
+          "steps": [
+            "Develop a post-service feedback request email.",
+            "Offer small incentives for completed reviews.",
+            "Direct clients to review platforms."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0",
+          "expected_impact": "Achieve 2x volume of reviews within 3 months.",
+          "priority": "high"
+        }
+      ],
+      "action_count": 3,
+      "top_action": "Establish a Professional Website",
+      "action_source": "llm",
+      "generated_at": "2026-03-02T01:23:20.846838"
+    },
+    {
+      "business_id": "ciegatetechnologiesmanageditservicesmiamifl",
+      "business_name": "Ciegate Technologies 💻 Managed It Services Miami, FL",
+      "category_primary": "technology",
+      "neighborhood_area": "Sunset / South Gables",
+      "rating": 5.0,
+      "review_count": 0,
+      "chamber_member": false,
+      "osint_confidence": 0.6,
+      "priority_score": 0.67,
+      "actions": [
+        {
+          "action_type": "create_website",
+          "category": "visibility",
+          "title": "Launch a Professional Website for Ciegate",
+          "description": "Ciegate Technologies currently lacks a website, hindering visibility and potential client engagement in a competitive tech landscape. The average rating in the area is 4.9, and a strong online presence can help attract more clients.",
+          "steps": [
+            "Select a website builder that caters to tech services.",
+            "Include service offerings, case studies, and contact details.",
+            "Make sure the website is mobile-friendly and optimized for SEO.",
+            "Publish and share on social platforms."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0 - $100",
+          "expected_impact": "Increase inquiries by 25%, +0.4 rating.",
+          "priority": "urgent"
+        },
+        {
+          "action_type": "chamber_prospect",
+          "category": "growth",
+          "title": "Become a Member of the Chamber of Commerce",
+          "description": "Joining the Chamber can provide Ciegate Technologies with valuable networking opportunities and marketing resources. With only 4 out of 187 businesses in the area being Chamber members, this could greatly enhance their visibility.",
+          "steps": [
+            "Research membership benefits on the Chamber's website.",
+            "Complete the membership application.",
+            "Participate in local Chamber events to network."
+          ],
+          "timeframe": "This month",
+          "cost_estimate": "$300 - $500 annually",
+          "expected_impact": "Expand client base by 15% through networking.",
+          "priority": "high"
+        },
+        {
+          "action_type": "review_volume",
+          "category": "reputation",
+          "title": "Enhance Customer Review Collection",
+          "description": "Ciegate Technologies has a perfect rating but no reviews. Encouraging happy clients to leave feedback can improve visibility and attract new clients, especially in a competitive sector with an average rating of 4.9.",
+          "steps": [
+            "Create a follow-up email template to solicit reviews.",
+            "Provide incentives for clients who leave reviews.",
+            "Share links to review sites on social media."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0",
+          "expected_impact": "Double review volume within 3 months.",
+          "priority": "high"
+        }
+      ],
+      "action_count": 3,
+      "top_action": "Launch a Professional Website for Ciegate",
+      "action_source": "llm",
+      "generated_at": "2026-03-02T01:23:20.846856"
+    },
+    {
+      "business_id": "fredastairedancestudios",
+      "business_name": "Fred Astaire Dance Studios",
+      "category_primary": "education",
+      "neighborhood_area": "Miracle Mile",
+      "rating": 5.0,
+      "review_count": 0,
+      "chamber_member": false,
+      "osint_confidence": 1.0,
+      "priority_score": 0.67,
+      "actions": [
+        {
+          "action_type": "create_website",
+          "category": "visibility",
+          "title": "Develop a Comprehensive Website",
+          "description": "Fred Astaire Dance Studios currently lacks a website, which limits its visibility and potential client engagement. With an average rating of 5.0 in Miracle Mile, a professional website can enhance credibility and attract more students.",
+          "steps": [
+            "Choose a website builder that caters to educational services.",
+            "Include class schedules, instructor bios, and contact information.",
+            "Ensure mobile responsiveness and SEO optimization.",
+            "Launch and promote via social media."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0 - $100",
+          "expected_impact": "Increase inquiries by 20%, +0.3 rating.",
+          "priority": "urgent"
+        },
+        {
+          "action_type": "chamber_prospect",
+          "category": "growth",
+          "title": "Join the Coral Gables Chamber of Commerce",
+          "description": "Membership in the Chamber can provide Fred Astaire Dance Studios with valuable networking opportunities and marketing resources. With only 6 out of 182 businesses in the Miracle Mile area being members, this presents a unique opportunity for growth.",
+          "steps": [
+            "Review Chamber membership benefits online.",
+            "Complete the application for membership.",
+            "Attend introductory Chamber meetings to network."
+          ],
+          "timeframe": "This month",
+          "cost_estimate": "$300 - $500 annually",
+          "expected_impact": "Increase student enrollment by 15% through networking.",
+          "priority": "high"
+        },
+        {
+          "action_type": "review_volume",
+          "category": "reputation",
+          "title": "Encourage Customer Reviews",
+          "description": "Fred Astaire Dance Studios has a perfect rating but no reviews. Encouraging past and current students to provide feedback can improve visibility and help maintain a competitive edge in the Miracle Mile area with an average rating of 5.0.",
+          "steps": [
+            "Create a follow-up email template requesting feedback from students.",
+            "Offer incentives for reviews, like free introductory classes.",
+            "Share links to Google and Yelp review pages."
+          ],
+          "timeframe": "This week",
+          "cost_estimate": "$0",
+          "expected_impact": "Achieve 2x review volume within 3 months.",
+          "priority": "high"
+        }
+      ],
+      "action_count": 3,
+      "top_action": "Develop a Comprehensive Website",
+      "action_source": "llm",
+      "generated_at": "2026-03-02T01:23:20.846871"
+    }
+  ]
+}

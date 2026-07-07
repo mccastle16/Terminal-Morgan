@@ -15,34 +15,36 @@ const AFTER_SIGNUP = [
 
 export default function SignupPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-paper">
+    <div className="flex min-h-screen flex-col bg-void">
       <SiteHeader />
-      <main className="mx-auto w-full max-w-[1200px] flex-1 px-6 pb-8 pt-16">
+      <main className="mx-auto w-full max-w-[1200px] flex-1 px-6 pb-16 pt-20">
         <div className="mx-auto grid max-w-3xl grid-cols-1 gap-16 md:grid-cols-2">
           <div>
-            <h1 className="text-heading font-semibold text-obsidian">Create an account</h1>
-            <p className="mt-2 text-body font-normal text-graphite">
+            <h1 className="text-heading-sm font-w510 text-paper">Create an account</h1>
+            <p className="mt-2 text-body-sm text-fog">
               Free for business owners in Coral Gables.
             </p>
             <AuthForm mode="signup" />
-            <p className="mt-8 text-label font-normal text-graphite">
+            <p className="mt-8 text-caption text-fog">
               Already have an account?{" "}
               <Link
                 href="/login"
-                className="rounded-links font-medium text-obsidian underline decoration-hairline underline-offset-4 hover:decoration-obsidian"
+                className="text-mist underline decoration-graphite underline-offset-4 hover:decoration-mist"
               >
                 Log in
               </Link>
               .
             </p>
           </div>
-          <div className="pt-2 md:pt-14">
-            <p className="text-label font-medium text-graphite">What happens next</p>
+          <div className="pt-2 md:pt-12">
+            <p className="text-label font-w510 uppercase tracking-wide text-ash">
+              What happens next
+            </p>
             <ol className="mt-4 space-y-5">
               {AFTER_SIGNUP.map((step, i) => (
                 <li key={step} className="flex gap-4">
-                  <span className="text-subheading font-medium text-smoke">{i + 1}</span>
-                  <p className="text-label font-normal leading-relaxed text-obsidian">{step}</p>
+                  <span className="text-subheading font-w510 text-ash">{i + 1}</span>
+                  <p className="text-caption font-normal leading-relaxed text-fog">{step}</p>
                 </li>
               ))}
             </ol>

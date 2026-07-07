@@ -185,11 +185,26 @@ def parse_rows():
         return list(csv.DictReader(f))
 
 
+def suspicious_review_counts(rows) -> set:
+    """Large review counts repeated across many businesses are fill artifacts
+    (e.g. '76' appears on 37 rows LABELED 'original' — the label lies).
+    Real large counts are near-unique; flag value>=30 with frequency>=5."""
+    freq = Counter()
+    for r in rows:
+        if (r.get("review_count_source") or "").strip() == "inferred":
+            continue  # already stripped elsewhere
+        v = clean(r.get("rating_primary_review_count"))
+        if v:
+            freq[int(float(v))] += 1
+    return {v for v, n in freq.items() if v >= 30 and n >= 5}
+
+
 def build_payloads(rows, old_membership):
     cats, nbhs = {}, {}
     businesses, privates, fields, risks = [], [], [], []
     slugs_seen = set()
     stats = Counter()
+    bad_counts = suspicious_review_counts(rows)
 
     for r in rows:
         bid = r["business_id"]
@@ -242,6 +257,9 @@ def build_payloads(rows, old_membership):
         # canonical column; provenance rows retain it flagged.
         reviews_inferred = (r.get("review_count_source") or "").strip() == "inferred"
         reviews = None if reviews_inferred else clean(r.get("rating_primary_review_count"))
+        if reviews and int(float(reviews)) in bad_counts:
+            reviews = None  # statistically impossible repeat — fill artifact
+            stats["review_count_artifact_stripped"] += 1
         conf = clean(r.get("osint_confidence"))
 
         businesses.append({

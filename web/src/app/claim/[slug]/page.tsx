@@ -47,40 +47,42 @@ export default async function ClaimPage({ params }: Props) {
     : null;
 
   return (
-    <div className="flex min-h-screen flex-col bg-paper">
+    <div className="flex min-h-screen flex-col bg-void">
       <SiteHeader />
 
       <main className="mx-auto w-full max-w-[1200px] flex-1 px-6 pb-8 pt-10">
         <Link
           href={`/b/${business.slug}`}
-          className="rounded-links text-label font-medium text-graphite transition-colors duration-200 hover:text-obsidian"
+          className="cursor-pointer rounded-buttons px-2 py-1 text-caption font-normal text-fog transition-colors duration-150 hover:bg-white/[0.03] hover:text-mist"
         >
           ← Back to profile
         </Link>
 
         <div className="mx-auto mt-10 max-w-2xl">
-          <p className="text-label font-medium text-graphite">Claim your business</p>
-          <h1 className="mt-2 text-4xl font-medium tracking-[-1.2px] text-obsidian sm:text-display">
+          <p className="text-label font-w510 uppercase tracking-wide text-ash">
+            Claim your business
+          </p>
+          <h1 className="mt-2 text-heading-sm font-w510 text-paper sm:text-heading">
             {business.name}
           </h1>
-          <p className="mt-2 text-label font-normal text-graphite">
+          <p className="mt-2 text-caption font-normal text-fog">
             {getCategoryLabel(business.category_slug)}
             {business.neighborhood_label && <> · {business.neighborhood_label}</>}
           </p>
 
-          <ol className="mt-12 divide-y divide-hairline border-t border-hairline">
+          <ol className="mt-12 divide-y divide-graphite border-t border-graphite">
             {STEPS.map((s, i) => (
               <li key={s.title} className="flex gap-6 py-6">
-                <span className="w-8 shrink-0 text-subheading font-medium text-smoke">
+                <span className="w-8 shrink-0 text-subheading font-w510 text-ash">
                   {i + 1}
                 </span>
                 <div>
-                  <p className="text-body-lg font-medium text-obsidian">{s.title}</p>
-                  <p className="mt-1.5 max-w-lg text-label font-normal leading-relaxed text-graphite">
+                  <p className="text-body-lg font-w510 text-paper">{s.title}</p>
+                  <p className="mt-1.5 max-w-lg text-caption font-normal leading-relaxed text-fog">
                     {s.detail}
                   </p>
                   {i === 1 && maskedPhone && (
-                    <p className="mt-3 inline-block rounded-full bg-ash px-4 py-1.5 text-caption font-medium text-obsidian">
+                    <p className="mt-3 inline-block rounded-badges bg-white/5 px-1.5 py-px font-mono text-label tracking-[-0.013em] text-fog">
                       Code will be sent to {maskedPhone}
                     </p>
                   )}
@@ -89,9 +91,10 @@ export default async function ClaimPage({ params }: Props) {
             ))}
           </ol>
 
-          <div className="mt-12 rounded-cards border border-hairline p-8 text-center">
-            <p className="text-subheading font-medium text-obsidian">Claiming opens shortly</p>
-            <p className="mx-auto mt-2 max-w-md text-label font-normal leading-relaxed text-graphite">
+          {/* The page's single acid-lime action */}
+          <div className="mt-12 rounded-cards bg-carbon p-8 shadow-subtle">
+            <p className="text-body-lg font-w510 text-paper">Claiming opens shortly</p>
+            <p className="mt-2 max-w-md text-caption font-normal leading-relaxed text-fog">
               Account creation and verification are launching now. Want us to hold this profile
               for you and email you the moment it opens?
             </p>
@@ -99,13 +102,13 @@ export default async function ClaimPage({ params }: Props) {
               href={`mailto:hello@co-underscore.com?subject=${encodeURIComponent(
                 `Claim request: ${business.name} (${business.slug})`
               )}`}
-              className="mt-5 inline-block rounded-full bg-obsidian px-6 py-2.5 text-label font-medium text-paper transition-opacity duration-200 hover:opacity-80"
+              className="mt-5 inline-flex cursor-pointer items-center rounded-buttons bg-acid-lime px-4 py-2.5 text-[14px] font-w510 tracking-[-0.011em] text-void transition-opacity duration-150 hover:opacity-85"
             >
               Request this profile
             </a>
           </div>
 
-          <p className="mt-8 text-center text-caption font-normal text-smoke">
+          <p className="mt-8 text-label font-normal text-ash">
             Free for business owners. CO_ Network is operated by CO_; verification data is used
             only to confirm ownership and is never used for marketing.
           </p>

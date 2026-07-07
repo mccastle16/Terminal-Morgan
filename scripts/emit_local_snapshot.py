@@ -12,11 +12,22 @@ directory basics. It must NEVER include contact names, risk flags, provenance
 rows, review pain-points, or internal confidence scores (those are owner/admin
 scoped and arrive only with real auth + RLS).
 
+Also emits:
+  web/src/data/internal.json  — extra per-business fields (validation tier,
+      confidence, corroboration, red flags, review themes) for ROLE-GATED
+      terminal tabs. Server-side only; excludes contact names. NOTE: cookie
+      role-gating is not a security boundary — these surfaces must sit behind
+      real auth + RLS before any public deployment (REBUILD-PLAN D5/D8).
+  web/public/ldata/*.json     — the legacy dashboard's derived analytics
+      layer (graph, predictions, sentiment, playbook, experiments, ...)
+      copied verbatim from dashboard/public/data for the terminal tabs.
+
 Usage:  python scripts/emit_local_snapshot.py
-Output: web/src/data/{businesses,categories,neighborhoods}.json
+Output: web/src/data/{businesses,categories,neighborhoods,internal}.json + web/public/ldata/
 """
 
 import json
+import shutil
 import sys
 from pathlib import Path
 
@@ -35,6 +46,42 @@ PUBLIC_FIELDS = [
     "price_tier", "price_tier_inferred", "rating", "review_count",
     "chamber_member", "status", "location_precision",
 ]
+
+
+LEGACY_DATA = ROOT / "dashboard" / "public" / "data"
+LDATA_FILES = [
+    "action_playbook.json", "analytics_queries.json", "graph_data.json",
+    "graph_stats.json", "opportunities.json", "prediction_summary.json",
+    "predictions.json", "sentiment_profiles.json", "sentiment_themes.json",
+    "network_centrality.json", "experiment_results.json",
+    "latest_delta.json", "delta_history.json",
+]
+
+INTERNAL_FIELDS = [  # role-gated extras; NEVER contact_name
+    "validation_tier", "osint_confidence", "corroboration_count",
+    "corroboration_sources", "red_flag_present", "red_flag_severity",
+    "red_flag_notes", "top_delights", "top_pain_points",
+    "source_file", "last_reviewed_date", "chamber_member",
+]
+
+
+def emit_internal(rows, businesses):
+    """Per-business gated fields, keyed by the same UUIDs as the snapshot."""
+    by_legacy = {b["legacy_business_id"]: b for b in businesses}
+    out = []
+    for r in rows:
+        b = by_legacy.get(r["business_id"])
+        if not b:
+            continue
+        rec = {"id": b["id"], "slug": b["slug"]}
+        for f in INTERNAL_FIELDS:
+            if f == "chamber_member":
+                rec[f] = b["chamber_member"]  # tri-state from the repair
+            else:
+                v = (r.get(f) or "").strip()
+                rec[f] = v if v else None
+        out.append(rec)
+    return out
 
 
 def main():
@@ -64,8 +111,22 @@ def main():
         [{"label": l, "is_catchall": c} for l, c in sorted(nbhs.items())],
         indent=1), encoding="utf-8")
 
+    internal = emit_internal(rows, businesses)
+    (OUT / "internal.json").write_text(
+        json.dumps(internal, separators=(",", ":")), encoding="utf-8")
+
+    ldata = ROOT / "web" / "public" / "ldata"
+    ldata.mkdir(parents=True, exist_ok=True)
+    copied = 0
+    for name in LDATA_FILES:
+        src = LEGACY_DATA / name
+        if src.exists():
+            shutil.copyfile(src, ldata / name)
+            copied += 1
+
     print(f"wrote {len(pub)} businesses, {len(cats)} categories, "
-          f"{len(nbhs)} neighborhoods -> {OUT}")
+          f"{len(nbhs)} neighborhoods, {len(internal)} internal -> {OUT}")
+    print(f"copied {copied}/{len(LDATA_FILES)} legacy analytics files -> {ldata}")
     print("membership:", {k: v for k, v in stats.items() if k.startswith('member_')})
 
 

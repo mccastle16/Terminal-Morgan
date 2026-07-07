@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-// DESIGN.md substitute for OpenAI Sans: Inter at 400/500/600 only.
+// LinearDesign.md: Inter Variable (full axis — the 510/590 stops need the
+// variable font) with cv01/ss03/zero features; JetBrains Mono substitutes
+// Berkeley Mono for IDs, shortcuts, and technical metadata only.
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -21,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} h-full`}>
       <body className="flex min-h-full flex-col">{children}</body>
     </html>
   );

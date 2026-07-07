@@ -2,46 +2,51 @@ import Link from "next/link";
 import type { Business } from "@/lib/data";
 import { getCategoryLabel } from "@/lib/data";
 
-// Text-first rating — DESIGN.md is monochrome and icon-averse; the number
-// carries the signal, the count sits in Graphite.
+// Text-first rating — the number carries the signal in Mist at weight 510,
+// the count sits quietly in Fog. No stars, no icons.
 export function Rating({ rating, count }: { rating: number | null; count: number | null }) {
   if (rating == null) {
-    return <span className="text-caption font-normal text-smoke">No rating yet</span>;
+    return <span className="text-caption font-normal text-ash">No rating yet</span>;
   }
   return (
-    <span className="text-label text-obsidian">
-      <span className="font-medium">{rating.toFixed(1)}</span>
-      {count != null && <span className="font-normal text-graphite"> ({count})</span>}
+    <span className="text-caption text-mist">
+      <span className="font-w510">{rating.toFixed(1)}</span>
+      {count != null && <span className="font-normal text-fog"> ({count})</span>}
     </span>
   );
 }
 
+// Badge-style chip with the sanctioned pulse-green supporting accent.
 export function ChamberChip() {
   return (
-    <span className="rounded-full border border-hairline px-2.5 py-0.5 text-caption font-medium text-graphite">
+    <span
+      className="inline-flex items-center rounded-badges bg-white/5 px-1.5 py-px text-label"
+      style={{ color: "var(--color-pulse-green)" }}
+    >
       Chamber member
     </span>
   );
 }
 
-// Editorial list row — DESIGN.md favors index-like compositions over card
-// grids. Structure comes from a single hairline divider and whitespace; the
-// row is a link with a Whisper hover surface.
+// Hairline-divided list row — Linear favors index-like lists over card grids.
+// The row is a link with a faint white-wash hover surface.
 export function BusinessRow({ business, note }: { business: Business; note?: string }) {
   return (
     <Link
       href={`/b/${business.slug}`}
-      className="group -mx-3 flex items-baseline justify-between gap-4 rounded-cards px-3 py-4 transition-colors duration-200 hover:bg-whisper"
+      className="group -mx-3 flex cursor-pointer items-baseline justify-between gap-4 rounded-buttons px-3 py-4 transition-colors duration-150 hover:bg-white/[0.03]"
     >
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-body-lg font-medium text-obsidian">{business.name}</span>
+          <span className="text-body-sm font-w510 text-mist transition-colors duration-150 group-hover:text-paper">
+            {business.name}
+          </span>
           {business.chamber_member === true && <ChamberChip />}
         </div>
-        <p className="mt-1 text-label font-normal text-graphite">
+        <p className="mt-1 text-caption font-normal text-fog">
           {getCategoryLabel(business.category_slug)}
           {business.neighborhood_label && <> · {business.neighborhood_label}</>}
-          {note && <span className="text-smoke"> · {note}</span>}
+          {note && <span className="text-ash"> · {note}</span>}
         </p>
       </div>
       <div className="shrink-0 text-right">
@@ -59,7 +64,7 @@ export function BusinessList({
   notes?: (string | undefined)[];
 }) {
   return (
-    <ul className="divide-y divide-hairline">
+    <ul className="divide-y divide-graphite">
       {items.map((b, i) => (
         <li key={b.id}>
           <BusinessRow business={b} note={notes?.[i]} />

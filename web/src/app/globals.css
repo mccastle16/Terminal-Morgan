@@ -1,78 +1,128 @@
 @import "tailwindcss";
 
 /* ============================================================================
-   CO_ Network — design tokens from DESIGN.md ("Research lab notebook at noon")
-   Light-only, monochromatic editorial system. Rules encoded here:
-   - Paper (#fff) is the sole canvas; Ash/Whisper appear only as hover/subtle
-     surface states. No colored section backgrounds.
-   - #000 is the ONLY filled-button color (one chromatic period per view).
-   - All borders are rgba(0,0,0,0.12) hairlines — never gray hexes.
-   - Pills (9999px) for buttons/inputs/tags; 6px for cards/images; 4px links.
-   - Weights: 400 body · 500 nav/labels/headings · 600 only at heading tier.
-     Nothing heavier, ever.
-   - No card shadows; --shadow-sm exists solely for pill-button hover.
+   CO_ Network — design tokens from LinearDesign.md ("midnight precision
+   instrument"). Dark-only. Rules encoded here:
+   - Void (#08090a) is the canvas; surfaces step Void→Carbon→Obsidian→Slate.
+   - #e4f222 (acid lime) is the ONLY chromatic action color — one per view.
+     The white pill is the second-highest-contrast element (nav sign-up).
+   - Elevation = hairline borders (#23252a / #383b3f) + subtle inset shadows,
+     never ambient shadow stacks. No gradients except the hero floor.
+   - Radii vocabulary: 12px cards · 6px buttons/inputs · 9999px pills · 4px
+     badges · 2px small. Nothing larger than 12px on panels.
+   - Weights 300/400/510/590 — never 700+. Tracking -0.022em at 48px+.
+   - Body: 16px Inter 400 lh 1.5 in Mist; muted text Fog/Ash greys only.
+   - Berkeley Mono substitute (JetBrains Mono) ONLY for IDs, shortcuts,
+     technical metadata — never headings or marketing copy.
    ========================================================================== */
 
 @theme {
   /* Colors */
-  --color-obsidian: #000000;
-  --color-graphite: #666666;
-  --color-smoke: #8f8f8f;
+  --color-void: #08090a;
+  --color-carbon: #0f1011;
+  --color-obsidian: #161718;
+  --color-graphite: #23252a;
+  --color-smoke: #383b3f;
+  --color-ash: #62666d;
+  --color-fog: #8a8f98;
+  --color-mist: #d0d6e0;
+  --color-bone: #e5e5e6;
   --color-paper: #ffffff;
-  --color-ash: #f1f1f1;
-  --color-hairline: #0000001f;
-  --color-whisper: #0000000a;
+  --color-acid-lime: #e4f222;
+  --color-pulse-green: #27a644;
+  --color-coral-red: #eb5757;
+  --color-signal-teal: #02b8cc;
+  --color-iris-violet: #6366f1;
+  --color-lavender: #8b5cf6;
 
-  /* Typeface — OpenAI Sans substitute: Inter (per DESIGN.md) */
+  /* Typography */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
 
-  /* Type scale — size + attached line-height/tracking per token */
+  /* Type scale — size + attached line-height/tracking per LinearDesign.md */
+  --text-micro: 10px;
+  --text-micro--line-height: 1.5;
+  --text-micro--font-weight: 510;
+  --text-label: 12px;
+  --text-label--line-height: 1.4;
   --text-caption: 13px;
-  --text-caption--line-height: 1.51;
-  --text-caption--letter-spacing: -0.13px;
-  --text-label: 14px;
-  --text-label--line-height: 1.5;
-  --text-label--letter-spacing: -0.14px;
-  --text-input: 16px;
-  --text-input--line-height: 1.5;
-  --text-input--letter-spacing: -0.16px;
-  --text-body: 17px;
-  --text-body--line-height: 1.65;
-  --text-body--letter-spacing: -0.01em;
-  --text-body-lg: 18px;
-  --text-body-lg--line-height: 1.32;
-  --text-body-lg--letter-spacing: -0.18px;
-  --text-subheading: 22px;
-  --text-subheading--line-height: 1.26;
-  --text-subheading--letter-spacing: -0.22px;
-  --text-heading: 28px;
-  --text-heading--line-height: 1.21;
-  --text-heading--letter-spacing: 0.31px;
-  --text-display: 48px;
-  --text-display--line-height: 1.16;
-  --text-display--letter-spacing: -1.44px;
+  --text-caption--line-height: 1.2;
+  --text-body-sm: 15px;
+  --text-body-sm--line-height: 1.6;
+  --text-body-sm--letter-spacing: -0.165px;
+  --text-body: 16px;
+  --text-body--line-height: 1.5;
+  --text-body-lg: 20px;
+  --text-body-lg--line-height: 1.33;
+  --text-body-lg--letter-spacing: -0.24px;
+  --text-subheading: 24px;
+  --text-subheading--line-height: 1.33;
+  --text-subheading--letter-spacing: -0.288px;
+  --text-heading-sm: 32px;
+  --text-heading-sm--line-height: 1.13;
+  --text-heading-sm--letter-spacing: -0.704px;
+  --text-heading: 48px;
+  --text-heading--line-height: 1;
+  --text-heading--letter-spacing: -1.056px;
+  --text-heading-lg: 64px;
+  --text-heading-lg--line-height: 1;
+  --text-heading-lg--letter-spacing: -1.408px;
+  --text-display: 72px;
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -1.584px;
 
-  /* Radii */
-  --radius-links: 4px;
-  --radius-cards: 6px;
-  --radius-full: 9999px;
+  /* Weights (Inter Variable — never 700+) */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-w510: 510;
+  --font-weight-w590: 590;
 
-  /* Shadow — pill-button hover ONLY */
-  --shadow-sm: rgba(0, 0, 0, 0.02) 0px 4px 6px 0px,
-    rgba(0, 0, 0, 0.05) 0px 0px 2px 0px;
+  /* Named radii */
+  --radius-small: 2px;
+  --radius-badges: 4px;
+  --radius-buttons: 6px;
+  --radius-inputs: 6px;
+  --radius-cards: 12px;
+  --radius-pills: 9999px;
+
+  /* Shadows — borders do the elevation work; these are the only sanctioned ones */
+  --shadow-sm: rgba(0, 0, 0, 0.4) 0px 2px 4px 0px;
+  --shadow-subtle: rgb(35, 37, 42) 0px 0px 0px 1px inset;
+  --shadow-subtle-2: rgba(0, 0, 0, 0.2) 0px 0px 0px 1px;
+  --shadow-xl: rgba(8, 9, 10, 0.6) 0px 4px 32px 0px;
+  --shadow-subtle-4: rgba(255, 255, 255, 0.03) 0px 0px 0px 1px inset,
+    rgba(255, 255, 255, 0.04) 0px 1px 0px 0px inset,
+    rgba(0, 0, 0, 0.6) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 4px 4px 0px;
+}
+
+/* Weight utilities for the non-standard Inter Variable stops */
+@utility font-w510 {
+  font-weight: 510;
+}
+@utility font-w590 {
+  font-weight: 590;
 }
 
 body {
-  background: var(--color-paper);
-  color: var(--color-obsidian);
+  background: var(--color-void);
+  color: var(--color-mist);
   font-family: var(--font-sans);
-  font-size: 17px;
-  line-height: 1.65;
-  letter-spacing: -0.01em;
+  font-size: 16px;
+  line-height: 1.5;
   font-weight: 400;
-  font-feature-settings: "calt" on, "liga" on;
+  font-feature-settings: "cv01" on, "ss03" on, "zero" on;
   -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(228, 242, 34, 0.2);
+}
+
+/* Native form controls inherit the dark scheme */
+:root {
+  color-scheme: dark;
 }
 
 @media (prefers-reduced-motion: reduce) {

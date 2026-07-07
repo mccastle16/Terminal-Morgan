@@ -47,7 +47,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
     <form onSubmit={submit} className="mt-10">
       <div className="space-y-3">
         <label className="block">
-          <span className="mb-1.5 block text-label font-medium text-obsidian">Email</span>
+          <span className="mb-1.5 block text-caption font-w510 text-mist">Email</span>
           <input
             type="email"
             required
@@ -55,11 +55,11 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@yourbusiness.com"
-            className="w-full rounded-full border border-hairline bg-transparent px-6 py-2.5 text-input font-normal text-obsidian outline-none placeholder:text-smoke"
+            className="w-full rounded-inputs border border-white/[0.08] bg-white/[0.02] px-3.5 py-3 text-[14px] text-mist outline-none placeholder:text-fog focus:border-mist"
           />
         </label>
         <label className="block">
-          <span className="mb-1.5 block text-label font-medium text-obsidian">Password</span>
+          <span className="mb-1.5 block text-caption font-w510 text-mist">Password</span>
           <input
             type="password"
             required
@@ -68,28 +68,31 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder={mode === "signup" ? "At least 8 characters" : "Your password"}
-            className="w-full rounded-full border border-hairline bg-transparent px-6 py-2.5 text-input font-normal text-obsidian outline-none placeholder:text-smoke"
+            className="w-full rounded-inputs border border-white/[0.08] bg-white/[0.02] px-3.5 py-3 text-[14px] text-mist outline-none placeholder:text-fog focus:border-mist"
           />
         </label>
       </div>
 
       {error && (
-        <p className="mt-4 text-label font-normal text-obsidian" role="alert">
+        <p className="mt-4 text-caption font-normal text-mist" role="alert">
           {error}
         </p>
       )}
 
       {offline && (
-        <div className="mt-5 rounded-cards border border-hairline p-5" role="alert">
-          <p className="text-label font-medium text-obsidian">Accounts are opening shortly</p>
-          <p className="mt-1 text-caption font-normal leading-relaxed text-graphite">
+        <div
+          className="mt-5 rounded-cards border border-graphite bg-carbon p-5"
+          role="alert"
+        >
+          <p className="text-caption font-w510 text-paper">Accounts are opening shortly</p>
+          <p className="mt-1 text-caption font-normal leading-relaxed text-fog">
             The network database isn’t live yet, so sign-{mode === "signup" ? "up" : "in"} is
             briefly unavailable. You can explore the owner dashboard with sample data in the
             meantime.
           </p>
           <Link
             href="/app/preview"
-            className="mt-3 inline-block rounded-full border border-hairline px-5 py-2 text-label font-medium text-obsidian transition-shadow duration-200 hover:shadow-sm"
+            className="mt-3 inline-flex cursor-pointer items-center rounded-buttons border border-graphite px-3 py-2 text-caption text-mist transition-colors duration-150 hover:border-smoke hover:bg-white/[0.03]"
           >
             Explore the preview
           </Link>
@@ -99,7 +102,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
       <button
         type="submit"
         disabled={busy}
-        className="mt-6 w-full cursor-pointer rounded-full bg-obsidian px-6 py-2.5 text-label font-medium text-paper transition-opacity duration-200 hover:opacity-80 disabled:cursor-default disabled:opacity-40"
+        className="mt-6 inline-flex w-full cursor-pointer items-center justify-center rounded-buttons bg-acid-lime px-4 py-2.5 text-[14px] font-w510 tracking-[-0.011em] text-void transition-opacity duration-150 hover:opacity-85 disabled:cursor-default disabled:opacity-40"
       >
         {busy ? "One moment…" : mode === "signup" ? "Create account" : "Log in"}
       </button>

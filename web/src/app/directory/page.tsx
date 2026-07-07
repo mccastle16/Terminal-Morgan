@@ -37,23 +37,23 @@ export default async function DirectoryPage({ searchParams }: Props) {
   const stats = getStats();
 
   return (
-    <div className="flex min-h-screen flex-col bg-paper">
+    <div className="flex min-h-screen flex-col bg-void">
       <SiteHeader />
 
       <main className="mx-auto w-full max-w-[1200px] flex-1 px-6 pb-8 pt-12">
-        <h1 className="text-heading font-semibold text-obsidian">Directory</h1>
-        <p className="mt-1 text-body font-normal text-graphite">
+        <h1 className="text-heading-sm font-w510 text-paper">Directory</h1>
+        <p className="mt-2 text-body-sm font-normal text-fog">
           {stats.total.toLocaleString()} businesses across {stats.neighborhoods} neighborhoods —
           find yours and claim it.
         </p>
 
-        {/* Search + filters — pill inputs, GET form, no JS required */}
+        {/* Search + filters — GET form, no JS required */}
         <form method="GET" className="mt-8 flex flex-col gap-2 sm:flex-row">
           <label className="relative flex-1">
             <Search
               size={16}
               strokeWidth={1.5}
-              className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-obsidian"
+              className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-fog"
               aria-hidden
             />
             <input
@@ -62,14 +62,14 @@ export default async function DirectoryPage({ searchParams }: Props) {
               defaultValue={sp.q ?? ""}
               placeholder="Search by name, category, or address…"
               aria-label="Search businesses"
-              className="w-full rounded-full border border-hairline bg-transparent py-2.5 pl-12 pr-6 text-input font-normal text-obsidian outline-none placeholder:text-graphite"
+              className="w-full rounded-inputs border border-white/[0.08] bg-white/[0.02] py-3 pl-10 pr-3.5 text-[14px] text-mist outline-none placeholder:text-fog focus:border-mist"
             />
           </label>
           <select
             name="category"
             defaultValue={sp.category ?? ""}
             aria-label="Filter by category"
-            className="cursor-pointer rounded-full border border-hairline bg-transparent px-5 py-2.5 text-label font-medium text-obsidian outline-none"
+            className="cursor-pointer rounded-inputs border border-white/[0.08] bg-white/[0.02] px-3.5 py-3 text-[14px] text-mist outline-none focus:border-mist"
           >
             <option value="">All categories</option>
             {categories.map((c) => (
@@ -82,7 +82,7 @@ export default async function DirectoryPage({ searchParams }: Props) {
             name="neighborhood"
             defaultValue={sp.neighborhood ?? ""}
             aria-label="Filter by neighborhood"
-            className="cursor-pointer rounded-full border border-hairline bg-transparent px-5 py-2.5 text-label font-medium text-obsidian outline-none"
+            className="cursor-pointer rounded-inputs border border-white/[0.08] bg-white/[0.02] px-3.5 py-3 text-[14px] text-mist outline-none focus:border-mist"
           >
             <option value="">All neighborhoods</option>
             {neighborhoods.map((n) => (
@@ -93,21 +93,21 @@ export default async function DirectoryPage({ searchParams }: Props) {
           </select>
           <button
             type="submit"
-            className="cursor-pointer rounded-full bg-obsidian px-6 py-2.5 text-label font-medium text-paper transition-opacity duration-200 hover:opacity-80"
+            className="cursor-pointer rounded-buttons bg-paper px-4 py-2.5 text-[14px] font-w510 tracking-[-0.011em] text-void transition-opacity duration-150 hover:opacity-85"
           >
             Search
           </button>
         </form>
 
         <div className="mt-10 flex items-baseline justify-between">
-          <p className="text-label font-medium text-graphite">
+          <p className="text-caption font-normal text-fog">
             {result.total.toLocaleString()} result{result.total === 1 ? "" : "s"}
             {sp.q && <> for “{sp.q}”</>}
           </p>
           {(sp.q || sp.category || sp.neighborhood) && (
             <Link
               href="/directory"
-              className="rounded-links text-label font-medium text-obsidian transition-colors duration-200 hover:text-graphite"
+              className="cursor-pointer rounded-buttons px-2 py-1 text-caption font-normal text-mist transition-colors duration-150 hover:bg-white/[0.03]"
             >
               Clear filters
             </Link>
@@ -115,15 +115,15 @@ export default async function DirectoryPage({ searchParams }: Props) {
         </div>
 
         {result.items.length === 0 ? (
-          <div className="mt-6 border-t border-hairline pt-10">
-            <p className="text-body-lg font-medium text-obsidian">
+          <div className="mt-6 border-t border-graphite pt-10">
+            <p className="text-body-lg font-w510 text-paper">
               No businesses match that search.
             </p>
-            <p className="mt-2 max-w-md text-body font-normal text-graphite">
+            <p className="mt-2 max-w-md text-body-sm font-normal text-fog">
               Can’t find your business? It may not be indexed yet —{" "}
               <Link
                 href="/claim/new"
-                className="rounded-links font-medium text-obsidian underline decoration-hairline underline-offset-4 hover:decoration-obsidian"
+                className="text-mist underline decoration-graphite underline-offset-4 hover:decoration-mist"
               >
                 add it to the network
               </Link>
@@ -131,7 +131,7 @@ export default async function DirectoryPage({ searchParams }: Props) {
             </p>
           </div>
         ) : (
-          <div className="mt-2 border-t border-hairline">
+          <div className="mt-2 border-t border-graphite">
             <BusinessList items={result.items} />
           </div>
         )}
@@ -139,31 +139,31 @@ export default async function DirectoryPage({ searchParams }: Props) {
         {/* Pagination — ghost text controls */}
         {result.pages > 1 && (
           <nav
-            className="mt-10 flex items-center justify-center gap-6 text-label font-medium"
+            className="mt-10 flex items-center justify-center gap-6 text-caption"
             aria-label="Pagination"
           >
             {result.page > 1 ? (
               <Link
                 href={`/directory${buildQuery(filters, { page: String(result.page - 1) })}`}
-                className="rounded-full px-4 py-1.5 text-obsidian transition-colors duration-200 hover:bg-whisper"
+                className="cursor-pointer rounded-buttons px-3 py-1.5 text-mist transition-colors duration-150 hover:bg-white/[0.03]"
               >
                 ← Previous
               </Link>
             ) : (
-              <span className="px-4 py-1.5 text-smoke">← Previous</span>
+              <span className="px-3 py-1.5 text-ash">← Previous</span>
             )}
-            <span className="font-normal text-graphite">
+            <span className="font-normal text-fog">
               Page {result.page} of {result.pages}
             </span>
             {result.page < result.pages ? (
               <Link
                 href={`/directory${buildQuery(filters, { page: String(result.page + 1) })}`}
-                className="rounded-full px-4 py-1.5 text-obsidian transition-colors duration-200 hover:bg-whisper"
+                className="cursor-pointer rounded-buttons px-3 py-1.5 text-mist transition-colors duration-150 hover:bg-white/[0.03]"
               >
                 Next →
               </Link>
             ) : (
-              <span className="px-4 py-1.5 text-smoke">Next →</span>
+              <span className="px-3 py-1.5 text-ash">Next →</span>
             )}
           </nav>
         )}

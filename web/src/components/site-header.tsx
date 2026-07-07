@@ -1,43 +1,40 @@
 import Link from "next/link";
 
-// Top navigation per DESIGN.md: Paper background, ~64px tall, text wordmark,
-// ghost nav links, ONE filled black button at far right. No border-bottom —
-// separation is whitespace alone. No icons.
+// Top navigation per LinearDesign.md: transparent over the Void canvas,
+// ~64px tall, wordmark left, ghost typographic nav links right, and ONE
+// white pill (the second-highest-contrast element after the acid-lime CTA).
 export function SiteHeader() {
   return (
-    <header className="bg-paper">
+    <header className="bg-void">
       <div className="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between px-6">
-        <Link
-          href="/"
-          className="rounded-links text-label font-medium text-obsidian"
-        >
+        <Link href="/" className="text-body font-w510 text-paper">
           CO_ Network
-          <span className="ml-2 font-normal text-graphite">Coral Gables</span>
+          <span className="ml-2 text-caption font-normal text-fog">Coral Gables</span>
         </Link>
         <nav className="flex items-center gap-1">
           <Link
             href="/directory"
-            className="rounded-full px-3 py-1.5 text-label font-medium text-obsidian transition-colors duration-200 hover:bg-whisper"
+            className="rounded-buttons px-3 py-2 text-caption font-normal text-mist transition-colors duration-150 hover:bg-white/[0.03]"
           >
             Directory
           </Link>
           <Link
             href="/claim/new"
-            className="hidden rounded-full px-3 py-1.5 text-label font-medium text-obsidian transition-colors duration-200 hover:bg-whisper sm:block"
+            className="hidden rounded-buttons px-3 py-2 text-caption font-normal text-mist transition-colors duration-150 hover:bg-white/[0.03] sm:block"
           >
             Add a business
           </Link>
           <Link
             href="/login"
-            className="rounded-full px-3 py-1.5 text-label font-medium text-obsidian transition-colors duration-200 hover:bg-whisper"
+            className="rounded-buttons px-3 py-2 text-caption font-normal text-mist transition-colors duration-150 hover:bg-white/[0.03]"
           >
             Log in
           </Link>
           <Link
             href="/signup"
-            className="ml-3 rounded-full bg-obsidian px-5 py-2 text-label font-medium text-paper transition-opacity duration-200 hover:opacity-80"
+            className="ml-3 rounded-pills bg-paper px-4 py-2 text-caption font-w510 text-void transition-opacity duration-150 hover:opacity-85"
           >
-            Claim your business
+            Sign up
           </Link>
         </nav>
       </div>
@@ -45,25 +42,50 @@ export function SiteHeader() {
   );
 }
 
-// Footer per DESIGN.md: Paper, graphite 13-14px, generous top padding,
-// utilitarian and quiet. No social icons.
+// Footer: quiet, hairline-separated, grey typographic links only.
 export function SiteFooter() {
   return (
-    <footer className="mt-16 bg-paper pb-12 pt-16">
+    <footer className="mt-24 bg-void pb-12">
       <div className="mx-auto w-full max-w-[1200px] px-6">
-        <div className="border-t border-hairline pt-8">
-          <p className="max-w-2xl text-caption font-normal text-graphite">
-            CO_ Network is operated by CO_, an AI consulting and digital analytics agency.
-            Business data is gathered from public sources and verified owners; owners can claim
-            their profile to review and correct it at any time.
-          </p>
-          <div className="mt-6 flex gap-6 text-caption font-medium text-graphite">
-            <Link href="/directory" className="rounded-links transition-colors duration-200 hover:text-obsidian">
-              Directory
-            </Link>
-            <Link href="/claim/new" className="rounded-links transition-colors duration-200 hover:text-obsidian">
-              Add a business
-            </Link>
+        <div className="border-t border-graphite pt-8">
+          <div className="flex flex-col gap-8 md:flex-row md:justify-between">
+            <p className="max-w-md text-caption font-normal text-fog">
+              CO_ Network is operated by CO_, an AI consulting and digital analytics agency.
+              Business data is gathered from public sources and verified owners; owners can
+              claim their profile to review and correct it at any time.
+            </p>
+            <div className="flex gap-8">
+              <div className="flex flex-col gap-2">
+                <p className="text-label font-w510 uppercase tracking-wide text-ash">Network</p>
+                <Link
+                  href="/directory"
+                  className="text-caption text-fog transition-colors duration-150 hover:text-mist"
+                >
+                  Directory
+                </Link>
+                <Link
+                  href="/claim/new"
+                  className="text-caption text-fog transition-colors duration-150 hover:text-mist"
+                >
+                  Add a business
+                </Link>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-label font-w510 uppercase tracking-wide text-ash">Owners</p>
+                <Link
+                  href="/signup"
+                  className="text-caption text-fog transition-colors duration-150 hover:text-mist"
+                >
+                  Claim your business
+                </Link>
+                <Link
+                  href="/login"
+                  className="text-caption text-fog transition-colors duration-150 hover:text-mist"
+                >
+                  Log in
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
