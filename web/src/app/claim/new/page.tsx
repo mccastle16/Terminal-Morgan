@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowLeft, MapPinPlus } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { getStats } from "@/lib/data";
 
@@ -15,42 +14,45 @@ export const metadata: Metadata = {
 export default function NewBusinessPage() {
   const stats = getStats();
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="flex min-h-screen flex-col bg-paper">
       <SiteHeader />
 
-      <main className="mx-auto max-w-2xl px-4 py-10 sm:px-6">
+      <main className="mx-auto w-full max-w-[1200px] flex-1 px-6 pb-8 pt-10">
         <Link
           href="/directory"
-          className="mb-6 inline-flex items-center gap-1.5 text-sm text-slate-400 transition-colors hover:text-slate-200"
+          className="rounded-links text-label font-medium text-graphite transition-colors duration-200 hover:text-obsidian"
         >
-          <ArrowLeft size={14} aria-hidden /> Directory
+          ← Directory
         </Link>
 
-        <div className="flex items-center gap-2 text-amber-400">
-          <MapPinPlus size={18} aria-hidden />
-          <p className="text-xs font-semibold uppercase tracking-[0.2em]">Add your business</p>
-        </div>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight">Not in the directory yet?</h1>
-        <p className="mt-3 text-sm leading-relaxed text-slate-400">
-          We’ve indexed {stats.total.toLocaleString()} Coral Gables businesses from public sources,
-          but some — especially newer businesses and office-based professional services — aren’t
-          visible in public data. Add yours: you’ll provide the basics (name, category, address,
-          phone), verify ownership, and get the same free profile, benchmark, and connection
-          suggestions as every claimed business.
-        </p>
-
-        <div className="mt-8 rounded-2xl border border-amber-500/25 bg-amber-500/[0.06] p-5 text-center">
-          <p className="text-sm font-semibold text-slate-100">Listing creation opens with accounts</p>
-          <p className="mx-auto mt-1 max-w-md text-xs leading-relaxed text-slate-400">
-            Send us the business name and address and we’ll index it and notify you the moment
-            claiming opens:
+        <div className="mx-auto mt-10 max-w-2xl">
+          <p className="text-label font-medium text-graphite">Add your business</p>
+          <h1 className="mt-2 text-4xl font-medium tracking-[-1.2px] text-obsidian sm:text-display">
+            Not in the directory yet?
+          </h1>
+          <p className="mt-5 max-w-xl text-body font-normal text-obsidian">
+            We’ve indexed {stats.total.toLocaleString()} Coral Gables businesses from public
+            sources, but some — especially newer businesses and office-based professional
+            services — aren’t visible in public data. Add yours: you’ll provide the basics
+            (name, category, address, phone), verify ownership, and get the same free profile,
+            benchmark, and connection suggestions as every claimed business.
           </p>
-          <a
-            href="mailto:hello@co-underscore.com?subject=Add%20my%20business%20to%20CO_%20Network"
-            className="mt-3 inline-block rounded-xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-amber-400"
-          >
-            Add my business
-          </a>
+
+          <div className="mt-12 rounded-cards border border-hairline p-8 text-center">
+            <p className="text-subheading font-medium text-obsidian">
+              Listing creation opens with accounts
+            </p>
+            <p className="mx-auto mt-2 max-w-md text-label font-normal leading-relaxed text-graphite">
+              Send us the business name and address and we’ll index it and notify you the moment
+              claiming opens.
+            </p>
+            <a
+              href="mailto:hello@co-underscore.com?subject=Add%20my%20business%20to%20CO_%20Network"
+              className="mt-5 inline-block rounded-full bg-obsidian px-6 py-2.5 text-label font-medium text-paper transition-opacity duration-200 hover:opacity-80"
+            >
+              Add my business
+            </a>
+          </div>
         </div>
       </main>
 

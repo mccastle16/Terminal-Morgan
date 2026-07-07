@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, Handshake, ShieldCheck, TrendingUp } from "lucide-react";
+import { Search } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { getCategories, getStats } from "@/lib/data";
 
@@ -10,113 +10,103 @@ export const metadata: Metadata = {
     "A relationship network for the Coral Gables business ecosystem. Claim your business, correct your data, see how you stand, and find the connections that matter.",
 };
 
-const PILLARS = [
-  {
-    icon: ShieldCheck,
-    title: "Own your data",
-    detail:
-      "Your profile already exists — assembled from public sources. Claim it, see exactly what's known, and correct anything out of date. Owner corrections beat every other source.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Know where you stand",
-    detail:
-      "Benchmarks against your real local peers — rating standing, review volume, digital presence — framed as headroom, not judgment.",
-  },
-  {
-    icon: Handshake,
-    title: "Find the right connections",
-    detail:
-      "Neighbors, complementary services, referral partners. Every suggestion explains why it was made, and you decide what sticks.",
-  },
-];
-
+// DESIGN.md hero model: a vertically centered prompt interaction on an empty
+// white canvas — the search input IS the first screen. Below, content flows
+// in editorial 2-column compositions separated by whitespace alone.
 export default function Home() {
   const stats = getStats();
-  const topCategories = getCategories().slice(0, 8);
+  const topCategories = getCategories().slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="flex min-h-screen flex-col bg-paper">
       <SiteHeader />
 
-      <main>
-        {/* Hero */}
-        <section className="mx-auto max-w-6xl px-4 pb-16 pt-20 text-center sm:px-6 sm:pt-28">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-amber-500">
-            Coral Gables, Florida
-          </p>
-          <h1 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">
+      <main className="flex-1">
+        {/* ── Hero: the command line ── */}
+        <section className="mx-auto flex w-full max-w-[1200px] flex-col items-center px-6 pb-20 pt-28 text-center sm:pt-36">
+          <h1 className="max-w-2xl text-4xl font-medium tracking-[-1.44px] text-obsidian sm:text-display">
             Every business in Coral Gables, mapped.
           </h1>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-slate-400">
-            {stats.total.toLocaleString()} local businesses. One living network of who’s here, how
-            they connect, and where each one has room to grow. Yours is already on it.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href="/directory"
-              className="flex items-center gap-2 rounded-xl bg-amber-500 px-6 py-3 text-sm font-semibold text-slate-950 transition-all duration-200 hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/20"
-            >
-              Find your business <ArrowRight size={15} aria-hidden />
-            </Link>
-            <Link
-              href="/directory"
-              className="rounded-xl border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200 transition-colors hover:border-slate-500 hover:bg-slate-900"
-            >
-              Browse the directory
-            </Link>
-          </div>
 
-          {/* Stats strip */}
-          <dl className="mx-auto mt-14 grid max-w-2xl grid-cols-3 gap-4">
-            {[
-              [stats.total.toLocaleString(), "businesses indexed"],
-              [String(stats.categories), "categories"],
-              [String(stats.neighborhoods), "neighborhoods"],
-            ].map(([v, l]) => (
-              <div key={l} className="rounded-2xl border border-slate-800 bg-slate-900/50 p-4">
-                <dt className="sr-only">{l}</dt>
-                <dd className="text-2xl font-bold text-amber-400">{v}</dd>
-                <dd className="mt-1 text-xs text-slate-500">{l}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
+          <form method="GET" action="/directory" className="mt-10 w-full max-w-xl">
+            <label className="relative block">
+              <Search
+                size={18}
+                strokeWidth={1.5}
+                className="pointer-events-none absolute left-6 top-1/2 -translate-y-1/2 text-obsidian"
+                aria-hidden
+              />
+              <input
+                type="search"
+                name="q"
+                placeholder="Search for your business…"
+                aria-label="Search businesses"
+                className="w-full rounded-full border border-hairline bg-transparent py-3 pl-[52px] pr-6 text-input font-normal text-obsidian outline-none placeholder:text-graphite"
+              />
+            </label>
+          </form>
 
-        {/* Pillars */}
-        <section className="border-t border-slate-800/70 bg-slate-900/30 py-16">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 sm:px-6 md:grid-cols-3">
-            {PILLARS.map((p) => (
-              <div key={p.title} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 text-amber-400">
-                  <p.icon size={19} aria-hidden />
-                </div>
-                <h2 className="mt-4 text-base font-bold">{p.title}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-slate-400">{p.detail}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Category shortcuts */}
-        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <h2 className="text-lg font-bold">Explore by category</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
+          {/* Tag chip row — outlined pills, 8px apart */}
+          <div className="mt-5 flex max-w-xl flex-wrap justify-center gap-2">
             {topCategories.map((c) => (
               <Link
                 key={c.slug}
                 href={`/directory?category=${c.slug}`}
-                className="rounded-full border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm text-slate-300 transition-colors hover:border-amber-500/40 hover:text-amber-400"
+                className="rounded-full border border-hairline px-5 py-2 text-label font-medium text-obsidian transition-shadow duration-200 hover:shadow-sm"
               >
-                {c.label} <span className="text-slate-600">{c.count}</span>
+                {c.label}
               </Link>
             ))}
-            <Link
-              href="/directory"
-              className="rounded-full px-4 py-2 text-sm font-medium text-amber-400 transition-colors hover:text-amber-300"
-            >
-              All categories →
-            </Link>
+          </div>
+
+          <p className="mt-12 text-label font-normal text-graphite">
+            {stats.total.toLocaleString()} businesses · {stats.categories} categories ·{" "}
+            {stats.neighborhoods} neighborhoods
+          </p>
+        </section>
+
+        {/* ── What it is — 2-column editorial ── */}
+        <section className="mx-auto w-full max-w-[1200px] px-6 py-16">
+          <p className="text-label font-medium text-graphite">The network</p>
+          <div className="mt-8 grid grid-cols-1 gap-x-16 gap-y-12 md:grid-cols-2">
+            <div>
+              <h2 className="text-heading font-semibold text-obsidian">
+                Your profile already exists. Own it.
+              </h2>
+              <p className="mt-4 max-w-md text-body font-normal text-obsidian">
+                We assembled a living map of the Coral Gables business ecosystem from public
+                sources — who’s here, how they relate, and where each business has room to grow.
+                Claim yours to see exactly what’s known about it and correct anything that’s out
+                of date. Owner corrections take priority over every other source.
+              </p>
+            </div>
+            <div className="flex flex-col gap-10">
+              <div>
+                <h3 className="text-subheading font-medium text-obsidian">
+                  Know where you stand
+                </h3>
+                <p className="mt-2 max-w-md text-body font-normal text-graphite">
+                  Benchmarks against your real local peers — rating standing, review volume,
+                  digital presence — framed as headroom, not judgment.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-subheading font-medium text-obsidian">
+                  Find the right connections
+                </h3>
+                <p className="mt-2 max-w-md text-body font-normal text-graphite">
+                  Neighbors, complementary services, referral partners. Every suggestion explains
+                  why it was made, and you decide what sticks.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-subheading font-medium text-obsidian">Free for owners</h3>
+                <p className="mt-2 max-w-md text-body font-normal text-graphite">
+                  Claiming, correcting, and benchmarking cost nothing. Verification takes a
+                  one-time code sent to the phone number already on file.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
       </main>

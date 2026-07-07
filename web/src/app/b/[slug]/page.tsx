@@ -1,17 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import {
-  ArrowLeft,
-  BadgeCheck,
-  Globe,
-  Lightbulb,
-  MapPin,
-  Phone,
-  ShieldCheck,
-  TrendingUp,
-} from "lucide-react";
-import { BusinessCard, Rating } from "@/components/business-card";
+import { BusinessList, ChamberChip, Rating } from "@/components/business-card";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
 import {
   getBenchmark,
@@ -46,155 +36,155 @@ export default async function BusinessPage({ params }: Props) {
   const similar = getSimilar(business);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="flex min-h-screen flex-col bg-paper">
       <SiteHeader />
 
-      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+      <main className="mx-auto w-full max-w-[1200px] flex-1 px-6 pb-8 pt-10">
         <Link
           href="/directory"
-          className="mb-6 inline-flex items-center gap-1.5 text-sm text-slate-400 transition-colors hover:text-slate-200"
+          className="rounded-links text-label font-medium text-graphite transition-colors duration-200 hover:text-obsidian"
         >
-          <ArrowLeft size={14} aria-hidden /> Directory
+          ← Directory
         </Link>
 
-        {/* ── Identity ── */}
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+        {/* ── Identity + claim — 2-column editorial ── */}
+        <div className="mt-8 grid grid-cols-1 gap-x-16 gap-y-10 lg:grid-cols-[1fr_360px]">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-3">
-              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{business.name}</h1>
+              <h1 className="text-4xl font-medium tracking-[-1.2px] text-obsidian sm:text-display">
+                {business.name}
+              </h1>
+            </div>
+            <p className="mt-3 text-label font-medium text-graphite">
+              {getCategoryLabel(business.category_slug)}
+              {business.category_secondary && <> · {business.category_secondary}</>}
+              {business.price_tier && !business.price_tier_inferred && (
+                <> · {business.price_tier}</>
+              )}
               {business.chamber_member === true && (
-                <span className="flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-400">
-                  <BadgeCheck size={13} aria-hidden /> Chamber member
+                <span className="ml-3 inline-block align-middle">
+                  <ChamberChip />
                 </span>
               )}
-            </div>
-            <p className="mt-2 text-sm text-slate-400">
-              {getCategoryLabel(business.category_slug)}
-              {business.category_secondary && (
-                <span className="text-slate-500"> · {business.category_secondary}</span>
-              )}
-              {business.price_tier && !business.price_tier_inferred && (
-                <span className="text-slate-500"> · {business.price_tier}</span>
-              )}
             </p>
-            <div className="mt-3">
+            <div className="mt-4">
               <Rating rating={business.rating} count={business.review_count} />
             </div>
 
-            <dl className="mt-5 space-y-2 text-sm">
+            <dl className="mt-8 max-w-md space-y-3 border-t border-hairline pt-6 text-body">
               {business.address && (
-                <div className="flex items-start gap-2 text-slate-300">
-                  <MapPin size={15} className="mt-0.5 shrink-0 text-slate-500" aria-hidden />
-                  <span>
+                <div className="flex gap-6">
+                  <dt className="w-20 shrink-0 text-label font-medium text-graphite">Address</dt>
+                  <dd className="font-normal text-obsidian">
                     {business.address}
                     {business.neighborhood_label && (
-                      <span className="text-slate-500"> · {business.neighborhood_label}</span>
+                      <span className="text-graphite"> · {business.neighborhood_label}</span>
                     )}
-                  </span>
+                  </dd>
                 </div>
               )}
               {business.phone && (
-                <div className="flex items-center gap-2 text-slate-300">
-                  <Phone size={15} className="shrink-0 text-slate-500" aria-hidden />
-                  <a href={`tel:${business.phone}`} className="transition-colors hover:text-amber-400">
-                    {business.phone}
-                  </a>
+                <div className="flex gap-6">
+                  <dt className="w-20 shrink-0 text-label font-medium text-graphite">Phone</dt>
+                  <dd>
+                    <a
+                      href={`tel:${business.phone}`}
+                      className="rounded-links font-normal text-obsidian underline decoration-hairline underline-offset-4 hover:decoration-obsidian"
+                    >
+                      {business.phone}
+                    </a>
+                  </dd>
                 </div>
               )}
               {business.website && (
-                <div className="flex items-center gap-2 text-slate-300">
-                  <Globe size={15} className="shrink-0 text-slate-500" aria-hidden />
-                  <a
-                    href={business.website.startsWith("http") ? business.website : `https://${business.website}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="truncate transition-colors hover:text-amber-400"
-                  >
-                    {business.website.replace(/^https?:\/\//, "")}
-                  </a>
+                <div className="flex gap-6">
+                  <dt className="w-20 shrink-0 text-label font-medium text-graphite">Website</dt>
+                  <dd className="min-w-0">
+                    <a
+                      href={
+                        business.website.startsWith("http")
+                          ? business.website
+                          : `https://${business.website}`
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block truncate rounded-links font-normal text-obsidian underline decoration-hairline underline-offset-4 hover:decoration-obsidian"
+                    >
+                      {business.website.replace(/^https?:\/\//, "")}
+                    </a>
+                  </dd>
                 </div>
               )}
             </dl>
           </div>
 
-          {/* ── Claim CTA — the core loop (REBUILD-PLAN D11) ── */}
-          <aside className="w-full shrink-0 rounded-2xl border border-amber-500/25 bg-amber-500/[0.06] p-5 lg:w-80">
-            <div className="flex items-center gap-2 text-amber-400">
-              <ShieldCheck size={17} aria-hidden />
-              <h2 className="text-sm font-bold">Is this your business?</h2>
-            </div>
-            <p className="mt-2 text-sm leading-relaxed text-slate-300">
-              Claim this profile to see everything we know about it, correct anything that’s out of
-              date, and unlock your full market benchmark and connection suggestions — free.
+          {/* Claim card — carries the page's single filled button */}
+          <aside className="h-fit rounded-cards border border-hairline p-6">
+            <h2 className="text-subheading font-medium text-obsidian">Is this your business?</h2>
+            <p className="mt-3 text-label font-normal leading-relaxed text-graphite">
+              Claim this profile to see everything we know about it, correct anything that’s out
+              of date, and unlock your full market benchmark and connection suggestions — free.
             </p>
             <Link
               href={`/claim/${business.slug}`}
-              className="mt-4 block rounded-xl bg-amber-500 px-4 py-2.5 text-center text-sm font-semibold text-slate-950 transition-colors hover:bg-amber-400"
+              className="mt-5 block rounded-full bg-obsidian px-5 py-2.5 text-center text-label font-medium text-paper transition-opacity duration-200 hover:opacity-80"
             >
               Claim this business
             </Link>
-            <p className="mt-3 text-[11px] leading-relaxed text-slate-500">
+            <p className="mt-4 text-caption font-normal text-smoke">
               Ownership is verified with a one-time code sent to the phone number already on file.
             </p>
           </aside>
         </div>
 
-        {/* ── Market position (constructive framing only — D10) ── */}
-        <section className="mt-10">
-          <div className="flex items-center gap-2">
-            <TrendingUp size={17} className="text-amber-500" aria-hidden />
-            <h2 className="text-lg font-bold">Market position</h2>
-          </div>
-          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-              <p className="text-xs uppercase tracking-wide text-slate-500">Category peers</p>
-              <p className="mt-1 text-2xl font-bold">{benchmark.ratedPeers}</p>
-              <p className="mt-1 text-xs text-slate-400">
+        {/* ── Market position ── */}
+        <section className="mt-20">
+          <p className="text-label font-medium text-graphite">Market position</p>
+          <div className="mt-6 grid grid-cols-1 gap-x-16 gap-y-8 sm:grid-cols-3">
+            <div>
+              <p className="text-display font-medium tracking-[-1.44px] text-obsidian">
+                {benchmark.ratedPeers}
+              </p>
+              <p className="mt-1 text-label font-normal text-graphite">
                 rated {benchmark.categoryLabel.toLowerCase()} businesses in Coral Gables
               </p>
             </div>
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-              <p className="text-xs uppercase tracking-wide text-slate-500">Rating standing</p>
-              {benchmark.ratingPercentile != null ? (
-                <>
-                  <p className="mt-1 text-2xl font-bold">
-                    Top {Math.max(1, 100 - benchmark.ratingPercentile)}%
-                  </p>
-                  <p className="mt-1 text-xs text-slate-400">
-                    meets or beats {benchmark.ratingPercentile}% of rated peers
-                  </p>
-                </>
-              ) : (
-                <>
-                  <p className="mt-1 text-2xl font-bold text-slate-500">—</p>
-                  <p className="mt-1 text-xs text-slate-400">not enough data yet</p>
-                </>
-              )}
-            </div>
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-              <p className="text-xs uppercase tracking-wide text-slate-500">Category average</p>
-              <p className="mt-1 text-2xl font-bold">
-                {benchmark.categoryAvgRating != null ? benchmark.categoryAvgRating.toFixed(1) : "—"}
+            <div>
+              <p className="text-display font-medium tracking-[-1.44px] text-obsidian">
+                {benchmark.ratingPercentile != null
+                  ? `Top ${Math.max(1, 100 - benchmark.ratingPercentile)}%`
+                  : "—"}
               </p>
-              <p className="mt-1 text-xs text-slate-400">average peer rating</p>
+              <p className="mt-1 text-label font-normal text-graphite">
+                {benchmark.ratingPercentile != null
+                  ? `meets or beats ${benchmark.ratingPercentile}% of rated peers`
+                  : "not enough data yet"}
+              </p>
+            </div>
+            <div>
+              <p className="text-display font-medium tracking-[-1.44px] text-obsidian">
+                {benchmark.categoryAvgRating != null
+                  ? benchmark.categoryAvgRating.toFixed(1)
+                  : "—"}
+              </p>
+              <p className="mt-1 text-label font-normal text-graphite">average peer rating</p>
             </div>
           </div>
 
           {benchmark.opportunities.length > 0 && (
-            <div className="mt-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-              <div className="flex items-center gap-2">
-                <Lightbulb size={15} className="text-amber-500" aria-hidden />
-                <h3 className="text-sm font-bold">Headroom</h3>
-              </div>
-              <ul className="mt-3 space-y-3">
+            <div className="mt-12 max-w-2xl">
+              <h3 className="text-subheading font-medium text-obsidian">Headroom</h3>
+              <ul className="mt-4 divide-y divide-hairline">
                 {benchmark.opportunities.map((o) => (
-                  <li key={o.title} className="text-sm">
-                    <p className="font-medium text-slate-200">{o.title}</p>
-                    <p className="mt-0.5 text-xs leading-relaxed text-slate-400">{o.detail}</p>
+                  <li key={o.title} className="py-4">
+                    <p className="text-body font-medium text-obsidian">{o.title}</p>
+                    <p className="mt-1 text-label font-normal leading-relaxed text-graphite">
+                      {o.detail}
+                    </p>
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 text-[11px] text-slate-600">
+              <p className="mt-4 text-caption font-normal text-smoke">
                 Full benchmark detail is available to the verified owner of this profile.
               </p>
             </div>
@@ -203,37 +193,44 @@ export default async function BusinessPage({ params }: Props) {
 
         {/* ── Connections ── */}
         {nearby.length > 0 && (
-          <section className="mt-10">
-            <h2 className="text-lg font-bold">Neighbors</h2>
-            <p className="mt-1 text-sm text-slate-400">Businesses within a 2-minute walk.</p>
-            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {nearby.map((c) => (
-                <BusinessCard key={c.business.id} business={c.business} note={c.reason} />
-              ))}
+          <section className="mt-20">
+            <p className="text-label font-medium text-graphite">Neighbors</p>
+            <h2 className="mt-1 text-heading font-semibold text-obsidian">
+              Within a two-minute walk
+            </h2>
+            <div className="mt-4 max-w-3xl border-t border-hairline">
+              <BusinessList
+                items={nearby.map((c) => c.business)}
+                notes={nearby.map((c) => c.reason)}
+              />
             </div>
           </section>
         )}
 
         {similar.length > 0 && (
-          <section className="mt-10">
-            <h2 className="text-lg font-bold">Similar businesses nearby</h2>
-            <p className="mt-1 text-sm text-slate-400">
-              Other {benchmark.categoryLabel.toLowerCase()} businesses in the area.
-            </p>
-            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {similar.map((c) => (
-                <BusinessCard key={c.business.id} business={c.business} note={c.reason} />
-              ))}
+          <section className="mt-20">
+            <p className="text-label font-medium text-graphite">Similar businesses</p>
+            <h2 className="mt-1 text-heading font-semibold text-obsidian">
+              Other {benchmark.categoryLabel.toLowerCase()} businesses nearby
+            </h2>
+            <div className="mt-4 max-w-3xl border-t border-hairline">
+              <BusinessList
+                items={similar.map((c) => c.business)}
+                notes={similar.map((c) => c.reason)}
+              />
             </div>
           </section>
         )}
 
-        {/* ── Data provenance disclosure (trust design, D10) ── */}
-        <section className="mt-10 rounded-2xl border border-slate-800/70 bg-slate-900/40 p-5 text-xs leading-relaxed text-slate-500">
-          <p>
-            This profile was assembled from public sources (maps data, public records, and the
-            Coral Gables business ecosystem). Something out of date?{" "}
-            <Link href={`/claim/${business.slug}`} className="text-amber-400 hover:text-amber-300">
+        {/* ── Provenance disclosure ── */}
+        <section className="mt-20 max-w-2xl border-t border-hairline pt-6">
+          <p className="text-caption font-normal leading-relaxed text-graphite">
+            This profile was assembled from public sources — maps data, public records, and the
+            Coral Gables business ecosystem. Something out of date?{" "}
+            <Link
+              href={`/claim/${business.slug}`}
+              className="rounded-links font-medium text-obsidian underline decoration-hairline underline-offset-4 hover:decoration-obsidian"
+            >
               Claim this profile
             </Link>{" "}
             to correct it — owner corrections take priority over every other source.

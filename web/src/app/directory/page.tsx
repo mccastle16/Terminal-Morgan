@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ChevronLeft, ChevronRight, Search } from "lucide-react";
-import { BusinessCard } from "@/components/business-card";
+import { Search } from "lucide-react";
+import { BusinessList } from "@/components/business-card";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { getCategories, getNeighborhoods, getStats, searchBusinesses } from "@/lib/data";
 
@@ -37,26 +37,23 @@ export default async function DirectoryPage({ searchParams }: Props) {
   const stats = getStats();
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="flex min-h-screen flex-col bg-paper">
       <SiteHeader />
 
-      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-            Coral Gables Business Directory
-          </h1>
-          <p className="mt-1 text-sm text-slate-400">
-            {stats.total.toLocaleString()} businesses across {stats.neighborhoods} neighborhoods —
-            find yours and claim it.
-          </p>
-        </div>
+      <main className="mx-auto w-full max-w-[1200px] flex-1 px-6 pb-8 pt-12">
+        <h1 className="text-heading font-semibold text-obsidian">Directory</h1>
+        <p className="mt-1 text-body font-normal text-graphite">
+          {stats.total.toLocaleString()} businesses across {stats.neighborhoods} neighborhoods —
+          find yours and claim it.
+        </p>
 
-        {/* Search + filters (GET form — works without JS, server-rendered) */}
-        <form method="GET" className="mb-6 flex flex-col gap-3 sm:flex-row">
+        {/* Search + filters — pill inputs, GET form, no JS required */}
+        <form method="GET" className="mt-8 flex flex-col gap-2 sm:flex-row">
           <label className="relative flex-1">
             <Search
               size={16}
-              className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"
+              strokeWidth={1.5}
+              className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-obsidian"
               aria-hidden
             />
             <input
@@ -65,14 +62,14 @@ export default async function DirectoryPage({ searchParams }: Props) {
               defaultValue={sp.q ?? ""}
               placeholder="Search by name, category, or address…"
               aria-label="Search businesses"
-              className="w-full rounded-xl border border-slate-800 bg-slate-900 py-2.5 pl-9 pr-3 text-sm text-slate-100 placeholder:text-slate-500 focus:border-amber-500/60 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+              className="w-full rounded-full border border-hairline bg-transparent py-2.5 pl-12 pr-6 text-input font-normal text-obsidian outline-none placeholder:text-graphite"
             />
           </label>
           <select
             name="category"
             defaultValue={sp.category ?? ""}
             aria-label="Filter by category"
-            className="cursor-pointer rounded-xl border border-slate-800 bg-slate-900 px-3 py-2.5 text-sm text-slate-200 focus:border-amber-500/60 focus:outline-none"
+            className="cursor-pointer rounded-full border border-hairline bg-transparent px-5 py-2.5 text-label font-medium text-obsidian outline-none"
           >
             <option value="">All categories</option>
             {categories.map((c) => (
@@ -85,7 +82,7 @@ export default async function DirectoryPage({ searchParams }: Props) {
             name="neighborhood"
             defaultValue={sp.neighborhood ?? ""}
             aria-label="Filter by neighborhood"
-            className="cursor-pointer rounded-xl border border-slate-800 bg-slate-900 px-3 py-2.5 text-sm text-slate-200 focus:border-amber-500/60 focus:outline-none"
+            className="cursor-pointer rounded-full border border-hairline bg-transparent px-5 py-2.5 text-label font-medium text-obsidian outline-none"
           >
             <option value="">All neighborhoods</option>
             {neighborhoods.map((n) => (
@@ -96,77 +93,77 @@ export default async function DirectoryPage({ searchParams }: Props) {
           </select>
           <button
             type="submit"
-            className="cursor-pointer rounded-xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-amber-400"
+            className="cursor-pointer rounded-full bg-obsidian px-6 py-2.5 text-label font-medium text-paper transition-opacity duration-200 hover:opacity-80"
           >
             Search
           </button>
         </form>
 
-        {/* Result count + active-filter reset */}
-        <div className="mb-4 flex items-center justify-between text-sm text-slate-400">
-          <p>
+        <div className="mt-10 flex items-baseline justify-between">
+          <p className="text-label font-medium text-graphite">
             {result.total.toLocaleString()} result{result.total === 1 ? "" : "s"}
-            {sp.q && (
-              <>
-                {" "}for <span className="font-medium text-slate-200">“{sp.q}”</span>
-              </>
-            )}
+            {sp.q && <> for “{sp.q}”</>}
           </p>
           {(sp.q || sp.category || sp.neighborhood) && (
-            <Link href="/directory" className="text-amber-400 transition-colors hover:text-amber-300">
+            <Link
+              href="/directory"
+              className="rounded-links text-label font-medium text-obsidian transition-colors duration-200 hover:text-graphite"
+            >
               Clear filters
             </Link>
           )}
         </div>
 
         {result.items.length === 0 ? (
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-10 text-center">
-            <p className="font-medium text-slate-200">No businesses match that search.</p>
-            <p className="mt-2 text-sm text-slate-400">
+          <div className="mt-6 border-t border-hairline pt-10">
+            <p className="text-body-lg font-medium text-obsidian">
+              No businesses match that search.
+            </p>
+            <p className="mt-2 max-w-md text-body font-normal text-graphite">
               Can’t find your business? It may not be indexed yet —{" "}
-              <Link href="/claim/new" className="text-amber-400 hover:text-amber-300">
+              <Link
+                href="/claim/new"
+                className="rounded-links font-medium text-obsidian underline decoration-hairline underline-offset-4 hover:decoration-obsidian"
+              >
                 add it to the network
               </Link>
               .
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {result.items.map((b) => (
-              <BusinessCard key={b.id} business={b} />
-            ))}
+          <div className="mt-2 border-t border-hairline">
+            <BusinessList items={result.items} />
           </div>
         )}
 
-        {/* Pagination */}
+        {/* Pagination — ghost text controls */}
         {result.pages > 1 && (
-          <nav className="mt-8 flex items-center justify-center gap-3 text-sm" aria-label="Pagination">
+          <nav
+            className="mt-10 flex items-center justify-center gap-6 text-label font-medium"
+            aria-label="Pagination"
+          >
             {result.page > 1 ? (
               <Link
                 href={`/directory${buildQuery(filters, { page: String(result.page - 1) })}`}
-                className="flex items-center gap-1 rounded-lg border border-slate-800 px-3 py-1.5 text-slate-300 transition-colors hover:border-slate-700 hover:text-slate-100"
+                className="rounded-full px-4 py-1.5 text-obsidian transition-colors duration-200 hover:bg-whisper"
               >
-                <ChevronLeft size={14} aria-hidden /> Previous
+                ← Previous
               </Link>
             ) : (
-              <span className="flex items-center gap-1 rounded-lg border border-slate-900 px-3 py-1.5 text-slate-700">
-                <ChevronLeft size={14} aria-hidden /> Previous
-              </span>
+              <span className="px-4 py-1.5 text-smoke">← Previous</span>
             )}
-            <span className="text-slate-500">
+            <span className="font-normal text-graphite">
               Page {result.page} of {result.pages}
             </span>
             {result.page < result.pages ? (
               <Link
                 href={`/directory${buildQuery(filters, { page: String(result.page + 1) })}`}
-                className="flex items-center gap-1 rounded-lg border border-slate-800 px-3 py-1.5 text-slate-300 transition-colors hover:border-slate-700 hover:text-slate-100"
+                className="rounded-full px-4 py-1.5 text-obsidian transition-colors duration-200 hover:bg-whisper"
               >
-                Next <ChevronRight size={14} aria-hidden />
+                Next →
               </Link>
             ) : (
-              <span className="flex items-center gap-1 rounded-lg border border-slate-900 px-3 py-1.5 text-slate-700">
-                Next <ChevronRight size={14} aria-hidden />
-              </span>
+              <span className="px-4 py-1.5 text-smoke">Next →</span>
             )}
           </nav>
         )}

@@ -1,25 +1,35 @@
 import Link from "next/link";
-import { Network } from "lucide-react";
 
+// Top navigation per DESIGN.md: Paper background, ~64px tall, text wordmark,
+// ghost nav links, ONE filled black button at far right. No border-bottom —
+// separation is whitespace alone. No icons.
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2 text-slate-100 transition-colors hover:text-amber-400">
-          <Network size={18} className="text-amber-500" aria-hidden />
-          <span className="text-sm font-bold tracking-[0.18em]">CO_ NETWORK</span>
-          <span className="hidden text-xs font-medium text-slate-500 sm:inline">Coral Gables</span>
+    <header className="bg-paper">
+      <div className="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between px-6">
+        <Link
+          href="/"
+          className="rounded-links text-label font-medium text-obsidian"
+        >
+          CO_ Network
+          <span className="ml-2 font-normal text-graphite">Coral Gables</span>
         </Link>
-        <nav className="flex items-center gap-1 text-sm">
+        <nav className="flex items-center gap-1">
           <Link
             href="/directory"
-            className="rounded-lg px-3 py-1.5 text-slate-300 transition-colors hover:bg-slate-800/70 hover:text-slate-100"
+            className="rounded-full px-3 py-1.5 text-label font-medium text-obsidian transition-colors duration-200 hover:bg-whisper"
           >
             Directory
           </Link>
           <Link
+            href="/claim/new"
+            className="rounded-full px-3 py-1.5 text-label font-medium text-obsidian transition-colors duration-200 hover:bg-whisper"
+          >
+            Add a business
+          </Link>
+          <Link
             href="/directory"
-            className="ml-2 rounded-lg bg-amber-500 px-3 py-1.5 font-semibold text-slate-950 transition-colors hover:bg-amber-400"
+            className="ml-3 rounded-full bg-obsidian px-5 py-2 text-label font-medium text-paper transition-opacity duration-200 hover:opacity-80"
           >
             Claim your business
           </Link>
@@ -29,15 +39,27 @@ export function SiteHeader() {
   );
 }
 
+// Footer per DESIGN.md: Paper, graphite 13-14px, generous top padding,
+// utilitarian and quiet. No social icons.
 export function SiteFooter() {
   return (
-    <footer className="border-t border-slate-800/80 py-8">
-      <div className="mx-auto max-w-6xl px-4 text-xs leading-relaxed text-slate-500 sm:px-6">
-        <p>
-          CO_ Network is operated by <span className="font-semibold text-slate-400">CO_</span>, an AI
-          consulting and digital analytics agency. Business data is gathered from public sources and
-          verified owners; owners can claim their profile to review and correct it at any time.
-        </p>
+    <footer className="mt-16 bg-paper pb-12 pt-16">
+      <div className="mx-auto w-full max-w-[1200px] px-6">
+        <div className="border-t border-hairline pt-8">
+          <p className="max-w-2xl text-caption font-normal text-graphite">
+            CO_ Network is operated by CO_, an AI consulting and digital analytics agency.
+            Business data is gathered from public sources and verified owners; owners can claim
+            their profile to review and correct it at any time.
+          </p>
+          <div className="mt-6 flex gap-6 text-caption font-medium text-graphite">
+            <Link href="/directory" className="rounded-links transition-colors duration-200 hover:text-obsidian">
+              Directory
+            </Link>
+            <Link href="/claim/new" className="rounded-links transition-colors duration-200 hover:text-obsidian">
+              Add a business
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ============================================================================
+   CO_ Network — design tokens from DESIGN.md ("Research lab notebook at noon")
+   Light-only, monochromatic editorial system. Rules encoded here:
+   - Paper (#fff) is the sole canvas; Ash/Whisper appear only as hover/subtle
+     surface states. No colored section backgrounds.
+   - #000 is the ONLY filled-button color (one chromatic period per view).
+   - All borders are rgba(0,0,0,0.12) hairlines — never gray hexes.
+   - Pills (9999px) for buttons/inputs/tags; 6px for cards/images; 4px links.
+   - Weights: 400 body · 500 nav/labels/headings · 600 only at heading tier.
+     Nothing heavier, ever.
+   - No card shadows; --shadow-sm exists solely for pill-button hover.
+   ========================================================================== */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  /* Colors */
+  --color-obsidian: #000000;
+  --color-graphite: #666666;
+  --color-smoke: #8f8f8f;
+  --color-paper: #ffffff;
+  --color-ash: #f1f1f1;
+  --color-hairline: #0000001f;
+  --color-whisper: #0000000a;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Typeface — OpenAI Sans substitute: Inter (per DESIGN.md) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Type scale — size + attached line-height/tracking per token */
+  --text-caption: 13px;
+  --text-caption--line-height: 1.51;
+  --text-caption--letter-spacing: -0.13px;
+  --text-label: 14px;
+  --text-label--line-height: 1.5;
+  --text-label--letter-spacing: -0.14px;
+  --text-input: 16px;
+  --text-input--line-height: 1.5;
+  --text-input--letter-spacing: -0.16px;
+  --text-body: 17px;
+  --text-body--line-height: 1.65;
+  --text-body--letter-spacing: -0.01em;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.32;
+  --text-body-lg--letter-spacing: -0.18px;
+  --text-subheading: 22px;
+  --text-subheading--line-height: 1.26;
+  --text-subheading--letter-spacing: -0.22px;
+  --text-heading: 28px;
+  --text-heading--line-height: 1.21;
+  --text-heading--letter-spacing: 0.31px;
+  --text-display: 48px;
+  --text-display--line-height: 1.16;
+  --text-display--letter-spacing: -1.44px;
+
+  /* Radii */
+  --radius-links: 4px;
+  --radius-cards: 6px;
+  --radius-full: 9999px;
+
+  /* Shadow — pill-button hover ONLY */
+  --shadow-sm: rgba(0, 0, 0, 0.02) 0px 4px 6px 0px,
+    rgba(0, 0, 0, 0.05) 0px 0px 2px 0px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-obsidian);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  font-feature-settings: "calt" on, "liga" on;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
