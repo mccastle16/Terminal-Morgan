@@ -45,7 +45,7 @@ export default function Home() {
 
 
   return (
-    <div className="flex min-h-screen flex-col bg-void">
+    <div className="flex min-h-screen flex-col overflow-x-clip bg-void">
       <SiteHeader />
 
       <main className="flex-1">
@@ -58,11 +58,6 @@ export default function Home() {
             <h1 className="mt-4 text-heading font-w510 text-paper sm:text-heading-lg">
               Your business is already on the map. Take control of it.
             </h1>
-            <p className="mt-6 max-w-xl text-body-lg font-normal text-fog">
-              CO_ Network is a living map of every business in Coral Gables — who’s here, how
-              they connect, and where each one has room to grow. Claim your profile to correct
-              your data, see where you stand, and find your next connection. Free for owners.
-            </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <Link
                 href="/signup"

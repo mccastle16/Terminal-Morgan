@@ -96,7 +96,7 @@ export function SourceStrip() {
       </p>
       <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
         {SOURCES.map((s) => (
-          <span key={s} className="text-body-sm font-w510 text-fog">
+          <span key={s} className="text-body-sm font-w510 text-paper">
             {s}
           </span>
         ))}

@@ -60,13 +60,17 @@ export function HeroTerminal() {
 
   return (
     <div className="relative mt-16">
-      {/* Gradient bleed — distinguishing wash dissolving into the Void canvas */}
+      {/* Gradient bleed — full viewport width, like linear.app's hero glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -inset-x-16 -top-24 bottom-0"
+        className="pointer-events-none absolute -top-32 bottom-0 left-1/2 w-screen -translate-x-1/2"
         style={{
           background:
-            "radial-gradient(55% 60% at 50% 8%, rgba(99, 102, 241, 0.16) 0%, rgba(2, 184, 204, 0.05) 45%, rgba(8, 9, 10, 0) 72%)",
+            "radial-gradient(70% 65% at 50% 12%, rgba(99, 102, 241, 0.16) 0%, rgba(2, 184, 204, 0.05) 48%, rgba(8, 9, 10, 0) 75%)",
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, black 30%, black 85%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent 0%, black 30%, black 85%, transparent 100%)",
         }}
       />
       <div
