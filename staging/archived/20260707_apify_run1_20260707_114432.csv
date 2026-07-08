@@ -1,0 +1,527 @@
+business_name,phone,website,address,lat,lon,postcode,rating,review_count,category_raw,price,source
+Modern Psychology,(305) 456-4833,https://www.themodernpsychology.com/,"6601 SW 80th St STE 121, South Miami, FL 33143",25.6968629,-80.3002067,33143,4.8,20,Mental health service,None,apify
+South Miami Psychology Group,(305) 662-2686,http://www.southmiamipsychologygroup.com/,"10205 S Dixie Hwy #203, Miami, FL 33156",25.6750869,-80.3187179,33156,4,10,Psychologist,None,apify
+Clear Path Individual and Family Therapy Inc,(813) 957-5276,https://www.clearpaththerapyinc.com/,"5901 SW 74th St 211 Unit 2A, Miami, FL 33143",25.7026517,-80.2896645,33143,5,2,Psychotherapist,None,apify
+Beyond The Scale Therapy,(786) 638-9074,http://beyondthescaletherapy.com/,"5901 SW 74th St Ste 201, South Miami, FL 33143",25.7026517,-80.2896645,33143,4.8,24,Mental health clinic,None,apify
+South Miami Counseling,(305) 710-5288,https://southmiamicounseling.com/,"7520 S Red Rd STE D, South Miami, FL 33143",25.7044433,-80.2854554,33143,,,Psychotherapist,None,apify
+"Raymond S. Estefania, MS, LMHC, CAP, CIP, ICADC",(305) 479-8253,https://therapeutic-partners.com/,"5901 SW 74th St Ste 210, South Miami, FL 33143",25.7025168,-80.2896701,33143,4.7,23,Mental health service,None,apify
+Buxani Counseling Care | Mental Health Counseling Clinic in Miami,(786) 808-4673,https://buxanicare.com/,"9700 S Dixie Hwy Ste 880, Miami, FL 33156",25.6805585,-80.3168338,33156,5,242,Counselor,None,apify
+My Psychiatrist,(305) 735-3572,https://mypsychiatrist.com/?utm_source=gbp&utm_medium=organic&utm_campaign=miami,"5901 SW 74th St #408, Miami, FL 33143",25.7026255,-80.2896986,33143,4.9,472,Psychiatrist,None,apify
+The Psychotherapy Center,(305) 667-0047,,"6510 Manor Ln, South Miami, FL 33143",25.697337,-80.2992058,33143,5,2,Psychologist,None,apify
+"Pediatric Psychology Associates, South Miami",(305) 662-9162,http://www.southfloridatherapists.com/,"7800 Red Rd Ste 216, South Miami, FL 33143",25.6983943,-80.2855482,33143,3.7,3,Psychologist,None,apify
+Pinecrest Counseling,(786) 227-6570,http://www.pinecrestcounseling.com/,"12368 SW 82nd Ave, Miami, FL 33156",25.6561718,-80.3265721,33156,4.8,17,Counselor,None,apify
+Mind and Soul Therapy & Acupuncture - South Miami,(305) 456-1014,http://www.mindandsoultherapy.org/?utm_source=gmb_auth,"7600 SW 57th Ave STE 102, South Miami, FL 33143",25.7002733,-80.2854807,33143,5,26,Mental health clinic,None,apify
+ARC Mental Health,(786) 916-6073,https://www.arcmentalhealth.com/,"7241 SW 63rd Ave STE 101A, South Miami, FL 33143",25.7030699,-80.2955618,33143,5,3,Counselor,None,apify
+Oneness Therapeutic Center,(954) 624-6016,http://onenesstherapeutic.com/,"8353 SW 124th St #107, Miami, FL 33156",25.6556703,-80.3296882,33156,5,18,Counselor,None,apify
+Brighter Hearts Counseling LLC,(305) 783-9452,http://www.brighterheartscounseling.com/,"1390 S Dixie Hwy Ste 2111, Coral Gables, FL 33146",25.7107078,-80.2800273,33146,5,33,Counselor,None,apify
+"Ana M. Moreno, LMHC, MCAP, CIP, CAI, ICADC",(305) 804-0151,http://www.amorenotherapy.com/,"5901 SW 74th St Ste 210, South Miami, FL 33143",25.7025168,-80.2896701,33143,5,8,Mental health service,None,apify
+MNRS Physical Therapy South Miami,(305) 661-8040,http://miamiphysicaltherapy.com/,"5975 Sunset Dr Ste 405, South Miami, FL 33143",25.704631,-80.290768,33143,5,265,Physical therapy clinic,None,apify
+Siegel Counseling Services,(305) 613-1101,http://www.siegelcounseling.com/,"5900 SW 73rd St #207, South Miami, FL 33143",25.7032042,-80.2895952,33143,5,1,Mental health service,None,apify
+Intuitive Counseling,(305) 318-2839,https://www.intuitivecounseling.org/,"1450 Madruga Ave Ste 302, Coral Gables, FL 33146",25.7087969,-80.2821877,33146,5,54,Counselor,None,apify
+"Luna Psychology Group, PA",(786) 508-2207,http://www.lunapsychology.com/,"7600 Red Rd Suite 200 & 217, South Miami, FL 33143",25.7002293,-80.2856598,33143,4.3,6,Psychologist,None,apify
+South Miami Animal Clinic,(305) 667-7238,https://petpaws.net/,"6100 S Dixie Hwy, South Miami, FL 33143",25.7020165,-80.291876,33143,4.8,236,Veterinarian,None,apify
+Miami Veterinary Specialists,(305) 665-2820,http://mvshospital.com/,"8601 Sunset Dr, Miami, FL 33143",25.7026274,-80.3333915,33143,3.5,983,Veterinarian,None,apify
+South Miami Vets and Pets,(305) 255-7838,https://southmiamivetsandpets.com/,"12035 S Dixie Hwy #200, Pinecrest, FL 33156",25.6585114,-80.3269289,33156,4.9,142,Veterinarian,None,apify
+Miami Veterinary Specialists: Emergency Room,(305) 665-2820,http://mvshospital.com/,"8601 Sunset Dr, Miami, FL 33143",25.7025384,-80.3333713,33143,4.3,405,Emergency room,None,apify
+Dadeland Animal Hospital,(305) 671-3647,https://www.dadelandanimalhospital.com/,"9495 Old Dixie Hwy, Miami, FL 33156",25.6823525,-80.3159687,33156,4.8,421,Veterinarian,None,apify
+VCA South Dade Animal Hospital,(305) 661-2573,https://vcahospitals.com/south-dade?utm_source=maps&utm_medium=organic&utm_campaign=AU_1058,"7230 N Kendall Dr, Kendall, FL 33156",25.6876121,-80.3116247,33156,4.5,327,Veterinarian,None,apify
+Animal Clinic of Miami Dade,(305) 262-8888,https://animalclinicofmiadade.com/,"2134 Ludlam Rd, Miami, FL 33155",25.750568,-80.3038125,33155,4.5,432,Veterinarian,None,apify
+Southwest Animal Hospital,(305) 661-7765,https://southwestanimalmiami.vetsfirstchoice.com/,"6448 Bird Rd, Miami, FL 33155",25.7332963,-80.3002506,33155,4.8,159,Veterinarian,None,apify
+Animal Health & Rehab Center,(305) 665-3526,http://www.animalhealthrehab.com/,"7535 SW 62nd Ave, South Miami, FL 33143",25.7007948,-80.2930386,33143,4.9,97,Animal hospital,None,apify
+South Kendall Animal Hospital,(305) 238-2030,http://www.southkendall.com/,"14201 S Dixie Hwy, Palmetto Bay, FL 33176",25.6381476,-80.3362384,33176,4.7,405,Veterinarian,None,apify
+Thrive Pet Healthcare Specialists Miami,(305) 666-4142,https://www.thrivepetcare.com/locations/florida/miami/miami-specialty-emergency/?utm_source=gmb&utm_medium=web,"6394 S Dixie Hwy, Miami, FL 33143",25.6978667,-80.29705,33143,3.9,588,Emergency veterinarian service,None,apify
+Miami Animal Clinic,(786) 542-6070,https://www.miamianimalclinic.net/,"7345 SW 8th St, Miami, FL 33144",25.7631378,-80.3148799,33144,4.8,1139,Veterinarian,None,apify
+Miami Veterinary Dermatology,(305) 740-3376,https://miamivetderm.com/,"6448 S Dixie Hwy Unit E, South Miami, FL 33143",25.6969906,-80.297375,33143,4.6,131,Veterinarian,None,apify
+Royal Vet - Animal Hospital in Pinecrest,(305) 590-5008,https://royalvet.com/locations/miami/pinecrest/,"12303 S Dixie Hwy, Pinecrest, FL 33156",25.6560314,-80.3279056,33156,5,429,Veterinarian,None,apify
+VCA Knowles Snapper Creek Animal Hospital,(305) 279-2323,https://vcahospitals.com/knowles-snapper-creek?utm_source=maps&utm_medium=organic&utm_campaign=AU_4071,"9933 Sunset Dr, Miami, FL 33173",25.7018209,-80.3543645,33173,4.1,456,Veterinarian,None,apify
+Ludlam Dixie Animal Clinic,(305) 662-4202,,"8271 S Dixie Hwy, Miami, FL 33143",25.69333,-80.3015616,33143,4.8,47,Animal hospital,None,apify
+The Pet Emergency Room,(305) 666-4142,http://www.svrcflorida.com/,"6394 S Dixie Hwy, South Miami, FL 33143",25.6977763,-80.2969453,33143,3.5,359,Animal hospital,None,apify
+Sunset Animal Clinic | Miami FL,(786) 821-0607,http://sunsetvets.com/,"8776 SW 72nd St, Miami, FL 33173",25.7014534,-80.3355971,33173,4.6,225,Veterinarian,None,apify
+Red Bird Animal Clinic,(305) 661-6466,http://www.redbirdanimalclinic.com/,"5753 Bird Rd, Miami, FL 33155",25.7347692,-80.2878848,33155,4.8,229,Veterinarian,None,apify
+Banfield Pet Hospital,(305) 669-4982,https://www.banfield.com/locations/veterinarians/fl/miami/dad?utm_source=yext&utm_medium=yext&utm_campaign=yext&cid=yext_local,"8302 S Dixie Hwy, Miami, FL 33143",25.6933898,-80.3060862,33143,3.7,197,Veterinarian,None,apify
+Alexander At The Park Veterinary Hospital,(919) 484-9900,https://alexanderattheparkvethospital.com/,"2945 S Miami Blvd #125, Durham, NC 27703",35.9247803,-78.8441764,27703,4.7,74,Veterinarian,None,apify
+GoDog Research Triangle Park (RTP),(919) 373-3013,https://godoghq.com/research-triangle-park-intro-offer/,"2612 S Miami Blvd Units 101-106, Durham, NC 27703",35.9315001,-78.8440002,27703,4.5,122,Dog day care center,None,apify
+Law Offices of M J Louis,(305) 377-9646,http://mjlouislaw.com/,"75 Valencia Ave #400, Coral Gables, FL 33134",25.748271,-80.256048,33134,5,103,Law firm,None,apify
+Law Offices of Martin J Rivas PA,(305) 441-2221,,"801 Madrid St, Coral Gables, FL 33134",25.7635841,-80.282013,33134,4.8,69,Attorney,None,apify
+"Patino & Associates, P.A.",(305) 443-6163,https://www.patinolaw.com/,"113 Almeria Ave, Coral Gables, FL 33134",25.7474212,-80.2569989,33134,4.7,40,General practice attorney,None,apify
+"Law Offices of Feldman, Baron & Ventura",(305) 443-5235,http://feldman.attorney/,"100 Almeria Ave #330, Coral Gables, FL 33134",25.7468884,-80.2568555,33134,4.8,196,Attorney,None,apify
+Law Offices of Nicole Alvarez P.A.,(305) 440-0736,http://nicolealvarezpa.com/,"1600 Ponce de Leon Blvd 10th floor, Coral Gables, FL 33134",25.7570339,-80.2591846,33134,4.9,98,Family law attorney,None,apify
+"The Law Offices of Walter A. Reynoso, P.A.",(305) 441-8881,https://lawreynoso.com/,"2030 Douglas Rd Ste 214, Coral Gables, FL 33134",25.7536847,-80.2552493,33134,4.8,51,Trial attorney,None,apify
+The Law Offices of Anidjar & Levine,(305) 384-6882,https://www.anidjarlevine.com/miami-personal-injury-lawyer/?utm_source=google&utm_medium=organic&utm_campaign=gbp-listing-coral-gables,"75 Valencia Ave Suite 100, Coral Gables, FL 33134",25.7482732,-80.2561336,33134,4.9,122,Personal injury attorney,None,apify
+"Dominguez Law Firm, PLLC",(305) 741-4214,http://www.mdominguezlaw.com/,"121 Alhambra Plz # 1000, Coral Gables, FL 33134",25.7525739,-80.2572066,33134,5,56,Immigration attorney,None,apify
+Traffic Law Firm,(305) 442-0243,,"122 Minorca Ave, Coral Gables, FL 33134",25.7536878,-80.2574518,33134,4.9,74,Attorney,None,apify
+Vasquez de Lara Law Group,(305) 614-2135,https://www.familylawprotection.com/florida/locations/coral-gables/,"201 Alhambra Cir #500, Coral Gables, FL 33134",25.7525938,-80.2597939,33134,5,63,Divorce lawyer,None,apify
+Law Offices of Diego Traibel,(305) 791-6775,,"2100 Ponce de Leon Blvd #1290, Coral Gables, FL 33134",25.7533353,-80.2590755,33134,5,37,Trial attorney,None,apify
+The Florida Divorce & Criminal Defense Lawyers - Coral Gables,(786) 901-7960,https://thepathtojustice.com/?utm_source=GBP&utm_medium=organic&utm_campaign=Coral_Gables,"2600 Douglas Rd Ste 502, Coral Gables, FL 33134",25.7479119,-80.2548475,33134,4.7,15,Criminal justice attorney,None,apify
+"The Gilchrist Law Firm, P.A.",(786) 408-6815,https://jpgilchristlaw.com/,"2525 Ponce de Leon Blvd Suit 300, Coral Gables, FL 33134",25.7484691,-80.2581627,33134,4.8,61,Legal services,None,apify
+Dohan Law,(305) 536-3400,http://www.dohanlaw.com/,"2020 Ponce de Leon Blvd #1006, Coral Gables, FL 33134",25.753973,-80.259171,33134,4.9,75,Attorney,None,apify
+"Cornish Hernandez Gonzalez, PLLC",(305) 745-7035,http://www.chglawyers.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp_listing,"2525 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7484947,-80.2581494,33134,5,231,Personal injury attorney,None,apify
+Law Office of Aburto P.A.,(305) 694-9690,http://www.aburtolaw.co/,"717 Ponce de Leon Blvd STE 225, Coral Gables, FL 33134",25.7653633,-80.2578323,33134,4.9,307,Attorney,None,apify
+Martha Mendez of Feinstein & Mendez,(786) 404-1024,https://fmpalawfirm.com/?utm_source=organic&utm_medium=gbp&utm_campaign=nsa-seo,"2600 Douglas Rd Ste 506, Coral Gables, FL 33134",25.7477553,-80.2547272,33134,5,201,Estate planning attorney,None,apify
+Cohen Law,(305) 967-7550,http://www.cohenlawpa.com/,"2332 Galiano St 2nd floor, Coral Gables, FL 33134",25.7503404,-80.2570322,33134,4.8,31,Trial attorney,None,apify
+The McGill Law Firm,(786) 375-5621,https://www.mcgilllegal.com/,"2655 S Le Jeune Rd 5th Floor, Coral Gables, FL 33134",25.7474653,-80.2617577,33134,5,70,Law firm,None,apify
+"Law Office Manuel Gonzalez, Jr & Gabriel Gonzalez",(305) 444-1400,https://mannygonzalezlaw.com/,"121 Alhambra Plz #1500, Coral Gables, FL 33134",25.7526307,-80.257165,33134,5,29,Attorney,None,apify
+Coral Gables Dentistry,(305) 567-1992,https://www.coralgablesdentistry.com/,"3326 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7406474,-80.2585882,33134,5,395,Dentist,None,apify
+Advanced Smile Dental Clinic,(786) 391-0588,https://www.advancedsmileclinic.com/,"3934 SW 8th St #306, Coral Gables, FL 33134",25.7643531,-80.2601624,33134,4.9,251,Dentist,None,apify
+Dentists of Coral Gables,(305) 239-8806,https://www.dentistsofcoralgables.com/?sc_cid=GBP%3AO%3AGP%3A984%3AOrganic_Search%3AGeneral%3Ana&_vsrefdom=organic_gbp&y_source=1_MTA5OTAzMzctNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"290 Alhambra Cir, Coral Gables, FL 33134",25.751598,-80.260606,33134,4.5,304,Dentist,None,apify
+Precision Dental Studio,(786) 703-5523,https://precisiondental.studio/,"277 Minorca Ave, Coral Gables, FL 33134",25.7538612,-80.2604368,33134,5,13,Dentist,None,apify
+Vida Dental Coral Gables,(305) 496-1618,https://www.vidadentalcoralgables.com/,"336 Sevilla Ave, Coral Gables, FL 33134",25.746049,-80.2613778,33134,4.8,435,Dentist,None,apify
+South Gables Dental,(305) 665-1263,http://southgablesdental.com/,"4950 S Le Jeune Rd suite c, Coral Gables, FL 33146",25.7248563,-80.2618844,33146,4.9,176,Dentist,None,apify
+Miro Dental Centers of Coral Gables,(954) 737-7380,https://mirodentalcenter.com/coral-gables-fl/,"564 SW 42nd Ave 2nd floor, Coral Gables, FL 33134",25.7661899,-80.263593,33134,4.7,434,Dentist,None,apify
+Gables Dental Care,(305) 443-7501,http://dafd.miami/?utm_gables_location,"3815 SW 8th St, Coral Gables, FL 33134",25.7650359,-80.2576228,33134,4.9,91,Dentist,None,apify
+D'Art Dental,(786) 751-3478,http://dartdentalmiami.com/,"3934 SW 8th St #205, Coral Gables, FL 33134",25.7643531,-80.2601624,33134,5,580,Cosmetic dentist,None,apify
+Gables Perfect Smile,(305) 443-8225,https://www.gablesperfectsmile.com/locations/coral-gables-office/,"1805 Ponce de Leon Blvd Ste 401, Coral Gables, FL 33134",25.7557611,-80.2586565,33134,4.9,377,Dentist,None,apify
+Forma Dental,(786) 841-8030,https://www.formadental.co/,"69 Merrick Wy, Coral Gables, FL 33134",25.7510835,-80.255759,33134,5,197,Dentist,None,apify
+Miami Dental Heaven - Coral Gables Dentist,(305) 446-1067,https://www.miamidentalheaven.com/,"4830 SW 8th St, Coral Gables, FL 33134",25.763969,-80.273852,33134,5,71,Dentist,None,apify
+Benitez Dental Center,(786) 442-2122,https://benitezdentalcenter.com/,"401 Coral Wy Ste 300, Coral Gables, FL 33134",25.7497766,-80.2631113,33134,5,88,Dentist,None,apify
+MIA Dental - Coral Gables,(305) 444-8591,https://miadental.net/,"747 Ponce de Leon Blvd STE 401, Coral Gables, FL 33134",25.7648747,-80.2583119,33134,4.7,291,Dentist,None,apify
+Gables Family Dental of Coral Gables,(305) 529-9595,https://gablesfamily.com/,"401 Coral Wy Ste 109, Coral Gables, FL 33134",25.7500789,-80.2628914,33134,4.9,373,Dentist,None,apify
+Companioni Dental Smile,(786) 304-2447,https://companionidentalsmile.com/,"475 Biltmore Way #110, Coral Gables, FL 33134",25.7486795,-80.2646576,33134,5,120,Dentist,None,apify
+Dental Leaders,(305) 442-1177,http://www.dentalleaders.com/,"336 Alhambra Cir, Miami, FL 33134",25.7516767,-80.2615508,33134,4.9,279,Dentist,None,apify
+Gables Exceptional Dentistry,(305) 614-2438,https://www.gablesexceptionaldentistry.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp,"357 Almeria Ave Apt 105, Coral Gables, FL 33134",25.7470238,-80.2620569,33134,4.9,571,Dentist,None,apify
+Abadin Dental - Invisalign Veneers Implants,(305) 783-3750,https://www.abadindental.com/,"504 Biltmore Way, Coral Gables, FL 33134",25.748019,-80.264949,33134,5,1428,Dentist,None,apify
+Miami Smile Institute,(786) 703-9430,https://www.miamismileinstitute.com/,"1805 Ponce de Leon Blvd Ste 301, Coral Gables, FL 33134",25.7557534,-80.2586538,33134,4.7,85,Dental clinic,None,apify
+Method X Fitness Coral Gables,(305) 299-9666,https://methodxfitness.com/,"475 Biltmore Way #106, Coral Gables, FL 33134",25.748646,-80.2644087,33134,4.8,176,Gym,None,apify
+RZone Fitness Coral Gables | Women's Fitness Studio,(786) 321-3787,https://www.rzonefitness.com/coral-gables/?utm_source=GMB&utm_medium=Organic&utm_campaign=Coral+Gables,"112 Valencia Ave, Coral Gables, FL 33134",25.7478217,-80.2569252,33134,4.9,341,Gym,None,apify
+Ghost Gym Miami,(786) 922-0006,http://ghostgymmiami.com/,"3020 SW 22nd St, Miami, FL 33145",25.7499398,-80.2426156,33145,4.9,190,Gym,None,apify
+Iron Bodyfit Coral Gables,(786) 983-9889,https://ironbodyfit.us/locations/iron-bodyfit-coral-gables/,"1410 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7586607,-80.2592042,33134,5,101,Gym,None,apify
+SWEAT440 Fitness Gables,(888) 507-9328,https://sweat440.com/gyms/florida/coral-gables-33146/?utm_source=GMB&utm_medium=organic&utm_campaign=coral+gables,"301 Altara Ave Ste 111, Coral Gables, FL 33146",25.7336441,-80.2617956,33146,4.9,314,Gym,None,apify
+AIRLAB Fitness Coral Gables,(305) 396-8548,https://airlabfitness.com/coral-gables/,"35 Alhambra Plz, Coral Gables, FL 33134",25.7526427,-80.2553133,33134,5,36,Fitness center,None,apify
+786 Fitness,(786) 370-0318,http://www.786fitness.com/,None,25.7116725,-80.2443544,None,5,89,Personal trainer,None,apify
+Life Time,(786) 437-4400,https://www.lifetime.life/locations/fl/coral-gables.html?utm_source=google&utm_medium=local&utm_campaign=google-local-club,"237 S Dixie Hwy, Coral Gables, FL 33133",25.7283022,-80.260038,33133,3.8,256,Fitness center,None,apify
+Equinox Coral Gables,(786) 497-8200,https://www.equinox.com/clubs/florida/coralgables?cid=gmb,"370 San Lorenzo Ave, Coral Gables, FL 33146",25.7318154,-80.2607785,33146,3.6,117,Gym,None,apify
+TruFusion Coral Gables,(305) 851-5252,https://trufusion.com/coral-gables/,"301 Giralda Ave #5, Coral Gables, FL 33134",25.7513094,-80.2611423,33134,4.6,250,Yoga studio,None,apify
+Corpolis,(786) 273-1400,http://corpolisfitnessclub.com/,"4701 SW 8th St, Coral Gables, FL 33134",25.7642677,-80.271596,33134,4.8,32,Fitness center,None,apify
+54D STEEL Coral Gables,(786) 817-7008,https://54d.com/,"4212 Ponce de Leon Blvd, Coral Gables, FL 33146",25.7326917,-80.2588558,33146,5,28,Gym,None,apify
+LEGACY,(305) 240-1096,https://legacyfit.com/,"22 Merrick Wy, Coral Gables, FL 33134",25.7504584,-80.2555241,33134,4.7,77,Gym,None,apify
+BÜNDA Coral Gables,(305) 200-3117,https://www.trainbunda.com/,"25 Merrick Wy, Coral Gables, FL 33134",25.7505706,-80.255271,33134,4.5,140,Gym,None,apify
+Body Hot Pilates,(786) 542-3059,https://bodyhotpilates.com/,"253 Giralda Ave, Coral Gables, FL 33134",25.7513089,-80.2594835,33134,4.9,454,Pilates studio,None,apify
+Fitness1 Midtown,,,"3211 Ponce de Leon Blvd Ste 201, Coral Gables, FL 33134",25.7422652,-80.257993,33134,,,Fitness center,None,apify
+Old Bull Athletics: 1 on 1 Personal Training and Physical Therapy at Coral Gables,(786) 615-3583,https://www.oldbullathletics.com/,"169 Majorca Ave, Coral Gables, FL 33134",25.7553799,-80.2582581,33134,5,148,Gym,None,apify
+Rumble Boxing,(786) 863-5461,https://lp.rumbleboxinggym.com/offer?clubready_referraltypeid=112226,"111 Palermo Ave Ste 208, Coral Gables, FL 33134",25.7458529,-80.2571158,33134,4.6,47,Boxing gym,None,apify
+LA Fitness,(305) 445-7140,https://www.lafitness.com/Pages/clubhome.aspx?clubid=712&utm_source=google&utm_medium=googlemaps&utm_campaign=maps,"3301 Coral Wy, Miami, FL 33145",25.750451,-80.2497308,33145,2.7,1189,Gym,None,apify
+Lion Heart Boxing Gym,(786) 206-3555,http://lhboxing.com/,"804 Douglas Rd Ste 185, Coral Gables, FL 33134",25.7638709,-80.2570598,33134,5,124,Boxing gym,None,apify
+Fidelity Bank,(919) 662-5173,https://www.fidelitybanknc.com/about-fidelity/locations/garner-nc/,"919 US-70, Garner, NC 27529",35.7142671,-78.6310806,27529,4.7,76,Bank,None,apify
+Chase Bank,(305) 442-0089,https://www.chase.com/locator/banking/us/fl/coral-gables/355-alhambra-cir?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MjAzOTExMi03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"355 Alhambra Cir Ste 100, Coral Gables, FL 33134",25.7522,-80.2615,33134,3.5,32,Bank,None,apify
+Ocean Bank,(305) 446-1919,https://www.oceanbank.com/,"2655 S Le Jeune Rd, Coral Gables, FL 33134",25.7474406,-80.2619868,33134,4.9,47,Bank,None,apify
+Grove Bank & Trust,(305) 444-6665,http://www.grovebankandtrust.com/,"2151 S Le Jeune Rd #100, Coral Gables, FL 33134",25.752613,-80.262675,33134,5,10,Bank,None,apify
+Chase Bank,(305) 442-8127,https://www.chase.com/locator/banking/us/fl/coral-gables/1300-ponce-de-leon-blvd?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MjAzOTExMy03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"1300 Ponce de Leon Blvd, Coral Gables, FL 33134",25.759244,-80.259204,33134,3.8,55,Bank,None,apify
+Bank of America (with Drive-thru ATM),(305) 442-2787,https://locators.bankofamerica.com/fl/coralgables/financial-centers-coral-gables-9739.html?utm_source=GMBlisting&utm_medium=organic,"2308 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7510246,-80.2589732,33134,2.5,156,Bank,None,apify
+Regions Bank,(305) 774-5671,https://www.regions.com/locator/fl/coral-gables/full-service-branch-2800-ponce-de-leon-blvd?cid=localListing_google,"2800 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7458884,-80.2592725,33134,4.3,50,Bank,None,apify
+Seacoast Bank,(786) 814-4747,https://www.seacoastbank.com/locations/coral-gables-alhambra,"396 Alhambra Cir Ste 150, Coral Gables, FL 33134",25.7516747,-80.2620099,33134,3.6,10,Bank,None,apify
+Chase Bank,(305) 444-0754,https://www.chase.com/locator/banking/us/fl/coral-gables/2740-coral-way?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MzAwNjY5MS03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"2740 Coral Wy, Coral Gables, FL 33145",25.7500322,-80.239447,33145,3.1,60,Bank,None,apify
+City National Bank of Florida,(305) 445-1941,https://www.citynational.com/,"2855 S Le Jeune Rd, Coral Gables, FL 33134",25.7457806,-80.2621883,33134,3.7,26,Bank,None,apify
+First American Bank,(305) 500-9501,https://www.firstambank.com/About/Connect/Branch-and-ATM-Locations/Coral-Gables-FL,"540 Biltmore Way, Coral Gables, FL 33134",25.7479781,-80.2653668,33134,4.3,20,Bank,None,apify
+SouthState Bank,(786) 362-8560,https://www.southstatebank.com/global/location-detail/665/2-Alhambra-Plaza?utm_source=listings&utm_medium=local&utm_campaign=yext,"2 Alhambra Plz Ste 100B, Coral Gables, FL 33134",25.752126,-80.255234,33134,3.4,11,Bank,None,apify
+Latino Community Credit Union,(919) 595-1800,http://www.latinoccu.org/,"4418 Fayetteville Rd, Raleigh, NC 27603",35.719875,-78.65654,27603,4,111,Credit union,None,apify
+Wells Fargo Bank,(305) 569-1924,https://locations.wellsfargo.com/fl/coral-gables/2555-ponce-de-leon-blvd?utm_campaign=Local_Listings&utm_source=Google&group=Community_Bank&loc=AC21018,"2555 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7481415,-80.2581957,33134,3.5,39,Bank,None,apify
+Citizens,(305) 341-2465,https://locations.citizensbank.com/fl/coral-gables/2222-ponce-de-leon-boulevard.html,"2222 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7514926,-80.2590082,33134,3.3,21,Bank,None,apify
+First Citizens Bank,(305) 639-7200,https://locations.firstcitizens.com/fl/coral-gables/250-palermo-avenue,"250 Palermo Ave, Coral Gables, FL 33134",25.7452608,-80.2600804,33134,3.8,16,Bank,None,apify
+Sunstate Bank,(305) 567-0600,https://www.sunstatefl.com/,"2901 S Le Jeune Rd, Coral Gables, FL 33134",25.7451492,-80.2622941,33134,4,9,Bank,None,apify
+Synovus Bank,(888) 796-6887,https://www.synovus.com/locations/usa/fl/coral-gables/121-alhambra-plaza/,"121 Alhambra Plz, Coral Gables, FL 33134",25.7525528,-80.2570524,33134,5,3,Bank,None,apify
+PNC Bank,(919) 661-3320,https://locator.pnc.com/en/details/nc/garner/branch/1027-us-70-hwy-w?lnksrc=branch-listing-google,"1027 US-70, Garner, NC 27529",35.7158816,-78.6338764,27529,3,26,Bank,None,apify
+Flagstar Bank,(305) 774-0049,https://www.flagstar.com/coral-gables-flagstar-bank-florida-2240.html,"2701 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7469444,-80.2582255,33134,4.2,16,Bank,None,apify
+First National Bank,(919) 662-7330,https://locations.fnb-online.com/nc/garner/945-vandora-springs-rd.?utm_source=GBP&utm_medium=organic,"945 Vandora Springs Rd, Garner, NC 27529",35.7088684,-78.6240072,27529,2.9,7,Bank,None,apify
+Wells Fargo Bank,(919) 772-7400,https://locations.wellsfargo.com/nc/garner/1225-us-hwy-70-w?utm_campaign=Local_Listings&utm_source=Google&group=Community_Bank&loc=AC23146,"1225 US-70, Garner, NC 27529",35.7175994,-78.6372705,27529,3,67,Bank,None,apify
+Navy Federal Credit Union,(888) 842-6328,https://www.navyfederal.org/branches-atms/locations/usa/nc/garner/gnr.html,"21 Eagle Wing Way, Garner, NC 27529",35.6983631,-78.5885589,27529,3.9,66,Bank,None,apify
+Chase Bank,(984) 275-6830,https://www.chase.com/locator/banking/us/nc/garner/52-eagle-wing-way?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_MTk0OTU5NTgtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"52 Eagle Wing Way, Garner, NC 27529",35.6973553,-78.5854448,27529,3,61,Bank,None,apify
+Woodforest National Bank,(919) 662-0180,http://www.woodforest.com/,"4500 Fayetteville Rd, Raleigh, NC 27603",35.7193386,-78.6591054,27603,4.8,235,Bank,None,apify
+Fifth Third Bank & ATM,(919) 793-2580,https://locations.53.com/nc/garner/1145-us-highway-70-west.html,"1145 US-70, Garner, NC 27529",35.7167638,-78.6354496,27529,2.6,38,Bank,None,apify
+Chase Bank,(984) 301-7040,https://www.chase.com/locator/banking/us/nc/garner/1480-us-70-hwy-w,"1480 US-70, Garner, NC 27529",35.722312,-78.643892,27529,4,4,Bank,None,apify
+Truist - ATM,(919) 779-6705,https://www.truist.com/atm/nc/garner/27529/301-vandora-spgs-rd,"301 Vandora Springs Rd, Garner, NC 27529",35.7094968,-78.6235485,27529,2,2,ATM,None,apify
+Chase Bank,(919) 327-2932,https://www.chase.com/,"7911 Fayetteville Rd, Raleigh, NC 27603",35.6664,-78.6971,27603,4.2,14,Bank,None,apify
+First National Bank ATM,(800) 555-5455,https://www.fnb-online.com/,"945 Vandora Springs Rd, Garner, NC 27529",35.7087382,-78.6241039,27529,5,2,ATM,None,apify
+K Webb's,(919) 772-0923,,"900 Poole Dr, Garner, NC 27529",35.6954831,-78.6168656,27529,3.6,7,Bank,None,apify
+Bank of America ATM (Drive-thru),(844) 401-8500,https://locators.bankofamerica.com/nc/garner/financial-centers-garner-8886.html?utm_source=GMBlisting&utm_medium=organic,"547 Benson Rd, Garner, NC 27529",35.7037957,-78.6123351,27529,3,2,ATM,None,apify
+Wells Fargo ATM,(800) 869-3557,https://locations.wellsfargo.com/nc/garner/791-timber-dr-ad64155?utm_campaign=Local_Listings&utm_source=Google&group=ATM&loc=AD64155,"791 Timber Dr, Garner, NC 27529",35.6859281,-78.6165102,27529,5,3,ATM,None,apify
+Fifth Third Bank & ATM,(919) 325-2837,https://locations.53.com/nc/raleigh/7720-fayetteville-rd.html,"7720 Fayetteville Rd, Raleigh, NC 27603",35.66821,-78.69647,27603,3.7,6,Bank,None,apify
+Coinstar Kiosk,(800) 928-2274,https://www.coinstar.com/kiosk-info?KioskId=10698&?utm_source=locationlisting&utm_medium=gmb&utm_campaign=webbutton,"1845 Aversboro Rd, Garner, NC 27529",35.6855451,-78.6154759,27529,,,ATM,None,apify
+ATM (K Webb's),,,"900 Poole Dr, Garner, NC 27529",35.695663,-78.6170264,27529,,,ATM,None,apify
+ATM (First Citizens Bank),,https://locations.firstcitizens.com/,"2520 Timber Dr, Garner, NC 27529",35.7138776,-78.6398311,27529,3.7,3,ATM,None,apify
+Cardtronics ATM,(800) 786-9666,http://www.cardtronics.com/,"825 Timber Dr Walgreens, Garner, NC 27529",35.68549,-78.618698,27529,,,ATM,None,apify
+ATM,(800) 550-5087,,"3310 Olympia Dr, Raleigh, NC 27603",35.7349395,-78.6514205,27603,4,1,ATM,None,apify
+Chase ATM,(800) 935-9935,https://chase.com/locator/?jp_cmp=rb%2FLocalListings%2Faff%2Fatm%2Fna&y_source=1_MTk1NTc3NjItNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"52 Eagle Wing Way, Garner, NC 27529",35.6973577,-78.5854496,27529,5,2,ATM,None,apify
+Triangle Capital Mortgage Corporation,(919) 772-8498,,"820 Benson Rd # C, Garner, NC 27529",35.69997,-78.6122148,27529,,,Mortgage lender,None,apify
+PNC ATM,(888) 762-2265,https://locator.pnc.com/en/nc/garner/atm/40-cabela-dr?lnksrc=atm-listing-google,"40 Cabela Dr, Garner, NC 27529",35.6981314,-78.5854244,27529,5,1,ATM,None,apify
+Wells Fargo ATM,(800) 869-3557,https://locations.wellsfargo.com/nc/garner/1225-us-hwy-70-w?utm_campaign=Local_Listings&utm_source=Google&group=ATM&loc=OS141279,"1225 US-70, Garner, NC 27529",35.7176189,-78.6372664,27529,3.7,3,ATM,None,apify
+Woodforest National Bank ATM,(919) 662-0180,https://www.woodforest.com/,"4500 Fayetteville Rd, Raleigh, NC 27603",35.719098,-78.6594765,27603,3,4,ATM,None,apify
+ATM,,,"214 Forest Hills Dr, Garner, NC 27529",35.7075567,-78.6228527,27529,,,ATM,None,apify
+ATM,(800) 550-5087,,"401 Benson Rd, Garner, NC 27529",35.7051981,-78.6126528,27529,,,ATM,None,apify
+CoinFlip Bitcoin ATM - Han-Dee Hugo's (Garner),(877) 757-2646,https://locations.coinflip.tech/us/nc/garner/401-benson-road,"401 Benson Rd, Garner, NC 27529",35.705194,-78.6127326,27529,1,1,Bank,None,apify
+ATM (Rock Quarry BP),,,"1920 Rock Quarry Rd, Raleigh, NC 27610",35.7540373,-78.6130518,27610,5,1,ATM,None,apify
+CashPoints® ATM,(888) 732-8562,http://www.ncsecu.org/,"1473 Benson Rd, Garner, NC 27529",35.6871778,-78.6036536,27529,5,1,ATM,None,apify
+Acclaim Federal Credit Union-Greensboro,(336) 332-5302,https://www.acclaimfcu.org/,"1823 Banking St, Greensboro, NC 27408",36.0943359,-79.8148513,27408,4.8,151,Federal credit union,None,apify
+ATM USA,(800) 550-5087,http://atmusa.com/,"2516 S Saunders St, Raleigh, NC 27603",35.7492228,-78.6495955,27603,,,ATM,None,apify
+Byte Federal Bitcoin ATM (5th Ave Tobacco and Vapor),(786) 686-2983,https://www.bytefederal.com/bitcoin-atm-near-me/north-carolina/garner/1362,"1350 5th Ave, Garner, NC 27529",35.7095931,-78.6223651,27529,5,3,Crypto ATM,None,apify
+ATM (Garner Mini-Mart),,,"807 W Garner Rd, Garner, NC 27529",35.7108044,-78.6135839,27529,1,1,ATM,None,apify
+CashPoints® ATM,(888) 732-8562,http://www.ncsecu.org/,"3210 S Wilmington St, Raleigh, NC 27603",35.7370623,-78.6518885,27603,5,2,ATM,None,apify
+Athena Bitcoin ATM,(312) 690-4466,https://www.athenabitcoin.com/,"900 Poole Dr, Garner, NC 27529",35.6956992,-78.616943,27529,,,Crypto ATM,None,apify
+PNC ATM,(888) 762-2265,https://locator.pnc.com/en/details/nc/garner/branch/1027-us-70-hwy-w?lnksrc=atm-listing-google,"1027 US-70, Garner, NC 27529",35.7158808,-78.6338593,27529,,,ATM,None,apify
+ecoATM,(858) 324-4111,http://locations.ecoatm.com/nc/raleigh/sell-my-phone-raleigh-nc-2293?utm_source=google&utm_medium=local&utm_campaign=google-local,"4500 Fayetteville Rd, Raleigh, NC 27603",35.7191937,-78.6591694,27603,3,2,ATM,None,apify
+ATM (Han-Dee Hugo's),(919) 662-1825,,"3400 Benson Rd, Garner, NC 27529",35.6355959,-78.613909,27529,4,1,ATM,None,apify
+CashPoints® ATM,(888) 732-8562,http://www.ncsecu.org/,"1000 Vandora Springs Rd, Garner, NC 27529",35.7077076,-78.6258748,27529,,,ATM,None,apify
+ATM (Cyber City),,,"421 Chapanoke Rd, Raleigh, NC 27603",35.7342057,-78.6536926,27603,1,6,ATM,None,apify
+ATM,,,"4020 Jones Sausage Rd, Garner, NC 27529",35.7257286,-78.5811739,27529,,,ATM,None,apify
+CoinFlip Bitcoin ATM - Han-Dee Hugo's (Raleigh),(877) 757-2646,https://locations.coinflip.tech/us/nc/raleigh/3525-south-wilmington-street,"3525 S Wilmington St, Raleigh, NC 27603",35.7316487,-78.6506891,27603,,,Bank,None,apify
+ATM USA,(919) 469-5856,http://atmusa.com/,"3400 Benson Rd, Garner, NC 27529",35.6356203,-78.6138506,27529,,,ATM,None,apify
+CashPoints® ATM,(888) 732-8562,http://www.ncsecu.org/,"1311 US-70, Garner, NC 27529",35.7200698,-78.6412348,27529,,,ATM,None,apify
+ATM (South Wilmington Street Gulf),,,"2570 S Wilmington St, Raleigh, NC 27603",35.7487269,-78.6441069,27603,,,ATM,None,apify
+LibertyX Bitcoin ATM,(800) 511-8940,https://libertyx.com/,"825 Timber Dr Walgreens, Garner, NC 27529",35.6853898,-78.6186994,27529,,,ATM,None,apify
+PNC ATM,(888) 762-2265,https://locator.pnc.com/en/nc/garner/atm/4005-jones-sausage-rd?lnksrc=atm-listing-google,"4005 Jones Sausage Rd, Garner, NC 27529",35.725266,-78.5796359,27529,,,ATM,None,apify
+CoinFlip Bitcoin ATM - Han-Dee Hugo's (Raleigh),(877) 757-2646,https://locations.coinflip.tech/us/nc/raleigh/2516-south-saunders-street,"2516 S Saunders St, Raleigh, NC 27603",35.749029,-78.6492708,27603,,,Bank,None,apify
+ATM (BP Station Family Sale),,,"1535 US-70, Garner, NC 27529",35.7232576,-78.6469595,27529,,,ATM,None,apify
+PNC ATM,(888) 762-2265,https://locator.pnc.com/en/nc/raleigh/atm/7900-fayetteville-rd?lnksrc=atm-listing-google,"7900 Fayetteville Rd, Raleigh, NC 27603",35.6666309,-78.6985646,27603,,,ATM,None,apify
+Coinstar Kiosk - Bitcoin ATM,(800) 928-2274,https://www.coinstar.com/kiosk-info?KioskId=10418?utm_source=gmb&utm_medium=gmblocationlisting&utm_campaign=webbutton,"217 Timber Dr, Garner, NC 27529",35.6861,-78.6063,27529,,,Crypto ATM,None,apify
+Coinstar Kiosk - Bitcoin ATM,(800) 928-2274,https://www.coinstar.com/kiosk-info?KioskId=10372?utm_source=gmb&utm_medium=gmblocationlisting&utm_campaign=webbutton,"Food Lion, 1317 5th Ave, Garner, NC 27529",35.7082639,-78.6223455,27529,,,Crypto ATM,None,apify
+ATM,,,"2708 S Saunders St, Raleigh, NC 27603",35.7444843,-78.6495146,27603,,,ATM,None,apify
+CashPoints® ATM,(888) 732-8562,http://www.ncsecu.org/,"1825 US-70, Garner, NC 27529",35.6884036,-78.5512939,27529,2.3,3,ATM,None,apify
+ATM,,,"1305 US-70 W, Garner, NC 27529",35.7199696,-78.6410897,27529,,,ATM,None,apify
+CoinFlip Bitcoin ATM - Han-Dee Hugo's (Raleigh),(877) 757-2646,https://locations.coinflip.tech/us/nc/raleigh/1920-rock-quarry-road,"1920 Rock Quarry Rd, Raleigh, NC 27610",35.7540273,-78.6130565,27610,,,Bank,None,apify
+ATM,,,"1436 Garner Station Blvd, Raleigh, NC 27603",35.7252966,-78.6527501,27603,,,ATM,None,apify
+ATM (Han-Dee Hugo's),,,"2516 S Saunders St, Raleigh, NC 27603",35.7491873,-78.6495355,27603,,,ATM,None,apify
+Circle K,(919) 779-3568,https://www.circlek.com/store-locator/US/raleigh/5009-fayetteville-rd/2704270?utm_source=google&utm_medium=local&utm_campaign=google-local,"5009 Fayetteville Rd, Raleigh, NC 27603",35.7115359,-78.6576003,27603,2.6,58,ATM,$3.30/Regular,apify
+Cardtronics ATM,,,"2700 Timber Dr Target, Garner, NC 27529",35.7155847,-78.6388834,27529,,,ATM,None,apify
+Athena Bitcoin ATM,(312) 690-4466,http://www.athenabitcoin.com/,"1305 US-70, Garner, NC 27529",35.7198088,-78.6411056,27529,,,Crypto ATM,None,apify
+Cardtronics ATM,,http://www.cardtronics.com/,"1040 Timber Drive East #225, Garner, NC 27529",35.6868832,-78.5795508,27529,,,ATM,None,apify
+Bitstop Bitcoin ATM,(855) 524-8786,https://bitstop.co/locations/nc/raleigh-nc/2570-s-wilmington-st-raleigh-bitcoin-atm,"2570 S Wilmington St, Raleigh, NC 27603",35.7486962,-78.6440236,27603,,,Crypto ATM,None,apify
+Coinstar Kiosk - Bitcoin ATM,(800) 928-2274,https://www.coinstar.com/kiosk-info?KioskId=12709?utm_source=gmb&utm_medium=gmblocationlisting&utm_campaign=webbutton,"1601 Cross Link Rd, Raleigh, NC 27610",35.7545733,-78.6155792,27610,,,Crypto ATM,None,apify
+ATM,,,"3608 Benson Rd, Garner, NC 27529",35.630439,-78.6110947,27529,,,ATM,None,apify
+CashPoints® ATM,(888) 732-8562,http://www.ncsecu.org/,"3301 Hammond Rd, Raleigh, NC 27603",35.7337963,-78.638798,27603,,,ATM,None,apify
+CashPoints® ATM,(888) 732-8562,http://www.ncsecu.org/,"3300 Hammond Rd, Raleigh, NC 27603",35.7353048,-78.6410272,27603,,,ATM,None,apify
+Circle K,(919) 662-0336,https://www.circlek.com/store-locator/US/garner/1900-us-70-hwy-70-lh/2723479?utm_source=google&utm_medium=local&utm_campaign=google-local,"1900 US-70, Garner, NC 27529",35.6866399,-78.5495751,27529,3.1,105,ATM,$3.40/Regular,apify
+ATM,,,"1969 Rock Quarry Rd, Raleigh, NC 27610",35.754025,-78.61208,27610,,,ATM,None,apify
+Cardtronics ATM,,,"8801 Old Stage Rd Mart, Garner, NC 27529",35.6548726,-78.6660571,27529,,,ATM,None,apify
+Coinstar Kiosk - Bitcoin ATM,,,"Food Lion, 7971 Fayetteville Rd, Raleigh, NC 27603",35.6648676,-78.6972175,27603,,,ATM,None,apify
+ATM,,,"1900 US-70 E, Garner, NC 27529",35.6866285,-78.5495596,27529,,,ATM,None,apify
+Circle K,(919) 743-0128,https://www.circlek.com/store-locator/US/raleigh/2506-s-saunders-i-40/2723303?utm_source=google&utm_medium=local&utm_campaign=google-local,"2506 S Saunders St & I-40, Raleigh, NC 27603",35.7494837,-78.6493657,27603,2.8,80,ATM,$3.30/Regular,apify
+LibertyX Bitcoin ATM,(800) 511-8940,https://libertyx.com/,"Walgreens, 1116 US-70, Garner, NC 27529",35.7176926,-78.6346066,27529,,,ATM,None,apify
+LibertyX Bitcoin ATM,(800) 511-8940,https://libertyx.com/,"Speedway, 1470 US-70, Garner, NC 27529",35.722204,-78.6432648,27529,,,ATM,None,apify
+LibertyX Bitcoin ATM,(800) 511-8940,https://libertyx.com/,"2604 S Saunders St Speedway, Raleigh, NC 27603",35.7481113,-78.6493594,27603,,,ATM,None,apify
+Bitstop Bitcoin ATM,(855) 524-8786,https://bitstop.co/locations/nc/garner-nc/3400-benson-rd-garner-bitcoin-atm,"3400 Benson Rd, Garner, NC 27529",35.6356403,-78.6138321,27529,,,Crypto ATM,None,apify
+Gables Animal Clinic,(305) 381-5694,https://gablesanimalclinic.com/?utm_source=google&utm_medium=organic&utm_campaign=gmbwebsite,"1607 Ponce de Leon Blvd Ste 105, Coral Gables, FL 33134",25.7570819,-80.2585682,33134,4.7,127,Veterinarian,None,apify
+GoodVets Coral Gables,(305) 522-6100,https://goodvets.com/locations/miami/coral-gables,"315 Miracle Mile, Coral Gables, FL 33134",25.749712,-80.2610754,33134,4.8,128,Veterinarian,None,apify
+Ponce De León Animal Clinic,(305) 666-6813,http://poncedeleonanimalclinic.com/,"4561 Ponce de Leon Blvd, Coral Gables, FL 33146",25.7289542,-80.2603991,33146,4.8,228,Animal hospital,None,apify
+Coral Gables Animal Hospital,(305) 590-5011,https://coralgablesanimalhospital.com/,"4569 Ponce de Leon Blvd, Coral Gables, FL 33146",25.728868,-80.2607207,33146,4.7,163,Veterinarian,None,apify
+Flagler Animal Clinic,(305) 266-8320,,"5582 W Flagler St, Coral Gables, FL 33134",25.7706604,-80.2856782,33134,4.4,162,Veterinarian,None,apify
+Animal Clinic 8 & 43,(305) 442-0776,,"4300 SW 8th St, Coral Gables, FL 33134",25.764098,-80.265571,33134,4.7,159,Veterinarian,None,apify
+Silver Bluff Animal Clinic,(305) 859-7979,http://www.silverbluffanimalclinic.com/,"2515 SW 27th Ave, Miami, FL 33133",25.7451908,-80.2378596,33133,4.6,296,Veterinarian,None,apify
+PetSmart Veterinary Services - Coral Gables,(786) 981-7155,https://pvshospitals.com/fl/coral-gables/coral-gables-1411/?utm_source=google&utm_medium=organic&utm_campaign=google-my-business,"3301 SW 22nd St, Coral Gables, FL 33145",25.750417,-80.2496863,33145,5,38,Veterinarian,None,apify
+Manzano Animal Clinic,(305) 442-0776,,"4300 SW 8th St, Miami, FL 33134",25.7640489,-80.2655057,33134,3.9,7,Animal hospital,None,apify
+Coral Way Animal Clinic,(305) 381-0561,https://www.coralwayanimalclinic.us/,"1801 SW 27th Ave, Miami, FL 33145",25.7548729,-80.2382087,33145,4.5,367,Veterinarian,None,apify
+"Annette Thomas, VMD",(305) 667-5821,http://coralgablesanimalhospital.com/,"Animal Hospital, 4569 Ponce de Leon Blvd, Coral Gables, FL 33146",25.72881,-80.2606518,33146,5,1,Veterinarian,None,apify
+GoodVets Coconut Grove,(305) 463-1201,https://www.good-vets.com/locations/miami/coconut-grove,"2840 Oak Ave, Coconut Grove, FL 33133",25.7298863,-80.240082,33133,4.7,222,Veterinarian,None,apify
+Pet Lovers Animal Clinic @NW 7th St,(305) 529-4942,http://www.petloversus.com/,"4140 NW 7th St, Miami, FL 33126",25.778581,-80.2626477,33126,4.6,599,Animal hospital,None,apify
+Mascota of coral gables,,,"3301 Coral Wy, Miami, FL 33145",25.750451,-80.2497308,33145,5,2,Veterinarian,None,apify
+"Victor Soler-Baillo, DVM",(305) 443-4777,https://miamianimalhospital.com/about-us/team/dr-victor-soler/?utm_medium=organic&utm_source=gmb&utm_campaign=ldvm_site&utm_content=miami_soler-baillo_victor,"4701 W Flagler St, Coral Gables, FL 33134",25.7716643,-80.2718881,33134,,,Veterinarian,None,apify
+LibertyX Bitcoin ATM,(800) 511-8940,https://libertyx.com/,"1601 Cross Link Rd Walgreens, Raleigh, NC 27610",35.7545733,-78.6155792,27610,,,ATM,None,apify
+LibertyX Bitcoin ATM,(800) 511-8940,https://libertyx.com/,"7800 Fayetteville Rd, Raleigh, NC 27603",35.6686509,-78.698902,27603,,,ATM,None,apify
+Jae's Fine Jewelers,(305) 443-7724,http://www.jaesjewelers.com/,"237 Miracle Mile, Coral Gables, FL 33134",25.749719,-80.259497,33134,4.9,235,Jewelry store,None,apify
+Lisandra’s Jewelry of Miami,(305) 269-3889,,"5546 SW 8th St, Coral Gables, FL 33134",25.7633424,-80.2847506,33134,5,45,Jeweler,None,apify
+Montica Jewelry,(305) 446-2957,http://www.montica.com/,"500 S Dixie Hwy #203, Coral Gables, FL 33146",25.7244264,-80.2636373,33146,5,123,Jewelry store,None,apify
+Savage Jewelry,,https://www.savagejewelrylab.com/,"337 Alcazar Ave, Coral Gables, FL 33134",25.7529981,-80.2616487,33134,5,7,Costume jewelry shop,None,apify
+San Lazaro Jewelry,(305) 567-9747,http://www.sanlazarojewelry.com/,"3831 SW 8th St, Coral Gables, FL 33134",25.764771,-80.257776,33134,4.4,65,Jewelry store,None,apify
+Rudy Santayana Jewelry Designs,(786) 801-0111,https://rudysantayana.com/,"4100 Salzedo St Apt 15, Coral Gables, FL 33146",25.7339613,-80.2605549,33146,5,226,Jewelry store,None,apify
+Morays Jewelers,(305) 374-0739,https://www.moraysjewelers.com/,"116 Miracle Mile, Coral Gables, FL 33134",25.7494648,-80.2571288,33134,4.6,53,Jewelry store,None,apify
+Gables Gems,(305) 444-2335,https://gablesgems.com/,"250 Miracle Mile, Coral Gables, FL 33134",25.7491613,-80.2597768,33134,4.7,15,Jeweler,None,apify
+Castillo de Oro Jewelry,(786) 818-3404,http://www.castillodeorojewelers.com/,"4312 SW 8th St, Coral Gables, FL 33134",25.7641105,-80.2656565,33134,5,975,Jewelry store,None,apify
+Miami Jewelry,(305) 724-2474,https://miamijewelry.shop/,"4805 SW 8th St, Miami, FL 33134",25.7646491,-80.2745458,33134,4.5,26,Jewelry store,None,apify
+By Design Jewelers,(305) 441-9347,https://bydesignjewelers.com/,"1607 Ponce de Leon Blvd Ste 106, Coral Gables, FL 33134",25.7570815,-80.2587342,33134,5,34,Jewelry store,None,apify
+Golden Touch Jewelry Homestead Ave,,https://goldentouchjewelry.lakomarca.com/,"4800 W Flagler St, Coral Gables, FL 33134",25.7711185,-80.2741728,33134,4.9,27,Jewelry store,None,apify
+Hugo's Diamond & Jewelry Inc,(305) 648-9777,,"4330 SW 8th St, Coral Gables, FL 33134",25.764088,-80.266036,33134,4.1,19,Jewelry store,None,apify
+Lelê Reis Luxury Crystal Jewelry,,https://www.lelereis.com/,"216 Miracle Mile, Coral Gables, FL 33134",25.7492246,-80.2592352,33134,5,1,Jewelry designer,None,apify
+Princess Joyeria,(786) 777-9852,https://www.princessjoyeria.es/,"4705 SW 8th St, Coral Gables, FL 33134",25.7643454,-80.2718012,33134,5,48,Jewelry store,None,apify
+Gables Fancy Corner,(786) 663-4226,http://gablesfancycorner.com/,"1607 Ponce de Leon Blvd Ste 102, Coral Gables, FL 33134",25.7570819,-80.2585682,33134,5,19,Jewelry store,None,apify
+Masi Jewelry,(786) 850-6916,https://www.masijewelry.com/,"104 Madeira Ave, Coral Gables, FL 33134",25.7559073,-80.2570973,33134,5,8,Jewelry store,None,apify
+Joy Jewelry Inc.,(201) 689-1150,http://www.joyjewelryusa.com/,"228 Rivervale Rd, River Vale, NJ 07675",40.9966366,-74.0069081,07675,5,3,Wholesale jeweler,None,apify
+As De Oro Jewelry,,,"4800 W Flagler St, Miami, FL 33134",25.7711185,-80.2741728,33134,4.5,41,Jewelry store,None,apify
+Amaury Jewelry,(305) 445-5242,https://amauryjewelry.com/,"4850 SW 8th St, Coral Gables, FL 33134",25.7638599,-80.2743071,33134,4.7,283,Jeweler,None,apify
+The Paper Store,(201) 785-7500,https://www.thepaperstore.com/store-locator#!/Ramsey-36-Interstate-Shopping-Center-07446,"36 Interstate Shop Center, Ramsey, NJ 07446",41.0667471,-74.1377675,07446,4.3,53,Jewelry store,None,apify
+Apple Tice's Corner,(201) 474-4180,https://www.apple.com/retail/tices?cid=aos-us-seo-maps,"441 Chestnut Ridge Rd, Woodcliff Lake, NJ 07677",41.041881,-74.0750687,07677,3.9,534,Electronics store,None,apify
+Apple Nanuet,(845) 215-6980,https://www.apple.com/retail/nanuet?cid=aos-us-seo-maps,"8115 Fashion Dr, Nanuet, NY 10954",41.095637,-74.0161056,10954,3.7,1019,Electronics store,None,apify
+Westlake Ace Hardware,(919) 834-8600,http://www.acehardware.com/store-details/16931,"802 Semart Dr #112, Raleigh, NC 27604",35.7906835,-78.6399251,27604,4.6,407,Hardware store,None,apify
+Taylor's Do it Center,(757) 622-7175,https://doitbest.com/taylors-do-it-centers/?utm_source=google&utm_medium=organic&utm_campaign=gmb_norfolk_colley,"3400 Colley Ave, Norfolk, VA 23508",36.8774943,-76.2944447,23508,4.4,633,Hardware store,None,apify
+Shell Lumber and Hardware,(305) 856-6401,https://www.shelllumber.com/,"2733 SW 27th Ave, Miami, FL 33133",25.7412656,-80.2376642,33133,4.6,1067,Hardware store,None,apify
+Blackhawk Hardware and Garden Center,(704) 525-2682,https://www.blackhawkhardware.com/,"4225 Park Rd, Charlotte, NC 28209",35.174597,-80.8481135,28209,4.7,1077,Hardware store,None,apify
+Pleasants Hardware,(804) 768-9464,https://www.doitbest.com/pleasants-hardware/?utm_source=google&utm_medium=organic&utm_campaign=gmb_chesterfield,"6439 Centralia Rd, Chesterfield, VA 23832",37.3718487,-77.4992352,23832,4.4,435,Hardware store,None,apify
+"Colonial Hardware Co (Traeger Dealer, Cheapest Transponder Keys in Town!)",(336) 226-3754,https://www.colonialhardwaregraham.com/,"104 E Elm St, Graham, NC 27253",36.069462,-79.399478,27253,4.7,344,Hardware store,None,apify
+Cleveland Ace Hardware,(919) 779-2950,https://www.acehardware.com/?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=17912,"7283 Veterans Pkwy Ste 204, Raleigh, NC 27603",35.5919943,-78.6015177,27603,4.6,444,Hardware store,None,apify
+Taylor's Do it Center,(757) 484-4545,https://doitbest.com/taylors-do-it-centers/?utm_source=google&utm_medium=organic&utm_campaign=gmb_suffolk,"3235 Bridge Rd, Suffolk, VA 23435",36.8627845,-76.4826751,23435,4.5,280,Hardware store,None,apify
+Westlake Ace Hardware,(984) 465-1605,http://www.acehardware.com/store-details/16951,"2976 Kildaire Farm Rd, Cary, NC 27518",35.7182064,-78.7886107,27518,4.4,287,Hardware store,None,apify
+Holly Springs Ace Hardware,(919) 567-0233,https://www.acehardware.com/?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=17908,"509 N Main St, Holly Springs, NC 27540",35.6592172,-78.8369797,27540,4.6,337,Hardware store,None,apify
+Taylor's Do it Center,(757) 868-8635,https://doitbest.com/taylors-do-it-centers/?utm_source=google&utm_medium=organic&utm_campaign=gmb_poquoson,"475 Wythe Creek Rd, Poquoson, VA 23662",37.1252457,-76.3929712,23662,4.3,209,Hardware store,None,apify
+Westlake Ace Hardware,(919) 790-8832,http://www.acehardware.com/store-details/16537,"6196 Falls of Neuse Rd #100, Raleigh, NC 27609",35.8669905,-78.6191475,27609,4.5,468,Hardware store,None,apify
+"Craft American Hardware, Inc.",(910) 256-4782,https://www.doitbest.com/crafthardware/,"7002 Wrightsville Ave, Wilmington, NC 28403",34.2198805,-77.8223951,28403,4.7,134,Hardware store,None,apify
+Lanier Ace Hardware,(336) 248-5935,http://www.lanierhardware.com/?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=16863,"218 S Main St, Lexington, NC 27292",35.8226497,-80.2551193,27292,4.7,846,Hardware store,None,apify
+Overstreet Hardware and Home,(434) 616-2989,http://www.overstreethardware.com/?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=17086,"15097 Forest Rd, Forest, VA 24551",37.3643697,-79.2932759,24551,4.6,258,Hardware store,None,apify
+Stevens Ace Hardware-Market Street,(910) 202-5070,http://www.stevensacehardware.com/?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=16140,"6756 Market St, Wilmington, NC 28405",34.2585551,-77.834835,28405,4.5,433,Hardware store,None,apify
+Elder's Ace Hardware-Florence,(843) 669-6393,https://www.eldershardware.com/locations/florence?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=18941,"155 S Cashua Dr, Florence, SC 29501",34.1931867,-79.8035596,29501,4.5,594,Hardware store,None,apify
+Zebulon Hardware,(919) 375-4886,http://zebulonhardware.com/,"412 W Gannon Ave, Zebulon, NC 27597",35.8217168,-78.3227891,27597,4.6,55,Hardware store,None,apify
+Henderson Supply Co. Inc.,(843) 383-5131,http://www.acehardware.com/store-details/06198?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=06198,"935 S Fourth St, Hartsville, SC 29550",34.363163,-80.0626209,29550,4.5,262,Hardware store,None,apify
+Moneta Farm & Home Center,(540) 297-5558,http://www.monetafhc.com/?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=18482,"11739 Moneta Rd, Moneta, VA 24121",37.19609,-79.6000571,24121,4.6,315,Hardware store,None,apify
+Taylor's Do it Center,(757) 482-3367,https://doitbest.com/taylors-do-it-centers/?utm_source=google&utm_medium=organic&utm_campaign=gmb_taylors_chesapeake_great_bridge,"330 S Battlefield Blvd, Chesapeake, VA 23322",36.7128031,-76.2393564,23322,4.4,466,Hardware store,None,apify
+Taylor's Do it Center,(757) 531-8600,https://doitbest.com/taylors-do-it-centers/?utm_source=google&utm_medium=organic&utm_campaign=gmb_norfolk_little_creek,"2400 E Little Creek Rd, Norfolk, VA 23518",36.9162645,-76.2159626,23518,4.3,576,Hardware store,None,apify
+Taylor's Do it Center,(757) 962-9343,https://doitbest.com/taylors-do-it-centers/?utm_source=google&utm_medium=organic&utm_campaign=gmb_va_beach_kempsville,"5258 Fairfield Shopping Centre #b, Virginia Beach, VA 23464",36.8153922,-76.1690134,23464,4.4,319,Hardware store,None,apify
+Taylor's Do it Center,(757) 460-3716,https://doitbest.com/taylors-do-it-centers/?utm_source=google&utm_medium=organic&utm_campaign=gmb_va_beach_haygood,"1123 Independence Blvd, Virginia Beach, VA 23455",36.876695,-76.134824,23455,4.5,648,Hardware store,None,apify
+Taylor's Do it Center,(757) 425-6120,https://doitbest.com/taylors-do-it-centers/?utm_source=google&utm_medium=organic&utm_campaign=gmb_va_beach_hilltop,"1609 Laskin Rd, Virginia Beach, VA 23451",36.850715,-76.017418,23451,4.5,360,Hardware store,None,apify
+Taylor's Do it Center,(252) 435-1521,https://doitbest.com/taylors-do-it-centers/?utm_source=google&utm_medium=organic&utm_campaign=gmb_moyock,"100 Lark Dr, Moyock, NC 27958",36.5189252,-76.1725267,27958,4.3,252,Hardware store,None,apify
+Taylor’s Do it Center,(757) 222-0013,https://doitbest.com/taylors-do-it-centers/?utm_source=google&utm_medium=organic&utm_campaign=gmb_va_beach_marina_shores,"2865 Lynnhaven Dr, Virginia Beach, VA 23451",36.9068888,-76.0684712,23451,4.4,167,Hardware store,None,apify
+Grainger Industrial Supply,(800) 472-4643,https://www.grainger.com/branch/Norfolk-Branch-552,"1401 Sewells Point Rd, Norfolk, VA 23502",36.8663058,-76.229716,23502,4.4,66,Tool store,None,apify
+Village Ace Hardware,(910) 327-3646,http://www.acehardware.com/store-details/16801?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=16801,"2135 NC-172, Sneads Ferry, NC 28460",34.5519609,-77.4205148,28460,4.7,438,Hardware store,None,apify
+Ace Hardware Mint Hill,(704) 248-8296,http://www.acehardware.com/store-details/18832?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=18832,"6912 Matthews-Mint Hill Rd, Mint Hill, NC 28227",35.171466,-80.656509,28227,4.1,91,Hardware store,None,apify
+Elgin Hardware and Paint,(803) 438-2001,https://www.doitbest.com/elgin-hardware-and-paint/,"2495 Main St, Elgin, SC 29045",34.1691603,-80.7939151,29045,5,10,Hardware store,None,apify
+Windsor Hardware,(757) 242-6123,http://www.acehardware.com/store-details/19255?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=19255,"5 Joyner Ave, Windsor, VA 23487",36.8076667,-76.743576,23487,4.6,189,Hardware store,None,apify
+Taylor's Do it Center,(757) 916-8720,https://doitbest.com/taylors-do-it-centers,"1767 S George Washington Mem Hwy, Gloucester Point, VA 23062",37.2598325,-76.4936677,23062,4.7,62,Hardware store,None,apify
+Hampstead Hardware,(910) 270-3237,http://www.acehardware.com/store-details/11056?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=11056,"15597 US-17, Hampstead, NC 28443",34.377139,-77.701034,28443,4.5,367,Hardware store,None,apify
+Rockingham Cooperative ACE Hardware - Troutville,(540) 992-1001,https://www.rockinghamcoop.com/troutville-ag-ace-hardware,"8649 Cloverdale Rd, Troutville, VA 24175",37.377079,-79.890025,24175,4.4,180,Hardware store,None,apify
+Farmers Produce Co,(757) 562-3560,http://www.acehardware.com/store-details/02479?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=02479,"1100 Armory Dr Ste 101, Franklin, VA 23851",36.6732342,-76.940096,23851,4.4,150,Hardware store,None,apify
+Cross Ace Hardware,(910) 378-1920,http://www.acehardware.com/store-details/18799?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=18799,"1050 Henderson Dr, Jacksonville, NC 28540",34.7815711,-77.4236,28540,4.4,119,Hardware store,None,apify
+H W Little & Co Inc,(704) 694-2214,https://www.doitbest.com/h-w-little-hardware,"109 S Greene St, Wadesboro, NC 28170",34.9659506,-80.0766975,28170,4.7,94,Hardware store,None,apify
+Reece's Building Supply,(540) 726-3562,https://www.doitbest.com/reeces,"2683 Virginia Ave, Narrows, VA 24124",37.334905,-80.802576,24124,4.7,131,Building materials supplier,None,apify
+Hardware General True Value,(919) 642-3688,http://www.myhardwaregeneral.com/,"386 East St, Pittsboro, NC 27312",35.7193603,-79.170578,27312,4.6,80,Hardware store,None,apify
+Lowe's Home Improvement,(803) 749-1272,https://www.lowes.com/store/SC-Columbia/0385?cm_mmc=lod-_-c-_-lcl-_-awr-_-yxt-_-go-_-385-_-na-_-0-_-0&y_source=1_MTE4NDA3MS03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"390 Harbison Blvd, Columbia, SC 29212",34.08,-81.1509,29212,4.1,2394,Hardware store,None,apify
+Community Hardware True Value,(919) 936-5161,https://www.truevalue.com/community-princeton/?utm_source=gbp&utm_medium=organic,"102 S Center St, Princeton, NC 27569",35.465357,-78.1598105,27569,4.6,99,Hardware store,None,apify
+Sound Ace Hardware,(252) 354-4640,https://soundacehardware.com/,"300 Emerald Plantation Rd, Emerald Isle, NC 28594",34.6622534,-77.0486284,28594,4.7,399,Hardware store,None,apify
+Coltrain Garden & Hardware,(252) 304-2153,https://www.coltrainhardware.com/,"524 Third St, Ayden, NC 28513",35.4710058,-77.4185646,28513,4.9,50,Hardware store,None,apify
+Mobile Home Parts At National Hardware,(843) 665-1915,https://nationalhardware.doitbest.com/,"1607 E Palmetto St, Florence, SC 29506",34.1971087,-79.7443647,29506,4.5,71,Mobile home supply store,None,apify
+Lowe's Home Improvement,(803) 324-3170,https://www.lowes.com/store/SC-Rock-Hill/0416?cm_mmc=lod-_-c-_-lcl-_-awr-_-yxt-_-go-_-416-_-na-_-0-_-0&y_source=1_MTE4NDA1Ny03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"1350 Springdale Rd, Rock Hill, SC 29730",34.9369,-80.9666,29730,4.1,2242,Hardware store,None,apify
+Tightsqueeze Hardware Do It Best,(434) 432-2512,https://www.doitbest.com/tightsqueeze,"220 Tight Squeeze Rd, Chatham, VA 24531",36.788731,-79.396284,24531,4.4,83,Hardware store,None,apify
+Burney True Value Hardware Of Seven Lakes,(910) 944-1516,https://www.burneyhardware.com/,"270 N Trade St, Seven Lakes, NC 27376",35.2678107,-79.5877785,27376,4.8,125,Hardware store,None,apify
+Kenbridge Supply Co Inc,(434) 676-3555,http://www.acehardware.com/store-details/08793?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=08793,"311 S Broad St #846, Kenbridge, VA 23944",36.9604218,-78.12604,23944,4.7,131,Hardware store,None,apify
+Mitchell Hardware,(252) 638-4261,http://mitchellhardwarenewbern.com/,"215 Craven St, New Bern, NC 28560",35.105415,-77.0388181,28560,4.9,699,Hardware store,None,apify
+Ace Hardware,(252) 745-4111,http://www.acehardware.com/store-details/18918?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=18918,"13646 NC-55, Alliance, NC 28509",35.143801,-76.793892,28509,4.8,4,Hardware store,None,apify
+Lanier Hardware & Rental,(910) 259-4825,http://doitbest.com/lanier-hardware-and-rental,"307 W Wilmington St, Burgaw, NC 28425",34.5498149,-77.9310984,28425,4.6,94,Hardware store,None,apify
+The Home Depot,(803) 781-0877,https://www.homedepot.com/l/West-Columbia/SC/Columbia/29212/1112?emt=MSGoogleMaps,"5200 Fernandina Rd, Columbia, SC 29212",34.0761489,-81.1491605,29212,4.2,1747,Hardware store,None,apify
+Down East Ace,(252) 631-2720,https://www.acehardware.com/store-details/18010,"4109 Dr. M.L.K. Jr Blvd, New Bern, NC 28562",35.0941227,-77.1193026,28562,4.4,192,Hardware store,None,apify
+M L Lanier & Smith Ace,(910) 285-3413,http://www.acehardware.com/store-details/03468?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=03468,"4646 S North Carolina 50 Hwy, Chinquapin, NC 28521",34.7941963,-77.776283,28521,4.8,91,Hardware store,None,apify
+Locust Ace Hardware,(704) 888-0093,http://www.acehardware.com/mystore/index.jsp?store=11978&cid=localstore11978,"217 Town Centre Dr, Locust, NC 28097",35.2592468,-80.4318618,28097,4.7,160,Hardware store,None,apify
+Tractor Supply Co.,(803) 754-2857,https://www.tractorsupply.com/tsc/store_Columbia-SC-29203_1521,"256 Killian Rd, Columbia, SC 29203",34.13225,-80.9717191,29203,4.5,495,Hardware store,None,apify
+Bladen Builders Supply,(910) 862-3177,https://www.doitbest.com/bladen-builders-supply,"1206 Swanzy St, Elizabethtown, NC 28337",34.6286315,-78.6194305,28337,4.6,92,Hardware store,None,apify
+Tractor Supply Co.,(803) 749-2778,https://www.tractorsupply.com/tsc/store_Irmo-SC-29063_1365,"1003 Dutch Fork Rd, Irmo, SC 29063",34.1224343,-81.2151206,29063,4.4,420,Hardware store,None,apify
+The Home Depot,(803) 736-1666,https://www.homedepot.com/l/East-Columbia/SC/Columbia/29223/1110?emt=MSGoogleMaps,"7701 Two Notch Rd, Columbia, SC 29223",34.0792159,-80.9454133,29223,4.3,1346,Hardware store,None,apify
+Leland Ace Hardware,(910) 408-1200,http://www.lelandacehardware.com/?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=15279,"117 B Village Rd NE, Leland, NC 28451",34.2327489,-77.9991472,28451,4.6,545,Hardware store,None,apify
+Emporia Building Center,(434) 637-8099,https://www.doitbest.com/emporia-building-center/,"306a W Atlantic St, Emporia, VA 23847",36.6985807,-77.5420652,23847,4.8,32,Building materials supplier,None,apify
+Lowe's Home Improvement,(803) 572-9000,https://www.lowes.com/store/SC-Camden/1751?cm_mmc=lod-_-c-_-lcl-_-awr-_-yxt-_-go-_-1751-_-na-_-0-_-0&y_source=1_MTE4NDA2NC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"11 Bay Ln, Camden, SC 29020",34.248684,-80.643047,29020,4.3,1646,Hardware store,None,apify
+Tractor Supply Co.,(843) 393-0200,https://www.tractorsupply.com/tsc/store_Darlington-SC-29532_2233,"1527 S Main St, Darlington, SC 29532",34.2802488,-79.8543866,29532,4.4,385,Hardware store,None,apify
+Tractor Supply Co.,(843) 676-9950,https://www.tractorsupply.com/tsc/store_Florence-SC-29505_1141,"2590 S Irby St, Florence, SC 29505",34.14631,-79.7690704,29505,4.4,375,Hardware store,None,apify
+Tractor Supply Co.,(803) 581-7800,https://www.tractorsupply.com/tsc/store_Chester-SC-29706_1743,"1839 J A Cochran Bypass, Chester, SC 29706",34.707671,-81.192959,29706,4.4,204,Hardware store,None,apify
+Tractor Supply Co.,(843) 675-7000,https://www.tractorsupply.com/tsc/store_Pageland-SC-29728_2546,"211 E Cato St, Pageland, SC 29728",34.776537,-80.381304,29728,4.6,144,Hardware store,None,apify
+Ace Hardware of Whiteville,(910) 642-2332,http://www.acehardware.com/store-details/19560?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=19560,"1210 S Madison St, Whiteville, NC 28472",34.3138789,-78.7086541,28472,3.8,4,Hardware store,None,apify
+The Home Depot,(910) 790-0247,https://www.homedepot.com/l/Myrtle-Grove/NC/Wilmington/28412/3609?emt=MSGoogleMaps,"5511 Carolina Beach Rd, Wilmington, NC 28412",34.137379,-77.890899,28412,4.3,1111,Hardware store,None,apify
+Lowe's Home Improvement,(910) 329-6952,https://www.lowes.com/store/NC-Hampstead/2256?cm_mmc=lod-_-c-_-lcl-_-awr-_-yxt-_-go-_-2256-_-na-_-0-_-0&y_source=1_MTE4NDM1Ny03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"106 Wilkes Ln, Hampstead, NC 28443",34.45228,-77.608523,28443,4.2,1626,Hardware store,None,apify
+The Home Depot,(803) 419-9336,https://www.homedepot.com/l/Sandhills/SC/Columbia/29229/1109?emt=MSGoogleMaps,"285 Forum Dr, Columbia, SC 29229",34.1265534,-80.8723242,29229,4.1,1367,Hardware store,None,apify
+Tractor Supply Co.,(803) 424-1901,https://www.tractorsupply.com/tsc/store_Camden-SC-29020_104,"1635 Springdale Dr, Camden, SC 29020",34.2520818,-80.6487141,29020,4.5,489,Hardware store,None,apify
+Tractor Supply Co.,(803) 285-5145,https://www.tractorsupply.com/tsc/store_Lancaster-SC-29720_1306,"593 Lancaster Bypass E, Lancaster, SC 29720",34.730552,-80.7582188,29720,4.4,699,Hardware store,None,apify
+Pleasants Hardware,(804) 275-7002,https://www.doitbest.com/pleasants-hardware/?utm_source=google&utm_medium=organic&utm_campaign=gmb_jeff_davis,"5140 Rte 1, Richmond, VA 23234",37.4524427,-77.4424159,23234,4.3,417,Hardware store,None,apify
+Lowe's Home Improvement,(910) 410-0137,https://www.lowes.com/store/NC-Rockingham/1038?cm_mmc=lod-_-c-_-lcl-_-awr-_-yxt-_-go-_-1038-_-na-_-0-_-0&y_source=1_MTE4NDM2MS03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"1300-A E Broad Ave, Rockingham, NC 28379",34.920916,-79.750138,28379,4.1,1525,Hardware store,None,apify
+Tractor Supply Co.,(910) 291-0255,https://www.tractorsupply.com/tsc/store_Laurinburg-NC-28352_1576,"1690 S Main St, Laurinburg, NC 28352",34.751994,-79.477591,28352,4.3,302,Hardware store,None,apify
+Lowe's Home Improvement,(910) 610-2365,https://www.lowes.com/store/NC-Laurinburg/2564?cm_mmc=lod-_-c-_-lcl-_-awr-_-yxt-_-go-_-2564-_-na-_-0-_-0&y_source=1_MTE4NDM2NC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"910 US 401 By-Pass, Laurinburg, NC 28352",34.7616915,-79.479463,28352,4.2,1176,Hardware store,None,apify
+Tractor Supply Co.,(843) 951-0018,https://www.tractorsupply.com/tsc/store_Hartsville-SC-29550_2722,"2169 W Bobo Newsom Hwy, Hartsville, SC 29550",34.3612366,-80.126749,29550,4.2,45,Hardware store,None,apify
+Marshburn's Inc,(910) 285-3341,http://www.ace.marshburn.com/?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=08235,"605 S Norwood St, Wallace, NC 28466",34.7286812,-77.9894125,28466,3.9,149,Hardware store,None,apify
+Tractor Supply Co.,(910) 623-4995,https://www.tractorsupply.com/tsc/store_Castlehayne-NC-28429_2892,"3400 Castle Hayne Rd, Castle Hayne, NC 28429",34.3124016,-77.9213496,28429,3.9,42,Hardware store,None,apify
+Lowe's Garden Center,(843) 292-0643,https://www.lowes.com/l/gardencenter.html?cm_mmc=YEXT-_-GC,"1701 Freedom Blvd, Florence, SC 29505",34.1591955,-79.7583927,29505,4,36,Garden center,None,apify
+Lowe's Garden Center,(843) 339-2501,https://www.lowes.com/l/gardencenter.html?cm_mmc=YEXT-_-GC,"819 S Fourth St, Hartsville, SC 29550",34.3653104,-80.0636717,29550,4.2,98,Garden center,None,apify
+Lowe's Garden Center,(843) 413-9276,https://www.lowes.com/l/gardencenter.html?cm_mmc=YEXT-_-GC,"2301 David H McLeod Blvd, Florence, SC 29501",34.1887324,-79.8183614,29501,4.4,95,Garden center,None,apify
+Doc B's Restaurant,(786) 864-1220,https://docbsrestaurant.com/locations/coral-gables,"301 Miracle Mile, Coral Gables, FL 33134",25.7496233,-80.2608567,33134,4.7,2093,American restaurant,$20–30,apify
+Bulla Gastrobar Coral Gables,(786) 810-6215,https://bullagastrobar.com/locations/coral-gables/,"2500 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7485084,-80.2589087,33134,4.9,14851,Spanish restaurant,$30–90,apify
+The Collab,(305) 667-6766,https://thecollabmiami.com/,"1350 S Dixie Hwy, Coral Gables, FL 33146",25.7126417,-80.2788127,33146,4.5,71,Restaurant,None,apify
+La Rosa Gastrobar,(786) 870-5466,https://www.larosagastrobar.com/?y_source=1_MjAxNTc0NDk5Mi03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"382 Miracle Mile, Coral Gables, FL 33134",25.7490594,-80.2622985,33134,4.9,1321,Restaurant,$30–90,apify
+CVI.CHE 105 - Coral Gables,(786) 527-3939,https://www.ceviche105.com/,"111 Palermo Ave #108, Coral Gables, FL 33134",25.7458695,-80.2571171,33134,4.9,6776,Peruvian restaurant,$50–100,apify
+MIKA Coral Gables,(305) 404-2200,http://mikacoralgables.com/,"3007 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7443133,-80.2581085,33134,4.7,489,Restaurant,$100+,apify
+Seasons 52,(305) 442-8552,https://www.seasons52.com/locations/fl/coral-gables/coral-gables/4509?cmpid=br:s52_ag:ie_ch:loc_ca:S52GMB_sn:gmb_gt:coral-gables-fl-4509_pl:locurl_rd:1008,"321 Miracle Mile, Coral Gables, FL 33134",25.74963,-80.2614,33134,4.6,2250,New American restaurant,$20–70,apify
+Mamey Miami,(305) 266-2639,http://mameymiami.com/,"1350 S Dixie Hwy, Coral Gables, FL 33146",25.7121987,-80.2782746,33146,4.3,732,Restaurant,$50–100,apify
+The Halal Shack,,https://www.thehalalshack.com/,"1350 Miller Dr, Coral Gables, FL 33146",25.71976,-80.2780359,33146,4.9,193,Halal restaurant,$10–20,apify
+CRAFT Coral Gables,(786) 772-6932,https://www.craftmiami.us/,"127 Giralda Ave, Coral Gables, FL 33134",25.7515153,-80.2574189,33134,4.9,6822,Restaurant,$20–30,apify
+Graziano's Restaurant Coral Gables,(305) 774-3599,https://www.grazianosgroup.com/,"394 Giralda Ave, Coral Gables, FL 33134",25.7508067,-80.262584,33134,4.6,2018,Argentinian restaurant,$50–100,apify
+Salumeria 104 - Coral Gables,(786) 947-5342,https://www.salumeria104.com/,"117 Miracle Mile, Coral Gables, FL 33134",25.7498307,-80.2572384,33134,4.8,2654,Italian restaurant,$20–80,apify
+Taipa Peruvian Restaurant- (Coral Gables-57 Ave),(305) 661-1462,http://www.taiparestaurants.com/,"5751 Bird Rd, Miami, FL 33155",25.7348653,-80.2877886,33155,4.8,692,Peruvian restaurant,$20–70,apify
+Bistro Café,(305) 530-8193,https://instagram.com/bistrocaferest,"4155 Laguna St, Coral Gables, FL 33146",25.7333663,-80.2610329,33146,5,14098,Brunch restaurant,$20–40,apify
+Motek Coral Gables,(305) 396-8547,http://www.motekcafe.com/,"45 Miracle Mile, Miami, FL 33134",25.7500425,-80.2558088,33134,4.9,7889,Restaurant,$50–100,apify
+Beauty & The Butcher,(305) 665-9661,https://www.beautyandthebutchermiami.com/,"6915 Southwest 57th Avenue, S Red Rd, Coral Gables, FL 33143",25.7050306,-80.2851878,33143,4.9,3048,American restaurant,$100+,apify
+Ventanas Restaurant Bar & Lounge,(786) 353-9460,,"3861 SW 40th St, Miami, FL 33146",25.7351729,-80.2575623,33146,4.9,15,Bar & grill,None,apify
+Mottai Miami,(305) 454-2488,https://mottaimiami.com/,"The Plaza, 2881 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7456875,-80.2581987,33134,4.7,112,Restaurant,$100+,apify
+Luca Osteria,(305) 381-5097,http://www.lucamiami.com/,"116 Giralda Ave, Coral Gables, FL 33134",25.7512048,-80.2572007,33134,4.4,747,Italian restaurant,$50–100,apify
+Villagio,(305) 447-8144,https://villagiorestaurants.com/,"Village of Merrick Park, 358 San Lorenzo Ave Suite 358, Coral Gables, FL 33146",25.7323414,-80.2607043,33146,4.2,1244,Italian restaurant,$30–50,apify
+Dr. Belisa Guzman,(305) 446-9940,https://www.cgepmd.com/,"800 Douglas Rd Ste 125, Coral Gables, FL 33134",25.7640422,-80.2555048,33134,5,7,Doctor,None,apify
+Baptist Health Doctors Hospital,(786) 308-3000,https://baptisthealth.net/locations/hospitals/doctors-hospital?utm_source=yext&utm_medium=google&utm_campaign=listing&y_source=1_MTIwNTAyMzUtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"5000 University Dr, Coral Gables, FL 33146",25.7244915,-80.2747758,33146,4.8,3966,Hospital,None,apify
+Primecare of Coral Gables,(305) 443-3001,http://www.primecarecg.com/,"370 Minorca Ave, Coral Gables, FL 33134",25.7532713,-80.2623776,33134,4.2,112,Doctor,None,apify
+Baptist Health Primary Care | Coral Gables (Belmont Village),(786) 595-1200,https://baptisthealth.net/locations/primary-care/coral-gables-primary-care?y_source=1_MTAzMDcyNjAwNC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"4101 Salzedo St, Coral Gables, FL 33146",25.7338886,-80.2600722,33146,4.9,216,Internist,None,apify
+Sanitas Medical Center,(844) 665-4827,https://www.mysanitas.com/en/fl/sanitas-south-miami,"1430 S Dixie Hwy Suites 101 - 102, Coral Gables, FL 33146",25.7102979,-80.281608,33146,4.6,38,Medical Center,None,apify
+"Jenny C. Montes De Oca Pineda, MD - PrimeCare of Coral Gables",(305) 443-3001,http://www.primecare1.com/,"370 Minorca Ave, Coral Gables, FL 33134",25.7532983,-80.2623846,33134,4.6,32,Family practice physician,None,apify
+"Jennifer Miranda, MD",(786) 227-6811,https://www.purehealthmiami.com/,"4100 Salzedo St Apt 4, Coral Gables, FL 33146",25.7335389,-80.2604277,33146,4.9,125,Internist,None,apify
+PURE Executive Health & Wellness,(786) 227-6811,https://www.purehealthmiami.com/,"4100 Salzedo St Apt 4, Coral Gables, FL 33146",25.7339613,-80.2605549,33146,4.9,192,Medical clinic,None,apify
+HealthMed Clinical Center Inc.,(786) 786-0658,http://www.health-medinc.com/,"3971 SW 8th St Ste 209, Coral Gables, FL 33134",25.7646387,-80.2611853,33134,4.7,13,Family practice physician,None,apify
+"Patrick Elias, PA",(305) 689-5555,https://doctors.umiamihealth.org/provider/Patrick+Elias/728069,"5555 Ponce de Leon Blvd, Coral Gables, FL 33146",25.7134099,-80.2801291,33146,4.9,51,Doctor,None,apify
+"Leunam J. Rodriguez, MD, LLC",(305) 663-0088,https://baptisthealth.net/doctors/primary-care/leunam-jesys-rodriguez/869929,"5000 University Dr #1100, Coral Gables, FL 33146",25.7242591,-80.2741844,33146,4.3,15,Internist,None,apify
+"Dr. Ivan G. Carrasquilla-Escoto, MD",(305) 443-3001,http://www.primecare1.com/,"370 Minorca Ave, Coral Gables, FL 33134",25.7532747,-80.26241,33134,4.8,26,Family practice physician,None,apify
+"Dr. Joaquin M. Jimenez De Cardenas, MD",(305) 444-6882,,"358 San Lorenzo Ave, Coral Gables, FL 33146",25.7314219,-80.2589309,33146,4.9,308,Pediatrician,None,apify
+"Manuel Garcia-Frangie, M.D., P.A. Family Doctor",(305) 326-3343,,"135 San Lorenzo Ave Ste 560-B, Coral Gables, FL 33146",25.7318349,-80.2575068,33146,3.9,26,Family practice physician,None,apify
+Gables Pediatrics,(305) 444-6882,https://www.toplinemd.com/gables-pediatrics/?utm_source=GMBlisting&utm_medium=organic,"358 San Lorenzo Ave #3230, Coral Gables, FL 33146",25.7314953,-80.2593235,33146,4.4,561,Pediatrician,None,apify
+"Edgardo R. Reyes-Ayala, MD, LLC",(305) 663-0088,,"5000 University Dr #1100, Coral Gables, FL 33146",25.7242591,-80.2741844,33146,4.6,19,Geriatrician,None,apify
+Erdmann Ernesto E MD,(305) 444-6882,http://www.gablespediatrics.com/,"358 San Lorenzo Ave #3230, Coral Gables, FL 33146",25.7313367,-80.2601405,33146,5,318,Pediatrician,None,apify
+Miami Comprehensive Medicine Group,(305) 749-9888,https://miamedicine.com/,"345 Palermo Ave, Coral Gables, FL 33134",25.74555,-80.2614698,33134,4.6,9,Medical clinic,None,apify
+Dr. Adam Rosen,(305) 443-3001,http://primecarecg.com/,"370 Minorca Ave Fl 2, Coral Gables, FL 33134",25.7532747,-80.26241,33134,4.7,9,Internist,None,apify
+"Dr. Michelle M. Starke, MD",(305) 665-8188,https://www.toplinemd.com/the-center-for-gynecology-and-restorative-medicine/michelle-starke/,"135 San Lorenzo Ave Ste 550, Coral Gables, FL 33146",25.7319698,-80.2576751,33146,4.8,728,Gynecologist,None,apify
+Bank of America Financial Center,(305) 446-2343,https://locators.bankofamerica.com/fl/coconutgrove/financial-centers-coconut-grove-13027.html?utm_source=GMBlisting&utm_medium=organic,"3211 Grand Ave, Coconut Grove, FL 33133",25.7281987,-80.2457887,33133,3.3,32,Bank,None,apify
+Chase Bank,(786) 450-5500,https://www.chase.com/locator/banking/us/fl/miami/3015-grand-ave?jp_cmp=rb%2FLocalListings%2Faff%2Fbranch%2Fna&y_source=1_Mjc2OTEyMy03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"3015 Grand Ave, Miami, FL 33133",25.7282,-80.2426,33133,4.4,37,Bank,None,apify
+Grove Bank & Trust,(305) 858-6666,https://www.grovebankandtrust.com/,"2701 S Bayshore Dr, Miami, FL 33133",25.7287511,-80.2380127,33133,4.3,45,Bank,None,apify
+Wells Fargo Bank,(305) 351-4237,https://locations.wellsfargo.com/fl/miami/3353-pan-american-dr?utm_campaign=Local_Listings&utm_source=Google&group=Community_Bank&loc=AC15847,"3353 Pan American Dr, Miami, FL 33133",25.7298126,-80.2357912,33133,3.2,24,Bank,None,apify
+Regions Bank,(786) 637-6120,https://www.regions.com/locator/fl/coconut-grove/full-service-branch-3516-main-hwy?cid=localListing_google,"3516 Main Hwy, Coconut Grove, FL 33133",25.7255091,-80.2449454,33133,4.7,29,Bank,None,apify
+Biscayne Bank,(305) 447-5050,,"2601 S Bayshore Dr #600, Coconut Grove, FL 33133",25.7327143,-80.2342866,33133,4.5,23,Bank,None,apify
+Truist,(305) 702-4901,https://www.truist.com/branch/fl/miami/33133/3058-grand-ave,"3058 Grand Ave, Miami, FL 33133",25.7279209,-80.242843,33133,3.9,7,Bank,None,apify
+First Citizens Bank,(305) 929-2800,https://locations.firstcitizens.com/fl/coconut-grove/2601-south-bayshore-drive,"2601 S Bayshore Dr Ste 101, Coconut Grove, FL 33133",25.7324906,-80.2341633,33133,3.3,7,Bank,None,apify
+AHF Pharmacy - Coconut Grove,(305) 860-5509,https://ahfpharmacy.org/,"3661 S Miami Ave Suite 806, Miami, FL 33133",25.7406718,-80.2128676,33133,4.1,14,Pharmacy,None,apify
+Coconut Grove Pharmacy,(305) 442-0211,https://coconutpharmacy.com/,"3001 SW 27th Ave #102, Miami, FL 33133",25.7351508,-80.2374652,33133,4.3,67,Pharmacy,None,apify
+CVS Pharmacy,(305) 341-3854,https://www.cvs.com/store-locator/miami-fl-pharmacies/3349-pan-american-drive-miami-fl-33133/storeid=11413?WT.mc_id=LS_GOOGLE_RX_11413,"3349 Pan American Dr, Miami, FL 33133",25.7300237,-80.2357737,33133,3.1,25,Pharmacy,None,apify
+CVS,(305) 341-3854,https://www.cvs.com/store-locator/miami-fl-pharmacies/3349-pan-american-drive-miami-fl-33133/storeid=11413?WT.mc_id=LS_GOOGLE_FS_11413,"3349 Pan American Dr, Miami, FL 33133",25.7300237,-80.2357737,33133,3,92,Drug store,None,apify
+CVS Pharmacy,(305) 569-1162,https://www.cvs.com/store-locator/coconut-grove-fl-pharmacies/3215-grand-ave-coconut-grove-fl-33133/storeid=4994?WT.mc_id=LS_GOOGLE_RX_4994,"3215 Grand Ave, Coconut Grove, FL 33133",25.7281625,-80.2463299,33133,3.8,45,Pharmacy,None,apify
+"Taruj, Inc. Bird Avenue Pharmacy",(305) 456-9542,https://www.tarujskincare.com/,"2829 Bird Ave Unit 4, Miami, FL 33133",25.7358782,-80.2391568,33133,4.9,18,Pharmacy,None,apify
+University Pharmacy,(305) 448-6116,http://www.university-pharmacy.com/,"217 Valencia Ave, Coral Gables, FL 33134",25.7480492,-80.2591407,33134,4.5,88,Pharmacy,None,apify
+CVS,(305) 569-1162,https://www.cvs.com/store-locator/coconut-grove-fl-pharmacies/3215-grand-ave-coconut-grove-fl-33133/storeid=4994?WT.mc_id=LS_GOOGLE_FS_4994,"3215 Grand Ave, Coconut Grove, FL 33133",25.7281625,-80.2463299,33133,3.1,172,Drug store,None,apify
+CVS Pharmacy,(786) 861-2199,https://www.cvs.com/store-locator/miami-fl-pharmacies/2750-sw-27th-ter-ste-101-miami-fl-33133/storeid=17765?WT.mc_id=LS_GOOGLE_RX_17765,"2750 SW 27th Terrace Ste 101, Miami, FL 33133",25.7398189,-80.2396974,33133,4.7,7,Pharmacy,None,apify
+Walgreens Pharmacy,(305) 446-5037,https://www.walgreens.com/locator/walgreens-3490+bird+rd-miami-fl-33133/id=10900,"3490 Bird Rd, Miami, FL 33133",25.7348741,-80.2500356,33133,2.7,38,Pharmacy,None,apify
+1Family 1Health Pharmacy,(877) 203-7099,http://www.1family1health.com/,"2803 SW 27th Ave, Miami, FL 33133",25.7385148,-80.2375247,33133,4.6,54,Pharmacy,None,apify
+Mercy Professional Pharmacy,(305) 285-2762,https://www.hcafloridahealthcare.com/locations/mercy-hospital/for-patients/retail-pharmacy,"3661 S Miami Ave #110, Miami, FL 33133",25.7406256,-80.2130297,33133,3.5,21,Pharmacy,None,apify
+Regions Pharmacy,(305) 603-9924,http://www.regionspharmacy.net/,"1065 SW 27th Ave, Miami, FL 33135",25.7625352,-80.2385734,33135,4.6,26,Pharmacy,None,apify
+Med-Source Pharmacy,(305) 854-7377,https://www.medsourcepharmacyrx.com/,"515 SW 17th Ave Ste 1, Miami, FL 33135",25.7681184,-80.2223063,33135,4.9,82,Pharmacy,None,apify
+Farmacia Julia Discount #2,(305) 448-6523,http://farmaciajuliadiscount.com/,"3197 SW 18th St, Miami, FL 33145",25.7548843,-80.2464566,33145,4.4,103,Pharmacy,None,apify
+Jorge's Pharmacy,(305) 856-1252,,"1701 Coral Wy, Miami, FL 33145",25.7510514,-80.2221338,33145,4.6,287,Pharmacy,None,apify
+PriveCareRx,(305) 901-5747,https://privecarerx.com/,"2020 Ponce de Leon Blvd STE 105, Coral Gables, FL 33134",25.7539587,-80.2592953,33134,5,639,Pharmacy,None,apify
+Rainbow Pharmacy 2,(305) 749-7000,http://rainbowpharmacyrx.com/,"257 Giralda Ave, Coral Gables, FL 33134",25.7512824,-80.2595245,33134,5,34,Pharmacy,None,apify
+Walgreens Pharmacy,(305) 444-4366,https://www.walgreens.com/locator/walgreens-3655+s+dixie+hwy-miami-fl-33133/id=3784,"3655 S Dixie Hwy, Miami, FL 33133",25.7336866,-80.2532333,33133,3.4,16,Pharmacy,None,apify
+CVS Pharmacy,(305) 459-7202,https://www.cvs.com/store-locator/coral-gables-fl-pharmacies/1906-ponce-de-leon-blvd-coral-gables-fl-33134/storeid=17786?WT.mc_id=LS_GOOGLE_RX_17786,"1906 Ponce de Leon Blvd, Coral Gables, FL 33134",25.7548092,-80.2590089,33134,4.1,75,Pharmacy,None,apify
+H&H Jewels,(305) 442-9760,http://www.hhjewels.com/,"3434 Main Hwy, Coconut Grove, FL 33133",25.7276614,-80.243035,33133,5,665,Jewelry store,None,apify
+Brilliant Earth,(786) 751-9243,https://www.brilliantearth.com/stores/miami-fl-33133/?utm_source=google&utm_medium=organic&utm_campaign=gmblisting&utm_content=miami,"3008 Grand Ave Ste 4, Miami, FL 33133",25.7279464,-80.2416201,33133,4.5,139,Jewelry store,None,apify
+Susan Blake Jewelry,(305) 209-0329,https://www.susanblakejewelry.com/,"3111 Commodore Plaza, Miami, FL 33133",25.7270839,-80.2438024,33133,5,6,Jewelry store,None,apify
+Robin In the Grove,(305) 460-4444,http://www.robingrove.net/,"3162 Commodore Plaza Ste 2G, Coconut Grove, FL 33133",25.7272235,-80.2448305,33133,4.7,34,Jewelry store,None,apify
+South Miami Jewelers & Watch,(305) 667-1898,http://www.southmiamijewelers.net/,"7214 SW 57th Ave, South Miami, FL 33143",25.7040329,-80.28565,33143,5,1041,Jewelry store,None,apify
+Rowan Coconut Grove,(305) 400-8514,https://heyrowan.com/pages/miami-piercing-studio?utm_source=google_business_profile&utm_medium=referral&utm_campaign=yext_listings&utm_content=google&y_source=1_OTE0MDQ4NjQtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"2987 McFarlane Rd, Miami, FL 33133",25.7279065,-80.2418238,33133,4.9,1221,Jewelry store,None,apify
+Sazingg Jewelry Miami,(305) 856-5554,http://www.sazingg.com/,"2212 SW 22nd Ave, Miami, FL 33145",25.750062,-80.2303926,33145,4.9,55,Jewelry store,None,apify
+Frank Joyeria,(305) 642-0007,https://frankjoyeria.com/,"2059 SW 8th St, Miami, FL 33135",25.765797,-80.228542,33135,4.2,147,Jewelry store,None,apify
+Levison's Jewelry Inc,(305) 529-9997,,"2665 S Bayshore Dr Ste 605, Miami, FL 33133",25.731235,-80.2368513,33133,5,28,Jeweler,None,apify
+GAS BIJOUX,(786) 238-7461,https://www.gasbijoux.com/us_en/,"3015 Grand Ave, Coconut Grove, FL 33133",25.7287463,-80.2422162,33133,5,14,Jewelry store,None,apify
+Zales Outlet,(919) 209-0000,https://stores.zales.com/nc/smithfield/6187?cid=seo-listings,"1221 Outlet Center Dr Ste. 1030 B, Smithfield, NC 27577",35.5113642,-78.3109382,27577,4.6,282,Jewelry store,None,apify
+Zales Outlet,(757) 337-8488,https://stores.zales.com/va/norfolk/6233?cid=seo-listings,"1600 Premium Outlets Blvd Ste. 852, Norfolk, VA 23502",36.8820881,-76.1997906,23502,4.8,243,Jewelry store,None,apify
+Brilliant Earth,(704) 831-9599,https://www.brilliantearth.com/stores/charlotte-nc-28203/?utm_source=google&utm_medium=organic&utm_campaign=gmblisting&utm_content=charlotte,"100 W Worthington Ave Ste a103, Charlotte, NC 28203",35.2121813,-80.8594821,28203,4.6,388,Jewelry store,None,apify
+Helzberg Diamonds Outlet,(704) 979-1809,https://www.helzberg.com/stores/nc/concord/concord-mills-0306?utm_source=GMBlisting&utm_medium=organic,"8111 Concord Mills Boulevard Spc 238, Concord, NC 28027",35.3697587,-80.7229359,28027,4.7,412,Jewelry store,None,apify
+Zales Outlet,(704) 979-1122,https://stores.zales.com/nc/concord/6153?cid=seo-listings,"8111 Concord Mills Boulevard Ste 631, Concord, NC 28027",35.3685091,-80.7221563,28027,4.7,376,Jewelry store,None,apify
+Zales Outlet,(757) 565-5803,https://stores.zales.com/va/williamsburg/2779?cid=seo-listings,"5709 72 Richmond Rd Ste. C051, Williamsburg, VA 23188",37.3196015,-76.7381468,23188,4.8,304,Jewelry store,None,apify
+Fruit of the Vine Boutique,(336) 818-1907,https://www.fruitofthevineonline.com/?utm_source=google&utm_medium=business+listing,"818 Main St, North Wilkesboro, NC 28659",36.1598885,-81.1457248,28659,5,10,Jewelry store,None,apify
+Kate Spade Outlet,(757) 461-1218,https://www.katespadeoutlet.com/stores/va/norfolk/1600-premium-outlets-blvd?utm_source=Rio&utm_medium=organic&utm_campaign=stores,"1600 Premium Outlets Blvd Ste 213, Norfolk, VA 23502",36.8818377,-76.2003297,23502,4.1,87,Jewelry store,None,apify
+Bless Your Heart Boutique,(919) 586-7943,http://www.blessyourheartnc.com/,"242 S Main St #106, Holly Springs, NC 27540",35.6493225,-78.8338775,27540,4.9,194,Boutique,None,apify
+Kate Spade Outlet,(919) 934-0459,https://www.katespadeoutlet.com/stores/nc/smithfield/1213-outlet-center-drive?utm_source=Rio&utm_medium=organic&utm_campaign=stores,"1213 Outlet Center Dr Ste 1015, Smithfield, NC 27577",35.5112994,-78.3112216,27577,4.5,38,Jewelry store,None,apify
+Kate Spade Outlet,(704) 979-5283,https://www.katespadeoutlet.com/stores/nc/concord/8111-concord-mills-blvd?utm_source=Rio&utm_medium=organic&utm_campaign=stores,"8111 Concord Mills Boulevard Ste 266, Concord, NC 28027",35.3693229,-80.722243,28027,3.8,40,Jewelry store,None,apify
+Kate Spade Outlet,(757) 258-9484,https://www.katespadeoutlet.com/stores/va/williamsburg/5645-richmond-rd?utm_source=Rio&utm_medium=organic&utm_campaign=stores,"5645 Richmond Rd suite 130, Williamsburg, VA 23188",37.3175191,-76.7371435,23188,4.4,154,Jewelry store,None,apify
+Kate Spade Outlet,(919) 304-0099,https://www.katespadeoutlet.com/stores/nc/mebane/4000-arrowhead-blvd?utm_source=Rio&utm_medium=organic&utm_campaign=stores,"4000 Arrowhead Blvd #726, Mebane, NC 27302",36.0745692,-79.2656026,27302,4.2,176,Jewelry store,None,apify
+Kate Spade Outlet,(704) 504-1199,https://www.katespadeoutlet.com/stores/nc/charlotte/5416-new-fashion-way?utm_source=Rio&utm_medium=organic&utm_campaign=stores,"5416 New Fashion Way #815, Charlotte, NC 28278",35.1687314,-80.9701132,28278,4.5,185,Jewelry store,None,apify
+Bless Your Heart Boutique,(919) 267-4707,https://www.blessyourheartnc.com/,"2701 Lawnview Ln #116, Apex, NC 27523",35.7411972,-78.9156007,27523,4.9,67,Boutique,None,apify
+Dillard's,(757) 523-9031,https://www.dillards.com/stores/virginia/greenbrier-mall-chesapeake/0172,"1401 Greenbrier Pkwy, Chesapeake, VA 23320",36.7785969,-76.2263082,23320,4.3,971,Fashion accessories store,None,apify
+Dillard's Pineville,(704) 544-0113,https://www.dillards.com/stores/north-carolina/carolina-place-pineville/0151,"11041 Carolina Pl Pkwy, Pineville, NC 28134",35.0806626,-80.8761777,28134,4.3,1025,Fashion accessories store,None,apify
+Dillard's,(757) 463-4800,https://www.dillards.com/stores/virginia/lynnhaven-mall-virginia-beach/0171,"701 Lynnhaven Pkwy, Virginia Beach, VA 23452",36.8145447,-76.0715263,23452,4.3,910,Fashion accessories store,None,apify
+Dillard's,(919) 792-2900,https://www.dillards.com/stores/north-carolina/triangle-town-center-raleigh/0140,"3501 Sumner Blvd, Raleigh, NC 27616",35.8661017,-78.5771303,27616,4.3,1225,Fashion accessories store,None,apify
+Dillard's,(828) 327-2656,https://www.dillards.com/stores/north-carolina/valley-hills-mall-hickory/0146,"1930 US Hwy 70 SE, Hickory, NC 28602",35.703109,-81.3064024,28602,4.3,818,Fashion accessories store,None,apify
+Crook & Crook Mar Suppliers True Value,(305) 854-1686,https://stores.truevalue.com/fl/miami/4017,"2795 SW 27th Ave, Miami, FL 33133",25.7395655,-80.2374814,33133,4.6,32,Hardware store,None,apify
+Ace Hardware Brickell,(786) 409-3100,http://www.hardgoods.biz/?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=15680,"900 SW 2nd Ave, Miami, FL 33130",25.7649778,-80.1977115,33130,4.5,771,Hardware store,None,apify
+The Home Depot,(305) 443-3534,https://www.homedepot.com/l/Coconut-Grove/FL/Miami/33133/6856?emt=MSGoogleMaps,"2999 SW 32nd Ave, Miami, FL 33133",25.7360219,-80.2442672,33133,4.3,1810,Hardware store,None,apify
+Dillard's,(910) 796-0187,https://www.dillards.com/stores/north-carolina/independence-mall-wilmington/0156,"3500 Oleander Dr, Wilmington, NC 28403",34.211177,-77.9065564,28403,4.3,1013,Fashion accessories store,None,apify
+Dillard's,(757) 930-0291,https://www.dillards.com/stores/virginia/patrick-henry-mall-newport-news/0174,"12300 Jefferson Ave Ste 300, Newport News, VA 23602",37.1118253,-76.4969177,23602,4.2,968,Fashion accessories store,None,apify
+Dillard's,(336) 538-6498,https://www.dillards.com/stores/north-carolina/alamance-crossing-burlington/0143,"1003 Boston Dr, Burlington, NC 27215",36.0708314,-79.5089242,27215,4.3,547,Fashion accessories store,None,apify
+Dillard's,(803) 732-7037,https://www.dillards.com/stores/south-carolina/columbiana-centre-columbia/0164,"100 Columbiana Cir, Columbia, SC 29212",34.0806036,-81.1574037,29212,4.4,1408,Fashion accessories store,None,apify
+Dillard's,(704) 716-1150,https://www.dillards.com/stores/north-carolina/northlake-mall-charlotte/0153,"7535 Northlake Mall Dr, Charlotte, NC 28216",35.3530962,-80.8526587,28216,4.3,1070,Fashion accessories store,None,apify
+Dillard's,(336) 659-1515,https://www.dillards.com/stores/north-carolina/hanes-mall-winston-salem/0145,"3320 Silas Creek Pkwy #3500, Winston-Salem, NC 27103",36.0682713,-80.3016366,27103,4.3,926,Fashion accessories store,None,apify
+Dillard's,(704) 365-3111,https://www.dillards.com/stores/north-carolina/southpark-mall-charlotte/0150,"4400 Sharon Rd, Charlotte, NC 28211",35.1529114,-80.8307305,28211,4.3,1219,Fashion accessories store,None,apify
+Dillard's,(336) 855-5511,https://www.dillards.com/stores/north-carolina/four-seasons-town-centre-greensboro/0144,"150 4 Seasons Town Center Ent, Greensboro, NC 27407",36.0396129,-79.8364977,27407,4.3,1680,Fashion accessories store,None,apify
+Recoveco,,https://www.recovecorestaurant.com/,"6000 SW 74th St Ste 1, South Miami, FL 33143",25.7021994,-80.2912837,33143,4.9,132,Restaurant,$100+,apify
+Kitchen 57,(786) 238-7179,https://www.kitchen57miami.com/,"7301 SW 57th Ct Ste 100, South Miami, FL 33143",25.7034236,-80.2861947,33143,4.7,217,Restaurant,$20–30,apify
+maman,(305) 397-8158,https://mamannyc.com/locations/south-miami,"5801 Sunset Dr, South Miami, FL 33143",25.7045316,-80.2876617,33143,4.8,773,Restaurant,$20–30,apify
+CRAFT South Miami,(786) 244-7185,https://www.craftmiami.us/,"5868 Sunset Dr, South Miami, FL 33143",25.7040523,-80.2887067,33143,4.9,3578,Restaurant,$20–30,apify
+107 Taste Asian Restaurant South Miami,(786) 641-5122,https://107taste.com/,"5966 S Dixie Hwy #103a, South Miami, FL 33143",25.7026359,-80.2907965,33143,4.9,1502,Asian restaurant,$20–30,apify
+Sushi Sake South Miami,(786) 292-7488,https://sushisakemiami.com/,"5829 SW 73rd St #5B, Miami, FL 33143",25.7036708,-80.2877923,33143,4.9,46,Sushi restaurant,$20–30,apify
+Avo Miami,(786) 534-4191,https://avo-miami.com/,"5958 S Dixie Hwy, South Miami, FL 33143",25.7029976,-80.2907376,33143,4.8,159,Health food restaurant,$20–30,apify
+The Grape Ape,(305) 397-8922,,"7400 SW 57th Ct, South Miami, FL 33143",25.7023896,-80.2864865,33143,4.6,140,Restaurant,$40–90,apify
+Cecile Bakery + Cafe,(305) 397-8206,http://www.cecilebakerycafe.com/,"5744 Sunset Dr, South Miami, FL 33143",25.7041887,-80.286127,33143,4.6,1324,Restaurant,$20–30,apify
+Café PANISSE,(305) 665-3322,,"7310 SW 57th Ave, South Miami, FL 33143",25.7032293,-80.2856948,33143,4.6,358,French restaurant,$50–60,apify
+Carrot Express,(305) 393-8882,https://carrotexpress.com/?olonwp=JjBtp_vMLk25gkYh_bnoiQ,"5850 Sunset Dr, South Miami, FL 33143",25.7040348,-80.2884454,33143,4.8,388,Restaurant,None,apify
+Pura Vida Miami,(305) 535-4142,https://www.puravidamiami.com/locations/florida/southmiami,"6022 S Dixie Hwy, South Miami, FL 33143",25.7025121,-80.2913407,33143,4.8,1282,Coffee shop,$20–30,apify
+Fox's Lounge,(305) 703-6553,https://www.foxslounge.com/,"6030 S Dixie Hwy, Miami, FL 33143",25.7024501,-80.291533,33143,4.6,474,American restaurant,$20–60,apify
+ENZO ITALIAN EATERY,(786) 770-8197,http://enzos-miami.com/,"6635 S Dixie Hwy, Miami, FL 33143",25.6942397,-80.3002544,33143,4.7,183,Italian restaurant,$20–70,apify
+Skinny Louie,(786) 641-5688,https://www.skinnylouie.com/louiespot/southmiami,"6022 S Dixie Hwy Unit D, South Miami, FL 33143",25.7025121,-80.2913407,33143,4.9,1587,Hamburger restaurant,$10–20,apify
+Whisk Gourmet Food & Catering,(754) 345-8821,http://www.whiskgourmet.com/,"7382 SW 56th Ave, South Miami, FL 33143",25.702869,-80.284701,33143,4.6,1131,American restaurant,$20–80,apify
+Corteza,(786) 883-7334,http://www.cortezamiami.com/,"5760 Sunset Dr, South Miami, FL 33143",25.7041979,-80.2869185,33143,5,285,Fusion restaurant,$40–100,apify
+CasaCuba,(305) 709-1214,http://casacubarestaurant.com/,"5859 SW 73rd St, South Miami, FL 33143",25.7037191,-80.2885606,33143,4.2,2335,Cuban restaurant,$20–30,apify
+Honey Veil South Miami,,https://honeyveil.com/,"5748 Sunset Dr, South Miami, FL 33143",25.704176,-80.2862794,33143,4.7,825,Cafe,$10–20,apify
+Baptist Health Primary Care | South Miami,(786) 595-8760,https://baptisthealth.net/locations/primary-care/south-miami-primary-care?utm_source=yext&utm_medium=google&utm_campaign=listing&y_source=1_MTIyMDU3NjctNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"6280 SW 72nd St Ste 410, Miami, FL 33143",25.7038735,-80.2951129,33143,4.9,732,Internist,None,apify
+"Dr. Kim Bango, MD",(786) 709-9990,https://www.toplinemd.com/prime-md-miami/kim-bango/,"6150 SW 76th St, Miami, FL 33143",25.7002487,-80.2930049,33143,4.7,283,Family practice physician,None,apify
+"Dr. Rekha P. Kini, MD",(786) 709-9990,https://www.toplinemd.com/prime-md-miami/rekha-kini/,"6150 SW 76th St, Miami, FL 33143",25.7002487,-80.2930049,33143,4.8,200,Family practice physician,None,apify
+"Dr. Alejandro O. Roca, MD",(305) 663-0710,https://baptisthealth.net/doctors/alejandro-octavio-roca/869205,"6701 Sunset Dr #212, South Miami, FL 33143",25.7041893,-80.3017807,33143,4.2,36,Internist,None,apify
+Leon Ramon MD,(786) 798-8292,https://www.ramonleonmdgroup.com/,"7000 SW 62nd Ave Ste 210, South Miami, FL 33143",25.7053911,-80.2936699,33143,4.8,63,Doctor,None,apify
+"Cecillia, Grande MD LLC",(305) 856-1461,https://doctors.baptisthealth.net/provider/Cecilia+Grande/869487,"7000 SW 62nd Ave #400, South Miami, FL 33143",25.7055437,-80.2936702,33143,4.9,651,Gynecologist,None,apify
+MyCardiologist,(305) 666-4633,http://www.mycardiologist.com/,"6200 Sunset Dr #401, South Miami, FL 33143",25.703367,-80.293832,33143,5,4099,Medical clinic,None,apify
+The Medical Group at South Miami,(305) 663-0710,http://the-md-group.com/,"6701 Sunset Dr #212, South Miami, FL 33143",25.7040697,-80.3020055,33143,3.5,2,Medical group,None,apify
+"Jose L Vazquez, MD",(786) 595-8760,https://baptisthealth.net/doctors/Jose-L-Vazquez/870210?utm_source=yext&utm_medium=google&utm_campaign=listing&y_source=1_MTIyMDgzMzctNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"6280 Sunset Dr Ste 410, South Miami, FL 33143",25.7034771,-80.2951799,33143,5,131,Doctor,None,apify
+South Miami Walk In Orthopedics & Sports Medicine,(786) 453-2667,http://www.sfwio.com/,"5966 S Dixie Hwy #401, South Miami, FL 33143",25.702683,-80.290934,33143,4.8,555,Orthopedic clinic,None,apify
+"South Miami Pediatric Partners: Hector Trujillo, MD",(305) 665-5808,https://www.toplinemd.com/south-miami-pediatric-partners/,"5901 SW 74th St Ste 312, Miami, FL 33143",25.7026517,-80.2896645,33143,4.9,265,Pediatrician,None,apify
+South Miami Women's Health,(305) 665-9644,http://southmiamiwomenshealth.com/,"7000 SW 62nd Ave Suite 310 & 350, South Miami, FL 33143",25.7053911,-80.2936699,33143,4.9,660,Women's health clinic,None,apify
+Dr Oscar Hernandez,(305) 482-1934,https://droscarhernandez.com/,"6705 Red Rd #512, South Miami, FL 33143",25.7061137,-80.2851871,33143,4.5,79,Internist,None,apify
+"Alejandro Jose Centurion, MD",(786) 662-0600,https://baptisthealth.net/doctors/Alejandro-Jose-Centurion/870218?utm_source=yext&utm_medium=google&utm_campaign=listing&y_source=1_MTczMDE4NTgtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"6200 SW 72nd St Suite 602, South Miami, FL 33143",25.7033889,-80.293844,33143,4.9,250,Family practice physician,None,apify
+"Claudia Santiesteban Garcia, MD",(786) 595-8760,https://baptisthealth.net/doctors/Claudia-Santiesteban-Garcia/2898136?utm_source=yext&utm_medium=google&utm_campaign=listing&y_source=1_MTA0MjE2NTk3OS03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"6280 SW 72nd St Ste 410, Miami, FL 33143",25.7038735,-80.2951129,33143,4.9,140,Internist,None,apify
+Skin Center of South Miami,(305) 740-6181,https://www.skincenterofsouthmiami.com/,"7800 SW 57th Ave Ste 110, South Miami, FL 33143",25.6985179,-80.2854528,33143,4.9,1707,Dermatologist,None,apify
+"Dr. Letty M. Villa, MD",(305) 667-8418,https://www.toplinemd.com/letty-villa-obgyn/,"6705 SW 57th Ave, South Miami, FL 33143",25.7063654,-80.2846998,33143,4.9,556,Obstetrician-gynecologist,None,apify
+"Dr. Francisco R. Jimenez, MD",(305) 662-9320,https://www.toplinemd.com/obgyn-specialists-of-south-miami/#provider,"7000 SW 62nd Ave # 200A, South Miami, FL 33143",25.7058005,-80.2936981,33143,5,748,Obstetrician-gynecologist,None,apify
+"Gabriel M. Deschamps, MD, PA",(305) 447-4923,http://deschampsmd.com/,"7000 SW 62nd Ave Ste 215, South Miami, FL 33143",25.705557,-80.2935932,33143,4.5,72,Internist,None,apify
+"Melissa Marie Guanche, MD",(786) 596-3876,https://baptisthealth.net/doctors/Melissa-Marie-Guanche/869078?utm_source=yext&utm_medium=google&utm_campaign=listing&y_source=1_MTczMDI5NDgtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"6200 Sunset Dr Ste 120, South Miami, FL 33143",25.7035016,-80.2937319,33143,4.9,171,Pain management physician,None,apify
+Miami Best Dental,(305) 667-2334,https://miamibestdental.com/,"6601 SW 80th St Ste 213, South Miami, FL 33143",25.6967276,-80.3000967,33143,5,480,Dentist,None,apify
+Mirage Dental Arts - Dentist in South Miami,(305) 770-6770,https://www.miragedentalarts.com/?UTM_source=GMB_listing&UTM_medium=organic&UTM_campaign=Website_URL,"8688 Sunset Dr, Miami, FL 33143",25.7017985,-80.3336456,33143,5,693,Dentist,None,apify
+Sage Dental of South Miami,(786) 822-6821,https://mysagedental.com/south-miami?utm_source=Google&utm_medium=Business_Listing,"5966 S Dixie Hwy #312, South Miami, FL 33143",25.7026358,-80.2908154,33143,4.5,421,Dentist,None,apify
+Gemini Dental - South Miami,(305) 661-5250,https://www.geminidentalmiami.com/,"7641 SW 62nd Ave, South Miami, FL 33143",25.6995882,-80.2928564,33143,4.9,136,Dentist,None,apify
+Smilewise Dentistry of South Miami-Leyane Hernandez Nunez DDS,(786) 605-5565,https://www.smilewisedentistrysouthmiami.com/,"5975 Sunset Dr #107, South Miami, FL 33143",25.7046096,-80.2907323,33143,5,208,Dentist,None,apify
+TMJ Dental Consultants,(305) 666-3824,https://www.tmjdentalconsultants.com/,"7741 SW 62nd Ave Ste 201, South Miami, FL 33143",25.6989042,-80.2928655,33143,4.9,73,Dentist,None,apify
+Connect Dental Care,(305) 669-8700,https://www.connectdentistry.com/,"6701 Sunset Dr Suite 205, South Miami, FL 33143",25.7040759,-80.3020719,33143,5,225,Dental clinic,None,apify
+AA South Florida Dentistry,(305) 661-9556,http://www.aasouthfloridadentistry.com/,"6280 Sunset Dr #401, Miami, FL 33143",25.7034908,-80.2950108,33143,4.7,147,Dentist,None,apify
+All Smiles Dentist at Sunset,(305) 270-0171,http://www.allsmilesatsunset.com/,"8585 Sunset Dr #101, Miami, FL 33143",25.7028304,-80.3326737,33143,4.7,85,Cosmetic dentist,None,apify
+EGil Dental - South Miami Office,(786) 418-5194,https://www.egildental.com/,"6141 Sunset Dr Suite 102, South Miami, FL 33143",25.7046403,-80.2925796,33143,5,274,Dentist,None,apify
+Sunset Dentistry,(305) 661-7810,http://www.sunsetdentistry.com/,"6280 FL-986 #404, South Miami, FL 33143",25.7034733,-80.2951932,33143,5,9,Dentist,None,apify
+Dr. Rios Dental Solutions,(305) 603-9844,http://drriosdentalsolutions.com/,"7701 SW 62nd Ave Ste A-1, South Miami, FL 33143",25.6994912,-80.2930626,33143,5,265,Dentist,None,apify
+Dr. Bob Pediatric Dentist South Miami,(305) 614-8198,https://www.pediatricdentistsouthmiami.com/?utm_source=GMB_Listing&utm_medium=organic&utm_campaign=Website_URL,"5975 Sunset Dr Ste 301, South Miami, FL 33143",25.7046704,-80.2905258,33143,4.9,582,Pediatric dentist,None,apify
+"The Dental Boutique - Adrian Franco, DMD",(786) 692-4788,https://www.dentistmia.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp-listing,"7210 SW 57th Ave Ste 204, South Miami, FL 33143",25.7040909,-80.2856916,33143,4.9,530,Dentist,None,apify
+Miami Smile Dental,(305) 670-5100,https://www.miamismiledental.com/?utm_campaign=gmb,"9350 S Dixie Hwy #920, Miami, FL 33156",25.6835096,-80.314608,33156,4.9,242,Dentist,None,apify
+South Miami Pediatric Dental Associates,(305) 666-2068,http://www.miamichildrensdentist.com/,"6601 SW 80th St Ste 212, South Miami, FL 33143",25.696812,-80.3001421,33143,5,428,Pediatric dentist,None,apify
+Alvaro Ordonez DDS,(305) 763-8930,https://alvaroordonezdds.com/,"7741 SW 62nd Ave, South Miami, FL 33143",25.6988928,-80.2929448,33143,5,195,Dentist,None,apify
+Edward J Fisher DMD,(305) 661-9603,http://www.edwardfisherdmd.com/,"7731 SW 62nd Ave Ste 101, South Miami, FL 33143",25.699033,-80.2929276,33143,4.9,328,Dentist,None,apify
+ALSMILE,(305) 667-9860,https://alsmiles.net/,"7550 SW 57th Ave Ste 214, South Miami, FL 33143",25.7010399,-80.2855628,33143,5,72,Dentist,None,apify
+Aloft by Marriott Miami Dadeland,(305) 595-6000,https://www.marriott.com/en-us/hotels/miamd-aloft-miami-dadeland/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0,"7600 N Kendall Dr, Miami, FL 33156",25.6879346,-80.3189242,33156,3.8,918,Hotel,$97,apify
+Hampton Inn Miami Dadeland,(305) 269-0072,https://www.hilton.com/en/hotels/miadlhx-hampton-miami-dadeland/?SEO_id=GMB-AMER-HX-MIADLHX&y_source=1_MjA4NTA5OS03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"8200 SW 70th Ave, Miami, FL 33143",25.694006,-80.307039,33143,4.2,1282,Hotel,$117,apify
+Miami Marriott Dadeland,(305) 670-1035,https://www.marriott.com/en-us/hotels/miadd-miami-marriott-dadeland/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0,"9090 S Dadeland Blvd, Miami, FL 33156",25.6858663,-80.313626,33156,4.2,1722,Hotel,$94,apify
+Hilton Miami Dadeland,(786) 975-1920,https://www.hilton.com/en/hotels/miadahh-hilton-miami-dadeland/?SEO_id=GMB-AMER-HH-MIADAHH&y_source=1_MTE4MzQ2NTctNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,"9100 N Kendall Dr, Miami, FL 33176",25.6863738,-80.3420914,33176,4.3,1346,Hotel,$113,apify
+"THesis Hotel Miami Coral Gables, Curio Collection by Hilton",(305) 667-5611,https://www.hilton.com/en/hotels/mialtqq-thesis-hotel-miami-coral-gables/?SEO_id=GMB-AMER-QQ-MIALTQQ&y_source=1_MTA4NTM5NDg2Ny03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"1350 S Dixie Hwy, Coral Gables, FL 33146",25.7127169,-80.278579,33146,4.2,816,Hotel,$165,apify
+AC Hotel Miami Dadeland,(305) 668-4490,https://www.marriott.com/en-us/hotels/miacd-ac-hotel-miami-dadeland/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0,"7695 N Kendall Dr, Miami, FL 33156",25.6917812,-80.3157301,33156,4.4,512,Hotel,$135,apify
+Sunset Inn South Miami,(786) 545-2204,https://www.sunsetinnmiami.com/south-miami,"5852 Sunset Dr, South Miami, FL 33143",25.7041838,-80.2885066,33143,3.2,40,Inn,$150,apify
+Courtyard by Marriott Miami Dadeland,(305) 670-1220,https://www.marriott.com/en-us/hotels/miacy-courtyard-miami-dadeland/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0,"9075 S Dadeland Blvd, Miami, FL 33156",25.6860862,-80.3147798,33156,4,697,Hotel,$121,apify
+Gables Inn,(305) 661-7999,https://www.thegablesinn.net/,"730 S Dixie Hwy, Coral Gables, FL 33146",25.7217254,-80.2675765,33146,3.5,437,Hotel,$53,apify
+Four Points by Sheraton Coral Gables,(305) 567-0534,https://www.marriott.com/en-us/hotels/fllfp-four-points-coral-gables/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0,"3861 SW 40th St, Coral Gables, FL 33146",25.7352462,-80.2576016,33146,4.2,843,Hotel,$112,apify
+Aloft by Marriott Coral Gables,(305) 442-0372,https://www.marriott.com/en-us/hotels/miacl-aloft-coral-gables/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0,"2524 S Le Jeune Rd, Coral Gables, FL 33134",25.747643,-80.2631022,33134,3.9,823,Hotel,$110,apify
+Mayfair House Hotel & Garden,(305) 441-0000,https://www.mayfairhousemiami.com/?utm_source=google-gbp&utm_medium=organic&utm_campaign=gbp,"3000 Florida Ave, Miami, FL 33133",25.7289547,-80.2413687,33133,4.6,1903,Hotel,$200,apify
+Extended Stay America Premier Suites- Miami - Coral Gables,(305) 443-7444,https://www.extendedstayamerica.com/hotels/fl/miami/coral-gables?channel=gmb-listing&utm_source=google&utm_medium=organic&utm_campaign=gmb_listing,"3640 SW 22nd St, Miami, FL 33145",25.7496551,-80.2532464,33145,3.9,781,Extended stay hotel,$87,apify
+The Towers Of Dadeland,,,"8440 S Dixie Hwy, Miami, FL 33143",25.6923978,-80.3061819,33143,4.7,43,Indoor lodging,$294,apify
+Private Oasis at Arya,(305) 798-8811,https://www.miamivacationrentals.com/web/apartments/listing,"Private Oasis at Arya, 2889 McFarlane Rd, Miami, FL 33133",25.7272737,-80.2405395,33133,4.5,88,Hotel,$81,apify
+"Arya Hotel and Suites Coconut Grove, WorldHotels Distinctive",(305) 529-2828,https://www.aryahotel.us/,"2889 McFarlane Rd, Miami, FL 33133",25.7271588,-80.2408869,33133,4.1,1669,Hotel,$143,apify
+The Mutiny Hotel by Provident Hotels & Resorts,(866) 610-1814,https://www.providentresorts.com/the-mutiny-hotel-coconut-grove-miami/?utm_source=local&utm_campaign=gmb&utm_medium=organic,"2951 S Bayshore Dr, Miami, FL 33133",25.727172,-80.239808,33133,4.2,874,Hotel,$165,apify
+Hampton Inn Miami-Coconut Grove/Coral Gables,(305) 448-2800,https://www.hilton.com/en/hotels/miacghx-hampton-miami-coconut-grove-coral-gables/?SEO_id=GMB-AMER-HX-MIACGHX&y_source=1_MjA4MzQ0OC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D,"2800 SW 28th Terrace, Coconut Grove, FL 33133",25.738502,-80.2393448,33133,4.3,1289,Hotel,$112,apify
+Tucker at Palmer Dadeland Miami,(646) 733-4807,https://kasa.com/properties/tucker-palmer-dadeland-miami,"8217 SW 72nd Ave, Miami, FL 33143",25.6939692,-80.3076873,33143,4.6,219,Hotel,None,apify
+Biltmore Hotel Miami Coral Gables,(855) 969-3080,https://www.biltmorehotel.com/,"1200 Anastasia Ave, Coral Gables, FL 33134",25.7407941,-80.2786796,33134,4.5,2673,Hotel,$241,apify
+Research Triangle Dental,(984) 206-4838,http://rtdental.com/?utm_source=gbp&utm_medium=organic&utm_campaign=yext_listing,"2615 S Miami Blvd, Durham, NC 27703",35.93112,-78.843016,27703,4.8,1289,Dentist,None,apify
+The Smile Shop,(919) 941-5549,https://www.thesmileshopnc.com/?utm_source=local&utm_medium=organic&utm_campaign=gbp_home,"5400 S Miami Blvd, Durham, NC 27703",35.8817631,-78.8510929,27703,4.8,389,Dentist,None,apify
+Lane & Associates Family Dentistry - Durham Miami,(919) 598-9900,https://www.lanedds.com/offices/durham-miami-blvd?utm_source=gmb&utm_medium=organic&utm_campaign=Durham_Miami,"3020 S Miami Blvd # A, Durham, NC 27703",35.9249095,-78.8468165,27703,4.9,1286,Dentist,None,apify
+North Carolina Oral Surgery + Orthodontics - Durham Miami,(919) 246-3350,https://ncoso.com/locations-and-amenities/durham,"3020 S Miami Blvd Ste B, Durham, NC 27703",35.9249095,-78.8468165,27703,4.9,557,Orthodontist,None,apify
+Negash Smiles Family and Cosmetic Dentistry,(919) 794-8500,http://www.negashsmiles.com/,"2304 S Miami Blvd Unit 126, Durham, NC 27703",35.9374065,-78.842467,27703,5,63,Dentist,None,apify
+Patrick Cassidy DMD,(919) 596-7447,http://www.rtdental.com/,"2615 S Miami Blvd, Durham, NC 27703",35.9311363,-78.842938,27703,3,2,Dentist,None,apify
+Quang Ha,(919) 941-5549,,"5400 S Miami Blvd, Durham, NC 277038465",35.8817631,-78.8510929,277038465,5,1,Dentist,None,apify
+"Brian F Cahill, DDS",(919) 596-7447,http://rtdental.com/?utm_source=gbp&utm_medium=organic&utm_campaign=yext_listing,"2615 S Miami Blvd, Durham, NC 27703",35.93112,-78.843016,27703,5,3,Dentist,None,apify
+"Mark E Walker, DDS",(919) 596-7447,http://rtdental.com/?utm_source=gbp&utm_medium=organic&utm_campaign=yext_listing,"2615 S Miami Blvd, Durham, NC 27703",35.93112,-78.843016,27703,,,Dentist,None,apify
+"Lalita D Nekkanti, DMD",(919) 596-7447,http://rtdental.com/?utm_source=gbp&utm_medium=organic&utm_campaign=yext_listing,"2615 S Miami Blvd, Durham, NC 27703",35.93112,-78.843016,27703,,,Dentist,None,apify
+Dr. Tyler Hart,(800) 526-3337,https://lanedds.com/our-doctors/dr-tyler-hart/,"3020 S Miami Blvd, Durham, NC 27703",35.9249095,-78.8468165,27703,,,Dentist,None,apify
+Dr. Gabriella Ambrose,(919) 598-9900,,"3020 S Miami Blvd, Durham, NC 27703",35.9249095,-78.8468165,27703,,,Dentist,None,apify
+Dr. Adam Spriggs,(919) 941-5549,https://www.thesmileshopnc.com/?utm_source=local&utm_medium=organic&utm_campaign=gmb&utm_term=home,"5400 S Miami Blvd, Durham, NC 27703",35.8815162,-78.8513665,27703,,,Dentist,None,apify
+Lane Kids Dentistry at NCOSO,(919) 246-3350,https://ncoso.com/kids,"3020 S Miami Blvd Ste C, Durham, NC 27703",35.9249095,-78.8468165,27703,,,Pediatric dentist,None,apify
+Dr. Carol Iglesia,(800) 526-3337,,"3020 S Miami Blvd, Durham, NC 27703",35.9249095,-78.8468165,27703,,,Dentist,None,apify
+Dr. Huyen-Chau Dunn,(800) 526-3337,https://lanedds.com/our-doctors/dr-huyen-chau-dunn/,"3020 S Miami Blvd Ste 200, Durham, NC 27703",35.9249095,-78.8468165,27703,,,Dentist,None,apify
+Avant-Garde Salon & Spa,(305) 442-8136,https://avantgardesalonandspa.com/,"155 Miracle Mile, Miami, FL 33134",25.7499675,-80.2578541,33134,4.9,1538,Beauty salon,None,apify

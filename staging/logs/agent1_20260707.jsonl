@@ -1,0 +1,146 @@
+{"timestamp": "2026-07-07T11:32:16.289948", "source": "agent1", "event": "pipeline_start", "scrape_source": "apify_yelp", "run": 1, "workers": 5, "target": "missing-rating"}
+{"timestamp": "2026-07-07T11:32:16.330377", "source": "apify_yelp", "event": "scrape_start", "num_searches": 53}
+{"timestamp": "2026-07-07T11:32:30.426178", "source": "apify_yelp", "event": "scrape_end", "total_records": 0, "elapsed_seconds": 14.095731973648071}
+{"timestamp": "2026-07-07T11:32:30.426815", "source": "apify_yelp", "event": "metrics", "total": 0, "valid_coords_pct": 0.0, "phone_pct": 0.0, "website_pct": 0.0, "rating_pct": 0.0, "address_pct": 0.0, "postcode_pct": 0.0, "category_pct": 0.0}
+{"timestamp": "2026-07-07T11:33:35.832590", "source": "agent1", "event": "pipeline_start", "scrape_source": "apify_yelp", "run": 1, "workers": 5, "target": "missing-rating"}
+{"timestamp": "2026-07-07T11:33:35.878914", "source": "apify_yelp", "event": "scrape_start", "num_searches": 53}
+{"timestamp": "2026-07-07T11:33:45.388296", "source": "apify_yelp", "event": "scrape_end", "total_records": 0, "elapsed_seconds": 9.509292602539062}
+{"timestamp": "2026-07-07T11:33:45.389978", "source": "apify_yelp", "event": "metrics", "total": 0, "valid_coords_pct": 0.0, "phone_pct": 0.0, "website_pct": 0.0, "rating_pct": 0.0, "address_pct": 0.0, "postcode_pct": 0.0, "category_pct": 0.0}
+{"timestamp": "2026-07-07T11:33:45.391687", "source": "agent1", "event": "pipeline_end", "scrape_source": "apify_yelp", "total_records": 0, "staging_file": ""}
+{"timestamp": "2026-07-07T11:40:23.745773", "source": "agent1", "event": "pipeline_start", "scrape_source": "apify", "run": 1, "workers": 5, "target": "missing-rating"}
+{"timestamp": "2026-07-07T11:40:23.772721", "source": "apify", "event": "scrape_start"}
+{"timestamp": "2026-07-07T11:40:23.794369", "source": "apify", "event": "actor_start", "num_searches": 80}
+{"timestamp": "2026-07-07T11:42:29.147972", "source": "apify", "event": "scrape_end", "total_records": 1140, "elapsed_seconds": 125.3751449584961}
+{"timestamp": "2026-07-07T11:42:29.152424", "source": "apify", "event": "metrics", "total": 1140, "valid_coords_pct": 100.0, "phone_pct": 95.1, "website_pct": 89.6, "rating_pct": 89.3, "address_pct": 100.0, "postcode_pct": 100.0, "category_pct": 100.0, "valid_coords_count": 1140, "phone_count": 1084, "website_count": 1022}
+{"timestamp": "2026-07-07T11:43:11.540516", "source": "agent1", "event": "pipeline_start", "scrape_source": "apify", "run": 1, "workers": 5, "target": "missing-rating"}
+{"timestamp": "2026-07-07T11:43:11.587196", "source": "apify", "event": "scrape_start"}
+{"timestamp": "2026-07-07T11:43:11.623203", "source": "apify", "event": "actor_start", "num_searches": 80}
+{"timestamp": "2026-07-07T11:44:32.847883", "source": "apify", "event": "scrape_end", "total_records": 526, "elapsed_seconds": 81.26061296463013}
+{"timestamp": "2026-07-07T11:44:32.849179", "source": "apify", "event": "metrics", "total": 526, "valid_coords_pct": 100.0, "phone_pct": 94.3, "website_pct": 90.7, "rating_pct": 89.4, "address_pct": 100.0, "postcode_pct": 100.0, "category_pct": 100.0, "valid_coords_count": 526, "phone_count": 496, "website_count": 477}
+{"timestamp": "2026-07-07T11:46:06.838423", "source": "agent1", "event": "pipeline_start", "scrape_source": "apify", "run": 1, "workers": 5, "target": "missing-rating"}
+{"timestamp": "2026-07-07T11:46:06.886527", "source": "apify", "event": "scrape_start"}
+{"timestamp": "2026-07-07T11:46:06.922227", "source": "apify", "event": "actor_start", "num_searches": 80}
+{"timestamp": "2026-07-07T11:46:07.122633", "source": "apify", "event": "error", "error": "Monthly usage hard limit exceeded"}
+{"timestamp": "2026-07-07T11:46:07.123652", "source": "agent1", "event": "pipeline_end", "scrape_source": "apify", "total_records": 0, "staging_file": ""}
+{"timestamp": "2026-07-07T11:47:15.434873", "source": "agent1", "event": "pipeline_start", "scrape_source": "outscraper", "run": 2, "workers": 5, "target": "missing-rating"}
+{"timestamp": "2026-07-07T11:47:15.436455", "source": "outscraper", "event": "scrape_start", "run": 2}
+{"timestamp": "2026-07-07T11:47:26.937239", "source": "outscraper", "event": "query_success", "run": 2, "query": "lawyers Coral Gables FL 33134", "records": 100}
+{"timestamp": "2026-07-07T11:47:36.265020", "source": "outscraper", "event": "query_success", "run": 2, "query": "lawyers Coral Gables FL 33146", "records": 95}
+{"timestamp": "2026-07-07T11:47:51.077628", "source": "outscraper", "event": "query_success", "run": 2, "query": "tax preparation Coral Gables FL", "records": 97}
+{"timestamp": "2026-07-07T11:48:13.550504", "source": "outscraper", "event": "query_success", "run": 2, "query": "accountants Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T11:48:54.755048", "source": "outscraper", "event": "query_success", "run": 2, "query": "insurance agents Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T11:49:11.580267", "source": "outscraper", "event": "query_success", "run": 2, "query": "real estate agents Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T11:49:26.587523", "source": "outscraper", "event": "query_success", "run": 2, "query": "real estate offices Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T11:49:33.252709", "source": "outscraper", "event": "query_success", "run": 2, "query": "financial advisors Coral Gables FL", "records": 20}
+{"timestamp": "2026-07-07T11:49:44.094640", "source": "outscraper", "event": "query_success", "run": 2, "query": "investment advisors Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T11:49:57.077113", "source": "outscraper", "event": "query_success", "run": 2, "query": "doctors Coral Gables FL 33134", "records": 62}
+{"timestamp": "2026-07-07T11:50:12.199954", "source": "outscraper", "event": "query_success", "run": 2, "query": "doctors Coral Gables FL 33146", "records": 100}
+{"timestamp": "2026-07-07T11:50:30.710535", "source": "outscraper", "event": "query_success", "run": 2, "query": "dentists Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T11:51:03.828583", "source": "outscraper", "event": "query_success", "run": 2, "query": "pharmacies Coral Gables FL", "records": 25}
+{"timestamp": "2026-07-07T11:51:56.235105", "source": "outscraper", "event": "query_success", "run": 2, "query": "chiropractors Coral Gables FL", "records": 54}
+{"timestamp": "2026-07-07T11:52:14.881157", "source": "outscraper", "event": "query_success", "run": 2, "query": "dermatologists Coral Gables FL", "records": 81}
+{"timestamp": "2026-07-07T11:52:46.414629", "source": "outscraper", "event": "query_success", "run": 2, "query": "optometrists Coral Gables FL", "records": 93}
+{"timestamp": "2026-07-07T11:52:52.922182", "source": "outscraper", "event": "query_success", "run": 2, "query": "veterinarians Coral Gables FL", "records": 20}
+{"timestamp": "2026-07-07T11:53:24.708980", "source": "outscraper", "event": "query_success", "run": 2, "query": "physical therapists Coral Gables FL", "records": 34}
+{"timestamp": "2026-07-07T11:54:23.858059", "source": "outscraper", "event": "query_success", "run": 2, "query": "psychologists Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T11:54:32.519446", "source": "outscraper", "event": "query_success", "run": 2, "query": "therapists Coral Gables FL", "records": 20}
+{"timestamp": "2026-07-07T11:54:56.654779", "source": "outscraper", "event": "query_success", "run": 2, "query": "architects Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T11:55:19.433636", "source": "outscraper", "event": "query_success", "run": 2, "query": "engineers Coral Gables FL", "records": 83}
+{"timestamp": "2026-07-07T11:58:03.903671", "source": "agent1", "event": "pipeline_start", "scrape_source": "serpapi", "run": 1, "workers": 5, "target": "any-gap"}
+{"timestamp": "2026-07-07T11:58:04.223021", "source": "serpapi", "event": "scrape_start", "mode": "enrichment", "target": "any-gap", "num_targets": 80, "max_workers": 5}
+{"timestamp": "2026-07-07T11:58:18.278340", "source": "serpapi", "event": "progress", "target": "any-gap", "completed": 25, "total": 80, "matched": 22, "no_results": 3, "rate": 1.78}
+{"timestamp": "2026-07-07T11:58:31.318663", "source": "serpapi", "event": "progress", "target": "any-gap", "completed": 50, "total": 80, "matched": 41, "no_results": 9, "rate": 1.85}
+{"timestamp": "2026-07-07T11:58:43.899762", "source": "serpapi", "event": "progress", "target": "any-gap", "completed": 75, "total": 80, "matched": 64, "no_results": 11, "rate": 1.89}
+{"timestamp": "2026-07-07T11:58:53.447754", "source": "serpapi", "event": "progress", "target": "any-gap", "completed": 80, "total": 80, "matched": 69, "no_results": 11, "rate": 1.63}
+{"timestamp": "2026-07-07T11:58:53.448735", "source": "serpapi", "event": "scrape_end", "mode": "enrichment", "target": "any-gap", "total_records": 69, "no_results": 11, "errors": 0, "elapsed_seconds": 49.23}
+{"timestamp": "2026-07-07T11:58:53.449432", "source": "serpapi", "event": "metrics", "mode": "enrichment", "target": "any-gap", "total": 69, "valid_coords_pct": 0.0, "phone_pct": 97.1, "website_pct": 85.5, "rating_pct": 92.8, "address_pct": 95.7, "postcode_pct": 0.0, "category_pct": 98.6, "valid_coords_count": 0, "phone_count": 67, "website_count": 59}
+{"timestamp": "2026-07-07T11:58:53.452568", "source": "staging", "event": "write_validation", "scrape_source": "serpapi", "filename": "/Users/andresaramirezf/Documents/GitHub/Terminal/staging/serpapi_run1_20260707_115853.csv", "total": 69, "valid_coords_pct": 0.0, "phone_pct": 97.1, "website_pct": 85.5, "rating_pct": 92.8, "address_pct": 95.7, "postcode_pct": 0.0, "category_pct": 98.6, "valid_coords_count": 0, "phone_count": 67, "website_count": 59}
+{"timestamp": "2026-07-07T11:58:53.452707", "source": "agent1", "event": "pipeline_end", "scrape_source": "serpapi", "total_records": 69, "staging_file": "/Users/andresaramirezf/Documents/GitHub/Terminal/staging/serpapi_run1_20260707_115853.csv"}
+{"timestamp": "2026-07-07T11:59:12.518185", "source": "agent1", "event": "pipeline_start", "scrape_source": "outscraper", "run": 2, "workers": 5, "target": "missing-rating"}
+{"timestamp": "2026-07-07T11:59:12.519649", "source": "outscraper", "event": "scrape_start", "run": 2}
+{"timestamp": "2026-07-07T11:59:23.621829", "source": "outscraper", "event": "query_success", "run": 2, "query": "lawyers Coral Gables FL 33134", "records": 100}
+{"timestamp": "2026-07-07T11:59:59.545990", "source": "outscraper", "event": "query_success", "run": 2, "query": "lawyers Coral Gables FL 33146", "records": 96}
+{"timestamp": "2026-07-07T12:00:09.784778", "source": "outscraper", "event": "query_success", "run": 2, "query": "tax preparation Coral Gables FL", "records": 99}
+{"timestamp": "2026-07-07T12:00:50.889960", "source": "outscraper", "event": "query_success", "run": 2, "query": "accountants Coral Gables FL", "records": 99}
+{"timestamp": "2026-07-07T12:01:03.714979", "source": "outscraper", "event": "query_success", "run": 2, "query": "insurance agents Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T12:01:24.768979", "source": "outscraper", "event": "query_success", "run": 2, "query": "real estate agents Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T12:02:04.116803", "source": "outscraper", "event": "query_success", "run": 2, "query": "real estate offices Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T12:02:12.667987", "source": "outscraper", "event": "query_success", "run": 2, "query": "financial advisors Coral Gables FL", "records": 20}
+{"timestamp": "2026-07-07T12:02:48.941842", "source": "outscraper", "event": "query_success", "run": 2, "query": "investment advisors Coral Gables FL", "records": 99}
+{"timestamp": "2026-07-07T12:03:01.545943", "source": "outscraper", "event": "query_success", "run": 2, "query": "doctors Coral Gables FL 33134", "records": 43}
+{"timestamp": "2026-07-07T12:03:27.917403", "source": "outscraper", "event": "query_success", "run": 2, "query": "doctors Coral Gables FL 33146", "records": 100}
+{"timestamp": "2026-07-07T12:04:09.797121", "source": "outscraper", "event": "query_success", "run": 2, "query": "dentists Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T12:04:18.873242", "source": "outscraper", "event": "query_success", "run": 2, "query": "pharmacies Coral Gables FL", "records": 23}
+{"timestamp": "2026-07-07T12:04:31.754612", "source": "outscraper", "event": "query_success", "run": 2, "query": "chiropractors Coral Gables FL", "records": 53}
+{"timestamp": "2026-07-07T12:04:54.685521", "source": "outscraper", "event": "query_success", "run": 2, "query": "dermatologists Coral Gables FL", "records": 87}
+{"timestamp": "2026-07-07T12:05:05.444028", "source": "outscraper", "event": "query_success", "run": 2, "query": "optometrists Coral Gables FL", "records": 96}
+{"timestamp": "2026-07-07T12:05:13.104216", "source": "outscraper", "event": "query_success", "run": 2, "query": "veterinarians Coral Gables FL", "records": 17}
+{"timestamp": "2026-07-07T12:05:46.053692", "source": "outscraper", "event": "query_success", "run": 2, "query": "physical therapists Coral Gables FL", "records": 49}
+{"timestamp": "2026-07-07T12:06:02.572940", "source": "outscraper", "event": "query_success", "run": 2, "query": "psychologists Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T12:06:38.908190", "source": "outscraper", "event": "query_success", "run": 2, "query": "therapists Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T12:07:10.668496", "source": "outscraper", "event": "query_success", "run": 2, "query": "architects Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T12:07:49.118799", "source": "outscraper", "event": "query_success", "run": 2, "query": "engineers Coral Gables FL", "records": 86}
+{"timestamp": "2026-07-07T12:08:02.203520", "source": "outscraper", "event": "query_success", "run": 2, "query": "marketing agencies Coral Gables FL", "records": 96}
+{"timestamp": "2026-07-07T12:08:19.281141", "source": "outscraper", "event": "query_success", "run": 2, "query": "IT companies Coral Gables FL", "records": 34}
+{"timestamp": "2026-07-07T12:08:56.371492", "source": "outscraper", "event": "query_success", "run": 2, "query": "consulting firms Coral Gables FL", "records": 95}
+{"timestamp": "2026-07-07T12:08:58.377992", "source": "outscraper", "event": "scrape_end", "run": 2, "total_records": 1992, "successful_queries": 25, "failed_queries": 0, "elapsed_seconds": 585.8582708835602}
+{"timestamp": "2026-07-07T12:08:58.382691", "source": "outscraper", "event": "metrics", "run": 2, "total": 1992, "valid_coords_pct": 100.0, "phone_pct": 100.0, "website_pct": 0.0, "rating_pct": 86.5, "address_pct": 0.0, "postcode_pct": 100.0, "category_pct": 100.0, "valid_coords_count": 1992, "phone_count": 1992, "website_count": 0}
+{"timestamp": "2026-07-07T12:08:58.400586", "source": "staging", "event": "write_validation", "scrape_source": "outscraper", "filename": "/Users/andresaramirezf/Documents/GitHub/Terminal/staging/outscraper_run2_20260707_120858.csv", "total": 1992, "valid_coords_pct": 100.0, "phone_pct": 100.0, "website_pct": 0.0, "rating_pct": 86.5, "address_pct": 0.0, "postcode_pct": 100.0, "category_pct": 100.0, "valid_coords_count": 1992, "phone_count": 1992, "website_count": 0}
+{"timestamp": "2026-07-07T12:08:58.400747", "source": "agent1", "event": "pipeline_end", "scrape_source": "outscraper", "total_records": 1992, "staging_file": "/Users/andresaramirezf/Documents/GitHub/Terminal/staging/outscraper_run2_20260707_120858.csv"}
+{"timestamp": "2026-07-07T12:09:34.580882", "source": "agent1", "event": "pipeline_start", "scrape_source": "outscraper", "run": 3, "workers": 5, "target": "missing-rating"}
+{"timestamp": "2026-07-07T12:09:34.582210", "source": "outscraper", "event": "scrape_start", "run": 3}
+{"timestamp": "2026-07-07T12:10:02.560681", "source": "outscraper", "event": "query_success", "run": 3, "query": "hotels Coral Gables FL", "records": 91}
+{"timestamp": "2026-07-07T12:10:14.371852", "source": "outscraper", "event": "query_success", "run": 3, "query": "motels Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T12:10:50.887719", "source": "outscraper", "event": "query_success", "run": 3, "query": "vacation rentals Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T12:11:01.320911", "source": "outscraper", "event": "query_success", "run": 3, "query": "gyms Coral Gables FL", "records": 38}
+{"timestamp": "2026-07-07T12:11:10.198848", "source": "outscraper", "event": "query_success", "run": 3, "query": "fitness centers Coral Gables FL", "records": 46}
+{"timestamp": "2026-07-07T12:11:32.297194", "source": "outscraper", "event": "query_success", "run": 3, "query": "spas Coral Gables FL", "records": 59}
+{"timestamp": "2026-07-07T12:11:53.230906", "source": "outscraper", "event": "query_success", "run": 3, "query": "massage therapy Coral Gables FL", "records": 59}
+{"timestamp": "2026-07-07T12:12:02.104291", "source": "outscraper", "event": "query_success", "run": 3, "query": "yoga studios Coral Gables FL", "records": 38}
+{"timestamp": "2026-07-07T12:12:24.396274", "source": "outscraper", "event": "query_success", "run": 3, "query": "hair salons Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T12:12:42.993339", "source": "outscraper", "event": "query_success", "run": 3, "query": "barbershops Coral Gables FL", "records": 98}
+{"timestamp": "2026-07-07T12:13:16.944663", "source": "outscraper", "event": "query_success", "run": 3, "query": "nail salons Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T12:13:44.273846", "source": "outscraper", "event": "query_success", "run": 3, "query": "beauty salons Coral Gables FL", "records": 20}
+{"timestamp": "2026-07-07T12:14:08.436597", "source": "outscraper", "event": "query_success", "run": 3, "query": "auto repair Coral Gables FL", "records": 69}
+{"timestamp": "2026-07-07T12:14:20.419349", "source": "outscraper", "event": "query_success", "run": 3, "query": "car dealers Coral Gables FL", "records": 20}
+{"timestamp": "2026-07-07T12:14:29.285255", "source": "outscraper", "event": "query_success", "run": 3, "query": "dry cleaners Coral Gables FL", "records": 17}
+{"timestamp": "2026-07-07T12:14:48.414609", "source": "outscraper", "event": "query_success", "run": 3, "query": "banks Coral Gables FL", "records": 100}
+{"timestamp": "2026-07-07T12:14:55.535885", "source": "outscraper", "event": "query_success", "run": 3, "query": "credit unions Coral Gables FL", "records": 2}
+{"timestamp": "2026-07-07T12:15:37.519169", "source": "outscraper", "event": "query_success", "run": 3, "query": "tutoring Coral Gables FL", "records": 3}
+{"timestamp": "2026-07-07T12:15:54.452937", "source": "outscraper", "event": "query_success", "run": 3, "query": "dance studios Coral Gables FL", "records": 5}
+{"timestamp": "2026-07-07T12:16:03.736330", "source": "outscraper", "event": "query_success", "run": 3, "query": "churches Coral Gables FL", "records": 38}
+{"timestamp": "2026-07-07T12:16:13.717388", "source": "outscraper", "event": "query_success", "run": 3, "query": "nonprofits Coral Gables FL", "records": 48}
+{"timestamp": "2026-07-07T12:16:46.088214", "source": "outscraper", "event": "query_success", "run": 3, "query": "construction companies Coral Gables FL", "records": 98}
+{"timestamp": "2026-07-07T12:16:57.186910", "source": "outscraper", "event": "query_success", "run": 3, "query": "contractors Coral Gables FL", "records": 94}
+{"timestamp": "2026-07-07T12:17:10.138922", "source": "outscraper", "event": "query_success", "run": 3, "query": "plumbers Coral Gables FL", "records": 50}
+{"timestamp": "2026-07-07T12:17:24.343150", "source": "outscraper", "event": "query_success", "run": 3, "query": "electricians Coral Gables FL", "records": 65}
+{"timestamp": "2026-07-07T12:17:26.348837", "source": "outscraper", "event": "scrape_end", "run": 3, "total_records": 1458, "successful_queries": 25, "failed_queries": 0, "elapsed_seconds": 471.7665059566498}
+{"timestamp": "2026-07-07T12:17:26.354940", "source": "outscraper", "event": "metrics", "run": 3, "total": 1458, "valid_coords_pct": 100.0, "phone_pct": 100.0, "website_pct": 0.0, "rating_pct": 93.3, "address_pct": 0.0, "postcode_pct": 100.0, "category_pct": 100.0, "valid_coords_count": 1458, "phone_count": 1458, "website_count": 0}
+{"timestamp": "2026-07-07T12:17:26.369721", "source": "staging", "event": "write_validation", "scrape_source": "outscraper", "filename": "/Users/andresaramirezf/Documents/GitHub/Terminal/staging/outscraper_run3_20260707_121726.csv", "total": 1458, "valid_coords_pct": 100.0, "phone_pct": 100.0, "website_pct": 0.0, "rating_pct": 93.3, "address_pct": 0.0, "postcode_pct": 100.0, "category_pct": 100.0, "valid_coords_count": 1458, "phone_count": 1458, "website_count": 0}
+{"timestamp": "2026-07-07T12:17:26.370030", "source": "agent1", "event": "pipeline_end", "scrape_source": "outscraper", "total_records": 1458, "staging_file": "/Users/andresaramirezf/Documents/GitHub/Terminal/staging/outscraper_run3_20260707_121726.csv"}
+{"timestamp": "2026-07-07T12:18:25.292505", "source": "agent1", "event": "pipeline_start", "scrape_source": "outscraper", "run": 4, "workers": 5, "target": "missing-rating"}
+{"timestamp": "2026-07-07T12:18:25.293990", "source": "outscraper", "event": "scrape_start", "run": 4}
+{"timestamp": "2026-07-07T12:18:34.643715", "source": "outscraper", "event": "query_success", "run": 4, "query": "movie theaters Coral Gables FL", "records": 2}
+{"timestamp": "2026-07-07T12:18:42.825054", "source": "outscraper", "event": "query_success", "run": 4, "query": "cinema Coral Gables FL", "records": 1}
+{"timestamp": "2026-07-07T12:18:48.700689", "source": "outscraper", "event": "query_success", "run": 4, "query": "concert halls Coral Gables FL", "records": 3}
+{"timestamp": "2026-07-07T12:19:02.099780", "source": "outscraper", "event": "query_success", "run": 4, "query": "nightclubs Coral Gables FL", "records": 78}
+{"timestamp": "2026-07-07T12:19:15.326346", "source": "outscraper", "event": "query_success", "run": 4, "query": "event venues Coral Gables FL", "records": 21}
+{"timestamp": "2026-07-07T12:19:24.068545", "source": "outscraper", "event": "query_success", "run": 4, "query": "taxi services Coral Gables FL", "records": 9}
+{"timestamp": "2026-07-07T12:19:33.523415", "source": "outscraper", "event": "query_success", "run": 4, "query": "car rental Coral Gables FL", "records": 28}
+{"timestamp": "2026-07-07T12:19:46.363389", "source": "outscraper", "event": "query_success", "run": 4, "query": "car wash Coral Gables FL", "records": 20}
+{"timestamp": "2026-07-07T12:20:00.520422", "source": "outscraper", "event": "query_success", "run": 4, "query": "parking Coral Gables FL", "records": 72}
+{"timestamp": "2026-07-07T12:20:07.472665", "source": "outscraper", "event": "query_success", "run": 4, "query": "rideshare Coral Gables FL", "records": 1}
+{"timestamp": "2026-07-07T12:20:16.256317", "source": "outscraper", "event": "query_success", "run": 4, "query": "furniture stores Coral Gables FL", "records": 39}
+{"timestamp": "2026-07-07T12:20:22.575185", "source": "outscraper", "event": "query_success", "run": 4, "query": "home decor Coral Gables FL", "records": 1}
+{"timestamp": "2026-07-07T12:20:41.419472", "source": "outscraper", "event": "query_success", "run": 4, "query": "interior design Coral Gables FL", "records": 88}
+{"timestamp": "2026-07-07T12:21:10.491848", "source": "outscraper", "event": "query_success", "run": 4, "query": "upholstery Coral Gables FL", "records": 70}
+{"timestamp": "2026-07-07T12:21:18.950342", "source": "outscraper", "event": "query_success", "run": 4, "query": "appliances Coral Gables FL", "records": 6}
+{"timestamp": "2026-07-07T12:21:29.448209", "source": "outscraper", "event": "query_success", "run": 4, "query": "art galleries Coral Gables FL", "records": 52}
+{"timestamp": "2026-07-07T12:21:36.151894", "source": "outscraper", "event": "query_success", "run": 4, "query": "framing Coral Gables FL", "records": 3}
+{"timestamp": "2026-07-07T12:21:45.061263", "source": "outscraper", "event": "query_success", "run": 4, "query": "antiques Coral Gables FL", "records": 45}
+{"timestamp": "2026-07-07T12:21:52.720989", "source": "outscraper", "event": "query_success", "run": 4, "query": "museums Coral Gables FL", "records": 20}
+{"timestamp": "2026-07-07T12:22:13.839540", "source": "outscraper", "event": "query_success", "run": 4, "query": "libraries Coral Gables FL", "records": 12}
+{"timestamp": "2026-07-07T12:22:15.845938", "source": "outscraper", "event": "scrape_end", "run": 4, "total_records": 571, "successful_queries": 20, "failed_queries": 0, "elapsed_seconds": 230.55186772346497}
+{"timestamp": "2026-07-07T12:22:15.848510", "source": "outscraper", "event": "metrics", "run": 4, "total": 571, "valid_coords_pct": 100.0, "phone_pct": 100.0, "website_pct": 0.0, "rating_pct": 92.8, "address_pct": 0.0, "postcode_pct": 100.0, "category_pct": 100.0, "valid_coords_count": 571, "phone_count": 571, "website_count": 0}
+{"timestamp": "2026-07-07T12:22:15.855610", "source": "staging", "event": "write_validation", "scrape_source": "outscraper", "filename": "/Users/andresaramirezf/Documents/GitHub/Terminal/staging/outscraper_run4_20260707_122215.csv", "total": 571, "valid_coords_pct": 100.0, "phone_pct": 100.0, "website_pct": 0.0, "rating_pct": 92.8, "address_pct": 0.0, "postcode_pct": 100.0, "category_pct": 100.0, "valid_coords_count": 571, "phone_count": 571, "website_count": 0}
+{"timestamp": "2026-07-07T12:22:15.855797", "source": "agent1", "event": "pipeline_end", "scrape_source": "outscraper", "total_records": 571, "staging_file": "/Users/andresaramirezf/Documents/GitHub/Terminal/staging/outscraper_run4_20260707_122215.csv"}

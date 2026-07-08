@@ -159,6 +159,7 @@ CATEGORY_RULES = [
 SOURCE_TO_FAMILY = {
     "outscraper": "google",
     "apify": "google",
+    "apify_yelp": "yelp",
     "serpapi": "google",
     "osm": "osm",
     "osint-cgcc-v1": "cgcc",
@@ -249,6 +250,8 @@ def normalize_record(raw: Dict[str, str], source_label: str = "") -> Dict[str, s
         rating_source = "Google (Outscraper)"
     elif source == "apify":
         rating_source = "Google (Apify)"
+    elif source == "apify_yelp":
+        rating_source = "Yelp (Apify)"
     elif source == "serpapi":
         rating_source = "Google (SerpApi)"
     elif source == "osm":
@@ -651,7 +654,9 @@ def merge_into_master(
 
         # Quick exact-key dedup via dict lookup (O(1))
         if key in key_to_idx:
-            _fill_blanks(master_df, key_to_idx[key], record, dry_run)
+            idx = key_to_idx[key]
+            if idx >= 0:
+                _fill_blanks(master_df, idx, record, dry_run)
             stats["merged"] += 1
             continue
 
@@ -659,7 +664,9 @@ def merge_into_master(
         if existing_names:
             match = fuzzy_match(name, existing_names)
             if match and match in name_to_idx:
-                _fill_blanks(master_df, name_to_idx[match], record, dry_run)
+                idx = name_to_idx[match]
+                if idx >= 0:
+                    _fill_blanks(master_df, idx, record, dry_run)
                 stats["merged"] += 1
                 continue
 
