@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(https://github.com/counderscore/Terminal/blob/main/data/lt-patient-list%20copy.csv)",
+      "Read(https://github.com/counderscore/Terminal/blob/main/data/lt-patient-list.csv)"
+    ]
+  }
+}
