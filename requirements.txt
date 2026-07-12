@@ -1,0 +1,27 @@
+# Coral Gables OSINT — Python dependencies
+# Install with: pip install -r requirements.txt
+#
+# Versions are pinned so a fresh install behaves the same way for everyone
+# instead of silently picking up whatever the latest release happens to be.
+# See howto.md for API key setup for the per-source packages below.
+
+# ── Core pipeline (used by _shared.py, Agent 0-3, Agent 6-9) ────────────────
+pandas==2.3.3
+numpy==2.2.6
+requests==2.33.1
+fuzzywuzzy==0.18.0
+python-Levenshtein==0.27.3
+
+# ── Per-source enrichment (Agent 1, Agent 8) ────────────────────────────────
+outscraper==6.0.4
+apify-client==3.0.5
+google-search-results==2.4.2
+
+# ── LLM-assisted steps (Agent 4 actions, Agent 10 playbooks) ────────────────
+openai==1.109.1
+
+# ── Knowledge-graph ETL (data/etl/loader.py, export_*.py) ───────────────────
+neo4j==5.28.4
+
+# ── Testing ──────────────────────────────────────────────────────────────
+pytest==8.4.2
