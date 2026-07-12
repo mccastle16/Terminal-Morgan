@@ -1,0 +1,29 @@
+name: CI
+
+# Runs the Python test suite (tests/) on every push and pull request, so a
+# broken change gets flagged before it merges instead of relying on someone
+# remembering to run pytest by hand.
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest tests/ -v
