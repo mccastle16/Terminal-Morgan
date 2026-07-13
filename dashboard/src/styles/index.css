@@ -119,6 +119,49 @@
 .recharts-bar-rectangle { transition: filter 0.15s ease; }
 .recharts-bar-rectangle:hover { filter: brightness(1.12); }
 
+/* Leaflet map — dark theme overrides */
+.leaflet-container {
+  background: #0f172a !important;
+  font-family: 'Inter', sans-serif !important;
+  cursor: grab;
+}
+.leaflet-container:active { cursor: grabbing; }
+.leaflet-tile-pane {
+  /* grayscale removes the tiles' own near-black/gray coloring, contrast(0.8) lifts
+     true blacks off the floor so sepia has luminance to work with, sepia injects a
+     hue, hue-rotate spins that hue to navy blue, saturate makes it read as blue
+     instead of gray */
+  filter: grayscale(1) contrast(0.8) sepia(1) hue-rotate(180deg) saturate(2.4) brightness(0.92) contrast(1.15);
+}
+.leaflet-tooltip.map-tooltip-dark {
+  background-color: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  border-radius: 8px;
+  color: #e2e8f0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 0;
+}
+.leaflet-tooltip.map-tooltip-dark::before { display: none; }
+.leaflet-div-icon.neighborhood-label {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.leaflet-control-attribution {
+  background: rgba(15, 23, 42, 0.7) !important;
+  color: #64748b !important;
+  font-size: 9px !important;
+}
+.leaflet-control-attribution a { color: #94a3b8 !important; }
+
 /* Fade-in for page content */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(4px); }

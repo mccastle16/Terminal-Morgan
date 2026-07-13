@@ -1,21 +1,14 @@
-import { useState, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { MapContainer, TileLayer, CircleMarker, Tooltip, Marker } from 'react-leaflet'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
 import { useTerminalData } from '../context/TerminalDataContext'
 import { useTerminalAuth } from '../context/TerminalAuthContext'
 import {
-  MapPin, Building2, Users, Star, Filter, ChevronRight,
-  ZoomIn, ZoomOut, Layers, AlertTriangle, Eye,
+  MapPin, Star, Filter, ChevronRight,
+  ZoomIn, ZoomOut, AlertTriangle, Maximize2,
 } from 'lucide-react'
-
-/* ── Dot map rendered on a canvas-like SVG ── */
-const MAP_W = 800
-const MAP_H = 600
-
-function projectGeo(lat, lon, bbox) {
-  const x = ((lon - bbox.west) / (bbox.east - bbox.west)) * MAP_W
-  const y = ((bbox.north - lat) / (bbox.north - bbox.south)) * MAP_H
-  return { x, y }
-}
 
 const memberColors = {
   member: '#f59e0b',
@@ -23,21 +16,26 @@ const memberColors = {
   unknown: '#f97316',
 }
 
+function neighborhoodIcon(name) {
+  return L.divIcon({
+    className: 'leaflet-div-icon neighborhood-label',
+    html: name,
+    iconSize: null,
+    iconAnchor: [0, 0],
+  })
+}
+
 export default function MapPage() {
   const { rawBusinesses, stats } = useTerminalData()
   const { tenant } = useTerminalAuth()
   const navigate = useNavigate()
-  const [zoom, setZoom] = useState(1)
-  const [pan, setPan] = useState({ x: 0, y: 0 })
-  const [hoveredBiz, setHoveredBiz] = useState(null)
   const [selectedNeighborhood, setSelectedNeighborhood] = useState('')
   const [memberFilter, setMemberFilter] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('')
-  const svgRef = useRef(null)
-  const isPanning = useRef(false)
-  const panStart = useRef({ x: 0, y: 0 })
+  const mapRef = useRef(null)
 
   const bbox = tenant.boundingBox
+  const bounds = useMemo(() => [[bbox.south, bbox.west], [bbox.north, bbox.east]], [bbox])
 
   const geoBusinesses = useMemo(() => {
     return rawBusinesses.filter(b => {
@@ -53,7 +51,7 @@ export default function MapPage() {
     })
   }, [rawBusinesses, bbox, selectedNeighborhood, memberFilter, categoryFilter])
 
-  // Aggregate by neighborhood for the side panel
+  // Aggregate by neighborhood for the side panel + map labels
   const neighborhoodStats = useMemo(() => {
     const map = {}
     geoBusinesses.forEach(b => {
@@ -74,17 +72,46 @@ export default function MapPage() {
     })).sort((a, b) => b.total - a.total)
   }, [geoBusinesses])
 
-  const handleMouseDown = (e) => {
-    isPanning.current = true
-    panStart.current = { x: e.clientX - pan.x, y: e.clientY - pan.y }
-  }
-  const handleMouseMove = (e) => {
-    if (!isPanning.current) return
-    setPan({ x: e.clientX - panStart.current.x, y: e.clientY - panStart.current.y })
-  }
-  const handleMouseUp = () => { isPanning.current = false }
-
   const geoCoverage = stats ? stats.dataQuality.geoCoverage : 0
+
+  // Bounding box per neighborhood (independent of member/category filters) so
+  // selecting a neighborhood always zooms to its full extent.
+  const neighborhoodBounds = useMemo(() => {
+    const map = {}
+    rawBusinesses.forEach(b => {
+      if (!b._hasGeo) return
+      const lat = parseFloat(b.lat)
+      const lon = parseFloat(b.lon)
+      if (isNaN(lat) || isNaN(lon)) return
+      if (lat < bbox.south || lat > bbox.north || lon < bbox.west || lon > bbox.east) return
+      const hood = b.neighborhood_area || 'Unknown'
+      if (!map[hood]) map[hood] = { minLat: lat, maxLat: lat, minLon: lon, maxLon: lon }
+      else {
+        map[hood].minLat = Math.min(map[hood].minLat, lat)
+        map[hood].maxLat = Math.max(map[hood].maxLat, lat)
+        map[hood].minLon = Math.min(map[hood].minLon, lon)
+        map[hood].maxLon = Math.max(map[hood].maxLon, lon)
+      }
+    })
+    return map
+  }, [rawBusinesses, bbox])
+
+  // Auto-fly the map to the selected neighborhood's extent, or back to the full view when cleared.
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map) return
+    if (!selectedNeighborhood) {
+      map.flyToBounds(bounds, { padding: [20, 20] })
+      return
+    }
+    const nb = neighborhoodBounds[selectedNeighborhood]
+    if (!nb) return
+    map.flyToBounds([[nb.minLat, nb.minLon], [nb.maxLat, nb.maxLon]], { padding: [40, 40], maxZoom: 16 })
+  }, [selectedNeighborhood, neighborhoodBounds, bounds])
+
+  const zoomIn = () => mapRef.current?.zoomIn()
+  const zoomOut = () => mapRef.current?.zoomOut()
+  const resetView = () => mapRef.current?.flyToBounds(bounds, { padding: [20, 20] })
 
   return (
     <div className="space-y-6 animate-fade-in">
@@ -103,15 +130,15 @@ export default function MapPage() {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button onClick={() => setZoom(z => Math.min(z + 0.3, 4))}
+              <button onClick={zoomIn}
                 className="p-2 rounded-lg bg-slate-800 border border-slate-700/50 text-slate-400 hover:text-white transition-colors">
                 <ZoomIn size={16} />
               </button>
-              <button onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }) }}
-                className="px-3 py-2 rounded-lg bg-slate-800 border border-slate-700/50 text-xs text-slate-400 hover:text-white transition-colors">
-                Reset
+              <button onClick={resetView}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700/50 text-xs text-slate-400 hover:text-white transition-colors">
+                <Maximize2 size={13} /> Reset
               </button>
-              <button onClick={() => setZoom(z => Math.max(z - 0.3, 0.5))}
+              <button onClick={zoomOut}
                 className="p-2 rounded-lg bg-slate-800 border border-slate-700/50 text-slate-400 hover:text-white transition-colors">
                 <ZoomOut size={16} />
               </button>
@@ -146,84 +173,82 @@ export default function MapPage() {
 
       {/* ═══ MAIN LAYOUT ═══ */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
-        {/* MAP CANVAS */}
-        <div className="lg:col-span-3 relative bg-slate-900/40 border border-slate-800/60 rounded-xl overflow-hidden" style={{ minHeight: 500 }}>
-          <svg ref={svgRef} width="100%" height="100%" viewBox={`0 0 ${MAP_W} ${MAP_H}`}
-            className="cursor-grab active:cursor-grabbing"
-            onMouseDown={handleMouseDown} onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>
-            <g transform={`translate(${pan.x}, ${pan.y}) scale(${zoom})`}>
-              {/* Grid */}
-              {[...Array(11)].map((_, i) => (
-                <line key={`v${i}`} x1={i * MAP_W / 10} y1={0} x2={i * MAP_W / 10} y2={MAP_H}
-                  stroke="#1e293b" strokeWidth={0.5} />
-              ))}
-              {[...Array(9)].map((_, i) => (
-                <line key={`h${i}`} x1={0} y1={i * MAP_H / 8} x2={MAP_W} y2={i * MAP_H / 8}
-                  stroke="#1e293b" strokeWidth={0.5} />
-              ))}
+        {/* MAP */}
+        <div className="lg:col-span-3 relative bg-slate-900/40 border border-slate-800/60 rounded-xl overflow-hidden" style={{ minHeight: 500, height: 600 }}>
+          <MapContainer
+            ref={mapRef}
+            bounds={bounds}
+            boundsOptions={{ padding: [20, 20] }}
+            maxBounds={[[bbox.south - 0.08, bbox.west - 0.08], [bbox.north + 0.08, bbox.east + 0.08]]}
+            maxBoundsViscosity={0.6}
+            minZoom={11}
+            maxZoom={18}
+            scrollWheelZoom={true}
+            zoomControl={false}
+            attributionControl={true}
+            style={{ height: '100%', width: '100%', background: '#0f172a' }}
+          >
+            <TileLayer
+              url="https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+              subdomains="abcd"
+            />
 
-              {/* Neighborhood labels */}
-              {neighborhoodStats.map(hood => {
-                const pos = projectGeo(hood.avgLat, hood.avgLon, bbox)
-                return (
-                  <g key={hood.name}>
-                    <text x={pos.x} y={pos.y - 12} textAnchor="middle"
-                      className="fill-slate-600 text-[8px] font-medium pointer-events-none select-none">
-                      {hood.name}
-                    </text>
-                  </g>
-                )
-              })}
+            {/* Neighborhood labels */}
+            {neighborhoodStats.map(hood => (
+              <Marker
+                key={hood.name}
+                position={[hood.avgLat, hood.avgLon]}
+                icon={neighborhoodIcon(hood.name)}
+                interactive={false}
+              />
+            ))}
 
-              {/* Business dots */}
-              {geoBusinesses.map(b => {
-                const pos = projectGeo(parseFloat(b.lat), parseFloat(b.lon), bbox)
-                const color = memberColors[b._memberStatus] || '#64748b'
-                const isHovered = hoveredBiz?._id === b._id
-                return (
-                  <g key={b._id}>
-                    <circle cx={pos.x} cy={pos.y} r={isHovered ? 6 : b._hasRedFlag ? 4 : 3}
-                      fill={b._hasRedFlag ? '#ef4444' : color}
-                      opacity={isHovered ? 1 : 0.7}
-                      stroke={isHovered ? '#fff' : 'none'} strokeWidth={isHovered ? 1.5 : 0}
-                      className="cursor-pointer transition-all"
-                      onMouseEnter={() => setHoveredBiz(b)}
-                      onMouseLeave={() => setHoveredBiz(null)}
-                      onClick={() => navigate(`/explorer/${b._id}`)} />
-                  </g>
-                )
-              })}
-            </g>
-          </svg>
-
-          {/* Hover tooltip */}
-          {hoveredBiz && (
-            <div className="absolute top-3 left-3 bg-slate-900/95 border border-slate-700 rounded-xl p-3 max-w-[260px] pointer-events-none z-10">
-              <p className="font-semibold text-white text-sm truncate">{hoveredBiz.business_name}</p>
-              <p className="text-[11px] text-slate-400 capitalize">{hoveredBiz.category_primary?.replace(/_/g, ' ')}</p>
-              <div className="flex items-center gap-3 mt-1.5">
-                {hoveredBiz._rating > 0 && (
-                  <span className="flex items-center gap-1 text-xs text-amber-400">
-                    <Star size={10} className="fill-amber-400" /> {hoveredBiz._rating.toFixed(1)}
-                  </span>
-                )}
-                <span className={`text-[10px] px-1.5 py-0.5 rounded ${
-                  hoveredBiz._memberStatus === 'member' ? 'bg-amber-500/10 text-amber-400' :
-                  hoveredBiz._memberStatus === 'non-member' ? 'bg-slate-700 text-slate-300' :
-                  'bg-orange-500/10 text-orange-400'
-                }`}>{hoveredBiz._memberStatus}</span>
-                {hoveredBiz._hasRedFlag && (
-                  <span className="flex items-center gap-1 text-[10px] text-red-400">
-                    <AlertTriangle size={9} /> Risk
-                  </span>
-                )}
-              </div>
-            </div>
-          )}
+            {/* Business dots */}
+            {geoBusinesses.map(b => {
+              const color = b._hasRedFlag ? '#ef4444' : (memberColors[b._memberStatus] || '#64748b')
+              return (
+                <CircleMarker
+                  key={b._id}
+                  center={[parseFloat(b.lat), parseFloat(b.lon)]}
+                  radius={b._hasRedFlag ? 5 : 4}
+                  pathOptions={{ color: 'transparent', weight: 0, fillColor: color, fillOpacity: 0.75 }}
+                  eventHandlers={{
+                    mouseover: (e) => { e.target.setStyle({ fillOpacity: 1, weight: 1.5, color: '#fff' }); e.target.bringToFront() },
+                    mouseout: (e) => { e.target.setStyle({ fillOpacity: 0.75, weight: 0, color: 'transparent' }) },
+                    click: () => navigate(`/explorer/${b._id}`),
+                  }}
+                >
+                  <Tooltip direction="top" offset={[0, -4]} opacity={1} className="map-tooltip-dark">
+                    <div className="p-2.5 min-w-[160px]">
+                      <p className="font-semibold text-white text-sm truncate">{b.business_name}</p>
+                      <p className="text-[11px] text-slate-400 capitalize">{b.category_primary?.replace(/_/g, ' ')}</p>
+                      <div className="flex items-center gap-3 mt-1.5">
+                        {b._rating > 0 && (
+                          <span className="flex items-center gap-1 text-xs text-amber-400">
+                            <Star size={10} className="fill-amber-400" /> {b._rating.toFixed(1)}
+                          </span>
+                        )}
+                        <span className={`text-[10px] px-1.5 py-0.5 rounded ${
+                          b._memberStatus === 'member' ? 'bg-amber-500/10 text-amber-400' :
+                          b._memberStatus === 'non-member' ? 'bg-slate-700 text-slate-300' :
+                          'bg-orange-500/10 text-orange-400'
+                        }`}>{b._memberStatus}</span>
+                        {b._hasRedFlag && (
+                          <span className="flex items-center gap-1 text-[10px] text-red-400">
+                            <AlertTriangle size={9} /> Risk
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </Tooltip>
+                </CircleMarker>
+              )
+            })}
+          </MapContainer>
 
           {/* Legend */}
-          <div className="absolute bottom-3 left-3 bg-slate-900/90 border border-slate-800 rounded-lg p-2.5 flex items-center gap-4">
+          <div className="absolute bottom-3 left-3 bg-slate-900/90 border border-slate-800 rounded-lg p-2.5 flex items-center gap-4" style={{ zIndex: 1000 }}>
             {[
               { color: '#f59e0b', label: 'Member' },
               { color: '#64748b', label: 'Non-Member' },

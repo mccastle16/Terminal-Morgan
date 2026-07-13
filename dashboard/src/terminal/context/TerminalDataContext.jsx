@@ -5,6 +5,15 @@ import { computeRecruitabilityScore, getRecruitabilityBand, getRecruitReasons } 
 
 const TerminalDataContext = createContext(null)
 
+// Neighborhood names come from the source CSV with inconsistent casing
+// (e.g. "Miracle Mile" vs "miracle mile") which would otherwise split one
+// area into multiple filter options / stat groups.
+function normalizeNeighborhood(name) {
+  const trimmed = (name || '').trim()
+  if (!trimmed) return trimmed
+  return trimmed.toLowerCase().replace(/\b\w/g, c => c.toUpperCase())
+}
+
 export function TerminalDataProvider({ children }) {
   const { tenant } = useTerminalAuth()
   const [rawBusinesses, setRawBusinesses] = useState([])
@@ -43,6 +52,7 @@ export function TerminalDataProvider({ children }) {
 
         const biz = {
           ...row,
+          neighborhood_area: normalizeNeighborhood(row.neighborhood_area),
           _id: row.business_id || `biz_${i}`,
           _rating: parseFloat(row.rating_primary_value) || 0,
           _reviewCount: parseInt(row.rating_primary_review_count) || 0,
