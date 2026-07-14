@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { MapContainer, TileLayer, CircleMarker, Tooltip, Marker } from 'react-leaflet'
+import { MapContainer, TileLayer, CircleMarker, Tooltip, Marker, Pane } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useTerminalData } from '../context/TerminalDataContext'
@@ -204,47 +204,50 @@ export default function MapPage() {
               />
             ))}
 
-            {/* Business dots */}
-            {geoBusinesses.map(b => {
-              const color = b._hasRedFlag ? '#ef4444' : (memberColors[b._memberStatus] || '#64748b')
-              return (
-                <CircleMarker
-                  key={b._id}
-                  center={[parseFloat(b.lat), parseFloat(b.lon)]}
-                  radius={b._hasRedFlag ? 5 : 4}
-                  pathOptions={{ color: 'transparent', weight: 0, fillColor: color, fillOpacity: 0.75 }}
-                  eventHandlers={{
-                    mouseover: (e) => { e.target.setStyle({ fillOpacity: 1, weight: 1.5, color: '#fff' }); e.target.bringToFront() },
-                    mouseout: (e) => { e.target.setStyle({ fillOpacity: 0.75, weight: 0, color: 'transparent' }) },
-                    click: () => navigate(`/explorer/${b._id}`),
-                  }}
-                >
-                  <Tooltip direction="top" offset={[0, -4]} opacity={1} className="map-tooltip-dark">
-                    <div className="p-2.5 min-w-[160px]">
-                      <p className="font-semibold text-white text-sm truncate">{b.business_name}</p>
-                      <p className="text-[11px] text-slate-400 capitalize">{b.category_primary?.replace(/_/g, ' ')}</p>
-                      <div className="flex items-center gap-3 mt-1.5">
-                        {b._rating > 0 && (
-                          <span className="flex items-center gap-1 text-xs text-amber-400">
-                            <Star size={10} className="fill-amber-400" /> {b._rating.toFixed(1)}
-                          </span>
-                        )}
-                        <span className={`text-[10px] px-1.5 py-0.5 rounded ${
-                          b._memberStatus === 'member' ? 'bg-amber-500/10 text-amber-400' :
-                          b._memberStatus === 'non-member' ? 'bg-slate-700 text-slate-300' :
-                          'bg-orange-500/10 text-orange-400'
-                        }`}>{b._memberStatus}</span>
-                        {b._hasRedFlag && (
-                          <span className="flex items-center gap-1 text-[10px] text-red-400">
-                            <AlertTriangle size={9} /> Risk
-                          </span>
-                        )}
+            {/* Business dots — own pane, above the neighborhood-label markers (z 600),
+                so a label never sits on top of a dot and blocks its hover/tooltip */}
+            <Pane name="business-dots" style={{ zIndex: 620 }}>
+              {geoBusinesses.map(b => {
+                const color = b._hasRedFlag ? '#ef4444' : (memberColors[b._memberStatus] || '#64748b')
+                return (
+                  <CircleMarker
+                    key={b._id}
+                    center={[parseFloat(b.lat), parseFloat(b.lon)]}
+                    radius={b._hasRedFlag ? 5 : 4}
+                    pathOptions={{ color: 'transparent', weight: 0, fillColor: color, fillOpacity: 0.75 }}
+                    eventHandlers={{
+                      mouseover: (e) => { e.target.setStyle({ fillOpacity: 1, weight: 1.5, color: '#fff' }); e.target.bringToFront() },
+                      mouseout: (e) => { e.target.setStyle({ fillOpacity: 0.75, weight: 0, color: 'transparent' }) },
+                      click: () => navigate(`/explorer/${b._id}`),
+                    }}
+                  >
+                    <Tooltip pane="tooltipPane" direction="top" offset={[0, -4]} opacity={1} className="map-tooltip-dark">
+                      <div className="p-2.5 min-w-[160px]">
+                        <p className="font-semibold text-white text-sm truncate">{b.business_name}</p>
+                        <p className="text-[11px] text-slate-400 capitalize">{b.category_primary?.replace(/_/g, ' ')}</p>
+                        <div className="flex items-center gap-3 mt-1.5">
+                          {b._rating > 0 && (
+                            <span className="flex items-center gap-1 text-xs text-amber-400">
+                              <Star size={10} className="fill-amber-400" /> {b._rating.toFixed(1)}
+                            </span>
+                          )}
+                          <span className={`text-[10px] px-1.5 py-0.5 rounded ${
+                            b._memberStatus === 'member' ? 'bg-amber-500/10 text-amber-400' :
+                            b._memberStatus === 'non-member' ? 'bg-slate-700 text-slate-300' :
+                            'bg-orange-500/10 text-orange-400'
+                          }`}>{b._memberStatus}</span>
+                          {b._hasRedFlag && (
+                            <span className="flex items-center gap-1 text-[10px] text-red-400">
+                              <AlertTriangle size={9} /> Risk
+                            </span>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </Tooltip>
-                </CircleMarker>
-              )
-            })}
+                    </Tooltip>
+                  </CircleMarker>
+                )
+              })}
+            </Pane>
           </MapContainer>
 
           {/* Legend */}
