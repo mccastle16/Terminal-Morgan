@@ -23,24 +23,6 @@ function neighborhoodIcon(name) {
     iconSize: null,
     iconAnchor: [0, 0],
   })
-// Keeps the Leaflet view in sync with the active neighborhood / filtered set so
-// selecting a neighborhood recenters the map on its businesses.
-function FitBounds({ businesses, fallback }) {
-  const map = useMap()
-  useEffect(() => {
-    if (businesses.length === 0) {
-      map.setView([fallback.lat, fallback.lon], 13)
-      return
-    }
-    const lats = businesses.map(b => parseFloat(b.lat))
-    const lons = businesses.map(b => parseFloat(b.lon))
-    const bounds = [
-      [Math.min(...lats), Math.min(...lons)],
-      [Math.max(...lats), Math.max(...lons)],
-    ]
-    map.fitBounds(bounds, { padding: [40, 40], maxZoom: 16 })
-  }, [businesses, map, fallback])
-  return null
 }
 
 export default function MapPage() {
@@ -74,14 +56,18 @@ export default function MapPage() {
     const map = {}
     geoBusinesses.forEach(b => {
       const hood = b.neighborhood_area || 'Unknown'
-      if (!map[hood]) map[hood] = { name: hood, total: 0, members: 0, nonMembers: 0, unknowns: 0 }
+      if (!map[hood]) map[hood] = { name: hood, total: 0, members: 0, nonMembers: 0, unknowns: 0, latSum: 0, lonSum: 0 }
       map[hood].total++
+      map[hood].latSum += parseFloat(b.lat)
+      map[hood].lonSum += parseFloat(b.lon)
       if (b._memberStatus === 'member') map[hood].members++
       else if (b._memberStatus === 'non-member') map[hood].nonMembers++
       else map[hood].unknowns++
     })
     return Object.values(map).map(h => ({
       ...h,
+      avgLat: h.latSum / h.total,
+      avgLon: h.lonSum / h.total,
       penetration: h.total > 0 ? ((h.members / h.total) * 100).toFixed(1) : '0',
     })).sort((a, b) => b.total - a.total)
   }, [geoBusinesses])
