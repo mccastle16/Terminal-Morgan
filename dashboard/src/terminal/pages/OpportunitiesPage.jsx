@@ -37,6 +37,14 @@ function StatCard({ icon: Icon, label, value, sub }) {
   )
 }
 
+function StaticTag() {
+  return (
+    <span className="ml-2 px-1.5 py-0.5 text-[10px] font-medium rounded bg-slate-800 text-slate-500 border border-slate-700/60 align-middle">
+      Static data
+    </span>
+  )
+}
+
 function DemandBadge({ level }) {
   const cl = {
     high: 'bg-emerald-500/10 text-emerald-400',
@@ -96,8 +104,8 @@ export default function OpportunitiesPage() {
   const [expandedId, setExpandedId] = useState(null)
 
   useEffect(() => {
-    fetch('/data/opportunities.json')
-      .then(r => r.json())
+    fetch('/api/opportunities')
+      .then(r => { if (!r.ok) throw new Error('Failed to load'); return r.json() })
       .then(d => { setData(d); setLoading(false) })
       .catch(() => setLoading(false))
   }, [])
@@ -143,7 +151,7 @@ export default function OpportunitiesPage() {
     return (
       <div className="p-6 text-center text-slate-500">
         <Lightbulb className="w-10 h-10 mx-auto mb-3 text-slate-700" />
-        <p>No opportunity data available. Run the opportunity analyzer script first.</p>
+        <p>No opportunity data available. The live database could not be reached.</p>
       </div>
     )
   }
@@ -191,7 +199,7 @@ export default function OpportunitiesPage() {
       </Panel>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <Panel title="Demand Distribution" subtitle="Opportunities by estimated market demand">
+        <Panel title={<>Demand Distribution<StaticTag /></>} subtitle="Opportunities by estimated market demand">
           <div className="h-52">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -213,7 +221,7 @@ export default function OpportunitiesPage() {
           </div>
         </Panel>
 
-        <Panel title="By Neighborhood" subtitle="Where new businesses are most needed">
+        <Panel title={<>By Neighborhood<StaticTag /></>} subtitle="Where new businesses are most needed">
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={chartData.hoodChart} margin={{ left: 0, right: 10 }}>
               <defs>{VGRADIENTS}</defs>
@@ -227,7 +235,7 @@ export default function OpportunitiesPage() {
         </Panel>
       </div>
 
-      <Panel title={`Business Opportunities (${filtered.length})`} subtitle="Curated business concepts filling market gaps in Coral Gables">
+      <Panel title={<>Business Opportunities ({filtered.length})<StaticTag /></>} subtitle="Curated business concepts filling market gaps in Coral Gables">
         <div className="flex flex-wrap gap-3 mb-4">
           <select value={filterCategory} onChange={e => setFilterCategory(e.target.value)} className={selectClass}>
             <option value="all">All Categories</option>
@@ -275,7 +283,7 @@ export default function OpportunitiesPage() {
         </Panel>
       )}
 
-      <Panel title="Neighboring Chambers" subtitle="Cross-reference data sources">
+      <Panel title={<>Neighboring Chambers<StaticTag /></>} subtitle="Cross-reference data sources">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {Object.entries(data.neighboring_chambers || {}).map(([key, info]) => (
             <div key={key} className="bg-slate-800/30 rounded-lg p-4">

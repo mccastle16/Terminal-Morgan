@@ -39,7 +39,6 @@ const TENANTS = {
       accentColor: '#c9a227',
       logo: null,
     },
-    dataSource: '/data/union_all_businesses.csv',
     refreshCadence: 'monthly',
     lastRefresh: '2026-03-02',
   },
