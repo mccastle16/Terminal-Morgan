@@ -1,0 +1,572 @@
+business_name,phone,website,address,lat,lon,postcode,rating,review_count,category_raw,price,source
+The Landmark at Merrick Park,+1 786-574-4116,,,25.7315182,-80.2606672,33146,4.3,1022,Movie theater,None,outscraper
+Coral Gables Art Cinema,+1 786-472-2249,,,25.7502793,-80.25987669999999,33134,4.8,564,Movie theater,None,outscraper
+Coral Gables Art Cinema,+1 786-472-2249,,,25.7502793,-80.25987669999999,33134,4.8,564,Movie theater,None,outscraper
+Maurice Gusman Concert Hall,+1 305-284-2400,,,25.7198116,-80.2795096,33146,4.8,101,Concert hall,None,outscraper
+Victor E. Clarke Recital Hall,+1 305-284-2241,,,25.718674099999998,-80.2802542,33146,4.8,58,Concert hall,None,outscraper
+Knight Center for Music Innovation,+1 305-284-2400,,,25.7181857,-80.28125,33146,5.0,10,Performing arts theater,None,outscraper
+The Bar,+1 305-442-2730,,,25.7511558,-80.2582075,33134,4.3,920.0,Bar,None,outscraper
+Copper 29 Bar,+1 786-830-9640,,,25.7491912,-80.2590427,33134,4.3,1239.0,Bar,None,outscraper
+Romeo at Babette,None,,,25.753085199999997,-80.2610117,33134,4.4,5.0,Night club,None,outscraper
+The Globe,+1 305-445-3555,,,25.7520638,-80.2622758,33134,4.5,489.0,Bar & grill,None,outscraper
+Armstrong Jazz House,+1 305-488-9955,,,25.749656299999998,-80.2601451,33134,4.7,2344.0,Restaurant,None,outscraper
+Bougainvillea's Old Florida Tavern,+1 305-669-8577,,,25.7038345,-80.287161,33143,4.5,1257.0,Live music bar,None,outscraper
+Fox's Lounge,+1 305-703-6553,,,25.7024501,-80.291533,33143,4.6,474.0,American restaurant,None,outscraper
+Cebada Rooftop,+1 754-208-0243,,,25.751219499999998,-80.257361,33134,4.2,510.0,Spanish restaurant,None,outscraper
+Playmates Club,+1 305-446-8346,,,25.733204999999998,-80.25745289999999,33146,3.9,199.0,Adult entertainment club,None,outscraper
+La Rosa Gastrobar,+1 786-870-5466,,,25.7490594,-80.2622985,33134,4.9,1321.0,Restaurant,None,outscraper
+Vice City Kava - Coral Gables,+1 786-536-2600,,,25.7506924,-80.2339394,33145,5.0,1053.0,Tea house,None,outscraper
+Bellas Cabaret - Miami Strip Club,+1 305-887-1550,,,25.8105394,-80.2628498,33010,4.6,1097.0,Night club,None,outscraper
+Coral Gables Woman's Club,+1 305-448-7080,,,25.761635,-80.2574411,33134,4.6,264.0,Club,None,outscraper
+Bulla Gastrobar Coral Gables,+1 786-810-6215,,,25.7485084,-80.25890869999999,33134,4.9,14851.0,Spanish restaurant,None,outscraper
+The Office Speakeasy Cigar Lounge,+1 305-446-2500,,,25.750128999999998,-80.2605449,33134,5.0,7.0,Bar,None,outscraper
+Bay 13 Brewery and Kitchen,+1 786-452-0935,,,25.752672399999998,-80.2560079,33134,4.4,815.0,Brewery,None,outscraper
+Mango's South Beach,+1 305-673-4422,,,25.7794405,-80.1312129,33139,4.6,12312.0,Night club,None,outscraper
+Galiano Cigar Room,+1 305-407-7111,,,25.750859,-80.2568306,33134,4.8,305.0,Bar,None,outscraper
+Cantina Leon,+1 786-391-2265,,,25.745427799999998,-80.2576065,33134,4.6,119.0,Mexican restaurant,None,outscraper
+Coco Cigars Merrick Park,+1 786-946-4958,,,25.7315145,-80.2601638,33146,5.0,62.0,Cigar shop,None,outscraper
+Yard House,+1 305-447-9273,,,25.732339999999997,-80.25983,33146,4.4,3096.0,Bar,None,outscraper
+Ventanas Restaurant Bar & Lounge,+1 786-353-9460,,,25.7351729,-80.25756229999999,33146,4.9,15.0,Bar & grill,None,outscraper
+Melg Group,+1 305-926-6083,,,25.748998099999998,-80.2583026,33134,2.5,2.0,Night club,None,outscraper
+Celosa Cafe & Lounge,None,,,25.7451582,-80.2581625,33134,4.4,7.0,Bar,None,outscraper
+Sawa Restaurant & Lounge,+1 305-447-6555,,,25.732031,-80.2607221,33146,4.2,1006.0,Bar,None,outscraper
+Tipsy Flamingo Cocktail Bar,+1 305-646-9967,,,25.7749743,-80.1920834,33132,4.6,453.0,Cocktail bar,None,outscraper
+E11EVEN MIAMI,+1 305-829-2911,,,25.7849684,-80.19355689999999,33132,3.7,2206.0,Night club,None,outscraper
+Sra. Martinez,+1 786-860-5980,,,25.7508862,-80.2565754,33134,4.7,386.0,Bar,None,outscraper
+Azúcar NightClub,+1 786-252-2996,,,25.7481567,-80.24621069999999,33145,3.8,395.0,Gay night club,None,outscraper
+Bodega Bar Coral Gables,+1 786-785-1501,,,25.7497305,-80.2611091,33134,4.1,240.0,Bar,None,outscraper
+"Arcano - Spanish Kitchen, Latin Soul",+1 305-530-8332,,,25.751203,-80.2600033,33134,4.8,168.0,Spanish restaurant,None,outscraper
+CLUB SPACE,+1 702-738-1333,,,25.7846546,-80.1931826,33132,3.8,2418.0,Night club,None,outscraper
+The Biltmore Bar,+1 877-624-2830,,,25.740818599999997,-80.2784533,33134,4.5,50.0,Bar,None,outscraper
+JOHNMARTIN's Restaurant & Bar,+1 305-209-0609,,,25.749734399999998,-80.2598203,33134,4.4,1072.0,Bar,None,outscraper
+Seven Seas Bar,+1 305-266-6071,,,25.7501131,-80.28755869999999,33155,4.4,428.0,Bar,None,outscraper
+Talavera Cocina Mexicana,+1 305-444-2877,,,25.7513948,-80.25849649999999,33134,4.4,2227.0,Mexican restaurant,None,outscraper
+Studio Cafe Restaurant,+1 305-445-4681,,,25.747631199999997,-80.2465721,33145,4.4,107.0,Cuban restaurant,None,outscraper
+BRANDI'S,None,,,25.739296099999997,-80.2800529,33134,4.0,13.0,Bar,None,outscraper
+Zitz Sum,+1 786-409-6920,,,25.751446299999998,-80.262316,33134,4.5,418.0,Asian fusion restaurant,None,outscraper
+Sospiro Wine Bar & Cucina,+1 305-631-2029,,,25.747264899999998,-80.258834,33134,4.5,243.0,Restaurant,None,outscraper
+The Details,None,,,25.750345799999998,-80.26274769999999,33134,,,Bar,None,outscraper
+Fritz & Franz Bierhaus,+1 305-774-1883,,,25.7509955,-80.25630439999999,33134,4.4,1495.0,German restaurant,None,outscraper
+Zucca,+1 786-580-3731,,,25.7528951,-80.2585804,33134,4.6,1581.0,Italian restaurant,None,outscraper
+MIKA Coral Gables,+1 305-404-2200,,,25.744313299999998,-80.25810849999999,33134,4.7,489.0,Restaurant,None,outscraper
+Americana Kitchen,+1 786-772-7600,,,25.7447406,-80.2574254,33134,4.4,127.0,Bar,None,outscraper
+TuCandela Bar,+1 305-930-5826,,,25.765293,-80.1924908,33130,3.9,636.0,Disco club,None,outscraper
+Doc B's Restaurant,+1 786-864-1220,,,25.7496233,-80.26085669999999,33134,4.7,2093.0,Bar,None,outscraper
+Miracle Mile & Downtown Coral Gables,+1 305-569-0311,,,25.7494437,-80.2574053,33134,4.6,4716.0,Bar,None,outscraper
+Pharaoh Hookah & Cigar Lounge,+1 305-392-0608,,,25.7652334,-80.2421032,33135,4.8,299.0,Hookah bar,None,outscraper
+Aromas del Peru,+1 305-476-5885,,,25.7512908,-80.25712229999999,33134,4.9,11443.0,Bar,None,outscraper
+Red Phone Booth,+1 305-526-4737,,,25.763995899999998,-80.1924609,33131,5.0,1597.0,Bar,None,outscraper
+Duffy's Tavern,+1 305-264-6580,,,25.751184499999997,-80.2875767,33155,4.4,1117.0,Bar,None,outscraper
+GableStage,+1 305-445-1119,,,25.7413521,-80.27778479999999,33134,4.8,165.0,Performing arts theater,None,outscraper
+Nicest Barbers Barbershop,+1 786-203-7668,,,25.753941299999997,-80.25984009999999,33134,5.0,1028.0,Barber shop,None,outscraper
+Shōjō’s Dojo,+1 786-519-1831,,,25.751517399999997,-80.2577669,33134,,,Bar,None,outscraper
+POC American Fusion Buffet & Sushi,+1 305-529-0882,,,25.753429999999998,-80.258618,33134,4.5,5668.0,Asian fusion restaurant,None,outscraper
+Tucandela Bar Kendall,+1 786-747-1377,,,25.6889482,-80.38587629999999,33183,4.0,825.0,Bar,None,outscraper
+Cascade Pool Cafe at The Biltmore Hotel Miami,+1 305-913-3189,,,25.7405004,-80.2788739,33134,4.4,79.0,American restaurant,None,outscraper
+Seasons 52,+1 305-442-8552,,,25.74963,-80.2614,33134,4.6,2250.0,New American restaurant,None,outscraper
+Portosole,+1 786-359-4275,,,25.7480051,-80.2588993,33134,4.6,627.0,Italian restaurant,None,outscraper
+CRAFT Coral Gables,+1 786-772-6932,,,25.751515299999998,-80.25741889999999,33134,4.9,6822.0,Restaurant,None,outscraper
+La Taberna Giralda,+1 786-362-5677,,,25.750951999999998,-80.260042,33134,4.3,484.0,Spanish restaurant,None,outscraper
+Blackbird Ordinary,+1 305-671-3307,,,25.7667169,-80.1951854,33130,4.2,2647.0,Night club,None,outscraper
+Terre Del Sapore,+1 786-870-5955,,,25.751045899999998,-80.2598544,33134,4.7,777.0,Pizza restaurant,None,outscraper
+Su Shin Izakaya,+1 305-445-2584,,,25.750719399999998,-80.2579528,33134,4.8,1234.0,Authentic Japanese restaurant,None,outscraper
+Carnaval On The Mile,None,,,25.7496092,-80.2585835,33134,4.5,27.0,Festival,None,outscraper
+Actors' Playhouse at the Miracle Theatre,+1 305-444-9293,,,25.749253099999997,-80.2603805,33134,4.7,558.0,Performing arts theater,None,outscraper
+Titanic Brewery & Restaurant,+1 305-667-2537,,,25.7106039,-80.28301379999999,33146,4.4,1126.0,Restaurant,None,outscraper
+Coral Gables Art Cinema,+1 786-472-2249,,,25.7502793,-80.25987669999999,33134,4.8,564.0,Movie theater,None,outscraper
+Salsa Mia,+1 305-458-4558,,,25.779439099999998,-80.1312227,33139,4.8,159.0,Night club,None,outscraper
+Fleming’s Prime Steakhouse & Wine Bar,+1 305-569-7995,,,25.7484526,-80.2583633,33134,4.7,2006.0,Bar,None,outscraper
+Five Iron Golf,+1 800-513-5153,,,25.744354299999998,-80.2582573,33134,4.6,9.0,Indoor golf course,None,outscraper
+Sala Catarsis,None,,,25.764884,-80.255605,33134,4.4,41.0,Comedy club,None,outscraper
+SEXXY LADY CABARET,+1 305-691-5032,,,25.8464116,-80.22757299999999,33147,4.2,203.0,Night club,None,outscraper
+Evolve Theatre Company,+1 305-537-6773,,,25.7410596,-80.26523619999999,33134,5.0,21.0,Performing arts theater,None,outscraper
+The Café at Books & Books,+1 305-448-9599,,,25.7505596,-80.2598575,33134,4.6,287.0,Cafe,None,outscraper
+Mariposa,+1 786-999-1018,,,25.7316769,-80.2614888,33146,4.3,164.0,Bar,None,outscraper
+Back Door,None,,,25.748993,-80.2583331,33134,,,Bar,None,outscraper
+Meeting Rooms and Event Spaces at The Biltmore Hotel Miami Coral Gables,+1 855-969-3080,,,25.740818599999997,-80.2784533,33134,4.5,33.0,Event venue,None,outscraper
+The Mason Coral Gables,+1 786-408-3919,,,25.7482595,-80.2555892,33134,,,Event venue,None,outscraper
+Coral Gables Banquet Hall,None,,,25.745230199999998,-80.2613322,33134,5.0,2.0,Banquet hall,None,outscraper
+La Jolla Ballroom,+1 305-460-0047,,,25.7531061,-80.2610273,33134,4.6,280.0,Dance hall,None,outscraper
+The Club of Knights,+1 305-662-4742,,,25.7445348,-80.2599973,33134,4.7,352.0,Wedding venue,None,outscraper
+Comber Hall,+1 305-443-4828,,,25.7442618,-80.2812486,33134,4.8,61.0,Wedding venue,None,outscraper
+Coral Gables Woman's Club,+1 305-448-7080,,,25.761635,-80.2574411,33134,4.6,264.0,Banquet hall,None,outscraper
+Coral Gables Golf & Country Club,+1 305-722-8783,,,25.7531946,-80.2744852,33134,4.5,711.0,Event venue,None,outscraper
+Douglas Entrance,+1 305-444-1941,,,25.764061599999998,-80.2557308,33134,4.4,101.0,Event venue,None,outscraper
+Loews Coral Gables Hotel,+1 786-772-7600,,,25.7447406,-80.2574254,33134,4.6,736.0,Event venue,4 stars,outscraper
+"Gables Reception Hall, Inc.",+1 305-266-1771,,,25.7470091,-80.3148088,33155,4.3,99.0,Banquet hall,None,outscraper
+"Hotel Colonnade Coral Gables, Autograph Collection",+1 305-441-2600,,,25.750383799999998,-80.2582532,33134,4.5,1533.0,Hotel,4 stars,outscraper
+South Miami/Coral Gables Banquet Hall,+1 305-668-1676,,,25.6981455,-80.29564979999999,33143,,,Banquet hall,None,outscraper
+Best Miami Weddings,+1 305-662-4742,,,25.744581699999998,-80.2599377,33134,4.1,35.0,Event venue,None,outscraper
+Biltmore Hotel Miami Coral Gables,+1 855-969-3080,,,25.7407941,-80.27867959999999,33134,4.5,2672.0,Hotel,4 stars,outscraper
+The Globe,+1 305-445-3555,,,25.7520638,-80.2622758,33134,4.5,489.0,Event venue,None,outscraper
+Armstrong Jazz House,+1 305-488-9955,,,25.749656299999998,-80.2601451,33134,4.7,2344.0,Restaurant,None,outscraper
+Casa Valencia,+1 305-667-6668,,,25.7482595,-80.2555892,33134,4.3,6.0,Event venue,None,outscraper
+Renaissance at the Gables | Relocated,+1 305-445-1313,,,25.7476959,-80.2466182,33145,4.3,303.0,Wedding venue,None,outscraper
+Coco Plum Woman's Club,+1 305-665-5731,,,25.7047615,-80.2808214,33143,4.9,180.0,Event venue,None,outscraper
+The Cruz Building,+1 305-508-9500,,,25.7276919,-80.2444391,33133,4.6,316.0,Event venue,None,outscraper
+Miami Taxi Services llc.,+1 786-309-8805,,,25.8107249,-80.221121,33142,3.3,140,Taxi service,None,outscraper
+Black Cab Miami,+1 786-299-8416,,,25.7819784,-80.26281019999999,33126,4.1,164,Taxi service,None,outscraper
+Tap2ride,+1 786-292-4681,,,25.749798799999997,-80.2605049,33134,5.0,176,Transportation service,None,outscraper
+305TAXI SERVICE,+1 786-909-3893,,,25.780399,-80.2018525,33136,4.9,39,Taxi service,None,outscraper
+"Majestic Limousines, Inc.",+1 305-774-0117,,,25.740520999999998,-80.27917049999999,33134,5.0,405,Limousine service,None,outscraper
+MIAMI ELITE TRANSFERS,+1 800-281-1035,,,25.778563,-80.2845493,33126,4.9,112,Limousine service,None,outscraper
+Miami Airport Car Service Limopedia,+1 305-793-4383,,,25.789845699999997,-80.2678287,33126,5.0,790,Transportation service,None,outscraper
+Enterprise Rent-A-Car,+1 305-447-0308,,,25.733136,-80.2582312,33146,4.0,352,Car rental agency,None,outscraper
+Ryde Taxi Miami,+1 904-701-4014,,,25.8465909,-80.19489569999999,33138,4.0,20,Taxi service,None,outscraper
+Hertz Car Rental - Coral Gables - S Dixie Highway,+1 305-444-3099,,,25.726815,-80.26067359999999,33133,3.5,175.0,Car rental agency,None,outscraper
+RealCar: Premium & Luxury Car Rental NYC,+1 212-991-8002,,,40.7567412,-73.9968114,10018,4.9,277.0,Car rental agency,None,outscraper
+Enterprise Rent-A-Car,+1 305-447-0308,,,25.733136,-80.2582312,33146,4.0,352.0,Car rental agency,None,outscraper
+Miles Car Rental,+1 786-207-4750,,,25.76335,-80.28405,33134,4.9,1130.0,Car rental agency,None,outscraper
+Avis Car Rental,+1 305-648-2252,,,25.7447506,-80.2573512,33134,1.0,2.0,Car rental agency,None,outscraper
+SIXT Rent a Car Miami Coral Gables Miracle Mkt,+1 888-749-8227,,,25.750458,-80.249736,33145,4.2,690.0,Car rental agency,None,outscraper
+mph club | Exotic Car Rental Coral Gables,+1 888-674-4044,,,25.749333999999998,-80.25885,33134,5.0,235.0,Car rental agency,None,outscraper
+Hola Car Rentals,+1 786-999-8312,,,25.734741,-80.226439,33133,4.9,3388.0,Car rental agency,None,outscraper
+Hertz Car Rental,+1 305-871-0300,,,25.7965321,-80.2595662,33142,3.5,4531.0,Car rental agency,None,outscraper
+Avis Car Rental,+1 305-661-6414,,,25.693030099999998,-80.3051235,33143,3.5,96.0,Car rental agency,None,outscraper
+Enterprise Rent-A-Car,+1 305-262-1880,,,25.733448499999998,-80.31254,33155,3.8,684.0,Car rental agency,None,outscraper
+Avis Car Rental,+1 305-876-1800,,,25.7971529,-80.2594404,33142,3.8,9443.0,Car rental agency,None,outscraper
+"Majestic Limousines, Inc.",+1 305-774-0117,,,25.740520999999998,-80.27917049999999,33134,5.0,405.0,Limousine service,None,outscraper
+Avis Car Rental,+1 305-667-3205,,,25.732452,-80.30449,33155,3.5,70.0,Car rental agency,None,outscraper
+Avalon Merrick Park,+1 888-820-4220,,,25.7334222,-80.25648869999999,33146,4.9,143.0,Apartment rental agency,None,outscraper
+Avis Car Rental,+1 305-648-2252,,,25.783870399999998,-80.262928,33126,2.6,145.0,Car rental agency,None,outscraper
+PY Rentals - Car Rental - Miami FL,+1 786-781-3402,,,25.797293,-80.2489032,33142,4.9,106.0,Car rental agency,None,outscraper
+Enterprise Rent-A-Car,+1 786-621-7900,,,25.7825842,-80.2644787,33126,3.6,516.0,Car rental agency,None,outscraper
+SIXT Car Rental - Miami International Airport (MIA),+1 888-749-8227,,,25.7969552,-80.260881,33142,4.2,11761.0,Car rental agency,None,outscraper
+Car Rental Airport Miami | Rent a Car Miami,+1 305-497-1674,,,25.8001774,-80.2607843,33142,4.8,668.0,Car rental agency,None,outscraper
+Lorraine Travel,+1 305-446-4433,,,25.7520638,-80.2622758,33134,4.9,88.0,Travel agency,None,outscraper
+Budget Car Rental,+1 305-774-9521,,,25.78415,-80.26299,33126,2.6,6376.0,Car rental agency,None,outscraper
+Bsafe Miami Auto Rental,+1 786-351-3685,,,25.799787499999997,-80.2600866,33142,4.9,75.0,Car rental agency,None,outscraper
+Rent Smart Car Rental,+1 786-272-5447,,,25.8001471,-80.2607209,33142,4.9,3156.0,Car rental agency,None,outscraper
+Zipcar,+1 866-494-7227,,,25.7179279,-80.2737349,33146,5.0,1.0,Car rental agency,None,outscraper
+The UPS Store,+1 305-441-7161,,,25.7554134,-80.2586287,33134,4.5,242.0,Shipping and mailing service,None,outscraper
+Easirent Car Rental Miami International Airport (MIA),+1 786-358-6875,,,25.7956544,-80.251059,33142,4.0,4214.0,Car rental agency,None,outscraper
+Hertz Car Rental - Thesis Hotel,+1 305-444-3099,,,25.712742,-80.27854099999999,33146,,,Car rental agency,None,outscraper
+El Car Wash - Coral Gables,+1 866-305-4329,,,25.7640244,-80.2800633,33134,4.8,2750,Car wash,None,outscraper
+CarWash Points at The Plaza Coral Gables,+1 888-783-2967,,,25.7457219,-80.2569202,33134,4.9,181,Car wash,None,outscraper
+First Class Detail Carwash,+1 786-253-8107,,,25.7316413,-80.2614571,33146,4.8,165,Car wash,None,outscraper
+El Car Wash - Little Havana,+1 866-305-4329,,,25.7731322,-80.23955029999999,33125,4.5,3191,Car wash,None,outscraper
+Magic Hands Car Wash & Detailer,+1 305-206-9878,,,25.7348248,-80.2517192,33133,3.9,1110,Car wash,None,outscraper
+Top Master Car Wash,+1 786-851-0740,,,25.7707429,-80.27961549999999,33134,5.0,9,Car wash,None,outscraper
+Chevron,+1 305-854-7887,,,25.7511522,-80.2202257,33145,3.5,57,Car wash,None,outscraper
+CarWash,None,,,25.7707274,-80.2874559,33134,4.0,15,Car wash,None,outscraper
+FlipWash,None,,,25.739138999999998,-80.25867099999999,33134,5.0,1,Car wash,None,outscraper
+Mr. Splash USA Car Wash | Coral Gables,+1 305-848-0167,,,25.756632999999997,-80.2389448,33145,4.7,496,Car wash,None,outscraper
+Car Wash,+1 786-380-3658,,,25.750124099999997,-80.22993079999999,33145,3.3,29,Car wash,None,outscraper
+Reynaldo Car Wash,+1 305-992-4910,,,25.7706642,-80.2828979,33134,4.3,222,Car wash,None,outscraper
+El Car Wash - West Gables,+1 866-305-4329,,,25.7625155,-80.31049519999999,33144,4.8,2751,Car wash,None,outscraper
+Warrior Car Pro,+1 305-336-8462,,,25.7646972,-80.28430279999999,33134,4.8,11,Car detailing service,None,outscraper
+Magic Hands Car Wash & Detailer (Coconut Grove),+1 305-873-3188,,,25.735467,-80.2490444,33133,3.9,535,Car wash,None,outscraper
+Las Brisas Hand Car Wash,+1 305-856-0510,,,25.757474799999997,-80.2382101,33145,3.8,1080,Car wash,None,outscraper
+AF Car Wash Mobile,+1 786-538-9503,,,25.756130199999998,-80.239835,33145,5.0,1,Car wash,None,outscraper
+Ceramic Pro MH (Coral Gables),+1 305-582-6282,,,25.7345565,-80.25221359999999,33133,5.0,234,Car detailing service,None,outscraper
+Laser Carwash,+1 305-854-7887,,,25.751309799999998,-80.2203309,33145,3.5,85,Car wash,None,outscraper
+El Car Wash - Coral Way,+1 866-305-4329,,,25.7485108,-80.3100718,33155,4.9,6989,Car wash,None,outscraper
+Giralda Place Parking Garage,+1 615-238-2250,,,25.751373899999997,-80.260295,33134,4.5,46.0,Parking garage,None,outscraper
+Coral Gables Parking Department,+1 305-460-5540,,,25.753335,-80.26164539999999,33134,2.3,16.0,City government office,None,outscraper
+The Plaza Parking Garage,None,,,25.745681299999998,-80.2567892,33134,2.2,10.0,Parking garage,None,outscraper
+PUBLIC PARKING,None,,,25.7475915,-80.2557975,33134,4.8,5.0,Parking garage,None,outscraper
+Parking Garage 4,None,,,25.748628,-80.261607,33134,4.1,17.0,Parking garage,None,outscraper
+Garage 1,None,,,25.7488255,-80.2597404,33134,3.5,28.0,Parking garage,None,outscraper
+The Palace Garage & Public Parking,None,,,25.7487069,-80.25547929999999,33134,3.7,13.0,Parking garage,None,outscraper
+Laz Parking - Gables Grand Plaza Parking Garage,+1 305-529-1921,,,25.7508929,-80.2616132,33134,2.2,13.0,Parking lot,None,outscraper
+Premium Parking - P2505,+1 844-236-2011,,,25.7549134,-80.259216,33134,5.0,1.0,Parking lot,None,outscraper
+The Douglas Centre Parking Garage - ParkChirp,+1 786-258-3490,,,25.747722,-80.25473989999999,33134,5.0,1.0,Parking garage,None,outscraper
+51 Aragon Ave Garage,+1 305-448-4632,,,25.7510041,-80.25646259999999,33134,2.6,7.0,Parking lot,None,outscraper
+Lanier Parking,+1 305-446-3993,,,25.7484754,-80.2580467,33134,2.3,6.0,Parking garage,None,outscraper
+Central Parking,+1 305-441-1234,,,25.751400999999998,-80.255569,33134,3.0,2.0,Parking lot,None,outscraper
+American Legion Parking lot,+1 305-400-8043,,,25.752578699999997,-80.2608911,33134,5.0,1.0,Parking lot,None,outscraper
+AirGarage | Public Parking,None,,,25.7092556,-80.2816531,33146,4.6,59.0,Parking garage,None,outscraper
+Parking Lot 23,+1 305-460-5540,,,25.7491289,-80.26414849999999,33134,4.5,2.0,Parking lot,None,outscraper
+Parking Lot 8,+1 305-460-5540,,,25.750973199999997,-80.25963829999999,33134,5.0,2.0,Parking lot,None,outscraper
+Premium Parking - P2504,+1 844-236-2011,,,25.746648,-80.256868,33134,4.0,4.0,Parking lot,None,outscraper
+CITY OF CORAL GABLES,None,,,25.7473358,-80.25594319999999,33134,2.5,2.0,Parking lot,None,outscraper
+57 Miracle Mile Parking,None,,,25.749882099999997,-80.25596449999999,33134,4.8,4.0,Parking lot,None,outscraper
+Public Indoor Parking,None,,,25.7503861,-80.2568215,33134,2.8,24.0,Parking garage,None,outscraper
+396 Alhambra - LAZ Parking Garage,+1 305-448-1726,,,25.7512698,-80.2613696,33134,2.8,4.0,Parking lot,None,outscraper
+Parking Lot 25,+1 305-460-5540,,,25.751593999999997,-80.25712519999999,33134,3.0,2.0,Parking lot,None,outscraper
+BPMA Parking Garage,None,,,25.7511205,-80.26184839999999,33134,5.0,2.0,Parking lot,None,outscraper
+Parking Lot 3,+1 305-460-5540,,,25.7499914,-80.26209639999999,33134,1.0,2.0,Parking lot,None,outscraper
+Public Parking - 1535 San Ignacio,None,,,25.705385099999997,-80.283605,33146,,,Parking lot,None,outscraper
+Laner Parking,+1 860-522-7641,,,25.7459059,-80.25924189999999,33134,2.5,2.0,Parking garage,None,outscraper
+2525 Ponce Parking Garage,+1 305-444-8900,,,25.748633899999998,-80.25745119999999,33134,3.0,4.0,Parking lot,None,outscraper
+Museum Garage,None,,,25.750339699999998,-80.2597172,33134,3.5,15.0,Parking lot,None,outscraper
+SP+ Parking,+1 305-442-4522,,,25.7327032,-80.26101709999999,33146,3.6,5.0,Parking garage,None,outscraper
+Minorca Garage,None,,,25.7535009,-80.26035689999999,33134,,,Parking lot,None,outscraper
+Parking Garage | Lennar Foundation Medical Center,+1 305-243-4000,,,25.7126931,-80.2810435,33146,4.4,7.0,Parking garage,None,outscraper
+Premium Parking - P2539,+1 844-236-2011,,,25.7536818,-80.2600477,33134,,,Parking lot,None,outscraper
+Premium Parking - P2538,+1 844-236-2011,,,25.753778099999998,-80.2607149,33134,,,Parking lot,None,outscraper
+2121 Parking Garage,None,,,25.7532276,-80.2580085,33134,1.0,1.0,Parking garage,None,outscraper
+Premium Parking - P2502,+1 844-236-2011,,,25.746990999999998,-80.2578537,33134,1.0,1.0,Parking lot,None,outscraper
+Lot 6,+1 305-460-5540,,,25.753162,-80.2597704,33134,,,Parking lot,None,outscraper
+LAZ Parking - Columbus Center,+1 305-913-4882,,,25.752835899999997,-80.255561,33134,,,Parking garage,None,outscraper
+P2505,+1 844-236-2011,,,25.754828,-80.2597344,33134,,,Parking lot,None,outscraper
+1210 Anastasia Ave Parking,None,,,25.741533,-80.280739,33134,4.5,4.0,Parking lot,None,outscraper
+GREEN PARKING,+1 305-934-8090,,,25.7648922,-80.2583114,33134,1.0,2.0,Valet parking service,None,outscraper
+Lot 18,+1 305-460-5540,,,25.7539037,-80.2619079,33134,,,Parking lot,None,outscraper
+2990 Ponce de Leon,+1 860-522-7641,,,25.7449543,-80.25923929999999,33134,5.0,1.0,Parking garage,None,outscraper
+4000 Ponce De Leon Blvd Garage,None,,,25.733575199999997,-80.2593007,33146,3.0,2.0,Parking lot,None,outscraper
+Coral Gables Parking Enforcement,+1 305-460-5363,,,25.753562199999998,-80.25961889999999,33134,2.6,5.0,City government office,None,outscraper
+550 Biltmore Way Parking,None,,,25.7480278,-80.26553109999999,33134,3.8,8.0,Parking lot,None,outscraper
+1200 Malaga Ave Parking,None,,,25.742131999999998,-80.2785813,33134,,,Parking lot,None,outscraper
+Parking,None,,,25.7637713,-80.2570537,33134,4.0,2.0,Parking garage,None,outscraper
+SP+ Parking,+1 305-442-4522,,,25.7523914,-80.260012,33134,2.9,9.0,Parking garage,None,outscraper
+Parking Garage Enter,None,,,25.728811999999998,-80.2614459,33146,,,Parking garage,None,outscraper
+Lot 12 and 16,+1 305-460-5540,,,25.7260471,-80.2633749,33146,5.0,1.0,Parking lot,None,outscraper
+5 mins to Coral Gables / Parking / Fast Wi-Fi / Laundry,None,,,25.745780999999997,-80.2896118,33155,5.0,8.0,Apartment,None,outscraper
+355 Alhambra Cir Garage,None,,,25.7524069,-80.2617348,33134,5.0,5.0,Parking lot,None,outscraper
+"City of Coral Gables Parking, Sustainability, and Mobility Department",None,,,25.7536086,-80.2589972,33134,,,Government office,None,outscraper
+Columbus Center Hourly Visitor Parking,None,,,25.752735299999998,-80.25663949999999,33134,5.0,2.0,Parking garage,None,outscraper
+parking lot,None,,,25.6771609,-80.2760311,33156,,,Parking lot,None,outscraper
+Premium Parking - P2537,+1 844-236-2011,,,25.750474,-80.2576234,33134,1.0,4.0,Parking garage,None,outscraper
+Lot 36,+1 305-460-5540,,,25.743669,-80.2599379,33134,5.0,1.0,Parking lot,None,outscraper
+Spacious 2/1 Coral Gables apt w/ free parking,None,,,25.7607078,-80.259697,33134,4.3265305,49.0,Apartment,None,outscraper
+Shops @ Merrick Park - Residential Tower,+1 305-442-4522,,,25.732342199999998,-80.2594599,33146,3.5,4.0,Parking lot,None,outscraper
+Ponce De Leon Lot (Propark),+1 866-946-7275,,,25.7459109,-80.259103,33134,,,Parking lot,None,outscraper
+"Fashionable one bedroom CORAL GABLES, FREE garage parking!!",None,,,25.76091,-80.2559814,33134,5.0,5.0,Apartment,None,outscraper
+Offices And Merrick Park,+1 305-529-0200,,,25.7313562,-80.25761609999999,33146,2.2,6.0,Parking lot,None,outscraper
+Hotel Colonnade Garage Valet,+1 786-208-9389,,,25.7504451,-80.2581991,33134,1.0,5.0,Valet parking service,None,outscraper
+Coral Gables / Coconut Grove area FREE parking,None,,,25.7070102,-80.2558899,33133,3.5,8.0,Apartment,None,outscraper
+South Park Mgmt Parking,None,,,25.7549669,-80.25854,33134,1.0,2.0,Parking lot,None,outscraper
+Coral Gable 3BR house Parking - Three-Bedroom House,None,,,25.770410599999998,-80.280098,33134,3.466667,24.0,House,None,outscraper
+Coral Gable 3BR house Parking - Three-Bedroom House,None,,,25.770410599999998,-80.280098,33134,4.5,8.0,Vacation Rental,None,outscraper
+The Westin Colonnade,+1 305-441-2600,,,25.750419299999997,-80.25827029999999,33134,5.0,2.0,Parking garage,None,outscraper
+Lot 31,+1 305-460-5540,,,25.7296801,-80.261588,33146,,,Parking lot,None,outscraper
+SP+ Parking,+1 305-442-4522,,,25.7313042,-80.2577046,33146,1.0,1.0,Parking garage,None,outscraper
+Parking,None,,,25.7426794,-80.2538529,33133,3.0,2.0,Parking garage,None,outscraper
+Hertz - Uber Coral Gables - S Dixie Highway,+1 305-444-3099,,,25.726919,-80.261056,33133,,,Transportation service,None,outscraper
+Decor House Furniture,+1 305-448-6200,,,25.7334125,-80.2581835,33146,4.5,21.0,Furniture store,None,outscraper
+Miami Furniture Outlet - Furniture Stores in Miami,+1 305-400-2016,,,25.7096451,-80.28200149999999,33146,5.0,3.0,Furniture store,None,outscraper
+Modo Furniture,+1 305-567-2970,,,25.732629499999998,-80.2587956,33146,4.9,28.0,Furniture store,None,outscraper
+Fine-Line Furniture & Accessories,+1 305-661-4414,,,25.7325089,-80.25815999999999,33146,5.0,51.0,Furniture store,None,outscraper
+Artefacto Coral Gables,+1 305-774-0004,,,25.7302835,-80.2572795,33146,3.9,65.0,Furniture store,None,outscraper
+Crate & Barrel,+1 305-460-3560,,,25.7314688,-80.2601038,33146,3.8,205.0,Furniture store,None,outscraper
+Arhaus,+1 786-228-7067,,,25.731093899999998,-80.25846829999999,33146,3.8,61.0,Furniture store,None,outscraper
+Pure Project Home,+1 305-418-0325,,,25.748015,-80.26444099999999,33134,4.9,37.0,Furniture store,None,outscraper
+Pottery Barn,+1 305-569-9022,,,25.731339799999997,-80.2601753,33146,3.7,153.0,Furniture store,None,outscraper
+Sierra Furniture,+1 305-469-7858,,,25.7336441,-80.2617956,33146,4.7,15.0,Furniture store,None,outscraper
+Roche Bobois,+1 305-444-1017,,,25.7480618,-80.2638861,33134,4.1,20.0,Furniture store,None,outscraper
+Floridian Furniture Co,+1 305-448-2639,,,25.764396599999998,-80.2733612,33134,4.5,23.0,Furniture store,None,outscraper
+Victoria's Armoire,+1 305-445-3848,,,25.7338931,-80.2582109,33146,3.7,40.0,Furniture store,None,outscraper
+Luminaire Flagship,+1 305-448-7367,,,25.7507095,-80.25836559999999,33134,4.4,16.0,Furniture store,None,outscraper
+Lovesac,+1 305-476-6017,,,25.731854799999997,-80.2608466,33146,4.3,53.0,Furniture store,None,outscraper
+Violetas Lifestyle & Home,+1 305-381-0711,,,25.7496728,-80.259889,33134,4.8,19.0,Home goods store,None,outscraper
+Calimia Home,+1 305-210-0116,,,25.7530376,-80.2568793,33134,5.0,16.0,Interior designer,None,outscraper
+Kettal,+1 786-552-9002,,,25.7499343,-80.25770159999999,33134,4.4,13.0,Furniture store,None,outscraper
+Saatva,+1 786-530-1961,,,25.7309645,-80.2590251,33146,5.0,85.0,Mattress store,None,outscraper
+Patio & Things,+1 305-446-6163,,,25.7502222,-80.2594191,33134,5.0,6.0,Furniture store,None,outscraper
+Lusso Furniture,+1 305-849-3668,,,25.778893699999998,-80.27072299999999,33126,4.3,87.0,Furniture store,None,outscraper
+Nadeau - Furniture with a Soul,+1 305-261-9003,,,25.731457,-80.316785,33155,4.7,187.0,Furniture store,None,outscraper
+Maison Mischief,+1 305-504-8818,,,25.749754,-80.261798,33134,5.0,5.0,Home goods store,None,outscraper
+B.House Design,+1 305-644-8464,,,25.7282834,-80.2600236,33133,5.0,4.0,Office furniture store,None,outscraper
+ADRIANA HOYOS Coral Gables,+1 305-424-1088,,,25.7464566,-80.2604343,33134,3.8,19.0,Furniture store,None,outscraper
+Rana Furniture Calle 8,+1 305-269-4070,,,25.7637547,-80.29102499999999,33144,4.7,1107.0,Furniture store,None,outscraper
+Bambi Baby Store,+1 877-882-2624,,,25.7557021,-80.25903459999999,33134,5.0,1627.0,Baby store,None,outscraper
+Home Design Store Warehouse Showroom,+1 305-633-1355,,,25.8157844,-80.2581481,33142,4.3,50.0,Furniture store,None,outscraper
+Shops at Merrick Park,+1 305-529-1215,,,25.7316577,-80.25879049999999,33146,4.6,5600.0,Shopping mall,None,outscraper
+KEM FURNITURE GALLERY,+1 786-975-3894,,,25.7497208,-80.2631372,33134,5.0,2.0,Furniture store,None,outscraper
+Gables Office Furniture Showroom,+1 786-287-0985,,,25.763583399999998,-80.2922755,33144,4.9,27.0,Office furniture store,None,outscraper
+Kartell Miami,+1 305-573-4010,,,25.748016999999997,-80.2645829,33134,4.3,23.0,Furniture store,None,outscraper
+Tempur-Pedic Flagship Store,+1 786-305-6001,,,25.7320338,-80.2598787,33146,5.0,737.0,Mattress store,None,outscraper
+China Cabinets,+1 305-667-8989,,,25.725438399999998,-80.2626428,33146,4.5,12.0,Gift shop,None,outscraper
+Casa Design Furniture,+1 305-413-5696,,,25.772921399999998,-80.25591589999999,33125,4.5,115.0,Furniture store,None,outscraper
+GB We Love Decor,+1 786-553-1832,,,25.7504581,-80.26264549999999,33134,5.0,21.0,Window treatment store,None,outscraper
+Bedroom Furniture Store,+1 305-387-6488,,,25.7096451,-80.28200149999999,33146,,,Bedroom furniture store,None,outscraper
+Grove Gallery & Interiors,+1 305-445-7401,,,25.735339,-80.2393408,33133,4.7,64.0,Interior designer,None,outscraper
+Design It Studio,+1 305-853-8555,,,25.7336307,-80.2588011,33146,4.0,20.0,Millwork shop,None,outscraper
+Violetas Lifestyle & Home,+1 305-381-0711,,,25.7496728,-80.259889,33134,4.8,19,Home goods store,None,outscraper
+J Design Group,+1 305-444-4611,,,25.7441474,-80.2593433,33134,5.0,22.0,Interior designer,None,outscraper
+4Y Designs – Interior Design & Construction,+1 786-431-6778,,,25.7527622,-80.25491339999999,33134,5.0,26.0,Interior designer,None,outscraper
+Calimia Home,+1 305-210-0116,,,25.7530376,-80.2568793,33134,5.0,16.0,Interior designer,None,outscraper
+Cozy Salazar Interiors,+1 786-615-4790,,,25.7469494,-80.2582243,33134,5.0,19.0,Interior designer,None,outscraper
+Errez Design,+1 305-504-8818,,,25.7495922,-80.261924,33134,4.8,24.0,Interior designer,None,outscraper
+Maritza Capiro Interior Designs Corp.,+1 305-528-2332,,,25.761062799999998,-80.26249659999999,33134,4.7,14.0,Interior designer,None,outscraper
+RGI Designs,+1 305-812-9048,,,25.7402788,-80.25869689999999,33134,5.0,14.0,Interior designer,None,outscraper
+Design It Studio,+1 305-853-8555,,,25.7336307,-80.2588011,33146,4.0,20.0,Millwork shop,None,outscraper
+GB We Love Decor,+1 786-553-1832,,,25.7504581,-80.26264549999999,33134,5.0,21.0,Interior designer,None,outscraper
+Design Solutions Miami,+1 786-224-4913,,,25.7384867,-80.2402802,33133,4.9,42.0,Interior designer,None,outscraper
+Assure Interiors,+1 305-571-5100,,,25.746990099999998,-80.256787,33134,5.0,3.0,Interior designer,None,outscraper
+MARGARITA BRAVO – Luxury Interior Designer,+1 786-776-4737,,,25.8478951,-80.1781938,33138,4.7,14.0,Interior designer,None,outscraper
+Decorating Den Interiors,+1 786-714-4027,,,25.720234599999998,-80.26876999999999,33146,4.0,1.0,Interior designer,None,outscraper
+Studio 5 Design,+1 305-456-5273,,,25.7558752,-80.2572461,33134,5.0,1.0,Interior designer,None,outscraper
+Ivette Arango Interiors,+1 305-576-6243,,,25.7452583,-80.260657,33134,5.0,4.0,Interior designer,None,outscraper
+"Studio 33 Interiors, LLC.",+1 954-790-2470,,,25.6992469,-80.2579629,33143,5.0,4.0,Interior designer,None,outscraper
+IA | Interior Architects,+1 786-405-0231,,,25.7518796,-80.25805,33134,5.0,1.0,Corporate office,None,outscraper
+Andrea Anez INTERIOR + ARCH,+1 305-219-9339,,,25.7704554,-80.19426279999999,33130,5.0,48.0,Interior designer,None,outscraper
+mr alex TATE,+1 305-351-3061,,,25.7044829,-80.2889076,33143,4.8,23.0,Interior designer,None,outscraper
+G K Design Center Inc,+1 305-461-1002,,,25.7504235,-80.2626245,33134,5.0,1.0,Interior designer,None,outscraper
+JAMES DUNCAN,+1 305-731-2272,,,25.7294615,-80.23992899999999,33133,4.8,15.0,Interior designer,None,outscraper
+Fine-Line Furniture & Accessories,+1 305-661-4414,,,25.7325089,-80.25815999999999,33146,5.0,51.0,Interior designer,None,outscraper
+Dunagan Design,+1 305-438-0130,,,25.753372,-80.25912,33134,5.0,3.0,Interior designer,None,outscraper
+Grove Gallery & Interiors,+1 305-445-7401,,,25.735339,-80.2393408,33133,4.7,64.0,Interior designer,None,outscraper
+Touzet Studio Architecture & Interior Design,+1 305-789-2870,,,25.7658561,-80.2195979,33135,5.0,11.0,Interior designer,None,outscraper
+blank design + architecture,+1 305-482-1996,,,25.7513322,-80.2596262,33134,4.9,19.0,Architecture firm,None,outscraper
+Palette Interior Design,+1 561-305-3953,,,25.8389793,-80.1798943,33138,5.0,40.0,Interior designer,None,outscraper
+Studio 790 Interior Design,+1 312-305-0095,,,25.8645203,-80.18151019999999,33138,4.9,44.0,Interior designer,None,outscraper
+Studio B,+1 305-393-0047,,,25.749945,-80.2008091,33129,4.9,44.0,Interior designer,None,outscraper
+Amara Design Services LLC,+1 305-560-4373,,,25.7651187,-80.18424,33131,5.0,8.0,Interior designer,None,outscraper
+"Guimar Urbina Interiors, Corp.",+1 786-762-2675,,,25.8143365,-80.1905469,33137,5.0,20.0,Interior designer,None,outscraper
+Nandez Design Studio,+1 786-558-5855,,,25.7503222,-80.2308651,33145,4.8,36.0,Interior designer,None,outscraper
+Nayara Macedo | NM Design USA – Interior Design Miami,+1 786-398-4384,,,25.7834333,-80.1901838,33132,5.0,29.0,Interior designer,None,outscraper
+Tailor Home Design,+1 786-906-5602,,,25.7686469,-80.1902175,33131,5.0,60.0,Interior designer,None,outscraper
+Luminaire Flagship,+1 305-448-7367,,,25.7507095,-80.25836559999999,33134,4.4,16.0,Interior designer,None,outscraper
+Interiors by Maite Granda Inc,+1 786-243-6564,,,25.6885162,-80.164166,33149,4.8,41.0,Interior designer,None,outscraper
+Colors of Design Group,+1 786-675-1484,,,25.7696093,-80.19043239999999,33129,5.0,19.0,Interior designer,None,outscraper
+Mi Casa Interior Design,+1 786-259-0445,,,25.7332915,-80.3157215,33155,5.0,4.0,Interior designer,None,outscraper
+LAW TO DESIGN INTERIORS,+1 786-863-5663,,,25.8063216,-80.1879536,33137,5.0,28.0,Interior designer,None,outscraper
+Natalia H Interiors,+1 561-305-3953,,,25.7655502,-80.1938766,33129,5.0,24.0,Interior designer,None,outscraper
+Bunsa Studio Interior Design,+1 786-622-1515,,,25.757720499999998,-80.21693979999999,33145,5.0,1.0,Interior designer,None,outscraper
+"Hinkle Design Studio, LLC.",+1 305-218-2082,,,25.753035399999998,-80.25494429999999,33134,4.7,15.0,Architecture firm,None,outscraper
+Echeverria Design Group,+1 305-444-0505,,,25.7529768,-80.26182829999999,33134,5.0,1.0,Interior designer,None,outscraper
+The Wall Studio LLC - Interior Design,+1 786-228-8550,,,25.8027212,-80.19560299999999,33127,5.0,12.0,Interior designer,None,outscraper
+Pure Project Home,+1 305-418-0325,,,25.748015,-80.26444099999999,33134,4.9,37.0,Furniture store,None,outscraper
+"STUDIO DADO, INC.",+1 786-433-2500,,,25.7636219,-80.25533879999999,33134,5.0,6.0,Interior designer,None,outscraper
+Modo Furniture,+1 305-567-2970,,,25.732629499999998,-80.2587956,33146,4.9,28.0,Interior designer,None,outscraper
+SDH Studio Architecture and Interior Design,+1 305-501-5013,,,25.9435596,-80.16311019999999,33162,4.9,60.0,Architecture firm,None,outscraper
+DKOR Interiors,+1 305-981-2710,,,25.9189312,-80.157814,33162,4.8,49.0,Interior designer,None,outscraper
+2id Interiors Design Miami,+1 305-712-3535,,,25.9071568,-80.1628982,33181,4.8,26.0,Interior designer,None,outscraper
+Jesus Pacheco Conscious Design Studio,+1 786-622-7095,,,25.7405792,-80.2393194,33133,5.0,7.0,Interior designer,None,outscraper
+B+G Design Inc.,+1 954-646-1346,,,25.7847811,-80.1901836,33132,5.0,23.0,Interior designer,None,outscraper
+"Terri Weinstein Design, Inc.",+1 312-203-1233,,,25.7605643,-80.2842575,33134,5.0,2.0,Interior designer,None,outscraper
+Miriam Moore Design Group LLC,+1 305-285-7182,,,25.7337202,-80.23667569999999,33133,5.0,4.0,Interior designer,None,outscraper
+Chelsea Design Miami,+1 800-765-8284,,,25.8417744,-80.18910509999999,33138,5.0,2.0,Interior designer,None,outscraper
+A-9 Remodeling & Design,+1 786-357-7978,,,25.754890699999997,-80.2566385,33134,5.0,15.0,Interior designer,None,outscraper
+Brickell Interiors Design Studio,+1 954-303-2234,,,25.7559866,-80.1940884,33129,5.0,3.0,Interior designer,None,outscraper
+O'gar Design Center,+1 305-813-5985,,,25.6885162,-80.164166,33149,5.0,13.0,Interior designer,None,outscraper
+B.House Design,+1 305-644-8464,,,25.7282834,-80.2600236,33133,5.0,4.0,Office furniture store,None,outscraper
+G Decor Designs,+1 786-678-0856,,,25.7584408,-80.20446679999999,33129,5.0,7.0,Interior designer,None,outscraper
+Colors of Design | Key Biscayne Interior Design Services,+1 786-675-1484,,,25.700099899999998,-80.15864479999999,33149,5.0,4.0,Interior designer,None,outscraper
+Studio Varo,None,,,25.7417545,-80.2580242,33134,,,Interior designer,None,outscraper
+DSN HOUSE COLLECTIVE - Branding | Web | Motion | Videos | Consultancy,+1 305-456-7253,,,25.7518796,-80.25805,33134,5.0,,Video production service,None,outscraper
+LIVS Associates LLC.,+1 305-443-2933,,,25.7564426,-80.258545,33134,5.0,,Architect,None,outscraper
+ADRIANA HOYOS Coral Gables,+1 305-424-1088,,,25.7464566,-80.2604343,33134,3.8,,Furniture store,None,outscraper
+ARCHITECTURAL LIVING,+1 786-443-6266,,,25.755434599999997,-80.2586049,33134,,,Architecture firm,None,outscraper
+Sage Design and Co,None,,,25.730934899999998,-80.3086194,33155,5.0,,Design agency,None,outscraper
+Perkins+Will,+1 305-569-1333,,,25.7458147,-80.2591096,33134,4.8,,Architect,None,outscraper
+"Behar Font & Partners, P.A. - Robert Behar & Javier Font",+1 305-740-5442,,,25.729533399999998,-80.25981829999999,33146,5.0,,Architect,None,outscraper
+Cutting Edge Innovative,+1 786-957-7775,,,25.7535608,-80.2548839,33134,4.8,,Interior designer,None,outscraper
+Floridian Furniture Co,+1 305-448-2639,,,25.764396599999998,-80.2733612,33134,4.5,,Furniture store,None,outscraper
+United Architects,+1 305-552-5465,,,25.734111,-80.258791,33146,4.5,,Interior designer,None,outscraper
+Valle Valle & Partners,+1 305-476-9212,,,25.7649449,-80.2590953,33134,5.0,,Interior designer,None,outscraper
+ANGELO GERARD GROUP,+1 305-389-0754,,,25.747715499999998,-80.26951,33134,,,Design agency,None,outscraper
+PEDINI by Daruso Coral Gables,+1 786-758-5336,,,25.733082,-80.25957849999999,33146,4.8,,Interior designer,None,outscraper
+Design House Associates,+1 305-779-4955,,,25.7474891,-80.26149079999999,33134,,,Architect,None,outscraper
+Designers Tile,+1 305-573-2000,,,25.7452053,-80.2606704,33134,4.9,,Tile store,None,outscraper
+Corwil Architects Inc,+1 305-448-7383,,,25.732657,-80.26137899999999,33146,5.0,,Architect,None,outscraper
+Axid Design and Development,+1 786-304-7956,,,25.752353799999998,-80.2570147,33134,5.0,1.0,Architect,None,outscraper
+CartyArchitecture,+1 786-717-7100,,,25.747494999999997,-80.261618,33134,4.8,4.0,Architect,None,outscraper
+Rodriguez Architects Inc,+1 305-448-3373,,,25.7532936,-80.2581605,33134,5.0,2.0,Architect,None,outscraper
+Permuy Architecture,+1 305-200-5302,,,25.747722,-80.25473989999999,33134,4.2,6.0,Architect,None,outscraper
+Mge Architects,+1 305-444-0413,,,25.744186799999998,-80.2602758,33134,5.0,2.0,Architect,None,outscraper
+"G Alvarez Studio, Inc",+1 305-371-8400,,,25.7638173,-80.25559799999999,33134,5.0,2.0,Interior architect office,None,outscraper
+"The Rose Tree Cottage | Interior Design, Fine Gifts & Home Accessories",+1 305-448-9688,,,25.748968299999998,-80.2624682,33134,4.4,14.0,Gift shop,None,outscraper
+OLANZ Architecture + Design,+1 305-342-4858,,,25.755814599999997,-80.2570265,33134,4.0,1.0,Architect,None,outscraper
+Forbes Architects and Construction,+1 305-446-0849,,,25.7578419,-80.2553137,33134,5.0,7.0,Interior designer,None,outscraper
+Scavolini Store Miami,+1 786-615-7974,,,25.7477683,-80.25874259999999,33134,4.7,17.0,Interior designer,None,outscraper
+Le Jeune Upholstery,+1 305-261-4009,,,25.731363299999998,-80.3124002,33155,4.4,19.0,Upholstery shop,None,outscraper
+Premium Upholstery,+1 305-264-2067,,,25.729841099999998,-80.3105489,33155,4.4,43.0,Upholstery shop,None,outscraper
+Hidalgo Upholstery,+1 305-266-4022,,,25.7488666,-80.2875141,33155,4.7,18.0,Upholstery shop,None,outscraper
+"New florida upholstery, inc",+1 786-271-3765,,,25.7954141,-80.23946839999999,33142,4.8,85.0,Upholstery shop,None,outscraper
+Seat Masters Upholstery,+1 305-262-3955,,,25.7483908,-80.30374979999999,33155,4.8,76.0,Upholstery shop,None,outscraper
+Blanco Upholstery,+1 786-663-8899,,,25.7601569,-80.2310462,33145,5.0,11.0,Upholstery shop,None,outscraper
+Jc Arnova Upholstery Inc.,+1 786-378-1017,,,25.7832597,-80.3137278,33126,5.0,31.0,Upholstery shop,None,outscraper
+Gil's Design Upholstery,+1 786-306-3816,,,25.795932999999998,-80.22648819999999,33142,4.4,64.0,Upholstery shop,None,outscraper
+"Bahamas Upholstery & Marine Canvas, Inc.",+1 305-262-0504,,,25.8114842,-80.2482883,33142,4.9,314.0,Upholstery shop,None,outscraper
+Miami Upholstery and Fabrics Inc,+1 305-456-9571,,,25.7619747,-80.3072708,33144,4.6,41.0,Upholstery shop,None,outscraper
+ALL AMERICAN UPHOLSTERY AND SUPPLY,+1 305-696-4000,,,25.842269299999998,-80.249493,33147,4.5,10.0,Upholstery shop,None,outscraper
+Fine-Line Furniture & Accessories,+1 305-661-4414,,,25.7325089,-80.25815999999999,33146,5.0,51.0,Furniture store,None,outscraper
+Mac Upholstery Design,+1 786-556-1435,,,25.7271598,-80.3175018,33155,5.0,1.0,Upholstery shop,None,outscraper
+GB We Love Decor,+1 786-553-1832,,,25.7504581,-80.26264549999999,33134,5.0,21.0,Upholstery shop,None,outscraper
+Home Decco Furniture,+1 305-479-1766,,,25.7440498,-80.3081235,33155,5.0,27.0,Upholstery shop,None,outscraper
+Rug & Couch Cleaning Miami,+1 888-612-0770,,,25.7495896,-80.24576689999999,33145,5.0,192.0,Carpet cleaning service,None,outscraper
+King Furniture Restoration,+1 786-443-9344,,,25.7593444,-80.2414761,33145,5.0,57.0,Antique furniture restoration service,None,outscraper
+Blue Marlin Upholstery Design,+1 786-502-8040,,,25.7884608,-80.3218005,33126,4.9,46.0,Upholstery shop,None,outscraper
+Miami Upholstery Design,+1 305-482-0160,,,25.8000246,-80.31325,33122,5.0,5.0,Upholstery shop,None,outscraper
+GM Lab Upholstery,+1 786-782-3052,,,25.7976189,-80.2277016,33142,5.0,14.0,Upholstery shop,None,outscraper
+Tapiceria Los Gonzalez,+1 786-344-1320,,,25.7790946,-80.2468368,33125,4.5,29.0,Upholstery shop,None,outscraper
+American Marine Canvas & Upholstery,+1 305-889-5355,,,25.8164692,-80.25852909999999,33142,4.9,75.0,Upholstery shop,None,outscraper
+Ranger Seat Covers,+1 305-445-6699,,,25.764654099999998,-80.2529848,33135,4.6,133.0,Auto upholsterer,None,outscraper
+Jorge's Auto & Boat Upholstery,+1 305-662-2562,,,25.7616047,-80.3097251,33144,4.8,16.0,Upholstery shop,None,outscraper
+SS Upholstery Art & Supplier,+1 786-867-1978,,,25.646691399999998,-80.4097177,33186,5.0,88.0,Upholstery shop,None,outscraper
+Garcia Upholstery Corp,+1 786-486-3630,,,25.812741,-80.23770809999999,33142,4.6,20.0,Upholstery shop,None,outscraper
+"General Interior Upholstery, Inc.",+1 305-846-9147,,,25.8672963,-80.24291529999999,33147,4.8,24.0,Upholstery shop,None,outscraper
+Miami Custom Furniture & Upholstery,+1 786-444-9434,,,25.83107,-80.32886529999999,33166,4.9,62.0,Upholstery shop,None,outscraper
+Miami Marine Canvas & Upholstery Corp.,+1 954-803-7132,,,25.7948643,-80.23899279999999,33142,4.5,81.0,Boat cover supplier,None,outscraper
+American Upholstery Design Inc.,+1 305-759-2151,,,25.840402299999997,-80.19841679999999,33150,4.0,32.0,Upholstery shop,None,outscraper
+Custom Upholstery by Allen LLC,+1 239-788-3824,,,26.5610556,-81.9494376,33904,5.0,15.0,Upholstery shop,None,outscraper
+D and E Marine Upholstery,+1 786-523-2174,,,25.7943163,-80.247252,33142,5.0,1.0,Upholstery shop,None,outscraper
+Beyond Upholstery,+1 786-702-8238,,,25.790231199999997,-80.3235699,33126,4.9,29.0,Upholstery shop,None,outscraper
+Royal Rug Gallery,+1 305-661-6500,,,25.724950699999997,-80.26292839999999,33146,4.6,23.0,Rug store,None,outscraper
+Well Done Upholstery and Marine Canvas Miami,+1 786-704-3552,,,25.7843704,-80.3490484,33172,5.0,83.0,Upholstery shop,None,outscraper
+VIP Marine Boat Canvas Yacht Upholstery,+1 786-350-6511,,,25.783551199999998,-80.2280655,33125,5.0,14.0,Upholstery shop,None,outscraper
+Quality Upholstery Decoration Inc.,+1 786-413-8198,,,25.7976119,-80.2273108,33142,5.0,7.0,Upholstery shop,None,outscraper
+Rex Fabrics,+1 305-306-8033,,,25.764081899999997,-80.254781,33135,4.6,503.0,Upholstery shop,None,outscraper
+Old School Custom Upholstery,+1 239-471-5008,,,26.6341139,-81.9541929,33990,4.6,9.0,Upholstery shop,None,outscraper
+Master Tap Upholstery,+1 305-780-9183,,,25.797611999999997,-80.23909069999999,33142,5.0,1.0,Furniture repair shop,None,outscraper
+General Upholstery & Bedding Supply,+1 305-887-6322,,,25.8403794,-80.29662809999999,33010,4.2,59.0,Upholstery shop,None,outscraper
+Nickodel Upholstery,+1 305-635-7788,,,25.796661,-80.2340919,33142,3.5,11.0,Upholstery shop,None,outscraper
+Universal Seat Covers,+1 305-216-4434,,,25.7483935,-80.3037851,33155,4.6,37.0,Auto upholsterer,None,outscraper
+E&C Upholstery,+1 786-383-1626,,,25.6527106,-80.3843168,33186,5.0,12.0,Upholstery shop,None,outscraper
+Sobie Fabrics,+1 305-858-4384,,,25.7657636,-80.2116443,33130,4.5,69.0,Upholstery shop,None,outscraper
+Roger's Custom Upholstery,+1 305-592-8207,,,25.7918789,-80.3244692,33126,4.6,13.0,Upholstery shop,None,outscraper
+Grove Cleaners,+1 305-567-9007,,,25.7556454,-80.25913059999999,33134,4.2,126.0,Dry cleaner,None,outscraper
+GM Lab Upholstery,None,,,25.7976189,-80.2277016,33142,,,Upholstery shop,None,outscraper
+Win Upholstery Cleaning,+1 786-835-2420,,,25.802934399999998,-80.2566586,33142,5.0,5.0,Upholstery cleaning service,None,outscraper
+Fabrics World,+1 305-266-9637,,,25.733912,-80.324454,33155,4.5,89.0,Fabric store,None,outscraper
+Carol Fabrics Inc.,+1 305-374-5414,,,25.7748682,-80.1917872,33132,4.9,190.0,Fabric store,None,outscraper
+Fabric Gallery,+1 305-669-2999,,,25.7264403,-80.31146489999999,33155,4.5,19.0,Fabric store,None,outscraper
+Riverland Refinishing Company,+1 954-463-5775,,,26.105501,-80.1443405,33315,5.0,28.0,Furniture repair shop,None,outscraper
+Auto design Upholstery,+1 813-723-9380,,,25.7687465,-80.23497309999999,33135,,,Auto upholsterer,None,outscraper
+Expressive Design Systems Inc.,+1 305-265-3700,,,25.7266987,-80.3110885,33155,5.0,44.0,Upholstery shop,None,outscraper
+S&Y Upholstery Cleaning INC.,+1 863-322-0466,,,25.7751643,-80.1892529,33132,5.0,4.0,Upholstery cleaning service,None,outscraper
+Grove Gallery & Interiors,+1 305-445-7401,,,25.735339,-80.2393408,33133,4.7,64.0,Interior designer,None,outscraper
+Pottery Barn,+1 305-569-9022,,,25.731339799999997,-80.2601753,33146,3.7,153.0,Furniture store,None,outscraper
+M&M Upholstery and Closets,+1 866-350-2201,,,26.1811963,-80.29040069999999,33351,5.0,242.0,Upholstery shop,None,outscraper
+Sunny South Paint & Decor (Coral Way),+1 305-445-9959,,,25.749800999999998,-80.24667199999999,33145,4.8,82.0,Paint store,None,outscraper
+Gables Carpet Cleaning,+1 305-218-7770,,,25.7503513,-80.2619885,33134,,,Cleaners,None,outscraper
+Rug Cleaning Miami,+1 305-792-8266,,,25.7399025,-80.242935,33133,5.0,111.0,Carpet cleaning service,None,outscraper
+Maid Meticulous Cleaning Service Coral Gables,+1 786-745-7027,,,25.7270516,-80.2454597,33133,5.0,26.0,House cleaning service,None,outscraper
+Rutilus Clean & Clear Group Inc.,+1 786-768-6978,,,25.7550089,-80.3026278,33155,5.0,1.0,Cleaning service,None,outscraper
+Hutton Home,+1 305-476-1200,,,25.7282089,-80.2437698,33133,5.0,1.0,Furniture wholesaler,None,outscraper
+Commercial Cleaning Supplies,+1 786-720-9202,,,25.763345299999997,-80.2914066,33144,4.9,50.0,Cleaning products supplier,None,outscraper
+Mcnees Carpet And Upholstery Cleaning.,+1 786-372-6402,,,25.646825,-80.33684769999999,33176,2.0,4.0,Carpet cleaning service,None,outscraper
+Quick Carpet Cleaning Coconut Grove,+1 786-422-0628,,,25.7359436,-80.2469833,33133,4.5,8.0,Carpet cleaning service,None,outscraper
+Fabric Innovations Inc,+1 305-860-9173,,,25.731242899999998,-80.23678079999999,33133,,,Fabric store,None,outscraper
+Complete Upholstery Supplies,None,,,25.7252819,-80.31715679999999,33155,,,Furniture store,None,outscraper
+Bell's Appliances of Coral Gables,+1 305-448-2681,,,25.743013299999998,-80.2585136,33134,3.7,58,Appliance store,None,outscraper
+Miele Experience Center Coral Gables,+1 786-673-0280,,,25.73245,-80.25875099999999,33146,4.4,83,Appliance store,None,outscraper
+Fuse Speciality Appliances & Plumbing,+1 305-433-6189,,,25.740883699999998,-80.2367494,33133,4.6,379,Appliance store,None,outscraper
+The Appliances Outlet South,+1 786-329-9451,,,25.7493901,-80.3335395,33155,4.5,84,Appliance store,None,outscraper
+"Mia Appliances - Subzero, Wolf & Cove Appliances",+1 866-670-4860,,,25.750017999999997,-80.25703299999999,33134,1.0,3,Appliance store,None,outscraper
+House of Appliances,+1 305-514-0352,,,25.745676099999997,-80.2607244,33134,4.6,9,Appliance store,None,outscraper
+Cernuda Arte,+1 305-461-1050,,,25.7429384,-80.25809579999999,33134,4.6,66.0,Art gallery,None,outscraper
+The Americas Collection Art Gallery & Frame Shop,+1 305-446-5578,,,25.7326449,-80.2581589,33146,4.9,48.0,Art gallery,None,outscraper
+Garcia Art Gallery,+1 929-462-2133,,,25.7512881,-80.25694229999999,33134,5.0,2.0,Art gallery,None,outscraper
+Virginia Miller Galleries Inc,+1 305-444-4493,,,25.756127,-80.258348,33134,5.0,7.0,Art gallery,None,outscraper
+Pedrido Arte Gallery,+1 786-287-2771,,,25.7491944,-80.2604891,33134,5.0,10.0,Art gallery,None,outscraper
+ArtLabbé Coral Gables,None,,,25.748135299999998,-80.2588457,33134,4.3,6.0,Art gallery,None,outscraper
+HBenitez Fine Art Gallery,+1 786-877-1045,,,25.7505331,-80.259413,33134,4.5,8.0,Art gallery,None,outscraper
+Chromatic Art Gallery,+1 863-266-7613,,,25.7482732,-80.2561336,33134,,,Art gallery,None,outscraper
+RDZ Fine Art LLC,+1 305-720-5172,,,25.7515446,-80.2578604,33134,5.0,1.0,Art gallery,None,outscraper
+LnS Gallery,+1 305-781-6164,,,25.741029299999997,-80.2362059,33133,4.8,52.0,Art gallery,None,outscraper
+UVA Gallery,+1 786-496-2276,,,25.753047199999997,-80.2613018,33134,5.0,31.0,Art gallery,None,outscraper
+Torna Prado Fine Art Collect,+1 305-476-8444,,,25.740906799999998,-80.2586819,33134,5.0,1.0,Art gallery,None,outscraper
+Zapata Art Gallery,+1 786-505-8715,,,25.7512321,-80.2172618,33145,5.0,15.0,Art gallery,None,outscraper
+Coral Gables Museum,+1 305-603-8067,,,25.750527599999998,-80.2603508,33134,4.4,379.0,Tourist attraction,None,outscraper
+Gallery Plaza,+1 305-442-1861,,,25.7545659,-80.2619897,33134,5.0,1.0,Art gallery,None,outscraper
+Love Art,+1 301-814-0899,,,25.7406272,-80.23770999999999,33133,5.0,3.0,Art gallery,None,outscraper
+Ninoska Huerta Gallery,+1 305-588-1231,,,25.7491944,-80.2604891,33134,,,Art gallery,None,outscraper
+Campins Fine Art,+1 305-785-1161,,,25.732164899999997,-80.3141239,33155,5.0,16.0,Art gallery,None,outscraper
+Lowe Art Museum,+1 305-284-3535,,,25.719375,-80.2756722,33146,4.6,369.0,Art museum,None,outscraper
+White’s Art Gallery,+1 786-406-0650,,,25.731302,-80.3155713,33155,4.7,43.0,Art gallery,None,outscraper
+Markowicz Fine Art,+1 786-615-8158,,,25.830686999999998,-80.19133,33138,4.8,39.0,Art gallery,None,outscraper
+Irazoqui Art Gallery,+1 305-244-0918,,,25.8374159,-80.1901666,33138,5.0,2.0,Art gallery,None,outscraper
+Nina Johnson,+1 305-571-2288,,,25.8336908,-80.2002912,33150,4.8,30.0,Art gallery,None,outscraper
+Locust Projects,+1 305-576-8570,,,25.8367143,-80.1904904,33138,4.6,38.0,Non-profit organization,None,outscraper
+Durban Segnini Gallery,+1 305-774-7740,,,25.7337071,-80.2562816,33146,4.9,7.0,Art gallery,None,outscraper
+Dot Fiftyone Gallery,+1 305-573-9994,,,25.8425859,-80.1891521,33138,4.6,22.0,Art gallery,None,outscraper
+Wyn 317 Art Gallery,+1 305-761-1116,,,25.816022999999998,-80.1997501,33127,5.0,43.0,Art gallery,None,outscraper
+G. Fajardo Art Gallery,+1 786-973-3696,,,25.7734128,-80.2220033,33135,5.0,26.0,Art gallery,None,outscraper
+Tranter-Sinni Gallery,+1 305-849-7999,,,25.838487999999998,-80.191203,33138,4.3,7.0,Art gallery,None,outscraper
+The Wall Art Gallery,+1 305-204-0531,,,25.8021629,-80.1961462,33127,4.7,22.0,Art gallery,None,outscraper
+Carousel Fine Art,+1 786-475-9124,,,25.8455014,-80.1884123,33138,4.4,7.0,Art gallery,None,outscraper
+N'Namdi Contemporary Fine Art,+1 786-332-4736,,,25.8358708,-80.1919308,33138,5.0,27.0,Art gallery,None,outscraper
+Ophira Art,+1 786-728-4452,,,25.7497899,-80.2630482,33134,,,Art gallery,None,outscraper
+Tresart Art Gallery,+1 305-648-3007,,,25.799288699999998,-80.19981849999999,33127,5.0,3.0,Art gallery,None,outscraper
+Lucid Art Gallery,None,,,25.814049999999998,-80.1951629,33137,4.5,8.0,Art gallery,None,outscraper
+Gables Rug Gallery,+1 305-444-4445,,,25.748766,-80.258898,33134,,,Art gallery,None,outscraper
+Latin Art Core,+1 305-989-9085,,,25.765446999999998,-80.22159099999999,33135,4.5,34.0,Art gallery,None,outscraper
+International Corporate Art,+1 305-450-3887,,,25.7087875,-80.2821833,33146,,,Art gallery,None,outscraper
+Miracle Mile & Downtown Coral Gables,+1 305-569-0311,,,25.7494437,-80.2574053,33134,4.6,4716.0,Art gallery,None,outscraper
+RC Gallery Miami,+1 786-715-7146,,,25.765474299999997,-80.2218542,33135,4.8,33.0,Art gallery,None,outscraper
+Galin2 Art Gallery (Estudio),None,,,25.7660938,-80.2125618,33130,5.0,7.0,Art gallery,None,outscraper
+Cubaocho Museum & Performing Arts Center,+1 786-909-9028,,,25.765849,-80.219357,33135,4.6,1619.0,Art gallery,None,outscraper
+GGA Gallery,+1 786-615-4233,,,25.8012205,-80.20050189999999,33127,4.5,55.0,Art gallery,None,outscraper
+ARRAE Gallery,+1 305-414-1805,,,25.7275052,-80.2530879,33133,5.0,9.0,Art gallery,None,outscraper
+Pan American Art Projects,+1 305-751-2550,,,25.802354299999998,-80.2226982,33142,4.6,17.0,Art gallery,None,outscraper
+Bakehouse Art Complex,+1 305-576-2828,,,25.8065188,-80.20499319999999,33127,4.6,226.0,Arts organization,None,outscraper
+Art King Gallery,+1 305-766-2569,,,25.726558299999997,-80.3176335,33155,5.0,2.0,Art gallery,None,outscraper
+Bernice Steinbaum Gallery,+1 305-860-3681,,,25.739026,-80.2284799,33133,,,Art gallery,None,outscraper
+Rubell Museum,+1 305-573-6090,,,25.798671,-80.21411859999999,33127,4.7,1012.0,Art gallery,None,outscraper
+Ascaso Gallery,+1 305-571-9410,,,25.787349799999998,-80.1921017,33132,4.7,53.0,Art gallery,None,outscraper
+Grove Gallery & Interiors,+1 305-445-7401,,,25.735339,-80.2393408,33133,4.7,64.0,Interior designer,None,outscraper
+Ayataha Gallery,None,,,25.7496928,-80.2594076,33134,,,Art gallery,None,outscraper
+Frames and Stretchers,+1 347-705-0081,,,40.719238999999995,-73.98613999999999,10002,4.9,111,Picture frame shop,None,outscraper
+Work of Art Gallery Framing & Printing,+1 305-860-0255,,,25.7509938,-80.2226565,33145,4.8,154,Picture frame shop,None,outscraper
+Rudma Picture,+1 305-443-6262,,,25.757547799999998,-80.2593175,33134,4.9,25,Picture frame shop,None,outscraper
+Eric Originals and Antiques Ltd.,+1 212-819-9595,,,40.7569605,-73.9797382,10036,4.9,34.0,Antique store,None,outscraper
+Artbag,+1 954-688-3052,,,40.779731,-73.9599389,33071,4.8,151.0,Leather repair service,None,outscraper
+Rosemary Home,+1 862-389-8048,,,40.7289606,-73.9863386,10003,5.0,21.0,Antique store,None,outscraper
+VintageDiamondRing,+1 877-321-3326,,,40.757639999999995,-73.97954229999999,10036,5.0,201.0,Antique store,None,outscraper
+Beads of Paradise,+1 212-620-0642,,,40.737360599999995,-73.9913888,10003,4.7,323.0,Antique store,None,outscraper
+Scully & Scully,+1 212-755-2590,,,40.7632984,-73.96982659999999,10022,4.1,299.0,Home goods store,None,outscraper
+Antiques and Collectibles by Rick,+1 786-222-5576,,,25.7503909,-80.23178,33145,5.0,3.0,Antique furniture store,None,outscraper
+Morphew World New York,+1 212-564-4331,,,40.71696,-73.990932,10002,4.8,17.0,Vintage clothing store,None,outscraper
+Antiques For All,+1 305-668-4509,,,25.726451599999997,-80.31122739999999,33155,4.5,11.0,Antique store,None,outscraper
+Vintage India NYC,+1 212-213-0080,,,40.743117,-73.98243599999999,10016,4.6,168.0,Clothing store,None,outscraper
+John Derian Company Inc,+1 212-677-3917,,,40.725562,-73.991483,10003,4.7,197.0,Home goods store,None,outscraper
+Now and Forever Jewelry,+1 516-242-6666,,,40.7572263,-73.98022449999999,10036,3.0,2.0,Antique store,None,outscraper
+Mint Market,+1 201-630-4407,,,40.720448,-74.043018,07302,4.5,31.0,Vintage clothing store,None,outscraper
+Decor House Furniture,+1 305-448-6200,,,25.7334125,-80.2581835,33146,4.5,21.0,Furniture store,None,outscraper
+Vintage Engagement Ring,+1 908-274-1857,,,40.757217399999995,-73.9801489,10036,5.0,3.0,Jewelry store,None,outscraper
+Heaven on 7th Marketplace,+1 646-398-8206,,,40.7640679,-73.9814793,10019,4.8,772.0,Sandwich shop,None,outscraper
+Louis Martin Jewelers,+1 212-245-5566,,,40.7594291,-73.9797519,10112,4.7,181.0,Jeweler,None,outscraper
+Gables Coin & Stamp Shop Inc.,+1 305-445-7561,,,25.7494381,-80.25627519999999,33134,4.1,152.0,Collectibles store,None,outscraper
+BOUNKIT,+1 212-244-1877,,,40.747436,-73.98750199999999,10001,5.0,10.0,Jewelry designer,None,outscraper
+Coral Gables Auction,+1 305-902-8295,,,25.750639,-80.233577,33145,3.6,42.0,Auction house,None,outscraper
+M.Y. Jewlery Gallery,+1 201-933-2605,,,40.8363872,-74.09197089999999,07072,4.4,7.0,Jewelry store,None,outscraper
+Leon Antiques,+1 305-740-0074,,,25.726701799999997,-80.31103949999999,33155,2.8,11.0,Antique store,None,outscraper
+Pangea Collectors Coins Jewelry Watches,+1 201-445-4199,,,40.979836399999996,-74.11910979999999,07450,5.0,172.0,Jewelry store,None,outscraper
+Modern Memory Design Picture Frames,+1 201-421-4060,,,40.861976899999995,-74.078383,07604,4.3,208.0,Picture frame shop,None,outscraper
+Michel Contessa Antiques,+1 305-761-5243,,,25.854588999999997,-80.185959,33138,5.0,10.0,Antique store,None,outscraper
+Fine-Line Furniture & Accessories,+1 305-661-4414,,,25.7325089,-80.25815999999999,33146,5.0,51.0,Furniture store,None,outscraper
+Turn Back the Clock Shop,+1 305-666-2064,,,25.733335099999998,-80.29818569999999,33155,4.8,79.0,Vintage clothing store,None,outscraper
+Antiques & Design Miami,+1 305-458-7134,,,25.8549434,-80.1852172,33138,3.9,14.0,Antique store,None,outscraper
+IKEA,+1 888-888-4532,,,40.675174899999995,-74.1697393,07201,4.2,13527.0,Furniture store,None,outscraper
+Dragonfly Thrift Boutique,+1 786-534-4178,,,25.7082905,-80.2877488,33143,4.9,360.0,Thrift store,None,outscraper
+IKEA,+1 888-888-4532,,,40.9243404,-74.0733022,07652,4.2,10338.0,Furniture store,None,outscraper
+China Cabinets,+1 305-667-8989,,,25.725438399999998,-80.2626428,33146,4.5,12.0,Gift shop,None,outscraper
+Valerio Art Deco,+1 305-448-6779,,,25.728003899999997,-80.30796959999999,33155,4.6,5.0,Art gallery,None,outscraper
+Old New House (Rug & Carpet Retail Showroom) - BY APPOINTMENT,+1 914-401-9099,,,41.259442,-73.684527,10536,5.0,3.0,Antique store,None,outscraper
+Victoria's Armoire,+1 305-445-3848,,,25.7338931,-80.2582109,33146,3.7,40.0,Furniture store,None,outscraper
+Miami Fair Trade,+1 305-448-7421,,,25.7431514,-80.278669,33134,4.8,14.0,Gift shop,None,outscraper
+Luminaire Flagship,+1 305-448-7367,,,25.7507095,-80.25836559999999,33134,4.4,16.0,Furniture store,None,outscraper
+Antique Plaza,+1 305-458-7134,,,25.8544922,-80.1850831,33138,4.5,17.0,Antique store,None,outscraper
+Jon Bragman Inc Gemologist,+1 786-337-0844,,,25.754280599999998,-80.2590518,33134,5.0,107.0,Jewelry buyer,None,outscraper
+Waldans Antiques & Vintage Furniture Consignment and sales,+1 786-399-4446,,,25.730938,-80.3165138,33155,4.5,54.0,Antique store,None,outscraper
+Cool Treasures Antiques & Collectibles,+1 786-561-1008,,,25.6059442,-80.34952969999999,33157,4.7,7.0,Antique store,None,outscraper
+Bonnin Ashley Antiques,+1 305-490-8888,,,25.7273952,-80.3093474,33155,3.2,5.0,Antique furniture store,None,outscraper
+Coral Way Antiques,+1 305-567-3131,,,25.7503827,-80.2447645,33145,,,Antique store,None,outscraper
+Antiques By Raymonds II,None,,,25.7506646,-80.23357299999999,33145,2.6,5.0,Antique store,None,outscraper
+1-800-VintageNow,+1 954-854-7356,,,25.7495932,-80.26191899999999,33134,5.0,5.0,Vintage clothing store,None,outscraper
+Coral Gables Museum,+1 305-603-8067,,,25.750527599999998,-80.2603508,33134,4.4,379.0,Museum,None,outscraper
+Lowe Art Museum,+1 305-284-3535,,,25.719375,-80.2756722,33146,4.6,369.0,Art museum,None,outscraper
+Miracle Mile & Downtown Coral Gables,+1 305-569-0311,,,25.7494437,-80.2574053,33134,4.6,4716.0,Shopping mall,None,outscraper
+Deering Estate,+1 305-235-1668,,,25.614314699999998,-80.30869609999999,33157,4.7,2103.0,Museum,None,outscraper
+The Historic Hampton House,+1 305-638-5800,,,25.813988499999997,-80.2407625,33142,4.8,262.0,History museum,None,outscraper
+Pérez Art Museum Miami,+1 305-375-3000,,,25.785930699999998,-80.1861912,33132,4.5,7859.0,Art museum,None,outscraper
+Rubell Museum,+1 305-573-6090,,,25.798671,-80.21411859999999,33127,4.7,1012.0,Art museum,None,outscraper
+Museum of Graffiti,+1 786-580-4678,,,25.8011973,-80.2008511,33127,4.5,566.0,Modern art museum,None,outscraper
+Paradox Museum Miami,+1 305-614-3808,,,25.799119599999997,-80.19469169999999,33127,4.8,4236.0,Museum,None,outscraper
+Museum of Sex,+1 786-206-9210,,,25.7974247,-80.2362112,33142,4.6,821.0,Art museum,None,outscraper
+MIAMI Shoe Museum Research Center,+1 305-206-8900,,,25.767840699999997,-80.19619809999999,33130,,,Museum,None,outscraper
+MUSEUM OF ICE CREAM,+1 866-665-1018,,,25.782196,-80.1916203,33132,4.6,6337.0,Tourist attraction,None,outscraper
+Phillip & Patricia Frost Museum of Science,+1 305-434-9600,,,25.785262099999997,-80.1878898,33132,4.4,8027.0,Science museum,None,outscraper
+Freedom Tower at Miami Dade College,+1 305-237-7700,,,25.7803293,-80.1894303,33132,4.6,624.0,Art museum,None,outscraper
+Patricia and Phillip Frost Art Museum,+1 305-348-2890,,,25.753704799999998,-80.3730592,33199,4.5,887.0,Art museum,None,outscraper
+Museum of Miami,+1 305-375-1492,,,25.7746635,-80.196383,33130,4.6,1313.0,History museum,None,outscraper
+Coral Castle,+1 305-248-6345,,,25.500655899999998,-80.44446219999999,33033,4.4,4560.0,Museum,None,outscraper
+The Bass,+1 305-673-7530,,,25.7975668,-80.1301297,33139,4.3,804.0,Art museum,None,outscraper
+Gold Coast Railroad Museum,+1 305-253-0063,,,25.617092099999997,-80.40063479999999,33177,4.2,1179.0,Rail museum,None,outscraper
+World Erotic Art Museum,+1 305-532-9336,,,25.783212499999998,-80.1320602,33139,4.3,1159.0,Art museum,None,outscraper
+Coral Gables Library,+1 305-442-8706,,,25.7395186,-80.2658883,33134,4.6,282.0,Public library,None,outscraper
+Richter Library,+1 305-284-3233,,,25.721188299999998,-80.27873579999999,33146,4.8,56.0,University library,None,outscraper
+Cuban Heritage Collection,+1 305-284-4900,,,25.7212882,-80.2785222,33146,5.0,2.0,Library,None,outscraper
+West Flagler Branch Library,+1 305-442-8710,,,25.7709317,-80.2773859,33134,4.5,121.0,Public library,None,outscraper
+University of Miami Law Library,None,,,25.7204056,-80.2795709,33146,4.4,14.0,Library,None,outscraper
+Miami-Dade Main Public Library,+1 305-375-2665,,,25.774524,-80.1969215,33130,4.3,416.0,Public library,None,outscraper
+Riviera Church Little Free Library,None,,,25.7050304,-80.27855799999999,33143,5.0,3.0,Library,None,outscraper
+Weeks Music Library and Technology Center,+1 305-284-9885,,,25.718773499999998,-80.2802845,33146,5.0,2.0,University library,None,outscraper
+Architecture Research Center,+1 305-284-5282,,,25.717226099999998,-80.2793671,33146,,,University library,None,outscraper
+Miami-Dade Public Library System,None,,,25.6292714,-80.3427947,33157,5.0,5.0,Library,None,outscraper
+University of Miami,+1 305-284-2211,,,25.7169568,-80.2798198,33146,4.6,512.0,Private university,None,outscraper
+Westchester Regional Library,+1 305-553-1134,,,25.748417,-80.34835199999999,33165,4.6,293.0,Public library,None,outscraper
