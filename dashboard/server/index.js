@@ -1,6 +1,9 @@
 import express from 'express'
 import cors from 'cors'
 import { config } from 'dotenv'
+import { getBusinesses, getGraph, getGraphStats, verifyConnectivity } from './neo4j.js'
+import { getAnalyticsQueries } from './analytics.js'
+import { getOpportunities } from './opportunities.js'
 
 config() // load .env
 
@@ -214,6 +217,67 @@ app.post('/api/chat', async (req, res) => {
   } catch (err) {
     console.error('Server error:', err.message)
     return res.status(500).json({ error: 'Failed to reach OpenAI API' })
+  }
+})
+
+// ── Live Neo4j data endpoints ───────────────────────────────────────────────
+// These serve the same shapes the dashboard previously read from static
+// exports. If Neo4j is unreachable, they return 503 so the client falls back
+// to the static files in public/data/.
+
+app.get('/api/live-status', async (req, res) => {
+  try {
+    await verifyConnectivity()
+    res.json({ live: true, uri: process.env.NEO4J_URI || 'bolt://localhost:7687' })
+  } catch (err) {
+    res.json({ live: false, error: err.message })
+  }
+})
+
+app.get('/api/businesses', async (req, res) => {
+  try {
+    const businesses = await getBusinesses()
+    res.json({ businesses, source: 'neo4j', count: businesses.length })
+  } catch (err) {
+    console.error('Neo4j /api/businesses error:', err.message)
+    res.status(503).json({ error: 'Neo4j unavailable', detail: err.message })
+  }
+})
+
+app.get('/api/graph', async (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit, 10) || 0
+    res.json(await getGraph(limit))
+  } catch (err) {
+    console.error('Neo4j /api/graph error:', err.message)
+    res.status(503).json({ error: 'Neo4j unavailable', detail: err.message })
+  }
+})
+
+app.get('/api/graph-stats', async (req, res) => {
+  try {
+    res.json(await getGraphStats())
+  } catch (err) {
+    console.error('Neo4j /api/graph-stats error:', err.message)
+    res.status(503).json({ error: 'Neo4j unavailable', detail: err.message })
+  }
+})
+
+app.get('/api/analytics-queries', async (req, res) => {
+  try {
+    res.json(await getAnalyticsQueries())
+  } catch (err) {
+    console.error('Neo4j /api/analytics-queries error:', err.message)
+    res.status(503).json({ error: 'Neo4j unavailable', detail: err.message })
+  }
+})
+
+app.get('/api/opportunities', async (req, res) => {
+  try {
+    res.json(await getOpportunities())
+  } catch (err) {
+    console.error('Neo4j /api/opportunities error:', err.message)
+    res.status(503).json({ error: 'Neo4j unavailable', detail: err.message })
   }
 })
 

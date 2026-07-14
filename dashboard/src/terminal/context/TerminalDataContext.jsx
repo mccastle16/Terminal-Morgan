@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useEffect, useMemo } from 'react'
-import Papa from 'papaparse'
 import { useTerminalAuth } from './TerminalAuthContext'
 import { computeRecruitabilityScore, getRecruitabilityBand, getRecruitReasons } from '../config/scoring'
 
@@ -27,6 +26,9 @@ export function TerminalDataProvider({ children }) {
     const saved = localStorage.getItem('terminal_bookmarks')
     return saved ? JSON.parse(saved) : []
   })
+  // Data source is always the live Neo4j API. Kept as state so the UI can
+  // distinguish "connected" from "still loading / errored".
+  const [dataSource, setDataSource] = useState(null)
 
   useEffect(() => {
     localStorage.setItem('terminal_bookmarks', JSON.stringify(bookmarks))
@@ -34,19 +36,31 @@ export function TerminalDataProvider({ children }) {
 
   useEffect(() => { loadData() }, [tenant])
 
+  // Load businesses strictly from the live Neo4j API. There is no static
+  // fallback — if the database is unavailable we surface an error rather than
+  // serving stale exports.
+  const loadLive = async () => {
+    const response = await fetch('/api/businesses')
+    if (!response.ok) {
+      let detail = ''
+      try { detail = (await response.json())?.detail || '' } catch { /* ignore */ }
+      throw new Error(detail || `Live data unavailable (HTTP ${response.status})`)
+    }
+    const data = await response.json()
+    if (!Array.isArray(data.businesses)) {
+      throw new Error('Live data response was malformed (no businesses array)')
+    }
+    return data.businesses
+  }
+
   const loadData = async () => {
     try {
       setLoading(true)
-      const response = await fetch(tenant.dataSource)
-      if (!response.ok) throw new Error('Data source unavailable')
+      setError(null)
+      const rows = await loadLive()
+      setDataSource('live')
 
-      const csvText = await response.text()
-      const result = Papa.parse(csvText, {
-        header: true, skipEmptyLines: true,
-        transformHeader: h => h.trim(),
-      })
-
-      const processed = result.data.map((row, i) => {
+      const processed = rows.map((row, i) => {
         const memberRaw = (row.chamber_member || '').trim().toUpperCase()
         const memberStatus = memberRaw === 'Y' ? 'member' : memberRaw === 'N' ? 'non-member' : 'unknown'
 
@@ -97,6 +111,8 @@ export function TerminalDataProvider({ children }) {
       setRawBusinesses(processed)
     } catch (err) {
       setError(err.message)
+      setDataSource(null)
+      setRawBusinesses([])
     } finally {
       setLoading(false)
     }
@@ -464,6 +480,7 @@ export function TerminalDataProvider({ children }) {
       filters, setFilters,
       getBusinessById, getPeers, getNearby,
       bookmarks, toggleBookmark, isBookmarked,
+      dataSource, refreshData: loadData,
     }}>
       {children}
     </TerminalDataContext.Provider>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useTerminalAuth } from '../context/TerminalAuthContext'
+import { useTerminalData } from '../context/TerminalDataContext'
 import ErrorBoundary from './ErrorBoundary'
 import {
   LayoutDashboard, Search, Building2, BarChart3, GitCompare, ShieldAlert,
@@ -140,16 +141,79 @@ export default function TerminalLayout() {
             <span className="text-slate-700">·</span>
             <span>Updated {tenant.lastRefresh}</span>
           </div>
-          <span className="text-xs text-slate-600 bg-slate-900 border border-slate-800 px-2.5 py-1 rounded">
-            {user?.roleConfig?.label}
-          </span>
+          <div className="flex items-center gap-3">
+            <DataSourceBadge />
+            <span className="text-xs text-slate-600 bg-slate-900 border border-slate-800 px-2.5 py-1 rounded">
+              {user?.roleConfig?.label}
+            </span>
+          </div>
         </header>
         <div className="flex-1 overflow-y-auto scrollbar-dark">
           <div className="max-w-[1400px] mx-auto px-6 py-6">
-            <ErrorBoundary><Outlet /></ErrorBoundary>
+            <ErrorBoundary><DataGate><Outlet /></DataGate></ErrorBoundary>
           </div>
         </div>
       </main>
     </div>
+  )
+}
+
+// The app runs on live Neo4j data only. If the database is unreachable we block
+// the page content and show a clear error with a retry, instead of letting every
+// page spin forever on empty data.
+function DataGate({ children }) {
+  const { loading, error, rawBusinesses, refreshData } = useTerminalData()
+
+  if (error && rawBusinesses.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center text-center h-[60vh] gap-4">
+        <div className="w-12 h-12 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center">
+          <Database size={22} className="text-red-400" />
+        </div>
+        <div>
+          <h2 className="text-base font-semibold text-white">Live database unavailable</h2>
+          <p className="text-sm text-slate-500 mt-1 max-w-md">
+            The terminal runs on live data from Neo4j and could not reach the database.
+          </p>
+          <p className="text-xs text-slate-600 mt-2 font-mono">{error}</p>
+        </div>
+        <button
+          onClick={() => refreshData()}
+          disabled={loading}
+          className="flex items-center gap-2 text-xs px-3 py-1.5 rounded border border-slate-700 text-slate-300 hover:bg-slate-800 transition-colors disabled:opacity-50"
+        >
+          {loading ? 'Reconnecting…' : 'Retry connection'}
+        </button>
+      </div>
+    )
+  }
+
+  return children
+}
+
+// Confirms the app is running on live Neo4j data. Shows a connecting/offline
+// state while data is loading or if the database is unreachable.
+function DataSourceBadge() {
+  const { dataSource, loading, error } = useTerminalData()
+  if (loading && !dataSource) {
+    return (
+      <span className="text-xs text-slate-600 bg-slate-900 border border-slate-800 px-2.5 py-1 rounded">
+        connecting…
+      </span>
+    )
+  }
+  const live = dataSource === 'live'
+  return (
+    <span
+      title={live ? 'Live from Neo4j' : error || 'Neo4j unavailable'}
+      className={`flex items-center gap-1.5 text-xs px-2.5 py-1 rounded border ${
+        live
+          ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30'
+          : 'text-red-400 bg-red-500/10 border-red-500/30'
+      }`}
+    >
+      <span className={`w-1.5 h-1.5 rounded-full ${live ? 'bg-emerald-500 animate-pulse' : 'bg-red-500'}`} />
+      {live ? 'LIVE' : 'OFFLINE'}
+    </span>
   )
 }

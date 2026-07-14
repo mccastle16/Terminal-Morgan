@@ -276,13 +276,38 @@ OUTSCRAPER_CHUNKS: Dict[int, List[str]] = {
     ],
 }
 
-# Apify category × zip matrix
+# Apify category × zip matrix (Google Maps actor)
 APIFY_CATEGORIES = [
     "restaurant", "lawyer", "doctor", "dentist", "salon",
     "real estate", "insurance", "gym", "hotel", "bank",
     "accountant", "therapist", "veterinarian", "optometrist",
     "pharmacy", "florist", "jewelry store", "hardware store",
     "furniture store", "art gallery", "boutique", "electronics store",
+]
+
+# Apify Yelp search terms — categories Yelp indexes well that Google often misses
+APIFY_YELP_SEARCHES = [
+    # Food & Drink
+    "restaurants", "bars", "cafes", "bakeries", "wine bars",
+    "cocktail bars", "food trucks", "cuban food", "latin american",
+    "italian", "sushi", "brunch", "desserts",
+    # Professional Services
+    "lawyers", "accountants", "financial advisors", "insurance agents",
+    "real estate agents", "marketing agencies", "architects", "consultants",
+    # Health & Wellness
+    "doctors", "dentists", "chiropractors", "physical therapy",
+    "dermatologists", "psychologists", "optometrists",
+    # Beauty & Fitness
+    "hair salons", "barbershops", "nail salons", "spas",
+    "massage", "yoga", "gyms", "pilates",
+    # Shopping
+    "boutiques", "jewelry", "art galleries", "home decor",
+    "antiques", "bookstores", "gift shops",
+    # Auto & Home Services
+    "auto repair", "car dealers", "dry cleaning",
+    "plumbers", "electricians", "contractors", "interior design",
+    # Hospitality
+    "hotels", "event venues", "catering",
 ]
 
 # OSM Overpass query chunks
@@ -496,6 +521,99 @@ def scrape_apify() -> List[Dict[str, str]]:
     except Exception as e:
         log_event("apify", "error", error=str(e))
         print(f"  Apify error: {e}")
+        return []
+
+
+# ── Source: Apify Yelp ────────────────────────────────────────────
+def scrape_apify_yelp() -> List[Dict[str, str]]:
+    """Scrape Yelp via Apify's yin/yelp-scraper actor.
+
+    Uses source='apify_yelp' so agent2 classifies it as the Yelp
+    source family — independent corroboration from Google Maps data.
+    """
+    if not APIFY_TOKEN:
+        print("  ERROR: APIFY_TOKEN not set")
+        log_event("apify_yelp", "error", error="APIFY_TOKEN not set")
+        return []
+
+    from apify_client import ApifyClient
+
+    log_event("apify_yelp", "scrape_start", num_searches=len(APIFY_YELP_SEARCHES))
+    start_time = time.time()
+
+    client = ApifyClient(APIFY_TOKEN)
+
+    import urllib.parse
+    location = "Coral Gables, FL"
+    start_urls = [
+        {"url": f"https://www.yelp.com/search?find_desc={urllib.parse.quote(term)}&find_loc={urllib.parse.quote(location)}"}
+        for term in APIFY_YELP_SEARCHES
+    ]
+    run_input = {
+        "startUrls": start_urls,
+        "maxItems": 100,
+    }
+
+    print(f"    Starting Apify Yelp actor ({len(start_urls)} search URLs)...")
+
+    try:
+        run = client.actor("yin/yelp-scraper").call(run_input=run_input)
+
+        records: List[Dict[str, str]] = []
+        for item in client.dataset(run["defaultDatasetId"]).iterate_items():
+            name = item.get("name", "")
+            if not name:
+                continue
+
+            loc = item.get("location", {}) or {}
+            coords = item.get("coordinates", {}) or {}
+
+            # Build full address from Yelp's structured location object
+            addr_parts = [
+                loc.get("address1", ""),
+                loc.get("address2", ""),
+                loc.get("city", ""),
+            ]
+            addr_parts = [p for p in addr_parts if p]
+            state = loc.get("state", "")
+            zip_code = loc.get("zipCode", "")
+            if state or zip_code:
+                addr_parts.append(f"{state} {zip_code}".strip())
+            address = ", ".join(addr_parts)
+
+            # Categories: list of {title, alias} dicts
+            cats = item.get("categories", []) or []
+            category_raw = ", ".join(c.get("title", "") for c in cats if c.get("title"))
+
+            records.append(
+                _raw(
+                    name=name,
+                    phone=item.get("phone", ""),
+                    website=item.get("website", ""),
+                    address=address,
+                    lat=coords.get("latitude", ""),
+                    lon=coords.get("longitude", ""),
+                    postcode=zip_code,
+                    rating=item.get("rating", ""),
+                    review_count=item.get("reviewCount", ""),
+                    category_raw=category_raw,
+                    price=item.get("price", ""),
+                    source="apify_yelp",
+                )
+            )
+
+        elapsed = time.time() - start_time
+        log_event("apify_yelp", "scrape_end", total_records=len(records), elapsed_seconds=elapsed)
+
+        metrics = compute_metrics(records)
+        print(f"  Apify Yelp: {len(records)} raw records")
+        print(f"    Quality: {metrics['valid_coords_pct']}% coords, {metrics['phone_pct']}% phone, {metrics['website_pct']}% website, {metrics['rating_pct']}% rating")
+        log_event("apify_yelp", "metrics", **metrics)
+
+        return records
+    except Exception as e:
+        log_event("apify_yelp", "error", error=str(e))
+        print(f"  Apify Yelp error: {e}")
         return []
 
 
@@ -891,7 +1009,7 @@ def write_staging(records: List[Dict[str, str]], source: str, run_num: int = 0) 
 
     # Post-write validation
     metrics = compute_metrics(records)
-    log_event("staging", "write_validation", source=source, filename=str(filename), **metrics)
+    log_event("staging", "write_validation", scrape_source=source, filename=str(filename), **metrics)
     
     print(f"  Wrote {len(records)} records -> {filename}")
     return str(filename)
@@ -906,6 +1024,7 @@ def main():
 Examples:
   python "1. agent1-osint.py" --source outscraper --run 1
   python "1. agent1-osint.py" --source apify
+  python "1. agent1-osint.py" --source apify_yelp
   python "1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv
   python "1. agent1-osint.py" --source serpapi --master data/master_all_businesses.csv --workers 10
   python "1. agent1-osint.py" --source osm
@@ -915,7 +1034,7 @@ Examples:
     parser.add_argument(
         "--source",
         required=True,
-        choices=["outscraper", "apify", "serpapi", "osm", "directory"],
+        choices=["outscraper", "apify", "apify_yelp", "serpapi", "osm", "directory"],
         help="Data source to scrape",
     )
     parser.add_argument(
@@ -957,13 +1076,15 @@ Examples:
     print(f"  Source: {args.source} | Run: {args.run}")
     print(f"{'='*60}\n")
 
-    log_event("agent1", "pipeline_start", source=args.source, run=args.run, 
+    log_event("agent1", "pipeline_start", scrape_source=args.source, run=args.run,
               workers=getattr(args, 'workers', None), target=getattr(args, 'target', None))
 
     if args.source == "outscraper":
         records = scrape_outscraper(args.run)
     elif args.source == "apify":
         records = scrape_apify()
+    elif args.source == "apify_yelp":
+        records = scrape_apify_yelp()
     elif args.source == "serpapi":
         records = scrape_serpapi(args.master, args.limit, args.target, args.workers)
     elif args.source == "directory":
@@ -975,7 +1096,7 @@ Examples:
 
     staging_path = write_staging(records, args.source, args.run)
     
-    log_event("agent1", "pipeline_end", source=args.source, total_records=len(records), staging_file=staging_path)
+    log_event("agent1", "pipeline_end", scrape_source=args.source, total_records=len(records), staging_file=staging_path)
 
     print(f"\n  Done. {len(records)} records collected.")
     if staging_path:

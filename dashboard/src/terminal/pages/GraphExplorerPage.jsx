@@ -32,7 +32,7 @@ export default function GraphExplorerPage() {
   const graphRef = useRef()
 
   useEffect(() => {
-    fetch('/data/analytics_queries.json')
+    fetch('/api/analytics-queries')
       .then(r => { if (!r.ok) throw new Error('Failed to load'); return r.json() })
       .then(d => { setQueries(d); if (d.length) setSelectedQuery(d[0]); setLoading(false) })
       .catch(e => { setError(e.message); setLoading(false) })

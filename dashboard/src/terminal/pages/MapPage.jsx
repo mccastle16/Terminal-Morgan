@@ -23,6 +23,24 @@ function neighborhoodIcon(name) {
     iconSize: null,
     iconAnchor: [0, 0],
   })
+// Keeps the Leaflet view in sync with the active neighborhood / filtered set so
+// selecting a neighborhood recenters the map on its businesses.
+function FitBounds({ businesses, fallback }) {
+  const map = useMap()
+  useEffect(() => {
+    if (businesses.length === 0) {
+      map.setView([fallback.lat, fallback.lon], 13)
+      return
+    }
+    const lats = businesses.map(b => parseFloat(b.lat))
+    const lons = businesses.map(b => parseFloat(b.lon))
+    const bounds = [
+      [Math.min(...lats), Math.min(...lons)],
+      [Math.max(...lats), Math.max(...lons)],
+    ]
+    map.fitBounds(bounds, { padding: [40, 40], maxZoom: 16 })
+  }, [businesses, map, fallback])
+  return null
 }
 
 export default function MapPage() {
@@ -56,18 +74,14 @@ export default function MapPage() {
     const map = {}
     geoBusinesses.forEach(b => {
       const hood = b.neighborhood_area || 'Unknown'
-      if (!map[hood]) map[hood] = { name: hood, total: 0, members: 0, nonMembers: 0, unknowns: 0, avgLat: 0, avgLon: 0 }
+      if (!map[hood]) map[hood] = { name: hood, total: 0, members: 0, nonMembers: 0, unknowns: 0 }
       map[hood].total++
       if (b._memberStatus === 'member') map[hood].members++
       else if (b._memberStatus === 'non-member') map[hood].nonMembers++
       else map[hood].unknowns++
-      map[hood].avgLat += parseFloat(b.lat)
-      map[hood].avgLon += parseFloat(b.lon)
     })
     return Object.values(map).map(h => ({
       ...h,
-      avgLat: h.avgLat / h.total,
-      avgLon: h.avgLon / h.total,
       penetration: h.total > 0 ? ((h.members / h.total) * 100).toFixed(1) : '0',
     })).sort((a, b) => b.total - a.total)
   }, [geoBusinesses])
@@ -119,15 +133,9 @@ export default function MapPage() {
       <div className="relative bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-900/40 border border-slate-800/60 rounded-2xl overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
         <div className="p-6">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
-                <MapPin size={20} className="text-emerald-400" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold text-white tracking-tight">Geography Map</h1>
-                <p className="text-slate-400 text-sm">{tenant.city}, {tenant.state} — {geoBusinesses.length} businesses with geo data ({geoCoverage}% coverage)</p>
-              </div>
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
+              <MapPin size={20} className="text-emerald-400" />
             </div>
             <div className="flex items-center gap-2">
               <button onClick={zoomIn}
@@ -251,7 +259,7 @@ export default function MapPage() {
           </MapContainer>
 
           {/* Legend */}
-          <div className="absolute bottom-3 left-3 bg-slate-900/90 border border-slate-800 rounded-lg p-2.5 flex items-center gap-4" style={{ zIndex: 1000 }}>
+          <div className="absolute bottom-3 left-3 bg-slate-900/90 border border-slate-800 rounded-lg p-2.5 flex items-center gap-4 pointer-events-none" style={{ zIndex: 1000 }}>
             {[
               { color: '#f59e0b', label: 'Member' },
               { color: '#64748b', label: 'Non-Member' },

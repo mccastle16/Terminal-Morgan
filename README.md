@@ -392,3 +392,6 @@ For the complete walkthrough including API key signup, monthly cadence, and trou
 ## License
 
 Internal use. Coral Gables OSINT data collected from public sources.
+
+## Andres 
+cd dashboard/server && npm start
