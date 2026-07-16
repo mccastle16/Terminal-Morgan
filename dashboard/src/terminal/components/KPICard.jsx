@@ -1,6 +1,7 @@
 import { TrendingUp, TrendingDown } from 'lucide-react'
+import InfoTooltip from './InfoTooltip'
 
-export default function KPICard({ label, value, sub, icon: Icon, trend, accent = 'amber' }) {
+export default function KPICard({ label, value, sub, icon: Icon, trend, accent = 'amber', info }) {
   const iconColors = {
     amber:  'text-amber-400',
     blue:   'text-blue-400',
@@ -21,7 +22,7 @@ export default function KPICard({ label, value, sub, icon: Icon, trend, accent =
   const bgColor = bgColors[accent] || bgColors.amber
 
   return (
-    <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4 hover:border-slate-700 transition-colors duration-150">
+    <div className="relative bg-slate-900/50 border border-slate-800 rounded-lg p-4 hover:border-slate-700 transition-colors duration-150">
       <div className="flex items-center justify-between mb-2">
         <span className="text-xs text-slate-500">{label}</span>
         {Icon && (
@@ -36,6 +37,11 @@ export default function KPICard({ label, value, sub, icon: Icon, trend, accent =
         <div className="mt-2 flex items-center gap-1 text-xs">
           {trend > 0 ? <><TrendingUp size={12} className="text-emerald-400" /><span className="text-emerald-400">+{trend}%</span></> : null}
           {trend < 0 ? <><TrendingDown size={12} className="text-red-400" /><span className="text-red-400">{trend}%</span></> : null}
+        </div>
+      )}
+      {info && (
+        <div className="absolute bottom-2 right-2">
+          <InfoTooltip text={info} side="top" align="right" />
         </div>
       )}
     </div>

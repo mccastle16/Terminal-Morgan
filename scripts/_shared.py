@@ -73,8 +73,10 @@ def normalize_key(name: str) -> str:
     if not name:
         return ""
     k = re.sub(r"[^a-z0-9]", "", name.lower().strip())
-    for sfx in ("llc", "inc", "llp", "pa", "pllc", "corp", "ltd"):
-        k = k.replace(sfx, "")
+    for sfx in sorted(("llc", "inc", "llp", "pa", "pllc", "corp", "ltd"), key=len, reverse=True):
+        if k.endswith(sfx):
+            k = k[: -len(sfx)]
+            break
     return k.strip()
 
 

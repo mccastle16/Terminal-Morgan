@@ -5,6 +5,7 @@ import { useTerminalAuth } from '../context/TerminalAuthContext'
 import KPICard from '../components/KPICard'
 import RoleGate from '../components/RoleGate'
 import { DataQualityBar, MemberBadge } from '../components/TrustBadge'
+import InfoTooltip from '../components/InfoTooltip'
 import {
   Building2, Users, UserPlus, ShieldAlert, BarChart3, Star,
   AlertTriangle, ArrowRight, Database, LayoutDashboard,
@@ -54,13 +55,17 @@ export default function OverviewPage() {
 
       {/* KPI Row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        <KPICard label="Total Businesses" value={stats.total.toLocaleString()} icon={Building2} accent="amber" />
+        <KPICard label="Total Businesses" value={stats.total.toLocaleString()} icon={Building2} accent="amber"
+          info="Total businesses found in the Coral Gables area across all data sources, regardless of chamber membership status." />
         <KPICard label="Chamber Members" value={stats.members.toLocaleString()}
-          sub={`${(stats.members / stats.total * 100).toFixed(1)}% penetration`} icon={Users} accent="blue" />
+          sub={`${(stats.members / stats.total * 100).toFixed(1)}% penetration`} icon={Users} accent="blue"
+          info="The number of businesses found in the Coral Gables area that are members of the Chamber of Commerce. Penetration is the share of all known businesses that are members (Chamber Members ÷ Total Businesses)." />
         <KPICard label="Non-Members" value={stats.nonMembers.toLocaleString()}
-          sub={`${stats.unknowns.toLocaleString()} unknown`} icon={UserPlus} accent="green" />
+          sub={`${stats.unknowns.toLocaleString()} unknown`} icon={UserPlus} accent="green"
+          info="Businesses found in the Coral Gables area that are not currently chamber members. The 'unknown' count are businesses whose membership status hasn't been resolved yet." />
         <KPICard label="Risk Flags" value={stats.redFlagCount.toLocaleString()}
-          sub={`${stats.criticalFlags} critical`} icon={ShieldAlert} accent="red" />
+          sub={`${stats.criticalFlags} critical`} icon={ShieldAlert} accent="red"
+          info="A business receives a risk flag when its information may be incomplete, inconsistent, or unreliable. Critical flags indicate serious issues affecting the business's identity or location." />
       </div>
 
       {/* Chart + Data Quality */}
@@ -109,7 +114,10 @@ export default function OverviewPage() {
             <div className="w-6 h-6 rounded-md bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
               <Database size={12} className="text-blue-400" />
             </div>
-            <h3 className="text-sm font-medium text-white">Data Quality</h3>
+            <h3 className="text-sm font-medium text-white flex items-center gap-1.5">
+              Data Quality
+              <InfoTooltip text="How complete and verified the underlying business data is. Each bar shows the percentage of businesses with that field on file: a phone number, a website, valid coordinates, a customer rating, and records that reached the highest validation tier during data review." />
+            </h3>
           </div>
           <div className="space-y-3">
             <DataQualityBar label="Phone" percent={stats.dataQuality.phoneCoverage} />
