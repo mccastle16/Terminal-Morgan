@@ -13,6 +13,9 @@ import {
 
 const PAGE_SIZE = 40
 
+// Top Prospect -> Strong Prospect -> Moderate Prospect -> Low Priority
+const BAND_RANK = { A: 0, B: 1, C: 2, D: 3 }
+
 const BAND_FILTERS = [
   { key: 'all', label: 'All', color: '#94a3b8' },
   { key: 'A', label: 'A — Prime', color: '#22c55e' },
@@ -40,7 +43,14 @@ export default function RecruitQueuePage() {
     if (catFilter) q = q.filter(b => b.category_primary === catFilter)
     if (hoodFilter) q = q.filter(b => b.neighborhood_area === hoodFilter)
     q.sort((a, b) => {
-      let av = a[sortKey], bv = b[sortKey]
+      let av, bv
+      if (sortKey === '_recruitBand') {
+        av = BAND_RANK[a._recruitBand?.band] ?? -1
+        bv = BAND_RANK[b._recruitBand?.band] ?? -1
+      } else {
+        av = a[sortKey]
+        bv = b[sortKey]
+      }
       if (typeof av === 'string') av = av?.toLowerCase?.() ?? ''
       if (typeof bv === 'string') bv = bv?.toLowerCase?.() ?? ''
       if (av == null) return 1
