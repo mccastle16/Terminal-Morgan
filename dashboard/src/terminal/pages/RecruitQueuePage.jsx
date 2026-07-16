@@ -7,6 +7,7 @@ import KPICard, { KPICardMini } from '../components/KPICard'
 import { MemberBadge } from '../components/TrustBadge'
 import {
   UserPlus, Download, Star, ChevronLeft, ChevronRight, ArrowUpDown,
+  ChevronsLeft, ChevronsRight,
   ChevronUp, ChevronDown, Target, Trophy, Filter, Eye, Phone,
   Globe, MapPin, CheckCircle2, Info,
 } from 'lucide-react'
@@ -18,10 +19,10 @@ const BAND_RANK = { A: 0, B: 1, C: 2, D: 3 }
 
 const BAND_FILTERS = [
   { key: 'all', label: 'All', color: '#94a3b8' },
-  { key: 'A', label: 'A — Prime', color: '#22c55e' },
-  { key: 'B', label: 'B — Strong', color: '#3b82f6' },
-  { key: 'C', label: 'C — Moderate', color: '#f59e0b' },
-  { key: 'D', label: 'D — Low', color: '#ef4444' },
+  { key: 'A', label: 'A — Top Prospect', color: '#22c55e' },
+  { key: 'B', label: 'B — Strong Prospect', color: '#3b82f6' },
+  { key: 'C', label: 'C — Moderate Prospect', color: '#f59e0b' },
+  { key: 'D', label: 'D — Low Priority', color: '#ef4444' },
 ]
 
 export default function RecruitQueuePage() {
@@ -39,7 +40,7 @@ export default function RecruitQueuePage() {
 
   const filtered = useMemo(() => {
     let q = [...recruitQueue]
-    if (bandFilter !== 'all') q = q.filter(b => b._recruitBand?.label?.startsWith(bandFilter))
+    if (bandFilter !== 'all') q = q.filter(b => b._recruitBand?.band === bandFilter)
     if (catFilter) q = q.filter(b => b.category_primary === catFilter)
     if (hoodFilter) q = q.filter(b => b.neighborhood_area === hoodFilter)
     q.sort((a, b) => {
@@ -68,8 +69,8 @@ export default function RecruitQueuePage() {
   const bandStats = useMemo(() => {
     const counts = { A: 0, B: 0, C: 0, D: 0 }
     recruitQueue.forEach(b => {
-      const label = b._recruitBand?.label?.[0]
-      if (label && counts[label] !== undefined) counts[label]++
+      const band = b._recruitBand?.band
+      if (band && counts[band] !== undefined) counts[band]++
     })
     return counts
   }, [recruitQueue])
@@ -135,10 +136,10 @@ export default function RecruitQueuePage() {
         {/* KPI Band Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
           <KPICard label="Total Prospects" value={recruitQueue.length.toLocaleString()} icon={UserPlus} accent="amber" />
-          <KPICardMini label="Band A — Prime" value={bandStats.A} color="#22c55e" />
-          <KPICardMini label="Band B — Strong" value={bandStats.B} color="#3b82f6" />
-          <KPICardMini label="Band C — Moderate" value={bandStats.C} color="#f59e0b" />
-          <KPICardMini label="Band D — Low" value={bandStats.D} color="#ef4444" />
+          <KPICardMini label="Band A — Top Prospect" value={bandStats.A} color="#22c55e" />
+          <KPICardMini label="Band B — Strong Prospect" value={bandStats.B} color="#3b82f6" />
+          <KPICardMini label="Band C — Moderate Prospect" value={bandStats.C} color="#f59e0b" />
+          <KPICardMini label="Band D — Low Priority" value={bandStats.D} color="#ef4444" />
         </div>
 
         {/* Filters */}
@@ -300,6 +301,9 @@ export default function RecruitQueuePage() {
             <div className="flex items-center justify-between px-4 py-3 border-t border-slate-800">
               <span className="text-[11px] text-slate-500">Page {page + 1} of {totalPages}</span>
               <div className="flex items-center gap-1">
+                <button onClick={() => setPage(Math.max(0, page - 5))} disabled={page === 0}
+                  title="Back 5 pages"
+                  className="p-1 rounded hover:bg-slate-800 disabled:opacity-30 transition-colors text-slate-400"><ChevronsLeft size={16} /></button>
                 <button onClick={() => setPage(Math.max(0, page - 1))} disabled={page === 0}
                   className="p-1 rounded hover:bg-slate-800 disabled:opacity-30 transition-colors text-slate-400"><ChevronLeft size={16} /></button>
                 {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -314,6 +318,9 @@ export default function RecruitQueuePage() {
                 })}
                 <button onClick={() => setPage(Math.min(totalPages - 1, page + 1))} disabled={page >= totalPages - 1}
                   className="p-1 rounded hover:bg-slate-800 disabled:opacity-30 transition-colors text-slate-400"><ChevronRight size={16} /></button>
+                <button onClick={() => setPage(Math.min(totalPages - 1, page + 5))} disabled={page >= totalPages - 1}
+                  title="Forward 5 pages"
+                  className="p-1 rounded hover:bg-slate-800 disabled:opacity-30 transition-colors text-slate-400"><ChevronsRight size={16} /></button>
               </div>
             </div>
           )}
