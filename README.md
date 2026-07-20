@@ -97,7 +97,25 @@ cp .env.example .env
 #   OPENAI_API_KEY=sk-...        # or GEMINI_API_KEY / PERPLEXITY_API_KEY
 ```
 
+Also set the **auth** vars (real login is now required — no demo accounts):
+
+```bash
+#   JWT_SECRET=<long random string: node -e "console.log(require('crypto').randomBytes(48).toString('hex'))">
+#   ADMIN_EMAIL=admin@cgcc.org
+#   ADMIN_PASSWORD=<min 8 chars>
+```
+
 The advisor auto-selects the first provider that has a key and lets you switch between configured providers in the UI. Provider signup links are in [dashboard/server/.env.example](dashboard/server/.env.example).
+
+### Step 3.5 — Seed the admin user (one-time)
+
+Identities live in Neo4j as `:User` nodes. Create the first admin from the `ADMIN_*` vars above:
+
+```bash
+cd dashboard/server
+npm install                # first run only (installs bcryptjs, jsonwebtoken)
+npm run seed-admin         # upserts the admin :User (idempotent)
+```
 
 ### Step 4 — Start the API server + dashboard
 
@@ -122,7 +140,13 @@ curl http://localhost:3005/api/live-status      # { live: true } when Neo4j is u
 curl "http://localhost:3005/api/businesses" | head -c 300
 ```
 
-- Log in at `/login`. Auth is **demo-only** (client-side users in [config/roles.js](dashboard/src/terminal/config/roles.js)) — see the Roadmap for productionizing it.
+- Log in at `/login` with the seeded admin credentials. Auth is **real**: `POST /api/login` verifies a bcrypt hash against the Neo4j `:User` node and returns a JWT that every other `/api/*` call must carry. Verify the gate:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" http://localhost:3005/api/businesses           # 401 (no token)
+curl -s -X POST http://localhost:3005/api/login -H 'Content-Type: application/json' \
+  -d '{"email":"admin@cgcc.org","password":"<your admin password>"}'                     # → { token, user }
+```
 
 ### Refreshing the data later
 
@@ -294,10 +318,16 @@ For the full dashboard, follow [§ Bring the Dashboard to Life](#bring-the-dashb
 
 The system is functional end-to-end but not production-hardened. Ordered roughly by priority:
 
-### 🔴 Blockers for production
-1. **Real authentication.** Login is demo-only — users are hardcoded in [config/roles.js](dashboard/src/terminal/config/roles.js) and the session lives in `localStorage` ([TerminalAuthContext.jsx:22](dashboard/src/terminal/context/TerminalAuthContext.jsx#L22)). Replace with a real auth provider (JWT/OAuth) and server-side session validation.
-2. **Protect the API.** Every `/api/*` route is open, including `POST /api/chat`, which spends real LLM tokens on every request. Add auth middleware, rate limiting, and per-user quotas before exposing the server beyond localhost.
-3. **Secrets hygiene.** `.env` files are git-ignored (root + `dashboard/`) and none are currently tracked ✓. Still to do: rotate the default Neo4j password (`cgcc2024graph`) for any non-local deployment, and keep it out of `data/etl/docker-compose.yml`.
+### ✅ Recently shipped — Real authentication
+- **Neo4j-backed identities.** Users are `:User` nodes (bcrypt password hash, role, status); `POST /api/login` issues a JWT verified server-side on every request ([auth.js](dashboard/server/auth.js)). The hardcoded `TERMINAL_USERS` map is gone.
+- **Protected API.** `authMiddleware` guards all data + `/api/chat` routes — the open LLM-token-spend hole is closed (unauthenticated calls now 401). Admin-only user/claim endpoints use `requireAdmin`.
+- **Admin-gated business claims.** A `(:User)-[:REPRESENTS {status}]->(:Business)` edge links a user to their business; only an admin approves it (members/other roles can't self-claim). Managed from the **Users & Claims** admin page ([AdminUsersPage.jsx](dashboard/src/terminal/pages/AdminUsersPage.jsx)).
+- **Personalized advisor.** When a user has an approved business, the advisor's system prompt is augmented server-side with that business's profile/benchmarks — "my business" questions get real numbers ([index.js `buildUserContext`](dashboard/server/index.js)).
+
+### 🔴 Remaining blockers for production
+1. **Rate limiting + quotas.** Auth is enforced, but there's no per-user rate limit on `POST /api/chat` — add one before exposing the server publicly.
+2. **Auth lifecycle gaps.** No password-reset, refresh-token rotation, member self-registration, or account disable UI yet (the `status` field exists; wire the flows). Consider moving to a managed provider if this grows.
+3. **Secrets hygiene.** `.env` files are git-ignored (root + `dashboard/`) and none are tracked ✓. `JWT_SECRET` must be a strong random value in every environment. Still to do: rotate the default Neo4j password (`cgcc2024graph`) for any non-local deployment, and keep it out of `data/etl/docker-compose.yml`.
 
 ### 🟠 Complete the live migration
 4. **Retire the legacy static viewer.** `dashboard/src/pages/` is no longer routed (App.jsx mounts only the terminal). Delete it and prune the now-unused static exports in `public/data/` (keep only the delta feeds still read at runtime).

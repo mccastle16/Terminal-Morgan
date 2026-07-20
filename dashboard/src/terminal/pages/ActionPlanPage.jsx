@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTerminalData } from '../context/TerminalDataContext'
+import { useTerminalAuth } from '../context/TerminalAuthContext'
 import {
   Zap, CheckCircle, AlertTriangle, TrendingUp, Star, Globe, Users,
   Target, Lightbulb, Building2, ArrowRight, ListChecks, Flame, Clock,
@@ -33,13 +34,16 @@ function ProgressRing({ percent, size = 64, strokeWidth = 5 }) {
 
 export default function ActionPlanPage() {
   const { rawBusinesses } = useTerminalData()
+  const { user } = useTerminalAuth()
   const navigate = useNavigate()
   const [completedActions, setCompletedActions] = useState(() => {
     const saved = localStorage.getItem('terminal_completed_actions')
     return saved ? JSON.parse(saved) : []
   })
 
-  const selectedBusinessId = localStorage.getItem('terminal_my_business')
+  // The user's approved business (from auth) is canonical; admins fall back to
+  // the business they picked on the My Business page (persisted to localStorage).
+  const selectedBusinessId = user?.businessId || localStorage.getItem('terminal_my_business')
   const myBusiness = rawBusinesses.find(b => b._id === selectedBusinessId)
 
   const actionPlan = useMemo(() => {

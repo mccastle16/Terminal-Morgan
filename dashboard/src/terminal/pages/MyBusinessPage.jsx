@@ -1,6 +1,7 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTerminalData } from '../context/TerminalDataContext'
+import { useTerminalAuth } from '../context/TerminalAuthContext'
 import {
   Star, TrendingUp, TrendingDown, Minus, AlertTriangle, CheckCircle,
   Building2, ChevronRight, Award, Target, Zap, Users, ArrowRight, Search,
@@ -28,16 +29,30 @@ function GaugeRing({ percent, size = 64, strokeWidth = 5, color = '#f59e0b' }) {
 
 export default function MyBusinessPage() {
   const { rawBusinesses, stats } = useTerminalData()
+  const { user, can } = useTerminalAuth()
   const navigate = useNavigate()
-  const [selectedBusinessId, setSelectedBusinessId] = useState(() =>
-    localStorage.getItem('terminal_my_business') || ''
-  )
+  // Admins/staff (no linked business) may inspect any business via the picker.
+  // Everyone else is locked to the business their approved claim points at —
+  // self-service claiming is not permitted.
+  const isAdmin = can('manage_users')
+  const [selectedBusinessId, setSelectedBusinessId] = useState('')
   const [searchQuery, setSearchQuery] = useState('')
 
+  // The user's own (approved) business always wins; admins fall back to their
+  // manual pick.
+  const effectiveBusinessId = user?.businessId || (isAdmin ? selectedBusinessId : '')
+
   const myBusiness = useMemo(() =>
-    rawBusinesses.find(b => b._id === selectedBusinessId),
-    [rawBusinesses, selectedBusinessId]
+    rawBusinesses.find(b => b._id === effectiveBusinessId),
+    [rawBusinesses, effectiveBusinessId]
   )
+
+  // Mirror the active business to localStorage so sibling pages (Action Plan,
+  // Ecosystem, Content Studio) that read it stay in sync — for members it's
+  // their approved claim; for admins it's the business they picked here.
+  useEffect(() => {
+    if (effectiveBusinessId) localStorage.setItem('terminal_my_business', effectiveBusinessId)
+  }, [effectiveBusinessId])
 
   const benchmarks = useMemo(() => {
     if (!myBusiness || !stats) return null
@@ -68,7 +83,6 @@ export default function MyBusinessPage() {
 
   const handleSelectBusiness = (businessId) => {
     setSelectedBusinessId(businessId)
-    localStorage.setItem('terminal_my_business', businessId)
     setSearchQuery('')
   }
 
@@ -104,7 +118,26 @@ export default function MyBusinessPage() {
     return <span className="text-slate-500 flex items-center gap-1 text-sm"><Minus size={14} /> 0{suffix}</span>
   }
 
-  // ── Business selector ──────────────────────────
+  // ── No linked business ─────────────────────────
+  // Non-admins can't self-claim: if their claim hasn't been approved they see a
+  // prompt to contact the administrator, not a business picker.
+  if (!myBusiness && !isAdmin) {
+    return (
+      <div className="max-w-lg mx-auto animate-fade-in text-center py-16">
+        <div className="w-20 h-20 bg-gradient-to-br from-amber-500/15 to-amber-500/5 border border-amber-500/25 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <Building2 size={36} className="text-amber-400" />
+        </div>
+        <h1 className="text-2xl font-bold text-white mb-2 tracking-tight">No business linked yet</h1>
+        <p className="text-slate-400 text-sm">
+          Your account isn’t linked to a business. Contact your chamber administrator
+          to have your business claimed and approved — then your personalized
+          scorecard and AI advisor will appear here.
+        </p>
+      </div>
+    )
+  }
+
+  // ── Business selector (admins only) ────────────
   if (!myBusiness) {
     return (
       <div className="max-w-2xl mx-auto animate-fade-in">
@@ -112,8 +145,8 @@ export default function MyBusinessPage() {
           <div className="w-20 h-20 bg-gradient-to-br from-amber-500/15 to-amber-500/5 border border-amber-500/25 rounded-2xl flex items-center justify-center mx-auto mb-5">
             <Building2 size={36} className="text-amber-400" />
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">Claim Your Business</h1>
-          <p className="text-slate-400 text-sm">Select your business to see your personalized scorecard and competitive position</p>
+          <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">Inspect a Business</h1>
+          <p className="text-slate-400 text-sm">Admin view — select any business to see its scorecard and competitive position</p>
         </div>
 
         <div className="relative mb-6">
@@ -206,10 +239,12 @@ export default function MyBusinessPage() {
                 </div>
               </div>
             </div>
-            <button onClick={() => { setSelectedBusinessId(''); localStorage.removeItem('terminal_my_business') }}
-              className="text-xs text-slate-500 hover:text-slate-300 transition-colors px-3 py-1.5 rounded-lg border border-slate-800/60 hover:border-slate-700 self-start">
-              Change business
-            </button>
+            {isAdmin && !user?.businessId && (
+              <button onClick={() => setSelectedBusinessId('')}
+                className="text-xs text-slate-500 hover:text-slate-300 transition-colors px-3 py-1.5 rounded-lg border border-slate-800/60 hover:border-slate-700 self-start">
+                Change business
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, useMemo } from 'react'
 import { useTerminalAuth } from './TerminalAuthContext'
 import { computeRecruitabilityScore, getRecruitabilityBand, getRecruitReasons } from '../config/scoring'
+import { apiFetch } from '../lib/api'
 
 const TerminalDataContext = createContext(null)
 
@@ -18,7 +19,7 @@ function normalizeNeighborhood(raw) {
 }
 
 export function TerminalDataProvider({ children }) {
-  const { tenant } = useTerminalAuth()
+  const { tenant, user } = useTerminalAuth()
   const [rawBusinesses, setRawBusinesses] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -38,13 +39,19 @@ export function TerminalDataProvider({ children }) {
     localStorage.setItem('terminal_bookmarks', JSON.stringify(bookmarks))
   }, [bookmarks])
 
-  useEffect(() => { loadData() }, [tenant])
+  // Only load the (auth-protected) live data once a user is signed in. On logout
+  // the businesses are cleared so no stale data lingers behind the login screen.
+  useEffect(() => {
+    if (user) loadData()
+    else { setRawBusinesses([]); setDataSource(null); setLoading(false) }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, tenant])
 
   // Load businesses strictly from the live Neo4j API. There is no static
   // fallback — if the database is unavailable we surface an error rather than
   // serving stale exports.
   const loadLive = async () => {
-    const response = await fetch('/api/businesses')
+    const response = await apiFetch('/api/businesses')
     if (!response.ok) {
       let detail = ''
       try { detail = (await response.json())?.detail || '' } catch { /* ignore */ }
@@ -438,9 +445,9 @@ export function TerminalDataProvider({ children }) {
     Promise.all([
       fetch('/data/latest_delta.json').then(r => r.ok ? r.json() : null).catch(() => null),
       fetch('/data/delta_history.json').then(r => r.ok ? r.json() : []).catch(() => []),
-      fetch('/api/sentiment-themes').then(r => r.ok ? r.json() : null).catch(() => null),
-      fetch('/api/network-centrality').then(r => r.ok ? r.json() : null).catch(() => null),
-      fetch('/api/prediction-summary').then(r => r.ok ? r.json() : null).catch(() => null),
+      apiFetch('/api/sentiment-themes').then(r => r.ok ? r.json() : null).catch(() => null),
+      apiFetch('/api/network-centrality').then(r => r.ok ? r.json() : null).catch(() => null),
+      apiFetch('/api/prediction-summary').then(r => r.ok ? r.json() : null).catch(() => null),
     ]).then(([delta, history, sentiment, centrality, predictions]) => {
       if (cancelled) return
       setDeltaData(delta)

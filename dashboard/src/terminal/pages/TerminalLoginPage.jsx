@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTerminalAuth } from '../context/TerminalAuthContext'
-import { Eye, EyeOff, AlertCircle, ChevronRight } from 'lucide-react'
-import { TERMINAL_USERS } from '../config/roles'
+import { Eye, EyeOff, AlertCircle } from 'lucide-react'
 import ParticleNetwork from '../components/ParticleNetwork'
 
 export default function TerminalLoginPage() {
@@ -27,30 +26,6 @@ export default function TerminalLoginPage() {
       setLoading(false)
     }
   }
-
-  const quickLogin = async (email) => {
-    const user = TERMINAL_USERS[email]
-    setEmail(email)
-    setPassword(user.password)
-    setError('')
-    setLoading(true)
-    try {
-      await login(email, user.password)
-      navigate('/')
-    } catch (err) {
-      setError(err.message)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const demoAccounts = [
-    { email: 'ceo@cgcc.org',        label: 'Leadership',  desc: 'Full market access' },
-    { email: 'membership@cgcc.org', label: 'Membership',  desc: 'Recruit queue focus' },
-    { email: 'member@cgcc.org',     label: 'Member',      desc: 'Business-centric' },
-    { email: 'guest@cgcc.org',      label: 'Non-Member',  desc: 'Teaser preview' },
-    { email: 'admin@cgcc.org',      label: 'Admin',       desc: 'Full system access' },
-  ]
 
   return (
     <div className="min-h-screen bg-[#020617] flex relative overflow-hidden">
@@ -151,22 +126,9 @@ export default function TerminalLoginPage() {
               </button>
             </form>
 
-            <div className="mt-6">
-              <p className="text-xs text-slate-500 mb-3">Quick access</p>
-              <div className="space-y-1.5">
-                {demoAccounts.map(acc => (
-                  <button key={acc.email} onClick={() => quickLogin(acc.email)}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-md border border-white/5
-                      hover:border-white/15 hover:bg-white/5 transition-all group text-left">
-                    <div>
-                      <p className="text-xs text-slate-300 font-medium">{acc.label}</p>
-                      <p className="text-[10px] text-slate-600">{acc.desc}</p>
-                    </div>
-                    <ChevronRight size={14} className="text-slate-700 group-hover:text-slate-400 transition-colors" />
-                  </button>
-                ))}
-              </div>
-            </div>
+            <p className="mt-6 text-[11px] text-slate-600 text-center">
+              Need access? Contact your chamber administrator.
+            </p>
           </div>
         </div>
       </div>

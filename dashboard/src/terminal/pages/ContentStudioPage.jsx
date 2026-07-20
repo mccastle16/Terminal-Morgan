@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTerminalData } from '../context/TerminalDataContext'
+import { useTerminalAuth } from '../context/TerminalAuthContext'
 import {
   FileText, Mail, MessageSquare, Newspaper, Megaphone,
   Copy, Download, Check, Search, Sparkles,
@@ -53,8 +54,9 @@ function generateContent(business, type, tone) {
 
 export default function ContentStudioPage() {
   const { rawBusinesses } = useTerminalData()
+  const { user } = useTerminalAuth()
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedBizId, setSelectedBizId] = useState(() => localStorage.getItem('terminal_my_business') || '')
+  const [selectedBizId, setSelectedBizId] = useState(() => user?.businessId || localStorage.getItem('terminal_my_business') || '')
   const [contentType, setContentType] = useState('email')
   const [tone, setTone] = useState('professional')
   const [output, setOutput] = useState('')

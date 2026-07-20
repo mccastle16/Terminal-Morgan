@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTerminalData } from '../context/TerminalDataContext'
+import { useTerminalAuth } from '../context/TerminalAuthContext'
 import {
   Users, Building2, Star, Award, ArrowRight, Search,
   Briefcase, Scale, Landmark, Car, Utensils, GraduationCap,
@@ -16,10 +17,11 @@ const categoryIcons = {
 
 export default function EcosystemPage() {
   const { rawBusinesses, stats } = useTerminalData()
+  const { user } = useTerminalAuth()
   const navigate = useNavigate()
   const [serviceSearch, setServiceSearch] = useState('')
 
-  const selectedBusinessId = localStorage.getItem('terminal_my_business')
+  const selectedBusinessId = user?.businessId || localStorage.getItem('terminal_my_business')
   const myBusiness = rawBusinesses.find(b => b._id === selectedBusinessId)
 
   const serviceCategories = useMemo(() => {

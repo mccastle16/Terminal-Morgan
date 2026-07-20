@@ -1,5 +1,10 @@
 // ─── OpenAI API Client ───────────────────────────────────────────────────────
 // Calls the Express proxy at /api/chat. Falls back gracefully if server is down.
+// /api/chat requires an authenticated session, so requests go through apiFetch
+// (injects the Bearer token). The server personalizes the advisor from that
+// identity — the user's own business context is added server-side, not here.
+
+import { apiFetch } from '../../lib/api'
 
 /**
  * Build a lightweight data context blob for the system prompt.
@@ -123,9 +128,8 @@ export function buildDataContext(stats, entities, rawBusinesses, marketAnalytics
  */
 export async function callOpenAI(messages, dataContext, provider) {
   try {
-    const res = await fetch('/api/chat', {
+    const res = await apiFetch('/api/chat', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ messages, dataContext, provider }),
     })
 

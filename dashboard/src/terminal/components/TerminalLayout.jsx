@@ -7,7 +7,7 @@ import {
   LayoutDashboard, Search, Building2, BarChart3, GitCompare, ShieldAlert,
   UserPlus, Zap, Users, Share2, FlaskConical, FileText, Brain, Lightbulb,
   LogOut, ChevronLeft, ChevronRight, User, Crosshair,
-  MapPin, Bell, Download, HelpCircle, Pencil, Database, Crown, Rocket,
+  MapPin, Bell, Download, HelpCircle, Pencil, Database, Crown, Rocket, UserCog,
 } from 'lucide-react'
 
 const NAV_SECTIONS = [
@@ -51,6 +51,7 @@ const NAV_SECTIONS = [
       { to: '/experiments',  icon: FlaskConical,    label: 'Experiments',   permission: 'view_analytics' },
       { to: '/content',      icon: FileText,        label: 'Content' },
       { to: '/data-refresh', icon: Database,         label: 'Data Health',  permission: 'manage_data' },
+      { to: '/admin',        icon: UserCog,          label: 'Users & Claims', permission: 'manage_users' },
       { to: '/onboarding',   icon: Rocket,          label: 'Tour' },
     ],
   },

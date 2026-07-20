@@ -26,6 +26,7 @@ import MapPage from './pages/MapPage'
 import MembershipResolutionPage from './pages/MembershipResolutionPage'
 import CorrectionPage from './pages/CorrectionPage'
 import DataRefreshPage from './pages/DataRefreshPage'
+import AdminUsersPage from './pages/AdminUsersPage'
 import OnboardingPage from './pages/OnboardingPage'
 import SponsorPage from './pages/SponsorPage'
 import UpgradePage from './pages/UpgradePage'
@@ -81,6 +82,7 @@ export default function TerminalRoutes() {
             <Route path="resolve" element={<MembershipResolutionPage />} />
             <Route path="corrections" element={<CorrectionPage />} />
             <Route path="data-refresh" element={<DataRefreshPage />} />
+            <Route path="admin" element={<AdminUsersPage />} />
             <Route path="onboarding" element={<OnboardingPage />} />
             <Route path="sponsor" element={<SponsorPage />} />
             <Route path="upgrade" element={<UpgradePage />} />
