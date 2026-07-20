@@ -1,22 +1,27 @@
 import express from 'express'
 import cors from 'cors'
 import { config } from 'dotenv'
+import { fileURLToPath } from 'url'
+import { dirname, resolve } from 'path'
 import { getBusinesses, getGraph, getGraphStats, verifyConnectivity } from './neo4j.js'
 import { getAnalyticsQueries } from './analytics.js'
 import { getOpportunities } from './opportunities.js'
+import { getNetworkCentrality } from './centrality.js'
+import { getSentimentThemes } from './sentiment.js'
+import { getPredictionSummary } from './predictions.js'
+import { callLLM, getProviders, defaultProvider } from './llm.js'
 
-config() // load .env
+// Load the repo-root .env (where the OPENAI/GEMINI/PERPLEXITY/NEO4J keys live),
+// then the server-local .env for overrides like API_PORT. dotenv does not
+// clobber already-set vars, so root values win. Resolved from this file's path
+// so it works regardless of the process cwd.
+const __dirname = dirname(fileURLToPath(import.meta.url))
+config({ path: resolve(__dirname, '../../.env') })
+config({ path: resolve(__dirname, '.env') })
 
 const app = express()
 app.use(cors())
 app.use(express.json({ limit: '1mb' }))
-
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY
-const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini'
-
-if (!OPENAI_API_KEY) {
-  console.error('⚠  OPENAI_API_KEY not set in .env — server will start but LLM calls will fail')
-}
 
 // ── System prompt ─────────────────────────────────────────────────────────────
 function buildSystemPrompt(dataContext) {
@@ -144,79 +149,35 @@ const CHART_TOOL = {
 }
 
 // ── Chat endpoint ─────────────────────────────────────────────────────────────
+// Provider-agnostic: picks OpenAI / Gemini / Perplexity via req.body.provider
+// (falls back to the first provider with a configured key). All the API-specific
+// wiring lives in llm.js.
 app.post('/api/chat', async (req, res) => {
-  if (!OPENAI_API_KEY) {
-    return res.status(500).json({ error: 'OPENAI_API_KEY not configured' })
-  }
-
-  const { messages, dataContext } = req.body
+  const { messages, dataContext, provider } = req.body
 
   if (!messages || !Array.isArray(messages)) {
     return res.status(400).json({ error: 'messages array required' })
   }
 
+  const chosen = provider || defaultProvider()
   const systemPrompt = buildSystemPrompt(dataContext)
-
-  const apiMessages = [
-    { role: 'system', content: systemPrompt },
-    ...messages.map(m => ({
-      role: m.role === 'advisor' ? 'assistant' : m.role,
-      content: m.text || m.content || '',
-    })),
-  ]
+  const chatMessages = messages.map(m => ({
+    role: m.role === 'user' ? 'user' : 'assistant',
+    content: m.text || m.content || '',
+  }))
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${OPENAI_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: OPENAI_MODEL,
-        messages: apiMessages,
-        tools: [CHART_TOOL],
-        tool_choice: 'auto',
-        temperature: 0.7,
-        max_tokens: 1024,
-      }),
+    const { text, chartInstructions, usage, model } = await callLLM({
+      provider: chosen,
+      systemPrompt,
+      messages: chatMessages,
+      tool: CHART_TOOL,
     })
-
-    if (!response.ok) {
-      const err = await response.text()
-      console.error('OpenAI error:', response.status, err)
-      return res.status(response.status).json({ error: `OpenAI API error: ${response.status}` })
-    }
-
-    const data = await response.json()
-    const choice = data.choices?.[0]
-    const usage = data.usage
-
-    // Extract text content
-    let text = choice?.message?.content || ''
-
-    // Extract chart instructions from tool calls (if any)
-    let chartInstructions = []
-    const toolCalls = choice?.message?.tool_calls
-    if (toolCalls?.length > 0) {
-      for (const tc of toolCalls) {
-        if (tc.function?.name === 'generate_charts') {
-          try {
-            const args = JSON.parse(tc.function.arguments)
-            if (args.charts?.length > 0) {
-              chartInstructions.push(...args.charts)
-            }
-          } catch (e) {
-            console.error('Failed to parse chart tool call:', e.message)
-          }
-        }
-      }
-    }
-
-    return res.json({ text, chartInstructions, usage })
+    return res.json({ text, chartInstructions, usage, provider: chosen, model })
   } catch (err) {
-    console.error('Server error:', err.message)
-    return res.status(500).json({ error: 'Failed to reach OpenAI API' })
+    const status = err.status || 500
+    console.error(`LLM error [${chosen}]:`, status, err.detail || err.message)
+    return res.status(status).json({ error: err.message, provider: chosen })
   }
 })
 
@@ -281,18 +242,56 @@ app.get('/api/opportunities', async (req, res) => {
   }
 })
 
+app.get('/api/network-centrality', async (req, res) => {
+  try {
+    res.json(await getNetworkCentrality())
+  } catch (err) {
+    console.error('Neo4j /api/network-centrality error:', err.message)
+    res.status(503).json({ error: 'Neo4j unavailable', detail: err.message })
+  }
+})
+
+app.get('/api/sentiment-themes', async (req, res) => {
+  try {
+    res.json(await getSentimentThemes())
+  } catch (err) {
+    console.error('Neo4j /api/sentiment-themes error:', err.message)
+    res.status(503).json({ error: 'Neo4j unavailable', detail: err.message })
+  }
+})
+
+app.get('/api/prediction-summary', async (req, res) => {
+  try {
+    res.json(await getPredictionSummary())
+  } catch (err) {
+    console.error('Neo4j /api/prediction-summary error:', err.message)
+    res.status(503).json({ error: 'Neo4j unavailable', detail: err.message })
+  }
+})
+
+// ── LLM providers ─────────────────────────────────────────────────────────────
+app.get('/api/providers', (req, res) => {
+  res.json({ providers: getProviders(), default: defaultProvider() })
+})
+
 // ── Health check ──────────────────────────────────────────────────────────────
 app.get('/api/health', (req, res) => {
+  const providers = getProviders()
+  const active = providers.find(p => p.id === defaultProvider())
   res.json({
     status: 'ok',
-    model: OPENAI_MODEL,
-    hasKey: !!OPENAI_API_KEY,
+    provider: active?.id || null,
+    model: active?.model || null,
+    hasKey: providers.some(p => p.available),
+    providers,
   })
 })
 
 const PORT = process.env.API_PORT || 3005
 app.listen(PORT, () => {
   console.log(`✓ Terminal API server running on http://localhost:${PORT}`)
-  console.log(`  Model: ${OPENAI_MODEL}`)
-  console.log(`  API Key: ${OPENAI_API_KEY ? '✓ configured' : '✗ MISSING — set OPENAI_API_KEY in .env'}`)
+  const providers = getProviders()
+  const configured = providers.filter(p => p.available)
+  console.log(`  LLM providers: ${configured.length ? configured.map(p => `${p.label} (${p.model})`).join(', ') : '✗ NONE — set OPENAI_API_KEY / GEMINI_API_KEY / PERPLEXITY_API_KEY'}`)
+  if (configured.length) console.log(`  Default: ${defaultProvider()}`)
 })

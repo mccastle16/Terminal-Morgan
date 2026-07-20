@@ -121,12 +121,12 @@ export function buildDataContext(stats, entities, rawBusinesses, marketAnalytics
  * chartInstructions is an array of lightweight chart specs from function calling —
  * the LLM decides WHAT to chart, the client builds real data.
  */
-export async function callOpenAI(messages, dataContext) {
+export async function callOpenAI(messages, dataContext, provider) {
   try {
     const res = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages, dataContext }),
+      body: JSON.stringify({ messages, dataContext, provider }),
     })
 
     if (!res.ok) {
@@ -153,7 +153,13 @@ export async function checkAPIHealth() {
     const res = await fetch('/api/health', { signal: AbortSignal.timeout(2000) })
     if (!res.ok) return { available: false }
     const data = await res.json()
-    return { available: data.hasKey, model: data.model }
+    return {
+      available: data.hasKey,
+      model: data.model,
+      provider: data.provider,
+      // Only providers with a configured key are selectable in the UI.
+      providers: (data.providers || []).filter(p => p.available),
+    }
   } catch {
     return { available: false }
   }

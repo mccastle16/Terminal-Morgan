@@ -4,6 +4,19 @@ import { computeRecruitabilityScore, getRecruitabilityBand, getRecruitReasons } 
 
 const TerminalDataContext = createContext(null)
 
+// Neighborhood names arrive from Neo4j with inconsistent casing/whitespace
+// (e.g. "chapinero", "Chapinero", "CHAPINERO "), which otherwise show up as
+// separate entries in penetration charts and filters. Canonicalize to a single
+// Title Case form so casing variants collapse into one neighborhood.
+function normalizeNeighborhood(raw) {
+  if (!raw) return raw
+  const cleaned = raw.trim().replace(/\s+/g, ' ')
+  if (!cleaned) return cleaned
+  return cleaned
+    .toLowerCase()
+    .replace(/\b\p{L}/gu, (ch) => ch.toUpperCase())
+}
+
 export function TerminalDataProvider({ children }) {
   const { tenant } = useTerminalAuth()
   const [rawBusinesses, setRawBusinesses] = useState([])
@@ -57,6 +70,7 @@ export function TerminalDataProvider({ children }) {
 
         const biz = {
           ...row,
+          neighborhood_area: normalizeNeighborhood(row.neighborhood_area),
           _id: row.business_id || `biz_${i}`,
           _rating: parseFloat(row.rating_primary_value) || 0,
           _reviewCount: parseInt(row.rating_primary_review_count) || 0,
@@ -131,6 +145,19 @@ export function TerminalDataProvider({ children }) {
       return true
     })
   }, [rawBusinesses, filters])
+
+  // Most recent review date across the live dataset. Drives the "Updated …"
+  // freshness label instead of the hardcoded tenant.lastRefresh. Falls back to
+  // the tenant config only when no rows carry a parseable last_reviewed date.
+  const lastRefresh = useMemo(() => {
+    let maxT = 0
+    let maxV = null
+    for (const b of rawBusinesses) {
+      const t = Date.parse(b.last_reviewed)
+      if (!isNaN(t) && t > maxT) { maxT = t; maxV = b.last_reviewed }
+    }
+    return maxV || tenant.lastRefresh
+  }, [rawBusinesses, tenant])
 
   // Market statistics
   const stats = useMemo(() => {
@@ -225,9 +252,9 @@ export function TerminalDataProvider({ children }) {
         ratingCoverage: parseFloat((withRating / all.length * 100).toFixed(1)),
         highValidationRate: parseFloat((highValidation / all.length * 100).toFixed(1)),
       },
-      lastRefresh: tenant.lastRefresh,
+      lastRefresh,
     }
-  }, [rawBusinesses, tenant])
+  }, [rawBusinesses, lastRefresh])
 
   // ── Deep Market Analytics ───────────────────────────────────────────────────
   const marketAnalytics = useMemo(() => {
@@ -401,21 +428,29 @@ export function TerminalDataProvider({ children }) {
   const [centralityData, setCentralityData] = useState(null)
   const [predictionData, setPredictionData] = useState(null)
 
+  // Enrichment (sentiment/centrality/predictions) comes from live Neo4j-backed
+  // endpoints, so only fetch once businesses have connected (dataSource === 'live').
+  // Keying on dataSource means this re-runs after a reconnect — e.g. the DataGate
+  // "Retry" — instead of staying null forever if the API was down at first mount.
   useEffect(() => {
+    if (dataSource !== 'live') return
+    let cancelled = false
     Promise.all([
       fetch('/data/latest_delta.json').then(r => r.ok ? r.json() : null).catch(() => null),
       fetch('/data/delta_history.json').then(r => r.ok ? r.json() : []).catch(() => []),
-      fetch('/data/sentiment_themes.json').then(r => r.ok ? r.json() : null).catch(() => null),
-      fetch('/data/network_centrality.json').then(r => r.ok ? r.json() : null).catch(() => null),
-      fetch('/data/prediction_summary.json').then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch('/api/sentiment-themes').then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch('/api/network-centrality').then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch('/api/prediction-summary').then(r => r.ok ? r.json() : null).catch(() => null),
     ]).then(([delta, history, sentiment, centrality, predictions]) => {
+      if (cancelled) return
       setDeltaData(delta)
       setDeltaHistory(history)
       setSentimentData(sentiment)
       setCentralityData(centrality)
       setPredictionData(predictions)
     })
-  }, [])
+    return () => { cancelled = true }
+  }, [dataSource])
 
   // Recruit queue — pre-sorted by score
   const recruitQueue = useMemo(() => {
@@ -465,7 +500,7 @@ export function TerminalDataProvider({ children }) {
   return (
     <TerminalDataContext.Provider value={{
       businesses, filteredBusinesses: businesses, rawBusinesses, loading, error,
-      stats, recruitQueue, marketAnalytics, deltaData, deltaHistory,
+      stats, recruitQueue, marketAnalytics, lastRefresh, deltaData, deltaHistory,
       sentimentData, centralityData, predictionData,
       filters, setFilters,
       getBusinessById, getPeers, getNearby,

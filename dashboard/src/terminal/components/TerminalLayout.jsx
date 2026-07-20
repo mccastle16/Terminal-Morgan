@@ -58,6 +58,7 @@ const NAV_SECTIONS = [
 
 export default function TerminalLayout() {
   const { user, logout, can, tenant } = useTerminalAuth()
+  const { lastRefresh } = useTerminalData()
   const navigate = useNavigate()
   const [collapsed, setCollapsed] = useState(false)
 
@@ -139,7 +140,7 @@ export default function TerminalLayout() {
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             <span className="text-slate-400">{tenant.city}, {tenant.state}</span>
             <span className="text-slate-700">·</span>
-            <span>Updated {tenant.lastRefresh}</span>
+            <span>Updated {lastRefresh || tenant.lastRefresh}</span>
           </div>
           <div className="flex items-center gap-3">
             <DataSourceBadge />

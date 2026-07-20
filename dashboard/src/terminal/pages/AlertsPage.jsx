@@ -7,6 +7,7 @@ import {
   Building2, ChevronRight, CheckCircle, Filter, Flame, Eye,
   Lightbulb, Users, Star, XCircle,
 } from 'lucide-react'
+import { StaticBadge } from '../components/TrustBadge'
 
 function AlertCard({ alert, onDismiss, onNavigate }) {
   const priorityStyles = {
@@ -36,6 +37,7 @@ function AlertCard({ alert, onDismiss, onNavigate }) {
                 {alert.priority}
               </span>
               <span className="text-[10px] text-slate-600">{alert.category}</span>
+              {alert.staticFlag && <StaticBadge />}
               <span className="text-[10px] text-slate-700 ml-auto">{alert.time}</span>
             </div>
             <h3 className="font-semibold text-white text-sm mb-1">{alert.title}</h3>
@@ -114,6 +116,7 @@ export default function AlertsPage() {
         description: `Last data refresh was ${tenant.lastRefresh}. Recommended refresh cadence is ${tenant.refreshCadence}.`,
         businesses: [],
         time: `${daysSince}d overdue`,
+        staticFlag: true,
       })
     }
 
