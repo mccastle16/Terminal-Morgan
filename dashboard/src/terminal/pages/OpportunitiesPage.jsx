@@ -4,6 +4,7 @@ import {
   PieChart, Pie, Cell, CartesianGrid,
 } from 'recharts'
 import { VGRADIENTS, HGRADIENTS, ChartTooltip, PieLabel, axisTick, axisTickLabel, barCursor } from '../components/ChartTheme'
+import InfoTooltip from '../components/InfoTooltip'
 import {
   Lightbulb, TrendingUp, MapPin, Target, Building2, Rocket,
   ChevronDown, ChevronRight,
@@ -22,9 +23,9 @@ function Panel({ title, subtitle, children, className = '' }) {
   )
 }
 
-function StatCard({ icon: Icon, label, value, sub }) {
+function StatCard({ icon: Icon, label, value, sub, info }) {
   return (
-    <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4">
+    <div className="relative bg-slate-900/50 border border-slate-800 rounded-lg p-4">
       <div className="flex items-center gap-2.5 mb-1">
         <div className="w-7 h-7 rounded-lg bg-slate-800 border border-slate-700/60 flex items-center justify-center">
           <Icon className="w-3.5 h-3.5 text-slate-400" />
@@ -33,6 +34,11 @@ function StatCard({ icon: Icon, label, value, sub }) {
       </div>
       <div className="text-xl font-semibold text-white">{value}</div>
       {sub && <div className="text-xs text-slate-600 mt-1">{sub}</div>}
+      {info && (
+        <div className="absolute bottom-2 right-2">
+          <InfoTooltip text={info} side="top" align="right" />
+        </div>
+      )}
     </div>
   )
 }
@@ -129,8 +135,8 @@ export default function OpportunitiesPage() {
       .map(g => ({ name: g.category.replace(/_/g, ' '), gap: g.gap_businesses, current: g.current_count, pct: g.gap_pct }))
 
     const demandPie = [
-      { name: 'High', value: data.opportunities.filter(o => o.estimated_demand === 'high').length, fill: '#10b981' },
-      { name: 'Medium', value: data.opportunities.filter(o => o.estimated_demand === 'medium').length, fill: '#f59e0b' },
+      { name: 'High Demand', value: data.opportunities.filter(o => o.estimated_demand === 'high').length, fill: '#10b981' },
+      { name: 'Medium Demand', value: data.opportunities.filter(o => o.estimated_demand === 'medium').length, fill: '#f59e0b' },
     ]
 
     const hoodMap = {}
@@ -171,17 +177,26 @@ export default function OpportunitiesPage() {
           <p className="text-sm text-slate-500 mt-0.5">
             Business gaps in Coral Gables — {summary.total_businesses?.toLocaleString()} businesses analyzed
           </p>
+          <p className="text-xs text-slate-600 mt-1 max-w-2xl">
+            A business gap counts all the existing businesses in Coral Gables and compares each category (restaurants, gyms, salons, etc.) against a benchmark of how many businesses that category "should" have given the population.
+          </p>
         </div>
         <span className="text-xs text-slate-600">Generated {new Date(data.generated).toLocaleDateString()}</span>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-        <StatCard icon={Building2} label="Businesses" value={summary.total_businesses?.toLocaleString()} />
-        <StatCard icon={TrendingUp} label="Market Gap" value={`+${summary.total_gap?.toLocaleString()}`} sub="needed" />
-        <StatCard icon={Lightbulb} label="Opportunities" value={data.opportunities.length} sub={`${data.opportunities.filter(o => o.estimated_demand === 'high').length} high demand`} />
-        <StatCard icon={Target} label="Gap Categories" value={summary.gap_categories} sub="of 19 tracked" />
-        <StatCard icon={MapPin} label="Deserts" value={data.neighborhood_deserts?.length || 0} sub="neighborhoods" />
-        <StatCard icon={Rocket} label="Median Income" value={`$${(summary.median_income / 1000).toFixed(0)}K`} sub="spending power" />
+        <StatCard icon={Building2} label="Businesses" value={summary.total_businesses?.toLocaleString()}
+          info="Total businesses in Coral Gables that fall into one of the 19 benchmark categories." />
+        <StatCard icon={TrendingUp} label="Market Gap" value={`+${summary.total_gap?.toLocaleString()}`} sub="needed"
+          info="The total number of additional businesses needed across all tracked categories to reach benchmark levels for the area's population." />
+        <StatCard icon={Lightbulb} label="Opportunities" value={data.opportunities.length} sub={`${data.opportunities.filter(o => o.estimated_demand === 'high').length} high demand`}
+          info="Business concepts for underserved markets, rated by estimated demand." />
+        <StatCard icon={Target} label="Gap Categories" value={summary.gap_categories} sub="of 19 tracked"
+          info="The number of tracked business categories that currently have fewer businesses than the benchmark expects for the area's population." />
+        <StatCard icon={MapPin} label="Deserts" value={data.neighborhood_deserts?.length || 0} sub="neighborhoods"
+          info="Neighborhoods short on at least one of the 5 essential categories — under 3 businesses in food, retail, healthcare, professional services, or wellness." />
+        <StatCard icon={Rocket} label="Median Income" value={`$${(summary.median_income / 1000).toFixed(0)}K`} sub="spending power"
+          info="The median household income for the target area, used as an indicator of local spending power when evaluating new business opportunities." />
       </div>
 
       <Panel title="Category Gap Analysis" subtitle="Current businesses vs. benchmark. Red = businesses needed.">
@@ -200,11 +215,11 @@ export default function OpportunitiesPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <Panel title={<>Demand Distribution<StaticTag /></>} subtitle="Opportunities by estimated market demand">
-          <div className="h-52">
+          <div className="h-56">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={chartData.demandPie} cx="50%" cy="50%" innerRadius={50} outerRadius={85} paddingAngle={5} dataKey="value"
-                  label={PieLabel} labelLine={false} strokeWidth={0}>
+                <Pie data={chartData.demandPie} cx="50%" cy="50%" innerRadius={50} outerRadius={80} paddingAngle={0} dataKey="value"
+                  label={PieLabel} labelLine={false} stroke="#000000" strokeWidth={2}>
                   {chartData.demandPie.map((entry, i) => <Cell key={i} fill={entry.fill} />)}
                 </Pie>
                 <Tooltip content={<ChartTooltip />} />
