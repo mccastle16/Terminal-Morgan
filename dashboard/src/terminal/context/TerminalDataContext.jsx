@@ -96,6 +96,12 @@ export function TerminalDataProvider({ children }) {
           })(),
           _corroboration: parseInt(row.corroboration_count) || 0,
           _hasWebsite: !!(row.website && row.website.trim()),
+          // Website verification flag from the re-validation pass:
+          // 'verified' | 'unverified' | '' (no website / not yet evaluated).
+          // Only warn when a site is EXPLICITLY 'unverified' so a missing
+          // property never mass-flags every business.
+          _websiteVerified: (row.website_verified || '').trim(),
+          _websiteUnverified: (row.website_verified || '').trim() === 'unverified',
           _hasPhone: !!(row.phone && row.phone.trim()),
           _hasGeo: !!(row.lat && row.lon && row.lat !== '' && row.lon !== ''),
           _pkpType: row.pkp_node_type || 'unknown',

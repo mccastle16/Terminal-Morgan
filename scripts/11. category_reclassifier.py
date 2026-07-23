@@ -21,6 +21,8 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+from _shared import classify_category
+
 ROOT = Path(__file__).resolve().parent.parent
 MASTER_CSV = ROOT / "data" / "master_all_businesses.csv"
 UNION_CSV  = ROOT / "dashboard" / "public" / "data" / "union_all_businesses.csv"
@@ -35,156 +37,10 @@ VALID_CATEGORIES = [
     "retail", "technology", "wellness",
 ]
 
-# ── Rule-based mapping: category_secondary keywords → category_primary ──────
-
-KEYWORD_MAP = {
-    # Food & Beverage
-    "food_beverage": [
-        "restaurant", "cafe", "coffee", "bakery", "bar", "pub", "pizza",
-        "sushi", "grill", "diner", "caterer", "catering", "juice", "ice cream",
-        "sandwich", "burger", "taco", "brewery", "winery", "bistro", "eatery",
-        "food", "beverage", "pastry", "deli", "donut", "gelato", "chocolat",
-        "smoothie", "tea house", "ramen", "poke", "acai", "dining",
-    ],
-    # Healthcare
-    "healthcare": [
-        "doctor", "dentist", "dental", "medical", "clinic", "hospital",
-        "physician", "surgeon", "optometr", "dermatolog", "pediatr",
-        "chiropr", "orthoped", "psychiat", "pharma", "nursing", "nurse",
-        "urgent care", "health care", "healthcare", "mental health",
-        "therap", "counselor", "audiolog", "podiatr", "oncolog",
-        "cardiolog", "neurolog", "radiology", "patholog", "veterinar",
-    ],
-    # Legal
-    "legal": [
-        "attorney", "lawyer", "law firm", "law office", "legal",
-        "notary", "paralegal", "mediation", "arbitration",
-    ],
-    # Real Estate
-    "real_estate": [
-        "real estate", "realty", "realtor", "property", "mortgage",
-        "title company", "title agency", "apprais", "brokerage",
-        "commercial real", "residential real",
-    ],
-    # Financial Services
-    "financial_services": [
-        "financial advisor", "financial planner", "wealth management",
-        "investment", "cpa", "tax", "payroll", "bookkeeping",
-        "financial service", "asset management", "hedge fund",
-        "private equity", "venture capital", "credit union",
-    ],
-    # Banking
-    "banking": [
-        "bank", "banking", "savings", "chase", "wells fargo",
-        "citibank", "capital one",
-    ],
-    # Insurance
-    "insurance": [
-        "insurance", "aflac", "allstate", "state farm", "geico",
-        "progressive", "allianz", "gallagher",
-    ],
-    # Retail
-    "retail": [
-        "store", "shop", "boutique", "clothing", "apparel", "fashion",
-        "jewel", "furniture", "home decor", "gift", "florist", "flower",
-        "pet", "shoe", "optical", "eyewear", "sporting", "toy",
-        "bookstore", "hardware", "supply", "grocery", "market",
-        "supermarket", "wine shop", "liquor", "smoke",
-    ],
-    # Education
-    "education": [
-        "school", "university", "college", "academy", "tutoring",
-        "learning", "preschool", "daycare", "montessori", "training center",
-        "education", "student", "child care", "childcare",
-    ],
-    # Hospitality
-    "hospitality": [
-        "hotel", "motel", "resort", "inn", "lodge", "suites",
-        "bed and breakfast", "airbnb", "vacation rental", "travel agent",
-        "tour", "event venue", "banquet", "conference center",
-    ],
-    # Construction
-    "construction": [
-        "construct", "contractor", "builder", "plumb", "electric",
-        "hvac", "roofing", "paving", "excavat", "demolition",
-        "renovation", "remodel", "architect", "engineering",
-        "general contractor", "handyman", "landscap",
-    ],
-    # Wellness
-    "wellness": [
-        "spa", "salon", "barber", "nail", "massage", "yoga", "pilates",
-        "fitness", "gym", "crossfit", "wellness", "meditation",
-        "acupuncture", "holistic", "aesthetic", "beauty", "skin care",
-        "skincare", "hair", "wax",
-    ],
-    # Marketing
-    "marketing": [
-        "marketing", "advertis", "branding", "pr agency", "public relat",
-        "social media", "seo", "digital marketing", "graphic design",
-        "web design", "creative agency", "media",
-    ],
-    # Technology
-    "technology": [
-        "software", "tech", "it service", "computer", "cyber",
-        "data", "cloud", "app develop", "web develop", "ai ",
-        "artificial intell", "saas", "telecom",
-    ],
-    # Consulting
-    "consulting": [
-        "consult", "advisory", "coach", "mentor", "strateg",
-        "management consult", "business develop",
-    ],
-    # Nonprofit
-    "nonprofit": [
-        "nonprofit", "non-profit", "foundation", "charity", "association",
-        "society", "red cross", "cancer society", "heart association",
-        "alzheimer", "legion", "rotary", "kiwanis", "lions club",
-        "united way", "habitat for human", "ymca", "ywca",
-    ],
-    # Arts & Culture
-    "arts_culture": [
-        "art gallery", "museum", "theater", "theatre", "performing art",
-        "music", "dance", "studio", "gallery", "cultural",
-        "jazz", "orchestra", "opera", "film", "cinema",
-    ],
-    # Personal Services
-    "personal_services": [
-        "dry clean", "laundry", "tailor", "moving", "storage",
-        "cleaning service", "maid", "pest control", "locksmith",
-        "photographer", "videograph", "print", "sign",
-        "courier", "delivery", "shipping", "postal",
-    ],
-    # Professional Services
-    "professional_services": [
-        "staffing", "recruiting", "human resource", "hr ",
-        "translation", "interpret", "security", "guard",
-        "private investigat", "detective",
-    ],
-    # Auto
-    "auto_dealer": [
-        "auto", "car dealer", "vehicle", "motor", "tire",
-        "auto repair", "body shop", "car wash", "parking",
-    ],
-    # Accounting
-    "accounting": [
-        "accounting", "accountant", "audit",
-    ],
-}
-
-
-def classify_by_keywords(text):
-    """Match text against keyword map. Returns best category or None."""
-    if not text:
-        return None
-    text_lower = text.lower()
-    best_match = None
-    best_count = 0
-    for category, keywords in KEYWORD_MAP.items():
-        count = sum(1 for kw in keywords if kw in text_lower)
-        if count > best_count:
-            best_count = count
-            best_match = category
-    return best_match if best_count > 0 else None
+# ── Rule-based mapping ──────────────────────────────────────────────────────
+# Classification keywords live in _shared.classify_category (word-boundary
+# based) so this reclassifier, Agent 2's map_category, and Agent 2's Pass-4
+# name inference all use ONE ruleset and can never disagree.
 
 
 def classify_business(row):
@@ -197,19 +53,19 @@ def classify_business(row):
 
     # Strategy 1: Use category_secondary
     if cat2:
-        result = classify_by_keywords(cat2)
+        result = classify_category(cat2)
         if result:
             return result, "keyword_cat2"
 
     # Strategy 2: Use business name
     if name:
-        result = classify_by_keywords(name)
+        result = classify_category(name)
         if result:
             return result, "keyword_name"
 
     # Strategy 3: Combined name + cat2
     combined = f"{name} {cat2}"
-    result = classify_by_keywords(combined)
+    result = classify_category(combined)
     if result:
         return result, "keyword_combined"
 

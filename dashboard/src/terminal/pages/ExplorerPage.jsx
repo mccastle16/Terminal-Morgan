@@ -69,7 +69,7 @@ function Card({ title, icon: Icon, iconColor = 'text-amber-400', children, accen
   )
 }
 
-function InfoRow({ label, value, href, icon: Icon, mono = false }) {
+function InfoRow({ label, value, href, icon: Icon, mono = false, badge = null }) {
   if (!value || value === 'undefined' || value === 'null') return null
   return (
     <div className="flex items-center gap-3 py-2 border-b border-slate-800/30 last:border-0">
@@ -83,8 +83,34 @@ function InfoRow({ label, value, href, icon: Icon, mono = false }) {
       ) : (
         <span className={`text-xs ${mono ? 'font-mono text-slate-400' : 'text-slate-300'}`}>{value}</span>
       )}
+      {badge}
     </div>
   )
+}
+
+/* ── Website verification badge ──
+   Flags websites that could NOT be confirmed to belong to the business during
+   the maps re-validation pass. `verified` shows a subtle check; anything with a
+   website that isn't verified shows an amber "Unverified" warning. */
+function WebsiteVerifyBadge({ biz }) {
+  if (!biz._hasWebsite) return null
+  if (biz._websiteUnverified) {
+    return (
+      <span title="This website could not be confirmed to belong to this business. Treat with caution."
+        className="ml-1 shrink-0 inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-semibold uppercase tracking-wide bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        <AlertTriangle size={9} /> Unverified
+      </span>
+    )
+  }
+  if (biz._websiteVerified === 'verified') {
+    return (
+      <span title="Website confirmed to match this business during re-validation."
+        className="ml-1 shrink-0 inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-semibold uppercase tracking-wide bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        <CheckCircle2 size={9} /> Verified
+      </span>
+    )
+  }
+  return null
 }
 
 /* ── Trust Panel (expanded provenance view) ── */
@@ -287,6 +313,12 @@ export default function ExplorerPage() {
           <div className="flex items-center gap-2 mt-5 flex-wrap">
             <QuickAction icon={Phone} label="Call" href={biz.phone ? `tel:${biz.phone}` : null} color="green" />
             <QuickAction icon={Globe} label="Website" href={biz.website_url || biz.website} color="blue" />
+            {biz._websiteUnverified && (
+              <span title="This website could not be confirmed to belong to this business."
+                className="inline-flex items-center gap-1 px-2 py-1 rounded-lg text-[10px] font-semibold uppercase tracking-wide bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                <AlertTriangle size={11} /> Unverified site
+              </span>
+            )}
             <QuickAction icon={Mail} label="Email" href={biz.email ? `mailto:${biz.email}` : null} color="purple" />
             <QuickAction icon={MapPin} label="View on Map" href={biz.google_maps_url} color="amber" />
           </div>
@@ -314,7 +346,7 @@ export default function ExplorerPage() {
           <Card title="Contact & Links" icon={Phone} iconColor="text-blue-400" accentColor="bg-blue-500/40">
             <InfoRow label="Phone" value={biz.phone} icon={Phone} href={biz.phone ? `tel:${biz.phone}` : null} />
             <InfoRow label="Website" value={biz.website_url || biz.website} icon={Globe}
-              href={biz.website_url || biz.website} />
+              href={biz.website_url || biz.website} badge={<WebsiteVerifyBadge biz={biz} />} />
             <InfoRow label="Email" value={biz.email} icon={Mail} href={biz.email ? `mailto:${biz.email}` : null} />
             <InfoRow label="Google Maps" value={biz.google_maps_url ? 'View on map' : null} icon={MapPin}
               href={biz.google_maps_url} />

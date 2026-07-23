@@ -48,110 +48,24 @@ from _shared import (
     CANONICAL_FIELDS,
     CG_BOUNDS,
     CG_ZIPS_SET as CG_ZIPS,
+    NOISE_WORDS,
     NOMINATIM_HEADERS,
     NOMINATIM_URL,
+    classify_category,
     haversine,
     in_coral_gables,
     infer_neighborhood,
     infer_zip,
+    names_match,
     normalize_key,
     normalize_phone,
+    strip_noise,
 )
 
 
 # ── Category mapping ──────────────────────────────────────────────
-CATEGORY_RULES = [
-    ("restaurant", "food_beverage"),
-    ("fast_food", "food_beverage"),
-    ("cafe", "food_beverage"),
-    ("bar", "food_beverage"),
-    ("pub", "food_beverage"),
-    ("bakery", "food_beverage"),
-    ("ice_cream", "food_beverage"),
-    ("food_court", "food_beverage"),
-    ("supermarket", "food_beverage"),
-    ("convenience", "food_beverage"),
-    ("deli", "food_beverage"),
-    ("wine", "food_beverage"),
-    ("coffee", "food_beverage"),
-    ("lawyer", "legal"),
-    ("attorney", "legal"),
-    ("law", "legal"),
-    ("notary", "legal"),
-    ("accountant", "accounting"),
-    ("cpa", "accounting"),
-    ("tax", "accounting"),
-    ("bank", "banking"),
-    ("credit_union", "banking"),
-    ("financial", "financial_services"),
-    ("wealth", "financial_services"),
-    ("insurance", "insurance"),
-    ("real_estate", "real_estate"),
-    ("estate_agent", "real_estate"),
-    ("doctor", "healthcare"),
-    ("dentist", "healthcare"),
-    ("pharmacy", "healthcare"),
-    ("clinic", "healthcare"),
-    ("hospital", "healthcare"),
-    ("veterinary", "healthcare"),
-    ("optician", "healthcare"),
-    ("chiropract", "healthcare"),
-    ("hotel", "hospitality"),
-    ("motel", "hospitality"),
-    ("guest_house", "hospitality"),
-    ("hostel", "hospitality"),
-    ("travel", "hospitality"),
-    ("school", "education"),
-    ("university", "education"),
-    ("college", "education"),
-    ("kindergarten", "education"),
-    ("tutor", "education"),
-    ("place_of_worship", "nonprofit"),
-    ("community_centre", "nonprofit"),
-    ("church", "nonprofit"),
-    ("nonprofit", "nonprofit"),
-    ("foundation", "nonprofit"),
-    ("clothes", "retail"),
-    ("shoes", "retail"),
-    ("jewelry", "retail"),
-    ("boutique", "retail"),
-    ("electronics", "retail"),
-    ("furniture", "retail"),
-    ("department_store", "retail"),
-    ("salon", "personal_services"),
-    ("hairdresser", "personal_services"),
-    ("beauty", "personal_services"),
-    ("cosmetics", "personal_services"),
-    ("nail", "personal_services"),
-    ("barber", "personal_services"),
-    ("spa", "wellness"),
-    ("fitness", "wellness"),
-    ("gym", "wellness"),
-    ("yoga", "wellness"),
-    ("swimming", "wellness"),
-    ("sports_centre", "wellness"),
-    ("architect", "professional_services"),
-    ("engineer", "professional_services"),
-    ("consulting", "consulting"),
-    ("consultant", "consulting"),
-    ("coach", "consulting"),
-    ("marketing", "marketing"),
-    ("advertis", "marketing"),
-    ("construct", "construction"),
-    ("contractor", "construction"),
-    ("plumb", "construction"),
-    ("electric", "construction"),
-    ("car", "auto_dealer"),
-    ("auto", "auto_dealer"),
-    ("theatre", "arts_culture"),
-    ("cinema", "arts_culture"),
-    ("museum", "arts_culture"),
-    ("gallery", "arts_culture"),
-    ("nightclub", "arts_culture"),
-    ("technology", "technology"),
-    ("computer", "technology"),
-    ("it_service", "technology"),
-]
+# Classification rules live in _shared.classify_category (word-boundary based,
+# shared with the reclassifier and Pass-4 name inference) so all stages agree.
 
 # ── Cross-Source Reconciliation Constants ─────────────────────────
 # Map raw source_file values → independent source families.
@@ -174,15 +88,7 @@ COORD_PROXIMITY_M = 100        # meters — two records within 100m are "same lo
 NAME_FUZZY_THRESHOLD = 80      # fuzz.token_sort_ratio minimum for coord-assisted match
 NAME_FUZZY_STRONG = 88         # strong name match (can relax coord requirement)
 
-# Noise words stripped before name comparison to prevent false matches
-# e.g. "Coral Gables X" matching "Coral Gables Y"
-NOISE_WORDS = {
-    "coral", "gables", "miami", "fl", "florida", "south", "north",
-    "the", "of", "and", "at", "in", "by", "for", "a", "an",
-    "inc", "llc", "corp", "ltd", "pa", "pllc", "llp",
-    "restaurant", "bar", "grill", "cafe", "salon", "spa", "hotel",
-    "shop", "store", "center", "centre",
-}
+# NOISE_WORDS now lives in _shared (used by both dedup and Agent 8 verification).
 
 # Sunbiz status code normalization
 SUNBIZ_STATUS_MAP = {
@@ -199,16 +105,11 @@ SUNBIZ_STATUS_MAP = {
 
 
 def map_category(raw_category: str) -> Tuple[str, str]:
-    """Map a raw category string to (primary, secondary)."""
+    """Map a raw category string to (primary, secondary) via the shared classifier."""
     if not raw_category:
         return ("other", "")
-
-    lower = raw_category.lower()
-    for keyword, primary in CATEGORY_RULES:
-        if keyword in lower:
-            return (primary, raw_category.strip())
-
-    return ("other", raw_category.strip())
+    primary = classify_category(raw_category) or "other"
+    return (primary, raw_category.strip())
 
 
 # ── Normalization ─────────────────────────────────────────────────
@@ -584,18 +485,29 @@ def load_staging(staging_dir: str) -> List[Dict[str, str]]:
     return records
 
 
-def fuzzy_match(name: str, existing_names: List[str], threshold: int = 85) -> Optional[str]:
-    """Find best fuzzy match above threshold using process.extractOne().
-    Returns matched name or None."""
-    from fuzzywuzzy import process
+def fuzzy_match(name: str, existing_names: List[str],
+                threshold: int = NAME_FUZZY_STRONG) -> Optional[str]:
+    """Find the best dedup match for `name` among `existing_names`.
 
+    Uses noise-word-stripped comparison with a shared-significant-token
+    requirement (via _shared.names_match) so that generic near-names like
+    "Coral Gables Dental" and "Coral Gables Dermatology" are NOT merged and
+    their websites/fields are not cross-contaminated. Returns the matched name
+    or None.
+    """
     if not existing_names:
         return None
 
-    result = process.extractOne(name, existing_names, score_cutoff=threshold)
-    if result:
-        return result[0]
-    return None
+    best_name = None
+    best_score = 0
+    for candidate in existing_names:
+        if not names_match(name, candidate, threshold):
+            continue
+        score = fuzz.token_sort_ratio(strip_noise(name), strip_noise(candidate))
+        if score > best_score:
+            best_score = score
+            best_name = candidate
+    return best_name
 
 
 def _fill_blanks(master_df: pd.DataFrame, idx: int, record: Dict[str, str], dry_run: bool):
@@ -865,80 +777,18 @@ def enrich_master(master_path: str, dry_run: bool = False) -> None:
     other_rows = df[is_other]
     print(f"\n  Pass 4: Re-categorize — {len(other_rows)} rows currently 'other'")
 
-    # Build extended keyword rules from business name
-    NAME_CATEGORY_HINTS = [
-        ("restaurant", "food_beverage"), ("grill", "food_beverage"),
-        ("pizza", "food_beverage"), ("sushi", "food_beverage"),
-        ("cafe", "food_beverage"), ("coffee", "food_beverage"),
-        ("bakery", "food_beverage"), ("bar ", "food_beverage"),
-        ("brewery", "food_beverage"), ("taco", "food_beverage"),
-        ("burger", "food_beverage"), ("deli", "food_beverage"),
-        ("ice cream", "food_beverage"), ("steakhouse", "food_beverage"),
-        ("bistro", "food_beverage"), ("trattoria", "food_beverage"),
-        ("law", "legal"), ("attorney", "legal"), ("legal", "legal"),
-        ("esq", "legal"), ("notary", "legal"),
-        ("accounting", "accounting"), ("cpa", "accounting"), ("tax", "accounting"),
-        ("bank", "banking"), ("credit union", "banking"),
-        ("financial", "financial_services"), ("wealth", "financial_services"),
-        ("invest", "financial_services"), ("capital", "financial_services"),
-        ("insurance", "insurance"), ("allstate", "insurance"),
-        ("state farm", "insurance"), ("geico", "insurance"),
-        ("real estate", "real_estate"), ("realty", "real_estate"),
-        ("properties", "real_estate"), ("mortgage", "real_estate"),
-        ("doctor", "healthcare"), ("medical", "healthcare"),
-        ("dental", "healthcare"), ("dentist", "healthcare"),
-        ("clinic", "healthcare"), ("hospital", "healthcare"),
-        ("pharmacy", "healthcare"), ("orthodont", "healthcare"),
-        ("dermatolog", "healthcare"), ("pediatr", "healthcare"),
-        ("chiropract", "healthcare"), ("optom", "healthcare"),
-        ("physical therapy", "healthcare"), ("urgent care", "healthcare"),
-        ("hotel", "hospitality"), ("inn ", "hospitality"),
-        ("resort", "hospitality"), ("travel", "hospitality"),
-        ("school", "education"), ("academy", "education"),
-        ("university", "education"), ("college", "education"),
-        ("tutor", "education"), ("learning", "education"),
-        ("montessori", "education"), ("preschool", "education"),
-        ("church", "nonprofit"), ("temple", "nonprofit"),
-        ("synagogue", "nonprofit"), ("mosque", "nonprofit"),
-        ("foundation", "nonprofit"), ("charity", "nonprofit"),
-        ("salon", "personal_services"), ("barber", "personal_services"),
-        ("hair", "personal_services"), ("nail", "personal_services"),
-        ("beauty", "personal_services"), ("spa", "wellness"),
-        ("fitness", "wellness"), ("gym", "wellness"),
-        ("yoga", "wellness"), ("pilates", "wellness"),
-        ("crossfit", "wellness"), ("martial art", "wellness"),
-        ("architect", "professional_services"),
-        ("engineer", "professional_services"),
-        ("consult", "consulting"), ("advisory", "consulting"),
-        ("marketing", "marketing"), ("advertis", "marketing"),
-        ("design", "marketing"), ("media", "marketing"),
-        ("construction", "construction"), ("contractor", "construction"),
-        ("plumb", "construction"), ("electric", "construction"),
-        ("roofing", "construction"), ("painting", "construction"),
-        ("auto", "auto_dealer"), ("car wash", "auto_dealer"),
-        ("tire", "auto_dealer"), ("mechanic", "auto_dealer"),
-        ("gallery", "arts_culture"), ("museum", "arts_culture"),
-        ("theatre", "arts_culture"), ("theater", "arts_culture"),
-        ("tech", "technology"), ("software", "technology"),
-        ("IT ", "technology"), ("computer", "technology"),
-        ("cyber", "technology"), ("cloud", "technology"),
-        ("cleaners", "retail"), ("dry clean", "retail"),
-        ("boutique", "retail"), ("jewelry", "retail"),
-        ("optical", "retail"), ("pet", "retail"),
-        ("flower", "retail"), ("florist", "retail"),
-    ]
-
+    # Re-categorize via the shared word-boundary classifier (name + secondary),
+    # so this pass agrees with map_category and the reclassifier.
     for idx in other_rows.index:
-        name = str(df.loc[idx, "business_name"]).lower()
-        secondary = str(df.loc[idx, "category_secondary"]).lower()
+        name = str(df.loc[idx, "business_name"])
+        secondary = str(df.loc[idx, "category_secondary"])
         combined = f"{name} {secondary}"
 
-        for keyword, category in NAME_CATEGORY_HINTS:
-            if keyword in combined:
-                if not dry_run:
-                    df.loc[idx, "category_primary"] = category
-                stats["recategorized"] += 1
-                break
+        category = classify_category(combined)
+        if category:
+            if not dry_run:
+                df.loc[idx, "category_primary"] = category
+            stats["recategorized"] += 1
 
     print(f"    Recategorized: {stats['recategorized']}")
 
@@ -969,27 +819,6 @@ def _infer_family(source_file: str) -> str:
         if prefix in sf:
             return family
     return sf or "unknown"
-
-
-def _strip_noise(name: str) -> str:
-    """Remove noise words from a business name for comparison."""
-    words = re.sub(r"[^a-z0-9\s]", "", name.lower()).split()
-    significant = [w for w in words if w not in NOISE_WORDS and len(w) > 1]
-    return " ".join(significant)
-
-
-def _names_match(name_a: str, name_b: str, threshold: int) -> bool:
-    """Check if two business names match after noise-word filtering."""
-    clean_a = _strip_noise(name_a)
-    clean_b = _strip_noise(name_b)
-    if not clean_a or not clean_b:
-        return False
-    # Must share at least 1 significant token
-    tokens_a = set(clean_a.split())
-    tokens_b = set(clean_b.split())
-    if not tokens_a & tokens_b:
-        return False
-    return fuzz.token_sort_ratio(clean_a, clean_b) >= threshold
 
 
 def reconcile_sources(df: pd.DataFrame, dry_run: bool = False) -> pd.DataFrame:
@@ -1120,7 +949,7 @@ def reconcile_sources(df: pd.DataFrame, dry_run: bool = False) -> pd.DataFrame:
                 pass_b_checked += 1
                 if dist > COORD_PROXIMITY_M:
                     continue
-                if not _names_match(r1["name"], r2["name"], NAME_FUZZY_THRESHOLD):
+                if not names_match(r1["name"], r2["name"], NAME_FUZZY_THRESHOLD):
                     continue
 
                 merge_groups(r1["idx"], r2["idx"])
@@ -1155,7 +984,7 @@ def reconcile_sources(df: pd.DataFrame, dry_run: bool = False) -> pd.DataFrame:
                 if (record_to_group.get(r_nc["idx"]) is not None
                         and record_to_group.get(r_nc["idx"]) == record_to_group.get(r_hc["idx"])):
                     continue
-                if not _names_match(r_nc["name"], r_hc["name"], NAME_FUZZY_STRONG):
+                if not names_match(r_nc["name"], r_hc["name"], NAME_FUZZY_STRONG):
                     continue
                 merge_groups(r_nc["idx"], r_hc["idx"])
                 pass_c_matches += 1

@@ -1,0 +1,34 @@
+{
+  "& son": {
+    "action": "replace",
+    "value": "https://shopandson.com/"
+  },
+  "17 Real Estate Brokers": {
+    "action": "delete",
+    "value": ""
+  },
+  "19th Hole Sports Bar & Grill": {
+    "action": "delete",
+    "value": ""
+  },
+  "305 Senior": {
+    "action": "replace",
+    "value": "https://305senior.com/"
+  },
+  "450Gradi Miami Italian Restaurant": {
+    "action": "replace",
+    "value": "https://450gradimiami.com/"
+  },
+  "AJP Ventures Corp.": {
+    "action": "delete",
+    "value": ""
+  },
+  "Aleida Martinez Family Day Care Center": {
+    "action": "delete",
+    "value": ""
+  },
+  "Allied North America Insurance Brokerage Of FL LLC": {
+    "action": "delete",
+    "value": ""
+  }
+}

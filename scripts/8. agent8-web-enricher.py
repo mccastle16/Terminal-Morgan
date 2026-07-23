@@ -39,12 +39,16 @@ from typing import Dict, List, Optional
 
 import pandas as pd
 
-from _shared import normalize_phone
+from _shared import name_similarity, normalize_key, normalize_phone
 
 # ── API keys ────────────────────────────────────────────────────────
 
 SERPAPI_KEY = os.environ.get("SERPAPI_KEY", "")
 OUTSCRAPER_KEY = os.environ.get("OUTSCRAPER_KEY", "")
+
+# Minimum noise-stripped name similarity (0-100) to accept a search result as
+# the same business as the lead when there is no phone/domain corroboration.
+NAME_MATCH_THRESHOLD = 82
 
 
 # ── Retry logic (mirrors Agent 1) ──────────────────────────────────
@@ -173,17 +177,87 @@ def build_query(lead: pd.Series) -> str:
         return base
 
 
+# ── Result verification ─────────────────────────────────────────────
+
+def _domain_root(url: str) -> str:
+    """Extract the registrable-ish domain (host minus protocol/www/path/port)."""
+    if not url:
+        return ""
+    host = re.sub(r"^\w+://", "", url.strip().lower())
+    host = host.split("/")[0].split("?")[0].split(":")[0]
+    if host.startswith("www."):
+        host = host[4:]
+    return host
+
+
+def _domain_stem(url: str) -> str:
+    """The bare second-level domain, alphanumeric only (e.g. 'bellagables')."""
+    root = _domain_root(url)
+    if not root:
+        return ""
+    parts = root.split(".")
+    stem = parts[-2] if len(parts) >= 2 else parts[0]
+    return re.sub(r"[^a-z0-9]", "", stem)
+
+
+def is_confident_match(lead: pd.Series, result: Dict,
+                       name_threshold: int = NAME_MATCH_THRESHOLD) -> bool:
+    """
+    Decide whether a search result actually refers to the same business as the
+    lead before we copy any of its fields. A mismatched top result is the main
+    cause of wrong websites/categories, so we require at least one corroborating
+    signal:
+
+      1. Phone match  — lead phone == result phone (strongest)
+      2. Domain match — lead website domain == result website domain
+      3. Name match   — noise-stripped name similarity >= threshold
+      4. Domain-only lead — the domain stem appears in the result name
+
+    Returns False (reject) when none hold.
+    """
+    company = str(lead.get("company", "")).strip()
+    domain = str(lead.get("company_website", "")).strip()
+    res_name = result.get("business_name", "")
+    res_phone = result.get("phone", "")
+    res_site = result.get("website", "")
+
+    # 1. Phone corroboration
+    lead_phone = normalize_phone(str(lead.get("phone", "")))
+    if lead_phone and res_phone and normalize_phone(res_phone) == lead_phone:
+        return True
+
+    # 2. Domain corroboration
+    if domain and res_site:
+        d, rs = _domain_root(domain), _domain_root(res_site)
+        if d and rs and d == rs:
+            return True
+
+    # 3. Name similarity (needs a company name to compare against)
+    if company and res_name and name_similarity(company, res_name) >= name_threshold:
+        return True
+
+    # 4. Domain-only lead: require the domain stem to surface in the result name
+    if not company and domain and res_name:
+        stem = _domain_stem(domain)
+        if stem and len(stem) >= 4 and stem in normalize_key(res_name):
+            return True
+
+    return False
+
+
 # ── Apply result to lead ───────────────────────────────────────────
 
 def apply_result(leads: pd.DataFrame, idx: int, lead: pd.Series,
                  result: Dict, source: str) -> bool:
     """
-    Apply search result to the lead row. Only fills blanks.
+    Apply a VERIFIED search result to the lead row. Every field is written only
+    when the lead's own value is blank, so a match never overwrites data the
+    lead already had. Callers must gate on is_confident_match() first.
     Returns True if any field was updated.
     """
     updated = False
 
-    # Match type
+    # Match provenance (always recorded for accepted matches)
     leads.at[idx, "match_type"] = f"web_{source}"
     leads.at[idx, "matched_business"] = result.get("business_name", "")
 
@@ -204,27 +278,27 @@ def apply_result(leads: pd.DataFrame, idx: int, lead: pd.Series,
         leads.at[idx, "company_website"] = result["website"]
         updated = True
 
-    # Address
-    if result.get("address", ""):
+    # Address (only fill blanks — never clobber existing)
+    if not str(lead.get("business_address", "")).strip() and result.get("address", ""):
         leads.at[idx, "business_address"] = result["address"]
         updated = True
 
     # Rating
-    if result.get("rating", ""):
+    if not str(lead.get("business_rating", "")).strip() and result.get("rating", ""):
         leads.at[idx, "business_rating"] = result["rating"]
         updated = True
 
     # Reviews
-    reviews = result.get("reviews", "")
-    if reviews:
-        # Clean review count (remove non-numeric)
-        reviews_clean = re.sub(r"[^\d]", "", str(reviews))
-        if reviews_clean:
-            leads.at[idx, "business_review_count"] = reviews_clean
-            updated = True
+    if not str(lead.get("business_review_count", "")).strip():
+        reviews = result.get("reviews", "")
+        if reviews:
+            reviews_clean = re.sub(r"[^\d]", "", str(reviews))
+            if reviews_clean:
+                leads.at[idx, "business_review_count"] = reviews_clean
+                updated = True
 
     # Category
-    if result.get("category", ""):
+    if not str(lead.get("enriched_category", "")).strip() and result.get("category", ""):
         leads.at[idx, "enriched_category"] = result["category"]
         updated = True
 
@@ -340,6 +414,7 @@ def _run_serpapi(leads: pd.DataFrame, searchable: pd.DataFrame,
 
     matched = 0
     no_results = 0
+    rejected = 0
     errors = 0
     start_time = time.time()
 
@@ -370,8 +445,12 @@ def _run_serpapi(leads: pd.DataFrame, searchable: pd.DataFrame,
 
             if result:
                 lead = leads.loc[idx]
-                apply_result(leads, idx, lead, result, "serpapi")
-                matched += 1
+                if is_confident_match(lead, result):
+                    apply_result(leads, idx, lead, result, "serpapi")
+                    matched += 1
+                else:
+                    # Top result is a different business — discard, don't corrupt.
+                    rejected += 1
             elif status == "no_result":
                 no_results += 1
             else:
@@ -384,12 +463,12 @@ def _run_serpapi(leads: pd.DataFrame, searchable: pd.DataFrame,
                 remaining = (total_targets - completed) / rate if rate > 0 else 0
                 eta = datetime.now() + timedelta(seconds=remaining)
                 print(f"    [{completed}/{total_targets}] {rate:.1f}/sec, "
-                      f"{matched} matched, {no_results} no results, "
+                      f"{matched} matched, {rejected} rejected, {no_results} no results, "
                       f"ETA {eta.strftime('%H:%M')}")
 
     elapsed = time.time() - start_time
-    print(f"\n  SerpApi done: {matched} matched, {no_results} no results, "
-          f"{errors} errors in {elapsed:.0f}s")
+    print(f"\n  SerpApi done: {matched} matched, {rejected} rejected (name mismatch), "
+          f"{no_results} no results, {errors} errors in {elapsed:.0f}s")
     return leads
 
 
@@ -409,6 +488,7 @@ def _run_outscraper(leads: pd.DataFrame, searchable: pd.DataFrame,
 
     matched = 0
     no_results = 0
+    rejected = 0
     start_time = time.time()
 
     for i, (idx, lead) in enumerate(targets.iterrows()):
@@ -419,8 +499,12 @@ def _run_outscraper(leads: pd.DataFrame, searchable: pd.DataFrame,
         try:
             result = outscraper_search(query, client)
             if result:
-                apply_result(leads, idx, lead, result, "outscraper")
-                matched += 1
+                if is_confident_match(lead, result):
+                    apply_result(leads, idx, lead, result, "outscraper")
+                    matched += 1
+                else:
+                    # Top result is a different business — discard, don't corrupt.
+                    rejected += 1
             else:
                 no_results += 1
         except Exception as e:
@@ -431,12 +515,14 @@ def _run_outscraper(leads: pd.DataFrame, searchable: pd.DataFrame,
         if done % 25 == 0 or done == total_targets:
             elapsed = time.time() - start_time
             rate = done / elapsed if elapsed > 0 else 0
-            print(f"    [{done}/{total_targets}] {rate:.1f}/sec, {matched} matched")
+            print(f"    [{done}/{total_targets}] {rate:.1f}/sec, "
+                  f"{matched} matched, {rejected} rejected")
 
         time.sleep(2)  # Outscraper rate limit
 
     elapsed = time.time() - start_time
-    print(f"\n  Outscraper done: {matched} matched, {no_results} no results in {elapsed:.0f}s")
+    print(f"\n  Outscraper done: {matched} matched, {rejected} rejected (name mismatch), "
+          f"{no_results} no results in {elapsed:.0f}s")
     return leads
 
 

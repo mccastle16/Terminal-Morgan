@@ -1,12 +1,12 @@
 business_id,business_name,phone,website,address,neighborhood_area,category_primary,rating_primary_value,chamber_member,website_verified
-son,& son,,https://shopandson.com/,,Coral Gables,retail,5.0,N,verified
+son,& son,,http://www.acehardware.com/store-details/06198?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=06198,,Coral Gables,retail,5.0,N,unverified
 canes_central,'Canes Central,(305) 284-4247,https://canescentral.miami.edu/,1307 Stanford Drive,University of Miami Area,professional_services,2.8,N,verified
 100_montaditos_coral_gables,100 Montaditos Coral Gables,(786) 449-5203,https://us.100montaditos.com/,"327 Alhambra Cir, Coral Gables, FL 33134",Coral Gables,food_beverage,4.2,Y,verified
 107tasteasianrestaurantcoralgables,107 Taste Asian Restaurant Coral Gables,(786) 409-6951,http://107taste.com/,,Alhambra Circle,food_beverage,4.9,N,verified
 107tasteasianrestaurantsouthmiami,107 Taste Asian Restaurant South Miami,(786) 641-5122,https://107taste.com/,,Sunset / South Gables,food_beverage,4.9,N,verified
 1111mediagroupwebsitescontentsocialseoid,1111 Media Group | Websites - Content - Social - SEO - Paid,(305) 351-3103,https://1111mediagroup.com/miami,,Douglas Road Corridor,marketing,4.9,N,verified
-17realestatebrokers,17 Real Estate Brokers,(786) 693-3910,,,Ponce de Leon Corridor,real_estate,4.3,N,
-19th_hole_sports_bar__grill,19th Hole Sports Bar & Grill,,,"13610 Deering Bay Dr, Coral Gables, FL 33158",Bird Road Corridor,food_beverage,5,N,
+17realestatebrokers,17 Real Estate Brokers,(786) 693-3910,http://www.gravityrealestate.com/,,Ponce de Leon Corridor,real_estate,4.3,N,unverified
+19th_hole_sports_bar__grill,19th Hole Sports Bar & Grill,,http://www.sfwio.com/,"13610 Deering Bay Dr, Coral Gables, FL 33158",Bird Road Corridor,food_beverage,5,N,unverified
 247_nursing_care_inc,24/7 Nursing Care Inc.,(786) 518-3622,https://www.24-7nursingcare.com/,"9425 Sunset Dr #170, Miami, FL 33173",Coral Gables,healthcare,4.4,Y,verified
 2555poncedeleon,2555 Ponce De Leon,(305) 444-8900,,,Miracle Mile,other,4.8,N,
 3_chefs_and_a_chicken,3 Chefs and a Chicken,(786) 953-4811,https://3chefsandachicken.com/3chefsandachicken-xso1yr?utm_source=google,6601 Southwest 57th Avenue,Sunset / South Gables,food_beverage,4.3,N,verified
@@ -15,11 +15,11 @@ canes_central,'Canes Central,(305) 284-4247,https://canescentral.miami.edu/,1307
 305_hive_media,305 Hive(R) Media,(305) 907-7071,https://305hive.com,,Coral Gables,marketing,,Y,unverified
 305_peruvian_modern_cuisine,305 Peruvian Modern Cuisine,(786) 409-7144,https://305peruvian.com/?utm_source=google,"261 SW 8th St, Miami, FL 33130, United States",Coral Gables,food_beverage,4.8,N,verified
 305_pink_pack,305 Pink Pack,(305) 859-1224,https://www.305pinkpack.org/,,Coral Gables,nonprofit,5,Y,verified
-305_senior,305 Senior,(786) 326-0656,https://305senior.com/,"1 Andalusia Ave, Coral Gables, FL 33134",Coral Gables,accounting,4.9,Y,verified
+305_senior,305 Senior,(786) 326-0656,http://www.palacecoralgables.com/,"1 Andalusia Ave, Coral Gables, FL 33134",Coral Gables,accounting,4.9,Y,unverified
 3fmconsulting,3FM CONSULTING,(305) 767-1120,http://www.3fmengineering.com/,,Ponce de Leon Corridor,professional_services,4.1,N,verified
 4000_ponce_llc_cmc_group,"4000 Ponce, LLC (CMC Group)",(305) 372-0550,http://cmcgroupmiami.com/,"1550 Biscayne Blvd #300, Miami, FL 33132",ponce de leon corridor,accounting,3,Y,verified
 450_gradi,450 Gradi,(786) 391-1276,https://450gradimiami.com/,"130 Miracle Mile, Coral Gables, FL 33134",Coral Gables,food_beverage,4.8,Y,verified
-450gradimiamiitalianrestaurant,450Gradi Miami Italian Restaurant,,https://450gradimiami.com/,,Coral Gables,food_beverage,4.9,N,verified
+450gradimiamiitalianrestaurant,450Gradi Miami Italian Restaurant,,http://enzos-miami.com/,,Coral Gables,food_beverage,4.9,N,unverified
 450gradimiami,450Gradi Miami 🇺🇸,(786) 391-1276,https://450gradimiami.com/,,Miracle Mile,food_beverage,4.8,N,verified
 4kids_of_south_florida,4KIDS of South Florida,(305) 951-1779,https://www.4kids.us/,"2717 W Cypress Creek Rd, Fort Lauderdale, FL 33309",Coral Gables,nonprofit,4.8,Y,verified
 4mg_mortgage_llc,"4MG Mortgage, LLC",(305) 762-0314,http://4mgmortgage.com/,"1501 Venera Ave #230, Miami, FL 33146",Coral Gables,real_estate,5,Y,verified
@@ -65,7 +65,7 @@ ai_digital,AI Digital,(347) 782-2545,https://aidigital.com,"2525 Ponce De Leon B
 airlab_fitness,Airlab Fitness,(917) 863-4822,https://airlabfitness.com/coral-gables/,"35 Alhambra Plz, Coral Gables, FL 33134",Coral Gables,wellness,5,Y,verified
 airlabfitnesscoralgables,AIRLAB Fitness Coral Gables,(305) 396-8548,https://airlabfitness.com/coral-gables/,,Ponce de Leon Corridor,wellness,5.0,N,verified
 airports,Airports,(305) 876-7000,https://www.miami-airport.com/,"2100 NW 42nd Ave, Miami, FL 33142",Coral Gables,transportation,3.9,Y,verified
-ajp_ventures_corp,AJP Ventures Corp.,(305) 448-2330,,"2990 Ponce de Leon, Coral Gables, FL 33134, United States",Coral Gables,financial_services,5,Y,
+ajp_ventures_corp,AJP Ventures Corp.,(305) 448-2330,https://websites.vertilinc.com/ajpcam,"2990 Ponce de Leon, Coral Gables, FL 33134, United States",Coral Gables,financial_services,5,Y,unverified
 akashi_japanese_restaurant,Akashi Japanese Restaurant,(305) 529-9954,http://akashisushi.com/,3444 Main Hwy,Douglas Road Corridor,food_beverage,4.3,N,verified
 alamir,Al-Amir,(786) 603-9400,,6420 Southwest 40th Street,Bird Road Corridor,food_beverage,4.6,N,
 albany_homes_construction_inc,Albany Homes Construction Inc.,(786) 271-7192,http://www.albanyhomes.us/,"500 S Dixie Hwy, Coral Gables, FL 33146",Coral Gables,construction,3.9,Y,verified
@@ -74,7 +74,7 @@ alcazarplaza,Alcazar Plaza,,https://www.coralgables.com/departments/CommunityRec
 alchemyhairlab,Alchemy Hair Lab,(305) 204-6476,http://www.alchemyhairlabmiami.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp_listing&utm_content=website_button,,Alhambra Circle,personal_services,4.9,N,verified
 aldi,Aldi,(855) 955-2534,https://info.aldi.us/stores/l/fl/miami/3750-s-dixie-hwy/fa44,3750 South Dixie Highway,Bird Road Corridor,retail,4.3,N,verified
 alegro_music_center,Alegro Music Center,(305) 740-9400,https://blantonsupplies.com/,"6869 SW 8th St, Miami, FL 33144",Coral Gables,arts_culture,4.6,N,verified
-aleidamartinezfamilydaycarecenter,Aleida Martinez Family Day Care Center,,,,Coral Gables,education,,N,
+aleidamartinezfamilydaycarecenter,Aleida Martinez Family Day Care Center,,http://www.schneidereyecenter.com/,,Coral Gables,education,,N,unverified
 alexallelectric,Alex All Electric,(786) 362-9679,https://electricianformiami.com/,,Coral Gables,construction,4.9,N,verified
 alexexpressautoreir,Alex Express Auto Repair,(786) 443-5409,http://www.alexexpressautorepair.com/,,Douglas Road Corridor,auto_dealer,4.9,N,verified
 alexandersteclefinancialadvisor,Alexander S. Tecle - Financial Advisor,(754) 335-7500,http://ztpwm.com/,,Ponce de Leon Corridor,financial_services,5.0,N,verified
@@ -90,7 +90,7 @@ allen_dyer_doppelt_gilchrist_pa,"Allen Dyer Doppelt + Gilchrist, P.A",(305) 374-
 allen_morris_company,Allen Morris Company,(305) 443-1000,http://www.allenmorris.com/,"121 Alhambra Plz #1600, Coral Gables, FL 33134",Coral Gables,real_estate,5,N,verified
 alliantinsuranceservices,Alliant Insurance Services Inc,(212) 344-2444,https://alliant.com/,"800 S Douglas, Coral Gables, FL",Coral Gables,insurance,,N,verified
 allianztrade,AllianzTrade,(305) 753-2196,https://allianztrade.com,"10451 NW 117th Ave #101, Miami, FL 33178",Coral Gables,insurance,5,Y,unverified
-alliednorthamericainsurancebrokerageoffl,Allied North America Insurance Brokerage Of FL LLC,(305) 629-3027,,"550 Biltmore Way, Penthouse 2, Coral Gables, FL",Coral Gables,insurance,2.6,N,
+alliednorthamericainsurancebrokerageoffl,Allied North America Insurance Brokerage Of FL LLC,(305) 629-3027,https://nsigroup.org/contact/coral-gables-fl-insurance/,"550 Biltmore Way, Penthouse 2, Coral Gables, FL",Coral Gables,insurance,2.6,N,unverified
 almaadvertisingagency,Alma Advertising Agency,(305) 428-0094,http://almaad.com/,,Bird Road Corridor,marketing,5.0,N,verified
 almabellayoga,Alma Bella Yoga,(305) 282-5345,,,Coral Gables,wellness,5.0,N,
 alo,ALO,(305) 351-4771,https://www.aloyoga.com/?utm_source=extnet&utm_medium=yext,,Bird Road Corridor,retail,3.8,N,verified
