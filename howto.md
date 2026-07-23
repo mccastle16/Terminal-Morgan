@@ -185,7 +185,7 @@ If any key prints blank, re-run the `set -a && source .env && set +a` command. Y
 ### Quick start: Just OSM (free, no keys)
 
 ```bash
-# Collect ~800 businesses from OpenStreetMap
+# Collect ~560 businesses from OpenStreetMap
 python "scripts/1. agent1-osint.py" --source osm
 
 # Validate, dedup, merge into master CSV
