@@ -419,7 +419,7 @@ const QUICK_PROMPTS = [
 // ── Main Chat Component ─────────────────────────────────────────
 
 export default function AdvisorChat() {
-  const { messages, sendMessage, clearChat, isProcessing, pinChart, delta, setDelta, beliefState, aiMode, setAiMode, apiStatus } = useTactical()
+  const { messages, sendMessage, clearChat, isProcessing, pinChart, delta, setDelta, beliefState, aiMode, setAiMode, apiStatus, provider, setProvider, providers } = useTactical()
   const [input, setInput] = useState('')
   const scrollRef = useRef(null)
 
@@ -466,13 +466,14 @@ export default function AdvisorChat() {
         )}
       </div>
 
-      {/* AI Mode toggle */}
+      {/* AI Mode toggle + provider picker */}
       <div className="flex items-center justify-between px-4 py-1.5 border-b border-slate-800/40 bg-slate-900/15">
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 flex-wrap">
           {['auto', 'llm', 'local'].map(mode => {
             const active = aiMode === mode
             const icons = { auto: Zap, llm: Wifi, local: Cpu }
             const Icon = icons[mode]
+            const selectedLabel = providers.find(p => p.id === provider)?.label || 'LLM'
             return (
               <button key={mode} onClick={() => setAiMode(mode)}
                 className={`flex items-center gap-1 px-2 py-0.5 rounded text-[9px] font-medium transition-all ${
@@ -480,15 +481,29 @@ export default function AdvisorChat() {
                     ? 'bg-amber-500/15 text-amber-400 border border-amber-500/30'
                     : 'text-slate-600 hover:text-slate-400 border border-transparent'}`}>
                 <Icon size={9} />
-                {mode === 'auto' ? 'Auto' : mode === 'llm' ? 'OpenAI' : 'Local'}
+                {mode === 'auto' ? 'Auto' : mode === 'llm' ? selectedLabel : 'Local'}
               </button>
             )
           })}
+          {/* Provider selector — only shown when the server has 2+ keyed providers */}
+          {providers.length > 1 && aiMode !== 'local' && (
+            <div className="flex items-center gap-0.5 ml-1 pl-1.5 border-l border-slate-800/60">
+              {providers.map(p => (
+                <button key={p.id} onClick={() => setProvider(p.id)} title={p.model}
+                  className={`px-1.5 py-0.5 rounded text-[9px] font-medium transition-all ${
+                    provider === p.id
+                      ? 'bg-blue-500/15 text-blue-400 border border-blue-500/30'
+                      : 'text-slate-600 hover:text-slate-400 border border-transparent'}`}>
+                  {p.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
         <div className="flex items-center gap-1.5 text-[9px]">
           {apiStatus.checked && (
             apiStatus.available
-              ? <span className="flex items-center gap-1 text-emerald-500"><Wifi size={8} /> {apiStatus.model || 'connected'}</span>
+              ? <span className="flex items-center gap-1 text-emerald-500"><Wifi size={8} /> {providers.find(p => p.id === provider)?.model || apiStatus.model || 'connected'}</span>
               : <span className="flex items-center gap-1 text-slate-600"><WifiOff size={8} /> API offline</span>
           )}
         </div>

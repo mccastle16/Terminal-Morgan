@@ -9,7 +9,7 @@ import {
   UserPlus, Download, Star, ChevronLeft, ChevronRight, ArrowUpDown,
   ChevronsLeft, ChevronsRight,
   ChevronUp, ChevronDown, Target, Trophy, Filter, Eye, Phone,
-  Globe, MapPin, CheckCircle2, Info,
+  Globe, MapPin, CheckCircle2, Info, AlertTriangle,
 } from 'lucide-react'
 
 const PAGE_SIZE = 40
@@ -281,6 +281,10 @@ export default function RecruitQueuePage() {
                         <a href={biz.website_url || biz.website} target="_blank" rel="noopener noreferrer"
                           className="flex items-center gap-1 text-blue-400 hover:text-blue-300">
                           <Globe size={10} /> website
+                          {biz._websiteUnverified && (
+                            <AlertTriangle size={10} className="text-amber-400"
+                              title="Website not verified to this business" />
+                          )}
                         </a>
                       )}
                       {biz.formatted_address && <span className="flex items-center gap-1"><MapPin size={10} /> {biz.formatted_address}</span>}

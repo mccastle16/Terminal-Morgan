@@ -405,7 +405,7 @@ export default function IntelligencePage() {
             {/* Community Sizes */}
             <div className="bg-slate-900/50 rounded-lg border border-slate-800 p-5">
               <SectionHeader icon={Users} title="Community Clusters"
-                subtitle={`${centralityData?.num_communities || 0} communities detected via label propagation`} />
+                subtitle={`${centralityData?.num_communities || 0} communities detected via Louvain modularity`} />
               {networkCharts?.comData?.length > 0 ? (
                 <ResponsiveContainer width="100%" height={340}>
                   <BarChart data={networkCharts.comData} margin={{ left: 10, right: 10 }}>

@@ -7,7 +7,7 @@ import {
   LayoutDashboard, Search, Building2, BarChart3, GitCompare, ShieldAlert,
   UserPlus, Zap, Users, Share2, FlaskConical, FileText, Brain, Lightbulb,
   LogOut, ChevronLeft, ChevronRight, User, Crosshair,
-  MapPin, Bell, Download, HelpCircle, Pencil, Database, Crown, Rocket,
+  MapPin, Bell, Download, HelpCircle, Pencil, Database, Crown, Rocket, UserCog,
 } from 'lucide-react'
 
 const NAV_SECTIONS = [
@@ -51,6 +51,7 @@ const NAV_SECTIONS = [
       { to: '/experiments',  icon: FlaskConical,    label: 'Experiments',   permission: 'view_analytics' },
       { to: '/content',      icon: FileText,        label: 'Content' },
       { to: '/data-refresh', icon: Database,         label: 'Data Health',  permission: 'manage_data' },
+      { to: '/admin',        icon: UserCog,          label: 'Users & Claims', permission: 'manage_users' },
       { to: '/onboarding',   icon: Rocket,          label: 'Tour' },
     ],
   },
@@ -58,6 +59,7 @@ const NAV_SECTIONS = [
 
 export default function TerminalLayout() {
   const { user, logout, can, tenant } = useTerminalAuth()
+  const { lastRefresh } = useTerminalData()
   const navigate = useNavigate()
   const [collapsed, setCollapsed] = useState(false)
 
@@ -139,7 +141,7 @@ export default function TerminalLayout() {
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             <span className="text-slate-400">{tenant.city}, {tenant.state}</span>
             <span className="text-slate-700">·</span>
-            <span>Updated {tenant.lastRefresh}</span>
+            <span>Updated {lastRefresh || tenant.lastRefresh}</span>
           </div>
           <div className="flex items-center gap-3">
             <DataSourceBadge />

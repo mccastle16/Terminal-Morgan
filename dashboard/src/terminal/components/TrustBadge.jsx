@@ -1,4 +1,4 @@
-import { ShieldCheck, ShieldAlert, AlertTriangle, HelpCircle, Clock } from 'lucide-react'
+import { ShieldCheck, ShieldAlert, AlertTriangle, HelpCircle, Clock, Pin } from 'lucide-react'
 
 export function TrustBadge({ validation, confidence, corroboration, compact = false }) {
   const conf = parseFloat(confidence) || 0
@@ -59,6 +59,18 @@ export function DataQualityBar({ label, percent, threshold = 80 }) {
         {pct}%
       </span>
     </div>
+  )
+}
+
+// Marks a value that is still sourced from the hardcoded tenant config rather
+// than the live dataset. Temporary indicator until these surfaces are wired to
+// live data (currently: Alerts + Data Health freshness).
+export function StaticBadge({ label = 'Static', title = 'Hardcoded tenant config — not live data' }) {
+  return (
+    <span title={title}
+      className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md text-[10px] font-medium uppercase tracking-wider text-amber-400/90 bg-amber-500/10 border border-amber-500/20">
+      <Pin size={9} /> {label}
+    </span>
   )
 }
 

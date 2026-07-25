@@ -127,7 +127,7 @@ export default function BrowsePage() {
         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-900/40 border border-slate-800/60 rounded-xl">
           <TrendingUp size={13} className="text-emerald-400" />
           <span className="text-[11px] text-slate-500">Categories</span>
-          <span className="text-xs font-semibold text-emerald-400 font-mono">{stats?.categories ?? '—'}</span>
+          <span className="text-xs font-semibold text-emerald-400 font-mono">{stats?.categories?.length ?? '—'}</span>
         </div>
       </div>
 

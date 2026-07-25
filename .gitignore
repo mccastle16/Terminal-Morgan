@@ -23,3 +23,5 @@ data/leadgen.csv
 data/original-leadgen.csv
 data/leadgen-excel.xlsx
 data/~$*.xlsx
+# Licensing enricher: cached DBPR extracts (re-downloadable, weekly-refreshed)
+data/license_extracts/

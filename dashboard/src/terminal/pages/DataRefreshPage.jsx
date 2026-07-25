@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useTerminalData } from '../context/TerminalDataContext'
 import { useTerminalAuth } from '../context/TerminalAuthContext'
 import RoleGate from '../components/RoleGate'
+import { StaticBadge } from '../components/TrustBadge'
 import {
   RefreshCw, Database, Clock, CheckCircle, AlertTriangle,
   BarChart3, Activity, Shield, Globe, Phone,
@@ -87,13 +88,16 @@ export default function DataRefreshPage() {
                   <p className="text-slate-400 text-sm">Track data freshness, quality coverage, and source health</p>
                 </div>
               </div>
-              <div className={`px-4 py-2 rounded-xl border text-xs font-semibold ${
-                daysSince <= 7 ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
-                daysSince <= 30 ? 'bg-amber-500/10 border-amber-500/20 text-amber-400' :
-                'bg-red-500/10 border-red-500/20 text-red-400'
-              }`}>
-                <Clock size={12} className="inline mr-1.5" />
-                Last refresh: {daysSince}d ago
+              <div className="flex items-center gap-2">
+                <StaticBadge />
+                <div className={`px-4 py-2 rounded-xl border text-xs font-semibold ${
+                  daysSince <= 7 ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
+                  daysSince <= 30 ? 'bg-amber-500/10 border-amber-500/20 text-amber-400' :
+                  'bg-red-500/10 border-red-500/20 text-red-400'
+                }`}>
+                  <Clock size={12} className="inline mr-1.5" />
+                  Last refresh: {daysSince}d ago
+                </div>
               </div>
             </div>
           </div>
@@ -210,7 +214,9 @@ export default function DataRefreshPage() {
         <div className="bg-cyan-500/[0.04] border border-cyan-500/15 rounded-xl p-4 flex items-center gap-4">
           <RefreshCw size={18} className="text-cyan-400 flex-shrink-0" />
           <div className="flex-1">
-            <p className="text-sm text-white font-medium">Refresh Cadence: {tenant?.refreshCadence || 'Weekly'}</p>
+            <p className="text-sm text-white font-medium flex items-center gap-2">
+              Refresh Cadence: {tenant?.refreshCadence || 'Weekly'} <StaticBadge />
+            </p>
             <p className="text-xs text-slate-400">
               Next scheduled refresh: {new Date(new Date(lastRefresh).getTime() + 7 * 86400000).toLocaleDateString()}
             </p>

@@ -7,20 +7,49 @@ import { buildChartsFromInstructions } from '../engine/chartBuilder'
 
 const TacticalContext = createContext(null)
 
+// Persist the advisor conversation so questions and replies survive a reload.
+const CHAT_STORAGE_KEY = 'tactical.advisor.messages.v1'
+
+function loadStoredMessages() {
+  if (typeof window === 'undefined') return []
+  try {
+    const raw = window.localStorage.getItem(CHAT_STORAGE_KEY)
+    const parsed = raw ? JSON.parse(raw) : []
+    return Array.isArray(parsed) ? parsed : []
+  } catch {
+    return []
+  }
+}
+
 export function TacticalProvider({ children }) {
   const { stats, rawBusinesses, marketAnalytics, sentimentData, centralityData, predictionData } = useTerminalData()
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState(loadStoredMessages)
   const [pinnedCharts, setPinnedCharts] = useState([])
   const [experiments, setExperiments] = useState([])
   const [isProcessing, setIsProcessing] = useState(false)
   const [beliefState, setBeliefState] = useState(() => createBeliefState())
   const [delta, setDelta] = useState(0.3)
   const [aiMode, setAiMode] = useState('auto') // 'auto' | 'llm' | 'local'
-  const [apiStatus, setApiStatus] = useState({ available: false, model: null, checked: false })
+  const [apiStatus, setApiStatus] = useState({ available: false, model: null, providers: [], checked: false })
+  const [provider, setProvider] = useState(null) // selected LLM provider id; null = server default
 
-  // Check if OpenAI server is available on mount
+  // Persist the conversation whenever it changes, so it survives reloads.
   useEffect(() => {
-    checkAPIHealth().then(status => setApiStatus({ ...status, checked: true }))
+    if (typeof window === 'undefined') return
+    try {
+      window.localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages))
+    } catch {
+      // Storage full or unavailable — keep running with in-memory history only.
+    }
+  }, [messages])
+
+  // Check which LLM providers the server has keys for, on mount.
+  useEffect(() => {
+    checkAPIHealth().then(status => {
+      setApiStatus({ ...status, checked: true })
+      // Default the picker to the server's preferred available provider.
+      setProvider(prev => prev || status.provider || null)
+    })
   }, [])
 
   // Send a message through the hybrid advisor engine
@@ -46,7 +75,7 @@ export function TacticalProvider({ children }) {
       const dataContext = buildDataContext(stats, localResponse.entities, rawBusinesses, marketAnalytics, sentimentData, centralityData, predictionData)
       // Build conversation history for the LLM (last 10 messages to keep tokens low)
       const historyForLLM = [...messages.slice(-10), userMsg]
-      const result = await callOpenAI(historyForLLM, dataContext)
+      const result = await callOpenAI(historyForLLM, dataContext, provider)
       if (result.text) {
         llmText = result.text
       }
@@ -78,7 +107,7 @@ export function TacticalProvider({ children }) {
 
     setMessages(prev => [...prev, advisorMsg])
     setIsProcessing(false)
-  }, [stats, rawBusinesses, messages, isProcessing, beliefState, delta, aiMode, apiStatus, marketAnalytics, sentimentData, centralityData, predictionData])
+  }, [stats, rawBusinesses, messages, isProcessing, beliefState, delta, aiMode, apiStatus, provider, marketAnalytics, sentimentData, centralityData, predictionData])
 
   // Pin a chart from a response to the dynamic graph area
   const pinChart = useCallback((chartSpec) => {
@@ -89,9 +118,14 @@ export function TacticalProvider({ children }) {
     setPinnedCharts(prev => prev.filter(c => c.id !== chartId))
   }, [])
 
-  // Clear conversation
+  // Clear conversation (also drops the persisted copy)
   const clearChat = useCallback(() => {
     setMessages([])
+    try {
+      window.localStorage.removeItem(CHAT_STORAGE_KEY)
+    } catch {
+      // ignore storage errors
+    }
   }, [])
 
   const clearExperiments = useCallback(() => {
@@ -105,6 +139,7 @@ export function TacticalProvider({ children }) {
       experiments, clearExperiments,
       beliefState, delta, setDelta,
       aiMode, setAiMode, apiStatus,
+      provider, setProvider, providers: apiStatus.providers || [],
     }}>
       {children}
     </TacticalContext.Provider>

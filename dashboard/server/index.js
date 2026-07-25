@@ -1,25 +1,56 @@
 import express from 'express'
 import cors from 'cors'
 import { config } from 'dotenv'
+import { fileURLToPath } from 'url'
+import { dirname, resolve } from 'path'
 import { getBusinesses, getGraph, getGraphStats, verifyConnectivity } from './neo4j.js'
 import { getAnalyticsQueries } from './analytics.js'
 import { getOpportunities } from './opportunities.js'
+import { getNetworkCentrality } from './centrality.js'
+import { getSentimentThemes } from './sentiment.js'
+import { getPredictionSummary } from './predictions.js'
+import { callLLM, getProviders, defaultProvider } from './llm.js'
+import {
+  findUserByEmail, verifyPassword, signToken, sanitizeUser,
+  getApprovedBusiness, authMiddleware, requireAdmin,
+  createUser, listUsers, createClaim, listClaims, approveClaim,
+} from './auth.js'
 
-config() // load .env
+// Load the repo-root .env (where the OPENAI/GEMINI/PERPLEXITY/NEO4J keys live),
+// then the server-local .env for overrides like API_PORT. dotenv does not
+// clobber already-set vars, so root values win. Resolved from this file's path
+// so it works regardless of the process cwd.
+const __dirname = dirname(fileURLToPath(import.meta.url))
+config({ path: resolve(__dirname, '../../.env') })
+config({ path: resolve(__dirname, '.env') })
 
 const app = express()
 app.use(cors())
 app.use(express.json({ limit: '1mb' }))
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY
-const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini'
-
-if (!OPENAI_API_KEY) {
-  console.error('⚠  OPENAI_API_KEY not set in .env — server will start but LLM calls will fail')
+// Renders a "who am I talking to" block from the authenticated user + their
+// approved business (if any). Derived server-side from the JWT — never trust the
+// client for this. Empty for admins/staff who represent no single business.
+function buildUserContext(user, business) {
+  if (!user) return ''
+  let block = `\nUSER CONTEXT (who you are advising):\n- Role: ${user.role}\n- Name: ${user.name || 'N/A'}`
+  if (business) {
+    const rating = business.rating ? `${Number(business.rating).toFixed(1)}★` : 'unrated'
+    const member = business.chamber_member === true || business.chamber_member === 'Y' ? 'member' : 'non-member'
+    block += `
+- This user represents their own business: "${business.name}"
+  * Category: ${business.category_primary || 'N/A'} | Neighborhood: ${business.neighborhood || 'N/A'}
+  * Rating: ${rating} (${business.review_count || 0} reviews) | Membership: ${member}
+  * Red flags: ${business.red_flag_present === true || business.red_flag_present === 'Y' ? `YES (${business.red_flag_severity || 'unspecified'})` : 'none'}
+When the user says "my business", "us", or "we", they mean this business. Tailor advice to it directly.`
+  } else {
+    block += `\n- Not linked to a specific business — answer at the market/chamber level.`
+  }
+  return block + '\n'
 }
 
 // ── System prompt ─────────────────────────────────────────────────────────────
-function buildSystemPrompt(dataContext) {
+function buildSystemPrompt(dataContext, userContext = '') {
   const s = dataContext?.stats
   const m = dataContext?.marketAnalytics
   const statsBlock = s ? `
@@ -94,7 +125,7 @@ INTELLIGENCE FRAMEWORK:
 - Information Gain: Rare findings (low P) are more valuable than common ones. Prioritize surprising insights.
 - Bayesian Updating: Your confidence in assessments should evolve as the conversation provides new evidence.
 - Decision Function: D = Base Knowledge + δ × Exploratory Knowledge. Balance confirmed insights with uncertain-but-valuable exploration.
-${statsBlock}${analyticsBlock}${predictionBlock}${sentimentBlock}${networkBlock}${entityBlock}
+${statsBlock}${analyticsBlock}${predictionBlock}${sentimentBlock}${networkBlock}${entityBlock}${userContext}
 Always tie your advice back to actionable next steps. You serve the chamber's mission: grow membership, support local businesses, and strengthen the Coral Gables economy.`
 }
 
@@ -144,88 +175,119 @@ const CHART_TOOL = {
 }
 
 // ── Chat endpoint ─────────────────────────────────────────────────────────────
-app.post('/api/chat', async (req, res) => {
-  if (!OPENAI_API_KEY) {
-    return res.status(500).json({ error: 'OPENAI_API_KEY not configured' })
-  }
-
-  const { messages, dataContext } = req.body
+// Provider-agnostic: picks OpenAI / Gemini / Perplexity via req.body.provider
+// (falls back to the first provider with a configured key). All the API-specific
+// wiring lives in llm.js.
+app.post('/api/chat', authMiddleware, async (req, res) => {
+  const { messages, dataContext, provider } = req.body
 
   if (!messages || !Array.isArray(messages)) {
     return res.status(400).json({ error: 'messages array required' })
   }
 
-  const systemPrompt = buildSystemPrompt(dataContext)
+  // Personalize the advisor from the authenticated identity (never the client):
+  // pull the user's approved business, if any, and fold it into the prompt.
+  let userContext = ''
+  try {
+    const business = await getApprovedBusiness(req.user.email)
+    userContext = buildUserContext(req.user, business)
+  } catch (e) {
+    console.error('user-context build failed:', e.message)
+  }
 
-  const apiMessages = [
-    { role: 'system', content: systemPrompt },
-    ...messages.map(m => ({
-      role: m.role === 'advisor' ? 'assistant' : m.role,
-      content: m.text || m.content || '',
-    })),
-  ]
+  const chosen = provider || defaultProvider()
+  const systemPrompt = buildSystemPrompt(dataContext, userContext)
+  const chatMessages = messages.map(m => ({
+    role: m.role === 'user' ? 'user' : 'assistant',
+    content: m.text || m.content || '',
+  }))
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${OPENAI_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: OPENAI_MODEL,
-        messages: apiMessages,
-        tools: [CHART_TOOL],
-        tool_choice: 'auto',
-        temperature: 0.7,
-        max_tokens: 1024,
-      }),
+    const { text, chartInstructions, usage, model } = await callLLM({
+      provider: chosen,
+      systemPrompt,
+      messages: chatMessages,
+      tool: CHART_TOOL,
     })
-
-    if (!response.ok) {
-      const err = await response.text()
-      console.error('OpenAI error:', response.status, err)
-      return res.status(response.status).json({ error: `OpenAI API error: ${response.status}` })
-    }
-
-    const data = await response.json()
-    const choice = data.choices?.[0]
-    const usage = data.usage
-
-    // Extract text content
-    let text = choice?.message?.content || ''
-
-    // Extract chart instructions from tool calls (if any)
-    let chartInstructions = []
-    const toolCalls = choice?.message?.tool_calls
-    if (toolCalls?.length > 0) {
-      for (const tc of toolCalls) {
-        if (tc.function?.name === 'generate_charts') {
-          try {
-            const args = JSON.parse(tc.function.arguments)
-            if (args.charts?.length > 0) {
-              chartInstructions.push(...args.charts)
-            }
-          } catch (e) {
-            console.error('Failed to parse chart tool call:', e.message)
-          }
-        }
-      }
-    }
-
-    return res.json({ text, chartInstructions, usage })
+    return res.json({ text, chartInstructions, usage, provider: chosen, model })
   } catch (err) {
-    console.error('Server error:', err.message)
-    return res.status(500).json({ error: 'Failed to reach OpenAI API' })
+    const status = err.status || 500
+    console.error(`LLM error [${chosen}]:`, status, err.detail || err.message)
+    return res.status(status).json({ error: err.message, provider: chosen })
   }
 })
 
-// ── Live Neo4j data endpoints ───────────────────────────────────────────────
-// These serve the same shapes the dashboard previously read from static
-// exports. If Neo4j is unreachable, they return 503 so the client falls back
-// to the static files in public/data/.
+// ── Authentication ──────────────────────────────────────────────────────────
+// Login is public; it returns a JWT the client sends on every other /api call.
+app.post('/api/login', async (req, res) => {
+  const { email, password } = req.body || {}
+  if (!email || !password) return res.status(400).json({ error: 'email and password required' })
+  try {
+    const user = await findUserByEmail(email)
+    if (!user || user.status === 'disabled' || !(await verifyPassword(password, user.password_hash))) {
+      return res.status(401).json({ error: 'Invalid credentials' })
+    }
+    const business = await getApprovedBusiness(user.email)
+    const token = signToken(user)
+    res.json({ token, user: { ...sanitizeUser(user), businessId: business?.business_id || null } })
+  } catch (err) {
+    console.error('/api/login error:', err.message)
+    res.status(503).json({ error: 'Login unavailable (database down?)' })
+  }
+})
 
-app.get('/api/live-status', async (req, res) => {
+// Rehydrate the session from a token (client bootstrap on page load).
+app.get('/api/me', authMiddleware, async (req, res) => {
+  try {
+    const user = await findUserByEmail(req.user.email)
+    if (!user) return res.status(401).json({ error: 'User no longer exists' })
+    const business = await getApprovedBusiness(user.email)
+    res.json({ user: { ...sanitizeUser(user), businessId: business?.business_id || null } })
+  } catch (err) {
+    res.status(503).json({ error: 'Session check unavailable', detail: err.message })
+  }
+})
+
+// ── Admin: user + business-claim management ──────────────────────────────────
+// Only admins create users or approve claims. Members/other roles cannot claim
+// their own business — an admin does it on their behalf.
+app.get('/api/users', authMiddleware, requireAdmin, async (req, res) => {
+  try { res.json({ users: await listUsers() }) }
+  catch (err) { res.status(503).json({ error: 'Neo4j unavailable', detail: err.message }) }
+})
+
+app.post('/api/users', authMiddleware, requireAdmin, async (req, res) => {
+  const { email, password, name, title, role } = req.body || {}
+  if (!email || !password) return res.status(400).json({ error: 'email and password required' })
+  if (password.length < 8) return res.status(400).json({ error: 'password must be at least 8 characters' })
+  try { res.status(201).json({ user: await createUser({ email, password, name, title, role }) }) }
+  catch (err) { res.status(500).json({ error: err.message }) }
+})
+
+app.get('/api/claims', authMiddleware, requireAdmin, async (req, res) => {
+  try { res.json({ claims: await listClaims(req.query.status || null) }) }
+  catch (err) { res.status(503).json({ error: 'Neo4j unavailable', detail: err.message }) }
+})
+
+app.post('/api/claims', authMiddleware, requireAdmin, async (req, res) => {
+  const { email, businessId } = req.body || {}
+  if (!email || !businessId) return res.status(400).json({ error: 'email and businessId required' })
+  try { res.status(201).json({ claim: await createClaim({ email, businessId }) }) }
+  catch (err) { res.status(400).json({ error: err.message }) }
+})
+
+app.post('/api/claims/approve', authMiddleware, requireAdmin, async (req, res) => {
+  const { email, businessId } = req.body || {}
+  if (!email || !businessId) return res.status(400).json({ error: 'email and businessId required' })
+  try { res.json({ claim: await approveClaim({ email, businessId, approvedBy: req.user.email }) }) }
+  catch (err) { res.status(400).json({ error: err.message }) }
+})
+
+// ── Live Neo4j data endpoints ───────────────────────────────────────────────
+// Serve the same shapes the dashboard used to read from static exports. All
+// require a valid session — the graph is not public. 503 when Neo4j is down.
+
+app.get('/api/live-status', authMiddleware, async (req, res) => {
   try {
     await verifyConnectivity()
     res.json({ live: true, uri: process.env.NEO4J_URI || 'bolt://localhost:7687' })
@@ -234,7 +296,7 @@ app.get('/api/live-status', async (req, res) => {
   }
 })
 
-app.get('/api/businesses', async (req, res) => {
+app.get('/api/businesses', authMiddleware, async (req, res) => {
   try {
     const businesses = await getBusinesses()
     res.json({ businesses, source: 'neo4j', count: businesses.length })
@@ -244,7 +306,7 @@ app.get('/api/businesses', async (req, res) => {
   }
 })
 
-app.get('/api/graph', async (req, res) => {
+app.get('/api/graph', authMiddleware, async (req, res) => {
   try {
     const limit = parseInt(req.query.limit, 10) || 0
     res.json(await getGraph(limit))
@@ -254,7 +316,7 @@ app.get('/api/graph', async (req, res) => {
   }
 })
 
-app.get('/api/graph-stats', async (req, res) => {
+app.get('/api/graph-stats', authMiddleware, async (req, res) => {
   try {
     res.json(await getGraphStats())
   } catch (err) {
@@ -263,7 +325,7 @@ app.get('/api/graph-stats', async (req, res) => {
   }
 })
 
-app.get('/api/analytics-queries', async (req, res) => {
+app.get('/api/analytics-queries', authMiddleware, async (req, res) => {
   try {
     res.json(await getAnalyticsQueries())
   } catch (err) {
@@ -272,7 +334,7 @@ app.get('/api/analytics-queries', async (req, res) => {
   }
 })
 
-app.get('/api/opportunities', async (req, res) => {
+app.get('/api/opportunities', authMiddleware, async (req, res) => {
   try {
     res.json(await getOpportunities())
   } catch (err) {
@@ -281,18 +343,56 @@ app.get('/api/opportunities', async (req, res) => {
   }
 })
 
+app.get('/api/network-centrality', authMiddleware, async (req, res) => {
+  try {
+    res.json(await getNetworkCentrality())
+  } catch (err) {
+    console.error('Neo4j /api/network-centrality error:', err.message)
+    res.status(503).json({ error: 'Neo4j unavailable', detail: err.message })
+  }
+})
+
+app.get('/api/sentiment-themes', authMiddleware, async (req, res) => {
+  try {
+    res.json(await getSentimentThemes())
+  } catch (err) {
+    console.error('Neo4j /api/sentiment-themes error:', err.message)
+    res.status(503).json({ error: 'Neo4j unavailable', detail: err.message })
+  }
+})
+
+app.get('/api/prediction-summary', authMiddleware, async (req, res) => {
+  try {
+    res.json(await getPredictionSummary())
+  } catch (err) {
+    console.error('Neo4j /api/prediction-summary error:', err.message)
+    res.status(503).json({ error: 'Neo4j unavailable', detail: err.message })
+  }
+})
+
+// ── LLM providers ─────────────────────────────────────────────────────────────
+app.get('/api/providers', (req, res) => {
+  res.json({ providers: getProviders(), default: defaultProvider() })
+})
+
 // ── Health check ──────────────────────────────────────────────────────────────
 app.get('/api/health', (req, res) => {
+  const providers = getProviders()
+  const active = providers.find(p => p.id === defaultProvider())
   res.json({
     status: 'ok',
-    model: OPENAI_MODEL,
-    hasKey: !!OPENAI_API_KEY,
+    provider: active?.id || null,
+    model: active?.model || null,
+    hasKey: providers.some(p => p.available),
+    providers,
   })
 })
 
 const PORT = process.env.API_PORT || 3005
 app.listen(PORT, () => {
   console.log(`✓ Terminal API server running on http://localhost:${PORT}`)
-  console.log(`  Model: ${OPENAI_MODEL}`)
-  console.log(`  API Key: ${OPENAI_API_KEY ? '✓ configured' : '✗ MISSING — set OPENAI_API_KEY in .env'}`)
+  const providers = getProviders()
+  const configured = providers.filter(p => p.available)
+  console.log(`  LLM providers: ${configured.length ? configured.map(p => `${p.label} (${p.model})`).join(', ') : '✗ NONE — set OPENAI_API_KEY / GEMINI_API_KEY / PERPLEXITY_API_KEY'}`)
+  if (configured.length) console.log(`  Default: ${defaultProvider()}`)
 })

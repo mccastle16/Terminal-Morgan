@@ -34,8 +34,33 @@ export default function MapPage() {
   const [categoryFilter, setCategoryFilter] = useState('')
   const mapRef = useRef(null)
 
-  const bbox = tenant.boundingBox
-  const bounds = useMemo(() => [[bbox.south, bbox.west], [bbox.north, bbox.east]], [bbox])
+// Derive the map's bounding box from the live coordinates instead of the
+// static tenant rectangle, so businesses just outside the old hardcoded box
+// are no longer silently dropped. Uses 1st/99th percentiles to ignore
+// mis-geocoded outliers (e.g. a Coral Gables record accidentally placed in
+// Fort Myers) that would otherwise zoom the map out to uselessness. Falls
+// back to the tenant box when there aren't enough geocoded rows.
+const bbox = useMemo(() => {
+  const lats = [], lons = []
+  for (const b of rawBusinesses) {
+    const lat = parseFloat(b.lat), lon = parseFloat(b.lon)
+    if (isNaN(lat) || isNaN(lon) || lat === 0 || lon === 0) continue
+    lats.push(lat); lons.push(lon)
+  }
+  if (lats.length < 20) return tenant.boundingBox
+  lats.sort((a, b) => a - b); lons.sort((a, b) => a - b)
+  const q = (arr, f) => arr[Math.floor((arr.length - 1) * f)]
+  const pad = 0.005 // ~500m breathing room around the extremes
+  return {
+    south: q(lats, 0.01) - pad,
+    north: q(lats, 0.99) + pad,
+    west: q(lons, 0.01) - pad,
+    east: q(lons, 0.99) + pad,
+  }
+}, [rawBusinesses, tenant])
+
+const bounds = useMemo(() => [[bbox.south, bbox.west], [bbox.north, bbox.east]], [bbox])
+
 
   const geoBusinesses = useMemo(() => {
     return rawBusinesses.filter(b => {

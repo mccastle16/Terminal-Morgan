@@ -66,6 +66,7 @@ export async function getBusinesses() {
         contact_name: p.contact_name ?? '',
         phone: p.phone ?? '',
         website: p.website ?? '',
+        website_verified: p.website_verified ?? '',
         address: p.address ?? '',
         lat: p.lat ?? '',
         lon: p.lon ?? '',
