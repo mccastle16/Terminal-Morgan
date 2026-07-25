@@ -886,7 +886,7 @@ The Terminal sits between directory, OSINT stack, and strategic operating layer.
 
 ### What should become event-driven later
 - alerts
-- in-app report generation
+- in-app report generation 
 - usage analytics
 - dispute/correction routing
 
