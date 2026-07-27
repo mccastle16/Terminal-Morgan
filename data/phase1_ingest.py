@@ -362,8 +362,8 @@ def stream_cordata(conn, layouts, target_zips):
         conn.commit()
 
         log(f"finished {fname}: {lines_read} lines, {kept} kept, {rejected} rejected, "
-            f"{quarantined} quarantined ({round(time.time() - t0, 1)}s)")
-        _log_ingest(conn, fname, lines_read, kept, rejected, quarantined, started_at)
+            f"{quarantined} quarantined, {decode_replacements} decode_replacements ({round(time.time() - t0, 1)}s)")
+        _log_ingest(conn, fname, lines_read, kept, rejected, quarantined, decode_replacements, started_at)
         _check_quarantine_threshold(fname, lines_read, quarantined)
 
 
@@ -388,7 +388,7 @@ def stream_ficdata(conn, layouts, target_zips):
     t0 = time.time()
     log(f"streaming ficdata file {fname}")
 
-    lines_read = kept = rejected = quarantined = 0
+    lines_read = kept = rejected = quarantined = decode_replacements = 0
     fic_batch = []
     q_batch = []
 
@@ -407,6 +407,8 @@ def stream_ficdata(conn, layouts, target_zips):
             continue
 
         kept += 1
+        if rec.get("_had_decode_replacement"):
+            decode_replacements += 1
         fic_batch.append((
             rec["doc_number"], rec["fic_name"], rec["status"], rec["county"],
             rec["addr1"], rec["addr2"], rec["city"], rec["state"], rec["zip"], z5,
@@ -427,8 +429,8 @@ def stream_ficdata(conn, layouts, target_zips):
     conn.commit()
 
     log(f"finished {fname}: {lines_read} lines, {kept} kept, {rejected} rejected, "
-        f"{quarantined} quarantined ({round(time.time() - t0, 1)}s)")
-    _log_ingest(conn, fname, lines_read, kept, rejected, quarantined, started_at)
+        f"{quarantined} quarantined, {decode_replacements} decode_replacements ({round(time.time() - t0, 1)}s)")
+    _log_ingest(conn, fname, lines_read, kept, rejected, quarantined, decode_replacements, started_at)
     _check_quarantine_threshold(fname, lines_read, quarantined)
 
 
@@ -450,12 +452,14 @@ def print_summary(conn, target_zips):
 
     print(f"\ntarget zip set ({len(target_zips)}): {sorted(target_zips)}")
 
-    print(f"\n{'source_file':<20}{'lines_read':>12}{'kept_in_zip':>14}{'rejected':>12}{'quarantined':>13}")
+    print(f"\n{'source_file':<20}{'lines_read':>12}{'kept_in_zip':>14}{'rejected':>12}{'quarantined':>13}{'decode_repl':>13}")
     for row in conn.execute(
-        "SELECT source_file, lines_read, kept_in_zip, rejected_out_of_zip, quarantined "
+        "SELECT source_file, lines_read, kept_in_zip, rejected_out_of_zip, quarantined, decode_replacements "
         "FROM ingest_log ORDER BY id"
     ):
-        print(f"{row[0]:<20}{row[1]:>12}{row[2]:>14}{row[3]:>12}{row[4]:>13}")
+        print(f"{row[0]:<20}{row[1]:>12}{row[2]:>14}{row[3]:>12}{row[4]:>13}{row[5]:>13}")
+    print("(decode_repl = kept rows where a field had an undecodable byte for the file's encoding, "
+          "recovered as U+FFFD rather than quarantined -- not a length problem, flagged for visibility)")
 
     bridge_n = conn.execute(
         "SELECT COUNT(*) FROM sunbiz_fic f "

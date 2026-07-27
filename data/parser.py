@@ -27,19 +27,39 @@ def parse_line(raw_bytes, file_type, source_file=None, line_number=None, layouts
     Takes the line as raw BYTES, not a decoded string. `record_length` and each
     field's start/end in layouts.json are byte offsets (that's what a
     fixed-width mainframe-style extract actually guarantees), so length is
-    checked and fields are sliced in bytes -- decoding happens per-field,
-    AFTER slicing, not on the whole line up front. This matters for ficdata
-    (utf-8): a name containing a curly quote or NBSP takes 2-3 bytes for one
-    character, so decoding the whole line first and then checking len() in
-    characters undercounts a record that is, on disk, exactly record_length
-    bytes -- that used to false-positive as a length mismatch. Slicing bytes
-    first means only a genuinely short/corrupt record fails the length check.
+    always checked in bytes, never in decoded characters.
 
-    Each field is decoded with errors='replace' so a field that isn't valid
-    in the declared encoding (e.g. a stray Windows-1252 byte in a UTF-8 file)
-    degrades to a U+FFFD placeholder in that one field instead of failing the
-    whole record. `_had_decode_replacement` flags records where that happened,
-    so it stays visible without being dropped or quarantined.
+    Field extraction takes one of two paths:
+
+    FAST PATH (the common case): decode the whole record once, strictly. If
+    that succeeds AND the decoded character count equals the byte count, then
+    every byte in this record mapped to exactly one character -- true for
+    cordata (confirmed pure 7-bit ASCII across the full corpus: a strict
+    whole-shard decode raises nowhere), and true for the large majority of
+    ficdata records too, since most contain no multibyte character at all
+    even though the file is declared utf-8. When that holds, byte offset N
+    equals character offset N for every field, so slicing the ALREADY-DECODED
+    string at the layout's byte positions is mathematically identical to
+    decoding each field separately -- ASCII bytes decode independently of
+    context, so a substring of an all-ASCII decode equals decoding that same
+    byte range on its own. This turns ~19 decode() calls into 1.
+
+    SLOW PATH (fallback, rare): the whole-record decode failed, or came back
+    shorter than record_length -- meaning some byte range genuinely needs
+    multibyte decoding (e.g. a name with a curly quote or NBSP) or contains a
+    byte sequence invalid in the declared encoding (observed in ficdata as a
+    small number of corrupted records: stray Windows-1252 bytes, mojibake --
+    not a consistent alternate encoding, so there's no single-decode fix for
+    these). Only here do we slice raw bytes per field and decode each slice
+    independently with errors='replace', so an invalid field degrades to a
+    U+FFFD placeholder instead of failing the whole record.
+    `_had_decode_replacement` flags records that took this path and actually
+    needed a replacement, so it stays visible without being dropped or
+    quarantined.
+
+    Both paths produce byte-for-byte identical field values whenever the fast
+    path is valid to take (that's the point) -- the fast path is a speed
+    optimization, not a behavior change.
 
     Always returns a dict, never raises on a bad line. On length mismatch the
     dict carries `_ok: False` and a structured `_error` instead of field data.
@@ -53,11 +73,11 @@ def parse_line(raw_bytes, file_type, source_file=None, line_number=None, layouts
         "_source_file": source_file,
         "_line_number": line_number,
         "_file_type": file_type,
-        "_raw": raw_bytes.decode(enc, errors="replace"),
     }
 
     actual_len = len(raw_bytes)
     if actual_len != expected_len:
+        record["_raw"] = raw_bytes.decode(enc, errors="replace")
         record["_ok"] = False
         record["_error"] = {
             "kind": "length_mismatch",
@@ -67,6 +87,22 @@ def parse_line(raw_bytes, file_type, source_file=None, line_number=None, layouts
         return record
 
     record["_ok"] = True
+
+    try:
+        decoded = raw_bytes.decode(enc)
+        fast_path = len(decoded) == expected_len
+    except UnicodeDecodeError:
+        decoded = None
+        fast_path = False
+
+    if fast_path:
+        record["_raw"] = decoded
+        record["_had_decode_replacement"] = False
+        for field in spec["fields"]:
+            record[field["name"]] = decoded[field["start"] - 1:field["end"]].strip()
+        return record
+
+    record["_raw"] = raw_bytes.decode(enc, errors="replace")
     had_replacement = False
     for field in spec["fields"]:
         raw = raw_bytes[field["start"] - 1:field["end"]]
