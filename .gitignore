@@ -25,3 +25,9 @@ data/leadgen-excel.xlsx
 data/~$*.xlsx
 # Licensing enricher: cached DBPR extracts (re-downloadable, weekly-refreshed)
 data/license_extracts/
+
+# Large raw SunBiz datasets
+data/cordata/
+data/corevent/
+data/ficdata/
+data/ficevt/
