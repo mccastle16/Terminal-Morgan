@@ -31,3 +31,11 @@ data/cordata/
 data/corevent/
 data/ficdata/
 data/ficevt/
+
+# Validation pipeline's SQLite working DB -- fully regenerable from
+# combined.csv + cordata/ficdata via phase1_ingest.py..phase6_provenance.py,
+# grows large (600MB+) as phases add tables/columns, and changes on every
+# pipeline re-run.
+data/ingest.db
+data/ingest.db-wal
+data/ingest.db-shm

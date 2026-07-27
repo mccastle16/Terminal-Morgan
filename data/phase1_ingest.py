@@ -18,6 +18,12 @@ import time
 
 import parser as sunbiz_parser
 
+# Windows console default codepage (cp1252) can't encode plenty of real
+# business names (Cyrillic, CJK, stylized Unicode) -- without this, printing
+# one such name mid-run crashes the whole script instead of just that line.
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 NEIGHBORHOODS_PATH = os.path.join("config", "neighborhoods.json")
 LAYOUTS_PATH = os.path.join("config", "layouts.json")
 COMBINED_CSV_PATH = "combined.csv"
@@ -284,6 +290,13 @@ def _log_ingest(conn, source_file, lines_read, kept, rejected, quarantined, deco
     conn.commit()
 
 
+def _field_spec(layouts, file_type, field_name):
+    for f in layouts[file_type]["fields"]:
+        if f["name"] == field_name:
+            return f
+    raise KeyError(f"field {field_name!r} not found in layouts[{file_type!r}]")
+
+
 def _check_quarantine_threshold(source_file, lines_read, quarantined):
     if lines_read == 0:
         return
@@ -315,6 +328,13 @@ def stream_cordata(conn, layouts, target_zips):
     files = sorted(glob.glob(CORDATA_GLOB))
     if not files:
         log(f"WARNING: no files matched {CORDATA_GLOB}")
+
+    spec = layouts["cordata"]
+    expected_len = spec["record_length"]
+    enc = spec.get("encoding", "ascii")
+    zf = _field_spec(layouts, "cordata", "princ_zip")
+    zstart, zend = zf["start"] - 1, zf["end"]
+
     for path in files:
         fname = os.path.basename(path)
         started_at = time.strftime("%Y-%m-%d %H:%M:%S")
@@ -325,20 +345,32 @@ def stream_cordata(conn, layouts, target_zips):
         corp_batch = []
         q_batch = []
 
-        for rec in sunbiz_parser.iter_records(path, "cordata", layouts=layouts):
+        for raw_bytes, line_number in sunbiz_parser._iter_raw_lines(path, enc):
             lines_read += 1
-            if not rec["_ok"]:
+
+            if len(raw_bytes) != expected_len:
+                rec = sunbiz_parser.parse_line(raw_bytes, "cordata", source_file=fname,
+                                                line_number=line_number, layouts=layouts)
                 quarantined += 1
-                q_batch.append((fname, rec["_line_number"], _reason_for(rec), rec.get("_raw")))
+                q_batch.append((fname, line_number, _reason_for(rec), rec.get("_raw")))
                 if len(q_batch) >= BATCH_SIZE:
                     _flush_quarantine(conn, q_batch)
                 continue
 
-            z5 = zip5(rec.get("princ_zip", ""))
+            # Cheap pre-filter on just the zip field before paying for a full
+            # per-field parse -- ~97% of records fall outside the target zip
+            # set and get thrown away immediately after anyway. This slice+
+            # decode reproduces exactly what parse_line would compute for
+            # this one field (same bytes, same encoding, same errors=replace),
+            # so it can't disagree with the full parse on which zip a kept
+            # record has.
+            z5 = raw_bytes[zstart:zend].decode(enc, errors="replace").strip()[:5]
             if z5 not in target_zips:
                 rejected += 1
                 continue
 
+            rec = sunbiz_parser.parse_line(raw_bytes, "cordata", source_file=fname,
+                                            line_number=line_number, layouts=layouts)
             kept += 1
             if rec.get("_had_decode_replacement"):
                 decode_replacements += 1
@@ -388,24 +420,35 @@ def stream_ficdata(conn, layouts, target_zips):
     t0 = time.time()
     log(f"streaming ficdata file {fname}")
 
+    spec = layouts["ficdata"]
+    expected_len = spec["record_length"]
+    enc = spec.get("encoding", "utf-8")
+    zf = _field_spec(layouts, "ficdata", "zip")
+    zstart, zend = zf["start"] - 1, zf["end"]
+
     lines_read = kept = rejected = quarantined = decode_replacements = 0
     fic_batch = []
     q_batch = []
 
-    for rec in sunbiz_parser.iter_records(FICDATA_PATH, "ficdata", layouts=layouts):
+    for raw_bytes, line_number in sunbiz_parser._iter_raw_lines(FICDATA_PATH, enc):
         lines_read += 1
-        if not rec["_ok"]:
+
+        if len(raw_bytes) != expected_len:
+            rec = sunbiz_parser.parse_line(raw_bytes, "ficdata", source_file=fname,
+                                            line_number=line_number, layouts=layouts)
             quarantined += 1
-            q_batch.append((fname, rec["_line_number"], _reason_for(rec), rec.get("_raw")))
+            q_batch.append((fname, line_number, _reason_for(rec), rec.get("_raw")))
             if len(q_batch) >= BATCH_SIZE:
                 _flush_quarantine(conn, q_batch)
             continue
 
-        z5 = zip5(rec.get("zip", ""))
+        z5 = raw_bytes[zstart:zend].decode(enc, errors="replace").strip()[:5]
         if z5 not in target_zips:
             rejected += 1
             continue
 
+        rec = sunbiz_parser.parse_line(raw_bytes, "ficdata", source_file=fname,
+                                        line_number=line_number, layouts=layouts)
         kept += 1
         if rec.get("_had_decode_replacement"):
             decode_replacements += 1
