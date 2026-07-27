@@ -1,0 +1,302 @@
+{
+  "_comment": "Official Florida Division of Corporations (SunBiz) fixed-width field layouts for cordata (corporate master) and ficdata (fictitious name / DBA) files. Positions below are start/end, 1-indexed, INCLUSIVE, and are BYTE offsets, not character offsets. parser.py slices raw_bytes[start-1:end] and decodes each field AFTER slicing (never decodes the whole line up front) -- required for ficdata, whose UTF-8-encoded multibyte characters (curly quotes, NBSP, etc.) take 2-3 bytes for 1 character, so decode-then-slice-by-char undercounts record_length on a byte-for-byte-intact record and false-positives it as truncated.",
+  "cordata": {
+    "record_length": 1440,
+    "encoding": "ascii",
+    "line_ending": "crlf",
+    "notes": "Officer/registered-agent fields at position 495+ are present in the raw record but intentionally NOT modeled here, except last_transaction_date and report_year_1. status is A(active)/I(inactive).",
+    "fields": [
+      {
+        "name": "doc_number",
+        "start": 1,
+        "end": 12,
+        "type": "doc_number",
+        "gate": true
+      },
+      {
+        "name": "name",
+        "start": 13,
+        "end": 204,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "status",
+        "start": 205,
+        "end": 205,
+        "type": "status",
+        "gate": true,
+        "known_set": [
+          "A",
+          "I"
+        ]
+      },
+      {
+        "name": "filing_type",
+        "start": 206,
+        "end": 220,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "princ_addr1",
+        "start": 221,
+        "end": 262,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "princ_addr2",
+        "start": 263,
+        "end": 304,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "princ_city",
+        "start": 305,
+        "end": 332,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "princ_state",
+        "start": 333,
+        "end": 334,
+        "type": "state",
+        "gate": true
+      },
+      {
+        "name": "princ_zip",
+        "start": 335,
+        "end": 344,
+        "type": "zip",
+        "gate": true
+      },
+      {
+        "name": "princ_country",
+        "start": 345,
+        "end": 346,
+        "type": "country",
+        "gate": true
+      },
+      {
+        "name": "mail_addr1",
+        "start": 347,
+        "end": 388,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "mail_addr2",
+        "start": 389,
+        "end": 430,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "mail_city",
+        "start": 431,
+        "end": 458,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "mail_state",
+        "start": 459,
+        "end": 460,
+        "type": "state",
+        "gate": true
+      },
+      {
+        "name": "mail_zip",
+        "start": 461,
+        "end": 470,
+        "type": "zip",
+        "gate": true
+      },
+      {
+        "name": "mail_country",
+        "start": 471,
+        "end": 472,
+        "type": "country",
+        "gate": true
+      },
+      {
+        "name": "file_date",
+        "start": 473,
+        "end": 480,
+        "type": "date",
+        "gate": true
+      },
+      {
+        "name": "fei",
+        "start": 481,
+        "end": 494,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "last_transaction_date",
+        "start": 496,
+        "end": 503,
+        "type": "date",
+        "gate": true
+      },
+      {
+        "name": "report_year_1",
+        "start": 506,
+        "end": 509,
+        "type": "year",
+        "gate": true
+      }
+    ]
+  },
+  "ficdata": {
+    "record_length": 2098,
+    "encoding": "utf-8",
+    "line_ending": "crlf",
+    "notes": "Decode as UTF-8 first, then slice by DECODED character index (not raw bytes) -- file is not a clean multiple of record_length+CRLF in bytes, confirming some records contain multibyte characters. status is A(active)/E(expired)/C(cancelled). owner1_doc_number and owner1_charter_number are both candidate bridges to cordata.doc_number; bridge_field below records which one step 4 determined to be the real link (null until determined).",
+    "bridge_field": "owner1_charter_number",
+    "fields": [
+      {
+        "name": "doc_number",
+        "start": 1,
+        "end": 12,
+        "type": "doc_number",
+        "gate": true
+      },
+      {
+        "name": "fic_name",
+        "start": 13,
+        "end": 204,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "county",
+        "start": 205,
+        "end": 216,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "addr1",
+        "start": 217,
+        "end": 256,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "addr2",
+        "start": 257,
+        "end": 296,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "city",
+        "start": 297,
+        "end": 324,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "state",
+        "start": 325,
+        "end": 326,
+        "type": "state",
+        "gate": true
+      },
+      {
+        "name": "zip",
+        "start": 327,
+        "end": 336,
+        "type": "zip",
+        "gate": true
+      },
+      {
+        "name": "country",
+        "start": 337,
+        "end": 338,
+        "type": "country",
+        "gate": true
+      },
+      {
+        "name": "filing_date",
+        "start": 339,
+        "end": 346,
+        "type": "date",
+        "gate": true
+      },
+      {
+        "name": "status",
+        "start": 352,
+        "end": 352,
+        "type": "status",
+        "gate": true,
+        "known_set": [
+          "A",
+          "E",
+          "C"
+        ]
+      },
+      {
+        "name": "cancellation_date",
+        "start": 353,
+        "end": 360,
+        "type": "date",
+        "gate": true
+      },
+      {
+        "name": "expiration_date",
+        "start": 361,
+        "end": 368,
+        "type": "date",
+        "gate": true
+      },
+      {
+        "name": "num_owners",
+        "start": 369,
+        "end": 373,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "more_owners_flag",
+        "start": 388,
+        "end": 388,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "owner1_doc_number",
+        "start": 389,
+        "end": 400,
+        "type": "doc_number",
+        "gate": false
+      },
+      {
+        "name": "owner1_name",
+        "start": 401,
+        "end": 455,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "owner1_name_format",
+        "start": 456,
+        "end": 456,
+        "type": "text",
+        "gate": false
+      },
+      {
+        "name": "owner1_charter_number",
+        "start": 548,
+        "end": 559,
+        "type": "doc_number",
+        "gate": false
+      }
+    ]
+  }
+}

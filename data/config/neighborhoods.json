@@ -1,0 +1,8 @@
+{
+  "active_neighborhood": "coral_gables",
+  "zip_source": "derive_from_csv",
+  "min_google_rows_per_zip": 5,
+  "neighborhoods": {
+    "coral_gables": { "zips_override": null }
+  }
+}
