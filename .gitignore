@@ -14,3 +14,6 @@ data/etl/neo4j-dump/
 .pr_body
 scripts/_audit_data.py
 dashboard/.netlify/
+
+# Licensing enricher: cached DBPR extracts (re-downloadable, weekly-refreshed)
+data/license_extracts/

@@ -1,0 +1,1032 @@
+[
+  {
+    "business_name": "& son",
+    "current_website": "http://www.acehardware.com/store-details/06198?utm_source=google&utm_medium=local&utm_campaign=localmaps&utm_content=06198",
+    "candidate": "Sun & Sons",
+    "cand_site": "http://www.sunandsons.co/",
+    "cand_phone_match": false,
+    "name_sim": 55,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Sun & Sons'); current site unverifiable"
+  },
+  {
+    "business_name": "17 Real Estate Brokers",
+    "current_website": "http://www.gravityrealestate.com/",
+    "candidate": "17 Real Estate Brokers",
+    "cand_site": "",
+    "cand_phone_match": true,
+    "name_sim": 100,
+    "reco": "DELETE",
+    "why": "verified business but Google has NO website; current is unrelated"
+  },
+  {
+    "business_name": "19th Hole Sports Bar & Grill",
+    "current_website": "http://www.sfwio.com/",
+    "candidate": "19th Hole Bar & Grill",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 72,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('19th Hole Bar & Grill'); current site unverifiable"
+  },
+  {
+    "business_name": "305 Senior",
+    "current_website": "http://www.palacecoralgables.com/",
+    "candidate": "The Palace at Coral Gables",
+    "cand_site": "http://www.palacecoralgables.com/",
+    "cand_phone_match": false,
+    "name_sim": 12,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('The Palace at Coral Gables'); current site unverifiable"
+  },
+  {
+    "business_name": "450Gradi Miami Italian Restaurant",
+    "current_website": "http://enzos-miami.com/",
+    "candidate": "450Gradi Miami",
+    "cand_site": "https://450gradimiami.com/",
+    "cand_phone_match": false,
+    "name_sim": 67,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('450Gradi Miami'); current site unverifiable"
+  },
+  {
+    "business_name": "AJP Ventures Corp.",
+    "current_website": "https://websites.vertilinc.com/ajpcam",
+    "candidate": "AJP Management",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 54,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('AJP Management'); current site unverifiable"
+  },
+  {
+    "business_name": "Aleida Martinez Family Day Care Center",
+    "current_website": "http://www.schneidereyecenter.com/",
+    "candidate": "Unique Adult Day Care Center Inc",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 54,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Unique Adult Day Care Center'); current site unverifiable"
+  },
+  {
+    "business_name": "Allied North America Insurance Brokerage Of FL LLC",
+    "current_website": "https://nsigroup.org/contact/coral-gables-fl-insurance/",
+    "candidate": "Elite Underwriters inc",
+    "cand_site": "https://www.eliteunderwriters.com/",
+    "cand_phone_match": false,
+    "name_sim": 38,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Elite Underwriters inc'); current site unverifiable"
+  },
+  {
+    "business_name": "American Airlines",
+    "current_website": "https://aa.com",
+    "candidate": "901 Ponce de Leon Blvd",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 26,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('901 Ponce de Leon Blvd'); current site unverifiable"
+  },
+  {
+    "business_name": "Animal Clinic 8 & 43",
+    "current_website": "https://vcahospitals.com/south-dade?utm_source=maps&utm_medium=organic&utm_campaign=AU_1058",
+    "candidate": "VCA South Dade Animal Hospital",
+    "cand_site": "https://vcahospitals.com/south-dade?utm_source=maps&utm_medium=organic&utm_campaign=AU_1058",
+    "cand_phone_match": false,
+    "name_sim": 45,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('VCA South Dade Animal Hospit'); current site unverifiable"
+  },
+  {
+    "business_name": "Anthem Advisors",
+    "current_website": "http://www.cflgcpa.com/",
+    "candidate": "8950 SW 74th Ct Ste 1210",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 21,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('8950 SW 74th Ct Ste 1210'); current site unverifiable"
+  },
+  {
+    "business_name": "Arthur J. Gallagher",
+    "current_website": "https://ajg.com",
+    "candidate": "Gallagher Insurance, Risk Management & Consulting",
+    "cand_site": "https://locations.ajg.com/us/fl/miami/9155-south-dadeland-boulevard?utm_source=google&utm_medium=Google_My_Business&utm_campaign=GMB_website_click_9155+South+Dadeland+Boulevard+Miami&y_source=1_MzE5NjgxMjctNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
+    "cand_phone_match": false,
+    "name_sim": 35,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Gallagher Insurance, Risk Ma'); current site unverifiable"
+  },
+  {
+    "business_name": "Attractions",
+    "current_website": "https://fairchildgarden.org",
+    "candidate": "Coral Gables Museum",
+    "cand_site": "http://coralgablesmuseum.org/",
+    "cand_phone_match": false,
+    "name_sim": 12,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Coral Gables Museum'); current site unverifiable"
+  },
+  {
+    "business_name": "Audio Visual Company",
+    "current_website": "https://showtechinc.com",
+    "candidate": "Audio Visual Services",
+    "cand_site": "http://www.audiovisualsvc.com/",
+    "cand_phone_match": false,
+    "name_sim": 68,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Audio Visual Services'); current site unverifiable"
+  },
+  {
+    "business_name": "Audrey Ross Team  Compass Florida",
+    "current_website": "https://miamirealestate.com",
+    "candidate": "The Audrey Ross Team",
+    "cand_site": "https://www.miamirealestate.com/",
+    "cand_phone_match": false,
+    "name_sim": 80,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('The Audrey Ross Team'); current site unverifiable"
+  },
+  {
+    "business_name": "Aurora Medina Family Day Care Home",
+    "current_website": "https://ornatehome.com/?utm_source=google&utm_medium=GBP&utm_campaign=charlottelocal",
+    "candidate": "Day Care Center",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 38,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Day Care Center'); current site unverifiable"
+  },
+  {
+    "business_name": "BankMiami",
+    "current_website": "https://pichinchamiami.com/",
+    "candidate": "Banco Del Pichincha-Miami Agency",
+    "cand_site": "https://pichinchamiami.com/",
+    "cand_phone_match": false,
+    "name_sim": 40,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Banco Del Pichincha-Miami Ag'); current site unverifiable"
+  },
+  {
+    "business_name": "Better Business Bureau Serving SE Florida & the Caribbean",
+    "current_website": "https://bbb.org",
+    "candidate": "BBB, SE Florida & the Caribbean",
+    "cand_site": "https://www.bbb.org/sefl",
+    "cand_phone_match": false,
+    "name_sim": 54,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('BBB, SE Florida & the Caribb'); current site unverifiable"
+  },
+  {
+    "business_name": "BG Integrative Studio",
+    "current_website": "https://bgmedtattoo.com",
+    "candidate": "BG INTEGRATIVE",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 80,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('BG INTEGRATIVE'); current site unverifiable"
+  },
+  {
+    "business_name": "Bladen Builders Supply",
+    "current_website": "https://www.doitbest.com/bladen-builders-supply",
+    "candidate": "Bladen Builders Supply",
+    "cand_site": "https://www.doitbest.com/bladen-builders-supply",
+    "cand_phone_match": true,
+    "name_sim": 100,
+    "reco": "LEAVE",
+    "why": "current already matches verified listing"
+  },
+  {
+    "business_name": "Blue Columbia Holdings",
+    "current_website": "https://lexreception.com",
+    "candidate": "VUMI Group",
+    "cand_site": "https://www.vumigroup.com/",
+    "cand_phone_match": false,
+    "name_sim": 31,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('VUMI Group'); current site unverifiable"
+  },
+  {
+    "business_name": "BMS Insurance Agency of Florida LLC",
+    "current_website": "https://agroupservices.com/?utm_source=google&utm_medium=local&utm_campaign=google-local-72420",
+    "candidate": "Alhambra Insurance",
+    "cand_site": "http://www.alhambrains.com/",
+    "cand_phone_match": false,
+    "name_sim": 63,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Alhambra Insurance'); current site unverifiable"
+  },
+  {
+    "business_name": "Boo Zamek",
+    "current_website": "https://compass.com/agents/provincezamek",
+    "candidate": "Berkshire Hathaway HomeServices EWM Realty",
+    "cand_site": "http://www.ewm.com/",
+    "cand_phone_match": false,
+    "name_sim": 20,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Berkshire Hathaway HomeServi'); current site unverifiable"
+  },
+  {
+    "business_name": "Borbolla Insurance Agencies Inc",
+    "current_website": "https://agents.allstate.com/borbolla-insurance-agencies-inc-coral-gables-fl.html?utm_source=GMB&utm_medium=Website",
+    "candidate": "Borbolla Insurance Agencies Inc: Allstate Insurance",
+    "cand_site": "https://agents.allstate.com/borbolla-insurance-agencies-inc-coral-gables-fl.html?utm_source=GMB&utm_medium=Website",
+    "cand_phone_match": false,
+    "name_sim": 74,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Borbolla Insurance Agencies '); current site unverifiable"
+  },
+  {
+    "business_name": "Bowden Wealth Management Group at Bank of America / Merrill Lynch",
+    "current_website": "https://advisor.ml.com/sites/fl/miamibrickell/bowdenassociates",
+    "candidate": "Coral Gables",
+    "cand_site": "http://www.citybeautiful.net/",
+    "cand_phone_match": false,
+    "name_sim": 0,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Coral Gables'); current site unverifiable"
+  },
+  {
+    "business_name": "BrownForman Beverages",
+    "current_website": "https://bf.com",
+    "candidate": "Coral Gables",
+    "cand_site": "http://www.citybeautiful.net/",
+    "cand_phone_match": false,
+    "name_sim": 0,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Coral Gables'); current site unverifiable"
+  },
+  {
+    "business_name": "Bust of Jose Marti",
+    "current_website": "https://baptisthealth.net/doctors/Alejandro-Jose-Centurion/870218?utm_source=yext&utm_medium=google&utm_campaign=listing&y_source=1_MTczMDE4NTgtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
+    "candidate": "Freedom Plaza and Jos\u00e9 Mart\u00ed Monument",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 39,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Freedom Plaza and Jos\u00e9 Mart\u00ed'); current site unverifiable"
+  },
+  {
+    "business_name": "Camner Center for Resources",
+    "current_website": "http://www.miami.edu/",
+    "candidate": "Toppel Career Center",
+    "cand_site": "http://hireacane.miami.edu/",
+    "cand_phone_match": false,
+    "name_sim": 48,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Toppel Career Center'); current site unverifiable"
+  },
+  {
+    "business_name": "Catering",
+    "current_website": "https://theboardmiami.com",
+    "candidate": "Whisk Gourmet Food & Catering",
+    "cand_site": "http://www.whiskgourmet.com/",
+    "cand_phone_match": false,
+    "name_sim": 46,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Whisk Gourmet Food & Caterin'); current site unverifiable"
+  },
+  {
+    "business_name": "Consulate of Hungary",
+    "current_website": "https://washington.mfa.gov.hu/page/consulates",
+    "candidate": "Vice- Consulate of Hungary / Magyarorsz\u00e1g Alkonzul\u00e1tusa",
+    "cand_site": "https://newyork.mfa.gov.hu/page/magyarorszag-miami-alkonzulatusa",
+    "cand_phone_match": false,
+    "name_sim": 53,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Vice- Consulate of Hungary /'); current site unverifiable"
+  },
+  {
+    "business_name": "Coral Gables Lodge No. 260",
+    "current_website": "https://coralgablesmason.org/",
+    "candidate": "Coral Gables Masonic Lodge No.260 F&AM",
+    "cand_site": "https://coralgablesmason.org/",
+    "cand_phone_match": false,
+    "name_sim": 51,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Coral Gables Masonic Lodge N'); current site unverifiable"
+  },
+  {
+    "business_name": "Coral Gables Professional Firefighters Assn.",
+    "current_website": "https://local1210.com",
+    "candidate": "Coral Gables Fire Department",
+    "cand_site": "https://www.coralgables.com/department/fire",
+    "cand_phone_match": false,
+    "name_sim": 31,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Coral Gables Fire Department'); current site unverifiable"
+  },
+  {
+    "business_name": "Dean of Students Office",
+    "current_website": "https://doso.students.wisc.edu/",
+    "candidate": "University of Miami Student Center Complex",
+    "cand_site": "http://www.miami.edu/SCC",
+    "cand_phone_match": false,
+    "name_sim": 48,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('University of Miami Student '); current site unverifiable"
+  },
+  {
+    "business_name": "Digital Radiology Inc.",
+    "current_website": "https://lifeimagingfla.com/contact/?utm_source=gmb_auth",
+    "candidate": "Life Imaging Miami",
+    "cand_site": "https://lifeimagingfla.com/contact/?utm_source=gmb_auth",
+    "cand_phone_match": false,
+    "name_sim": 34,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Life Imaging Miami'); current site unverifiable"
+  },
+  {
+    "business_name": "DMG Corporation",
+    "current_website": "https://giovannymadridfr.com",
+    "candidate": "dmg Martinez Group",
+    "cand_site": "https://dmg-mg.com/",
+    "cand_phone_match": false,
+    "name_sim": 36,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('dmg Martinez Group'); current site unverifiable"
+  },
+  {
+    "business_name": "Erica Simons",
+    "current_website": "https://www.drsimonplasticsurgery.com/",
+    "candidate": "Dr. Sean Simon MD",
+    "cand_site": "https://www.drsimonplasticsurgery.com/",
+    "cand_phone_match": false,
+    "name_sim": 57,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Dr. Sean Simon MD'); current site unverifiable"
+  },
+  {
+    "business_name": "Erin Anding",
+    "current_website": "https://erinhuyler.ewm.com/",
+    "candidate": "Erin Huyler - Miami Real Estate",
+    "cand_site": "https://erinhuyler.ewm.com/",
+    "cand_phone_match": false,
+    "name_sim": 29,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Erin Huyler - Miami Real Est'); current site unverifiable"
+  },
+  {
+    "business_name": "Esthetique Spa",
+    "current_website": "http://www.skintiquemiami.com/",
+    "candidate": "City Esthetic",
+    "cand_site": "http://www.cityesthetic.com/",
+    "cand_phone_match": false,
+    "name_sim": 61,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('City Esthetic'); current site unverifiable"
+  },
+  {
+    "business_name": "Fantasy, 1958",
+    "current_website": "http://www.citybeautiful.net/",
+    "candidate": "Miami, FL 33146",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 12,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Miami, FL 33146'); current site unverifiable"
+  },
+  {
+    "business_name": "Florida International University",
+    "current_website": "https://fiu.edu",
+    "candidate": "11200 SW 8th St",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 21,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('11200 SW 8th St'); current site unverifiable"
+  },
+  {
+    "business_name": "Flowers & Services",
+    "current_website": "http://www.bfleur.com/",
+    "candidate": "Trias Flowers & Gifts",
+    "cand_site": "https://www.triasflowers.com/?utm_source=google&utm_medium=organic&utm_campaign=gmb",
+    "cand_phone_match": false,
+    "name_sim": 69,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Trias Flowers & Gifts'); current site unverifiable"
+  },
+  {
+    "business_name": "Fohhn Audio Americas, LLC",
+    "current_website": "https://fohnn.com",
+    "candidate": "2960 Ponce de Leon Blvd",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 28,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('2960 Ponce de Leon Blvd'); current site unverifiable"
+  },
+  {
+    "business_name": "Fontana Ristorante",
+    "current_website": "https://biltmorehotel.com/coralgablesdining/fontana",
+    "candidate": "Fontana Italian Biltmore Hotel Miami",
+    "cand_site": "https://biltmorehotel.com/coral-gables-dining/fontana/?utm_source=google&utm_medium=organic&utm_campaign=gmb-listing",
+    "cand_phone_match": false,
+    "name_sim": 57,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Fontana Italian Biltmore Hot'); current site unverifiable"
+  },
+  {
+    "business_name": "Frank Rolfes",
+    "current_website": "http://www.rascoklock.com/",
+    "candidate": "Rasco Klock",
+    "cand_site": "http://www.rascoklock.com/",
+    "cand_phone_match": false,
+    "name_sim": 35,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Rasco Klock'); current site unverifiable"
+  },
+  {
+    "business_name": "Garbage Collection",
+    "current_website": "https://wm.com",
+    "candidate": "Dade County Solid Waste Transfer",
+    "cand_site": "http://www.miamidade.gov/solidwaste/trash-recycling.asp",
+    "cand_phone_match": false,
+    "name_sim": 36,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Dade County Solid Waste Tran'); current site unverifiable"
+  },
+  {
+    "business_name": "Genuine Pizza",
+    "current_website": "https://www.pummarola.us/",
+    "candidate": "Verace Artisan Pizzeria",
+    "cand_site": "http://www.veraceartisan.com/",
+    "cand_phone_match": false,
+    "name_sim": 44,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Verace Artisan Pizzeria'); current site unverifiable"
+  },
+  {
+    "business_name": "Gerson & Schwartz P.A",
+    "current_website": "https://www.injuryattorneyfla.com",
+    "candidate": "Gerson and Schwartz Accident & Injury Lawyers",
+    "cand_site": "https://www.injuryattorneyfla.com/",
+    "cand_phone_match": false,
+    "name_sim": 56,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Gerson and Schwartz Accident'); current site unverifiable"
+  },
+  {
+    "business_name": "Gift Shop",
+    "current_website": "https://mystichealing.com",
+    "candidate": "Coco Bella Gift & Home",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 33,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Coco Bella Gift & Home'); current site unverifiable"
+  },
+  {
+    "business_name": "Goldman Sachs 10,000 Small Businesses at Miami Dade College",
+    "current_website": "https://mdc.edu/10ksb",
+    "candidate": "Goldman Sachs & Co",
+    "cand_site": "https://www.goldmansachs.com/our-firm/locations.html",
+    "cand_phone_match": false,
+    "name_sim": 49,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Goldman Sachs & Co'); current site unverifiable"
+  },
+  {
+    "business_name": "Graduate School",
+    "current_website": "https://www.grad.miami.edu/",
+    "candidate": "1551 Brescia",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 30,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('1551 Brescia'); current site unverifiable"
+  },
+  {
+    "business_name": "Gustave",
+    "current_website": "https://www.babettemiami.com/",
+    "candidate": "Miami, FL 33134",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 0,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Miami, FL 33134'); current site unverifiable"
+  },
+  {
+    "business_name": "Hank Langston",
+    "current_website": "http://www.citybeautiful.net/",
+    "candidate": "Coral Gables",
+    "cand_site": "http://www.citybeautiful.net/",
+    "cand_phone_match": false,
+    "name_sim": 0,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Coral Gables'); current site unverifiable"
+  },
+  {
+    "business_name": "HART",
+    "current_website": "https://lanedds.com/our-doctors/dr-tyler-hart/",
+    "candidate": "Sanchez & Hart Inc",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 50,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Sanchez & Hart Inc'); current site unverifiable"
+  },
+  {
+    "business_name": "HGIT Coral Gables, LLC",
+    "current_website": "https://gablesstation.com",
+    "candidate": "Gables Global Investments LLC",
+    "cand_site": "https://gablesglobal.com/",
+    "cand_phone_match": false,
+    "name_sim": 27,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Gables Global Investments LL'); current site unverifiable"
+  },
+  {
+    "business_name": "Historical Sites",
+    "current_website": "https://coralgables.com",
+    "candidate": "Alhambra Water Tower",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 39,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Alhambra Water Tower'); current site unverifiable"
+  },
+  {
+    "business_name": "ICR Advisors",
+    "current_website": "https://miamiliferealestate.net",
+    "candidate": "ICR Capital LLC",
+    "cand_site": "https://icrcapital.com/",
+    "cand_phone_match": false,
+    "name_sim": 52,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('ICR Capital LLC'); current site unverifiable"
+  },
+  {
+    "business_name": "Interface Consulting and Psychological Services",
+    "current_website": "https://icpstherapy.com",
+    "candidate": "Miami Counseling & Resource Center",
+    "cand_site": "https://miamicounseling.com/",
+    "cand_phone_match": false,
+    "name_sim": 52,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Miami Counseling & Resource '); current site unverifiable"
+  },
+  {
+    "business_name": "Ivette ODoski Consulting",
+    "current_website": "https://velizlaw.com/?utm_source=GBP&utm_medium=GBP&utm_campaign=GBP_Coral%20Gables&utm_id=GBP_Coral%20Gables",
+    "candidate": "Veliz & Associates P.A., an Estate & Legacy Planning Firm",
+    "cand_site": "https://velizlaw.com/?utm_source=GBP&utm_medium=GBP&utm_campaign=GBP_Coral%20Gables&utm_id=GBP_Coral%20Gables",
+    "cand_phone_match": false,
+    "name_sim": 29,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Veliz & Associates P.A., an '); current site unverifiable"
+  },
+  {
+    "business_name": "J. Muir & Associates, P.A.",
+    "current_website": "https://miamibusiness.law",
+    "candidate": "J Muir & Associates - Miami Business Law Firm",
+    "cand_site": "https://jmuirandassociates.com/?utm_source=GMB&utm_medium=Organic&utm_campaign=Coral+Gables",
+    "cand_phone_match": false,
+    "name_sim": 62,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('J Muir & Associates - Miami '); current site unverifiable"
+  },
+  {
+    "business_name": "Jackson Health System",
+    "current_website": "https://jhsmiami.org",
+    "candidate": "UHealth Jackson Urgent Care | Coral Gables",
+    "cand_site": "https://jacksonurgentcare.com/location/coral-gables/",
+    "cand_phone_match": false,
+    "name_sim": 50,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('UHealth Jackson Urgent Care '); current site unverifiable"
+  },
+  {
+    "business_name": "Jeweler's Gold and Gifts",
+    "current_website": "https://amauryjewelry.com/",
+    "candidate": "Mega Gold Jewelry",
+    "cand_site": "http://pawnmiami.com/",
+    "cand_phone_match": false,
+    "name_sim": 61,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Mega Gold Jewelry'); current site unverifiable"
+  },
+  {
+    "business_name": "Joan Reitsma",
+    "current_website": "https://gablesfoundation.org/",
+    "candidate": "Coral Gables Community Foundation",
+    "cand_site": "https://gablesfoundation.org/",
+    "cand_phone_match": false,
+    "name_sim": 31,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Coral Gables Community Found'); current site unverifiable"
+  },
+  {
+    "business_name": "Jorge Enterprises GC - Construction",
+    "current_website": "https://je-gc.com/",
+    "candidate": "GCA Inc",
+    "cand_site": "http://www.gcamiami.com/",
+    "cand_phone_match": false,
+    "name_sim": 11,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('GCA Inc'); current site unverifiable"
+  },
+  {
+    "business_name": "LAG REALTY INTERNATIONAL, S. A.",
+    "current_website": "https://laglex.com",
+    "candidate": "The Lani Group at Lowell International Realty",
+    "cand_site": "https://thelanigroup.com/",
+    "cand_phone_match": false,
+    "name_sim": 74,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('The Lani Group at Lowell Int'); current site unverifiable"
+  },
+  {
+    "business_name": "Large Metal B",
+    "current_website": "http://hqdtechusa.com/",
+    "candidate": "Lucky's Vape & Smoke #2",
+    "cand_site": "https://luckyvapestore.com/",
+    "cand_phone_match": false,
+    "name_sim": 36,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Lucky's Vape & Smoke #2'); current site unverifiable"
+  },
+  {
+    "business_name": "Le Parc Cafe",
+    "current_website": "https://www.coralgablescountryclub.com/leparc-caf%C3%A9",
+    "candidate": "Le Parc-Bonjour, Caf\u00e9 Bistro",
+    "cand_site": "https://leparccafe.com/",
+    "cand_phone_match": false,
+    "name_sim": 44,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Le Parc-Bonjour, Caf\u00e9 Bistro'); current site unverifiable"
+  },
+  {
+    "business_name": "Made In Miami",
+    "current_website": "https://drmiamimd.com",
+    "candidate": "Mamey Miami",
+    "cand_site": "http://mameymiami.com/",
+    "cand_phone_match": false,
+    "name_sim": 67,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Mamey Miami'); current site unverifiable"
+  },
+  {
+    "business_name": "Montes de Oca",
+    "current_website": "http://www.primecare1.com/",
+    "candidate": "Jenny C. Montes De Oca Pineda, MD - PrimeCare of Coral Gables",
+    "cand_site": "http://www.primecare1.com/",
+    "cand_phone_match": false,
+    "name_sim": 50,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Jenny C. Montes De Oca Pined'); current site unverifiable"
+  },
+  {
+    "business_name": "Office of the Supervisor of Elections",
+    "current_website": "http://www.miamidade.gov/elections/",
+    "candidate": "Miami-Dade County Supervisor of Elections Office",
+    "cand_site": "https://www.votemiamidade.gov/elections/home.page",
+    "cand_phone_match": false,
+    "name_sim": 76,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Miami-Dade County Supervisor'); current site unverifiable"
+  },
+  {
+    "business_name": "Orion Mart",
+    "current_website": "https://hannatiger.com/",
+    "candidate": "Verizon",
+    "cand_site": "https://www.verizon.com/stores/details/florida/coral-gables/coral-gables-201100/?CMP=seo_b_x_vz_gbp_ot_2022_08_website",
+    "cand_phone_match": false,
+    "name_sim": 47,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Verizon'); current site unverifiable"
+  },
+  {
+    "business_name": "OYO Hotel Coral Gables - Miami Airport",
+    "current_website": "https://www.oyorooms.com/us/103476/?utm_source=GMB&utm_medium=Organic&utm_campaign=US_MAI004",
+    "candidate": "Gables Cove Hotel",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 13,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Gables Cove Hotel'); current site unverifiable"
+  },
+  {
+    "business_name": "Palme d'Or",
+    "current_website": "https://www.biltmorehotel.com/dining/palme_dor/?utm_source=local&utm_medium=organic&utm_campaign=gmb",
+    "candidate": "Palme d'Or Restaurant Biltmore Hotel Coral Gables",
+    "cand_site": "https://www.biltmorehotel.com/dining/palme_dor/?utm_source=local&utm_medium=organic&utm_campaign=gmb",
+    "cand_phone_match": false,
+    "name_sim": 67,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Palme d'Or Restaurant Biltmo'); current site unverifiable"
+  },
+  {
+    "business_name": "Pan American Institute",
+    "current_website": "https://www.panamacademy.com/",
+    "candidate": "Biscayne National Park Institute at Coconut Grove",
+    "cand_site": "https://www.biscaynenationalparkinstitute.org/",
+    "cand_phone_match": false,
+    "name_sim": 50,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Biscayne National Park Insti'); current site unverifiable"
+  },
+  {
+    "business_name": "Pangaea Exploration",
+    "current_website": "https://www.panexplore.com/",
+    "candidate": "Panexplore",
+    "cand_site": "https://www.panexplore.com/",
+    "cand_phone_match": false,
+    "name_sim": 48,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Panexplore'); current site unverifiable"
+  },
+  {
+    "business_name": "Pena Garcia & Diz, PLLC",
+    "current_website": "https://pgdlegal.com",
+    "candidate": "Pena Law Office, P.A",
+    "cand_site": "https://www.penalawoffice.com/",
+    "cand_phone_match": false,
+    "name_sim": 47,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Pena Law Office, P.A'); current site unverifiable"
+  },
+  {
+    "business_name": "PerformanceREWIRED",
+    "current_website": "https://jeskabrodbeck.com",
+    "candidate": "Platinum Business Center",
+    "cand_site": "http://www.platinumbusinesscenter.com/",
+    "cand_phone_match": false,
+    "name_sim": 17,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Platinum Business Center'); current site unverifiable"
+  },
+  {
+    "business_name": "Phillip Morris International",
+    "current_website": "https://pmi.com",
+    "candidate": "Coral Gables",
+    "cand_site": "http://www.citybeautiful.net/",
+    "cand_phone_match": false,
+    "name_sim": 0,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Coral Gables'); current site unverifiable"
+  },
+  {
+    "business_name": "Powering Elite Performers, LLC",
+    "current_website": "https://us.shaklee.com/en_US/kensmith",
+    "candidate": "Elite U Sports Performance",
+    "cand_site": "https://eliteuperformance.com/",
+    "cand_phone_match": false,
+    "name_sim": 73,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Elite U Sports Performance'); current site unverifiable"
+  },
+  {
+    "business_name": "Primary Care",
+    "current_website": "https://onemedical.com/locations/mia/coconut-grove?y_source=1_MTA1Mzk0OTQzOC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D",
+    "candidate": "One Medical Primary Care Clinic - Coconut Grove",
+    "cand_site": "https://onemedical.com/locations/mia/coconut-grove?y_source=1_MTA1Mzk0OTQzOC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D",
+    "cand_phone_match": false,
+    "name_sim": 42,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('One Medical Primary Care Cli'); current site unverifiable"
+  },
+  {
+    "business_name": "PROMEXICO / Mexico's Trade & Investment Comm.Miami",
+    "current_website": "https://gob.mx",
+    "candidate": "Consulate General of Guatemala",
+    "cand_site": "https://consuladodeguatemalaenusa.com/miami/",
+    "cand_phone_match": false,
+    "name_sim": 34,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Consulate General of Guatema'); current site unverifiable"
+  },
+  {
+    "business_name": "Recycling",
+    "current_website": "https://wm.com",
+    "candidate": "Environmental Services Recycling",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 44,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Environmental Services Recyc'); current site unverifiable"
+  },
+  {
+    "business_name": "Resident Member",
+    "current_website": "https://www.lifetime.life/locations/fl/coral-gables.html?utm_source=google&utm_medium=local&utm_campaign=google-local-club",
+    "candidate": "Life Time Work",
+    "cand_site": "https://work.lifetime.life/locations/fl-coral-gables.html?utm_source=google&utm_medium=local&utm_campaign=google-local-club",
+    "cand_phone_match": false,
+    "name_sim": 34,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Life Time Work'); current site unverifiable"
+  },
+  {
+    "business_name": "Richards Legal Group",
+    "current_website": "https://richpa.net",
+    "candidate": "Richard L. Richards, Aviation Attorney",
+    "cand_site": "https://www.richpa.net/",
+    "cand_phone_match": false,
+    "name_sim": 48,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Richard L. Richards, Aviatio'); current site unverifiable"
+  },
+  {
+    "business_name": "Russell Capital Group",
+    "current_website": "https://rcgmortgage.com",
+    "candidate": "Russell Capital Management",
+    "cand_site": "http://www.russcap.com/",
+    "cand_phone_match": false,
+    "name_sim": 72,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Russell Capital Management'); current site unverifiable"
+  },
+  {
+    "business_name": "S. Pellegrino & Acqua Panna",
+    "current_website": "https://www.camilaspatisserie.com/",
+    "candidate": "Camila's Patisserie",
+    "cand_site": "https://www.camilaspatisserie.com/",
+    "cand_phone_match": false,
+    "name_sim": 40,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Camila's Patisserie'); current site unverifiable"
+  },
+  {
+    "business_name": "School of Education and Human Development",
+    "current_website": "https://www.edu.miami.edu/",
+    "candidate": "University of Miami School of Education",
+    "cand_site": "https://www.edu.miami.edu/",
+    "cand_phone_match": false,
+    "name_sim": 52,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('University of Miami School o'); current site unverifiable"
+  },
+  {
+    "business_name": "Semillitas",
+    "current_website": "http://www.citybeautiful.net/",
+    "candidate": "Semillitas de vida Preschool",
+    "cand_site": "https://semillitasdevidapreschool.com/",
+    "cand_phone_match": false,
+    "name_sim": 53,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Semillitas de vida Preschool'); current site unverifiable"
+  },
+  {
+    "business_name": "Senior Living",
+    "current_website": "https://belmontvillage.com",
+    "candidate": "The Palace at Coral Gables",
+    "cand_site": "http://www.palacecoralgables.com/",
+    "cand_phone_match": false,
+    "name_sim": 21,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('The Palace at Coral Gables'); current site unverifiable"
+  },
+  {
+    "business_name": "State Farm",
+    "current_website": "https://www.kitsiagaines.com/",
+    "candidate": "Mario Obregon - State Farm Insurance Agent",
+    "cand_site": "https://www.marioobregon.com/?cmpid=CTH4_blm_0001",
+    "cand_phone_match": false,
+    "name_sim": 40,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Mario Obregon - State Farm I'); current site unverifiable"
+  },
+  {
+    "business_name": "Studio HD",
+    "current_website": "https://hollyedavidson.com",
+    "candidate": "Studio Chroma by Andrea Fanan",
+    "cand_site": "http://studiochromabyaf.com/",
+    "cand_phone_match": false,
+    "name_sim": 46,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Studio Chroma by Andrea Fana'); current site unverifiable"
+  },
+  {
+    "business_name": "Tax Collectors Office Miami Dade County",
+    "current_website": "https://mdctaxcollector.gov",
+    "candidate": "Tax Collector Office Dariel Fernandez",
+    "cand_site": "https://mdctaxcollector.gov/",
+    "cand_phone_match": false,
+    "name_sim": 71,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Tax Collector Office Dariel '); current site unverifiable"
+  },
+  {
+    "business_name": "Tete- -Tete",
+    "current_website": "https://www.babettemiami.com/",
+    "candidate": "La Jolla Ballroom",
+    "cand_site": "http://www.lajollaballroom.com/",
+    "cand_phone_match": false,
+    "name_sim": 8,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('La Jolla Ballroom'); current site unverifiable"
+  },
+  {
+    "business_name": "Tetrahelix and Son",
+    "current_website": "https://www.crateandbarrel.com/stores/coral-gables/str814?utm_source=gmb&utm_medium=organic_search",
+    "candidate": "Shops at Merrick Park",
+    "cand_site": "https://www.shopsatmerrickpark.com/en.html",
+    "cand_phone_match": false,
+    "name_sim": 25,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Shops at Merrick Park'); current site unverifiable"
+  },
+  {
+    "business_name": "The Great Miami LGBTQ Chamber of Commerce",
+    "current_website": "https://gogaymiami.com",
+    "candidate": "Coral Gables Chamber of Commerce",
+    "cand_site": "https://www.coralgableschamber.org/",
+    "cand_phone_match": false,
+    "name_sim": 73,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Coral Gables Chamber of Comm'); current site unverifiable"
+  },
+  {
+    "business_name": "The Marks Development Company",
+    "current_website": "http://eigfl.com/",
+    "candidate": "The Estate Companies",
+    "cand_site": "http://eigfl.com/",
+    "cand_phone_match": false,
+    "name_sim": 49,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('The Estate Companies'); current site unverifiable"
+  },
+  {
+    "business_name": "Thomas F. Daly Loggia",
+    "current_website": "http://www.miami.edu/",
+    "candidate": "Miami, FL 33124",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 0,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Miami, FL 33124'); current site unverifiable"
+  },
+  {
+    "business_name": "UGas",
+    "current_website": "http://coral-way-u-gas.edan.io/",
+    "candidate": "Coral Way U-Gas",
+    "cand_site": "http://coral-way-u-gas.edan.io/",
+    "cand_phone_match": false,
+    "name_sim": 67,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Coral Way U-Gas'); current site unverifiable"
+  },
+  {
+    "business_name": "University Center Information Desk",
+    "current_website": "http://www.miami.edu/",
+    "candidate": "University of Miami Student Center Complex",
+    "cand_site": "http://www.miami.edu/SCC",
+    "cand_phone_match": false,
+    "name_sim": 57,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('University of Miami Student '); current site unverifiable"
+  },
+  {
+    "business_name": "Vicki Lopez State Representative  HD 113",
+    "current_website": "http://www.citybeautiful.net/",
+    "candidate": "Miami, FL 33134",
+    "cand_site": "",
+    "cand_phone_match": false,
+    "name_sim": 9,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Miami, FL 33134'); current site unverifiable"
+  },
+  {
+    "business_name": "Wahlstrom Insurance Associates",
+    "current_website": "https://wahlstrominsuranceassociates.godaddysites.com/",
+    "candidate": "Wahlstrom Associates Inc. DBA Wahlstrom Insurance",
+    "cand_site": "https://wahlstrominsuranceassociates.godaddysites.com/",
+    "cand_phone_match": false,
+    "name_sim": 81,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Wahlstrom Associates Inc. DB'); current site unverifiable"
+  },
+  {
+    "business_name": "Waste Management",
+    "current_website": "https://wm.com",
+    "candidate": "Dade County Solid Waste Transfer",
+    "cand_site": "http://www.miamidade.gov/solidwaste/trash-recycling.asp",
+    "cand_phone_match": false,
+    "name_sim": 42,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Dade County Solid Waste Tran'); current site unverifiable"
+  },
+  {
+    "business_name": "Woodlawn Park Cemetery",
+    "current_website": "https://www.dignitymemorial.com/",
+    "candidate": "Caballero Rivero Woodlawn North",
+    "cand_site": "https://www.dignitymemorial.com/funeral-homes/florida/miami/caballero-rivero-woodlawn-north/9544?utm_source=google_my_business&utm_medium=organic",
+    "cand_phone_match": false,
+    "name_sim": 60,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Caballero Rivero Woodlawn No'); current site unverifiable"
+  },
+  {
+    "business_name": "Zoo Attraction",
+    "current_website": "https://zoomiami.org",
+    "candidate": "Jungle Island",
+    "cand_site": "https://www.jungleisland.com/",
+    "cand_phone_match": false,
+    "name_sim": 22,
+    "reco": "DELETE?",
+    "why": "maps top result is a different business ('Jungle Island'); current site unverifiable"
+  }
+]

@@ -31,6 +31,7 @@ export const ROLES = {
       'view_all_businesses',
       'view_member_status',
       'view_non_member_details',
+      'view_risk_flags',
       'view_recruit_queue',
       'view_analytics',
       'view_compare',
@@ -99,14 +100,10 @@ export const ROLES = {
   },
 }
 
-export const TERMINAL_USERS = {
-  'ceo@cgcc.org':        { password: 'terminal2026', name: 'Maria Gonzalez',   role: 'leadership', title: 'President & CEO' },
-  'membership@cgcc.org': { password: 'terminal2026', name: 'David Morales',    role: 'membership', title: 'Membership Director' },
-  'member@cgcc.org':     { password: 'terminal2026', name: 'Sofia Reyes',      role: 'member',     title: 'Business Owner', businessId: 'bulla_gastrobar' },
-  'guest@cgcc.org':      { password: 'guest',        name: 'Guest User',       role: 'teaser',     title: 'Non-Member' },
-  'sponsor@cgcc.org':    { password: 'terminal2026', name: 'James Chen',       role: 'sponsor',    title: 'Sponsor Rep' },
-  'admin@cgcc.org':      { password: 'terminal2026', name: 'Admin',            role: 'admin',      title: 'System Admin' },
-}
+// NOTE: User identities and passwords now live in Neo4j (:User nodes), not here.
+// Authentication goes through the API server (POST /api/login). This file only
+// defines the role → permission matrix consumed by `can()` / <RoleGate>. Valid
+// role ids are the keys of ROLES above; the server assigns a user's role.
 
 export function hasPermission(role, permission) {
   const roleDef = ROLES[role]

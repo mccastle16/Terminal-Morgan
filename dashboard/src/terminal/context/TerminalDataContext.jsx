@@ -1,12 +1,25 @@
 import { createContext, useContext, useState, useEffect, useMemo } from 'react'
-import Papa from 'papaparse'
 import { useTerminalAuth } from './TerminalAuthContext'
 import { computeRecruitabilityScore, getRecruitabilityBand, getRecruitReasons } from '../config/scoring'
+import { apiFetch } from '../lib/api'
 
 const TerminalDataContext = createContext(null)
 
+// Neighborhood names arrive from Neo4j with inconsistent casing/whitespace
+// (e.g. "chapinero", "Chapinero", "CHAPINERO "), which otherwise show up as
+// separate entries in penetration charts and filters. Canonicalize to a single
+// Title Case form so casing variants collapse into one neighborhood.
+function normalizeNeighborhood(raw) {
+  if (!raw) return raw
+  const cleaned = raw.trim().replace(/\s+/g, ' ')
+  if (!cleaned) return cleaned
+  return cleaned
+    .toLowerCase()
+    .replace(/\b\p{L}/gu, (ch) => ch.toUpperCase())
+}
+
 export function TerminalDataProvider({ children }) {
-  const { tenant } = useTerminalAuth()
+  const { tenant, user } = useTerminalAuth()
   const [rawBusinesses, setRawBusinesses] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -14,27 +27,57 @@ export function TerminalDataProvider({ children }) {
     search: '', category: '', neighborhood: '', memberStatus: '',
     validationTier: '', riskLevel: '', minRating: '', hasWebsite: null,
   })
+  const [bookmarks, setBookmarks] = useState(() => {
+    const saved = localStorage.getItem('terminal_bookmarks')
+    return saved ? JSON.parse(saved) : []
+  })
+  // Data source is always the live Neo4j API. Kept as state so the UI can
+  // distinguish "connected" from "still loading / errored".
+  const [dataSource, setDataSource] = useState(null)
 
-  useEffect(() => { loadData() }, [tenant])
+  useEffect(() => {
+    localStorage.setItem('terminal_bookmarks', JSON.stringify(bookmarks))
+  }, [bookmarks])
+
+  // Only load the (auth-protected) live data once a user is signed in. On logout
+  // the businesses are cleared so no stale data lingers behind the login screen.
+  useEffect(() => {
+    if (user) loadData()
+    else { setRawBusinesses([]); setDataSource(null); setLoading(false) }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, tenant])
+
+  // Load businesses strictly from the live Neo4j API. There is no static
+  // fallback — if the database is unavailable we surface an error rather than
+  // serving stale exports.
+  const loadLive = async () => {
+    const response = await apiFetch('/api/businesses')
+    if (!response.ok) {
+      let detail = ''
+      try { detail = (await response.json())?.detail || '' } catch { /* ignore */ }
+      throw new Error(detail || `Live data unavailable (HTTP ${response.status})`)
+    }
+    const data = await response.json()
+    if (!Array.isArray(data.businesses)) {
+      throw new Error('Live data response was malformed (no businesses array)')
+    }
+    return data.businesses
+  }
 
   const loadData = async () => {
     try {
       setLoading(true)
-      const response = await fetch(tenant.dataSource)
-      if (!response.ok) throw new Error('Data source unavailable')
+      setError(null)
+      const rows = await loadLive()
+      setDataSource('live')
 
-      const csvText = await response.text()
-      const result = Papa.parse(csvText, {
-        header: true, skipEmptyLines: true,
-        transformHeader: h => h.trim(),
-      })
-
-      const processed = result.data.map((row, i) => {
+      const processed = rows.map((row, i) => {
         const memberRaw = (row.chamber_member || '').trim().toUpperCase()
         const memberStatus = memberRaw === 'Y' ? 'member' : memberRaw === 'N' ? 'non-member' : 'unknown'
 
         const biz = {
           ...row,
+          neighborhood_area: normalizeNeighborhood(row.neighborhood_area),
           _id: row.business_id || `biz_${i}`,
           _rating: parseFloat(row.rating_primary_value) || 0,
           _reviewCount: parseInt(row.rating_primary_review_count) || 0,
@@ -53,6 +96,12 @@ export function TerminalDataProvider({ children }) {
           })(),
           _corroboration: parseInt(row.corroboration_count) || 0,
           _hasWebsite: !!(row.website && row.website.trim()),
+          // Website verification flag from the re-validation pass:
+          // 'verified' | 'unverified' | '' (no website / not yet evaluated).
+          // Only warn when a site is EXPLICITLY 'unverified' so a missing
+          // property never mass-flags every business.
+          _websiteVerified: (row.website_verified || '').trim(),
+          _websiteUnverified: (row.website_verified || '').trim() === 'unverified',
           _hasPhone: !!(row.phone && row.phone.trim()),
           _hasGeo: !!(row.lat && row.lon && row.lat !== '' && row.lon !== ''),
           _pkpType: row.pkp_node_type || 'unknown',
@@ -65,12 +114,22 @@ export function TerminalDataProvider({ children }) {
           biz._recruitReasons = getRecruitReasons(row)
         }
 
+        // Legacy-compatible aliases for ported pages
+        biz.id = biz._id
+        biz.rating = biz._rating
+        biz.reviewCount = biz._reviewCount
+        biz.osintConfidence = biz._confidence
+        biz.isChamberMember = memberStatus === 'member'
+        biz.hasRedFlag = biz._hasRedFlag
+
         return biz
       })
 
       setRawBusinesses(processed)
     } catch (err) {
       setError(err.message)
+      setDataSource(null)
+      setRawBusinesses([])
     } finally {
       setLoading(false)
     }
@@ -99,6 +158,19 @@ export function TerminalDataProvider({ children }) {
       return true
     })
   }, [rawBusinesses, filters])
+
+  // Most recent review date across the live dataset. Drives the "Updated …"
+  // freshness label instead of the hardcoded tenant.lastRefresh. Falls back to
+  // the tenant config only when no rows carry a parseable last_reviewed date.
+  const lastRefresh = useMemo(() => {
+    let maxT = 0
+    let maxV = null
+    for (const b of rawBusinesses) {
+      const t = Date.parse(b.last_reviewed)
+      if (!isNaN(t) && t > maxT) { maxT = t; maxV = b.last_reviewed }
+    }
+    return maxV || tenant.lastRefresh
+  }, [rawBusinesses, tenant])
 
   // Market statistics
   const stats = useMemo(() => {
@@ -160,6 +232,19 @@ export function TerminalDataProvider({ children }) {
       }
     }).sort((a, b) => b.total - a.total)
 
+    // Price tier distribution
+    const priceTiers = ['$', '$$', '$$$', '$$$$']
+    const priceTierDist = priceTiers.map(tier => ({
+      tier,
+      count: all.filter(b => b.price_tier === tier).length,
+      members: all.filter(b => b.price_tier === tier && b._memberStatus === 'member').length,
+      avgRating: (() => {
+        const rated = all.filter(b => b.price_tier === tier && b._rating > 0)
+        return rated.length > 0 ? rated.reduce((s, b) => s + b._rating, 0) / rated.length : 0
+      })(),
+    }))
+    const priceCoverage = all.filter(b => priceTiers.includes(b.price_tier)).length
+
     return {
       total: all.length,
       members: members.length,
@@ -168,6 +253,8 @@ export function TerminalDataProvider({ children }) {
       membershipKnownRate: ((members.length + nonMembers.length) / all.length * 100),
       categories, neighborhoods,
       categoryPenetration, neighborhoodPenetration,
+      priceTierDist,
+      priceCoverage: parseFloat((priceCoverage / all.length * 100).toFixed(1)),
       avgRating: avgRatedRating,
       avgRatedRating: avgRatedRating,
       redFlagCount, criticalFlags,
@@ -178,9 +265,205 @@ export function TerminalDataProvider({ children }) {
         ratingCoverage: parseFloat((withRating / all.length * 100).toFixed(1)),
         highValidationRate: parseFloat((highValidation / all.length * 100).toFixed(1)),
       },
-      lastRefresh: tenant.lastRefresh,
+      lastRefresh,
     }
-  }, [rawBusinesses, tenant])
+  }, [rawBusinesses, lastRefresh])
+
+  // ── Deep Market Analytics ───────────────────────────────────────────────────
+  const marketAnalytics = useMemo(() => {
+    const all = rawBusinesses
+    if (all.length === 0) return null
+
+    // 1. Competitive Saturation Index — businesses per category per neighborhood
+    const saturationGrid = {}
+    all.forEach(b => {
+      const cat = b.category_primary || 'other'
+      const hood = b.neighborhood_area || 'Unknown'
+      const key = `${cat}|${hood}`
+      if (!saturationGrid[key]) saturationGrid[key] = { category: cat, neighborhood: hood, total: 0, members: 0, avgRating: 0, ratings: [] }
+      saturationGrid[key].total++
+      if (b._memberStatus === 'member') saturationGrid[key].members++
+      if (b._rating > 0) saturationGrid[key].ratings.push(b._rating)
+    })
+
+    const saturation = Object.values(saturationGrid).map(s => ({
+      ...s,
+      avgRating: s.ratings.length > 0 ? s.ratings.reduce((a, b) => a + b, 0) / s.ratings.length : 0,
+      penetration: s.total > 0 ? (s.members / s.total * 100) : 0,
+      density: s.total, // raw count = density signal
+    }))
+
+    // 2. Category Health Index (CHI) — composite score per category
+    const categories = [...new Set(all.map(b => b.category_primary).filter(Boolean))]
+    const categoryHealth = categories.map(cat => {
+      const bizs = all.filter(b => b.category_primary === cat)
+      const rated = bizs.filter(b => b._rating > 0)
+      const members = bizs.filter(b => b._memberStatus === 'member')
+      const withWeb = bizs.filter(b => b._hasWebsite)
+      const withPhone = bizs.filter(b => b._hasPhone)
+      const highVal = bizs.filter(b => b._validationTier >= 3)
+      const flagged = bizs.filter(b => b._hasRedFlag)
+
+      const avgRating = rated.length > 0 ? rated.reduce((s, b) => s + b._rating, 0) / rated.length : 0
+      const avgReviews = rated.length > 0 ? rated.reduce((s, b) => s + b._reviewCount, 0) / rated.length : 0
+      const penetration = bizs.length > 0 ? (members.length / bizs.length * 100) : 0
+      const webCoverage = bizs.length > 0 ? (withWeb.length / bizs.length * 100) : 0
+      const phoneCoverage = bizs.length > 0 ? (withPhone.length / bizs.length * 100) : 0
+      const validationRate = bizs.length > 0 ? (highVal.length / bizs.length * 100) : 0
+      const riskRate = bizs.length > 0 ? (flagged.length / bizs.length * 100) : 0
+
+      // CHI = weighted composite (0-100)
+      const chi = Math.round(
+        (avgRating / 5 * 25) +            // rating quality (25%)
+        (Math.min(avgReviews, 100) / 100 * 15) + // review volume (15%)
+        (penetration / 100 * 20) +         // membership penetration (20%)
+        (webCoverage / 100 * 15) +         // digital presence (15%)
+        (validationRate / 100 * 15) +      // data confidence (15%)
+        ((100 - riskRate) / 100 * 10)      // risk safety (10%)
+      )
+
+      return {
+        category: cat,
+        count: bizs.length,
+        members: members.length,
+        penetration: Math.round(penetration * 10) / 10,
+        avgRating: Math.round(avgRating * 100) / 100,
+        avgReviews: Math.round(avgReviews),
+        webCoverage: Math.round(webCoverage * 10) / 10,
+        phoneCoverage: Math.round(phoneCoverage * 10) / 10,
+        validationRate: Math.round(validationRate * 10) / 10,
+        riskRate: Math.round(riskRate * 10) / 10,
+        chi,
+      }
+    }).sort((a, b) => b.chi - a.chi)
+
+    // 3. Neighborhood Opportunity Score (NOS) — where to focus expansion
+    const neighborhoods = [...new Set(all.map(b => b.neighborhood_area).filter(Boolean))]
+    const neighborhoodHealth = neighborhoods.map(hood => {
+      const bizs = all.filter(b => b.neighborhood_area === hood)
+      const members = bizs.filter(b => b._memberStatus === 'member')
+      const nonMembers = bizs.filter(b => b._memberStatus === 'non-member')
+      const rated = bizs.filter(b => b._rating > 0)
+      const avgRating = rated.length > 0 ? rated.reduce((s, b) => s + b._rating, 0) / rated.length : 0
+      const penetration = bizs.length > 0 ? (members.length / bizs.length * 100) : 0
+      const catDiversity = new Set(bizs.map(b => b.category_primary).filter(Boolean)).size
+
+      // NOS: High score = great opportunity for chamber growth
+      // Factors: large pool, low penetration, good business quality, diverse categories
+      const nos = Math.round(
+        (Math.min(nonMembers.length, 50) / 50 * 30) +  // non-member pool size (30%)
+        ((100 - penetration) / 100 * 25) +               // room to grow (25%)
+        (avgRating / 5 * 20) +                            // business quality (20%)
+        (Math.min(catDiversity, 15) / 15 * 15) +         // category diversity (15%)
+        (Math.min(bizs.length, 100) / 100 * 10)          // total market size (10%)
+      )
+
+      return {
+        neighborhood: hood,
+        total: bizs.length,
+        members: members.length,
+        nonMembers: nonMembers.length,
+        penetration: Math.round(penetration * 10) / 10,
+        avgRating: Math.round(avgRating * 100) / 100,
+        categoryDiversity: catDiversity,
+        nos,
+      }
+    }).sort((a, b) => b.nos - a.nos)
+
+    // 4. Concentration / Herfindahl Index — market dominance by category
+    const totalBiz = all.length
+    const hhi = categories.reduce((sum, cat) => {
+      const share = all.filter(b => b.category_primary === cat).length / totalBiz
+      return sum + share * share
+    }, 0)
+
+    // 5. Rating distribution percentiles
+    const allRatings = all.filter(b => b._rating > 0).map(b => b._rating).sort((a, b) => a - b)
+    const p = (arr, pct) => arr[Math.floor(arr.length * pct / 100)] || 0
+    const ratingPercentiles = {
+      p10: p(allRatings, 10),
+      p25: p(allRatings, 25),
+      p50: p(allRatings, 50),
+      p75: p(allRatings, 75),
+      p90: p(allRatings, 90),
+      mean: allRatings.length ? allRatings.reduce((a, b) => a + b, 0) / allRatings.length : 0,
+      stdDev: (() => {
+        if (allRatings.length < 2) return 0
+        const mean = allRatings.reduce((a, b) => a + b, 0) / allRatings.length
+        const variance = allRatings.reduce((s, r) => s + (r - mean) ** 2, 0) / allRatings.length
+        return Math.sqrt(variance)
+      })(),
+    }
+
+    // 6. Cross-tabulation: top opportunities (high NOS neighborhoods × high CHI categories)
+    const topOpportunities = []
+    const topHoods = neighborhoodHealth.slice(0, 8)
+    const topCats = categoryHealth.filter(c => c.chi >= 40).slice(0, 8)
+    topHoods.forEach(hood => {
+      topCats.forEach(cat => {
+        const cell = saturation.find(s => s.category === cat.category && s.neighborhood === hood.neighborhood)
+        if (cell && cell.total > 0 && cell.penetration < 50) {
+          topOpportunities.push({
+            neighborhood: hood.neighborhood,
+            category: cat.category,
+            bizCount: cell.total,
+            members: cell.members,
+            penetration: Math.round(cell.penetration),
+            hoodNOS: hood.nos,
+            catCHI: cat.chi,
+            score: Math.round((hood.nos + cat.chi) / 2),
+          })
+        }
+      })
+    })
+    topOpportunities.sort((a, b) => b.score - a.score)
+
+    return {
+      saturation,
+      categoryHealth,
+      neighborhoodHealth,
+      hhi: Math.round(hhi * 10000) / 10000,
+      hhiNormalized: Math.round(hhi * 10000), // 0-10000 scale
+      ratingPercentiles,
+      topOpportunities: topOpportunities.slice(0, 20),
+      marketHealthScore: Math.round(
+        categoryHealth.reduce((s, c) => s + c.chi, 0) / (categoryHealth.length || 1)
+      ),
+    }
+  }, [rawBusinesses])
+
+  // ── Temporal Data (delta from snapshot archiver) ────────────────────────────
+  const [deltaData, setDeltaData] = useState(null)
+  const [deltaHistory, setDeltaHistory] = useState([])
+
+  // ── Enrichment Data (sentiment, centrality, predictions) ───────────────────
+  const [sentimentData, setSentimentData] = useState(null)
+  const [centralityData, setCentralityData] = useState(null)
+  const [predictionData, setPredictionData] = useState(null)
+
+  // Enrichment (sentiment/centrality/predictions) comes from live Neo4j-backed
+  // endpoints, so only fetch once businesses have connected (dataSource === 'live').
+  // Keying on dataSource means this re-runs after a reconnect — e.g. the DataGate
+  // "Retry" — instead of staying null forever if the API was down at first mount.
+  useEffect(() => {
+    if (dataSource !== 'live') return
+    let cancelled = false
+    Promise.all([
+      fetch('/data/latest_delta.json').then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch('/data/delta_history.json').then(r => r.ok ? r.json() : []).catch(() => []),
+      apiFetch('/api/sentiment-themes').then(r => r.ok ? r.json() : null).catch(() => null),
+      apiFetch('/api/network-centrality').then(r => r.ok ? r.json() : null).catch(() => null),
+      apiFetch('/api/prediction-summary').then(r => r.ok ? r.json() : null).catch(() => null),
+    ]).then(([delta, history, sentiment, centrality, predictions]) => {
+      if (cancelled) return
+      setDeltaData(delta)
+      setDeltaHistory(history)
+      setSentimentData(sentiment)
+      setCentralityData(centrality)
+      setPredictionData(predictions)
+    })
+    return () => { cancelled = true }
+  }, [dataSource])
 
   // Recruit queue — pre-sorted by score
   const recruitQueue = useMemo(() => {
@@ -190,6 +473,16 @@ export function TerminalDataProvider({ children }) {
   }, [rawBusinesses])
 
   const getBusinessById = (id) => rawBusinesses.find(b => b._id === id)
+
+  const toggleBookmark = (businessId) => {
+    setBookmarks(prev =>
+      prev.includes(businessId)
+        ? prev.filter(id => id !== businessId)
+        : [...prev, businessId]
+    )
+  }
+
+  const isBookmarked = (businessId) => bookmarks.includes(businessId)
 
   const getPeers = (business) => {
     if (!business) return []
@@ -220,9 +513,12 @@ export function TerminalDataProvider({ children }) {
   return (
     <TerminalDataContext.Provider value={{
       businesses, filteredBusinesses: businesses, rawBusinesses, loading, error,
-      stats, recruitQueue,
+      stats, recruitQueue, marketAnalytics, lastRefresh, deltaData, deltaHistory,
+      sentimentData, centralityData, predictionData,
       filters, setFilters,
       getBusinessById, getPeers, getNearby,
+      bookmarks, toggleBookmark, isBookmarked,
+      dataSource, refreshData: loadData,
     }}>
       {children}
     </TerminalDataContext.Provider>

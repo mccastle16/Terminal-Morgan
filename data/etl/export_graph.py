@@ -149,6 +149,65 @@ def export_graph(limit: int = 0):
                 })
                 near_count += 1
 
+        # ── Opportunity nodes ────────────────────────────────────
+        opps = s.run("""
+            MATCH (o:Opportunity)
+            OPTIONAL MATCH (o)-[:FILLS_GAP_IN]->(c:Category)
+            OPTIONAL MATCH (o)-[:TARGETS]->(n:Neighborhood)
+            RETURN o.opportunity_id AS id,
+                   o.business_concept AS name,
+                   o.category AS category,
+                   o.target_neighborhood AS neighborhood,
+                   o.estimated_demand AS demand,
+                   o.category_gap_pct AS gap_pct,
+                   o.category_deficit AS deficit,
+                   o.rationale AS rationale,
+                   c.slug AS cat_slug,
+                   n.name AS hood_name
+        """)
+        opp_ids = set()
+        for rec in opps:
+            opp_ids.add(rec["id"])
+            graph["nodes"].append({
+                "id": rec["id"],
+                "name": rec["name"] or rec["id"],
+                "group": "opportunity",
+                "category": rec["category"] or "other",
+                "neighborhood": rec["neighborhood"] or "Coral Gables",
+                "demand": rec["demand"] or "medium",
+                "gap_pct": rec["gap_pct"] or 0,
+                "deficit": rec["deficit"] or 0,
+                "rationale": rec["rationale"] or "",
+                "type": "opportunity",
+            })
+            # Link to category
+            if rec["cat_slug"]:
+                graph["links"].append({
+                    "source": rec["id"],
+                    "target": f"cat:{rec['cat_slug']}",
+                    "type": "FILLS_GAP_IN",
+                })
+            # Link to neighborhood
+            if rec["hood_name"]:
+                graph["links"].append({
+                    "source": rec["id"],
+                    "target": f"hood:{rec['hood_name']}",
+                    "type": "TARGETS",
+                })
+
+        # ── COMPLEMENTS edges (opportunity → business) ───────────
+        comp_opps = s.run("""
+            MATCH (o:Opportunity)-[:COMPLEMENTS]->(b:Business)
+            RETURN o.opportunity_id AS source, b.business_id AS target
+        """)
+        for rec in comp_opps:
+            if rec["source"] in opp_ids and rec["target"] in biz_ids:
+                graph["links"].append({
+                    "source": rec["source"],
+                    "target": rec["target"],
+                    "type": "COMPLEMENTS",
+                })
+
         # ── Stats ────────────────────────────────────────────────
         stats_r = s.run("""
             MATCH (b:Business) WITH count(b) AS biz
@@ -206,7 +265,7 @@ def export_graph(limit: int = 0):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Export graph summary for dashboard")
-    parser.add_argument("--limit", type=int, default=300, help="Max businesses to export (0=all, default=300)")
+    parser.add_argument("--limit", type=int, default=0, help="Max businesses to export (0=all)")
     args = parser.parse_args()
     print(f"\n  Exporting graph data (limit={args.limit or 'ALL'})...")
     export_graph(limit=args.limit)

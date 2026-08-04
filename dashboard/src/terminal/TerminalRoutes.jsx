@@ -10,8 +10,26 @@ import RecruitQueuePage from './pages/RecruitQueuePage'
 import AnalyticsPage from './pages/AnalyticsPage'
 import RiskRadarPage from './pages/RiskRadarPage'
 import ComparePage from './pages/ComparePage'
-import MarketIntelPage from './pages/MarketIntelPage'
 import TacticalPage from './tactical/pages/TacticalPage'
+import MyBusinessPage from './pages/MyBusinessPage'
+import ActionPlanPage from './pages/ActionPlanPage'
+import EcosystemPage from './pages/EcosystemPage'
+import GoToActionsPage from './pages/GoToActionsPage'
+import ExperimentLabPage from './pages/ExperimentLabPage'
+import GraphExplorerPage from './pages/GraphExplorerPage'
+import ContentStudioPage from './pages/ContentStudioPage'
+import IntelligencePage from './pages/IntelligencePage'
+import OpportunitiesPage from './pages/OpportunitiesPage'
+import ExportsPage from './pages/ExportsPage'
+import AlertsPage from './pages/AlertsPage'
+import MapPage from './pages/MapPage'
+import MembershipResolutionPage from './pages/MembershipResolutionPage'
+import CorrectionPage from './pages/CorrectionPage'
+import DataRefreshPage from './pages/DataRefreshPage'
+import AdminUsersPage from './pages/AdminUsersPage'
+import OnboardingPage from './pages/OnboardingPage'
+import SponsorPage from './pages/SponsorPage'
+import UpgradePage from './pages/UpgradePage'
 
 function TerminalProtected({ children }) {
   const { user, loading } = useTerminalAuth()
@@ -22,7 +40,7 @@ function TerminalProtected({ children }) {
       </div>
     )
   }
-  if (!user) return <Navigate to="/terminal/login" replace />
+  if (!user) return <Navigate to="/login" replace />
   return children
 }
 
@@ -48,10 +66,28 @@ export default function TerminalRoutes() {
             <Route path="analytics" element={<AnalyticsPage />} />
             <Route path="risks" element={<RiskRadarPage />} />
             <Route path="compare" element={<ComparePage />} />
-            <Route path="market" element={<MarketIntelPage />} />
             <Route path="tactical" element={<TacticalPage />} />
+            <Route path="my-business" element={<MyBusinessPage />} />
+            <Route path="my-business/actions" element={<ActionPlanPage />} />
+            <Route path="ecosystem" element={<EcosystemPage />} />
+            <Route path="playbook" element={<GoToActionsPage />} />
+            <Route path="experiments" element={<ExperimentLabPage />} />
+            <Route path="graph" element={<GraphExplorerPage />} />
+            <Route path="content" element={<ContentStudioPage />} />
+            <Route path="intelligence" element={<IntelligencePage />} />
+            <Route path="opportunities" element={<OpportunitiesPage />} />
+            <Route path="exports" element={<ExportsPage />} />
+            <Route path="alerts" element={<AlertsPage />} />
+            <Route path="map" element={<MapPage />} />
+            <Route path="resolve" element={<MembershipResolutionPage />} />
+            <Route path="corrections" element={<CorrectionPage />} />
+            <Route path="data-refresh" element={<DataRefreshPage />} />
+            <Route path="admin" element={<AdminUsersPage />} />
+            <Route path="onboarding" element={<OnboardingPage />} />
+            <Route path="sponsor" element={<SponsorPage />} />
+            <Route path="upgrade" element={<UpgradePage />} />
           </Route>
-          <Route path="*" element={<Navigate to="/terminal/overview" replace />} />
+          <Route path="*" element={<Navigate to="/overview" replace />} />
         </Routes>
       </TerminalDataProvider>
     </TerminalAuthProvider>

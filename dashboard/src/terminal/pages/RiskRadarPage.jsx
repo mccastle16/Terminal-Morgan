@@ -42,8 +42,11 @@ export default function RiskRadarPage() {
     <RoleGate permission="view_risk_flags" blur>
       <div className="space-y-5 animate-fade-in">
         <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2 tracking-tight">
-            <ShieldAlert size={20} className="text-red-500" /> Risk Radar
+          <h1 className="text-xl font-semibold text-white flex items-center gap-3 tracking-tight">
+            <div className="w-8 h-8 rounded-lg bg-red-500/15 border border-red-500/25 flex items-center justify-center">
+              <ShieldAlert size={16} className="text-red-400" />
+            </div>
+            Risk Radar
           </h1>
           <p className="text-sm text-slate-500 mt-0.5">Businesses with red flags requiring attention</p>
         </div>
@@ -56,7 +59,7 @@ export default function RiskRadarPage() {
 
         {/* Filters */}
         <div className="flex items-center gap-3 flex-wrap">
-          <div className="flex gap-1 bg-gradient-to-r from-slate-900 to-slate-900/80 border border-slate-800/80 rounded-lg p-1">
+          <div className="flex gap-1 bg-gradient-to-r from-slate-900 to-slate-900/80 border border-slate-800 rounded-lg p-1">
             {['all', 'critical', 'moderate'].map(s => (
               <button key={s} onClick={() => setSeverityFilter(s)}
                 className={`px-2.5 py-1 rounded text-[11px] font-medium capitalize transition-colors ${
@@ -73,10 +76,10 @@ export default function RiskRadarPage() {
         </div>
 
         {/* List */}
-        <div className="bg-gradient-to-br from-slate-900 to-slate-900/80 border border-slate-800/80 rounded-xl divide-y divide-slate-800/40 hover:border-slate-700/60 transition-colors">
+        <div className="bg-slate-900/50 border border-slate-800 rounded-lg divide-y divide-slate-800/40 hover:border-slate-700 transition-colors">
           {filtered.slice(0, 50).map(biz => (
             <div key={biz._id}
-              onClick={() => navigate(`/terminal/explorer/${biz._id}`)}
+              onClick={() => navigate(`/explorer/${biz._id}`)}
               className="flex items-start gap-3 px-4 py-3 hover:bg-slate-800/30 cursor-pointer transition-colors group">
               <div className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${biz._isCritical ? 'bg-red-500' : 'bg-amber-500'}`} />
               <div className="flex-1 min-w-0">

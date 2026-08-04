@@ -2,15 +2,15 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { LayoutDashboard, Crosshair } from 'lucide-react'
 
 const MODULES = [
-  { id: 'strategic', label: 'Strategic', icon: LayoutDashboard, path: '/terminal/overview', description: 'Dashboards & Analytics' },
-  { id: 'tactical',  label: 'Tactical',  icon: Crosshair,       path: '/terminal/tactical', description: 'AI Advisor & Experiments' },
+  { id: 'strategic', label: 'Strategic', icon: LayoutDashboard, path: '/overview', description: 'Dashboards & Analytics' },
+  { id: 'tactical',  label: 'Tactical',  icon: Crosshair,       path: '/tactical', description: 'AI Advisor & Experiments' },
 ]
 
 export default function ModuleSwitcher({ collapsed }) {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const isTactical = location.pathname.startsWith('/terminal/tactical')
+  const isTactical = location.pathname.startsWith('/tactical')
   const activeModule = isTactical ? 'tactical' : 'strategic'
 
   return (

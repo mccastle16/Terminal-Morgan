@@ -2,7 +2,7 @@ import { useTactical } from '../context/TacticalContext'
 import {
   PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend,
 } from 'recharts'
-import { X, Pin, BarChart3, PieChartIcon } from 'lucide-react'
+import { X, Pin, BarChart3, PieChartIcon, Sparkles } from 'lucide-react'
 
 // ── Custom dark tooltip for dynamic charts ───────────────────────
 
@@ -33,6 +33,11 @@ function DynamicChart({ spec, onUnpin }) {
         <div className="flex items-center gap-2">
           {spec.type === 'pie' ? <PieChartIcon size={14} className="text-cyan-400" /> : <BarChart3 size={14} className="text-cyan-400" />}
           <h4 className="text-xs font-semibold text-slate-200">{spec.title}</h4>
+          {spec.source === 'ai' && (
+            <span className="flex items-center gap-0.5 text-[9px] text-violet-400 bg-violet-500/10 rounded px-1.5 py-0.5 border border-violet-500/20">
+              <Sparkles size={8} /> AI
+            </span>
+          )}
         </div>
         {onUnpin && (
           <button onClick={() => onUnpin(spec.id)} className="text-slate-600 hover:text-red-400 transition-colors">
