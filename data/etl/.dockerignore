@@ -1,7 +1,0 @@
-# Don't send ETL scripts/CSVs into the Docker build context
-*.py
-*.csv
-*.md
-import/
-__pycache__/
-.git

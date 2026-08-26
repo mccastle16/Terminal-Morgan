@@ -7,9 +7,6 @@ requests>=2.31
 fuzzywuzzy>=0.18
 python-Levenshtein>=0.21   # speeds up fuzzywuzzy significantly
 
-# Neo4j graph database (Scripts 20, 21, data/etl/)
-neo4j>=5.0
-
 # OpenAI LLM (Agents 4, 10, 11)
 openai>=1.0
 
