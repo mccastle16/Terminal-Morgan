@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Member Flow — Alhambra Eye Care</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink:#3F3049;
+    --body:#57465C;
+    --muted:#6F5D74;
+    --hairline:#E4DDE6;
+    --fill-soft:#F1EDF3;
+    --fill-tint:#F3EDF4;
+    --accent:#B98A63;
+    --accent-text:#8A6242;
+    --negative:#A97C5F;
+    --panel:#F6EFE9;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:#FFFFFF; font-family:'IBM Plex Sans',system-ui,sans-serif; color:var(--body); }
+  a { color:var(--accent-text); text-decoration:none; }
+  a:hover { color:var(--ink); }
+  textarea { font-family:'IBM Plex Sans',sans-serif; }
+
+  .mono { font-family:'JetBrains Mono',monospace; }
+  .serif { font-family:Literata,Georgia,serif; }
+
+  .nav-pill-item:hover { color:var(--ink) !important; }
+  .tag-outline:hover { border-color:var(--accent) !important; color:var(--accent-text) !important; }
+  .tag-filled:hover { background:var(--panel) !important; }
+  .theme-row:hover { background:var(--fill-tint) !important; }
+  .reply-btn-primary:hover { background:var(--negative) !important; }
+  .reply-btn-secondary:hover { background:var(--panel) !important; }
+  .btn-primary:hover { background:var(--negative) !important; }
+  .btn-secondary:hover { border-color:var(--accent) !important; color:var(--accent-text) !important; }
+  .draft-textarea:focus { border-color:var(--accent) !important; }
+
+  [data-view] { display:none; }
+  [data-view].active { display:flex; }
+</style>
+</head>
+<body>
+
+<div style="min-height:100vh; background:#FFFFFF; font-family:'IBM Plex Sans',system-ui,sans-serif; color:#57465C; padding:28px 40px 80px;">
+  <div style="max-width:1120px; margin:0 auto; display:flex; flex-direction:column; gap:26px;">
+
+    <div style="display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:8px; border:1px solid #E4DDE6; border-radius:999px; padding:6px 8px;">
+        <div class="mono" style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; padding:6px 13px; border-radius:999px; background:#F3EDF4; color:#3F3049;">Overview</div>
+        <div class="mono nav-pill-item" style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; padding:6px 13px; color:#6F5D74; cursor:pointer;">Reviews</div>
+        <div class="mono nav-pill-item" style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; padding:6px 13px; color:#6F5D74; cursor:pointer;">Competitors</div>
+        <div class="mono nav-pill-item" style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; padding:6px 13px; color:#6F5D74; cursor:pointer;">Directory</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div class="mono" style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#6F5D74;">Coral Gables Chamber</div>
+        <div class="mono" style="width:30px; height:30px; border-radius:999px; background:#F1EDF3; border:1px solid #E4DDE6; font-size:11px; color:#3F3049; display:flex; align-items:center; justify-content:center;">AE</div>
+      </div>
+    </div>
+
+    <!-- ===================== OVERVIEW ===================== -->
+    <div data-view="overview" class="active" style="flex-direction:column; gap:34px;">
+
+      <div style="display:grid; grid-template-columns:1fr 1px 1.2fr; gap:38px; align-items:start;">
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div class="mono" style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6F5D74;">Optometry · Member since 2011</div>
+          <div class="serif" style="font-size:42px; line-height:1.1; color:#3F3049;">Alhambra Eye Care</div>
+          <div style="font-size:14px; color:#6F5D74;">2340 Ponce de Leon Blvd</div>
+        </div>
+      </div>
+
+      <div class="mono" style="font-size:54px; line-height:0.9; color:#3F3049; font-variant-numeric:tabular-nums;">4.3</div>
+      <div style="display:flex; flex-direction:column; gap:6px; margin-top:-14px;">
+        <div style="display:flex; align-items:center; gap:9px;"><div class="mono" style="font-size:10px; color:#6F5D74; width:12px;">5</div><div style="flex:1; height:6px; background:#F1EDF3;"><div style="width:64%; height:6px; background:#57465C;"></div></div><div class="mono" style="font-size:10px; color:#6F5D74; width:26px; text-align:right; font-variant-numeric:tabular-nums;">139</div></div>
+        <div style="display:flex; align-items:center; gap:9px;"><div class="mono" style="font-size:10px; color:#6F5D74; width:12px;">4</div><div style="flex:1; height:6px; background:#F1EDF3;"><div style="width:21%; height:6px; background:#57465C;"></div></div><div class="mono" style="font-size:10px; color:#6F5D74; width:26px; text-align:right; font-variant-numeric:tabular-nums;">46</div></div>
+        <div style="display:flex; align-items:center; gap:9px;"><div class="mono" style="font-size:10px; color:#6F5D74; width:12px;">3</div><div style="flex:1; height:6px; background:#F1EDF3;"><div style="width:8%; height:6px; background:#A97C5F;"></div></div><div class="mono" style="font-size:10px; color:#6F5D74; width:26px; text-align:right; font-variant-numeric:tabular-nums;">18</div></div>
+        <div style="display:flex; align-items:center; gap:9px;"><div class="mono" style="font-size:10px; color:#6F5D74; width:12px;">2</div><div style="flex:1; height:6px; background:#F1EDF3;"><div style="width:5%; height:6px; background:#A97C5F;"></div></div><div class="mono" style="font-size:10px; color:#6F5D74; width:26px; text-align:right; font-variant-numeric:tabular-nums;">10</div></div>
+        <div style="display:flex; align-items:center; gap:9px;"><div class="mono" style="font-size:10px; color:#6F5D74; width:12px;">1</div><div style="flex:1; height:6px; background:#F1EDF3;"><div style="width:2%; height:6px; background:#A97C5F;"></div></div><div class="mono" style="font-size:10px; color:#6F5D74; width:26px; text-align:right; font-variant-numeric:tabular-nums;">5</div></div>
+      </div>
+      <div style="font-size:15px; color:#3F3049; letter-spacing:0.08em;">★★★★☆</div>
+      <div class="mono" style="font-size:11px; letter-spacing:0.06em; color:#6F5D74;">218 REVIEWS · +0.2 / 90D</div>
+      <div style="height:1px; background:#E4DDE6;"></div>
+
+      <div style="display:flex; flex-direction:column; gap:16px; max-width:900px;">
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <span class="mono" style="font-size:11px; letter-spacing:0.12em; color:#B98A63;">01</span>
+          <span class="mono" style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6F5D74;">What your reviews say</span>
+        </div>
+        <div class="serif" style="font-size:18px; line-height:1.68; color:#3F3049; text-wrap:pretty;">Patients consistently describe short waits and thorough, unhurried exams — the two things mentioned most often in the last year. The recurring complaint is reaching the office by phone: twenty-nine reviews mention calls going unanswered, and eleven more report the online booking form failing. Sentiment on care itself has held steady since 2019; nearly all of the movement in your rating comes from access, not from the exam.</div>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:2px;">
+          <div class="mono" style="font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6F5D74;">Look into</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <div class="js-go-theme tag-outline" style="cursor:pointer; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; padding:7px 14px; border-radius:999px; border:1px solid #B98A63; color:#8A6242;">Phone access · 29</div>
+            <div class="tag-outline" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; padding:7px 14px; border-radius:999px; border:1px solid #E4DDE6; color:#6F5D74; cursor:pointer;">Insurance confusion · 18</div>
+            <div class="tag-outline" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; padding:7px 14px; border-radius:999px; border:1px solid #E4DDE6; color:#6F5D74; cursor:pointer;">Booking form · 11</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:1px; background:#E4DDE6;"></div>
+
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <span class="mono" style="font-size:11px; letter-spacing:0.12em; color:#B98A63;">02</span>
+          <span class="mono" style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6F5D74;">Themes across 218 reviews</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px;">
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div class="mono" style="font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6F5D74; padding-bottom:8px; border-bottom:1px solid #E4DDE6;">Mentioned favourably</div>
+            <div style="display:flex; align-items:center; gap:14px;"><div style="width:190px; font-size:14px; color:#3F3049;">Short wait times</div><div style="flex:1; height:8px; background:#F1EDF3;"><div style="width:100%; height:8px; background:#57465C;"></div></div><div class="mono" style="font-size:12px; color:#3F3049; width:26px; text-align:right; font-variant-numeric:tabular-nums;">62</div></div>
+            <div style="display:flex; align-items:center; gap:14px;"><div style="width:190px; font-size:14px; color:#3F3049;">Staff explains clearly</div><div style="flex:1; height:8px; background:#F1EDF3;"><div style="width:77%; height:8px; background:#57465C;"></div></div><div class="mono" style="font-size:12px; color:#3F3049; width:26px; text-align:right; font-variant-numeric:tabular-nums;">48</div></div>
+            <div style="display:flex; align-items:center; gap:14px;"><div style="width:190px; font-size:14px; color:#3F3049;">Fair pricing</div><div style="flex:1; height:8px; background:#F1EDF3;"><div style="width:50%; height:8px; background:#57465C;"></div></div><div class="mono" style="font-size:12px; color:#3F3049; width:26px; text-align:right; font-variant-numeric:tabular-nums;">31</div></div>
+            <div style="display:flex; align-items:center; gap:14px;"><div style="width:190px; font-size:14px; color:#3F3049;">Frame selection</div><div style="flex:1; height:8px; background:#F1EDF3;"><div style="width:39%; height:8px; background:#57465C;"></div></div><div class="mono" style="font-size:12px; color:#3F3049; width:26px; text-align:right; font-variant-numeric:tabular-nums;">24</div></div>
+            <div style="display:flex; align-items:center; gap:14px;"><div style="width:190px; font-size:14px; color:#3F3049;">Easy parking</div><div style="flex:1; height:8px; background:#F1EDF3;"><div style="width:19%; height:8px; background:#57465C;"></div></div><div class="mono" style="font-size:12px; color:#3F3049; width:26px; text-align:right; font-variant-numeric:tabular-nums;">12</div></div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div class="mono" style="font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6F5D74; padding-bottom:8px; border-bottom:1px solid #E4DDE6;">Mentioned as a problem · click to open</div>
+            <div class="js-go-theme theme-row" style="display:flex; align-items:center; gap:14px; cursor:pointer; padding:2px 6px; margin:0 -6px;"><div style="width:190px; font-size:14px; color:#3F3049;">Phone goes unanswered</div><div style="flex:1; height:8px; background:#F1EDF3;"><div style="width:100%; height:8px; background:#A97C5F;"></div></div><div class="mono" style="font-size:12px; color:#3F3049; width:26px; text-align:right; font-variant-numeric:tabular-nums;">29</div></div>
+            <div class="theme-row" style="display:flex; align-items:center; gap:14px; cursor:pointer; padding:2px 6px; margin:0 -6px;"><div style="width:190px; font-size:14px; color:#3F3049;">Insurance confusion</div><div style="flex:1; height:8px; background:#F1EDF3;"><div style="width:62%; height:8px; background:#A97C5F;"></div></div><div class="mono" style="font-size:12px; color:#3F3049; width:26px; text-align:right; font-variant-numeric:tabular-nums;">18</div></div>
+            <div class="theme-row" style="display:flex; align-items:center; gap:14px; cursor:pointer; padding:2px 6px; margin:0 -6px;"><div style="width:190px; font-size:14px; color:#3F3049;">Online booking broken</div><div style="flex:1; height:8px; background:#F1EDF3;"><div style="width:38%; height:8px; background:#A97C5F;"></div></div><div class="mono" style="font-size:12px; color:#3F3049; width:26px; text-align:right; font-variant-numeric:tabular-nums;">11</div></div>
+            <div class="theme-row" style="display:flex; align-items:center; gap:14px; cursor:pointer; padding:2px 6px; margin:0 -6px;"><div style="width:190px; font-size:14px; color:#3F3049;">No Saturday hours</div><div style="flex:1; height:8px; background:#F1EDF3;"><div style="width:24%; height:8px; background:#A97C5F;"></div></div><div class="mono" style="font-size:12px; color:#3F3049; width:26px; text-align:right; font-variant-numeric:tabular-nums;">7</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:1px; background:#E4DDE6;"></div>
+
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <div style="display:flex; align-items:baseline; justify-content:space-between;">
+          <div style="display:flex; align-items:baseline; gap:10px;">
+            <span class="mono" style="font-size:11px; letter-spacing:0.12em; color:#B98A63;">03</span>
+            <span class="mono" style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6F5D74;">Recent reviews</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:18px;">
+            <div class="mono" id="awaiting-label" style="font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:#8A6242;"></div>
+            <div class="mono" style="font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:#6F5D74; cursor:pointer;">All sources ⌄</div>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column;">
+          <div style="display:grid; grid-template-columns:150px 1fr; gap:28px; padding:16px 0; border-top:1px solid #E4DDE6;">
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <div style="font-size:14px; color:#3F3049;">D. Alvarez</div>
+              <div class="mono" style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#6F5D74;">Google · 18 Aug</div>
+              <div style="font-size:13px; color:#3F3049; letter-spacing:0.08em;">★★★★★</div>
+            </div>
+            <div style="font-size:14.5px; line-height:1.62; color:#57465C; text-wrap:pretty;">In and out in twenty-five minutes with a full exam. Dr. Reyes walked me through the retinal images instead of just telling me everything was fine.</div>
+          </div>
+          <div style="display:grid; grid-template-columns:150px 1fr; gap:28px; padding:16px 0; border-top:1px solid #E4DDE6;">
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <div style="font-size:14px; color:#3F3049;">M. Chen</div>
+              <div class="mono" style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#6F5D74;">Yelp · 14 Aug</div>
+              <div style="font-size:13px; color:#3F3049; letter-spacing:0.08em;">★★☆☆☆</div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:9px;">
+              <div style="font-size:14.5px; line-height:1.62; color:#57465C; text-wrap:pretty;">Called four times over two weeks to move an appointment and never got a person or a callback. The staff were pleasant once I was there, which makes the phone situation stranger.</div>
+              <div style="display:flex; align-items:center; gap:14px;">
+                <div class="mono" style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#A97C5F;">Theme: phone goes unanswered</div>
+                <div class="js-go-theme" style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#8A6242; cursor:pointer; text-decoration:underline;">Open theme →</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:150px 1fr; gap:28px; padding:16px 0; border-top:1px solid #E4DDE6;">
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <div style="font-size:14px; color:#3F3049;">R. Okonkwo</div>
+              <div class="mono" style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#6F5D74;">Google · 9 Aug</div>
+              <div style="font-size:13px; color:#3F3049; letter-spacing:0.08em;">★★★★★</div>
+            </div>
+            <div style="font-size:14.5px; line-height:1.62; color:#57465C; text-wrap:pretty;">Second generation of my family going here. Fair prices on lenses and they will tell you when you do not need new ones.</div>
+          </div>
+          <div style="display:grid; grid-template-columns:150px 1fr; gap:28px; padding:16px 0; border-top:1px solid #E4DDE6; border-bottom:1px solid #E4DDE6;">
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <div style="font-size:14px; color:#3F3049;">J. Pereira</div>
+              <div class="mono" style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#6F5D74;">Facebook · 3 Aug</div>
+              <div style="font-size:13px; color:#3F3049; letter-spacing:0.08em;">★★★★☆</div>
+            </div>
+            <div style="font-size:14.5px; line-height:1.62; color:#57465C; text-wrap:pretty;">Good exam, wide frame selection. Docked one star because the online booking form errored out twice and I gave up and called.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== THEME DETAIL ===================== -->
+    <div data-view="theme" style="flex-direction:column; gap:30px;">
+      <div class="js-go-overview" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#8A6242; cursor:pointer; width:fit-content;">← Alhambra Eye Care</div>
+
+      <div id="posted-banner" style="display:none; align-items:center; justify-content:space-between; gap:20px; padding:14px 18px; background:#F6EFE9; border-left:2px solid #B98A63;">
+        <div style="font-size:14px; color:#57465C;">Reply posted to Yelp as the business owner. It can take a few minutes to appear publicly.</div>
+        <div class="js-dismiss mono" style="font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#8A6242; cursor:pointer;">Dismiss</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1px 1.2fr; gap:38px; align-items:start;">
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div class="mono" style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6F5D74;">Theme detail</div>
+          <div class="serif" style="font-size:38px; line-height:1.14; color:#3F3049;">Phone goes unanswered</div>
+          <div style="height:1px; background:#E4DDE6; margin:6px 0;"></div>
+          <div style="display:flex; align-items:flex-end; gap:16px;">
+            <div class="mono" style="font-size:54px; line-height:0.9; color:#A97C5F; font-variant-numeric:tabular-nums;">29</div>
+            <div style="display:flex; flex-direction:column; gap:5px; padding-bottom:6px;">
+              <div class="mono" style="font-size:11px; letter-spacing:0.06em; color:#6F5D74;">MENTIONS · 13% OF REVIEWS</div>
+              <div class="mono" style="font-size:11px; letter-spacing:0.06em; color:#6F5D74;">FIRST SEEN MAR 2024</div>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:9px; margin-top:12px;">
+            <div class="mono" style="font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6F5D74;">Mentions by quarter</div>
+            <div style="display:flex; align-items:flex-end; gap:10px; height:96px;">
+              <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;"><div style="width:100%; height:14px; background:#A97C5F;"></div><div class="mono" style="font-size:9px; color:#6F5D74;">Q1·25</div></div>
+              <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;"><div style="width:100%; height:26px; background:#A97C5F;"></div><div class="mono" style="font-size:9px; color:#6F5D74;">Q2·25</div></div>
+              <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;"><div style="width:100%; height:38px; background:#A97C5F;"></div><div class="mono" style="font-size:9px; color:#6F5D74;">Q3·25</div></div>
+              <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;"><div style="width:100%; height:52px; background:#A97C5F;"></div><div class="mono" style="font-size:9px; color:#6F5D74;">Q4·25</div></div>
+              <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;"><div style="width:100%; height:64px; background:#A97C5F;"></div><div class="mono" style="font-size:9px; color:#6F5D74;">Q1·26</div></div>
+              <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;"><div style="width:100%; height:78px; background:#A97C5F;"></div><div class="mono" style="font-size:9px; color:#6F5D74;">Q2·26</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#E4DDE6; align-self:stretch;"></div>
+
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; align-items:baseline; gap:10px;">
+            <span class="mono" style="font-size:11px; letter-spacing:0.12em; color:#B98A63;">01</span>
+            <span class="mono" style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6F5D74;">What this looks like in practice</span>
+          </div>
+          <div class="serif" style="font-size:18px; line-height:1.68; color:#3F3049; text-wrap:pretty;">Mentions have risen every quarter since early 2025 and now appear in six of your last twelve reviews. In nineteen of the twenty-nine, the caller was trying to move or cancel an appointment — not book a new one. Six reviewers said they gave up and used the website instead, and four of those hit the booking error.</div>
+          <div style="display:flex; flex-direction:column; gap:8px; padding-top:6px;">
+            <div class="mono" style="font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6F5D74;">Where the calls land</div>
+            <div style="display:flex; align-items:center; gap:14px;"><div style="width:150px; font-size:14px; color:#3F3049;">Rescheduling</div><div style="flex:1; height:8px; background:#F1EDF3;"><div style="width:100%; height:8px; background:#A97C5F;"></div></div><div class="mono" style="font-size:12px; color:#3F3049; width:22px; text-align:right; font-variant-numeric:tabular-nums;">19</div></div>
+            <div style="display:flex; align-items:center; gap:14px;"><div style="width:150px; font-size:14px; color:#3F3049;">Insurance question</div><div style="flex:1; height:8px; background:#F1EDF3;"><div style="width:32%; height:8px; background:#A97C5F;"></div></div><div class="mono" style="font-size:12px; color:#3F3049; width:22px; text-align:right; font-variant-numeric:tabular-nums;">6</div></div>
+            <div style="display:flex; align-items:center; gap:14px;"><div style="width:150px; font-size:14px; color:#3F3049;">New appointment</div><div style="flex:1; height:8px; background:#F1EDF3;"><div style="width:21%; height:8px; background:#A97C5F;"></div></div><div class="mono" style="font-size:12px; color:#3F3049; width:22px; text-align:right; font-variant-numeric:tabular-nums;">4</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:1px; background:#E4DDE6;"></div>
+
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <div style="display:flex; align-items:baseline; justify-content:space-between;">
+          <div style="display:flex; align-items:baseline; gap:10px;">
+            <span class="mono" style="font-size:11px; letter-spacing:0.12em; color:#B98A63;">02</span>
+            <span class="mono" style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6F5D74;">Reviews mentioning this</span>
+          </div>
+          <div class="mono" style="font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:#6F5D74;">Newest first · 29 total</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column;">
+          <div style="display:grid; grid-template-columns:150px 1fr 120px; gap:28px; padding:16px 0; border-top:1px solid #E4DDE6; align-items:start;">
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <div style="font-size:14px; color:#3F3049;">M. Chen</div>
+              <div class="mono" style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#6F5D74;">Yelp · 14 Aug</div>
+              <div style="font-size:13px; color:#3F3049; letter-spacing:0.08em;">★★☆☆☆</div>
+            </div>
+            <div style="font-size:14.5px; line-height:1.62; color:#57465C; text-wrap:pretty;">Called four times over two weeks to move an appointment and never got a person or a callback. The staff were pleasant once I was there, which makes the phone situation stranger.</div>
+            <div>
+              <div id="replied-0" class="mono" style="display:none; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#6F5D74; padding-top:2px;">Replied 26 Aug</div>
+              <div id="reply-btn-0" data-idx="0" class="js-reply-btn reply-btn-primary mono" style="cursor:pointer; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; text-align:center; padding:8px 0; background:#B98A63; color:#FFFFFF;">Reply</div>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:150px 1fr 120px; gap:28px; padding:16px 0; border-top:1px solid #E4DDE6; align-items:start;">
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <div style="font-size:14px; color:#3F3049;">T. Nakamura</div>
+              <div class="mono" style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#6F5D74;">Yelp · 21 Jul</div>
+              <div style="font-size:13px; color:#3F3049; letter-spacing:0.08em;">★★★☆☆</div>
+            </div>
+            <div style="font-size:14.5px; line-height:1.62; color:#57465C; text-wrap:pretty;">The care is genuinely good. Billing told me my insurance was accepted and then it was not, and sorting it out took three calls.</div>
+            <div>
+              <div id="replied-1" class="mono" style="display:none; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#6F5D74; padding-top:2px;">Replied 26 Aug</div>
+              <div id="reply-btn-1" data-idx="1" class="js-reply-btn reply-btn-secondary mono" style="cursor:pointer; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; text-align:center; padding:8px 0; border:1px solid #B98A63; color:#8A6242;">Reply</div>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:150px 1fr 120px; gap:28px; padding:16px 0; border-top:1px solid #E4DDE6; border-bottom:1px solid #E4DDE6; align-items:start;">
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <div style="font-size:14px; color:#3F3049;">L. Frazier</div>
+              <div class="mono" style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#6F5D74;">Google · 6 Jul</div>
+              <div style="font-size:13px; color:#3F3049; letter-spacing:0.08em;">★★★☆☆</div>
+            </div>
+            <div style="font-size:14.5px; line-height:1.62; color:#57465C; text-wrap:pretty;">Rang the office on and off all morning to ask about a lens repair and finally drove over. They fixed it in ten minutes once I was standing there.</div>
+            <div>
+              <div id="replied-2" class="mono" style="display:none; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#6F5D74; padding-top:2px;">Replied 26 Aug</div>
+              <div id="reply-btn-2" data-idx="2" class="js-reply-btn reply-btn-secondary mono" style="cursor:pointer; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; text-align:center; padding:8px 0; border:1px solid #B98A63; color:#8A6242;">Reply</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== COMPOSE ===================== -->
+    <div data-view="compose" style="flex-direction:column; gap:28px; max-width:760px;">
+      <div class="js-go-theme" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#8A6242; cursor:pointer; width:fit-content;">← Phone goes unanswered</div>
+
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div class="mono" style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6F5D74;">Reply to review</div>
+        <div id="compose-author" class="serif" style="font-size:32px; line-height:1.18; color:#3F3049;"></div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:150px 1fr; gap:28px; padding:18px 0; border-top:1px solid #E4DDE6; border-bottom:1px solid #E4DDE6;">
+        <div style="display:flex; flex-direction:column; gap:5px;">
+          <div id="compose-meta" class="mono" style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#6F5D74;"></div>
+          <div id="compose-stars" style="font-size:13px; color:#3F3049; letter-spacing:0.08em;"></div>
+        </div>
+        <div id="compose-text" style="font-size:14.5px; line-height:1.62; color:#57465C; text-wrap:pretty;"></div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; align-items:baseline; justify-content:space-between;">
+          <div class="mono" style="font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6F5D74;">Your reply · drafted from this theme</div>
+          <div id="char-count" class="mono" style="font-size:10px; letter-spacing:0.06em; color:#6F5D74; font-variant-numeric:tabular-nums;"></div>
+        </div>
+        <textarea id="draft-textarea" rows="7" class="draft-textarea" style="width:100%; box-sizing:border-box; padding:16px 18px; background:#FBF9FB; border:1px solid #E4DDE6; border-radius:3px; font-size:14.5px; line-height:1.62; color:#3F3049; resize:vertical; outline:none;"></textarea>
+        <div style="font-size:13px; color:#6F5D74;">Posts publicly under your business name. The Chamber does not see or moderate replies.</div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div class="js-send btn-primary mono" style="cursor:pointer; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; padding:12px 22px; background:#B98A63; color:#FFFFFF;">Post reply</div>
+        <div class="js-go-theme btn-secondary mono" style="cursor:pointer; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; padding:12px 22px; border:1px solid #E4DDE6; color:#57465C;">Cancel</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  const REVIEWS = [
+    { author: 'M. Chen', meta: 'Yelp · 14 Aug', stars: '★★☆☆☆',
+      text: 'Called four times over two weeks to move an appointment and never got a person or a callback. The staff were pleasant once I was there, which makes the phone situation stranger.',
+      draft: 'Thank you for telling us, and I am sorry four calls went unanswered. We have added a second person to the phones from 8 to 11am and a callback line for reschedules, so this should not happen again. If you still need to move that appointment, ask for me directly and I will handle it.' },
+    { author: 'T. Nakamura', meta: 'Yelp · 21 Jul', stars: '★★★☆☆',
+      text: 'The care is genuinely good. Billing told me my insurance was accepted and then it was not, and sorting it out took three calls.',
+      draft: 'Thank you for the kind words about the exam, and I am sorry about the insurance mix-up. We now verify coverage before the visit rather than at check-in, and I would like to review your billing with you. Please call and ask for me.' },
+    { author: 'L. Frazier', meta: 'Google · 6 Jul', stars: '★★★☆☆',
+      text: 'Rang the office on and off all morning to ask about a lens repair and finally drove over. They fixed it in ten minutes once I was standing there.',
+      draft: 'I am glad the repair was quick once you arrived, and sorry you had to drive over to get an answer. Our morning phone coverage has been reworked, and lens repairs can now be logged through the website without a call.' }
+  ];
+
+  const state = { view: 'overview', idx: 0, draft: '', replied: [false, false, false], posted: false };
+
+  const views = {
+    overview: document.querySelector('[data-view="overview"]'),
+    theme: document.querySelector('[data-view="theme"]'),
+    compose: document.querySelector('[data-view="compose"]')
+  };
+  const awaitingLabel = document.getElementById('awaiting-label');
+  const postedBanner = document.getElementById('posted-banner');
+  const textarea = document.getElementById('draft-textarea');
+  const charCount = document.getElementById('char-count');
+
+  function render() {
+    Object.entries(views).forEach(([name, el]) => {
+      const active = state.view === name;
+      el.classList.toggle('active', active);
+      el.style.display = active ? 'flex' : 'none';
+    });
+
+    const awaiting = 11 - state.replied.filter(Boolean).length;
+    awaitingLabel.textContent = awaiting + ' awaiting reply';
+
+    postedBanner.style.display = state.posted ? 'flex' : 'none';
+
+    for (let i = 0; i < 3; i++) {
+      document.getElementById('replied-' + i).style.display = state.replied[i] ? 'block' : 'none';
+      document.getElementById('reply-btn-' + i).style.display = state.replied[i] ? 'none' : 'block';
+    }
+
+    if (state.view === 'compose') {
+      const r = REVIEWS[state.idx];
+      document.getElementById('compose-author').textContent = r.author;
+      document.getElementById('compose-meta').textContent = r.meta;
+      document.getElementById('compose-stars').textContent = r.stars;
+      document.getElementById('compose-text').textContent = r.text;
+      if (textarea.value !== state.draft) textarea.value = state.draft;
+      charCount.textContent = state.draft.length + ' / 700';
+    }
+  }
+
+  function goOverview() { state.view = 'overview'; state.posted = false; render(); }
+  function goTheme() { state.view = 'theme'; render(); }
+  function dismiss() { state.posted = false; render(); }
+  function openCompose(idx) {
+    state.idx = idx;
+    state.draft = REVIEWS[idx].draft;
+    state.posted = false;
+    state.view = 'compose';
+    render();
+  }
+  function send() {
+    state.replied[state.idx] = true;
+    state.posted = true;
+    state.view = 'theme';
+    render();
+  }
+
+  document.querySelectorAll('.js-go-overview').forEach(el => el.addEventListener('click', goOverview));
+  document.querySelectorAll('.js-go-theme').forEach(el => el.addEventListener('click', goTheme));
+  document.querySelectorAll('.js-dismiss').forEach(el => el.addEventListener('click', dismiss));
+  document.querySelectorAll('.js-reply-btn').forEach(el =>
+    el.addEventListener('click', () => openCompose(Number(el.dataset.idx)))
+  );
+  document.querySelectorAll('.js-send').forEach(el => el.addEventListener('click', send));
+  textarea.addEventListener('input', (e) => {
+    state.draft = e.target.value;
+    charCount.textContent = state.draft.length + ' / 700';
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
