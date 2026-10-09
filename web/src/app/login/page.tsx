@@ -62,14 +62,14 @@ export default function LoginPage() {
 
   function fillMember() {
     setEmail('owner@baysideprovisions.com')
-    setPassword('member-demo')
+    setPassword('123456')
     setRole('member')
     setError(false)
   }
 
   function fillAdmin() {
     setEmail('staff@coralgableschamber.org')
-    setPassword('admin-demo')
+    setPassword('123456')
     setRole('admin')
     setError(false)
   }
