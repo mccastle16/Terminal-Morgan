@@ -1,6 +1,4 @@
-import { redirect } from 'next/navigation'
 import { Archivo } from 'next/font/google'
-import { createClient } from '@/lib/supabase/server'
 
 const archivo = Archivo({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500'] })
 
@@ -8,14 +6,10 @@ const CARD = 'bg-white shadow-[0_1px_3px_rgba(37,206,209,0.09),0_8px_22px_rgba(3
 const MUTED = '#9FB4B4'
 const BLANK = '#B9C7C7'
 
-export default async function OverviewPage() {
-  const supabase = await createClient()
-  const { data } = await supabase.auth.getUser()
-  if (!data.user) redirect('/login')
-
+export default function OverviewPage() {
   return (
     <div className={`${archivo.className} min-h-screen box-border bg-[#FAFAFA] flex items-stretch gap-[18px] p-[18px] text-black`}>
-      <Sidebar email={data.user.email ?? ''} />
+      <Sidebar />
       <main className="flex-1 min-w-0 flex flex-col gap-[18px]">
         <Header />
         <StatRow />
@@ -36,7 +30,7 @@ export default async function OverviewPage() {
   )
 }
 
-function Sidebar({ email }: { email: string }) {
+function Sidebar() {
   const navItems = [
     { label: 'Overview', dot: '#157779', active: true },
     { label: 'My Business', dot: '#0E8C7B' },
@@ -65,16 +59,6 @@ function Sidebar({ email }: { email: string }) {
             {item.label}
           </div>
         ))}
-      </div>
-
-      <div className="mt-auto flex items-center gap-[10px] pt-[18px] border-t border-[#DFF6F7]">
-        <div className="w-[30px] h-[30px] rounded-full bg-[#DFF6F7] flex-none" />
-        <div className="flex flex-col min-w-0">
-          <div className="text-[12.5px] font-light">Account</div>
-          <div className="text-[11px] font-extralight whitespace-nowrap overflow-hidden text-ellipsis">
-            {email || '—'}
-          </div>
-        </div>
       </div>
     </nav>
   )

@@ -1,6 +1,6 @@
 # Chamber Intelligence — CGCC Reputation Terminal
 
-A reputation-management dashboard for Coral Gables Chamber of Commerce (CGCC) member businesses: a single sign-in where a member can see their ratings/reviews at a glance, and the Chamber gets an admin view across its membership. Built as a Next.js app backed by Supabase (auth + Postgres).
+A reputation-management dashboard for Coral Gables Chamber of Commerce (CGCC) member businesses. The Next.js app currently displays a public Overview, and the Supabase directory contains the database schema.
 
 ## Tech stack
 
@@ -15,8 +15,8 @@ A reputation-management dashboard for Coral Gables Chamber of Commerce (CGCC) me
 Terminal-Morgan/
 |-- web/                      -- the Next.js app (everything runs from here)
 |   |-- src/app/
-|   |   |-- page.tsx          -- Overview: a member's reputation dashboard (auth-gated)
-|   |   |-- login/page.tsx    -- sign in (password or emailed magic link)
+|   |   |-- page.tsx          -- Overview: public reputation dashboard
+|   |   |-- login/page.tsx    -- redirect to Overview for legacy links
 |   |   |-- layout.tsx, globals.css
 |   |   |-- lib/supabase/     -- client.ts (browser) / server.ts (server components)
 |   |-- public/               -- static assets
@@ -41,14 +41,7 @@ npm install        # first run only
 npm run dev
 ```
 
-Open **http://localhost:3000**. You'll be redirected to `/login` until you sign in with a Supabase user.
-
-The app reads its Supabase connection from `web/.env.local` (git-ignored):
-
-```
-NEXT_PUBLIC_SUPABASE_URL=...
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=...
-```
+Open **http://localhost:3000** to view the dashboard without signing in or configuring Supabase.
 
 ## Database
 
@@ -58,7 +51,7 @@ To apply migrations against a local or linked Supabase project, use the [Supabas
 
 ## Current status
 
-- Auth and the Overview page UI are built; the Overview page currently renders placeholder ("No data yet") stat cards — it is not yet querying `businesses`/`business_metrics`/`reviews` for the signed-in user's business.
+- The Overview page renders placeholder ("No data yet") stat cards.
 - `data/` and `CGCC-members.md` hold raw/reference data (collected business records, the CGCC member directory) that hasn't been imported into Supabase yet.
 
 ## License
